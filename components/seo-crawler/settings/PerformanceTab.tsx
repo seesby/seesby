@@ -70,7 +70,7 @@ export default function PerformanceTab({ config, setConfig }: TabProps) {
         />
         <SettingsToggle 
           label="Server Fallback" 
-          description="Use Headlight cloud nodes if local scan is blocked."
+          description="Use Seesby cloud nodes if local scan is blocked."
           checked={config.fallbackToServer} 
           onChange={(val) => updateConfig('fallbackToServer', val)} 
         />

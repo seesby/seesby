@@ -1,5 +1,5 @@
-import type { Industry } from '@headlight/types';
-import { INDUSTRY_LABELS } from '@headlight/types';
+import type { Industry } from '@seesby/types';
+import { INDUSTRY_LABELS } from '@seesby/types';
 
 export function formatCompact(n: number): string {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;

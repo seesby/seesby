@@ -29,7 +29,7 @@ export default function WaterfallChart({
       {
         name: resultLabel,
         value: baseline + segments.reduce((sum, s) => sum + s.value, 0),
-        fill: '#F5364E',
+        fill: '#F59E0B',
       },
     ];
 

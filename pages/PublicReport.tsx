@@ -110,7 +110,7 @@ export const PublicReport: React.FC = () => {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                                 </svg>
                             </div>
-                            <span className="font-bold text-lg tracking-tight">Headlight</span>
+                            <span className="font-bold text-lg tracking-tight">Seesby</span>
                         </div>
                     )}
                     <div className="w-px h-6 bg-[#222] mx-2" />
@@ -240,7 +240,7 @@ export const PublicReport: React.FC = () => {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                                 </svg>
                             </div>
-                            <span className="font-bold text-sm tracking-tight">Headlight</span>
+                            <span className="font-bold text-sm tracking-tight">Seesby</span>
                         </div>
                         <p className="text-gray-500 text-xs">Modern SEO Intelligence & Technical Audits</p>
                     </div>

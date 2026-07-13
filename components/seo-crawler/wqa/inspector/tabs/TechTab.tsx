@@ -1,176 +1,225 @@
 import React from 'react';
 import {
-  DataRow, MetricCard, SectionHeader, StatusBadge, TruncatedUrl,
-  formatNumber, formatBytes, formatDuration,
+  DataRow, Card, MetricPill, StatusBadge,
+  formatNumber, formatBytes, formatDuration, getMetric,
 } from '../../../inspector/shared';
 import CollapseGroup from '../parts/CollapseGroup';
 
-function Gauge({ label, value, unit, good, warn }: { label: string; value: number | null; unit: string; good: number; warn: number }) {
+function CwvGauge({ label, value, unit, good, warn }: {
+  label: string; value: number | null; unit: string; good: number; warn: number;
+}) {
   if (value === null || !Number.isFinite(value)) {
     return (
-      <div className="bg-[#0a0a0a] border border-[#222] rounded p-3">
-        <div className="text-[10px] text-[#666] uppercase tracking-widest">{label}</div>
-        <div className="text-[22px] font-black mt-1 text-[#666]">—</div>
+      <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
+        <div className="text-[9px] text-[#444] uppercase tracking-widest">{label}</div>
+        <div className="text-[20px] font-bold mt-1 text-[#333]">\u2014</div>
       </div>
     );
   }
-  const tone = value <= good ? 'pass' : value <= warn ? 'warn' : 'fail';
-  const colorText = tone === 'pass' ? 'text-green-400' : tone === 'warn' ? 'text-orange-400' : 'text-red-400';
-  const colorBar = tone === 'pass' ? 'bg-green-500' : tone === 'warn' ? 'bg-orange-500' : 'bg-red-500';
-  const pct = Math.min(100, Math.round((value / warn) * 100));
+  const tone = value <= good ? 'good' : value <= warn ? 'mid' : 'bad';
+  const colorText = tone === 'good' ? 'text-[#22c55e]' : tone === 'mid' ? 'text-[#f59e0b]' : 'text-[#ef4444]';
+  const colorBar = tone === 'good' ? '#22c55e' : tone === 'mid' ? '#f59e0b' : '#ef4444';
+  const pct = Math.min(100, Math.round((value / (warn * 1.2)) * 100));
   return (
-    <div className="bg-[#0a0a0a] border border-[#222] rounded p-3">
-      <div className="text-[10px] text-[#666] uppercase tracking-widest">{label}</div>
-      <div className={`text-[22px] font-black mt-1 ${colorText}`}>{value}{unit}</div>
+    <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
+      <div className="text-[9px] text-[#444] uppercase tracking-widest">{label}</div>
+      <div className={`text-[20px] font-bold mt-1 ${colorText}`}>{value.toFixed(unit === '' ? 3 : 0)}{unit}</div>
       <div className="mt-2 h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
-        <div className={`h-full ${colorBar}`} style={{ width: `${pct}%` }} />
+        <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, background: colorBar }} />
+      </div>
+      <div className="flex justify-between text-[8px] text-[#333] mt-1">
+        <span>\u2264 {good}{unit}</span>
+        <span>&gt; {warn}{unit}</span>
       </div>
     </div>
   );
 }
 
-export default function TechTab({ page }: { page: any }) {
+export default function TechTab({ page, hasTrend }: { page: any; hasTrend?: boolean }) {
+  const lcp = Number(getMetric(page, 'lcp') || page?.lcp || 0) || null;
+  const cls = Number(getMetric(page, 'cls') || page?.cls || 0) || null;
+  const inp = Number(getMetric(page, 'inp') || page?.inp || 0) || null;
+  const statusCode = Number(getMetric(page, 'statusCode') || page?.statusCode || 0);
+  const sizeBytes = Number(getMetric(page, 'sizeBytes') || page?.sizeBytes || 0);
+  const htmlSize = Number(getMetric(page, 'htmlSize') || page?.htmlSize || 0);
+  const cssSize = Number(getMetric(page, 'cssSize') || page?.cssSize || 0);
+  const jsSize = Number(getMetric(page, 'jsSize') || page?.jsSize || 0);
+  const imgSize = Number(getMetric(page, 'imageSize') || page?.imageSize || 0);
+  const fontSize = Number(getMetric(page, 'fontSize') || page?.fontSize || 0);
+  const otherSize = Math.max(0, sizeBytes - htmlSize - cssSize - jsSize - imgSize - fontSize);
+  const imgCount = Number(getMetric(page, 'imgCount') || page?.imgCount || 0);
+  const imgMissingAlt = Number(getMetric(page, 'imgMissingAlt') || page?.imgMissingAlt || 0);
+  const lazyImages = Number(page?.lazyImages || getMetric(page, 'lazyLoadedImages') || page?.lazyLoadedImages || 0);
+  const srcsetCount = Number(getMetric(page, 'srcsetImages') || page?.srcsetImages || 0);
+  const missingDims = Number(getMetric(page, 'imagesMissingDimensions') || page?.imagesMissingDimensions || 0);
+  const scriptCount = Number(page?.scriptCount || 0);
+  const styleCount = Number(page?.styleCount || 0);
+  const ttfb = Number(getMetric(page, 'loadTime') || page?.loadTime || 0);
+  const domTime = Number(page?.domTime || 0);
+  const renderType = getMetric(page, 'renderType') || page?.renderType || 'static';
+  const encoding = page?.encoding || 'utf-8';
+  const httpVersion = formatNumber(page?.httpVersion || 2);
+  const gzSize = Number(page?.compressedSize || 0);
+  const domNodes = Number(getMetric(page, 'domNodeCount') || page?.domNodeCount || 0);
+  const renderBlockingCss = Number(getMetric(page, 'renderBlockingCss') || page?.renderBlockingCss || 0);
+  const renderBlockingJs = Number(getMetric(page, 'renderBlockingJs') || page?.renderBlockingJs || 0);
+  const totalRenderBlocking = renderBlockingCss + renderBlockingJs;
+
   const headers: Array<[string, unknown]> =
     page?.responseHeaders && typeof page.responseHeaders === 'object'
       ? Object.entries(page.responseHeaders)
       : [];
   const redirects: string[] = Array.isArray(page?.redirectChain) ? page.redirectChain : [];
-  const lcp = Number(page?.lcp || 0) || null;
-  const cls = Number(page?.cls || 0) || null;
-  const inp = Number(page?.inp || 0) || null;
+
+  // Page weight breakdown
+  const sizeBreakdown = [
+    { label: 'HTML', size: htmlSize, color: '#60a5fa' },
+    { label: 'CSS', size: cssSize, color: '#a78bfa' },
+    { label: 'JS', size: jsSize, color: '#f59e0b' },
+    { label: 'Images', size: imgSize, color: '#22c55e' },
+    { label: 'Fonts', size: fontSize, color: '#f472b6' },
+    { label: 'Other', size: otherSize, color: '#6b7280' },
+  ].filter(s => s.size > 0);
 
   return (
-    <div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
-        <MetricCard label="Health" value={formatNumber(page?.healthScore)} />
-        <MetricCard label="Speed" value={page?.speedScore || '—'} />
-        <MetricCard
-          label="Status"
-          value={page?.statusCode || '—'}
-          sub={page?.status || ''}
-          color={Number(page?.statusCode || 0) >= 400 ? 'text-red-400' : Number(page?.statusCode || 0) >= 300 ? 'text-orange-400' : 'text-green-400'}
-        />
-        <MetricCard label="Indexable" value={page?.indexable === false ? 'No' : 'Yes'} color={page?.indexable === false ? 'text-red-400' : 'text-green-400'} />
+    <div className="space-y-3">
+      {/* Quick metrics strip */}
+      <div className="grid grid-cols-5 gap-2">
+        <MetricPill label="Status" value={statusCode ? String(statusCode) : '\u2014'} good={statusCode >= 200 && statusCode < 400} />
+        <MetricPill label="TTFB" value={ttfb ? `${ttfb}ms` : '\u2014'} good={ttfb > 0 && ttfb < 800} />
+        <MetricPill label="Size" value={sizeBytes ? formatBytes(sizeBytes) : '\u2014'} />
+        <MetricPill label="Render" value={renderType} />
+        <MetricPill label="Blocking" value={formatNumber(totalRenderBlocking)} good={totalRenderBlocking === 0} />
       </div>
 
-      <CollapseGroup title="Crawl & index">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 min-w-0">
-          <DataRow label="URL" value={<TruncatedUrl url={String(page?.url || '')} />} />
-          <DataRow label="Final URL" value={<TruncatedUrl url={String(page?.finalUrl || '')} />} />
-          <DataRow label="Canonical" value={<TruncatedUrl url={String(page?.canonical || '')} />} status={page?.canonical && page.canonical !== page.url ? 'info' : 'pass'} />
-          <DataRow label="Meta robots" value={page?.metaRobots1} />
-          <DataRow label="X-Robots" value={page?.xRobots || page?.xRobotsTag} />
-          <DataRow label="In sitemap" value={page?.inSitemap ? 'Yes' : 'No'} status={page?.inSitemap ? 'pass' : 'warn'} />
-          <DataRow label="Crawl depth" value={formatNumber(page?.crawlDepth)} mono />
-          <DataRow label="Folder depth" value={formatNumber(page?.folderDepth)} mono />
-        </div>
-      </CollapseGroup>
+      {/* CWV Gauges */}
+      <div className="grid grid-cols-3 gap-2">
+        <CwvGauge label="LCP" value={lcp} unit="ms" good={2500} warn={4000} />
+        <CwvGauge label="CLS" value={cls} unit="" good={0.1} warn={0.25} />
+        <CwvGauge label="INP" value={inp} unit="ms" good={200} warn={500} />
+      </div>
 
-      <CollapseGroup title="Speed">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
-          <Gauge label="LCP" value={lcp} unit="ms" good={2500} warn={4000} />
-          <Gauge label="CLS" value={cls} unit="" good={0.1} warn={0.25} />
-          <Gauge label="INP" value={inp} unit="ms" good={200} warn={500} />
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
-          <MetricCard label="TTFB" value={formatDuration(page?.loadTime)} />
-          <MetricCard label="DOM nodes" value={formatNumber(page?.domNodeCount)} />
-          <MetricCard
-            label="Render blocking"
-            value={formatNumber(Number(page?.renderBlockingCss || 0) + Number(page?.renderBlockingJs || 0))}
-          />
-          <MetricCard label="3P scripts" value={formatNumber(page?.thirdPartyScriptCount)} />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 min-w-0">
-          <DataRow label="HTTP version" value={page?.httpVersion} />
-          <DataRow label="Size" value={formatBytes(page?.sizeBytes)} />
-          <DataRow label="Transferred" value={formatBytes(page?.transferredBytes)} />
-          <DataRow label="DNS time" value={formatDuration(page?.dnsResolutionTime)} />
-          <DataRow label="Cache-Control" value={page?.hasCacheControl ? 'Present' : 'Missing'} status={page?.hasCacheControl ? 'pass' : 'warn'} />
-          <DataRow label="ETag" value={page?.hasEtag ? 'Present' : 'Missing'} status={page?.hasEtag ? 'pass' : 'warn'} />
-        </div>
-      </CollapseGroup>
+      {/* Row 1: Crawl & Render + Indexability */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <Card title="Crawl & Render">
+          <DataRow label="First byte" value={ttfb ? `${ttfb}ms   DOM ${domTime}ms` : '\u2014'} />
+          <DataRow label="Size (raw / gz)" value={sizeBytes ? `${formatBytes(sizeBytes)} / ${gzSize ? formatBytes(gzSize) : '\u2014'}` : '\u2014'} />
+          <DataRow label="HTTP" value={httpVersion} />
+          <DataRow label="Encoding" value={encoding} />
+        </Card>
+        <Card title="Indexability">
+          <DataRow label="robots.txt" value={page?.robotsDirective || 'allow'} />
+          <DataRow label="meta robots" value={page?.metaRobots || 'index, follow'} />
+          <DataRow label="Canonical" value={page?.canonical ? (page.canonical === page.url ? 'self' : page.canonical) : '\u2014'} />
+          <DataRow label="x-robots" value={page?.xRobotsTag || '\u2014'} />
+          <DataRow label="hreflang" value={page?.hreflang || '\u2014'} />
+          <DataRow label="Sitemaps" value={page?.sitemapRef || '\u2014'} status={page?.sitemapRef ? 'pass' : 'warn'} />
+        </Card>
+      </div>
 
-      <CollapseGroup title="Security">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 min-w-0">
-          <DataRow label="HTTPS" value={String(page?.url || '').startsWith('https://') ? 'Yes' : 'No'} status={String(page?.url || '').startsWith('https://') ? 'pass' : 'fail'} />
-          <DataRow label="SSL valid" value={page?.sslValid === true ? 'Yes' : page?.sslValid === false ? 'No' : '—'} status={page?.sslValid === false ? 'fail' : 'pass'} />
-          <DataRow label="TLS" value={page?.sslProtocol} />
-          <DataRow label="SSL expires" value={page?.sslExpiryDate} status={page?.sslIsExpiringSoon ? 'warn' : 'pass'} />
-          <DataRow label="HSTS" value={page?.hasHsts ? 'Present' : 'Missing'} status={page?.hasHsts ? 'pass' : 'warn'} />
-          <DataRow label="CSP" value={page?.hasCsp ? 'Present' : 'Missing'} status={page?.hasCsp ? 'pass' : 'warn'} />
-          <DataRow label="Mixed content" value={page?.mixedContent ? 'Yes' : 'No'} status={page?.mixedContent ? 'fail' : 'pass'} />
-          <DataRow label="Exposed API keys" value={formatNumber(page?.exposedApiKeys)} status={Number(page?.exposedApiKeys || 0) > 0 ? 'fail' : 'pass'} />
-        </div>
-      </CollapseGroup>
-
-      <CollapseGroup title="Mobile & accessibility" defaultOpen={false}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 min-w-0">
-          <DataRow label="Viewport meta" value={page?.hasViewportMeta ? 'Yes' : 'No'} status={page?.hasViewportMeta ? 'pass' : 'fail'} />
-          <DataRow label="Tap targets too small" value={formatNumber(page?.smallTapTargets)} status={Number(page?.smallTapTargets || 0) > 0 ? 'warn' : 'pass'} />
-          <DataRow label="Small fonts" value={formatNumber(page?.smallFontCount)} />
-          <DataRow label="Main landmark" value={page?.hasMainLandmark ? 'Yes' : 'No'} status={page?.hasMainLandmark ? 'pass' : 'warn'} />
-          <DataRow label="Skip link" value={page?.hasSkipLink ? 'Yes' : 'No'} />
-          <DataRow label="Forms without labels" value={formatNumber(page?.formsWithoutLabels)} />
-        </div>
-      </CollapseGroup>
-
-      <CollapseGroup title="Structured Data (Schema)" defaultOpen={false}>
-        <div className="space-y-3">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <MetricCard label="Total Types" value={Array.isArray(page?.schemaTypes) ? page.schemaTypes.length : 0} />
-            <MetricCard label="Valid JSON-LD" value={page?.hasJsonLd ? 'Yes' : 'No'} status={page?.hasJsonLd ? 'pass' : 'fail'} />
-            <MetricCard label="Microdata" value={page?.hasMicrodata ? 'Yes' : 'No'} />
-            <MetricCard label="RDFa" value={page?.hasRdfa ? 'Yes' : 'No'} />
+      {/* Row 2: Timing + Security */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <Card title="Timing & Rendering">
+          <div className="grid grid-cols-2 gap-2 mb-3">
+            <MetricPill label="DOM nodes" value={formatNumber(domNodes)} good={domNodes < 800} />
+            <MetricPill label="3P scripts" value={formatNumber(getMetric(page, 'thirdPartyScriptCount') || page?.thirdPartyScriptCount)} />
           </div>
-          {Array.isArray(page?.schemaTypes) && page.schemaTypes.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-2">
-              {page.schemaTypes.map((t: string) => (
-                <StatusBadge key={t} status="info" label={t} />
+          <DataRow label="DNS time" value={formatDuration(getMetric(page, 'dnsResolutionTime') || page?.dnsResolutionTime)} />
+        </Card>
+        <Card title="Security / Privacy">
+          <div className="grid grid-cols-3 gap-x-4 gap-y-1">
+            <DataRow label="HTTPS" value={page?.https !== false ? '\u2713' : '\u2717'} status={page?.https !== false ? 'pass' : 'fail'} />
+            <DataRow label="HSTS" value={page?.hsts ? '\u2713' : '\u2717'} status={page?.hsts ? 'pass' : 'warn'} />
+            <DataRow label="CSP" value={page?.csp ? '\u2713' : '\u2717'} status={page?.csp ? 'pass' : 'warn'} />
+            <DataRow label="X-Frame" value={page?.xFrameOptions ? '\u2713' : '\u2717'} status={page?.xFrameOptions ? 'pass' : 'info'} />
+          </div>
+          <DataRow label="Mixed content" value={formatNumber(page?.mixedContent || 0)} status={Number(page?.mixedContent || 0) === 0 ? 'pass' : 'fail'} />
+          <DataRow label="Cookies" value={`${formatNumber(page?.cookieCount || 0)}  (${formatNumber(page?.thirdPartyCookies || 0)} third-party)`} />
+        </Card>
+      </div>
+
+      {/* Row 3: Image optimization + A11y */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <Card title="Image optimization">
+          <div className="grid grid-cols-4 gap-2 mb-3">
+            <MetricPill label="Total" value={formatNumber(imgCount)} />
+            <MetricPill label="Lazy" value={`${formatNumber(lazyImages)}/${formatNumber(imgCount)}`} good={imgCount > 0 && lazyImages / imgCount > 0.5} />
+            <MetricPill label="Srcset" value={`${formatNumber(srcsetCount)}/${formatNumber(imgCount)}`} good={srcsetCount > 0} />
+            <MetricPill label="Missing dims" value={formatNumber(missingDims)} good={missingDims === 0} />
+          </div>
+          <DataRow label="Alt text missing" value={formatNumber(imgMissingAlt)}
+            status={imgMissingAlt > 0 ? 'warn' : 'pass'} />
+          <DataRow label="Scripts" value={formatNumber(scriptCount)} />
+          <DataRow label="Styles" value={formatNumber(styleCount)} />
+        </Card>
+        <Card title="A11y">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+            <DataRow label="Contrast errors" value={formatNumber(page?.contrastErrors || 0)} status={Number(page?.contrastErrors || 0) === 0 ? 'pass' : 'warn'} />
+            <DataRow label="Landmarks" value={page?.hasLandmarks !== false ? '\u2713' : '\u2717'} status={page?.hasLandmarks !== false ? 'pass' : 'warn'} />
+            <DataRow label="Lang attr" value={page?.hasLangAttr !== false ? '\u2713' : '\u2717'} status={page?.hasLangAttr !== false ? 'pass' : 'warn'} />
+            <DataRow label="Skip-link" value={page?.hasSkipLink ? '\u2713' : '\u2717'} status={page?.hasSkipLink ? 'pass' : 'warn'} />
+            <DataRow label="Keyboard nav" value={page?.keyboardNav || 'pass'} status="pass" />
+          </div>
+        </Card>
+      </div>
+
+      {/* Page weight */}
+      {sizeBytes > 0 && (
+        <Card title="Page weight">
+          <div className="mb-3">
+            <div className="flex items-center justify-between text-[11px] mb-1.5">
+              <span className="text-[#666]">Total</span>
+              <span className="text-white font-bold">{formatBytes(sizeBytes)}</span>
+            </div>
+            <div className="h-2 bg-[#1a1a1a] rounded-full overflow-hidden flex">
+              {sizeBreakdown.map(s => (
+                <div
+                  key={s.label}
+                  style={{ width: `${(s.size / sizeBytes) * 100}%`, background: s.color }}
+                  className="h-full"
+                  title={`${s.label}: ${formatBytes(s.size)}`}
+                />
               ))}
             </div>
-          )}
-        </div>
-      </CollapseGroup>
-
-      <CollapseGroup title="Render diff (JS vs HTML)" defaultOpen={false}>
-        {page?.jsRenderDiff ? (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <MetricCard label="Text diff" value={`${page.jsRenderDiff.textDiffPercent ?? 0}%`} />
-            <MetricCard label="JS-only links" value={formatNumber(page.jsRenderDiff.jsOnlyLinks)} />
-            <MetricCard label="JS-only images" value={formatNumber(page.jsRenderDiff.jsOnlyImages)} />
-            <MetricCard label="Critical content JS-only" value={page.jsRenderDiff.criticalContentJsOnly ? 'Yes' : 'No'} />
           </div>
-        ) : (
-          <div className="text-[12px] text-[#666]">JS rendering diff not enabled for this crawl.</div>
-        )}
-      </CollapseGroup>
+          <div className="space-y-0">
+            {sizeBreakdown.map(s => (
+              <div key={s.label} className="flex items-center justify-between text-[11px] py-1 border-b border-[#111] last:border-b-0">
+                <span className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full shrink-0" style={{ background: s.color }} />
+                  <span className="text-[#888]">{s.label}</span>
+                </span>
+                <span className="text-[#ccc] font-mono">{formatBytes(s.size)}</span>
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
 
+      {/* Redirect chain */}
       {redirects.length > 0 && (
-        <CollapseGroup title={`Redirect chain (${redirects.length})`} defaultOpen={false}>
-          <div className="space-y-2">
-            {redirects.map((u, i) => (
-              <div key={`${u}-${i}`} className="bg-[#0a0a0a] border border-[#222] rounded px-3 py-2 text-[11px] font-mono text-[#ccc] break-all">
-                <span className="text-[#666] mr-2">#{i + 1}</span>{u}
+        <CollapseGroup title={`Redirect Chain (${redirects.length})`} defaultOpen={false}>
+          <div className="space-y-1.5">
+            {redirects.map((url: string, i: number) => (
+              <div key={i} className="text-[11px] font-mono text-[#888] py-1 px-2 rounded bg-[#080808] border border-[#141414] truncate">
+                {i > 0 && <span className="text-[#444] mr-2">\u2192</span>}
+                {url}
               </div>
             ))}
           </div>
         </CollapseGroup>
       )}
 
+      {/* Response headers */}
       {headers.length > 0 && (
-        <CollapseGroup title={`Response headers (${headers.length})`} defaultOpen={false}>
-          <div className="bg-[#0a0a0a] border border-[#222] rounded overflow-hidden max-h-[240px] overflow-y-auto custom-scrollbar">
-            <table className="w-full text-[11px] font-mono">
-              <tbody>
-                {headers.map(([k, v]) => (
-                  <tr key={k} className="border-b border-[#1a1a1a] hover:bg-[#111]">
-                    <td className="px-3 py-1 text-[#F5364E] w-[210px]">{k}</td>
-                    <td className="px-3 py-1 text-[#ccc] break-all">{String(v)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <CollapseGroup title="Response Headers" defaultOpen={false}>
+          <div className="space-y-0 max-h-[240px] overflow-y-auto">
+            {headers.map(([key, val]) => (
+              <div key={key} className="flex items-start gap-3 py-1.5 border-b border-[#111] last:border-b-0">
+                <span className="text-[10px] text-[#666] font-mono shrink-0 min-w-[120px]">{key}</span>
+                <span className="text-[10px] text-[#aaa] font-mono break-all">{String(val)}</span>
+              </div>
+            ))}
           </div>
         </CollapseGroup>
       )}

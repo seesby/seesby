@@ -97,8 +97,15 @@ export function registerPaidMode() {
 	defineMode({
 		id: 'paid',
 		description: 'PPC landing page quality and ad tracking.',
-		defaultViewId: 'grid',
-		views: [{ id: 'grid', kind: 'table', label: 'Grid' }],
+		defaultViewId: 'overview',
+		views: [
+			{ id: 'overview',        kind: 'dashboard', label: 'Overview',         shortcut: '1' },
+			{ id: 'campaigns',       kind: 'table',     label: 'Campaigns',        shortcut: '2' },
+			{ id: 'keywords',        kind: 'table',     label: 'Keywords',         shortcut: '3' },
+			{ id: 'ads',             kind: 'canvas',    label: 'Ads',              shortcut: '4' },
+			{ id: 'landingPages',    kind: 'table',     label: 'Landing Pages',    shortcut: '5' },
+			{ id: 'auctionInsights', kind: 'dashboard', label: 'Auction Insights', shortcut: '6' },
+		],
 				lsSections: paidLsSections,
 		rsTabs: [
 			{ id: 'paid_overview', label: 'Overview' },
@@ -107,7 +114,28 @@ export function registerPaidMode() {
 			{ id: 'paid_competition', label: 'Competition' },
 			{ id: 'paid_actions', label: 'Actions' },
 		],
+		inspectorTabs: [
+			{ id: 'summary',       label: 'Summary',       icon: 'LayoutDashboard' },
+			{ id: 'campaigns',     label: 'Campaigns',     icon: 'Megaphone' },
+			{ id: 'keywords',      label: 'Keywords',      icon: 'Key' },
+			{ id: 'quality',       label: 'Quality',       icon: 'Award' },
+			{ id: 'landingPages',  label: 'Landing Pages', icon: 'ExternalLink' },
+			{ id: 'history',       label: 'History',       icon: 'History' },
+		],
 		actionCodes: MODE_ACTIONS.paid,
-		visible: ['p.identity.url', 'p.paid.landingFromAd', 'p.ga4.conversions'],
+		visible: [
+			'p.identity.url',
+			'p.paid.campaignsUsing',
+			'q.kw',
+			'p.paid.paidSessions',
+			'p.paid.paidCvr',
+			'p.paid.qsLpComponent',
+			'p.paid.adIntentMatch',
+			's.paid.spend30d.google',
+			's.paid.roas.google',
+			'p.paid.paidBounce',
+			'p.tech.cwv.bucket',
+			'p.action.topAction',
+		],
 	});
 }

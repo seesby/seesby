@@ -1,6 +1,6 @@
 // services/adapters/WqaColumnAdapter.ts
-import type { Industry, LanguageCode, CmsKey, Mode } from '@headlight/types';
-import { filterVisibleMetrics, ALL_METRICS } from '@headlight/metrics';
+import type { Industry, LanguageCode, CmsKey, Mode } from '@seesby/types';
+import { filterVisibleMetrics, ALL_METRICS } from '@seesby/metrics';
 
 export interface WqaColumnContext {
 	mode: Mode;

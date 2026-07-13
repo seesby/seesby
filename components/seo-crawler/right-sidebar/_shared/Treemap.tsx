@@ -50,6 +50,6 @@ export function Treemap({
 
 const TONE_BG: Record<NonNullable<TreeNode['tone']>, string> = {
   good: 'rgba(34,197,94,0.25)', warn: 'rgba(245,158,11,0.25)',
-  bad:  'rgba(245,54,78,0.25)', info: 'rgba(96,165,250,0.25)',
+  bad:  'rgba(245,158,11,0.25)', info: 'rgba(96,165,250,0.25)',
   neutral: 'rgba(120,120,120,0.25)',
 }

@@ -1,4 +1,4 @@
-import type { MetricDef } from '@headlight/types';
+import type { MetricDef } from '@seesby/types';
 import type { ColumnContext } from './registry';
 
 export function evaluateGate(def: MetricDef, ctx: ColumnContext): boolean {

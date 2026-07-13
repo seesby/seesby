@@ -24,7 +24,7 @@ const OPERATOR_OPTIONS = [
   { value: 'drops_below', label: 'drops below' },
 ];
 
-const STORAGE_KEY = 'headlight:comp-alert-rules';
+const STORAGE_KEY = 'seesby:comp-alert-rules';
 
 export default function AlertRulesSection() {
   const [rules, setRules] = useState<AlertRule[]>(() => {
@@ -69,10 +69,10 @@ export default function AlertRulesSection() {
     <div className="rounded-xl border border-[#222] bg-[#0d0d0f] p-4">
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Bell size={12} className="text-[#F5364E]" />
+          <Bell size={12} className="text-[#F59E0B]" />
           <span className="text-[12px] font-semibold uppercase tracking-wide text-[#666]">Alert Rules</span>
         </div>
-        <button onClick={() => setAdding(!adding)} className="flex items-center gap-1 text-[10px] font-bold text-[#F5364E] hover:text-white">
+        <button onClick={() => setAdding(!adding)} className="flex items-center gap-1 text-[10px] font-bold text-[#F59E0B] hover:text-white">
           <Plus size={10} />
           Add Rule
         </button>
@@ -111,7 +111,7 @@ export default function AlertRulesSection() {
             placeholder="Value"
           />
           <div className="flex gap-2">
-            <button onClick={addRule} className="rounded bg-[#F5364E]/10 px-3 py-1.5 text-[10px] font-bold text-[#F5364E] hover:bg-[#F5364E]/20">
+            <button onClick={addRule} className="rounded bg-[#F59E0B]/10 px-3 py-1.5 text-[10px] font-bold text-[#F59E0B] hover:bg-[#F59E0B]/20">
               Save Rule
             </button>
             <button onClick={() => setAdding(false)} className="text-[10px] text-[#555] hover:text-[#888]">

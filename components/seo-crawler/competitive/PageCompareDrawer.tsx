@@ -63,7 +63,7 @@ export default function PageCompareDrawer({ competitorUrl, competitorTitle, onCl
             <thead>
               <tr className="border-b border-[#222]">
                 <th className="w-[120px] pb-2 text-left text-[10px] font-bold uppercase text-[#666]">Metric</th>
-                <th className="pb-2 text-left text-[10px] font-bold uppercase text-[#F5364E]">Your Page</th>
+                <th className="pb-2 text-left text-[10px] font-bold uppercase text-[#F59E0B]">Your Page</th>
                 <th className="pb-2 text-left text-[10px] font-bold uppercase text-[#6366f1]">Their Page</th>
               </tr>
             </thead>

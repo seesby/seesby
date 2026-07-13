@@ -242,10 +242,10 @@ async function sendWebhook(turso, row, eventName, payload) {
     });
     const headers = {
         'Content-Type': 'application/json',
-        'X-Headlight-Event': eventName
+        'X-Seesby-Event': eventName
     };
     if (row.secret) {
-        headers['X-Headlight-Signature'] = signPayload(String(row.secret), body);
+        headers['X-Seesby-Signature'] = signPayload(String(row.secret), body);
     }
 
     const startedAt = Date.now();
@@ -301,7 +301,7 @@ export async function registerPhaseERoutes(app, turso) {
         try {
             const aiResponse = await completeAI({
                 prompt,
-                systemPrompt: systemPrompt || 'You are Headlight, an SEO and GEO assistant. Be concise, practical, and data-aware.',
+                systemPrompt: systemPrompt || 'You are Seesby, an SEO and GEO assistant. Be concise, practical, and data-aware.',
                 maxTokens: Number(maxTokens || 600),
                 format
             });

@@ -1,4 +1,4 @@
-import type { Industry } from '@headlight/types';
+import type { Industry } from '@seesby/types';
 import { extractJson } from '../parse';
 import type { Prompt } from '../types';
 

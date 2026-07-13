@@ -1,5 +1,5 @@
 import type React from 'react'
-import type { Mode } from '@headlight/types'
+import type { Mode } from '@seesby/types'
 import { fullAuditTabs }    from './full-audit'
 import { wqaTabs }          from './wqa'
 import { technicalTabs }    from './technical'

@@ -4,7 +4,7 @@
  * Projecting SEO growth based on action buckets and historical data.
  * Weights derived from AXIS_EFFECT table (Content, Tech, Authority).
  */
-import { AssignedAction } from '@headlight/actions';
+import { AssignedAction } from '@seesby/actions';
 import { computeWqaSiteStats, computeWqaActionGroups, deriveWqaScore } from './legacy/WqaLegacyMetrics';
 
 

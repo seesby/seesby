@@ -53,7 +53,7 @@ export default function MapCoverageStrip({ pages }: Props) {
                                     className="h-full rounded-full"
                                     style={{
                                         width: `${c.value}%`,
-                                        background: c.tone === 'good' ? '#22c55e' : c.tone === 'warn' ? '#f59e0b' : c.tone === 'bad' ? '#ef4444' : '#F5364E',
+                                        background: c.tone === 'good' ? '#22c55e' : c.tone === 'warn' ? '#f59e0b' : c.tone === 'bad' ? '#ef4444' : '#F59E0B',
                                     }}
                                 />
                             </div>

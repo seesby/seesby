@@ -10,7 +10,7 @@ export interface ProviderTelemetry {
   errors24h: number;
 }
 
-const TELEMETRY_KEY = 'headlight:ai-telemetry';
+const TELEMETRY_KEY = 'seesby:ai-telemetry';
 
 export class AITelemetry {
   private stats: Map<AIProvider, ProviderTelemetry> = new Map();

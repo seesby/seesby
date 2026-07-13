@@ -1,4 +1,4 @@
-import { getAllActions } from '@headlight/actions';
+import { getAllActions } from '@seesby/actions';
 import { UNIFIED_ISSUE_TAXONOMY, getPageIssues } from '../../services/UnifiedIssueTaxonomy';
 
 export const SEO_ISSUES_TAXONOMY = UNIFIED_ISSUE_TAXONOMY;

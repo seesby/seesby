@@ -6,19 +6,15 @@ export const localLsSections: ReadonlyArray<SidebarSection> = [
 	{ id: 'locations', kind: 'list', label: 'Locations tree', selectionMode: 'multi', selectionKey: 'local.location', defaultOpen: true, bullet: 'diamond', pinned: true,
 		items: [],
 		resolveItems: ({ pages }) => {
-			// mock tree: USA -> NY -> Manhattan/Brooklyn
-			return [
-				{ id: 'usa', label: 'USA', meta: '8', children: [
-					{ id: 'ny', label: 'NY', meta: '2', children: [
-						{ id: 'manhattan', label: 'Manhattan', meta: '✓ ●' },
-						{ id: 'brooklyn',  label: 'Brooklyn',  meta: '✓' },
-					]},
-					{ id: 'ca', label: 'CA', meta: '3', children: [] },
-					{ id: 'tx', label: 'TX', meta: '3', children: [] },
-				]},
-				{ id: 'uk', label: 'UK', meta: '2', children: [] },
-				{ id: 'add', label: 'Add location', icon: 'Plus', action: 'add' },
-			];
+			const counts: Record<string, number> = {};
+			for (const p of pages) {
+				const loc = (p as any).country || (p as any).location || '';
+				if (loc) counts[loc] = (counts[loc] || 0) + 1;
+			}
+			const rows = Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([id, n]) => ({
+				id, label: id, meta: String(n),
+			}));
+			return [...rows, { id: 'add', label: 'Add location', icon: 'Plus', action: 'add' }];
 		},
 	},
 	{ id: 'serviceAreas', kind: 'list', label: 'Service areas', bullet: 'arrow',
@@ -52,7 +48,7 @@ export const localLsSections: ReadonlyArray<SidebarSection> = [
 			{ id: 'facebook',    label: 'Facebook' },
 			{ id: 'tripadvisor', label: 'TripAdvisor' },
 			{ id: 'opentable',   label: 'OpenTable' },
-			{ id: 'connect',     label: 'Connect source', icon: 'Plus', action: 'connect' },
+			{ id: 'connect',     label: 'Connect source', icon: 'Plus', action: 'add' },
 		],
 	},
 	{ id: 'reviewBuckets', kind: 'facet', label: 'Review buckets', countKey: 'local.reviewBucket', bullet: 'bucket',
@@ -91,8 +87,13 @@ export function registerLocalMode() {
 	defineMode({
 		id: 'local',
 		description: 'NAP consistency and local entity mapping.',
-		defaultViewId: 'grid',
-		views: [{ id: 'grid', kind: 'table', label: 'Grid' }],
+		defaultViewId: 'locations',
+		views: [
+			{ id: 'locations',   kind: 'table',     label: 'Locations',     shortcut: '1' },
+			{ id: 'map',         kind: 'map',       label: 'Map',           shortcut: '2' },
+			{ id: 'serviceAreas', kind: 'map',   label: 'Service Areas', shortcut: '3' },
+			{ id: 'reviews',     kind: 'table',     label: 'Reviews',       shortcut: '4' },
+		],
 				lsSections: localLsSections,
 		rsTabs: [
 			{ id: 'local_overview', label: 'Overview' },
@@ -101,7 +102,25 @@ export function registerLocalMode() {
 			{ id: 'local_reviews',  label: 'Reviews' },
 			{ id: 'local_pack',     label: 'Pack' },
 		],
+		inspectorTabs: [
+			{ id: 'summary', label: 'Summary', icon: 'LayoutDashboard' },
+			{ id: 'nap',     label: 'NAP',     icon: 'MapPin' },
+			{ id: 'gbp',     label: 'GBP',     icon: 'Building' },
+			{ id: 'reviews', label: 'Reviews', icon: 'Star' },
+			{ id: 'pack',    label: 'Pack',    icon: 'LayoutList' },
+			{ id: 'history', label: 'History', icon: 'History' },
+		],
 		actionCodes: MODE_ACTIONS.local,
-		visible: ['p.identity.url', 'p.local.napMatchHomepage', 'p.local.hasMap'],
+		visible: [
+			'p.identity.url',
+			'p.local.isLocationPage',
+			'p.local.napOnPage',
+			'p.local.localBusinessSchema',
+			'p.local.embeddedMap',
+			'e.local.reviewsAvgGoogle',
+			'e.local.rankGeogrid',
+			'p.indexing.statusCode',
+			'p.action.topAction',
+		],
 	});
 }

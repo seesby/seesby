@@ -22,7 +22,7 @@ export default function AreaTrendChart({
   label1 = 'Series 1',
   label2,
   color1 = '#6366f1',
-  color2 = '#F5364E',
+  color2 = '#F59E0B',
   height = 140,
   formatValue = (v) => v.toLocaleString(),
 }: Props) {
@@ -158,7 +158,7 @@ export default function AreaTrendChart({
             {label2 && (
               <div className="flex justify-between gap-4 text-[9px]">
                 <span className="text-[#888]">{label2}</span>
-                <span className="font-mono font-bold text-[#F5364E]">{formatValue(data[hoveredIdx].value2 || 0)}</span>
+                <span className="font-mono font-bold text-[#F59E0B]">{formatValue(data[hoveredIdx].value2 || 0)}</span>
               </div>
             )}
           </div>

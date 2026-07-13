@@ -1,6 +1,6 @@
 async function findOrCreateBackupFolder(accessToken: string) {
   const searchRes = await fetch(
-    `https://www.googleapis.com/drive/v3/files?q=name='Headlight Backups' and mimeType='application/vnd.google-apps.folder' and trashed=false`,
+    `https://www.googleapis.com/drive/v3/files?q=name='Seesby Backups' and mimeType='application/vnd.google-apps.folder' and trashed=false`,
     { headers: { Authorization: `Bearer ${accessToken}` } }
   );
   if (!searchRes.ok) throw new Error(`Drive search failed (${searchRes.status})`);
@@ -13,7 +13,7 @@ async function findOrCreateBackupFolder(accessToken: string) {
       Authorization: `Bearer ${accessToken}`,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ name: 'Headlight Backups', mimeType: 'application/vnd.google-apps.folder' })
+    body: JSON.stringify({ name: 'Seesby Backups', mimeType: 'application/vnd.google-apps.folder' })
   });
   if (!createRes.ok) throw new Error(`Drive folder create failed (${createRes.status})`);
   const created = await createRes.json() as { id: string };

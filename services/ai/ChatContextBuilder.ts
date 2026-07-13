@@ -31,7 +31,7 @@ Critical Issues: ${currentCrawlSummary?.topIssues?.join(', ') || 'None identifie
         }, {} as Record<string, number>);
 
         return `
-SYSTEM CONTEXT: You are Headlight AI, an elite SEO consultant. Use the crawl data below to answer the user's question with strategic, data-backed insights.
+SYSTEM CONTEXT: You are Seesby AI, an elite SEO consultant. Use the crawl data below to answer the user's question with strategic, data-backed insights.
 
 SITE SUMMARY:
 ${summaryStr}

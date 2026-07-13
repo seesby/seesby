@@ -1,5 +1,5 @@
-import type { Mode } from '@headlight/types';
-import { getMode } from '@headlight/modes';
+import type { Mode } from '@seesby/types';
+import { getMode } from '@seesby/modes';
 import { getPageIssues } from './UnifiedIssueTaxonomy';
 
 export type FacetCounts = Record<string /* countKey */, Record<string /* value */, number>>;

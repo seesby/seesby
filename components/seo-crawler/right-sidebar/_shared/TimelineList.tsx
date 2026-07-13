@@ -24,6 +24,6 @@ export function TimelineList({ entries, max = 6 }: { entries: ReadonlyArray<Time
 }
 
 const DOT: Record<NonNullable<TimelineEntry['tone']>, string> = {
-  good: 'bg-emerald-400', warn: 'bg-amber-400', bad: 'bg-[#F5364E]',
+  good: 'bg-emerald-400', warn: 'bg-amber-400', bad: 'bg-[#F59E0B]',
   info: 'bg-sky-400', neutral: 'bg-[#666]',
 }

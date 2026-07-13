@@ -51,7 +51,7 @@ export const AutomationView = () => {
     };
 
     if (loading) {
-        return <div className="flex justify-center py-20"><Loader2 className="animate-spin text-brand-red" size={32} /></div>;
+        return <div className="flex justify-center py-20"><Loader2 className="animate-spin text-brand-amber" size={32} /></div>;
     }
 
     return (
@@ -122,20 +122,20 @@ export const AutomationView = () => {
                             <div>
                                 <label className="block text-xs font-bold text-gray-400 mb-1">Rule Name</label>
                                 <input type="text" value={newName} onChange={e => setNewName(e.target.value)} placeholder="e.g. Rank Drop Alert"
-                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-red transition-colors" />
+                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors" />
                             </div>
                             <div>
                                 <label className="block text-xs font-bold text-gray-400 mb-1">Trigger (If...)</label>
                                 <input type="text" value={newTrigger} onChange={e => setNewTrigger(e.target.value)} placeholder="e.g. Keyword drops below position 10"
-                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-red transition-colors" />
+                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors" />
                             </div>
                             <div>
                                 <label className="block text-xs font-bold text-gray-400 mb-1">Action (Then...)</label>
                                 <input type="text" value={newAction} onChange={e => setNewAction(e.target.value)} placeholder="e.g. Send email notification"
-                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-red transition-colors" />
+                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors" />
                             </div>
                             <button disabled={!newName || !newTrigger || !newAction || saving} onClick={addRule}
-                                className="w-full mt-4 bg-brand-red text-white font-bold py-3 rounded-xl hover:bg-brand-red/90 transition-colors disabled:opacity-50">
+                                className="w-full mt-4 bg-brand-amber text-white font-bold py-3 rounded-xl hover:bg-brand-amber/90 transition-colors disabled:opacity-50">
                                 {saving ? 'Creating...' : 'Create Rule'}
                             </button>
                         </div>

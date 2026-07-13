@@ -53,7 +53,7 @@ export function openCrawler(
   } else {
     // Open as full-screen overlay within app
     // We'll use a custom event that the MainLayout/App listens to
-    window.dispatchEvent(new CustomEvent('headlight:open-crawler', { 
+    window.dispatchEvent(new CustomEvent('seesby:open-crawler', { 
       detail: { url: crawlerUrl } 
     }));
   }

@@ -1,5 +1,5 @@
 import Dexie, { type Table } from 'dexie';
-import type { SavedView } from '@headlight/modes';
+import type { SavedView } from '@seesby/modes';
 import { 
   ProjectMember, 
   CrawlComment, 
@@ -394,7 +394,7 @@ class CrawlDB extends Dexie {
   savedViews!: Table<SavedView, string>;
 
   constructor() {
-    super('HeadlightCrawlDB');
+    super('SeesbyCrawlDB');
     
     this.version(1).stores({
       pages: 'url, crawlId, statusCode, [crawlId+statusCode]',

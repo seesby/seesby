@@ -41,7 +41,7 @@ export function Heatmap({
               const intensity = Math.min(1, v / peak)
               const styleCell = {
                 width: cellSize, height: cellSize,
-                background: `rgba(245,54,78,${0.08 + intensity * 0.65})`,
+                background: `rgba(245,158,11,${0.08 + intensity * 0.65})`,
               }
               return (
                 <div

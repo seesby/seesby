@@ -106,7 +106,7 @@ export class CrawlerConfigValidator {
     sanitized.requestTimeout = Math.max(1, Math.min(120, sanitized.requestTimeout || 30));
 
     // 3. String sanitization
-    sanitized.userAgent = (sanitized.userAgent || 'HeadlightCrawler/1.0').trim().substring(0, 255);
+    sanitized.userAgent = (sanitized.userAgent || 'SeesbyCrawler/1.0').trim().substring(0, 255);
     sanitized.allowedDomains = (sanitized.allowedDomains || '').trim();
     sanitized.includeRules = (sanitized.includeRules || '').trim();
     sanitized.excludeRules = (sanitized.excludeRules || '').trim();

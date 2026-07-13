@@ -72,7 +72,7 @@ export default function TasksPage() {
             <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
                 <header className="h-[76px] border-b border-white/[0.08] flex items-center justify-between px-8 bg-[#050505]/80 backdrop-blur-md sticky top-0 z-30">
                     <div className="flex items-center gap-4">
-                        <CheckSquare className="text-brand-red" size={20} />
+                        <CheckSquare className="text-brand-amber" size={20} />
                         <h1 className="text-lg font-heading font-bold text-white capitalize">Tasks Board</h1>
                     </div>
                     <div className="flex items-center gap-4">
@@ -87,12 +87,12 @@ export default function TasksPage() {
                     <div className="flex justify-between items-center mb-6">
                         <div>
                             <div className="flex items-center gap-2 mb-1">
-                                <CheckSquare className="text-brand-red" size={20} />
+                                <CheckSquare className="text-brand-amber" size={20} />
                                 <h1 className="text-2xl font-bold text-white font-heading">Project Tasks</h1>
                             </div>
                             <p className="text-sm text-gray-500">Manage and track your SEO execution roadmap.</p>
                         </div>
-                        <button className="flex items-center gap-2 px-4 py-2 bg-brand-red hover:bg-red-600 text-white rounded-xl font-bold text-sm transition-all shadow-lg shadow-brand-red/20">
+                        <button className="flex items-center gap-2 px-4 py-2 bg-brand-amber hover:bg-red-600 text-white rounded-xl font-bold text-sm transition-all shadow-lg shadow-brand-amber/20">
                             <Plus size={18} /> New Task
                         </button>
                     </div>
@@ -113,7 +113,7 @@ export default function TasksPage() {
                                     placeholder="Search tasks..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="bg-white/5 border border-white/5 rounded-xl pl-9 pr-4 py-2 text-sm text-white focus:outline-none focus:border-brand-red/50 w-64"
+                                    className="bg-white/5 border border-white/5 rounded-xl pl-9 pr-4 py-2 text-sm text-white focus:outline-none focus:border-brand-amber/50 w-64"
                                 />
                             </div>
                             <button className="p-2 bg-white/5 border border-white/5 rounded-xl text-gray-400 hover:text-white transition-colors">
@@ -126,7 +126,7 @@ export default function TasksPage() {
                 <main className="flex-1 overflow-auto p-8 custom-scrollbar">
                     {loading ? (
                         <div className="h-full flex flex-col items-center justify-center text-gray-500 italic">
-                            <div className="w-10 h-10 border-2 border-brand-red border-t-transparent rounded-full animate-spin mb-4"></div>
+                            <div className="w-10 h-10 border-2 border-brand-amber border-t-transparent rounded-full animate-spin mb-4"></div>
                             Loading your workspace...
                         </div>
                     ) : (
@@ -164,7 +164,7 @@ const ViewTab = ({ active, onClick, icon, label }: any) => (
     <button 
         onClick={onClick}
         className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-bold transition-all ${
-            active ? 'bg-brand-red text-white shadow-md shadow-brand-red/10' : 'text-gray-500 hover:text-gray-300'
+            active ? 'bg-brand-amber text-white shadow-md shadow-brand-amber/10' : 'text-gray-500 hover:text-gray-300'
         }`}
     >
         {icon} <span>{label}</span>
@@ -202,7 +202,7 @@ const TaskBoard = ({ tasks, onTaskClick }: { tasks: CrawlTask[], onTaskClick: (t
                             <div 
                                 key={task.id} 
                                 onClick={() => onTaskClick(task)}
-                                className="bg-[#111] border border-white/5 p-4 rounded-xl hover:border-brand-red/30 cursor-pointer transition-all group"
+                                className="bg-[#111] border border-white/5 p-4 rounded-xl hover:border-brand-amber/30 cursor-pointer transition-all group"
                             >
                                 <div className="flex items-center gap-2 mb-2">
                                     <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded border uppercase ${
@@ -214,11 +214,11 @@ const TaskBoard = ({ tasks, onTaskClick }: { tasks: CrawlTask[], onTaskClick: (t
                                     </span>
                                     <span className="text-[9px] text-gray-500 font-bold uppercase">{task.category || 'General'}</span>
                                 </div>
-                                <h4 className="text-sm font-bold text-white group-hover:text-brand-red transition-colors mb-3">{task.title}</h4>
+                                <h4 className="text-sm font-bold text-white group-hover:text-brand-amber transition-colors mb-3">{task.title}</h4>
                                 <div className="flex justify-between items-center">
                                     <div className="flex -space-x-2">
                                         {task.assignee_id ? (
-                                            <div className="w-6 h-6 rounded-full bg-brand-red border-2 border-[#111] flex items-center justify-center text-[10px] font-bold text-white">
+                                            <div className="w-6 h-6 rounded-full bg-brand-amber border-2 border-[#111] flex items-center justify-center text-[10px] font-bold text-white">
                                                 {task.assignee_name?.[0] || 'U'}
                                             </div>
                                         ) : (
@@ -262,7 +262,7 @@ const TaskList = ({ tasks, onTaskClick }: { tasks: CrawlTask[], onTaskClick: (t:
                             className="hover:bg-white/[0.02] transition-colors cursor-pointer group"
                         >
                             <td className="px-6 py-4">
-                                <div className="text-sm font-bold text-white group-hover:text-brand-red transition-colors">{task.title}</div>
+                                <div className="text-sm font-bold text-white group-hover:text-brand-amber transition-colors">{task.title}</div>
                                 <div className="text-[10px] text-gray-500 mt-1">{task.source} • {task.category || 'General'}</div>
                             </td>
                             <td className="px-6 py-4">

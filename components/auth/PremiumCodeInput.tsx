@@ -87,9 +87,9 @@ const PremiumCodeInput: React.FC<PremiumCodeInputProps> = ({ length = 6, value, 
               text-center text-3xl sm:text-4xl font-semibold text-white
               transition-all duration-200 outline-none
               ${activeIndex === i 
-                ? 'border-[#F5364E]/60 bg-white/[0.05] shadow-[0_0_30px_rgba(245,54,78,0.1)]' 
+                ? 'border-[#F59E0B]/60 bg-white/[0.05] shadow-[0_0_30px_rgba(245,158,11,0.1)]' 
                 : 'border-white/[0.08] hover:border-white/20 hover:bg-white/[0.04]'}
-              ${error ? 'border-[#F5364E] bg-[#F5364E]/5' : ''}
+              ${error ? 'border-[#F59E0B] bg-[#F59E0B]/5' : ''}
             `}
           />
         </div>

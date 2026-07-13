@@ -101,14 +101,14 @@ export default function APIWebhooksTab() {
         <button
           onClick={() => createApiKey().catch((error) => window.alert(error.message))}
           disabled={!projectId}
-          className="px-4 py-2 rounded-lg bg-[#F5364E] text-white text-[12px] font-bold disabled:opacity-50"
+          className="px-4 py-2 rounded-lg bg-[#F59E0B] text-white text-[12px] font-bold disabled:opacity-50"
         >
           Generate API Key
         </button>
         {generatedToken && (
           <div className="p-3 bg-[#111] border border-[#222] rounded-lg space-y-2">
             <div className="text-[11px] font-bold text-white flex items-center gap-2">
-              <KeyRound size={14} className="text-[#F5364E]" /> Copy this key now
+              <KeyRound size={14} className="text-[#F59E0B]" /> Copy this key now
             </div>
             <div className="text-[11px] font-mono break-all text-emerald-300">{generatedToken}</div>
             <button
@@ -161,11 +161,11 @@ export default function APIWebhooksTab() {
           label="Webhook URL"
           value={webhookUrl}
           onChange={setWebhookUrl}
-          placeholder="https://hooks.example.com/headlight"
+          placeholder="https://hooks.example.com/seesby"
         />
         <SettingsInput
           label="Signing Secret"
-          description="Used to generate the X-Headlight-Signature HMAC header."
+          description="Used to generate the X-Seesby-Signature HMAC header."
           value={webhookSecret}
           onChange={setWebhookSecret}
           placeholder="Optional but recommended"

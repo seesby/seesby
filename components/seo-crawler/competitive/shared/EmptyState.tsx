@@ -17,7 +17,7 @@ export default function EmptyState({ icon, message, submessage, action }: EmptyS
       {action && (
         <button
           onClick={action.onClick}
-          className="mt-3 text-[10px] font-bold uppercase tracking-widest text-[#F5364E] hover:underline"
+          className="mt-3 text-[10px] font-bold uppercase tracking-widest text-[#F59E0B] hover:underline"
         >
           {action.label}
         </button>

@@ -4,6 +4,7 @@ import { useSeoCrawler } from '@/contexts/SeoCrawlerContext'
 import { RsTabBar } from './RsTabBar'
 import { RsRouter } from './RsRouter'
 import { getRsTabsFor } from './registry'
+import { SURFACE, TEXT, R, S } from '../views/_shared/tokens'
 
 const MIN_W = 320
 const MAX_W = 640
@@ -55,23 +56,43 @@ export function RsShell() {
     return (
         <aside
             id="rs-shell"
-            className="relative flex h-full flex-col border-l border-[#1a1a1a] bg-[#0a0a0a] transition-[width] duration-300 ease-in-out"
-            style={styleShell}
+            className="relative flex shrink-0 h-full flex-col"
+            style={{
+                borderLeft: `1px solid ${SURFACE.br1}`,
+                background: SURFACE.bg0,
+                transition: 'width 0.3s ease-in-out',
+                ...styleShell,
+            }}
         >
             {/* Drag Handle (only when open) */}
             {showAuditSidebar && (
                 <div
                     onMouseDown={onMouseDown}
-                    className={`absolute left-0 top-0 z-50 h-full w-1 cursor-col-resize transition-colors ${
-                        isDraggingSidebar ? 'bg-[#F5364E]/40' : 'bg-transparent hover:bg-[#F5364E]/30'
-                    }`}
+                    className="absolute left-0 top-0 z-50 h-full w-1 cursor-col-resize"
+                    style={{
+                        background: isDraggingSidebar ? 'rgba(245,158,11,0.4)' : 'transparent',
+                        transition: 'background 0.15s',
+                    }}
                 />
             )}
 
             {/* Toggle Button (persistent) */}
             <button
                 onClick={() => setShowAuditSidebar(!showAuditSidebar)}
-                className="absolute -left-[18px] top-1/2 -translate-y-1/2 z-[100] flex h-12 w-[18px] items-center justify-center rounded-l border border-r-0 border-[#222] bg-[#0a0a0a] text-[#888] shadow-xl hover:text-white hover:bg-[#1a1a1a] transition-colors"
+                className="absolute top-1/2 -translate-y-1/2 z-[100] flex items-center justify-center"
+                style={{
+                    left: -18,
+                    height: 48,
+                    width: 18,
+                    borderRadius: `${R.sm}px 0 0 ${R.sm}px`,
+                    borderRight: 'none',
+                    border: `1px solid ${SURFACE.br2}`,
+                    borderRightWidth: 0,
+                    background: SURFACE.bg0,
+                    color: TEXT.secondary,
+                    boxShadow: '0 10px 15px -3px rgba(0,0,0,0.5)',
+                    transition: 'all 0.15s',
+                }}
                 title={showAuditSidebar ? "Collapse insights" : "Expand insights"}
             >
                 {showAuditSidebar ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}

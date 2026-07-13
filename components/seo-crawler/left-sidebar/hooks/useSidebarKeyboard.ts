@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import type { ModeDescriptor, SidebarFacetSection } from '@headlight/modes';
+import type { ModeDescriptor, SidebarFacetSection } from '@seesby/modes';
 import { useSeoCrawler } from '../../../../contexts/SeoCrawlerContext';
 import type { FacetCounts } from './useFacetCounts';
 

@@ -1,27 +1,6 @@
-import type { MetricDef } from '../../../types/src';
+import type { MetricDef } from '@seesby/types';
 
 export const pageMetrics: MetricDef[] = [
-  {
-    key: 'p.identity.url',
-    namespace: 'p.identity',
-    level: 'P',
-    roles: ['K', 'S'],
-    sources: ['T0'],
-    format: 'text',
-    i18nLabelKey: 'metric.p.identity.url',
-    tags: ['defaultVisible', 'legacy:url'],
-  },
-  {
-    key: 'p.content.wordCount',
-    namespace: 'p.content',
-    level: 'P',
-    roles: ['G', 'I', 'R', 'V', 'S', 'A'],
-    sources: ['T0'],
-    unit: 'count',
-    format: 'number',
-    i18nLabelKey: 'metric.p.content.wordCount',
-    scoreComponent: 'content',
-  },
   {
     key: 'p.content.category',
     namespace: 'p.content',
@@ -31,28 +10,6 @@ export const pageMetrics: MetricDef[] = [
     format: 'enum',
     i18nLabelKey: 'metric.p.content.category',
     tags: ['defaultVisible', 'legacy:pageCategory'],
-  },
-  {
-    key: 'p.search.gsc.clicks',
-    namespace: 'p.search',
-    level: 'P',
-    roles: ['G', 'R', 'V'],
-    sources: ['T0'],
-    unit: 'count',
-    format: 'number',
-    i18nLabelKey: 'metric.p.search.gsc.clicks',
-    gate: { requireConnected: ['gsc'] },
-    tags: ['defaultVisible', 'legacy:gscClicks'],
-  },
-  {
-    key: 'p.tech.cwv.bucket',
-    namespace: 'p.tech',
-    level: 'P',
-    roles: ['G', 'L', 'V', 'S', 'A', 'E'],
-    sources: ['T1', 'T5'],
-    format: 'enum',
-    i18nLabelKey: 'metric.p.tech.cwv.bucket',
-    scoreComponent: 'tech',
   },
   {
     key: 'p.commerce.feed.errors',

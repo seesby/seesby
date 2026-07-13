@@ -1,4 +1,4 @@
-import type { Mode } from '@headlight/types';
+import type { Mode } from '@seesby/types';
 
 export const LEGACY_MODE_MAP: Record<string, Mode> = {
     full: 'fullAudit',

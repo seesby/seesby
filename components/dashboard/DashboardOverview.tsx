@@ -109,24 +109,24 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
 
             {/* Live Crawl Banner */}
             {crawlStatus && crawlStatus.status === 'running' && (
-                <div className="bg-brand-red/10 border border-brand-red/20 rounded-xl p-4 flex items-center justify-between animate-pulse mb-6">
+                <div className="bg-brand-amber/10 border border-brand-amber/20 rounded-xl p-4 flex items-center justify-between animate-pulse mb-6">
                     <div className="flex items-center gap-4">
-                        <div className="bg-brand-red p-2 rounded-lg shadow-lg shadow-brand-red/20">
+                        <div className="bg-brand-amber p-2 rounded-lg shadow-lg shadow-brand-amber/20">
                             <Activity size={20} className="text-white" />
                         </div>
                         <div>
                             <h4 className="text-white font-bold text-sm">Site Audit in Progress</h4>
-                            <p className="text-brand-red/70 text-xs mt-0.5">Crawling {crawlStatus.currentUrl || 'site'}... {crawlStatus.urlsCrawled} pages found.</p>
+                            <p className="text-brand-amber/70 text-xs mt-0.5">Crawling {crawlStatus.currentUrl || 'site'}... {crawlStatus.urlsCrawled} pages found.</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-4">
                         <div className="text-right hidden md:block">
                             <span className="text-white font-bold text-sm font-mono">{crawlStatus.progress}%</span>
                             <div className="w-32 bg-white/10 rounded-full h-1 mt-1">
-                                <div className="bg-brand-red h-full rounded-full transition-all duration-500" style={{ width: `${crawlStatus.progress}%` }}></div>
+                                <div className="bg-brand-amber h-full rounded-full transition-all duration-500" style={{ width: `${crawlStatus.progress}%` }}></div>
                             </div>
                         </div>
-                        <button onClick={() => openPanel('crawler_progress')} className="bg-brand-red hover:bg-brand-red/80 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">
+                        <button onClick={() => openPanel('crawler_progress')} className="bg-brand-amber hover:bg-brand-amber/80 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">
                             View Progress
                         </button>
                     </div>
@@ -176,7 +176,7 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* 2. Primary Traffic Chart */}
                 <div className="lg:col-span-2 bg-[#0F0F0F] rounded-3xl border border-white/5 p-6 shadow-2xl h-[450px] flex flex-col relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red/5 blur-[100px] rounded-full pointer-events-none"></div>
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-brand-amber/5 blur-[100px] rounded-full pointer-events-none"></div>
                     
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 z-10">
                         <div>
@@ -197,8 +197,8 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                             <AreaChart data={performanceData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                                 <defs>
                                     <linearGradient id="colorClicks" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor="#F5364E" stopOpacity={0.3} />
-                                        <stop offset="95%" stopColor="#F5364E" stopOpacity={0} />
+                                        <stop offset="5%" stopColor="#F59E0B" stopOpacity={0.3} />
+                                        <stop offset="95%" stopColor="#F59E0B" stopOpacity={0} />
                                     </linearGradient>
                                     <linearGradient id="colorSessions" x1="0" y1="0" x2="0" y2="1">
                                         <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.3} />
@@ -212,7 +212,7 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                                     contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid #222', borderRadius: '12px', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)' }}
                                     itemStyle={{ fontSize: '12px', fontWeight: 'bold' }}
                                 />
-                                <Area type="monotone" dataKey="clicks" stroke="#F5364E" strokeWidth={3} fillOpacity={1} fill="url(#colorClicks)" name="GSC Clicks" />
+                                <Area type="monotone" dataKey="clicks" stroke="#F59E0B" strokeWidth={3} fillOpacity={1} fill="url(#colorClicks)" name="GSC Clicks" />
                                 <Area type="monotone" dataKey="sessions" stroke="#3B82F6" strokeWidth={3} fillOpacity={1} fill="url(#colorSessions)" name="GA4 Sessions" />
                             </AreaChart>
                         </ResponsiveContainer>
@@ -361,7 +361,7 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                         </div>
                         <div className="flex items-center gap-2">
                             <div className="flex items-center gap-1 text-[10px] text-gray-500 font-bold uppercase">
-                                <div className="w-2 h-2 rounded-full bg-brand-red"></div> You
+                                <div className="w-2 h-2 rounded-full bg-brand-amber"></div> You
                             </div>
                             <div className="flex items-center gap-1 text-[10px] text-gray-500 font-bold uppercase ml-2">
                                 <div className="w-2 h-2 rounded-full bg-gray-600"></div> Competitors
@@ -376,7 +376,7 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                                 <Tooltip cursor={{ fill: 'white', fillOpacity: 0.05 }} contentStyle={{ backgroundColor: '#111', border: '1px solid #333' }} />
                                 <Bar dataKey="visibility" radius={[0, 4, 4, 0]} barSize={20}>
                                     {distributionData.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={entry.name === 'You' ? '#F5364E' : '#333'} />
+                                        <Cell key={`cell-${index}`} fill={entry.name === 'You' ? '#F59E0B' : '#333'} />
                                     ))}
                                 </Bar>
                             </BarChart>

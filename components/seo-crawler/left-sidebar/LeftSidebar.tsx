@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useSeoCrawler } from '../../../contexts/SeoCrawlerContext';
-import { getMode, type ModeDescriptor } from '@headlight/modes';
+import { getMode, type ModeDescriptor } from '@seesby/modes';
 import { SidebarSection } from './SidebarSection';
 import { SidebarSavedViews } from './SidebarSavedViews';
 import { useFacetCounts } from './hooks/useFacetCounts';
@@ -36,7 +36,7 @@ export function LeftSidebar({ embedded = false }: { embedded?: boolean }) {
 			{!embedded && (
 				<div
 					onMouseDown={() => setIsDraggingLeftSidebar(true)}
-					className="absolute top-0 bottom-0 right-0 w-1.5 cursor-ew-resize z-50 transition-colors hover:bg-[#E63946]/40"
+					className="absolute top-0 bottom-0 right-0 w-1.5 cursor-ew-resize z-50 transition-colors hover:bg-[#F59E0B]/40"
 					role="separator"
 					aria-orientation="vertical"
 				/>

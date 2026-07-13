@@ -37,9 +37,9 @@ export default function AITab({ config, setConfig }: TabProps) {
 
   return (
     <div className="space-y-6">
-      <div className="p-4 bg-gradient-to-br from-[#F5364E]/20 to-transparent border border-[#F5364E]/30 rounded-xl mb-6">
+      <div className="p-4 bg-gradient-to-br from-[#F59E0B]/20 to-transparent border border-[#F59E0B]/30 rounded-xl mb-6">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-8 h-8 rounded-lg bg-[#F5364E] flex items-center justify-center">
+          <div className="w-8 h-8 rounded-lg bg-[#F59E0B] flex items-center justify-center">
             <Wand2 size={18} className="text-white" />
           </div>
           <div>
@@ -63,11 +63,11 @@ export default function AITab({ config, setConfig }: TabProps) {
               {tasks.map(task => (
                 <div key={task.id} 
                   className={`p-3 rounded-lg border transition-all cursor-pointer flex gap-3
-                    ${aiTasks[task.id as keyof AITaskToggles] ? 'bg-[#111] border-[#F5364E]/30 shadow-[0_0_15px_rgba(245,54,78,0.05)]' : 'bg-[#0a0a0a] border-[#222] grayscale opacity-60 hover:grayscale-0 hover:opacity-100'}`}
+                    ${aiTasks[task.id as keyof AITaskToggles] ? 'bg-[#111] border-[#F59E0B]/30 shadow-[0_0_15px_rgba(245,158,11,0.05)]' : 'bg-[#0a0a0a] border-[#222] grayscale opacity-60 hover:grayscale-0 hover:opacity-100'}`}
                   onClick={() => updateAiTask(task.id as keyof AITaskToggles, !aiTasks[task.id as keyof AITaskToggles])}
                 >
                   <div className={`w-8 h-8 rounded flex items-center justify-center shrink-0 
-                    ${aiTasks[task.id as keyof AITaskToggles] ? 'bg-[#F5364E]/20 text-[#F5364E]' : 'bg-[#222] text-[#666]'}`}>
+                    ${aiTasks[task.id as keyof AITaskToggles] ? 'bg-[#F59E0B]/20 text-[#F59E0B]' : 'bg-[#222] text-[#666]'}`}>
                     {task.icon}
                   </div>
                   <div>

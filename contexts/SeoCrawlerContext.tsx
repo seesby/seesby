@@ -3,10 +3,10 @@ import React, { createContext, useContext, useState, useRef, useMemo, useEffect,
 import {
     ALL_COLUMNS,
     resolveIssueCheckId,
-    formatBytes
 } from '../components/seo-crawler/constants';
+import { fmtBytes as formatBytes } from '../components/seo-crawler/views/_shared/formatters';
 import { UNIFIED_ISSUE_TAXONOMY, getIssuesForMode, getPageIssues, ISSUE_TO_CHECK_MAP } from '../services/UnifiedIssueTaxonomy';
-import { allModes } from '@headlight/modes';
+import { allModes, getMode } from '@seesby/modes';
 import { getWqaColumns, getWqaDefaultVisibleColumns as getWqaDefaultVisibleColumnsBase } from '../services/adapters/WqaColumnAdapter';
 import { detectDataAvailability } from '../services/DataAvailability';
 import {
@@ -33,6 +33,7 @@ import { useOptionalProject } from '../services/ProjectContext';
 import { calculatePredictiveScore, calculateAuthorityScore, calculateBusinessValueScore, calculateOpportunityScore } from '../services/StrategicIntelligence';
 import { persistCrawlResults, syncCrawlStatus, persistEnrichmentStatus, deleteCompetitorProfile, loadCompetitorProfiles as loadCompetitorProfilesCloud } from '../services/CrawlPersistenceService';
 import { syncFromCrawl, listCompetitors, deleteCompetitor as removeCompetitorRecord } from '../services/DashboardDataService';
+
 import { 
     CrawlerIntegrationConnection,
     CrawlerIntegrationProvider,
@@ -124,8 +125,8 @@ import { createNotification } from '../services/ActivityService';
 import { getComments, createComment as createCommentService } from '../services/CollaborationService';
 import type { CrawlTask, CommentTargetType, ProjectMember } from '../services/app-types';
 import { checkRunner, SiteContext } from '../services/checks';
-import type { Capability, CmsKey, IntegrationId, Mode, ProjectFingerprint } from '@headlight/types';
-import { MODES } from '@headlight/types';
+import type { Capability, CmsKey, IntegrationId, Mode, ProjectFingerprint } from '@seesby/types';
+import { MODES } from '@seesby/types';
 import { registerAllModes } from '../packages/modes/src';
 import { normalizeIndustry as normalizeUiIndustry } from '../packages/modes/src';
 
@@ -191,25 +192,7 @@ export const DEFAULT_SIDEBAR_STATE: SidebarState = {
 	activeSavedViewId: null,
 };
 
-export type InspectorTab =
-
-    | 'general'
-    | 'seo'
-    | 'content'
-    | 'links'
-    | 'schema'
-    | 'performance'
-    | 'images'
-    | 'social'
-    | 'gsc'
-    | 'ga4'
-    | 'ai'
-    | 'details'
-    | 'headers'
-    | 'serp'
-    | 'source'
-    | 'jsdiff'
-    | 'visual';
+export type InspectorTab = string;
 
 export type WqaInspectorTab =
   | 'summary'
@@ -310,8 +293,14 @@ export interface CrawlerContextType {
     setWqaInspectorTab: (t: WqaInspectorTab) => void;
     showAuditSidebar: boolean;
     setShowAuditSidebar: (s: boolean) => void;
+    setSelectedPageUrl: (url: string) => void;
+    setInspectorOpen: (open: boolean) => void;
     rsTab: Partial<Record<Mode, string>>;
     setRsTab: (mode: Mode, tabId: string) => void;
+
+    currentView: Partial<Record<Mode, string>>;
+    setCurrentView: (mode: Mode, viewId: string) => void;
+    getCurrentView: (mode: Mode) => string;
 
 
     showSettings: boolean;
@@ -320,10 +309,9 @@ export interface CrawlerContextType {
     setActiveMacro: (m: string | null) => void;
     sortConfig: { key: string; direction: 'asc' | 'desc' } | null;
     setSortConfig: (c: { key: string; direction: 'asc' | 'desc' } | null) => void;
-    showColumnPicker: boolean;
-    setShowColumnPicker: (s: boolean) => void;
     visibleColumns: string[];
     setVisibleColumns: React.Dispatch<React.SetStateAction<string[]>>;
+    markColumnsOverridden: () => void;
     viewMode: 'grid' | 'map' | 'charts';
     setViewMode: (v: 'grid' | 'map' | 'charts') => void;
     showAiInsights: boolean;
@@ -354,6 +342,8 @@ export interface CrawlerContextType {
     runSelectedEnrichment: (urls: string[]) => Promise<void>;
     detailsHeight: number;
     setDetailsHeight: (h: number) => void;
+    inspectorCollapsed: boolean;
+    setInspectorCollapsed: (c: boolean) => void;
     gridScrollOffset: number;
     setGridScrollOffset: (o: number) => void;
     isDraggingLeftSidebar: boolean;
@@ -563,9 +553,9 @@ export interface CrawlerContextType {
 
 export const SeoCrawlerContext = createContext<CrawlerContextType | undefined>(undefined);
 const MAX_IN_MEMORY_PAGES = 50000;
-const CRAWLER_LAYOUT_STORAGE_KEY = 'headlight:seo-crawler-layout';
-const CRAWLER_LAST_SESSION_STORAGE_KEY = 'headlight:seo-crawler-last-session';
-const CRAWLER_DRAFT_STORAGE_KEY = 'headlight:seo-crawler-draft';
+const CRAWLER_LAYOUT_STORAGE_KEY = 'seesby:seo-crawler-layout';
+const CRAWLER_LAST_SESSION_STORAGE_KEY = 'seesby:seo-crawler-last-session';
+const CRAWLER_DRAFT_STORAGE_KEY = 'seesby:seo-crawler-draft';
 
 const getScopedCrawlerSessionStorageKey = (projectId: string | null | undefined) =>
     projectId ? `${CRAWLER_LAST_SESSION_STORAGE_KEY}:${projectId}` : CRAWLER_LAST_SESSION_STORAGE_KEY;
@@ -583,22 +573,18 @@ const getNormalizedHostname = (value: string | null | undefined) => {
     }
 };
 const DEFAULT_VISIBLE_COLUMNS = [
-    'url',
-    'statusCode',
-    'indexabilityStatus',
-    'title',
-    'metaDesc',
-    'crawlDepth',
-    'inlinks',
-    'outlinks',
-    'loadTime',
-    'gscClicks',
-    'gscImpressions',
-    'ga4Sessions',
-    'opportunityScore',
-    'businessValueScore',
-    'authorityScore',
-    'recommendedAction'
+    'p.identity.url',
+    's.health.score',
+    'p.content.title',
+    'p.indexing.statusCode',
+    'p.tech.cwv.bucket',
+    'p.tech.sec.grade',
+    'p.tech.a11y.score',
+    'p.search.gsc.clicks',
+    'p.ga.sessions',
+    'p.content.wordCount',
+    'p.links.inlinks',
+    'p.action.topAction',
 ];
 
 const DEFAULT_CONFIG: CrawlerConfig = {
@@ -609,7 +595,7 @@ const DEFAULT_CONFIG: CrawlerConfig = {
     maxDepth: '10',
     threads: 5,
     crawlSpeed: 'normal',
-    userAgent: 'Headlight Scanner 1.0',
+    userAgent: 'Seesby Scanner 1.0',
     respectRobots: true,
     followRedirects: true,
     maxRedirectHops: 5,
@@ -882,16 +868,16 @@ function deriveCapabilities(connected: IntegrationId[], cms: CmsKey | null | und
 const MODE_TO_LEGACY_AUDIT_MODE: Record<Mode, AuditMode> = {
     fullAudit: 'full',
     wqa: 'website_quality',
-    technical: 'technical',
+    technical: 'technical_seo',
     content: 'content',
-    linksAuthority: 'linksAuthority',
+    linksAuthority: 'off_page',
     uxConversion: 'uxConversion',
     paid: 'paid',
     commerce: 'ecommerce',
     socialBrand: 'socialBrand',
-    ai: 'ai',
-    competitors: 'competitors',
-    local: 'local',
+    ai: 'ai_discoverability',
+    competitors: 'competitor_gap',
+    local: 'local_seo',
 };
 
 export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
@@ -997,7 +983,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
     const [customPresets, setCustomPresets] = useState<CustomAuditPreset[]>(() => getLocalPresets());
     const [earlyIndustryLocked, setEarlyIndustryLocked] = useState(false); // NEW
     const [selectedPage, setSelectedPage] = useState<any | null>(null);
-    const [activeTab, setActiveTab] = useState<InspectorTab>('general');
+    const [activeTab, setActiveTab] = useState<InspectorTab>('summary');
     const [wqaInspectorTab, setWqaInspectorTab] = useState<WqaInspectorTab>('summary');
     const [inspectorCollapsed, setInspectorCollapsed] = useState(false);
     const [showAuditSidebar, setShowAuditSidebar] = useState(true);
@@ -1007,11 +993,43 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
         setRsTabState(prev => ({ ...prev, [mode]: tabId }));
     }, []);
 
+    const setInspectorOpen = useCallback((open: boolean) => {
+        if (open) setShowAuditSidebar(true);
+    }, [setShowAuditSidebar]);
+
+    // ── Per-mode active view ────────────────────────────────────────────────
+    const CURRENT_VIEW_KEY = 'seesby.currentView';
+
+    const readInitialCurrentView = (): Partial<Record<Mode, string>> => {
+      if (typeof window === 'undefined') return {};
+      try { return JSON.parse(localStorage.getItem(CURRENT_VIEW_KEY) || '{}') ?? {}; }
+      catch { return {}; }
+    };
+
+    const [currentView, setCurrentViewState] = useState<Partial<Record<Mode, string>>>(readInitialCurrentView);
+
+    useEffect(() => {
+      if (typeof window !== 'undefined') {
+        try { localStorage.setItem(CURRENT_VIEW_KEY, JSON.stringify(currentView)); } catch {}
+      }
+    }, [currentView]);
+
+    const setCurrentView = useCallback((modeId: Mode, viewId: string) => {
+      setCurrentViewState(prev => (prev[modeId] === viewId ? prev : { ...prev, [modeId]: viewId }));
+    }, []);
+
+    const getCurrentView = useCallback((modeId: Mode): string => {
+      return currentView[modeId] ?? getMode(modeId).defaultViewId;
+    }, [currentView]);
+
     const [showSettings, setShowSettings] = useState(false);
     const [activeMacro, setActiveMacro] = useState<string | null>(null);
     const [sortConfig, setSortConfig] = useState<{ key: string, direction: 'asc' | 'desc' } | null>(null);
-    const [showColumnPicker, setShowColumnPicker] = useState(false);
     const [visibleColumns, setVisibleColumns] = useState<string[]>(DEFAULT_VISIBLE_COLUMNS);
+    // Track whether the user has manually chosen columns so the auto-reset effect won't overwrite them
+    const userOverriddenColumnsRef = React.useRef(false);
+    // Track the previous mode so we only auto-reset columns on actual mode changes
+    const prevModeRef = React.useRef<string | null>(loadInitialMode);
     const [viewMode, setViewMode] = useState<'grid' | 'map' | 'charts'>('grid');
     const [showAiInsights, setShowAiInsights] = useState(false);
     const [showAiChat, setShowAiChat] = useState(false);
@@ -1455,8 +1473,12 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
 
     const columns = useMemo(() => ALL_COLUMNS.filter(c => visibleColumns.includes(c.key)), [visibleColumns]);
 
+    const markColumnsOverridden = useCallback(() => {
+        userOverriddenColumnsRef.current = true;
+    }, []);
 
-    const CONFIG_STORAGE_KEY = 'headlight:crawler-config';
+
+    const CONFIG_STORAGE_KEY = 'seesby:crawler-config';
 
     // Load config on mount
     useEffect(() => {
@@ -1550,7 +1572,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
         if (typeof window === 'undefined') return;
         try {
-            const stored = window.localStorage.getItem('headlight:theme');
+            const stored = window.localStorage.getItem('seesby:theme');
             if (stored === 'dark' || stored === 'light' || stored === 'system' || stored === 'high-contrast') {
                 setTheme(stored);
             }
@@ -1563,7 +1585,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
         if (typeof document === 'undefined') return;
         document.documentElement.setAttribute('data-theme', theme);
         try {
-            window.localStorage.setItem('headlight:theme', theme);
+            window.localStorage.setItem('seesby:theme', theme);
         } catch {
             // Ignore storage write failures.
         }
@@ -2117,7 +2139,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
             // Cmd/Ctrl+F → focus search
             if ((e.metaKey || e.ctrlKey) && e.key === 'f') {
                 e.preventDefault();
-                const searchInput = document.getElementById('headlight-grid-search');
+                const searchInput = document.getElementById('seesby-grid-search');
                 if (searchInput) searchInput.focus();
             }
             // Escape → clear selection / close panels
@@ -2126,7 +2148,6 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
                 if (showAutoFixModal) { if (!isFixing) setShowAutoFixModal(false); return; }
                 if (showListModal) { setShowListModal(false); return; }
                 if (showScheduleModal) { setShowScheduleModal(false); return; }
-                if (showColumnPicker) { setShowColumnPicker(false); return; }
                 if (selectedPage) { setSelectedPage(null); return; }
                 if (searchQuery) { setSearchQuery(''); return; }
             }
@@ -2147,7 +2168,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [showSettings, showAutoFixModal, showListModal, showScheduleModal, showColumnPicker, selectedPage, searchQuery, isFixing]);
+    }, [showSettings, showAutoFixModal, showListModal, showScheduleModal, selectedPage, searchQuery, isFixing]);
 
 
     const flushPendingPageUpdates = useCallback(() => {
@@ -2368,7 +2389,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
     }, []);
 
     const scrollGridIntoView = useCallback(() => {
-        const grid = document.getElementById('headlight-grid-container');
+        const grid = document.getElementById('seesby-grid-container');
         if (grid) {
             grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
@@ -2566,14 +2587,15 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
             workerUtilization: 0
         });
         setShowAuditSidebar(true);
-        setActiveAuditTab('overview'); // Auto-switch to overview on scan start
 
         const configuredWsUrl = (import.meta as any).env?.VITE_CRAWLER_WS_URL;
         const wsUrl = configuredWsUrl || `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.hostname}:3001`;
         
-        // Auto-use Ghost if no remote URL is configured AND we're not on localhost
+        // Auto-use Ghost (Local-Only Engine) when no remote scanner URL is configured.
+        // This covers both deployed (non-localhost) and local-dev (localhost) where no
+        // scanner service is running on :3001, so the crawler can still run locally.
         const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        const shouldAutoUseGhost = !config.useGhostEngine && !configuredWsUrl && !isLocalhost;
+        const shouldAutoUseGhost = !config.useGhostEngine && !configuredWsUrl;
         const useGhostMode = Boolean(config.useGhostEngine || shouldAutoUseGhost);
 
         if (!useGhostMode) {
@@ -3248,11 +3270,24 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
         if (primary) setMode(primary);
 
         if (Array.isArray(preset.columnPreset) && preset.columnPreset.length > 0) {
+            userOverriddenColumnsRef.current = true;
             setVisibleColumns(preset.columnPreset);
         }
     }, [setMode]);
 
     useEffect(() => {
+        const modeChanged = prevModeRef.current !== mode;
+        prevModeRef.current = mode;
+
+        // Only auto-reset columns when the mode actually switches.
+        if (!modeChanged) return;
+
+        // If the user has manually chosen columns, respect their choice
+        if (userOverriddenColumnsRef.current) {
+            userOverriddenColumnsRef.current = false;
+            return;
+        }
+
         const modeConfig = AUDIT_MODES[MODE_TO_LEGACY_AUDIT_MODE[mode]];
         if (!modeConfig) return;
 
@@ -3278,7 +3313,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
         if (nextColumns.length > 0) {
             setVisibleColumns(nextColumns);
         }
-    }, [mode, wqaState, pages]); // Added pages as dependency for data availability gating
+    }, [mode]); // Only re-run on mode change — wqaState/pages changes must NOT reset user selections
 
     useEffect(() => {
         if (!activeMacro || activeMacro === 'all') return;
@@ -3325,9 +3360,10 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
     }, [analysisPages]);
 
     const pagesWithDerivedSignals = useMemo(() => {
-        if (pages.length === 0) return pages;
+        const effectivePages = pages;
+        if (effectivePages.length === 0) return effectivePages;
 
-        return pages.map((page) => {
+        return effectivePages.map((page) => {
             const titleKey = normalizeComparableText(page.title);
             const metaKey = normalizeComparableText(page.metaDesc);
             const h1Key = normalizeComparableText(page.h1_1);
@@ -4048,7 +4084,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
                 content
             });
 
-            addLog(`Snapshot synced to Google Drive (Headlight Backups).`, 'success', { source: 'session' });
+            addLog(`Snapshot synced to Google Drive (Seesby Backups).`, 'success', { source: 'session' });
         } catch (err: any) {
             console.error('[Google Drive Backup Error]', err);
             addLog(`Backup failed: ${err.message}`, 'error');
@@ -4293,7 +4329,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
         if (selectedPage && mode === 'fullAudit' && !showAuditSidebar) {
             setShowAuditSidebar(true);
         }
-    }, [selectedPage, mode, showAuditSidebar]);
+    }, [selectedPage, mode]);
 
     useEffect(() => {
         if (!scopedProjectId) return;
@@ -5139,6 +5175,8 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
         if (page) setSelectedPage(page);
     }, [pages, setSelectedPage]);
 
+
+
     const value = useMemo(() => ({
         crawlingMode, setCrawlingMode, urlInput, setUrlInput, listUrls, setListUrls, showListModal, setShowListModal,
         isCrawling, setIsCrawling, pages: pagesWithDerivedSignals, analysisPages, logs, setLogs, crawlStartTime, setCrawlStartTime,
@@ -5151,8 +5189,9 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
         searchQuery, setSearchQuery,
         selectedPage, setSelectedPage, activeTab, setActiveTab, wqaInspectorTab, setWqaInspectorTab, inspectorCollapsed, setInspectorCollapsed, showAuditSidebar, setShowAuditSidebar,
         rsTab: rsTabState, setRsTab,
+        currentView, setCurrentView, getCurrentView,
         showSettings, setShowSettings, activeMacro, setActiveMacro,
-        sortConfig, setSortConfig, showColumnPicker, setShowColumnPicker, visibleColumns, setVisibleColumns,
+        sortConfig, setSortConfig, visibleColumns, setVisibleColumns, markColumnsOverridden,
         viewMode, setViewMode, showAiInsights, setShowAiInsights, showAiChat, setShowAiChat, graphDimensions, setGraphDimensions,
         graphContainerRef, fgRef,
         logSearch, setLogSearch, logTypeFilter, setLogTypeFilter, selectedRows, setSelectedRows,
@@ -5188,6 +5227,8 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
         tasks, setTasks, teamMembers, showCollabOverlay, setShowCollabOverlay,
         collabOverlayTarget, setCollabOverlayTarget, activeCommentTarget, setActiveCommentTarget,
         drillToPage,
+        setSelectedPageUrl: drillToPage,
+        setInspectorOpen,
         tier4Results, runTier4Checks,
         showAddCompetitorInput, setShowAddCompetitorInput,
         crawlingCompetitorDomain, setCrawlingCompetitorDomain, refreshAllCompetitors,
@@ -5242,7 +5283,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
         selectedPage, activeTab, inspectorCollapsed, showAuditSidebar,
         rsTabState,
         showSettings, activeMacro,
-        sortConfig, showColumnPicker, visibleColumns,
+        sortConfig, visibleColumns, markColumnsOverridden,
         viewMode, showAiInsights, showAiChat, graphDimensions,
         
         logSearch, logTypeFilter, selectedRows,
@@ -5275,6 +5316,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
         runFullEnrichment, runIncrementalEnrichment, runSelectedEnrichment,
         saveIntegrationConnection, removeIntegrationConnection, signOut,
         drillToPage,
+        setInspectorOpen,
         runAIAnalysis,
         activateWqaMode, deactivateWqaMode, setWqaViewMode, setWqaIndustryOverride, setWqaLanguageOverride,
         showAddCompetitorInput, crawlingCompetitorDomain, setCrawlingCompetitorDomain, refreshAllCompetitors,

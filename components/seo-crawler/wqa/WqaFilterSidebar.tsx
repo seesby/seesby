@@ -48,7 +48,7 @@ export default function WqaFilterSidebar() {
             placeholder="Search pages..."
             value={wqaFilter.searchTerm}
             onChange={handleSearchChange}
-            className="w-full bg-[#1a1a1a] border border-[#222] rounded py-1.5 pl-8 pr-3 text-[12px] text-white focus:outline-none focus:border-[#F5364E]"
+            className="w-full bg-[#1a1a1a] border border-[#222] rounded py-1.5 pl-8 pr-3 text-[12px] text-white focus:outline-none focus:border-[#F59E0B]"
           />
         </div>
       </div>
@@ -57,7 +57,7 @@ export default function WqaFilterSidebar() {
         <h3 className="text-[10px] font-black uppercase tracking-widest text-[#444]">Active Filters</h3>
         <button 
           onClick={handleReset}
-          className="text-[9px] font-bold text-[#F5364E] hover:text-[#ff6070] transition-colors uppercase tracking-widest"
+          className="text-[9px] font-bold text-[#F59E0B] hover:text-[#ff6070] transition-colors uppercase tracking-widest"
         >
           Reset All
         </button>
@@ -166,7 +166,7 @@ function FilterButton({ label, active, count, onClick, color }: FilterButtonProp
       onClick={onClick}
       className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded text-[11px] transition-all ${
         active 
-          ? 'bg-[#F5364E] text-white shadow-lg' 
+          ? 'bg-[#F59E0B] text-white shadow-lg' 
           : 'text-[#888] hover:bg-[#1a1a1a] hover:text-[#ccc]'
       }`}
     >

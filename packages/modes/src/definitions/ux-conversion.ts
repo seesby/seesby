@@ -28,63 +28,118 @@ export const uxConversionLsSections: ReadonlyArray<SidebarSection> = [
 		],
 	},
 	{ id: 'pageRole', kind: 'list', label: 'PAGE ROLE', bullet: 'arrow',
-		items: [
-			{ id: 'entry',      label: 'Entry',      meta: '128' },
-			{ id: 'mid-funnel', label: 'Mid-funnel', meta: '164' },
-			{ id: 'conversion', label: 'Conversion', meta: '42' },
-			{ id: 'form',       label: 'Form',       meta: '22' },
-			{ id: 'confirm',    label: 'Confirm',    meta: '18' },
-			{ id: 'utility',    label: 'Utility',    meta: '28' },
-		],
+		items: [],
+		resolveItems: ({ pages }) => {
+			const p = pages as any[];
+			const count = (role: string) => p.filter(pg => pg.pageRole === role || pg.template === role).length;
+			return [
+				{ id: 'entry',      label: 'Entry',      meta: String(count('entry') || count('landing')) },
+				{ id: 'mid-funnel', label: 'Mid-funnel', meta: String(count('mid-funnel') || count('category')) },
+				{ id: 'conversion', label: 'Conversion', meta: String(count('conversion') || count('checkout')) },
+				{ id: 'form',       label: 'Form',       meta: String(count('form')) },
+				{ id: 'confirm',    label: 'Confirm',    meta: String(count('confirm') || count('thank-you')) },
+				{ id: 'utility',    label: 'Utility',    meta: String(count('utility') || count('other')) },
+			].filter(r => r.meta !== '0');
+		},
 	},
 	{ id: 'intent', kind: 'list', label: 'INTENT BUCKETS', bullet: 'dot-filled',
-		items: [
-			{ id: 'converters', label: 'Converters', meta: '88' },
-			{ id: 'researchers',label: 'Researchers', meta: '182' },
-			{ id: 'bouncers',   label: 'Bouncers',    meta: '112' },
-			{ id: 'returning',  label: 'Returning',   meta: '62' },
-		],
+		items: [],
+		resolveItems: ({ pages }) => {
+			const p = pages as any[];
+			const num = (v: any) => { const n = Number(v); return isFinite(n) ? n : 0; };
+			const converters = p.filter(pg => num(pg.ux?.formCompletes) > 0 || num(pg.ux?.ctaClicks) > 0).length;
+			const bouncers   = p.filter(pg => num(pg.ux?.bounceRate) > 0.7).length;
+			const returning  = p.filter(pg => num(pg.ux?.returningVisitors) > 0).length;
+			const researchers = Math.max(0, p.filter(pg => pg.isHtmlPage !== false).length - converters - bouncers);
+			return [
+				{ id: 'converters',  label: 'Converters',  meta: String(converters),  tone: 'good' as const },
+				{ id: 'researchers', label: 'Researchers', meta: String(researchers) },
+				{ id: 'bouncers',    label: 'Bouncers',    meta: String(bouncers),    tone: 'bad' as const },
+				{ id: 'returning',   label: 'Returning',   meta: String(returning) },
+			].filter(r => r.meta !== '0');
+		},
 	},
 	{ id: 'device', kind: 'list', label: 'DEVICE', bullet: 'arrow',
-		items: [
-			{ id: 'mobile',  label: 'Mobile',  meta: '62%' },
-			{ id: 'desktop', label: 'Desktop', meta: '32%' },
-			{ id: 'tablet',  label: 'Tablet',  meta: '6%' },
-		],
+		items: [],
+		resolveItems: ({ pages }) => {
+			const p = pages as any[];
+			const total = p.length || 1;
+			const mobile  = p.filter(pg => pg.device === 'mobile'  || pg.isMobile === true).length;
+			const tablet  = p.filter(pg => pg.device === 'tablet').length;
+			const desktop = p.filter(pg => pg.device === 'desktop' || (!pg.isMobile && pg.device !== 'tablet')).length;
+			const pct = (n: number) => `${Math.round((n / total) * 100)}%`;
+			return [
+				{ id: 'mobile',  label: 'Mobile',  meta: pct(mobile) },
+				{ id: 'desktop', label: 'Desktop', meta: pct(desktop) },
+				{ id: 'tablet',  label: 'Tablet',  meta: pct(tablet) },
+			].filter(r => r.meta !== '0%');
+		},
 	},
 	{ id: 'friction', kind: 'list', label: 'FRICTION SIGNALS', bullet: 'dot',
-		items: [
-			{ id: 'rage',   label: 'Rage clicks', tone: 'bad',  meta: '142' },
-			{ id: 'dead',   label: 'Dead clicks', tone: 'warn', meta: '212' },
-			{ id: 'error',  label: 'Error clicks', tone: 'bad',  meta: '88' },
-			{ id: 'uturn',  label: 'U-turns',      meta: '64' },
-			{ id: 'scroll', label: 'Scroll dead',  meta: '42' },
-			{ id: 'form',   label: 'Form errors',  meta: '88' },
-		],
+		items: [],
+		resolveItems: ({ pages }) => {
+			const p = pages as any[];
+			const num = (v: any) => { const n = Number(v); return isFinite(n) ? n : 0; };
+			const sum = (key: string) => p.reduce((s, pg) => s + num(pg.ux?.[key]), 0);
+			const rage   = sum('rageClicks');
+			const dead   = sum('deadClicks');
+			const error  = sum('errorClicks');
+			const scroll = p.filter(pg => num(pg.ux?.scrollDepth) < 50 && num(pg.ux?.scrollDepth) > 0).length;
+			const formErr = p.reduce((s, pg) => s + Math.max(0, num(pg.ux?.formStarts) - num(pg.ux?.formCompletes)), 0);
+			return [
+				{ id: 'rage',   label: 'Rage clicks',  meta: String(rage),   tone: 'bad'  as const },
+				{ id: 'dead',   label: 'Dead clicks',  meta: String(dead),   tone: 'warn' as const },
+				{ id: 'error',  label: 'Error clicks', meta: String(error),  tone: 'bad'  as const },
+				{ id: 'scroll', label: 'Scroll dead',  meta: String(scroll) },
+				{ id: 'form',   label: 'Form errors',  meta: String(formErr) },
+			].filter(r => r.meta !== '0');
+		},
 	},
 	{ id: 'cwv', kind: 'list', label: 'CWV ON CONVERTERS', bullet: 'dot',
-		items: [
-			{ id: 'lcp-good', label: 'LCP good', meta: '218', tone: 'good' },
-			{ id: 'lcp-poor', label: 'LCP poor', meta: '42',  tone: 'bad'  },
-			{ id: 'inp-poor', label: 'INP poor', meta: '22',  tone: 'bad'  },
-			{ id: 'cls-poor', label: 'CLS poor', meta: '14',  tone: 'bad'  },
-		],
+		items: [],
+		resolveItems: ({ pages }) => {
+			const p = pages as any[];
+			const num = (v: any) => { const n = Number(v); return isFinite(n) ? n : 0; };
+			const lcpVals = p.map(pg => num(pg.cwv?.lcp) || num(pg.lcpMs)).filter(Boolean);
+			const inpVals = p.map(pg => num(pg.cwv?.inp) || num(pg.inpMs)).filter(Boolean);
+			const clsVals = p.map(pg => num(pg.cwv?.cls) || num(pg.cls)).filter(Boolean);
+			const lcpGood = lcpVals.filter(v => v <= 2500).length;
+			const lcpPoor = lcpVals.filter(v => v > 4000).length;
+			const inpPoor = inpVals.filter(v => v > 200).length;
+			const clsPoor = clsVals.filter(v => v > 0.25).length;
+			return [
+				{ id: 'lcp-good', label: 'LCP good', meta: String(lcpGood), tone: 'good' as const },
+				{ id: 'lcp-poor', label: 'LCP poor', meta: String(lcpPoor), tone: 'bad'  as const },
+				{ id: 'inp-poor', label: 'INP poor', meta: String(inpPoor), tone: 'bad'  as const },
+				{ id: 'cls-poor', label: 'CLS poor', meta: String(clsPoor), tone: 'bad'  as const },
+			].filter(r => r.meta !== '0');
+		},
 	},
 	{ id: 'experimentStatus', kind: 'list', label: 'EXPERIMENTS', bullet: 'dot',
-		items: [
-			{ id: 'running',   label: 'Running',       meta: '4',  tone: 'info' },
-			{ id: 'winning',   label: 'Winning',       meta: '6',  tone: 'good' },
-			{ id: 'losing',    label: 'Losing',        meta: '4',  tone: 'bad'  },
-			{ id: 'inconclusive', label: 'Inconclusive', meta: '12' },
-		],
+		items: [],
+		resolveItems: ({ pages }) => {
+			const experiments = (pages as any).__experiments as any[] | undefined;
+			if (!experiments?.length) return [];
+			const count = (status: string) => experiments.filter(e => e.status === status).length;
+			return [
+				{ id: 'running',      label: 'Running',      meta: String(count('active') || count('running')),           tone: 'info' as const },
+				{ id: 'winning',      label: 'Winning',      meta: String(count('won')    || count('winning')),           tone: 'good' as const },
+				{ id: 'losing',       label: 'Losing',       meta: String(count('lost')   || count('losing')),            tone: 'bad'  as const },
+				{ id: 'inconclusive', label: 'Inconclusive', meta: String(count('inconclusive')) },
+			].filter(r => r.meta !== '0');
+		},
 	},
 	{ id: 'funnels', kind: 'list', label: 'FUNNELS', bullet: 'arrow',
-		items: [
-			{ id: 'signup', label: 'Signup',       meta: '6 steps' },
-			{ id: 'purchase',label: 'Purchase',     meta: '5 steps' },
-			{ id: 'demo',   label: 'Demo request',  meta: '4 steps' },
-			{ id: 'new',    label: 'New funnel',    action: 'add', icon: 'Plus' },
-		],
+		items: [{ id: 'new', label: 'New funnel', action: 'add', icon: 'Plus' }],
+		resolveItems: ({ pages }) => {
+			const funnelsList = (pages as any).__funnels as any[] | undefined;
+			const dynamic: Array<{ id: string; label: string; meta: string }> = (funnelsList || []).map((f: any) => ({
+				id: f.id || f.name,
+				label: f.name,
+				meta: `${f.steps?.length || 0} steps`,
+			}));
+			return [...dynamic, { id: 'new', label: 'New funnel', action: 'add' as const, icon: 'Plus' }];
+		},
 	},
 	{ id: 'savedViews', kind: 'saved-views', label: 'Saved views',
 		defaultViews: [
@@ -99,8 +154,16 @@ export function registerUxConversionMode() {
 	defineMode({
 		id: 'uxConversion',
 		description: 'User experience and conversion rate optimization.',
-		defaultViewId: 'grid',
-		views: [{ id: 'grid', kind: 'table', label: 'Grid' }],
+		defaultViewId: 'overview',
+		views: [
+			{ id: 'overview',    kind: 'dashboard', label: 'Overview',    shortcut: '0' },
+			{ id: 'pages',       kind: 'table',     label: 'Pages',       shortcut: '1' },
+			{ id: 'funnels',     kind: 'dashboard', label: 'Funnels',     shortcut: '2' },
+			{ id: 'heatmaps',    kind: 'dashboard', label: 'Heatmaps',    shortcut: '3' },
+			{ id: 'replays',     kind: 'dashboard', label: 'Replays',     shortcut: '4' },
+			{ id: 'experiments', kind: 'dashboard', label: 'Experiments', shortcut: '5' },
+			{ id: 'forms',       kind: 'table',     label: 'Forms',       shortcut: '6' },
+		],
 				lsSections: uxConversionLsSections,
 		rsTabs: [
 			{ id: 'ux_overview',      label: 'Overview' },
@@ -109,7 +172,29 @@ export function registerUxConversionMode() {
 			{ id: 'ux_conversions',   label: 'Conversions' },
 			{ id: 'ux_actions',       label: 'Actions' },
 		],
+		inspectorTabs: [
+			{ id: 'summary',  label: 'Summary',  icon: 'LayoutDashboard' },
+			{ id: 'heatmap',  label: 'Heatmap',  icon: 'Flame' },
+			{ id: 'scroll',   label: 'Scroll',   icon: 'ArrowDown' },
+			{ id: 'friction', label: 'Friction', icon: 'MousePointerClick' },
+			{ id: 'forms',    label: 'Forms',    icon: 'TextCursorInput' },
+			{ id: 'cwv',      label: 'CWV',      icon: 'Gauge' },
+			{ id: 'replays',  label: 'Tests',    icon: 'FlaskConical' },
+			{ id: 'history',  label: 'History',  icon: 'History' },
+		],
 		actionCodes: MODE_ACTIONS.uxConversion,
-		visible: ['p.identity.url', 'p.ux.ctaCount', 'p.ga4.sessions'],
+		visible: [
+			'p.identity.url',
+			'p.ux.roleClassified',
+			'p.ga.conversionRate',
+			'p.ga.sessions',
+			'p.ga.engagementRate',
+			'p.ux.rageClicks',
+			'p.ux.scrollDepth',
+			'p.conv.experiments.active',
+			'p.tech.cwv.bucket',
+			'p.ga.bounce',
+			'p.action.topAction',
+		],
 	});
 }

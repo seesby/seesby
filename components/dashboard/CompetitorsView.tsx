@@ -59,7 +59,7 @@ export const CompetitorsView = ({ radarData }: any) => {
                 <h2 className="text-2xl font-bold font-heading text-white">Competitor Intelligence</h2>
                 <button
                     onClick={() => setIsAddOpen(true)}
-                    className="flex items-center gap-2 bg-brand-red text-white font-bold px-4 py-2.5 rounded-xl hover:bg-brand-redHover transition-colors shadow-glow-sm"
+                    className="flex items-center gap-2 bg-brand-amber text-white font-bold px-4 py-2.5 rounded-xl hover:bg-brand-amberHover transition-colors shadow-glow-sm"
                 >
                     <Plus size={16} /> Add Competitor
                 </button>
@@ -125,7 +125,7 @@ export const CompetitorsView = ({ radarData }: any) => {
                     </div>
                     <h3 className="text-xl font-bold text-white mb-2">No Competitors Added</h3>
                     <p className="text-gray-500 mb-4">Add your competitors to see how you stack up against them.</p>
-                    <button onClick={() => setIsAddOpen(true)} className="bg-brand-red text-white font-bold px-6 py-2.5 rounded-xl hover:bg-brand-redHover transition-colors">
+                    <button onClick={() => setIsAddOpen(true)} className="bg-brand-amber text-white font-bold px-6 py-2.5 rounded-xl hover:bg-brand-amberHover transition-colors">
                         <Plus size={16} className="inline mr-2" /> Add First Competitor
                     </button>
                 </div>
@@ -133,7 +133,7 @@ export const CompetitorsView = ({ radarData }: any) => {
 
             {loading && (
                 <div className="flex items-center justify-center py-20">
-                    <Loader2 className="w-8 h-8 text-brand-red animate-spin" />
+                    <Loader2 className="w-8 h-8 text-brand-amber animate-spin" />
                 </div>
             )}
 
@@ -147,7 +147,7 @@ export const CompetitorsView = ({ radarData }: any) => {
                                 <PolarGrid stroke="#333" />
                                 <PolarAngleAxis dataKey="subject" tick={{ fill: '#888', fontSize: 12 }} />
                                 <PolarRadiusAxis angle={30} domain={[0, 150]} tick={false} axisLine={false} />
-                                <Radar name={activeProject?.name || "You"} dataKey="A" stroke="#F5364E" strokeWidth={3} fill="#F5364E" fillOpacity={0.2} />
+                                <Radar name={activeProject?.name || "You"} dataKey="A" stroke="#F59E0B" strokeWidth={3} fill="#F59E0B" fillOpacity={0.2} />
                                 {competitors.length > 0 && (
                                     <Radar name={competitors[0]?.name || "Competitor"} dataKey="B" stroke="#3B82F6" strokeWidth={2} fill="#3B82F6" fillOpacity={0.1} />
                                 )}
@@ -189,7 +189,7 @@ export const CompetitorsView = ({ radarData }: any) => {
                             <h3 className="font-bold text-white text-lg">Steal Strategy</h3>
                             <p className="text-xs text-gray-400 mt-1 max-w-xs">AI analysis suggests content topics your competitors are ranking for that you are missing.</p>
                         </div>
-                        <button className="h-12 w-12 rounded-full bg-brand-red text-white flex items-center justify-center hover:scale-110 transition-transform shadow-glow-sm">
+                        <button className="h-12 w-12 rounded-full bg-brand-amber text-white flex items-center justify-center hover:scale-110 transition-transform shadow-glow-sm">
                             <Zap size={20} />
                         </button>
                     </div>
@@ -214,7 +214,7 @@ export const CompetitorsView = ({ radarData }: any) => {
                                     value={newName}
                                     onChange={e => setNewName(e.target.value)}
                                     placeholder="e.g. Semrush"
-                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-red transition-colors"
+                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors"
                                 />
                             </div>
                             <div>
@@ -224,13 +224,13 @@ export const CompetitorsView = ({ radarData }: any) => {
                                     value={newUrl}
                                     onChange={e => setNewUrl(e.target.value)}
                                     placeholder="https://semrush.com"
-                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-red transition-colors"
+                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors"
                                 />
                             </div>
                             <button
                                 disabled={!newName || !newUrl || saving}
                                 onClick={addCompetitor}
-                                className="w-full mt-4 bg-brand-red text-white font-bold py-3 rounded-xl hover:bg-brand-red/90 transition-colors disabled:opacity-50"
+                                className="w-full mt-4 bg-brand-amber text-white font-bold py-3 rounded-xl hover:bg-brand-amber/90 transition-colors disabled:opacity-50"
                             >
                                 {saving ? 'Adding...' : 'Add Competitor'}
                             </button>

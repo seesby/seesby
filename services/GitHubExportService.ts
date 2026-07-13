@@ -19,7 +19,7 @@ export async function exportToGitHub(
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      message: `Headlight crawl snapshot: ${data.projectName} (${date})`,
+      message: `Seesby crawl snapshot: ${data.projectName} (${date})`,
       content: btoa(unescape(encodeURIComponent(data.content))) // UTF-8 safe base64
     })
   });

@@ -22,7 +22,7 @@ export function WqaSearch() {
 	const movers = useMemo(() => selectMovers(pages), [pages])
 	const lost = useMemo(() => selectLostPages(pages), [pages])
 
-	if (!pages?.length) return <EmptyState label="No pages crawled yet" />
+	if (!pages?.length) return <EmptyState title="No pages crawled yet" />
 
 	const sources = Object.entries(site?.connectors || {})
 		.map(([id, val]: [string, any]) => ({ id, state: val?.state || val }))

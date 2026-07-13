@@ -22,7 +22,7 @@ export const distributionData = [
 ];
 
 export const competitorData = [
-    { name: 'You', score: 92, keywords: 12400, color: '#F5364E' },
+    { name: 'You', score: 92, keywords: 12400, color: '#F59E0B' },
     { name: 'competitor-a.io', score: 78, keywords: 8500, color: '#333333' },
     { name: 'market-leader.com', score: 85, keywords: 15200, color: '#333333' },
     { name: 'niche-rival.net', score: 64, keywords: 4200, color: '#333333' },
@@ -59,7 +59,7 @@ export const keywordData = [
 ];
 
 export const mentionData = [
-    { source: "TechCrunch", type: "News", sentiment: "positive", text: "HeadlightSEO is changing the agency model with their new AI-first approach...", linkable: true, date: "2h ago" },
+    { source: "TechCrunch", type: "News", sentiment: "positive", text: "Seesby is changing the agency model with their new AI-first approach...", linkable: true, date: "2h ago" },
     { source: "Reddit /r/marketing", type: "Forum", sentiment: "neutral", text: "Has anyone tried Headlight? Comparing it to Semrush for enterprise...", linkable: false, date: "5h ago" },
     { source: "SearchEngineLand", type: "Blog", sentiment: "positive", text: "Top 10 Tools for AI Optimization in 2026. Headlight makes the list at #3...", linkable: true, date: "1d ago" },
     { source: "Twitter", type: "Social", sentiment: "negative", text: "The new dashboard is complex, took me a while to find the export button.", linkable: false, date: "1d ago" },
@@ -308,7 +308,7 @@ export const depthData = [
 ];
 
 export const linkEquityData = [
-    { name: 'Home', size: 4500, fill: '#F5364E' },
+    { name: 'Home', size: 4500, fill: '#F59E0B' },
     { name: 'Pricing', size: 3200, fill: '#333' },
     { name: 'Features', size: 2800, fill: '#333' },
     { name: 'Blog', size: 2100, fill: '#333' },

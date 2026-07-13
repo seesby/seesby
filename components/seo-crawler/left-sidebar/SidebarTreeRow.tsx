@@ -1,4 +1,4 @@
-import type { SidebarListItem, SidebarListSection } from '@headlight/modes';
+import type { SidebarListItem, SidebarListSection } from '@seesby/modes';
 import * as Icons from 'lucide-react';
 import { useSeoCrawler } from '../../../contexts/SeoCrawlerContext';
 import { TONE_CLASSES } from './tokens';
@@ -27,7 +27,7 @@ export function SidebarTreeRow({ section, item, depth = 0 }: { section: SidebarL
 				aria-current={selected ? 'true' : undefined}
 				style={{ paddingLeft: 12 + depth * 12 }}
 				className={`w-full h-[26px] flex items-center gap-1 pr-3 rounded-sm text-[11px] font-medium transition-colors
-					${selected ? 'bg-[#F5364E]/10 text-white' : isAction ? 'text-[#66666E] hover:text-white' : 'text-[#A0A0A5] hover:bg-white/[0.03] hover:text-white'}`}
+					${selected ? 'bg-[#F59E0B]/10 text-white' : isAction ? 'text-[#66666E] hover:text-white' : 'text-[#A0A0A5] hover:bg-white/[0.03] hover:text-white'}`}
 			>
 				<div className="w-4 shrink-0 flex items-center justify-start">
 					{item.children ? (
@@ -35,7 +35,7 @@ export function SidebarTreeRow({ section, item, depth = 0 }: { section: SidebarL
 					) : Icon ? (
 						<Icon size={12} className="shrink-0" />
 					) : section.bullet === 'check' || section.bullet === 'square-check' ? (
-						<div className={`w-3 h-3 shrink-0 border rounded-sm flex items-center justify-center transition-colors ${selected ? 'bg-[#E63946] border-[#E63946]' : 'border-[#2A2A2F] group-hover:border-[#44444A]'}`}>
+						<div className={`w-3 h-3 shrink-0 border rounded-sm flex items-center justify-center transition-colors ${selected ? 'bg-[#F59E0B] border-[#F59E0B]' : 'border-[#2A2A2F] group-hover:border-[#44444A]'}`}>
 							{selected && <Icons.Check size={10} strokeWidth={3} className="text-white" />}
 						</div>
 					) : section.bullet === 'bucket' ? (

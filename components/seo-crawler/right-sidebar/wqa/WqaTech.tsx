@@ -21,7 +21,7 @@ export function WqaTech() {
 	const cwv = useMemo(() => selectCwvSample(pages), [pages])
 	const struct = useMemo(() => selectStructural(pages), [pages])
 
-	if (!pages?.length) return <EmptyState label="No pages crawled yet" />
+	if (!pages?.length) return <EmptyState title="No pages crawled yet" />
 
 	const total = pages.length
 	const statusTotal = status.ok + status.redirect + status.clientError + status.serverError || 1

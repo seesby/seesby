@@ -1,6 +1,6 @@
 // packages/fingerprint/src/detectors/cms/vendor-api.ts
 import type { DetectorStep } from '../types';
-import type { CmsKey } from '@headlight/types';
+import type { CmsKey } from '@seesby/types';
 
 const PROBES: Array<{ cms: CmsKey; path: string; check: (r: Response) => Promise<boolean> }> = [
 	{ cms: 'wordpress',   path: '/wp-json/wp/v2/posts?per_page=1',  check: async (r) => r.ok },

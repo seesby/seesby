@@ -40,7 +40,7 @@ async function ensureFolderExists(accessToken: string, folderName: string): Prom
   if (!createRes.ok) {
     const err = await createRes.json();
     console.error('[GoogleDrive] Folder creation failed:', err);
-    throw new Error('Failed to create Headlight Backups folder');
+    throw new Error('Failed to create Seesby Backups folder');
   }
 
   const folder = await createRes.json();
@@ -52,16 +52,16 @@ export async function exportToGoogleDrive(
   data: { sessionId: string; projectName: string; content: string }
 ) {
   // 1. Ensure backup folder exists
-  const folderId = await ensureFolderExists(accessToken, 'Headlight Backups');
+  const folderId = await ensureFolderExists(accessToken, 'Seesby Backups');
 
   // 2. Prepare file metadata
   const metadata = {
-    name: `Headlight-Crawl-${data.projectName.replace(/[^a-z0-9]/gi, '_')}-${new Date().toISOString().replace(/[:.]/g, '-')}.json`,
+    name: `Seesby-Crawl-${data.projectName.replace(/[^a-z0-9]/gi, '_')}-${new Date().toISOString().replace(/[:.]/g, '-')}.json`,
     mimeType: 'application/json',
     parents: [folderId]
   };
   
-  const boundary = 'headlight_boundary';
+  const boundary = 'seesby_boundary';
   const body = [
     `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${JSON.stringify(metadata)}\r\n`,
     `--${boundary}\r\nContent-Type: application/json\r\n\r\n${data.content}\r\n`,

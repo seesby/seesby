@@ -50,7 +50,7 @@ type BrandMentionRecord = {
 
 type CollectionName = 'keywords' | 'rank_history' | 'competitors' | 'automation_rules' | 'brand_mentions';
 
-const storageKey = (collection: CollectionName, projectId: string) => `headlight:data:${collection}:${projectId}`;
+const storageKey = (collection: CollectionName, projectId: string) => `seesby:data:${collection}:${projectId}`;
 
 const readCollection = <T>(collection: CollectionName, projectId: string): T[] => {
     if (typeof window === 'undefined') return [];

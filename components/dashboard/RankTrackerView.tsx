@@ -116,7 +116,7 @@ export const RankTrackerView = () => {
                     <div className="flex gap-2">
                         <button
                             onClick={() => setIsAdding(true)}
-                            className="bg-brand-red hover:bg-brand-redHover text-white px-4 py-2 rounded-xl text-sm font-bold shadow-glow-sm transition-colors flex items-center gap-2"
+                            className="bg-brand-amber hover:bg-brand-amberHover text-white px-4 py-2 rounded-xl text-sm font-bold shadow-glow-sm transition-colors flex items-center gap-2"
                         >
                             <Plus size={16} /> Add Keyword
                         </button>
@@ -136,10 +136,10 @@ export const RankTrackerView = () => {
                             placeholder="Enter keyword..."
                             value={newKeyword}
                             onChange={(e) => setNewKeyword(e.target.value)}
-                            className="bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-brand-red w-64"
+                            className="bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-brand-amber w-64"
                             autoFocus
                         />
-                        <button type="submit" className="bg-brand-red hover:bg-brand-redHover text-white px-4 py-2 rounded-xl text-sm font-bold transition-colors">
+                        <button type="submit" className="bg-brand-amber hover:bg-brand-amberHover text-white px-4 py-2 rounded-xl text-sm font-bold transition-colors">
                             Save
                         </button>
                         <button type="button" onClick={() => setIsAdding(false)} className="bg-white/5 hover:bg-white/10 text-gray-300 px-4 py-2 rounded-xl text-sm font-bold transition-colors">
@@ -151,7 +151,7 @@ export const RankTrackerView = () => {
 
             {loading ? (
                 <div className="flex justify-center py-20">
-                    <Loader2 className="animate-spin text-brand-red" size={32} />
+                    <Loader2 className="animate-spin text-brand-amber" size={32} />
                 </div>
             ) : keywords.length === 0 ? (
                 <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-12 text-center text-gray-500">

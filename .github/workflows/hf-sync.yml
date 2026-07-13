@@ -24,7 +24,7 @@ jobs:
           git config --global user.name "GitHub Actions"
 
           # Use the server directory as the root for the HF Space
-          git remote add hf https://azharsharif:$HF_TOKEN@huggingface.co/spaces/azharsharif/headlight-crawler
+          git remote add hf https://azharsharif:$HF_TOKEN@huggingface.co/spaces/azharsharif/seesby-crawler
 
           # Split the server/ directory into a temporary branch
           git subtree split --prefix server -b hf-split

@@ -13,7 +13,7 @@ export default function GeneralTab({ config, setConfig }: TabProps) {
   };
 
   const predefinedAgents = [
-    'Headlight Scanner 1.0',
+    'Seesby Scanner 1.0',
     'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
     'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/W.X.Y.Z Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
     'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)'
@@ -37,7 +37,7 @@ export default function GeneralTab({ config, setConfig }: TabProps) {
         />
 
         {config.mode === 'list' && (
-          <div className="space-y-4 pt-2 pb-2 pl-4 border-l-2 border-[#F5364E]/30 animate-in slide-in-from-left-2 duration-200">
+          <div className="space-y-4 pt-2 pb-2 pl-4 border-l-2 border-[#F59E0B]/30 animate-in slide-in-from-left-2 duration-200">
             <SettingsSelect
               label="Input Source"
               value={config.urlListSource}
@@ -63,8 +63,8 @@ export default function GeneralTab({ config, setConfig }: TabProps) {
             {config.urlListSource === 'upload' && (
               <div className="space-y-2">
                 <label className="block text-[11px] font-medium text-[#888]">Upload File</label>
-                <div className="flex items-center gap-3 p-4 bg-[#0a0a0a] border border-[#222] border-dashed rounded-lg hover:border-[#F5364E]/50 transition-colors cursor-pointer group">
-                  <div className="w-10 h-10 rounded-full bg-[#111] flex items-center justify-center text-[#444] group-hover:text-[#F5364E] transition-colors">
+                <div className="flex items-center gap-3 p-4 bg-[#0a0a0a] border border-[#222] border-dashed rounded-lg hover:border-[#F59E0B]/50 transition-colors cursor-pointer group">
+                  <div className="w-10 h-10 rounded-full bg-[#111] flex items-center justify-center text-[#444] group-hover:text-[#F59E0B] transition-colors">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                   </div>
                   <div className="flex-1">
@@ -88,7 +88,7 @@ export default function GeneralTab({ config, setConfig }: TabProps) {
             {config.urlListSource === 'import' && (
               <div className="space-y-2">
                 <label className="block text-[11px] font-medium text-[#888]">Google Sheets</label>
-                <button className="w-full flex items-center justify-center gap-2 p-3 bg-[#0a0a0a] border border-[#222] rounded-lg hover:bg-[#1a1a1a] hover:border-[#F5364E]/50 transition-all group font-bold">
+                <button className="w-full flex items-center justify-center gap-2 p-3 bg-[#0a0a0a] border border-[#222] rounded-lg hover:bg-[#1a1a1a] hover:border-[#F59E0B]/50 transition-all group font-bold">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" fill="#107C41"/>
                     <path d="M14 2V8H20L14 2Z" fill="#33C481"/>
@@ -101,7 +101,7 @@ export default function GeneralTab({ config, setConfig }: TabProps) {
         )}
 
         {config.mode === 'sitemap' && (
-          <div className="space-y-4 pt-2 pb-2 pl-4 border-l-2 border-[#F5364E]/30 animate-in slide-in-from-left-2 duration-200">
+          <div className="space-y-4 pt-2 pb-2 pl-4 border-l-2 border-[#F59E0B]/30 animate-in slide-in-from-left-2 duration-200">
             <SettingsSelect
               label="Sitemap Discovery"
               value={config.sitemapSource}
@@ -132,7 +132,7 @@ export default function GeneralTab({ config, setConfig }: TabProps) {
         )}
 
         {config.mode === 'single' && (
-          <div className="space-y-4 pt-2 pb-2 pl-4 border-l-2 border-[#F5364E]/30 animate-in slide-in-from-left-2 duration-200">
+          <div className="space-y-4 pt-2 pb-2 pl-4 border-l-2 border-[#F59E0B]/30 animate-in slide-in-from-left-2 duration-200">
             <SettingsInput
               label="Target URL"
               description="A single page to analyze in-depth"
@@ -190,7 +190,7 @@ export default function GeneralTab({ config, setConfig }: TabProps) {
           value={isCustomAgent ? 'custom' : config.userAgent}
           onChange={(val) => updateConfig('userAgent', val === 'custom' ? 'Custom Bot 1.0' : val)}
           options={[
-            { label: 'Headlight Bot (Default)', value: 'Headlight Scanner 1.0' },
+            { label: 'Seesby Bot (Default)', value: 'Seesby Scanner 1.0' },
             { label: 'Googlebot (Desktop)', value: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' },
             { label: 'Googlebot (Mobile)', value: 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/W.X.Y.Z Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' },
             { label: 'Bingbot', value: 'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)' },

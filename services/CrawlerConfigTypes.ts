@@ -1,4 +1,4 @@
-import type { IndustryFilter } from '@headlight/types';
+import type { IndustryFilter } from '@seesby/types';
 
 export interface AITaskToggles {
   summarize: boolean;

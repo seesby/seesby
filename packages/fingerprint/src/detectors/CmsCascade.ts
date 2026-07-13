@@ -5,7 +5,7 @@ import { detectCmsFromHtmlPatterns } from './cms/scrape';     // T7 html pattern
 import { detectCmsFromVendorApi } from './cms/vendor-api';    // T2 — hits vendor REST APIs
 import { detectCmsFromAi } from './cms/ai';                   // T6 fallback
 import type { DetectorStep } from './types';
-import type { CmsKey } from '@headlight/types';
+import type { CmsKey } from '@seesby/types';
 
 export const CMS_CASCADE: ReadonlyArray<DetectorStep<CmsKey>> = [
 	detectCmsFromVendorApi,        // T2 first — highest signal

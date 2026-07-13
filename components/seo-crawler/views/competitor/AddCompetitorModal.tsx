@@ -174,7 +174,7 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
                 onChange={e => setBulkUrls(e.target.value)}
                 placeholder="competitor-a.com&#10;competitor-b.com&#10;competitor-c.com"
                 rows={5}
-                className="w-full rounded-xl border border-[#2c2c31] bg-[#09090b] px-3 py-2.5 text-[13px] text-white placeholder:text-[#555] focus:outline-none focus:border-[#F5364E] resize-none"
+                className="w-full rounded-xl border border-[#2c2c31] bg-[#09090b] px-3 py-2.5 text-[13px] text-white placeholder:text-[#555] focus:outline-none focus:border-[#F59E0B] resize-none"
               />
               <button
                 onClick={handleAddBulk}
@@ -190,7 +190,7 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
           {/* Toggle bulk */}
           <button
             onClick={() => setBulkMode(!bulkMode)}
-            className="text-[11px] text-[#666] hover:text-[#F5364E] transition"
+            className="text-[11px] text-[#666] hover:text-[#F59E0B] transition"
           >
             {bulkMode ? '← Single URL' : 'Add multiple competitors at once →'}
           </button>
@@ -206,7 +206,7 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
           <button
             onClick={handleAutoDiscover}
             disabled={discovering || !pages?.length}
-            className="w-full flex items-center justify-center gap-2 rounded-xl border border-[#2c2c31] bg-[#09090b] py-3 text-[12px] font-medium text-[#aaa] hover:text-white hover:border-[#F5364E]/40 transition disabled:opacity-40"
+            className="w-full flex items-center justify-center gap-2 rounded-xl border border-[#2c2c31] bg-[#09090b] py-3 text-[12px] font-medium text-[#aaa] hover:text-white hover:border-[#F59E0B]/40 transition disabled:opacity-40"
           >
             {discovering ? <Loader2 size={13} className="animate-spin" /> : <Sparkles size={13} />}
             {discovering ? 'Analyzing your link neighborhood...' : 'Auto-Discover from Crawl Data'}
@@ -222,7 +222,7 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
                 {discovered.map((comp) => {
                   const confidenceColor =
                     comp.confidence === 'high'
-                      ? 'text-green-400 bg-green-400/10'
+                      ? 'text-emerald-400 bg-emerald-400/10'
                       : comp.confidence === 'medium'
                       ? 'text-yellow-400 bg-yellow-400/10'
                       : 'text-[#888] bg-[#222]';
@@ -232,7 +232,7 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
                       key={comp.domain}
                       className={`flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2 transition ${
                         selectedDiscovered.has(comp.domain)
-                          ? 'border border-[#F5364E]/30 bg-[#F5364E]/10'
+                          ? 'border border-[#F59E0B]/30 bg-[#F59E0B]/10'
                           : 'border border-transparent bg-[#111] hover:border-[#333]'
                       }`}
                     >
@@ -240,7 +240,7 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
                         type="checkbox"
                         checked={selectedDiscovered.has(comp.domain)}
                         onChange={() => toggleDiscoveredSelection(comp.domain)}
-                        className="accent-[#F5364E]"
+                        className="accent-[#F59E0B]"
                       />
                       <div className="min-w-0 flex-1">
                         <div className="truncate text-[12px] font-medium text-white">{comp.domain}</div>
@@ -258,7 +258,7 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
               <button
                 onClick={handleAddSelected}
                 disabled={selectedDiscovered.size === 0 || isCrawling}
-                className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-[#F5364E]/20 border border-[#F5364E]/30 py-2 text-[12px] font-bold text-[#F5364E] disabled:opacity-40 transition hover:bg-[#F5364E]/30"
+                className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-[#F59E0B]/20 border border-[#F59E0B]/30 py-2 text-[12px] font-bold text-[#F59E0B] disabled:opacity-40 transition hover:bg-[#F59E0B]/30"
               >
                 <Plus size={13} />
                 Add {selectedDiscovered.size} Selected
@@ -270,7 +270,7 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
         {/* Crawling indicator */}
         {isCrawling && (
           <div className="border-t border-[#1e1e22] px-5 py-3 flex items-center gap-2">
-            <Loader2 size={12} className="animate-spin text-[#F5364E]" />
+            <Loader2 size={12} className="animate-spin text-[#F59E0B]" />
             <span className="text-[11px] text-[#888]">
               Micro-crawling <span className="text-white font-medium">{crawlingCompetitorDomain}</span>...
             </span>

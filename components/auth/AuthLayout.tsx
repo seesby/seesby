@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Shield } from 'lucide-react';
 import AuthBackground from './AuthBackground';
+import { BeeMark } from '../BeeMark';
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -16,7 +17,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, mode, onBack, onSwitc
     mode === 'login'
       ? 'Welcome Back'
       : mode === 'signup'
-        ? 'Join Headlight'
+        ? 'Join Seesby'
         : mode === 'signup_verify'
           ? 'Check Your Email'
           : mode === 'sso_callback'
@@ -37,7 +38,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, mode, onBack, onSwitc
   const toggleLink = mode === 'login' ? 'Sign up' : 'Log in';
 
   return (
-    <div className="min-h-screen bg-[#050505] flex flex-col items-center justify-center p-6 relative overflow-hidden selection:bg-[#F5364E] selection:text-white font-sans">
+    <div className="min-h-screen bg-[#050505] flex flex-col items-center justify-center p-6 relative overflow-hidden selection:bg-[#F59E0B] selection:text-white font-sans">
       {/* Decorative Strategic Background */}
       <AuthBackground />
 
@@ -57,61 +58,17 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, mode, onBack, onSwitc
               )}
            </div>
 
-           <motion.div 
+           <motion.div
              initial={{ opacity: 0, y: -10 }}
              animate={{ opacity: 1, y: 0 }}
              className="relative group p-3"
            >
-              {/* Subtle brand glow behind icon */}
-              <div className="absolute inset-0 bg-[#F5364E]/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              
-              <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative z-10">
-                 <motion.circle 
-                   cx="8" cy="16" r="4.5" 
-                   fill="white"
-                   initial={{ scale: 0.9, opacity: 0 }}
-                   animate={{ 
-                     scale: 1,
-                     opacity: 1
-                   }}
-                   transition={{ duration: 0.6, ease: "easeOut" }}
-                 />
-                 
-                 {/* Beam 1 */}
-                 <motion.path 
-                   d="M15 12H25" 
-                   stroke="#F5364E" 
-                   strokeWidth="2.5" 
-                   strokeLinecap="round"
-                   initial={{ pathLength: 0, opacity: 0 }}
-                   animate={{ pathLength: 1, opacity: 1 }}
-                   transition={{ delay: 0.2, duration: 0.5 }}
-                 />
-                 
-                 {/* Beam 2 */}
-                 <motion.path 
-                   d="M15 16H29" 
-                   stroke="#F5364E" 
-                   strokeWidth="2.5" 
-                   strokeLinecap="round"
-                   initial={{ pathLength: 0, opacity: 0 }}
-                   animate={{ pathLength: 1, opacity: 1 }}
-                   transition={{ delay: 0.3, duration: 0.6 }}
-                 />
-                 
-                 {/* Beam 3 */}
-                 <motion.path 
-                   d="M15 20H25" 
-                   stroke="#F5364E" 
-                   strokeWidth="2.5" 
-                   strokeLinecap="round"
-                   initial={{ pathLength: 0, opacity: 0 }}
-                   animate={{ pathLength: 1, opacity: 1 }}
-                   transition={{ delay: 0.4, duration: 0.5 }}
-                 />
-              </svg>
+              {/* Subtle brand glow behind mark */}
+              <div className="absolute inset-0 bg-[#F59E0B]/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+              <BeeMark size={44} className="relative z-10" />
            </motion.div>
-           
+
            <motion.div
              key={mode}
              initial={{ opacity: 0, y: 5 }}
@@ -123,10 +80,14 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, mode, onBack, onSwitc
               </h1>
               <p className="text-gray-500 text-sm font-medium">
                 {subtitle} { (mode === 'login' || mode === 'signup') && (
-                  <button onClick={onSwitch} className="text-[#F5364E] hover:text-[#FA4A5F] ml-1 cursor-pointer font-semibold transition-colors">{toggleLink}</button>
+                  <button onClick={onSwitch} className="text-[#F59E0B] hover:text-[#FBBF24] ml-1 cursor-pointer font-semibold transition-colors">{toggleLink}</button>
                 )}
               </p>
            </motion.div>
+
+           <p className="mt-3 text-[10px] font-medium uppercase tracking-[0.18em] text-[#F59E0B]/80">
+              See clearly. Through craft.
+           </p>
         </div>
 
         {/* Main Auth Card */}
@@ -150,7 +111,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, mode, onBack, onSwitc
               <span>Secure & Encrypted</span>
            </div>
            <p className="text-gray-800 text-[9px] font-bold uppercase tracking-[0.1em] opacity-40">
-              © 2026 HEADLIGHT // PREMIUM SEARCH
+              © 2026 Seesby — See clearly. Through craft.
            </p>
         </div>
       </div>

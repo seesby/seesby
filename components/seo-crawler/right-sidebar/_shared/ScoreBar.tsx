@@ -15,7 +15,7 @@ export function ScoreBar({
     v >= 75 ? { name: 'Good',      tone: 'good',  color: '#84cc16' } :
     v >= 60 ? { name: 'Fair',      tone: 'info',  color: '#f59e0b' } :
     v >= 40 ? { name: 'Poor',      tone: 'warn',  color: '#f97316' } :
-              { name: 'Critical',  tone: 'bad',   color: '#F5364E' }
+              { name: 'Critical',  tone: 'bad',   color: '#F59E0B' }
   const fillStyle = { width: `${v}%`, background: band.color }
   return (
     <div>

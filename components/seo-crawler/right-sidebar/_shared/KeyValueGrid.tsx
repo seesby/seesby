@@ -33,6 +33,6 @@ export function KeyValueGrid({ items, cols = 2 }: { items: ReadonlyArray<KvItem>
 }
 
 const TONE_FG: Record<NonNullable<KvItem['tone']>, string> = {
-  good: 'text-emerald-400', warn: 'text-amber-400', bad: 'text-[#F5364E]',
+  good: 'text-emerald-400', warn: 'text-amber-400', bad: 'text-[#F59E0B]',
   info: 'text-sky-400', neutral: 'text-white',
 }

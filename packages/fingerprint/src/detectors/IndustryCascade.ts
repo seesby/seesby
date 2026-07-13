@@ -1,5 +1,5 @@
 // packages/fingerprint/src/detectors/IndustryCascade.ts
-import type { Industry } from '@headlight/types';
+import type { Industry } from '@seesby/types';
 import { detectIndustryFromGsc } from './industry/gsc';
 import { detectIndustryFromSchemaJsonLd } from './industry/schema';
 import { detectIndustryFromHtmlScrape } from './industry/scrape';

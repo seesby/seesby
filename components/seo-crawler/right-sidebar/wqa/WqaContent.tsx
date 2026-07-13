@@ -19,7 +19,7 @@ export function WqaContent() {
 	const eeat = useMemo(() => selectEeat(pages), [pages])
 	const schema = useMemo(() => selectContentSchema(pages), [pages])
 
-	if (!pages?.length) return <EmptyState label="No pages crawled yet" />
+	if (!pages?.length) return <EmptyState title="No pages crawled yet" />
 
 	const total = pages.length
 

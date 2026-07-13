@@ -130,15 +130,15 @@ export default function ExportDialog({ onClose }: ExportDialogProps) {
             setSheetUrl(null);
 
             if (format === 'csv') {
-                downloadBlob(exportCSV(scope === 'filtered' ? filteredPages : pages, scope, exportOptions), `headlight_export_${Date.now()}.csv`);
+                downloadBlob(exportCSV(scope === 'filtered' ? filteredPages : pages, scope, exportOptions), `seesby_export_${Date.now()}.csv`);
             } else if (format === 'json') {
-                downloadBlob(exportJSON(scope === 'filtered' ? filteredPages : pages, scope, exportOptions), `headlight_export_${Date.now()}.json`);
+                downloadBlob(exportJSON(scope === 'filtered' ? filteredPages : pages, scope, exportOptions), `seesby_export_${Date.now()}.json`);
             } else if (format === 'excel') {
                 const blob = await exportExcel(scope === 'filtered' ? filteredPages : pages, scope, exportOptions);
-                downloadBlob(blob, `headlight_export_${Date.now()}.xlsx`);
+                downloadBlob(blob, `seesby_export_${Date.now()}.xlsx`);
             } else if (format === 'pdf') {
                 const blob = await exportPDF(scope === 'filtered' ? filteredPages : pages, scope, exportOptions);
-                downloadBlob(blob, `headlight_report_${Date.now()}.pdf`);
+                downloadBlob(blob, `seesby_report_${Date.now()}.pdf`);
             } else if (format === 'google-sheets') {
                 const accessToken = await resolveGoogleAccessToken();
                 const url = await exportToGoogleSheets(scope === 'filtered' ? filteredPages : pages, scope, accessToken, exportOptions);
@@ -225,7 +225,7 @@ export default function ExportDialog({ onClose }: ExportDialogProps) {
                                             {option === 'competitive-report' && 'Competitive analysis summary report'}
                                         </div>
                                     </div>
-                                    <input type="radio" name="format" checked={format === option} onChange={() => setFormat(option)} className="h-4 w-4 accent-[#F5364E]" />
+                                    <input type="radio" name="format" checked={format === option} onChange={() => setFormat(option)} className="h-4 w-4 accent-[#F59E0B]" />
                                 </label>
                             ))}
                         </div>
@@ -242,7 +242,7 @@ export default function ExportDialog({ onClose }: ExportDialogProps) {
                             ].map((option) => (
                                 <label key={option.id} className="flex cursor-pointer items-center justify-between rounded-2xl border border-[#242428] bg-[#101013] px-4 py-3">
                                     <div className="text-[12px] font-semibold text-white">{option.label} <span className="text-[#666]">({option.count})</span></div>
-                                    <input type="radio" name="scope" checked={scope === option.id} onChange={() => setScope(option.id as ExportScope)} className="h-4 w-4 accent-[#F5364E]" />
+                                    <input type="radio" name="scope" checked={scope === option.id} onChange={() => setScope(option.id as ExportScope)} className="h-4 w-4 accent-[#F59E0B]" />
                                 </label>
                             ))}
                         </div>
@@ -263,7 +263,7 @@ export default function ExportDialog({ onClose }: ExportDialogProps) {
                                         type="checkbox"
                                         checked={Boolean(columnOptions[option.key as keyof typeof columnOptions])}
                                         onChange={(event) => setColumnOptions((previous) => ({ ...previous, [option.key]: event.target.checked }))}
-                                        className="h-4 w-4 accent-[#F5364E]"
+                                        className="h-4 w-4 accent-[#F59E0B]"
                                     />
                                 </label>
                             ))}
@@ -288,7 +288,7 @@ export default function ExportDialog({ onClose }: ExportDialogProps) {
                                             type="checkbox"
                                             checked={Boolean(pdfOptions[option.key as keyof typeof pdfOptions])}
                                             onChange={(event) => setPdfOptions((previous) => ({ ...previous, [option.key]: event.target.checked }))}
-                                            className="h-4 w-4 accent-[#F5364E]"
+                                            className="h-4 w-4 accent-[#F59E0B]"
                                         />
                                     </label>
                                 ))}

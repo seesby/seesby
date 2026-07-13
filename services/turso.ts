@@ -4,14 +4,14 @@ const tursoUrl = import.meta.env.VITE_TURSO_DATABASE_URL;
 const tursoToken = import.meta.env.VITE_TURSO_AUTH_TOKEN;
 
 /**
- * Headlight Turso Client (Lazy & Browser-Safe)
+ * Seesby Turso Client (Lazy & Browser-Safe)
  * 
  * In the browser, libSQL's 'file:' scheme throws an error because there is no filesystem.
  * We now only initialize the cloud client if a valid remote URL is provided.
  */
 export const isCloudSyncEnabled = Boolean(
     tursoUrl &&
-    tursoUrl !== 'file:headlight.db' &&
+    tursoUrl !== 'file:seesby.db' &&
     !tursoUrl.startsWith('file:')
 );
 
@@ -36,7 +36,7 @@ export { getTurso as turso };
  */
 export async function initializeDatabase(): Promise<void> {
     if (!isCloudSyncEnabled) {
-        console.info('[Headlight] Cloud sync disabled. Using local IndexedDB only.');
+        console.info('[Seesby] Cloud sync disabled. Using local IndexedDB only.');
         return;
     }
 

@@ -89,7 +89,7 @@ export default function GeneralTab({ page }: { page: any }) {
                             <tbody>
                                 {responseHeaders.map(([key, value]) => (
                                     <tr key={key} className="border-b border-[#1a1a1a] hover:bg-[#111]">
-                                        <td className="px-3 py-1 text-[#F5364E] w-[210px]">{key}</td>
+                                        <td className="px-3 py-1 text-[#F59E0B] w-[210px]">{key}</td>
                                         <td className="px-3 py-1 text-[#ccc] break-all">{String(value)}</td>
                                     </tr>
                                 ))}

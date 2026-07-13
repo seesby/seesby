@@ -37,7 +37,7 @@ export default function GoogleOAuthCallback() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#0a0a0a] text-white p-6 font-sans">
-      <div className="w-12 h-12 border-4 border-[#F5364E] border-t-transparent rounded-full animate-spin mb-6"></div>
+      <div className="w-12 h-12 border-4 border-[#F59E0B] border-t-transparent rounded-full animate-spin mb-6"></div>
       <h1 className="text-xl font-bold mb-2">Authorizing Google...</h1>
       <p className="text-sm text-[#888]">This window will close automatically once complete.</p>
     </div>

@@ -1,4 +1,5 @@
-import type { Page, Session, Site } from '@headlight/types'
+import type { Page, Session, Site } from '@seesby/types'
+import { getQualityScore } from '@/components/seo-crawler/views/_shared/get-metric-value'
 
 // ---------- helpers ----------
 const num = (v: unknown) => (typeof v === 'number' && !Number.isNaN(v) ? v : 0)
@@ -14,10 +15,7 @@ export type QualityScore = {
 
 export function selectQualityScore(pages: Page[], sessions: Session[]): QualityScore {
 	if (!pages.length) return { score: 0, p50: 0, p90: 0, prevScore: null }
-	const sorted = [...pages].map(p => {
-		const v = num(p.qualityScore ?? (p as any).contentQualityScore ?? (p as any).pageScore)
-		return v
-	}).sort((a, b) => a - b)
+	const sorted = [...pages].map(p => getQualityScore(p as Record<string, unknown>)).sort((a, b) => a - b)
 	const score = Math.round(sorted.reduce((s, v) => s + v, 0) / sorted.length)
 	const p50 = sorted[Math.floor(sorted.length * 0.5)]
 	const p90 = sorted[Math.floor(sorted.length * 0.9)]
@@ -76,7 +74,7 @@ export type QualityBand = { id: string; label: string; count: number; tone: 'bad
 export function selectQualityDistribution(pages: Page[]): QualityBand[] {
 	const bands = { critical: 0, poor: 0, fair: 0, good: 0, excellent: 0 }
 	for (const p of pages) {
-		const v = num(p.qualityScore)
+		const v = getQualityScore(p as Record<string, unknown>)
 		if (v < 20) bands.critical++
 		else if (v < 40) bands.poor++
 		else if (v < 60) bands.fair++

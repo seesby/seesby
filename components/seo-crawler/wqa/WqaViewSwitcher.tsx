@@ -39,7 +39,7 @@ export default function WqaViewSwitcher() {
                                 : 'text-[#888] hover:text-[#ddd] hover:bg-[#141414]'
                         }`}
                     >
-                        <Icon size={12} className={active ? 'text-[#F5364E]' : ''} />
+                        <Icon size={12} className={active ? 'text-[#F59E0B]' : ''} />
                         <span>{label}</span>
                     </button>
                 );

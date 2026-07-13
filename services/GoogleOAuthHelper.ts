@@ -153,7 +153,7 @@ export function openGoogleOAuthPopup(
 
     const resolveFromPayload = (payload: GoogleOAuthCallbackPayload | null) => {
       if (settled || !payload) return false;
-      if (payload.type !== 'GOOGLE_OAUTH_CALLBACK' && payload.type !== 'headlight-oauth-callback') {
+      if (payload.type !== 'GOOGLE_OAUTH_CALLBACK' && payload.type !== 'seesby-oauth-callback') {
         return false;
       }
 

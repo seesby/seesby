@@ -47,3 +47,19 @@ export function fmtCurrency(n: number, ccy = 'USD'): string {
   if (!isFinite(n)) return '—'
   return new Intl.NumberFormat(undefined, { style: 'currency', currency: ccy, maximumFractionDigits: 0 }).format(n)
 }
+
+/** Safe numeric coercion — returns 0 for NaN/Infinity/undefined */
+export const num = (v: unknown): number => {
+  const n = Number(v)
+  return Number.isFinite(n) ? n : 0
+}
+
+export const clamp = (v: number, min = 0, max = 100) => Math.max(min, Math.min(max, v))
+
+export const sortBy = <T>(arr: T[], key: (t: T) => number, dir: 'asc' | 'desc' = 'desc') =>
+  [...arr].sort((a, b) => (dir === 'asc' ? key(a) - key(b) : key(b) - key(a)))
+
+/** Conditional classname joiner — filters falsy values and joins with spaces. */
+export function cls(...classes: (string | undefined | false | null)[]): string {
+  return classes.filter(Boolean).join(' ')
+}

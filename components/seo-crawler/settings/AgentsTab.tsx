@@ -47,7 +47,7 @@ interface AgentRun {
 }
 
 const AGENT_ICONS: Record<string, React.ReactNode> = {
-  'issue-fixer': <ShieldCheck size={18} className="text-[#F5364E]" />,
+  'issue-fixer': <ShieldCheck size={18} className="text-[#F59E0B]" />,
   'content-monitor': <Monitor size={18} className="text-[#36F5A0]" />,
   'rank-guard': <TrendingDown size={18} className="text-[#36A0F5]" />,
   'link-watcher': <Link size={18} className="text-[#F5A036]" />,
@@ -131,7 +131,7 @@ export default function AgentsTab() {
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center py-20 gap-4">
-        <div className="w-10 h-10 border-2 border-[#F5364E] border-t-transparent rounded-full animate-spin" />
+        <div className="w-10 h-10 border-2 border-[#F59E0B] border-t-transparent rounded-full animate-spin" />
         <p className="text-[#888] text-[12px] font-medium">Summoning AI Agents...</p>
       </div>
     );
@@ -194,7 +194,7 @@ export default function AgentsTab() {
                         onChange={(e) => toggleAgent(agent.id, e.target.checked)}
                         className="sr-only peer" 
                       />
-                      <div className="w-9 h-5 bg-[#222] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#F5364E]"></div>
+                      <div className="w-9 h-5 bg-[#222] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#F59E0B]"></div>
                     </label>
                   </div>
                   <div className="flex items-center gap-2">
@@ -244,7 +244,7 @@ export default function AgentsTab() {
               <div className="py-20 border-2 border-dashed border-[#111] rounded-2xl flex flex-col items-center justify-center text-center">
                 <Activity size={32} className="text-[#222] mb-4" />
                 <p className="text-[#888] text-[14px]">No runs recorded yet.</p>
-                <button onClick={() => runNow(selectedAgent.id)} className="mt-4 text-[#F5364E] text-[12px] font-bold">Try Manual Execution</button>
+                <button onClick={() => runNow(selectedAgent.id)} className="mt-4 text-[#F59E0B] text-[12px] font-bold">Try Manual Execution</button>
               </div>
             ) : (
               runs.map((run) => (

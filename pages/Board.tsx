@@ -42,7 +42,7 @@ const roadmap = [
 
 const Board: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#050505] font-sans text-gray-200 selection:bg-brand-red selection:text-white">
+    <div className="min-h-screen bg-[#050505] font-sans text-gray-200 selection:bg-brand-amber selection:text-white">
       <Navbar />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -99,7 +99,7 @@ const Board: React.FC = () => {
                 <div className="flex justify-between items-center mb-6">
                     <h3 className="text-xl font-bold text-white font-heading">Financial Projections (3 Years)</h3>
                     <div className="flex gap-4 text-xs font-bold uppercase text-gray-500">
-                        <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brand-red"></div> Agency</span>
+                        <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brand-amber"></div> Agency</span>
                         <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brand-purple"></div> SaaS</span>
                         <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brand-green"></div> Net Profit</span>
                     </div>
@@ -114,7 +114,7 @@ const Board: React.FC = () => {
                                 contentStyle={{backgroundColor: '#111', border: '1px solid #333', borderRadius: '8px'}} 
                                 formatter={(value: any) => [`$${value}M`, '']}
                             />
-                            <Bar dataKey="agency" stackId="a" fill="#F5364E" barSize={60} radius={[0,0,4,4]} />
+                            <Bar dataKey="agency" stackId="a" fill="#F59E0B" barSize={60} radius={[0,0,4,4]} />
                             <Bar dataKey="saas" stackId="a" fill="#7C3AED" barSize={60} radius={[4,4,0,0]} />
                             <Line type="monotone" dataKey="profit" stroke="#22C55E" strokeWidth={3} dot={{r: 6, fill: '#22C55E', stroke: '#000'}} />
                         </ComposedChart>
@@ -154,7 +154,7 @@ const Board: React.FC = () => {
                             <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{fill: '#666', fontSize: 10}} />
                             <Tooltip contentStyle={{backgroundColor: '#111', border: '1px solid #333'}} />
                             <Area type="monotone" dataKey="revenue" stroke="#22C55E" fill="url(#colorRev)" name="Revenue ($K)" />
-                            <Line type="step" dataKey="burn" stroke="#F5364E" strokeDasharray="5 5" name="Burn Rate ($K)" />
+                            <Line type="step" dataKey="burn" stroke="#F59E0B" strokeDasharray="5 5" name="Burn Rate ($K)" />
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>
@@ -180,7 +180,7 @@ const Board: React.FC = () => {
                             <div className="flex justify-between items-center mb-4">
                                 <h4 className="text-lg font-bold text-white">{item.model} Model</h4>
                                 <span className={`px-3 py-1 rounded text-xs font-bold uppercase ${
-                                    item.model === 'Agency' ? 'bg-brand-red/10 text-brand-red' : 'bg-brand-purple/10 text-brand-purple'
+                                    item.model === 'Agency' ? 'bg-brand-amber/10 text-brand-amber' : 'bg-brand-purple/10 text-brand-purple'
                                 }`}>
                                     LTV:CAC {item.ratio}
                                 </span>
@@ -213,7 +213,7 @@ const Board: React.FC = () => {
                          <div key={i} className="relative pl-12 pb-8 last:pb-0">
                              <div className={`absolute left-0 top-1 w-10 h-10 rounded-full border-4 border-[#0F0F0F] flex items-center justify-center z-10 ${
                                  item.status === 'completed' ? 'bg-brand-green text-black' : 
-                                 item.status === 'active' ? 'bg-brand-red text-white' : 
+                                 item.status === 'active' ? 'bg-brand-amber text-white' : 
                                  'bg-[#222] text-gray-500'
                              }`}>
                                  {item.status === 'completed' ? <ArrowDownRight size={18}/> : 
@@ -221,7 +221,7 @@ const Board: React.FC = () => {
                                   <Layers size={18}/>}
                              </div>
                              <div className={`p-5 rounded-xl border transition-colors ${
-                                 item.status === 'active' ? 'bg-white/[0.05] border-brand-red/30' : 
+                                 item.status === 'active' ? 'bg-white/[0.05] border-brand-amber/30' : 
                                  'bg-white/[0.02] border-white/5'
                              }`}>
                                  <div className="flex justify-between items-start mb-1">

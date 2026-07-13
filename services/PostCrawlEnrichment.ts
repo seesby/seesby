@@ -348,38 +348,41 @@ export class PostCrawlEnrichment {
             }));
         }
 
+        // Fetch session once for reuse in CMS and IndexNow sections
+        const session = await crawlDb.sessions.get(sessionId);
+        const sessionStartUrl = session?.startUrl || targetUrls[0] || targetPages[0]?.url || '';
+
         // 7.5 CMS Metadata Enrichment (WordPress/Shopify) - Silent Auto-detect
-        try {
-            const cmsResult = await CMSService.enrichSession(config.sessionId, session.startUrl, onProgress);
-            if (cmsResult.cms) {
-                onProgress?.(`Enriched ${cmsResult.enriched} pages with ${cmsResult.cms} metadata.`);
+        if (sessionStartUrl) {
+            try {
+                const cmsResult = await CMSService.enrichSession(config.sessionId, sessionStartUrl, onProgress);
+                if (cmsResult.cms) {
+                    onProgress?.(`Enriched ${cmsResult.enriched} pages with ${cmsResult.cms} metadata.`);
+                }
+            } catch (err) {
+                console.error('[Enrichment] CMS Auto-detect failed:', err);
             }
-        } catch (err) {
-            console.error('[Enrichment] CMS Auto-detect failed:', err);
         }
 
 
         // 8. IndexNow (Auto-submit fixed pages)
-        if (config.indexNowApiKey && config.indexNowAutoSubmit) {
+        if (config.indexNowApiKey && config.indexNowAutoSubmit && session) {
             onProgress?.('Identifying fixed pages for IndexNow submission...');
             try {
                 // Find previous session for this project
-                const session = await crawlDb.sessions.get(sessionId);
-                if (session) {
-                    const prevSessions = await crawlDb.sessions
-                        .where('projectId').equals(session.projectId)
-                        .filter(s => s.id !== sessionId && s.completedAt !== null)
-                        .sortBy('completedAt');
-                    
-                    const lastSession = prevSessions.reverse()[0];
-                    if (lastSession) {
-                        await submitFixedPages(
-                            { apiKey: config.indexNowApiKey, host: new URL(session.startUrl).hostname },
-                            sessionId,
-                            lastSession.id,
-                            onProgress
-                        );
-                    }
+                const prevSessions = await crawlDb.sessions
+                    .where('projectId').equals(session.projectId)
+                    .filter(s => s.id !== sessionId && s.completedAt !== null)
+                    .sortBy('completedAt');
+                
+                const lastSession = prevSessions.reverse()[0];
+                if (lastSession && sessionStartUrl) {
+                    await submitFixedPages(
+                        { apiKey: config.indexNowApiKey, host: new URL(sessionStartUrl).hostname },
+                        sessionId,
+                        lastSession.id,
+                        onProgress
+                    );
                 }
             } catch (err) {
                 console.error('IndexNow failed:', err);

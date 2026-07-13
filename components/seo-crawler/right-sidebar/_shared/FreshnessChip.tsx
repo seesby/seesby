@@ -7,7 +7,7 @@ const META: Record<Freshness, { label: string; tone: string }> = {
   recent:  { label: 'Updated today',       tone: 'text-emerald-400' },
   fresh:   { label: 'This week',           tone: 'text-sky-400' },
   ok:      { label: 'This month',          tone: 'text-amber-400' },
-  stale:   { label: 'Older than 30 days',  tone: 'text-[#F5364E]' },
+  stale:   { label: 'Older than 30 days',  tone: 'text-[#F59E0B]' },
   unknown: { label: 'Freshness unknown',   tone: 'text-[#666]' },
 }
 

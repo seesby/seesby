@@ -178,7 +178,7 @@ const IndustryTab = ({ active, onClick, label, icon }: any) => (
     <button
         onClick={onClick}
         className={`flex items-center gap-2 px-6 py-4 rounded-xl font-bold transition-all duration-200 border ${active
-            ? 'bg-white text-[#F5364E] shadow-lg border-transparent scale-105'
+            ? 'bg-white text-[#F59E0B] shadow-lg border-transparent scale-105'
             : 'bg-[#111] text-gray-500 border-[#222] hover:bg-[#1A1A1A] hover:text-white'
             }`}
     >
@@ -190,16 +190,16 @@ const IndustryTab = ({ active, onClick, label, icon }: any) => (
 const PricingGrid = ({ tiers, onCheckout, isProcessing }: { tiers: any[], onCheckout: (tierName: string, priceId: string) => void, isProcessing: string | null }) => (
     <div className="grid md:grid-cols-3 gap-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
         {tiers.map((tier, i) => (
-            <Card key={i} className={`flex flex-col h-full border transition-all duration-300 bg-white ${tier.highlight ? 'border-[#F5364E] shadow-float ring-1 ring-[#F5364E]/20' : 'border-gray-200 hover:border-gray-300'}`}>
+            <Card key={i} className={`flex flex-col h-full border transition-all duration-300 bg-white ${tier.highlight ? 'border-[#F59E0B] shadow-float ring-1 ring-[#F59E0B]/20' : 'border-gray-200 hover:border-gray-300'}`}>
                 {tier.highlight && (
-                    <div className="absolute top-0 right-0 bg-[#F5364E] text-white px-3 py-1 rounded-bl-xl text-xs font-bold uppercase tracking-wide">
+                    <div className="absolute top-0 right-0 bg-[#F59E0B] text-white px-3 py-1 rounded-bl-xl text-xs font-bold uppercase tracking-wide">
                         Recommended
                     </div>
                 )}
                 <div className="mb-6">
                     <h3 className="text-lg font-bold text-gray-900 uppercase tracking-wide">{tier.name}</h3>
                     <div className="flex items-baseline gap-1 mt-4">
-                        <span className={`text-4xl font-extrabold ${tier.highlight ? 'text-[#F5364E]' : 'text-gray-900'}`}>{tier.price}</span>
+                        <span className={`text-4xl font-extrabold ${tier.highlight ? 'text-[#F59E0B]' : 'text-gray-900'}`}>{tier.price}</span>
                         <span className="text-gray-400 text-sm">/mo</span>
                     </div>
                     <p className="text-xs font-bold text-gray-500 mt-2 bg-gray-100 inline-block px-2 py-1 rounded">{tier.limit}</p>
@@ -207,7 +207,7 @@ const PricingGrid = ({ tiers, onCheckout, isProcessing }: { tiers: any[], onChec
                 <ul className="space-y-4 mb-8 flex-1">
                     {tier.features.map((f: string, idx: number) => (
                         <li key={idx} className="flex items-start gap-3">
-                            <div className={`mt-1 w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${tier.highlight ? 'bg-red-50 text-[#F5364E]' : 'bg-gray-100 text-gray-500'}`}>
+                            <div className={`mt-1 w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${tier.highlight ? 'bg-red-50 text-[#F59E0B]' : 'bg-gray-100 text-gray-500'}`}>
                                 <Check size={10} strokeWidth={3} />
                             </div>
                             <span className="text-sm text-gray-600 font-medium">{f}</span>

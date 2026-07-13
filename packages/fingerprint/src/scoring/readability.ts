@@ -1,5 +1,5 @@
 // packages/fingerprint/src/scoring/readability.ts
-import { LANGUAGES, type LanguageCode } from '@headlight/types';
+import { LANGUAGES, type LanguageCode } from '@seesby/types';
 
 // Stubs for formula functions - would be implemented in formulas/*.ts
 const flesch = (t: string, o: any) => 70;

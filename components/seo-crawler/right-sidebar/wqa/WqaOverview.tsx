@@ -15,7 +15,7 @@ import {
 } from './_selectors'
 
 export function WqaOverview() {
-	const { pages, sessions, site, scoreSpark, openIssueDrawer } = useSeoCrawler() as any
+	const { pages, sessions, site, openIssueDrawer } = useSeoCrawler() as any
 	const hasTrend = useHasTrend()
 
 	const score = useMemo(() => selectQualityScore(pages, sessions), [pages, sessions])
@@ -25,7 +25,7 @@ export function WqaOverview() {
 	const search = useMemo(() => selectSearchSnapshot(pages, sessions), [pages, sessions])
 	const decisions = useMemo(() => selectDecisions(pages), [pages])
 
-	if (!pages?.length) return <EmptyState label="No pages crawled yet" />
+	if (!pages?.length) return <EmptyState title="No pages crawled yet" />
 
 	return (
 		<div className="flex flex-col gap-3 p-3">

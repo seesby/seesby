@@ -11,11 +11,11 @@ export const AgencyHubView = () => {
 
     return (
         <div className="space-y-8">
-            <div className="bg-gradient-to-r from-brand-red/20 to-[#111] rounded-2xl border border-brand-red/20 p-8 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-brand-red/10 blur-[100px] rounded-full pointer-events-none"></div>
+            <div className="bg-gradient-to-r from-brand-amber/20 to-[#111] rounded-2xl border border-brand-amber/20 p-8 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-brand-amber/10 blur-[100px] rounded-full pointer-events-none"></div>
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-10">
                     <div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-red/10 border border-brand-red/20 text-brand-red text-xs font-bold uppercase tracking-wide mb-3">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-amber/10 border border-brand-amber/20 text-brand-amber text-xs font-bold uppercase tracking-wide mb-3">
                             <Target size={12} /> Scale Plan Active
                         </div>
                         <h1 className="text-3xl font-heading font-extrabold text-white mb-2">Agency Hub</h1>
@@ -49,7 +49,7 @@ export const AgencyHubView = () => {
                         <span className="text-sm text-gray-500 mb-1">/ 20 hrs</span>
                     </div>
                     <div className="w-full h-2 bg-[#222] rounded-full overflow-hidden mb-4">
-                        <div className="h-full bg-brand-red shadow-[0_0_10px_rgba(245,54,78,0.5)]" style={{ width: '62%' }}></div>
+                        <div className="h-full bg-brand-amber shadow-[0_0_10px_rgba(245,158,11,0.5)]" style={{ width: '62%' }}></div>
                     </div>
                     <div className="space-y-2">
                         <div className="flex justify-between text-xs">

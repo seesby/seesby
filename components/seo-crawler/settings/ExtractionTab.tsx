@@ -107,7 +107,7 @@ export default function ExtractionTab({ config, setConfig }: TabProps) {
           ))}
           <button 
             onClick={addExtractor}
-            className="w-full py-2 border border-dashed border-[#333] rounded-lg text-[11px] text-[#666] hover:border-[#F5364E] hover:text-[#F5364E] transition-all flex items-center justify-center gap-2"
+            className="w-full py-2 border border-dashed border-[#333] rounded-lg text-[11px] text-[#666] hover:border-[#F59E0B] hover:text-[#F59E0B] transition-all flex items-center justify-center gap-2"
           >
             <Plus size={14} /> Add Custom Field Extractor
           </button>

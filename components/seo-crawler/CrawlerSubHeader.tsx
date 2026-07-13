@@ -1,338 +1,279 @@
-import React from 'react';
-import { 
-    AlignLeft, Search, Download, CheckCircle2,
-    Tag, List, Map as MapIcon, BarChart3, ChevronDown, Sparkles, Plus, RefreshCw, GitCompare
-} from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Search, X, Plus } from 'lucide-react';
 import { useSeoCrawler } from '../../contexts/SeoCrawlerContext';
-import { ALL_COLUMNS } from './constants';
-import { allModes, registerAllModes } from '../../packages/modes/src';
-import { allIndustries, INDUSTRY_LABEL, MODE_LABEL, type Mode } from '@headlight/types';
-import { getMode } from '@headlight/modes';
-import { MODE_DOT_CLASS } from './left-sidebar/tokens';
-import WqaViewSwitcher from './wqa/WqaViewSwitcher';
+import { getMode } from '@seesby/modes';
+import { ViewToolbar } from './views/_shared/ViewToolbar';
+import { SURFACE, TEXT, STATUS, R, S } from './views/_shared/tokens';
 
-registerAllModes();
+const FILTER_LABELS: Record<string, string> = {
+    'scope.kind': 'Scope',
+    'page.category': 'Template',
+    'page.exactDepth': 'Depth',
+    'wqa.priority': 'Priority',
+    'tech.rendering': 'Rendering',
+    'page.statusClass': 'Status',
+    'link.type': 'Link type',
+    'schema.type': 'Schema',
+    'ai.crawlability': 'Crawlability',
+    'local.verification': 'Verification',
+    'competitor.gap': 'Gap',
+    'social.platform': 'Platform',
+    'paid.campaignType': 'Campaign',
+    'commerce.stock': 'Stock',
+    'content.freshness': 'Freshness',
+    'ux.taskType': 'Task',
+};
 
 export default function CrawlerSubHeader() {
     const {
         stats, activeMacro, setActiveMacro,
-        showColumnPicker, setShowColumnPicker,
-        visibleColumns, setVisibleColumns,
-        viewMode, setViewMode,
         searchQuery, setSearchQuery,
-        crawlRuntime, pages,
-        auditFilter, applyAuditMode, mode, setMode, fingerprint, refreshFingerprint,
-        setAutoFixItems, setShowAutoFixModal,
-        setShowExportDialog,
+        mode,
         activeViewType,
-        setShowAddCompetitorInput, refreshAllCompetitors, crawlingCompetitorDomain,
-        competitiveState, setActiveCompetitors, competitiveViewMode, setCompetitiveViewMode,
-        wqaState, setWqaState,
-        isWqaMode,
-        urlInput, isCrawling, crawlHistory, currentSessionId,
-        handleStartPause, setShowComparisonView,
-        sidebarState, setSidebarCollapsed,
-    } = useSeoCrawler();
-    const { competitorProfiles, activeCompetitorDomains } = competitiveState;
+        pageFilter, toggleSelection, clearSelection,
+    } = useSeoCrawler() as any;
+
+    const [showAddFilter, setShowAddFilter] = useState(false);
+    const addFilterRef = useRef<HTMLDivElement>(null);
 
     const activeModeDescriptor = React.useMemo(() => {
-        try {
-            return getMode(mode);
-        } catch (e) {
-            return null;
-        }
+        try { return getMode(mode); } catch { return null; }
     }, [mode]);
 
-    const pickerRef = React.useRef<HTMLDivElement>(null);
+    const availableFilters = React.useMemo(() => {
+        if (!activeModeDescriptor) return [];
+        return (activeModeDescriptor.lsSections || [])
+            .filter((s: any) => s.kind === 'facet')
+            .map((s: any) => ({ id: s.id, label: s.label, buckets: s.buckets || [] }));
+    }, [activeModeDescriptor]);
 
-    React.useEffect(() => {
-        function handleClickOutside(event: MouseEvent) {
-            if (showColumnPicker && pickerRef.current && !pickerRef.current.contains(event.target as Node)) {
-                setShowColumnPicker(false);
+    const activeChips = React.useMemo(() => {
+        const chips: { key: string; field: string; label: string; value: string; rawValue: string }[] = [];
+        const selections = pageFilter?.selections || {};
+        for (const [key, values] of Object.entries(selections)) {
+            if (!Array.isArray(values) || values.length === 0) continue;
+            const fieldLabel = FILTER_LABELS[key] || key;
+            for (const v of values) {
+                let displayValue = v;
+                for (const section of availableFilters) {
+                    const bucket = section.buckets.find((b: any) => b.value === v);
+                    if (bucket) { displayValue = bucket.label; break; }
+                }
+                chips.push({ key: `${key}__${v}`, field: key, label: fieldLabel, value: displayValue, rawValue: v });
             }
         }
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [showColumnPicker, setShowColumnPicker]);
+        return chips;
+    }, [pageFilter?.selections, availableFilters]);
 
-    const isGridView = activeViewType === 'grid';
+    useEffect(() => {
+        if (!showAddFilter) return;
+        const handler = (e: MouseEvent) => {
+            if (addFilterRef.current && !addFilterRef.current.contains(e.target as Node)) {
+                setShowAddFilter(false);
+            }
+        };
+        document.addEventListener('mousedown', handler);
+        return () => document.removeEventListener('mousedown', handler);
+    }, [showAddFilter]);
+
     const isCompetitiveMode = activeViewType === 'competitor_matrix';
-    const activeCompetitors = React.useMemo(
-        () => activeCompetitorDomains.map((domain) => competitorProfiles.get(domain)).filter(Boolean),
-        [activeCompetitorDomains, competitorProfiles]
-    );
 
-    const lastCrawlTime = React.useMemo(() => {
-        if (!currentSessionId || crawlHistory.length === 0) return null;
-        const session = crawlHistory.find((s) => s.id === currentSessionId);
-        if (!session?.completedAt) return null;
-        const completedAt = Number(session.completedAt);
-        if (!Number.isFinite(completedAt) || completedAt <= 0) return null;
-        const d = new Date(completedAt);
-        const diff = Math.floor((Date.now() - d.getTime()) / 60000);
-        if (diff < 60) return `${Math.max(0, diff)}m ago`;
-        if (diff < 1440) return `${Math.floor(diff / 60)}h ago`;
-        return d.toLocaleDateString();
-    }, [currentSessionId, crawlHistory]);
+    const kpiMacros = React.useMemo(() => {
+        if (isCompetitiveMode) return [];
+        const M: { key: string; label: string; count: number; color: string }[] = [];
+        if (mode === 'fullAudit' || mode === 'wqa') {
+            M.push({ key: 'broken', label: 'Errors', count: stats.broken || 0, color: 'red' });
+            M.push({ key: 'redirects', label: 'Redirects', count: stats.redirects || 0, color: 'orange' });
+            M.push({ key: 'slow', label: 'Slow', count: stats.slowPages || 0, color: 'orange' });
+            M.push({ key: 'noindex', label: 'Noindex', count: stats.nonIndexable || 0, color: 'yellow' });
+        } else if (mode === 'technical') {
+            M.push({ key: 'slow', label: 'Slow TTFB', count: stats.slowPages || 0, color: 'orange' });
+            M.push({ key: 'errors', label: 'Server err', count: stats.serverErrors || 0, color: 'red' });
+            M.push({ key: 'noindex', label: 'Blocked', count: stats.nonIndexable || 0, color: 'yellow' });
+        } else if (mode === 'content') {
+            M.push({ key: 'titles', label: 'No titles', count: stats.missingTitles || 0, color: 'amber' });
+            M.push({ key: 'meta', label: 'Thin meta', count: stats.missingMetaDesc || 0, color: 'amber' });
+        } else if (mode === 'linksAuthority') {
+            M.push({ key: 'broken', label: 'Broken', count: stats.broken || 0, color: 'red' });
+            M.push({ key: 'redirects', label: 'Redirects', count: stats.redirects || 0, color: 'orange' });
+        } else if (mode === 'ai') {
+            M.push({ key: 'noindex', label: 'Blocked', count: stats.nonIndexable || 0, color: 'red' });
+            M.push({ key: 'meta', label: 'Uncited', count: stats.missingMetaDesc || 0, color: 'yellow' });
+        } else {
+            M.push({ key: 'broken', label: 'Errors', count: stats.broken || 0, color: 'red' });
+            M.push({ key: 'slow', label: 'Slow', count: stats.slowPages || 0, color: 'orange' });
+        }
+        return M;
+    }, [mode, stats, isCompetitiveMode]);
+
+    const MACRO_COLORS: Record<string, { bg: string; fg: string; border: string }> = {
+        red:    { bg: 'rgba(239,68,68,0.1)', fg: '#f87171', border: 'rgba(239,68,68,0.2)' },
+        orange: { bg: 'rgba(249,115,22,0.1)', fg: '#fb923c', border: 'transparent' },
+        yellow: { bg: 'rgba(234,179,8,0.1)', fg: '#facc15', border: 'transparent' },
+        amber:  { bg: 'rgba(245,158,11,0.1)', fg: '#fbbf24', border: 'transparent' },
+    };
 
     return (
-        <>
-        <div className="h-[44px] border-b border-[#222] bg-[#111] flex items-center justify-between px-3 shrink-0 transition-colors w-full z-[30]">
-            <div className="flex items-center gap-3 overflow-x-auto custom-scrollbar-hidden mr-4">
-                {/* Audit Mode & Industry Filters */}
-                <div className="hidden md:flex items-center gap-2 mr-2">
-                    <div className="relative flex items-center gap-2 px-2 bg-[#0a0a0a] border border-[#222] rounded hover:border-[#333] transition-colors group">
-                        {activeModeDescriptor && (
-                            <span className={`w-2 h-2 rounded-full shrink-0 ${MODE_DOT_CLASS[activeModeDescriptor.accent] || 'bg-white'}`} />
-                        )}
-                        <select
-                            value={mode}
-                            onChange={(e) => {
-                                const nextMode = e.target.value as Mode;
-                                setMode(nextMode);
-                            }}
-                            className="h-[26px] bg-transparent text-[11px] text-[#ccc] focus:outline-none appearance-none cursor-pointer"
-                            title="Audit Mode"
-                        >
-                            {allModes().map((entry) => (
-                                <option key={entry.id} value={entry.id}>{MODE_LABEL[entry.id]}</option>
-                            ))}
-                        </select>
-                        <ChevronDown size={12} className="text-[#555] pointer-events-none" />
+        <div
+            className="flex items-center justify-between shrink-0"
+            style={{ height: 40, background: SURFACE.bg2, padding: `0 ${S[3]}px`, zIndex: 30 }}
+        >
+            {/* Left: Views | KPIs | Filters */}
+            <div className="flex items-center min-w-0 flex-1" style={{ gap: S[2] }}>
+                <ViewToolbar mode={mode} />
+
+                {kpiMacros.length > 0 && (
+                    <div className="flex items-center" style={{ gap: S[1], borderLeft: `1px solid ${SURFACE.br2}`, paddingLeft: S[2] }}>
+                        {kpiMacros.map(m => {
+                            const active = activeMacro === m.key;
+                            const hasIssues = m.count > 0;
+                            const colors = MACRO_COLORS[m.color];
+                            return (
+                                <button
+                                    key={m.key}
+                                    onClick={() => hasIssues && setActiveMacro(active ? null : m.key)}
+                                    style={{
+                                        padding: '2px 6px',
+                                        borderRadius: R.sm,
+                                        fontSize: 10,
+                                        color: active ? colors.fg : hasIssues ? TEXT.secondary : TEXT.muted,
+                                        background: active ? colors.bg : 'transparent',
+                                        border: active ? `1px solid ${colors.border}` : '1px solid transparent',
+                                        cursor: hasIssues ? 'pointer' : 'default',
+                                        transition: 'all 0.1s',
+                                    }}
+                                >
+                                    {m.label} <span style={{ opacity: hasIssues ? 0.6 : 0.4 }}>{m.count}</span>
+                                </button>
+                            );
+                        })}
                     </div>
-
-                    <div className="relative">
-                        <select
-                            value={fingerprint?.industry?.value || 'general'}
-                            disabled
-                            className="h-[26px] pl-2 pr-7 bg-[#0a0a0a] border border-[#222] rounded text-[11px] text-[#777] focus:outline-none appearance-none cursor-default"
-                            title="Industry (auto-detected)"
-                        >
-                            {allIndustries().map((industry) => (
-                                <option key={industry} value={industry}>{INDUSTRY_LABEL[industry]}</option>
-                            ))}
-                        </select>
-                        <ChevronDown size={12} className="absolute right-2 top-1/2 -translate-y-1/2 text-[#555] pointer-events-none" />
-                    </div>
-                    <button
-                        onClick={() => refreshFingerprint()}
-                        className="h-[26px] px-2 bg-[#0a0a0a] border border-[#222] rounded text-[11px] text-[#888] hover:text-white hover:border-[#333] transition-colors"
-                        title="Re-detect fingerprint"
-                    >
-                        Re-detect
-                    </button>
-                </div>
-
-
-
-                {!isCompetitiveMode && (
-                    <>
-                        {stats.broken > 0 && (
-                            <button onClick={() => setActiveMacro('broken')} className={`px-2.5 py-1 rounded text-[12px] transition-colors shrink-0 ${activeMacro === 'broken' ? 'bg-red-950/40 text-red-400 border border-red-500/20' : 'bg-transparent text-[#888] hover:bg-[#1a1a1a] hover:text-[#ccc]'}`}>
-                                Errors 4xx/5xx
-                            </button>
-                        )}
-                        {stats.redirects > 0 && (
-                            <button onClick={() => setActiveMacro('redirects')} className={`px-2.5 py-1 rounded text-[12px] transition-colors shrink-0 ${activeMacro === 'redirects' ? 'bg-orange-950/40 text-orange-400' : 'bg-transparent text-[#888] hover:bg-[#1a1a1a] hover:text-[#ccc]'}`}>
-                                Redirects 3xx
-                            </button>
-                        )}
-                        {stats.slowPages > 0 && (
-                            <button onClick={() => setActiveMacro('slow')} className={`px-2.5 py-1 rounded text-[12px] transition-colors shrink-0 ${activeMacro === 'slow' ? 'bg-orange-950/40 text-orange-400' : 'bg-transparent text-[#888] hover:bg-[#1a1a1a] hover:text-[#ccc]'}`}>
-                                Slow Pages
-                            </button>
-                        )}
-                        {stats.nonIndexable > 0 && (
-                            <button onClick={() => setActiveMacro('nonIndexable')} className={`px-2.5 py-1 rounded text-[12px] transition-colors shrink-0 ${activeMacro === 'nonIndexable' ? 'bg-blue-950/40 text-blue-400' : 'bg-transparent text-[#888] hover:bg-[#1a1a1a] hover:text-[#ccc]'}`}>
-                                Non-Indexable
-                            </button>
-                        )}
-                    </>
                 )}
 
-                {isCompetitiveMode && (
-                    <div className="flex items-center gap-2">
-                        <div className="flex items-center gap-1.5 overflow-x-auto custom-scrollbar-hidden max-w-[430px]">
-                            {activeCompetitors.map((comp: any) => {
-                                const active = activeCompetitorDomains.includes(comp.domain);
-                                return (
-                                    <button
-                                        key={comp.domain}
-                                        onClick={() => {
-                                            const next = active
-                                                ? activeCompetitorDomains.filter((domain) => domain !== comp.domain)
-                                                : [...activeCompetitorDomains, comp.domain];
-                                            setActiveCompetitors(next);
-                                        }}
-                                        className={`shrink-0 rounded-full border px-2.5 py-0.5 text-[10px] font-bold transition-colors ${
-                                            active
-                                                ? 'border-[#F5364E]/30 bg-[#F5364E]/10 text-[#F5364E]'
-                                                : 'border-[#222] bg-[#0a0a0a] text-[#888] hover:text-[#ccc]'
-                                        }`}
-                                    >
-                                        {comp.domain}
-                                    </button>
-                                );
-                            })}
-                        </div>
-
-                        <button 
-                          onClick={() => setShowAddCompetitorInput(true)}
-                          className="flex items-center gap-1.5 px-3 py-1 bg-[#F5364E]/10 text-[#F5364E] text-[11px] font-bold rounded-lg border border-[#F5364E]/20 hover:bg-[#F5364E]/20 transition-colors"
-                        >
-                          <Plus size={12} /> Add Competitor
-                        </button>
-                        
-                        <button
-                          onClick={refreshAllCompetitors}
-                          disabled={crawlingCompetitorDomain !== null}
-                          className="flex items-center gap-1.5 px-3 py-1 text-[11px] text-[#888] hover:text-white transition-colors disabled:opacity-50"
-                        >
-                          <RefreshCw size={12} className={crawlingCompetitorDomain ? 'animate-spin' : ''} />
-                          {crawlingCompetitorDomain ? `Crawling ${crawlingCompetitorDomain}...` : 'Refresh All'}
+                {activeChips.length > 0 && (
+                    <div className="flex items-center" style={{ gap: S[1], borderLeft: `1px solid ${SURFACE.br2}`, paddingLeft: S[2] }}>
+                        {activeChips.map(chip => (
+                            <span
+                                key={chip.key}
+                                className="inline-flex items-center"
+                                style={{
+                                    gap: 2,
+                                    padding: '2px 6px',
+                                    background: 'rgba(99,102,241,0.1)',
+                                    border: '1px solid rgba(99,102,241,0.2)',
+                                    borderRadius: R.sm,
+                                    fontSize: 10,
+                                    color: '#a5b4fc',
+                                }}
+                            >
+                                <span style={{ color: TEXT.tertiary }}>{chip.label}:</span>
+                                <span style={{ color: '#c7d2fe' }}>{chip.value}</span>
+                                <button onClick={() => toggleSelection(chip.field, chip.rawValue)} className="ml-0.5" style={{ color: TEXT.tertiary }}>
+                                    <X size={8} />
+                                </button>
+                            </span>
+                        ))}
+                        <button onClick={() => clearSelection()} style={{ fontSize: 10, color: TEXT.tertiary, marginLeft: 2 }}>
+                            Clear
                         </button>
                     </div>
                 )}
             </div>
-            
-            <div className="flex items-center shrink-0 gap-3">
-                {isGridView && (
-                    <div className="relative z-50" ref={pickerRef}>
-                        <button 
-                            onClick={() => setShowColumnPicker(!showColumnPicker)}
-                            className={`flex items-center gap-1.5 px-3 py-1 bg-[#0a0a0a] hover:bg-[#1a1a1a] border border-[#222] rounded text-[11px] font-medium transition-colors ${showColumnPicker ? 'text-[#F5364E] border-[#F5364E]/50 bg-[#F5364E]/5' : 'text-[#888]'}`}
-                        >
-                            <AlignLeft size={12} /> Columns
-                        </button>
-                        
-                        {showColumnPicker && (
-                            <div className="absolute right-0 top-full mt-2 w-[500px] bg-[#111] border border-[#333] rounded-lg shadow-2xl z-[1000] p-4 animate-in fade-in slide-in-from-top-2 duration-150">
-                                <div className="flex justify-between items-center mb-4 pb-2 border-b border-[#222]">
-                                    <h4 className="text-[11px] font-bold text-[#888] uppercase tracking-wider">Show/Hide Columns</h4>
-                                    <div className="flex gap-2">
-                                        <button onClick={() => setVisibleColumns(ALL_COLUMNS.map(c => c.key))} className="text-[10px] text-blue-400 hover:underline">Select All</button>
-                                        <button onClick={() => setVisibleColumns(ALL_COLUMNS.slice(0, 10).map(c => c.key))} className="text-[10px] text-[#555] hover:underline">Reset</button>
-                                    </div>
-                                </div>
-                                <div className="grid grid-cols-2 gap-x-6 gap-y-2 max-h-[400px] overflow-y-auto custom-scrollbar pr-2">
-                                    {['General', 'Technical', 'Metrics', 'Links', 'Advanced', 'Security', 'Accessibility', 'Cache', 'Mobile', 'URL Structure', 'Search Console', 'Analytics', 'Authority', 'Strategic', 'AI Insights', 'Business', 'AI Discoverability', 'Performance', 'Log Analysis', 'Collaboration'].map(group => (
-                                        <div key={group} className="col-span-2 mb-2">
-                                            <h5 className="text-[10px] text-[#444] font-black uppercase tracking-widest mb-2 border-l-2 border-[#F5364E] pl-2">{group}</h5>
-                                            <div className="grid grid-cols-2 gap-2">
-                                                {ALL_COLUMNS.filter(c => c.group === group).map(col => (
-                                                    <label key={col.key} className="flex items-center gap-2 cursor-pointer group">
-                                                        <input 
-                                                            type="checkbox" 
-                                                            checked={visibleColumns.includes(col.key)}
-                                                            onChange={() => {
-                                                                setVisibleColumns(prev => 
-                                                                    prev.includes(col.key) ? prev.filter(k => k !== col.key) : [...prev, col.key]
-                                                                );
-                                                            }}
-                                                            className="sr-only"
-                                                        />
-                                                        <div className={`w-3.5 h-3.5 rounded-sm border transition-colors flex items-center justify-center ${visibleColumns.includes(col.key) ? 'bg-[#F5364E] border-[#F5364E]' : 'bg-[#0a0a0a] border-[#333] group-hover:border-[#555]'}`}>
-                                                            {visibleColumns.includes(col.key) && <CheckCircle2 size={10} className="text-white" />}
-                                                        </div>
-                                                        <span className={`text-[11px] truncate ${visibleColumns.includes(col.key) ? 'text-[#eee]' : 'text-[#666] group-hover:text-[#aaa]'}`}>{col.label}</span>
-                                                    </label>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                )}
 
-                {isGridView && !wqaState.isActive && (
-                    <div className="flex bg-[#0a0a0a] rounded border border-[#222] p-0.5">
-                        <button 
-                            onClick={() => setViewMode('grid')}
-                            className={`px-3 py-1 text-[11px] font-medium rounded-sm flex items-center gap-1.5 transition-colors ${viewMode === 'grid' ? 'bg-[#222] text-white' : 'text-[#888] hover:text-[#ccc]'}`}
-                        >
-                            <List size={12} /> Grid
-                        </button>
-                        <button 
-                            onClick={() => setViewMode('map')}
-                            className={`px-3 py-1 text-[11px] font-medium rounded-sm flex items-center gap-1.5 transition-colors ${viewMode === 'map' ? 'bg-[#222] text-white' : 'text-[#888] hover:text-[#ccc]'}`}
-                        >
-                            <MapIcon size={12} /> Map
-                        </button>
-                        <button 
-                            onClick={() => setViewMode('charts')}
-                            className={`px-3 py-1 text-[11px] font-medium rounded-sm flex items-center gap-1.5 transition-colors ${viewMode === 'charts' ? 'bg-[#222] text-white' : 'text-[#888] hover:text-[#ccc]'}`}
-                        >
-                            <BarChart3 size={12} /> Charts
-                        </button>
-                    </div>
-                )}
-
-                {isGridView && wqaState.isActive && <WqaViewSwitcher />}
-
-                {isCompetitiveMode && (
-                    <div className="flex bg-[#0a0a0a] rounded border border-[#222] p-0.5">
-                        <button
-                            onClick={() => setCompetitiveViewMode('matrix')}
-                            className={`px-3 py-1 text-[11px] font-medium rounded-sm flex items-center gap-1.5 transition-colors ${
-                                competitiveViewMode === 'matrix' ? 'bg-[#222] text-white' : 'text-[#888] hover:text-[#ccc]'
-                            }`}
-                        >
-                            <List size={12} /> Table
-                        </button>
-                        <button
-                            onClick={() => setCompetitiveViewMode('charts')}
-                            className={`px-3 py-1 text-[11px] font-medium rounded-sm flex items-center gap-1.5 transition-colors ${
-                                competitiveViewMode === 'charts' ? 'bg-[#222] text-white' : 'text-[#888] hover:text-[#ccc]'
-                            }`}
-                        >
-                            <BarChart3 size={12} /> Charts
-                        </button>
-                        <button
-                            onClick={() => setCompetitiveViewMode('landscape')}
-                            className={`px-3 py-1 text-[11px] font-medium rounded-sm flex items-center gap-1.5 transition-colors ${
-                                competitiveViewMode === 'landscape' ? 'bg-[#222] text-white' : 'text-[#888] hover:text-[#ccc]'
-                            }`}
-                        >
-                            <Search size={12} /> Keywords
-                        </button>
-                    </div>
-                )}
-
-                {isGridView && (
-                    <button 
-                        disabled={pages.length === 0}
-                        onClick={() => {
-                            const missingMeta = pages.filter((p: any) => !p.metaDesc || p.metaDesc.trim() === '');
-                            setAutoFixItems(missingMeta.map((p: any) => ({ ...p, fixStatus: 'pending', generatedMeta: '' })));
-                            setShowAutoFixModal(true);
+            {/* Right: Add Filter + Search */}
+            <div className="flex items-center shrink-0" style={{ gap: S[2] }}>
+                <div ref={addFilterRef} className="relative">
+                    <button
+                        onClick={() => setShowAddFilter(!showAddFilter)}
+                        className="flex items-center"
+                        style={{
+                            gap: 4,
+                            padding: '2px 8px',
+                            border: `1px solid ${SURFACE.br2}`,
+                            borderRadius: R.sm,
+                            fontSize: 10,
+                            color: TEXT.tertiary,
+                            transition: 'all 0.1s',
                         }}
-                        className="flex items-center gap-1.5 px-3 py-1 bg-[#0a0a0a] hover:bg-[#F5364E]/10 hover:text-[#F5364E] border border-[#222] hover:border-[#F5364E]/30 rounded text-[11px] font-medium transition-colors disabled:opacity-30 disabled:cursor-not-allowed group"
-                        title="AI Auto-Fix Issues"
                     >
-                        <Tag size={12} className="group-hover:text-[#F5364E] text-[#888]"/> Auto-Fix
+                        <Plus size={10} /> Filter
                     </button>
-                )}
+                    {showAddFilter && availableFilters.length > 0 && (
+                        <div
+                            className="absolute right-0 top-full"
+                            style={{
+                                marginTop: 4,
+                                width: 208,
+                                background: SURFACE.bg2,
+                                border: `1px solid ${SURFACE.br3}`,
+                                borderRadius: R.lg,
+                                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
+                                zIndex: 200,
+                                padding: `${S[1]}px 0`,
+                                maxHeight: 300,
+                                overflowY: 'auto',
+                            }}
+                        >
+                            {availableFilters.map((filter: any) => (
+                                <div key={filter.id}>
+                                    <div style={{ padding: '4px 8px', fontSize: 9, color: TEXT.muted, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                                        {filter.label}
+                                    </div>
+                                    {filter.buckets.map((bucket: any) => {
+                                        const isSelected = (pageFilter?.selections?.[filter.id] || []).includes(bucket.value);
+                                        return (
+                                            <button
+                                                key={bucket.value}
+                                                onClick={() => {
+                                                    toggleSelection(filter.id, bucket.value);
+                                                    setShowAddFilter(false);
+                                                }}
+                                                className="w-full flex items-center justify-between"
+                                                style={{
+                                                    padding: '4px 12px',
+                                                    fontSize: 11,
+                                                    color: isSelected ? '#a5b4fc' : TEXT.secondary,
+                                                    background: isSelected ? 'rgba(99,102,241,0.1)' : 'transparent',
+                                                    textAlign: 'left',
+                                                    transition: 'all 0.1s',
+                                                }}
+                                                onMouseEnter={e => { if (!isSelected) e.currentTarget.style.background = SURFACE.bg3; }}
+                                                onMouseLeave={e => { if (!isSelected) e.currentTarget.style.background = 'transparent'; }}
+                                            >
+                                                <span>{bucket.label}</span>
+                                                {isSelected && <span style={{ fontSize: 9, color: TEXT.tertiary }}>active</span>}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
 
-
-
-                <button
-                    onClick={() => setShowExportDialog(true)}
-                    disabled={pages.length === 0}
-                    className="flex items-center gap-1.5 px-3 py-1 bg-[#0a0a0a] hover:bg-[#F5364E]/10 hover:text-[#F5364E] border border-[#222] hover:border-[#F5364E]/30 rounded text-[11px] font-medium transition-colors disabled:opacity-30 disabled:cursor-not-allowed group"
-                    title="Export crawl data"
-                >
-                    <Download size={12} className="group-hover:text-[#F5364E] text-[#888]"/> Export
-                </button>
-
-
-                <div className="relative w-48">
-                    <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#555]" size={12} />
-                    <input id="headlight-grid-search" type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search... (⌘F)" className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded pl-7 pr-3 py-1 text-[12px] text-[#e0e0e0] focus:border-[#F5364E] focus:outline-none transition-colors" />
+                <div className="relative" style={{ width: 144 }}>
+                    <Search className="absolute" style={{ left: 8, top: '50%', transform: 'translateY(-50%)', color: TEXT.muted }} size={10} />
+                    <input
+                        type="text"
+                        value={searchQuery}
+                        onChange={e => setSearchQuery(e.target.value)}
+                        placeholder="Search (⌘F)"
+                        style={{
+                            width: '100%',
+                            background: SURFACE.bg0,
+                            border: `1px solid ${SURFACE.br3}`,
+                            borderRadius: R.sm,
+                            paddingLeft: 24,
+                            paddingRight: 8,
+                            paddingBlock: 4,
+                            fontSize: 10,
+                            color: TEXT.primary,
+                            outline: 'none',
+                            transition: 'border-color 0.1s',
+                        }}
+                    />
                 </div>
             </div>
         </div>
-        </>
     );
 }

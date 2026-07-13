@@ -31,11 +31,11 @@ export default function RadarChart({ data, size = 220 }: Props) {
           <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} axisLine={false} />
           <Radar
             dataKey="value"
-            stroke="#F5364E"
-            fill="#F5364E"
+            stroke="#F59E0B"
+            fill="#F59E0B"
             fillOpacity={0.15}
             strokeWidth={2}
-            dot={{ r: 3, fill: '#F5364E' }}
+            dot={{ r: 3, fill: '#F59E0B' }}
           />
           <Tooltip
             contentStyle={{ 
@@ -47,7 +47,7 @@ export default function RadarChart({ data, size = 220 }: Props) {
               padding: '6px 10px'
             }}
             labelStyle={{ color: 'white', fontWeight: 'bold', marginBottom: '2px' }}
-            itemStyle={{ color: '#F5364E', fontSize: '10px', textTransform: 'uppercase' }}
+            itemStyle={{ color: '#F59E0B', fontSize: '10px', textTransform: 'uppercase' }}
             formatter={(value) => [String(value), 'Score']}
           />
         </RechartsRadarChart>

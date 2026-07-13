@@ -1,4 +1,4 @@
-import type { Industry, CmsKey, LanguageCode } from '@headlight/types';
+import type { Industry, CmsKey, LanguageCode } from '@seesby/types';
 
 export interface SiteTypeResult {
 	detectedIndustry: Industry;

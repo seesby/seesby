@@ -1,90 +1,109 @@
 import { useMemo } from 'react'
 import { useSeoCrawler } from '@/contexts/SeoCrawlerContext'
+import { useHasTrend } from './useSessionsCount'
 import { safePct } from '../_shared/format'
 
 export function useCompetitorsInsights() {
   const { competitors, pages } = useSeoCrawler() as any
+  const hasPrior = useHasTrend()
+
   return useMemo(() => {
     const list = Array.isArray(competitors) ? competitors : []
-    
-    const visibilityShare = 0.22
-    const visibilitySharePrev = 0.20
-    const visibilitySeries = [0.18, 0.19, 0.20, 0.21, 0.22]
-    const rank = 3
-    const rankPrev = 4
-    const leaderVisibility = 0.35
 
-    const byCompetitor = list.map((c, i) => ({
+    // ── Score & visibility ──
+    const youEntry = list.find((c: any) => c.isYou)
+    const visibilityShare = youEntry?.shareOfVoice || 0
+    const visibilitySharePrev = youEntry?.shareOfVoicePrev || 0
+    const visibilitySeries: number[] = []
+    const sorted = [...list].sort((a: any, b: any) => (b.shareOfVoice || 0) - (a.shareOfVoice || 0))
+    const rank = youEntry ? sorted.findIndex((c: any) => c.isYou) + 1 : 0
+    const rankPrev = 0
+    const leaderVisibility = sorted.length ? sorted[0].shareOfVoice || 0 : 0
+    const score = Math.round(visibilityShare * 100)
+
+    // ── Per-competitor breakdown ──
+    const byCompetitor = list.map((c: any, i: number) => ({
       id: c.id || `c${i}`,
       domain: c.domain,
-      visibility: c.shareOfVoice || 0.15,
+      visibility: c.shareOfVoice || 0,
       isYou: c.isYou || false,
-      refDomains: c.refDomains || 1200,
-      top10: c.top10 || 450,
-      gapKeywords: 120,
-      gapContent: 45,
-      gapLinks: 85,
+      refDomains: c.refDomains || 0,
+      top10: c.top10 || 0,
+      gapKeywords: c.gapKeywords || 0,
+      gapContent: c.gapContent || 0,
+      gapLinks: c.gapLinks || 0,
+      traffic: c.traffic || 0,
+      keywords: c.keywords || 0,
     }))
 
-    const movers = { climbing: 12, steady: 25, falling: 8, new: 5 }
+    // ── Movement ──
+    const movers = { climbing: 0, steady: list.length, falling: 0, new: 0 }
 
+    // ── Shared gaps ──
     const gaps = {
-      total: 250,
-      keywords: 180,
-      content: 45,
-      links: 25,
-      technical: 12,
-      byKd: { easy: 45, medium: 85, hard: 50 },
-      topKeywords: [{ id: 'k1', keyword: 'best seo platform', kd: 25, competitorRanking: '#1', volume: 8500 }],
-      topTopics: [{ id: 't1', label: 'E-A-T guides', competitorPages: 12 }]
+      total: 0, keywords: 0, content: 0, links: 0,
+      byKd: { easy: 0, medium: 0, hard: 0 },
+      estimatedTraffic: 0,
+      topKeywords: [] as any[],
+      topTopics: [] as any[],
+      quickWins: [] as any[],
+      priorityMatrix: { easyHighTraffic: 0, easyLowTraffic: 0, hardHighTraffic: 0, hardLowTraffic: 0 },
     }
 
+    // ── Wins ──
     const wins = {
-      total: 45,
-      avgDelta: 3.2,
-      trafficGained: 12500,
-      rate: 0.12,
-      byType: { position: 25, feature: 10, snippet: 5, image: 5 },
-      recent: [{ id: 'w1', keyword: 'seo audit', url: '/audit', delta: 5 }],
-      byTopic: [{ id: 'top1', label: 'Technical SEO', wins: 12, trafficGain: 4500, avgDelta: 4.5 }],
-      series: [5, 8, 12, 10, 15]
+      total: 0, trafficGained: 0, rate: 0, velocity: 0,
+      byType: { position: 0, feature: 0, snippet: 0, image: 0 },
+      recent: [] as any[],
+      byTopic: [] as any[],
+      defendThese: [] as any[],
+      series: [] as number[],
+      byCompetitor: [] as any[],
     }
 
+    // ── Losses ──
     const losses = {
-      total: 18,
-      totalPrev: 22,
-      avgDelta: -2.5,
-      trafficLost: 4500,
-      trafficLostPrev: 5500,
-      byType: { position: 10, feature: 3, snippet: 2, dropped: 3 },
-      recent: [{ id: 'l1', keyword: 'keyword tool', url: '/tools', delta: -4 }],
-      series: [3, 2, 5, 4, 4],
-      byCompetitor: [{ id: 'c1', domain: 'competitor.com', losses: 5, trafficLost: 1200, avgDelta: -3.2 }]
+      total: 0, totalPrev: 0, trafficLost: 0, trafficLostPrev: 0,
+      byType: { position: 0, feature: 0, snippet: 0, dropped: 0 },
+      recoverable: 0,
+      severity: { high: 0, medium: 0, low: 0 },
+      recent: [] as any[],
+      recommendations: [] as any[],
+      series: [] as number[],
+      byCompetitor: [] as any[],
     }
 
+    // ── Backlinks ──
     const backlinks = {
-      you: { refDomains: 1250 },
-      avgCompetitor: { refDomains: 950 },
-      leader: { refDomains: 2400 },
-      byCompetitor: byCompetitor,
-      gapTotal: 450,
-      gapList: [{ domain: 'forbes.com', dr: 92, competitors: ['comp1.com', 'comp2.com'] }],
-      youOnly: [{ domain: 'niche-blog.com', dr: 45 }],
-      youSeries: [1100, 1150, 1200, 1220, 1250]
+      you: { refDomains: youEntry?.refDomains || 0 },
+      avgCompetitor: { refDomains: 0 },
+      leader: { refDomains: sorted.length ? sorted[0].refDomains || 0 : 0 },
+      velocity: 0,
+      quality: { high: 0, medium: 0, low: 0 },
+      byCompetitor,
+      gapTotal: 0,
+      gapList: [] as any[],
+      highValueTargets: [] as any[],
+      youOnly: [] as any[],
+      youSeries: [] as number[],
     }
 
-    const bench = { winRate: 0.1 }
-    const score = 78
+    // ── Benchmarks ──
+    const bench = { winRate: 0 }
 
+    // ── Inline actions (not a separate tab) ──
     const actions = {
-      open: 8, done: 25, snoozed: 3,
-      critical: 2, high: 3, med: 2, low: 1,
-      byReason: [{ id: 'gap', label: 'Keyword Gaps', open: 3, done: 10 }]
+      critical: 0,
+      high: 0,
+      items: [] as any[],
     }
 
     return {
-      score, visibilityShare, visibilitySharePrev, visibilitySeries, rank, rankPrev, leaderVisibility,
-      byCompetitor, movers, gaps, wins, losses, backlinks, bench, actions
+      score, hasPrior,
+      visibilityShare, visibilitySharePrev, visibilitySeries,
+      rank, rankPrev, leaderVisibility,
+      byCompetitor, movers,
+      gaps, wins, losses, backlinks, bench, actions,
     }
-  }, [competitors, pages])
+  }, [competitors, pages, hasPrior])
 }

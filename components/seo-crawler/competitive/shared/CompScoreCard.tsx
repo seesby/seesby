@@ -20,7 +20,7 @@ export default function CompScoreCard({ domain, score, delta, threatLevel, isOwn
     }[threatLevel || 'Low'] || 'text-[#666] bg-[#111]';
 
     return (
-        <div className={`rounded-xl border p-3 ${isOwn ? 'border-[#F5364E]/30 bg-[#F5364E]/5' : 'border-[#222] bg-[#0d0d0f]'}`}>
+        <div className={`rounded-xl border p-3 ${isOwn ? 'border-[#F59E0B]/30 bg-[#F59E0B]/5' : 'border-[#222] bg-[#0d0d0f]'}`}>
             <div className="mb-2 flex items-center justify-between gap-2">
                 <span className="max-w-[140px] truncate text-[11px] font-bold text-white">
                     {isOwn ? 'Your Site' : domain}

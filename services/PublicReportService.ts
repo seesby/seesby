@@ -17,5 +17,5 @@ export async function createPublicReport(projectId: string, sessionId: string, e
     args: [token, projectId, sessionId, token, expiresAt, new Date().toISOString()]
   });
 
-  return `https://headlight.app/report/${token}`;
+  return `https://seesby.app/report/${token}`;
 }

@@ -71,7 +71,7 @@ export function ActionRow({ action, onApprove, onDismiss }: { action: RsAction; 
       </div>
       <div className="mt-2 flex items-center gap-1.5">
         <button onClick={onApprove}
-          className="rounded bg-[#F5364E] px-2 py-0.5 text-[10px] font-bold text-white hover:bg-[#df3248]">Approve</button>
+          className="rounded bg-[#F59E0B] px-2 py-0.5 text-[10px] font-bold text-white hover:bg-[#df3248]">Approve</button>
         <button onClick={onDismiss}
           className="rounded border border-[#222] px-2 py-0.5 text-[10px] text-[#888] hover:text-white">Dismiss</button>
         {action.cta && (

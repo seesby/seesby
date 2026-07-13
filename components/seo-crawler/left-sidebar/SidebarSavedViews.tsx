@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Star, Plus, X } from 'lucide-react';
-import type { SidebarSavedViewsSection, SavedView } from '@headlight/modes';
+import type { SidebarSavedViewsSection, SavedView } from '@seesby/modes';
 import { SavedViewsStore } from '../../../services/SavedViewsStore';
 import { useSeoCrawler } from '../../../contexts/SeoCrawlerContext';
 
@@ -52,7 +52,7 @@ export function SidebarSavedViews({ section }: { section: SidebarSavedViewsSecti
 							key={sv.id}
 							onClick={() => onApply(sv)}
 							className={`group w-full h-[26px] flex items-center gap-1 px-3 rounded-sm text-[11px] font-medium transition-colors
-								${active ? 'bg-[#F5364E]/10 text-white' : 'text-[#A0A0A5] hover:bg-white/[0.03] hover:text-white'}`}
+								${active ? 'bg-[#F59E0B]/10 text-white' : 'text-[#A0A0A5] hover:bg-white/[0.03] hover:text-white'}`}
 						>
 							<span className="flex-1 truncate text-left">{sv.name}</span>
 							{sv.count !== undefined && <span className="text-[11px] font-mono text-[#66666E]">{sv.count}</span>}

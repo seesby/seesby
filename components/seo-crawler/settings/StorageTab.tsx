@@ -38,7 +38,7 @@ export default function StorageTab({ config, setConfig }: TabProps) {
           </div>
           <div className="w-full h-2 bg-[#222] rounded-full overflow-hidden">
             <div 
-              className={`h-full transition-all duration-500 ${usagePercent > 80 ? 'bg-red-500' : usagePercent > 50 ? 'bg-yellow-500' : 'bg-[#F5364E]'}`}
+              className={`h-full transition-all duration-500 ${usagePercent > 80 ? 'bg-red-500' : usagePercent > 50 ? 'bg-yellow-500' : 'bg-[#F59E0B]'}`}
               style={{ width: `${usagePercent}%` }}
             />
           </div>

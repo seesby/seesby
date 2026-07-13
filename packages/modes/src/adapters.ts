@@ -1,5 +1,5 @@
-import type { CmsKey, Industry, ProjectFingerprint, SourceTier } from '@headlight/types';
-import { CMS_LABELS, INDUSTRY_LABELS, SOURCE_TIER_LABEL } from '@headlight/types';
+import type { CmsKey, Industry, ProjectFingerprint, SourceTier } from '@seesby/types';
+import { CMS_LABELS, INDUSTRY_LABELS, SOURCE_TIER_LABEL } from '@seesby/types';
 
 export interface UiFingerprintVocabulary {
   industry: Industry;

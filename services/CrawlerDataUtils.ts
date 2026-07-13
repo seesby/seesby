@@ -485,7 +485,7 @@ export const exportPagesAsCSV = (pages: any[]): void => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `headlight_scan_${new Date().toISOString().split('T')[0]}.csv`);
+    link.setAttribute("download", `seesby_scan_${new Date().toISOString().split('T')[0]}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -503,7 +503,7 @@ export const exportRawSessionData = async (sessionId: string): Promise<{ success
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.setAttribute("href", url);
-        link.setAttribute("download", `headlight_raw_dump_${new Date().toISOString().split('T')[0]}.json`);
+        link.setAttribute("download", `seesby_raw_dump_${new Date().toISOString().split('T')[0]}.json`);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

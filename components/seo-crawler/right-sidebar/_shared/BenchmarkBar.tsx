@@ -17,7 +17,7 @@ export function BenchmarkBar({
   const sitePct = (site / max) * 100
   const benchPct = (benchmark / max) * 100
   const ahead = higherIsBetter ? site >= benchmark : site <= benchmark
-  const tone = ahead ? '#22c55e' : '#F5364E'
+  const tone = ahead ? '#22c55e' : '#F59E0B'
   const siteStyle    = { width: `${sitePct}%`,  background: tone }
   const markerStyle  = { left:  `${benchPct}%` }
   return (

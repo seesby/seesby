@@ -1,6 +1,6 @@
 /**
- * Headlight MCP Server
- * Exposes Headlight crawl data as tools for AI agents.
+ * Seesby MCP Server
+ * Exposes Seesby crawl data as tools for AI agents.
  */
 import { createClient } from '@libsql/client/web';
 
@@ -213,6 +213,6 @@ export default {
       return new Response(JSON.stringify({ error: 'Tool not found' }), { status: 404 });
     }
 
-    return new Response('Headlight MCP Server', { status: 200 });
+    return new Response('Seesby MCP Server', { status: 200 });
   }
 };

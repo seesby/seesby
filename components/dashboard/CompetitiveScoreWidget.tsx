@@ -70,7 +70,7 @@ export default function CompetitiveScoreWidget({ projectId }: Props) {
     return (
       <div className="rounded-2xl border border-white/5 bg-[#0F0F0F] p-5">
         <div className="flex items-center gap-2 mb-3">
-          <Target size={16} className="text-[#F5364E]" />
+          <Target size={16} className="text-[#F59E0B]" />
           <span className="text-[13px] font-bold text-white">Competitive Position</span>
         </div>
         <p className="text-[12px] text-[#666]">Add competitors in the crawler to see your competitive score.</p>
@@ -85,7 +85,7 @@ export default function CompetitiveScoreWidget({ projectId }: Props) {
     <div className="rounded-2xl border border-white/5 bg-[#0F0F0F] p-5">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <Target size={16} className="text-[#F5364E]" />
+          <Target size={16} className="text-[#F59E0B]" />
           <span className="text-[13px] font-bold text-white">Competitive Position</span>
         </div>
         <div className={`flex items-center gap-1 ${trendColor}`}>

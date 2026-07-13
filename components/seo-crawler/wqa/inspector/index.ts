@@ -1,4 +1,3 @@
-export { default as WqaInspectorShell } from './WqaInspectorShell';
 export { default as SummaryTab }  from './tabs/SummaryTab';
 export { default as QualityTab }  from './tabs/QualityTab';
 export { default as SearchTab }   from './tabs/SearchTab';

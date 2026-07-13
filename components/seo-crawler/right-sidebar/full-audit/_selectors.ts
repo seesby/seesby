@@ -1,7 +1,8 @@
 // components/seo-crawler/right-sidebar/full-audit/_selectors.ts
-import type { Page } from '@headlight/types'
-import { getAllActions } from '@headlight/actions'
+import type { Page } from '@seesby/types'
+import { getAllActions } from '@seesby/actions'
 import { getPageIssues } from '../../IssueTaxonomy'
+import { num } from '../_shared/format'
 
 export type StatusMix = { ok: number; redirect: number; clientError: number; serverError: number; total: number }
 export type DepthBucket = { depth: number; count: number }
@@ -22,6 +23,34 @@ export type CrawlHealth = {
   blocked: { robots: number; metaNoindex: number; auth: number }
   sitemap: { inSitemap: number; missingFromSitemap: number; orphanInSitemap: number }
   render: { staticHtml: number; ssr: number; csr: number }
+}
+
+export type SearchSnapshot = {
+  clicks: number
+  impressions: number
+  ctr: number
+  avgPosition: number
+  clicksDelta?: number
+  impressionsDelta?: number
+  ctrDeltaPt?: number
+  positionDelta?: number
+}
+
+export type TrafficSummary = {
+  sessions: number
+  users: number
+  bounceRate: number
+  engagedRate: number
+  channels: { organic: number; direct: number; referral: number; social: number; paid: number; email: number; other: number }
+}
+
+export type ConnectorInfo = {
+  id: string
+  label: string
+  state: 'connected' | 'disconnected' | 'error'
+  lastSyncAt?: string | null
+  coveragePct?: number
+  coverageLabel?: string
 }
 
 const SEV_FROM_CODE: Record<string, IssueRow['severity']> = { S1: 'critical', S2: 'high', S3: 'medium', S4: 'low' }
@@ -74,7 +103,7 @@ export function selectIssues(pages: Page[]): { rows: IssueRow[]; severity: Sever
   const counts = new Map<string, number>()
   for (const p of pages) {
     const list = getPageIssues(p) ?? []
-    for (const code of list) counts.set(code, (counts.get(code) ?? 0) + 1)
+    for (const issue of list) counts.set(issue.id, (counts.get(issue.id) ?? 0) + 1)
   }
   const cat: CategorySplit = { content: 0, technical: 0, schema: 0, links: 0, a11y: 0, security: 0, performance: 0, ux: 0 }
   const sev: SeveritySplit = { critical: 0, high: 0, medium: 0, low: 0 }
@@ -93,23 +122,22 @@ export function selectIssues(pages: Page[]): { rows: IssueRow[]; severity: Sever
   return { rows, severity: sev, category: cat, openTotal }
 }
 
+import { getQualityScore, getHealthScore, getAuthorityScore } from '@/components/seo-crawler/views/_shared/get-metric-value'
+
 export function selectPillars(pages: Page[]): Pillars {
   // pillar scores are precomputed by services/PostCrawlEnrichment.ts and stored on site summary
-  const sum = (key: string, altKey?: string): number => {
-    let n = 0, c = 0
-    for (const p of pages) {
-      const v = Number((p as any)[key] ?? (p as any)[altKey ?? '']);
-      if (Number.isFinite(v)) { n += v; c++ }
-    }
-    return c ? Math.round(n / c) : 0
+  const avg = (getter: (p: Record<string, unknown>) => number): number => {
+    if (!pages.length) return 0
+    const sum = pages.reduce((s, p) => s + getter(p as Record<string, unknown>), 0)
+    return Math.round(sum / pages.length)
   }
   return {
-    content: sum('contentQualityScore', 'contentScore'),
-    technical: sum('techHealthScore', 'technicalScore'),
-    schema: sum('schemaScore'),
-    links: sum('authorityScore', 'linksScore'),
-    a11y: sum('a11yScore'),
-    security: sum('securityScore'),
+    content: avg(getQualityScore),
+    technical: avg(getHealthScore),
+    schema: avg(p => Number((p as any)['p.content.schemaScore'] ?? 0)),
+    links: avg(getAuthorityScore),
+    a11y: avg(p => Number((p as any)['p.tech.a11yScore'] ?? 0)),
+    security: avg(p => Number((p as any)['p.tech.securityScore'] ?? 0)),
   }
 }
 
@@ -121,7 +149,7 @@ export function selectOverallScore(p: Pillars): number {
 export function selectScoreDistribution(pages: Page[]): { bucket: string; count: number }[] {
   const buckets = [0, 0, 0, 0, 0]
   for (const p of pages) {
-    const s = Number((p as any).pageScore ?? 0)
+    const s = Number((p as any)['p.score.contentQuality'] ?? (p as any).qualityScore ?? (p as any).pageScore ?? 0)
     if (s < 50) buckets[0]++
     else if (s < 70) buckets[1]++
     else if (s < 80) buckets[2]++
@@ -169,6 +197,74 @@ export function selectCrawlHealth(site: any): CrawlHealth {
       csr: Number(s.render?.csr ?? 0),
     },
   }
+}
+
+export function selectSearchSnapshot(gscQueries: any[], sessions?: any[]): SearchSnapshot {
+  const gsc = gscQueries || []
+  const clicks = gsc.reduce((a: number, q: any) => a + num(q.clicks), 0)
+  const impressions = gsc.reduce((a: number, q: any) => a + num(q.impressions), 0)
+  const ctr = gsc.length ? gsc.reduce((a: number, q: any) => a + num(q.ctr), 0) / gsc.length : 0
+  const avgPosition = gsc.length ? gsc.reduce((a: number, q: any) => a + num(q.position), 0) / gsc.length : 0
+
+  // If we have prior session data, compute deltas
+  const prevSession = sessions?.[sessions.length - 2]
+  const prevGsc = prevSession?.gscQueries || []
+  const prevClicks = prevGsc.reduce((a: number, q: any) => a + num(q.clicks), 0)
+  const prevImpr = prevGsc.reduce((a: number, q: any) => a + num(q.impressions), 0)
+  const prevCtr = prevGsc.length ? prevGsc.reduce((a: number, q: any) => a + num(q.ctr), 0) / prevGsc.length : 0
+  const prevPos = prevGsc.length ? prevGsc.reduce((a: number, q: any) => a + num(q.position), 0) / prevGsc.length : 0
+
+  return {
+    clicks,
+    impressions,
+    ctr,
+    avgPosition,
+    clicksDelta: prevClicks ? clicks - prevClicks : undefined,
+    impressionsDelta: prevImpr ? impressions - prevImpr : undefined,
+    ctrDeltaPt: prevCtr ? Math.round((ctr - prevCtr) * 1000) / 10 : undefined,
+    positionDelta: prevPos ? Math.round((avgPosition - prevPos) * 10) / 10 : undefined,
+  }
+}
+
+export function selectTrafficSummary(ga4Traffic: any[]): TrafficSummary {
+  const ga4 = ga4Traffic || []
+  return {
+    sessions: ga4.reduce((a: number, r: any) => a + num(r.sessions), 0),
+    users: ga4.reduce((a: number, r: any) => a + num(r.users), 0),
+    bounceRate: 0,
+    engagedRate: 0,
+    channels: {
+      organic: ga4.filter((r: any) => r.channel === 'Organic Search').reduce((a: number, r: any) => a + num(r.sessions), 0),
+      direct: ga4.filter((r: any) => r.channel === 'Direct').reduce((a: number, r: any) => a + num(r.sessions), 0),
+      referral: ga4.filter((r: any) => r.channel === 'Referral').reduce((a: number, r: any) => a + num(r.sessions), 0),
+      social: ga4.filter((r: any) => r.channel === 'Organic Social').reduce((a: number, r: any) => a + num(r.sessions), 0),
+      paid: ga4.filter((r: any) => r.channel === 'Paid Search').reduce((a: number, r: any) => a + num(r.sessions), 0),
+      email: ga4.filter((r: any) => r.channel === 'Email').reduce((a: number, r: any) => a + num(r.sessions), 0),
+      other: ga4.filter((r: any) => !['Organic Search', 'Direct', 'Referral', 'Organic Social', 'Paid Search', 'Email'].includes(r.channel)).reduce((a: number, r: any) => a + num(r.sessions), 0),
+    },
+  }
+}
+
+export function selectConnectors(site: any): ConnectorInfo[] {
+  const conns: Record<string, any> = site?.connectors ?? {}
+  const ORDER = [
+    { id: 'gsc', label: 'Google Search Console' },
+    { id: 'ga4', label: 'Google Analytics 4' },
+    { id: 'bing', label: 'Bing Webmaster' },
+    { id: 'gbp', label: 'Google Business Profile' },
+    { id: 'backlinks', label: 'Backlinks (Ahrefs)' },
+    { id: 'keywords', label: 'Keywords' },
+    { id: 'ai', label: 'AI router' },
+    { id: 'mcp', label: 'MCP' },
+  ]
+  return ORDER.map((o) => ({
+    id: o.id,
+    label: o.label,
+    state: (conns[o.id]?.state ?? conns[o.id]?.connected ? 'connected' : 'disconnected') as ConnectorInfo['state'],
+    lastSyncAt: conns[o.id]?.lastSyncAt ?? conns[o.id]?.lastSync ?? null,
+    coveragePct: conns[o.id]?.coveragePct,
+    coverageLabel: conns[o.id]?.coverageLabel,
+  }))
 }
 
 function mapCategory(code: string): keyof CategorySplit {

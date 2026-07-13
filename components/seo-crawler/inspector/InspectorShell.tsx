@@ -1,197 +1,193 @@
-import React, { useEffect, useMemo } from 'react';
-import { ExternalLink, Maximize2, MessageCircle, Minimize2, UserPlus, ListTodo } from 'lucide-react';
+import React, { Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  ExternalLink, Maximize2, Minimize2,
+} from 'lucide-react';
 import { useSeoCrawler, type InspectorTab } from '../../../contexts/SeoCrawlerContext';
-import GeneralTab from './GeneralTab';
-import SeoTab from './SeoTab';
-import ContentTab from './ContentTab';
-import LinksTab from './LinksTab';
-import SchemaTab from './SchemaTab';
-import PerformanceTab from './PerformanceTab';
-import ImagesTab from './ImagesTab';
-import SocialTab from './SocialTab';
-import GscTab from './GscTab';
-import Ga4Tab from './Ga4Tab';
-import AiTab from './AiTab';
-import JSDiffTab from './JSDiffTab';
-import VisualTab from './VisualTab';
-
-const TABS: Array<{ id: InspectorTab; label: string; count?: (page: any) => number | undefined }> = [
-    { id: 'general', label: 'General' },
-    { id: 'seo', label: 'SEO' },
-    { id: 'content', label: 'Content' },
-    { id: 'links', label: 'Links', count: (page) => Number(page?.inlinks || 0) + Number(page?.outlinks || 0) },
-    { id: 'schema', label: 'Schema', count: (page) => Array.isArray(page?.schemaTypes) ? page.schemaTypes.length : 0 },
-    { id: 'performance', label: 'Performance' },
-    { id: 'images', label: 'Images', count: (page) => Number(page?.totalImages || 0) },
-    { id: 'social', label: 'Social' },
-    { id: 'gsc', label: 'GSC', count: (page) => page?.gscClicks !== undefined && page?.gscClicks !== null ? Number(page.gscClicks) : undefined },
-    { id: 'ga4', label: 'GA4', count: (page) => page?.ga4Sessions !== undefined && page?.ga4Sessions !== null ? Number(page.ga4Sessions) : undefined },
-    { id: 'ai', label: 'AI' },
-    { id: 'jsdiff', label: 'JS Diff' },
-    { id: 'visual', label: 'Visual' }
-];
-
-const TAB_COMPONENTS: Record<InspectorTab, React.FC<{ page: any }>> = {
-    general: GeneralTab,
-    seo: SeoTab,
-    content: ContentTab,
-    links: LinksTab,
-    schema: SchemaTab,
-    performance: PerformanceTab,
-    images: ImagesTab,
-    social: SocialTab,
-    gsc: GscTab,
-    ga4: Ga4Tab,
-    ai: AiTab,
-    jsdiff: JSDiffTab,
-    visual: VisualTab,
-    details: GeneralTab, // Placeholder
-    headers: SeoTab,     // Placeholder
-    serp: SeoTab,        // Placeholder
-    source: ContentTab   // Placeholder
-};
+import { getInspectorTabsFor, getTabComponent } from './InspectorRegistry';
+import { useHasTrend } from '../right-sidebar/_hooks/useSessionsCount';
+import { SURFACE, TEXT, STATUS, R, S } from '../views/_shared/tokens';
 
 export default function InspectorShell() {
-    const {
-        selectedPage, setSelectedPage,
-        detailsHeight, setIsDraggingDetails,
-        activeTab, setActiveTab,
-        inspectorCollapsed, setInspectorCollapsed,
-        setCollabOverlayTarget, setRsTab, setShowAuditSidebar, mode
-    } = useSeoCrawler() as any;
+  const {
+    mode, selectedPage, setSelectedPage,
+    detailsHeight, setIsDraggingDetails,
+    activeTab, setActiveTab,
+    inspectorCollapsed, setInspectorCollapsed,
+    foundationMetricsMap, foundationActionsMap, foundationHydrated, crawlerFoundationEnabled,
+  } = useSeoCrawler();
 
-    const ActiveTabComponent = useMemo(() => TAB_COMPONENTS[activeTab] || GeneralTab, [activeTab]);
+  const hasTrend = useHasTrend();
+  const tabs = useMemo(() => getInspectorTabsFor(mode), [mode]);
+  const tabRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
 
-    useEffect(() => {
-        if (!selectedPage) return;
-        const handleKeyDown = (event: KeyboardEvent) => {
-            const tabIds = TABS.map((tab) => tab.id);
-            const currentIndex = tabIds.indexOf(activeTab);
+  const useFoundation = mode === 'wqa' && crawlerFoundationEnabled && foundationHydrated;
+  const hydratedPage = useMemo(() => {
+    if (!selectedPage || !useFoundation) return selectedPage;
+    return {
+      ...selectedPage,
+      foundationMetrics: foundationMetricsMap.get(selectedPage.url) || {},
+      foundationActions: foundationActionsMap.get(selectedPage.url) || [],
+    };
+  }, [selectedPage, foundationMetricsMap, foundationActionsMap, useFoundation]);
 
-            if ((event.ctrlKey || event.metaKey) && event.key === '[' && currentIndex > 0) {
-                event.preventDefault();
-                setActiveTab(tabIds[currentIndex - 1]);
-            }
-            if ((event.ctrlKey || event.metaKey) && event.key === ']' && currentIndex < tabIds.length - 1) {
-                event.preventDefault();
-                setActiveTab(tabIds[currentIndex + 1]);
-            }
-            if (event.key === 'Escape') {
-                setSelectedPage(null);
-            }
-        };
-
-        window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [selectedPage, activeTab, setActiveTab, setSelectedPage]);
-
-    if (!selectedPage) return null;
-
-    if (inspectorCollapsed) {
-        return (
-            <div className="h-[44px] border-t border-[#222] bg-[#111] flex items-center justify-between px-3 shrink-0">
-                <div className="text-[11px] font-mono text-[#888] truncate">
-                    PAGE DETAIL: <span className="text-blue-400">{selectedPage.url}</span>
-                </div>
-                <button
-                    onClick={() => setInspectorCollapsed(false)}
-                    className="text-[#888] hover:text-white p-1 rounded hover:bg-[#222] transition-colors"
-                    title="Expand inspector"
-                >
-                    <Maximize2 size={13} />
-                </button>
-            </div>
-        );
+  // Reset to first tab when mode changes
+  useEffect(() => {
+    if (tabs.length > 0 && !tabs.find(t => t.id === activeTab)) {
+      setActiveTab(tabs[0].id);
     }
+  }, [mode, tabs, activeTab, setActiveTab]);
 
+  // Animate indicator to active tab
+  useEffect(() => {
+    const el = tabRefs.current.get(activeTab);
+    if (el) {
+      setIndicatorStyle({ left: el.offsetLeft, width: el.offsetWidth });
+    }
+  }, [activeTab, tabs]);
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    if (!selectedPage) return;
+    const handler = (e: KeyboardEvent) => {
+      const ids = tabs.map(t => t.id);
+      const idx = ids.indexOf(activeTab);
+      if ((e.ctrlKey || e.metaKey) && e.key === '[' && idx > 0) {
+        e.preventDefault();
+        setActiveTab(ids[idx - 1]);
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key === ']' && idx < tabs.length - 1) {
+        e.preventDefault();
+        setActiveTab(ids[idx + 1]);
+      }
+      if (e.key === 'Escape') setSelectedPage(null);
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [selectedPage, activeTab, tabs, setActiveTab, setSelectedPage]);
+
+  if (!selectedPage) return null;
+
+  // Collapsed state
+  if (inspectorCollapsed) {
     return (
-        <div style={{ height: detailsHeight }} className="border-t border-[#222] bg-[#111] flex flex-col shrink-0 relative">
-            <div
-                onMouseDown={() => setIsDraggingDetails(true)}
-                className="absolute top-0 left-0 right-0 h-1.5 -mt-0.5 cursor-ns-resize z-50 transition-colors hover:bg-[#F5364E]"
-            />
-
-            <div className="h-[34px] border-b border-[#222] flex items-center px-3 justify-between bg-[#0a0a0a] shrink-0">
-                <div className="flex h-full overflow-x-auto custom-scrollbar-hidden flex-1 mr-4">
-                    {TABS.map((tab) => {
-                        const count = tab.count ? tab.count(selectedPage) : undefined;
-                        return (
-                            <button
-                                key={tab.id}
-                                onClick={() => setActiveTab(tab.id)}
-                                className={`px-3 pt-1 pb-1.5 text-[11px] font-medium border-r border-[#222] flex items-center gap-1 whitespace-nowrap shrink-0 transition-colors ${
-                                    activeTab === tab.id
-                                        ? 'bg-[#111] text-white border-t-2 border-t-[#F5364E]'
-                                        : 'bg-transparent text-[#888] hover:bg-[#111] hover:text-[#ccc] border-t-2 border-t-transparent'
-                                }`}
-                            >
-                                {tab.label}
-                                {count !== undefined && (
-                                    <span className="text-[#555] font-mono text-[10px]">({count})</span>
-                                )}
-                            </button>
-                        );
-                    })}
-                </div>
-
-                <div className="flex items-center gap-1 shrink-0">
-                    <button
-                        onClick={() => {
-                            setCollabOverlayTarget({
-                                type: 'page',
-                                id: selectedPage.url,
-                                title: selectedPage.title || selectedPage.url
-                            });
-                            const tabId = mode === 'wqa' ? 'wqa_actions' : 'full_actions';
-                            setRsTab(mode, tabId);
-                            setShowAuditSidebar(true);
-                        }}
-                        className="text-[#666] hover:text-white p-1 hover:bg-[#222] rounded transition-colors"
-                        title="Assign / Create Task"
-                    >
-                        <ListTodo size={13} />
-                    </button>
-                    <button
-                        onClick={() => {
-                            setCollabOverlayTarget({
-                                type: 'page',
-                                id: selectedPage.url,
-                                title: selectedPage.title || selectedPage.url
-                            });
-                            const tabId = mode === 'wqa' ? 'wqa_actions' : 'full_actions';
-                            setRsTab(mode, tabId);
-                            setShowAuditSidebar(true);
-                        }}
-                        className="text-[#666] hover:text-white p-1 hover:bg-[#222] rounded transition-colors"
-                        title="Comment"
-                    >
-                        <MessageCircle size={13} />
-                    </button>
-                    <button
-                        onClick={() => window.open(selectedPage.url, '_blank', 'noopener,noreferrer')}
-                        className="text-[#666] hover:text-white p-1 hover:bg-[#222] rounded transition-colors"
-                        title="Open in new tab"
-                    >
-                        <ExternalLink size={13} />
-                    </button>
-                    <button
-                        onClick={() => setInspectorCollapsed(true)}
-                        className="text-[#666] hover:text-white p-1 hover:bg-[#222] rounded transition-colors"
-                        title="Collapse"
-                    >
-                        <Minimize2 size={13} />
-                    </button>
-                </div>
-            </div>
-
-            <div className="h-[28px] border-b border-[#1a1a1a] flex items-center px-3 bg-[#0d0d0d] shrink-0">
-                <span className="text-[11px] font-mono text-[#F5364E] font-medium">PAGE DETAIL:</span>
-                <span className="text-[11px] font-mono text-blue-400 ml-2 truncate">{selectedPage.url}</span>
-            </div>
-
-            <div className="flex-1 overflow-auto bg-[#111] p-5 text-[13px] text-[#ccc] custom-scrollbar">
-                <ActiveTabComponent page={selectedPage} />
-            </div>
+      <div
+        className="flex items-center justify-between shrink-0"
+        style={{ height: 40, borderTop: `1px solid ${SURFACE.br1}`, background: SURFACE.bg1, padding: '0 16px' }}
+      >
+        <div style={{ fontSize: 11, fontFamily: 'monospace', color: TEXT.muted }} className="truncate">
+          <span style={{ color: STATUS.bad, fontWeight: 600 }}>{selectedPage.url}</span>
         </div>
+        <button
+          onClick={() => setInspectorCollapsed(false)}
+          style={{ color: TEXT.muted, padding: 4, borderRadius: R.md, transition: 'all 0.15s' }}
+          title="Expand"
+        >
+          <Maximize2 size={12} />
+        </button>
+      </div>
     );
+  }
+
+  const ActiveTabComponent = getTabComponent(mode, activeTab);
+
+  return (
+    <div
+      style={{ height: detailsHeight, borderTop: `1px solid ${SURFACE.br1}`, background: SURFACE.bg1 }}
+      className="flex flex-col shrink-0 relative"
+    >
+      {/* Resize handle */}
+      <div
+        onMouseDown={() => setIsDraggingDetails(true)}
+        className="absolute top-0 left-0 right-0 h-1 -mt-0.5 cursor-ns-resize z-50 group"
+      >
+        <div
+          className="mx-auto w-10 h-[3px] rounded-full"
+          style={{ background: SURFACE.br3, transition: 'background 0.15s' }}
+        />
+      </div>
+
+      {/* Tab bar */}
+      <div
+        className="flex items-center justify-between shrink-0"
+        style={{ height: 32, borderBottom: `1px solid ${SURFACE.br1}`, background: SURFACE.bg0, padding: '0 12px' }}
+      >
+        {/* Tabs */}
+        <div className="relative flex items-center overflow-x-auto custom-scrollbar-hidden flex-1 mr-3">
+          {/* Animated indicator */}
+          <div
+            className="absolute bottom-0 h-[2px] rounded-full"
+            style={{
+              left: indicatorStyle.left,
+              width: indicatorStyle.width,
+              background: SURFACE.br3,
+              transition: 'all 0.2s ease-out',
+            }}
+          />
+
+          {tabs.map(({ id, label }) => {
+            const active = activeTab === id;
+            return (
+              <button
+                key={id}
+                ref={(el) => { if (el) tabRefs.current.set(id, el); }}
+                onClick={() => setActiveTab(id)}
+                style={{
+                  position: 'relative',
+                  padding: '8px 12px',
+                  fontSize: 11,
+                  whiteSpace: 'nowrap',
+                  transition: 'all 0.15s',
+                  color: active ? TEXT.primary : TEXT.muted,
+                  fontWeight: active ? 500 : 400,
+                }}
+              >
+                {label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Actions */}
+        <div className="flex items-center shrink-0" style={{ gap: 2 }}>
+          <button
+            onClick={() => window.open(selectedPage.url, '_blank', 'noopener,noreferrer')}
+            style={{ color: SURFACE.br3, padding: 4, borderRadius: R.sm, transition: 'all 0.15s' }}
+            title="Open"
+          >
+            <ExternalLink size={11} />
+          </button>
+          <button
+            onClick={() => setInspectorCollapsed(true)}
+            style={{ color: SURFACE.br3, padding: 4, borderRadius: R.sm, transition: 'all 0.15s' }}
+            title="Collapse"
+          >
+            <Minimize2 size={11} />
+          </button>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div
+        className="flex-1 overflow-auto custom-scrollbar"
+        style={{ background: SURFACE.bg0, padding: 16 }}
+      >
+        <Suspense fallback={
+          <div className="flex items-center" style={{ gap: 8, color: TEXT.muted, fontSize: 11, padding: 16 }}>
+            <div
+              className="w-3 h-3 rounded-full animate-spin"
+              style={{ border: `2px solid ${SURFACE.br3}`, borderTopColor: SURFACE.br3 }}
+            />
+            Loading...
+          </div>
+        }>
+          {ActiveTabComponent ? (
+            <ActiveTabComponent page={hydratedPage} hasTrend={hasTrend} />
+          ) : (
+            <div style={{ color: TEXT.muted, fontSize: 11, padding: 16 }}>Tab not available</div>
+          )}
+        </Suspense>
+      </div>
+    </div>
+  );
 }

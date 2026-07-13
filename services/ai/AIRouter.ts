@@ -7,11 +7,11 @@ import { getAITelemetry } from './AITelemetry';
 // ─── Provider priority per task type ────────────────
 // Order matters: first available + within quota wins
 const TASK_PROVIDER_CHAIN: Record<AITaskType, AIProvider[]> = {
-  classify:  ['local', 'cloudflare', 'github', 'gemini', 'anthropic', 'openai', 'groq', 'huggingface', 'server'],
-  extract:   ['local', 'cloudflare', 'github', 'gemini', 'anthropic', 'openai', 'groq', 'huggingface', 'server'],
-  summarize: ['cloudflare', 'github', 'gemini', 'anthropic', 'openai', 'groq', 'huggingface', 'local', 'server'],
-  generate:  ['cloudflare', 'github', 'gemini', 'anthropic', 'openai', 'groq', 'huggingface', 'local', 'server'],
-  score:     ['local', 'cloudflare', 'github', 'gemini', 'anthropic', 'openai', 'groq', 'huggingface', 'server'],
+  classify:  ['local', 'cloudflare', 'github', 'gemini', 'anthropic', 'openai', 'groq', 'together', 'openrouter', 'deepseek', 'mistral', 'cohere', 'ai21', 'fireworks', 'replicate', 'nvidia', 'cerebras', 'ibm', 'tencent', 'zhipu', 'huggingface', 'server'],
+  extract:   ['local', 'cloudflare', 'github', 'gemini', 'anthropic', 'openai', 'groq', 'together', 'openrouter', 'deepseek', 'mistral', 'cohere', 'ai21', 'fireworks', 'replicate', 'nvidia', 'cerebras', 'ibm', 'tencent', 'zhipu', 'huggingface', 'server'],
+  summarize: ['cloudflare', 'github', 'gemini', 'anthropic', 'openai', 'groq', 'together', 'openrouter', 'deepseek', 'mistral', 'cohere', 'ai21', 'fireworks', 'replicate', 'nvidia', 'cerebras', 'ibm', 'tencent', 'zhipu', 'huggingface', 'local', 'server'],
+  generate:  ['cloudflare', 'github', 'gemini', 'anthropic', 'openai', 'groq', 'together', 'openrouter', 'deepseek', 'mistral', 'cohere', 'ai21', 'fireworks', 'replicate', 'nvidia', 'cerebras', 'ibm', 'tencent', 'zhipu', 'huggingface', 'local', 'server'],
+  score:     ['local', 'cloudflare', 'github', 'gemini', 'anthropic', 'openai', 'groq', 'together', 'openrouter', 'deepseek', 'mistral', 'cohere', 'ai21', 'fireworks', 'replicate', 'nvidia', 'cerebras', 'ibm', 'tencent', 'zhipu', 'huggingface', 'server'],
   embed:     ['cloudflare', 'github', 'gemini', 'openai', 'huggingface', 'local', 'server'],
 };
 
@@ -25,10 +25,24 @@ const DEFAULT_QUOTAS: Record<AIProvider, { rpm: number; rpd: number; tpd: number
   huggingface: { rpm: 10,   rpd: 1000,   tpd: 100000 },
   openai:      { rpm: 60,   rpd: 99999,  tpd: 999999 },
   anthropic:   { rpm: 60,   rpd: 99999,  tpd: 999999 },
+  together:    { rpm: 60,   rpd: 1000,   tpd: 500000 },
+  openrouter:  { rpm: 20,   rpd: 200,    tpd: 100000 },
+  deepseek:    { rpm: 60,   rpd: 1000,   tpd: 500000 },
+  mistral:     { rpm: 60,   rpd: 2000,   tpd: 500000 },
+  cohere:      { rpm: 10,   rpd: 1000,   tpd: 100000 },
+  ai21:        { rpm: 10,   rpd: 65,     tpd: 100000 },
+  fireworks:   { rpm: 60,   rpd: 1000,   tpd: 500000 },
+  replicate:   { rpm: 10,   rpd: 500,    tpd: 100000 },
+  nvidia:      { rpm: 20,   rpd: 1000,   tpd: 500000 },
+  cerebras:    { rpm: 30,   rpd: 1000,   tpd: 100000 },
+  ibm:         { rpm: 20,   rpd: 500,    tpd: 100000 },
+  tencent:     { rpm: 20,   rpd: 1000,   tpd: 100000 },
+  zhipu:       { rpm: 20,   rpd: 1000,   tpd: 100000 },
+  server:      { rpm: 9999, rpd: 999999, tpd: 999999 },
 };
 
-const CACHE_KEY_PREFIX = 'headlight:ai-cache:';
-const QUOTA_KEY = 'headlight:ai-quotas';
+const CACHE_KEY_PREFIX = 'seesby:ai-cache:';
+const QUOTA_KEY = 'seesby:ai-quotas';
 
 export class AIRouter {
   private adapters: Map<AIProvider, AIProviderAdapter> = new Map();

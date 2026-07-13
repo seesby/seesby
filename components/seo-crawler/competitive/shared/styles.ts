@@ -1,7 +1,7 @@
 // Card styles
 export const CARD = 'rounded-xl border border-[#1a1a1e] bg-[#0d0d0f] p-4';
 export const CARD_NESTED = 'rounded-lg border border-[#191919] bg-[#0a0a0c] p-3';
-export const CARD_HIGHLIGHT = 'rounded-xl border border-[#F5364E]/20 bg-[#F5364E]/5 p-4';
+export const CARD_HIGHLIGHT = 'rounded-xl border border-[#F59E0B]/20 bg-[#F59E0B]/5 p-4';
 
 // Section headers
 export const SECTION_HEADER = 'text-[11px] font-semibold uppercase tracking-wider text-[#555]';
@@ -28,12 +28,12 @@ export const LOSE_COLOR = DELTA_NEGATIVE;
 export const NEUTRAL_COLOR = 'text-[#888]';
 
 // Sub-tab buttons
-export const SUBTAB_ACTIVE = 'bg-[#F5364E]/10 text-[#F5364E]';
+export const SUBTAB_ACTIVE = 'bg-[#F59E0B]/10 text-[#F59E0B]';
 export const SUBTAB_INACTIVE = 'text-[#555] hover:bg-[#111] hover:text-[#aaa]';
 export const SUBTAB_BASE = 'flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-all';
 
 // "YOU" badge
-export const YOU_BADGE = 'rounded px-1 py-0.5 text-[8px] font-black uppercase bg-[#F5364E]/15 text-[#F5364E]';
+export const YOU_BADGE = 'rounded px-1 py-0.5 text-[8px] font-black uppercase bg-[#F59E0B]/15 text-[#F59E0B]';
 
 // Threat colors
 export const THREAT_CRITICAL = 'bg-red-500/10 text-red-400';
@@ -62,7 +62,7 @@ export function heatmapCell(score: number): string {
 }
 
 // Brand color
-export const BRAND_RED = '#F5364E';
+export const BRAND_RED = '#F59E0B';
 export const COMP_COLORS = ['#6366f1', '#06b6d4', '#f59e0b', '#10b981', '#ec4899'];
 export function getCompColor(index: number): string {
   return COMP_COLORS[index % COMP_COLORS.length];

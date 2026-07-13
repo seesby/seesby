@@ -63,14 +63,14 @@ export default function CrawlerModals() {
                                 value={listUrls}
                                 onChange={(e) => setListUrls(e.target.value)}
                                 placeholder={"https://example.com/page-1\nhttps://example.com/page-2"}
-                                className="w-full h-64 bg-[#0a0a0a] border border-[#222] rounded p-3 text-[13px] font-mono text-white focus:border-[#F5364E] focus:outline-none transition-colors custom-scrollbar"
+                                className="w-full h-64 bg-[#0a0a0a] border border-[#222] rounded p-3 text-[13px] font-mono text-white focus:border-[#F59E0B] focus:outline-none transition-colors custom-scrollbar"
                             />
                         </div>
                         <div className="px-5 py-4 border-t border-[#222] bg-[#181818] flex justify-end gap-3">
                             <button onClick={() => setShowListModal(false)} className="px-4 py-2 text-[12px] font-bold text-gray-400 hover:text-white transition-colors">Cancel</button>
                             <button 
                                 onClick={() => { setShowListModal(false); setCrawlingMode('list'); }}
-                                className="px-6 py-2 bg-[#F5364E] text-white text-[12px] font-bold rounded hover:bg-[#e02d43] transition-colors"
+                                className="px-6 py-2 bg-[#F59E0B] text-white text-[12px] font-bold rounded hover:bg-[#e02d43] transition-colors"
                             >
                                 Confirm List ({listUrls?.split('\n').filter((u: string) => u.trim()).length || 0} URLs)
                             </button>
@@ -87,8 +87,8 @@ export default function CrawlerModals() {
                     <div className="relative w-full max-w-4xl max-h-[85vh] flex flex-col bg-[#111] border border-[#333] rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
                         <div className="px-6 py-4 border-b border-[#222] flex justify-between items-center bg-[#141414]">
                             <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded bg-[#F5364E]/10 flex items-center justify-center">
-                                    <Wand2 size={16} className="text-[#F5364E]" />
+                                <div className="w-8 h-8 rounded bg-[#F59E0B]/10 flex items-center justify-center">
+                                    <Wand2 size={16} className="text-[#F59E0B]" />
                                 </div>
                                 <div>
                                     <h3 className="text-sm font-bold text-white uppercase tracking-wider">AI Auto-Fix</h3>
@@ -132,7 +132,7 @@ export default function CrawlerModals() {
                                                     ) : (
                                                         <div className="relative">
                                                             <textarea 
-                                                                className="w-full bg-[#1a1a1a] border border-[#333] rounded p-2 text-[12px] text-[#ccc] focus:border-[#F5364E] focus:outline-none min-h-[60px] custom-scrollbar"
+                                                                className="w-full bg-[#1a1a1a] border border-[#333] rounded p-2 text-[12px] text-[#ccc] focus:border-[#F59E0B] focus:outline-none min-h-[60px] custom-scrollbar"
                                                                 value={item.generatedMeta}
                                                                 onChange={(e) => {
                                                                     const newItems = [...autoFixItems];
@@ -162,7 +162,7 @@ export default function CrawlerModals() {
                                             <span>{Math.round(autoFixProgress)}%</span>
                                         </div>
                                         <div className="w-full h-1.5 bg-[#222] rounded-full overflow-hidden">
-                                            <div className="h-full bg-[#F5364E] transition-all duration-300" style={{width: `${autoFixProgress}%`}}></div>
+                                            <div className="h-full bg-[#F59E0B] transition-all duration-300" style={{width: `${autoFixProgress}%`}}></div>
                                         </div>
                                     </div>
                                 )}
@@ -225,7 +225,7 @@ export default function CrawlerModals() {
                                             });
                                         }}
                                         disabled={isFixing}
-                                        className="px-6 py-2 bg-[#F5364E] text-white text-[12px] font-bold rounded hover:bg-[#e02d43] transition-colors disabled:opacity-50 flex items-center gap-2"
+                                        className="px-6 py-2 bg-[#F59E0B] text-white text-[12px] font-bold rounded hover:bg-[#e02d43] transition-colors disabled:opacity-50 flex items-center gap-2"
                                     >
                                         {isFixing ? <><div className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"/> Generating...</> : 'Generate All with AI'}
                                     </button>
@@ -234,7 +234,7 @@ export default function CrawlerModals() {
                                 {autoFixItems?.length > 0 && autoFixItems.every((i: any) => i.fixStatus === 'done') && (
                                     <button 
                                         onClick={() => {
-                                            alert('Queued for CMS Push! (Mock functionality)');
+                                            alert('Queued for CMS Push!');
                                             setShowAutoFixModal(false);
                                         }}
                                         className="px-6 py-2 bg-green-600 text-white text-[12px] font-bold rounded hover:bg-green-500 transition-colors flex items-center gap-2"

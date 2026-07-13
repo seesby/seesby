@@ -1,4 +1,4 @@
-import type { ActionCode, Capability, Industry, Mode } from '@headlight/types';
+import type { ActionCode, Capability, Industry, Mode } from '@seesby/types';
 import type { SidebarSection } from './sidebar-types';
 
 import { registerAiMode } from './definitions/ai';
@@ -24,6 +24,13 @@ export interface ModeView {
 	submodes?: ReadonlyArray<{ id: string; label: string }>;
 }
 
+export interface InspectorTabDef {
+	id: string;
+	label: string;
+	icon: string; // lucide icon name
+	count?: (page: any) => number | undefined;
+}
+
 export interface ModeDescriptor {
 	id: Mode;
 	label: string;
@@ -34,10 +41,11 @@ export interface ModeDescriptor {
 	views: ReadonlyArray<ModeView>;
 	lsSections: ReadonlyArray<SidebarSection>;
 	rsTabs: ReadonlyArray<{ id: string; label: string }>;
+	inspectorTabs: ReadonlyArray<InspectorTabDef>;
 	actionCodes: ReadonlyArray<ActionCode>;
-	industryOverlays?: ReadonlyArray<Industry>; // industries that add extra columns/checks in this mode
+	industryOverlays?: ReadonlyArray<Industry>;
 	requiresCapabilities?: ReadonlyArray<Capability>;
-	visible?: ReadonlyArray<string>; // default visible metrics
+	visible?: ReadonlyArray<string>;
 }
 
 const DEFS = new Map<Mode, ModeDescriptor>();

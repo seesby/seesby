@@ -37,8 +37,8 @@ export default function ContentQualityRadar({
           />
           <Radar
             dataKey="value"
-            stroke="#E63946"
-            fill="#E63946"
+            stroke="#F59E0B"
+            fill="#F59E0B"
             fillOpacity={0.25}
             strokeWidth={2}
           />

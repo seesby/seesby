@@ -16,7 +16,7 @@ vi.mock('../../../IssueTaxonomy', () => ({
   getPageIssues: vi.fn((p) => p.issues || [])
 }))
 
-vi.mock('@headlight/actions', () => ({
+vi.mock('@seesby/actions', () => ({
   getAllActions: vi.fn(() => [
     { code: 'C001', title: 'Thin Content', severity: 'S1' },
     { code: 'T001', title: '404 Error', severity: 'S2' }

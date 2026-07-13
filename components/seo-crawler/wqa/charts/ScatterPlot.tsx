@@ -87,7 +87,7 @@ export default function ScatterPlot({
               boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.4)',
               padding: '8px 12px'
             }}
-            itemStyle={{ color: '#F5364E', padding: '0', fontSize: '10px', textTransform: 'uppercase', fontWeight: 'bold' }}
+            itemStyle={{ color: '#F59E0B', padding: '0', fontSize: '10px', textTransform: 'uppercase', fontWeight: 'bold' }}
             labelStyle={{ color: 'white', fontWeight: '800', marginBottom: '4px', fontSize: '11px' }}
             formatter={(value: number, name: string) => {
               return [

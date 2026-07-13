@@ -4,6 +4,7 @@ export type LanguageCode =
 	| 'en' | 'es' | 'fr' | 'de' | 'pt' | 'it' | 'nl' | 'pl' | 'tr'
 	| 'ru' | 'uk' | 'cs' | 'da' | 'fi' | 'hu' | 'no' | 'ro' | 'sv'
 	| 'ja' | 'ko' | 'zh' | 'ar' | 'he' | 'hi' | 'id' | 'vi' | 'th'
+	| 'fa' | 'ur'
 	| 'unknown';
 
 export type ReadabilityFormula =
@@ -57,6 +58,8 @@ export const LANGUAGES: Record<LanguageCode, LanguageDescriptor> = {
 	id: { code: 'id', label: 'Indonesian', native: 'Indonesia',  rtl: false, script: 'latin',    readabilityFormula: 'character-count',     avgWordsPerMinute: 180 },
 	vi: { code: 'vi', label: 'Vietnamese', native: 'Tiếng Việt',rtl: false, script: 'latin',    readabilityFormula: 'character-count',     avgWordsPerMinute: 160 },
 	th: { code: 'th', label: 'Thai',       native: 'ไทย',       rtl: false, script: 'thai',     readabilityFormula: 'character-count',     avgWordsPerMinute: 200 },
+	fa: { code: 'fa', label: 'Persian',    native: 'فارسی',     rtl: true,  script: 'arabic',   readabilityFormula: 'character-count',     avgWordsPerMinute: 150 },
+	ur: { code: 'ur', label: 'Urdu',       native: 'اردو',       rtl: true,  script: 'arabic',   readabilityFormula: 'character-count',     avgWordsPerMinute: 140 },
 	unknown: { code: 'unknown', label: 'Unknown', native: '', rtl: false, script: 'unknown', readabilityFormula: 'none', avgWordsPerMinute: 200 },
 };
 

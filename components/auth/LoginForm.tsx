@@ -52,7 +52,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
              <button
                type="button"
                onClick={onForgot}
-               className="text-[10px] font-bold text-[#F5364E]/80 hover:text-[#F5364E] transition-colors uppercase tracking-wider"
+               className="text-[10px] font-bold text-[#F59E0B]/80 hover:text-[#F59E0B] transition-colors uppercase tracking-wider"
              >
                Forgot?
              </button>
@@ -73,7 +73,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
         <button
           type="submit"
           disabled={loading}
-          className="w-full h-12 bg-[#F5364E] text-white font-bold rounded-xl hover:bg-[#D42D41] disabled:opacity-50 transition-all uppercase tracking-[0.1em] text-[11px] shadow-[0_8px_24px_rgba(245,54,78,0.2)] active:scale-[0.98]"
+          className="w-full h-12 bg-[#F59E0B] text-white font-bold rounded-xl hover:bg-[#D42D41] disabled:opacity-50 transition-all uppercase tracking-[0.1em] text-[11px] shadow-[0_8px_24px_rgba(245,158,11,0.2)] active:scale-[0.98]"
         >
           {loading ? (
              <div className="flex items-center justify-center gap-2">

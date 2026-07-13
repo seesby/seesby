@@ -36,8 +36,8 @@ export const ProjectProvider: React.FC<{ children: React.ReactNode }> = ({ child
     const [deletedIds, setDeletedIds] = useState<Set<string>>(new Set());
     const migrationRunRef = useRef(false);
 
-    const localStorageKey = user ? `headlight:projects:${source}:${user.id}` : null;
-    const activeIdKey = user ? `headlight:projects:${source}:${user.id}:active` : null;
+    const localStorageKey = user ? `seesby:projects:${source}:${user.id}` : null;
+    const activeIdKey = user ? `seesby:projects:${source}:${user.id}:active` : null;
 
     // ─── localStorage helpers (used as cache / fallback) ───
 

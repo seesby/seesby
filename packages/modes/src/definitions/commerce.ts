@@ -79,8 +79,14 @@ export function registerCommerceMode() {
 	defineMode({
 		id: 'commerce',
 		description: 'Product catalog, pricing, and checkout health.',
-		defaultViewId: 'grid',
-		views: [{ id: 'grid', kind: 'table', label: 'Grid' }],
+		defaultViewId: 'products',
+		views: [
+			{ id: 'products',    kind: 'table',     label: 'Products',    shortcut: '1' },
+			{ id: 'collections', kind: 'table',     label: 'Collections', shortcut: '2' },
+			{ id: 'templates',   kind: 'table',     label: 'Templates',   shortcut: '3' },
+			{ id: 'feed',        kind: 'dashboard', label: 'Feed Health', shortcut: '4' },
+			{ id: 'funnel',      kind: 'canvas',    label: 'Funnel',      shortcut: '5' },
+		],
 		lsSections: commerceLsSections,
 		rsTabs: [
 			{ id: 'commerce_overview', label: 'Overview' },
@@ -89,7 +95,26 @@ export function registerCommerceMode() {
 			{ id: 'commerce_feed', label: 'Feed' },
 			{ id: 'commerce_funnel', label: 'Funnel' },
 		],
+		inspectorTabs: [
+			{ id: 'summary',  label: 'Summary',  icon: 'LayoutDashboard' },
+			{ id: 'products', label: 'Products', icon: 'Package' },
+			{ id: 'feed',     label: 'Feed',     icon: 'Rss' },
+			{ id: 'funnel',   label: 'Funnel',   icon: 'Filter' },
+			{ id: 'schema',   label: 'Schema',   icon: 'Braces' },
+			{ id: 'history',  label: 'History',  icon: 'History' },
+		],
 		actionCodes: MODE_ACTIONS.commerce,
-		visible: ['p.identity.url', 'p.commerce.price', 'p.commerce.productSchema'],
+		visible: [
+			'p.identity.url',
+			'p.commerce.isProduct',
+			'p.commerce.price',
+			'p.commerce.availability',
+			'p.commerce.reviewsCount',
+			'p.commerce.reviewsAvg',
+			'p.content.schema.types',
+			'p.commerce.feed.present',
+			'p.tech.cwv.bucket',
+			'p.action.topAction',
+		],
 	});
 }

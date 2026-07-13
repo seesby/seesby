@@ -41,7 +41,7 @@ export default function GapList({ items, emptyMessage = 'No gaps found.', maxIte
                     )}
                     {item.volume != null && <span className="font-mono text-[10px] text-[#666]">{item.volume.toLocaleString()}</span>}
                     {item.competitorPosition != null && (
-                        <span className="font-mono text-[10px] text-[#F5364E]">#{item.competitorPosition}</span>
+                        <span className="font-mono text-[10px] text-[#F59E0B]">#{item.competitorPosition}</span>
                     )}
                 </div>
             ))}

@@ -24,7 +24,7 @@ export function SettingsToggle({ label, description, checked, onChange }: {
         <div className="text-[12px] text-white font-medium">{label}</div>
         {description && <div className="text-[10px] text-[#666] mt-0.5">{description}</div>}
       </div>
-      <div className={`w-8 h-4 rounded-full transition-colors relative shrink-0 ${checked ? 'bg-[#F5364E]' : 'bg-[#333]'}`}>
+      <div className={`w-8 h-4 rounded-full transition-colors relative shrink-0 ${checked ? 'bg-[#F59E0B]' : 'bg-[#333]'}`}>
         <div className={`absolute top-0.5 w-3 h-3 bg-white rounded-full transition-all ${checked ? 'right-0.5' : 'left-0.5'}`} />
       </div>
     </label>
@@ -42,7 +42,7 @@ export function SettingsInput({ label, description, value, onChange, type = 'tex
         value={value} 
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full px-3 py-2 bg-[#0a0a0a] border border-[#222] rounded-md text-[12px] text-white focus:border-[#F5364E] outline-none transition-colors placeholder:text-[#333]"
+        className="w-full px-3 py-2 bg-[#0a0a0a] border border-[#222] rounded-md text-[12px] text-white focus:border-[#F59E0B] outline-none transition-colors placeholder:text-[#333]"
       />
       {description && <p className="text-[10px] text-[#555]">{description}</p>}
     </div>
@@ -58,7 +58,7 @@ export function SettingsSelect({ label, description, value, onChange, options }:
       <select 
         value={value} 
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-3 py-2 bg-[#0a0a0a] border border-[#222] rounded-md text-[12px] text-white focus:border-[#F5364E] outline-none transition-colors appearance-none cursor-pointer"
+        className="w-full px-3 py-2 bg-[#0a0a0a] border border-[#222] rounded-md text-[12px] text-white focus:border-[#F59E0B] outline-none transition-colors appearance-none cursor-pointer"
       >
         {options.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
       </select>
@@ -78,7 +78,7 @@ export function SettingsTextarea({ label, description, value, onChange, placehol
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         rows={rows}
-        className="w-full px-3 py-2 bg-[#0a0a0a] border border-[#222] rounded-md text-[12px] text-white focus:border-[#F5364E] outline-none transition-colors placeholder:text-[#333] resize-none font-mono"
+        className="w-full px-3 py-2 bg-[#0a0a0a] border border-[#222] rounded-md text-[12px] text-white focus:border-[#F59E0B] outline-none transition-colors placeholder:text-[#333] resize-none font-mono"
       />
       {description && <p className="text-[10px] text-[#555]">{description}</p>}
     </div>
@@ -92,7 +92,7 @@ export function SettingsSlider({ label, min, max, step, value, onChange, unit = 
     <div className="space-y-1.5">
       <div className="flex justify-between">
         <label className="text-[11px] font-medium text-[#888]">{label}</label>
-        <span className="text-[11px] font-bold text-[#F5364E]">{value}{unit}</span>
+        <span className="text-[11px] font-bold text-[#F59E0B]">{value}{unit}</span>
       </div>
       <input 
         type="range" 
@@ -101,7 +101,7 @@ export function SettingsSlider({ label, min, max, step, value, onChange, unit = 
         step={step} 
         value={value} 
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full h-1 bg-[#222] rounded-lg appearance-none cursor-pointer accent-[#F5364E]"
+        className="w-full h-1 bg-[#222] rounded-lg appearance-none cursor-pointer accent-[#F59E0B]"
       />
     </div>
   );

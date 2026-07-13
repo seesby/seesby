@@ -1,41 +1,140 @@
-import React, { useMemo } from 'react'
-import { useSeoCrawler } from '@/contexts/SeoCrawlerContext'
+import React from 'react'
 import { useCompetitorsInsights } from '../_hooks/useCompetitorsInsights'
-import { useDrill } from '../_shared/drill'
-import {
-  HealthBlock, DistBlock, DonutBlock, DistRowsBlock, TrendBlock,
-  TopListBlock, SegmentBlock, HeatmapBlock, BenchmarkBlock,
-  CompareBlock, KvBlock, TimelineBlock, DrillFooter,
-  AlertsBlock, ActionsBlock,
-  EmptyState, fmtNum, fmtPct, fmtMs, compactNum, scoreToTone,
-} from '../_shared'
+import { EmptyState } from '../_shared/EmptyState'
+import { Card } from '../_shared/Card'
+import { KpiTile } from '../_shared/KpiTile'
+import { BarStack } from '../_shared/bars'
+import { TopList } from '../_shared/lists'
+import { Sparkline } from '../_shared/Sparkline'
+import { BenchmarkBar } from '../_shared/BenchmarkBar'
+import { Trendable } from '../_shared/blocks/Trendable'
+import { SingleCrawlNotice } from '../_shared/blocks/SingleCrawlNotice'
+import { compactNum } from '../_shared/format'
 
 export function CompetitorsBacklinks() {
-  const { competitors } = useSeoCrawler() as any
   const s = useCompetitorsInsights()
-  if (!competitors?.length) return <EmptyState title="No competitors set" />
+  if (!s.byCompetitor?.length) return <EmptyState title="No competitor data yet" />
+
+  const { backlinks } = s
 
   return (
-    <div className="space-y-3 p-3">
-      <DistBlock title="Refdom share" segments={s.backlinks.byCompetitor.slice(0, 6).map((c: any, i: number) => ({
-        value: c.refDomains, tone: c.isYou ? 'good' : (['info','warn','neutral','bad','info','neutral'][i] as any),
-        label: c.isYou ? 'You' : c.domain,
-      }))} />
-      <TrendBlock title="Your refdoms (90d)" values={s.backlinks.youSeries} tone="info" />
-      <TopListBlock title="Refdoms competitors have, you don't" items={s.backlinks.gapList.slice(0, 6).map((r: any) => ({
-        id: r.domain, primary: r.domain, secondary: `DR ${r.dr}`, tail: r.competitors.join(', '),
-      }))} emptyText="No backlink gaps" />
-      <TopListBlock title="Refdoms unique to you" items={s.backlinks.youOnly.slice(0, 6).map((r: any) => ({
-        id: r.domain, primary: r.domain, tail: `DR ${r.dr}`,
-      }))} />
-      <SegmentBlock title="By competitor" headers={['Domain','Refdoms','New 30d','DR avg']} rows={s.backlinks.byCompetitor.slice(0, 6).map((c: any) => ({
-        id: c.id, label: c.domain, values: [compactNum(c.refDomains), c.gained30d, c.avgDr.toFixed(0)],
-      }))} />
-      <BenchmarkBlock title="Refdoms vs leader" site={s.backlinks.you.refDomains} benchmark={s.backlinks.leader.refDomains} higherIsBetter />
-      <DrillFooter chips={[
-        { label: 'Gaps', count: s.backlinks.gapTotal },
-        { label: 'You only', count: s.backlinks.youOnly.length },
-      ]} />
+    <div className="flex flex-col gap-3 p-3">
+      {/* Key metrics */}
+      <div className="grid grid-cols-2 gap-2">
+        <KpiTile label="Your refdoms" value={compactNum(backlinks.you.refDomains)} />
+        <KpiTile label="Gap" value={compactNum(backlinks.gapTotal)} tone="warn" />
+      </div>
+
+      {/* Link velocity */}
+      <Card>
+        <div className="flex items-center justify-between">
+          <div>
+            <div className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Link Velocity</div>
+            <div className="mt-1 text-2xl font-bold tabular-nums text-blue-400">
+              +{backlinks.velocity} <span className="text-sm text-[#888]">per month</span>
+            </div>
+          </div>
+          <Sparkline values={backlinks.youSeries} tone="info" width={100} height={32} />
+        </div>
+      </Card>
+
+      {/* Quality distribution */}
+      <Card padded={false}>
+        <div className="px-3 py-2 border-b border-[#1f1f1f]">
+          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Link Quality</span>
+        </div>
+        <div className="px-3 py-3">
+          <BarStack segments={[
+            { value: backlinks.quality.high, tone: 'good', label: 'High DR' },
+            { value: backlinks.quality.medium, tone: 'info', label: 'Medium DR' },
+            { value: backlinks.quality.low, tone: 'neutral', label: 'Low DR' },
+          ]} />
+        </div>
+      </Card>
+
+      {/* Referring domains comparison */}
+      <Card padded={false}>
+        <div className="px-3 py-2 border-b border-[#1f1f1f]">
+          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Referring Domains</span>
+        </div>
+        <div className="px-3 py-2">
+          <TopList items={backlinks.byCompetitor.slice(0, 6).map((c: any) => ({
+            id: c.domain,
+            primary: c.domain,
+            secondary: c.isYou ? 'You' : '',
+            tail: compactNum(c.refDomains),
+          }))} />
+        </div>
+      </Card>
+
+      {/* Benchmark */}
+      <Card padded={false}>
+        <div className="px-3 py-2 border-b border-[#1f1f1f]">
+          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">vs Average</span>
+        </div>
+        <div className="px-3 py-3">
+          <BenchmarkBar site={backlinks.you.refDomains} benchmark={backlinks.avgCompetitor.refDomains} />
+        </div>
+      </Card>
+
+      {/* High-value targets */}
+      <Card padded={false}>
+        <div className="px-3 py-2 border-b border-[#1f1f1f]">
+          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">High-Value Targets</span>
+        </div>
+        <div className="px-3 py-2">
+          <TopList items={backlinks.highValueTargets.map((t: any) => ({
+            id: t.domain,
+            primary: t.domain,
+            secondary: `DR ${t.dr} | ${t.difficulty}`,
+            tail: `~${compactNum(t.traffic)}`,
+          }))} />
+        </div>
+      </Card>
+
+      {/* Link gap list */}
+      <Card padded={false}>
+        <div className="px-3 py-2 border-b border-[#1f1f1f]">
+          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Link Gap</span>
+        </div>
+        <div className="px-3 py-2">
+          <TopList items={backlinks.gapList.map((l: any) => ({
+            id: l.domain,
+            primary: l.domain,
+            secondary: `DR ${l.dr} | ${l.competitors.length} competitors`,
+            tail: `~${compactNum(l.traffic)}`,
+          }))} />
+        </div>
+      </Card>
+
+      {/* Your unique domains */}
+      <Card padded={false}>
+        <div className="px-3 py-2 border-b border-[#1f1f1f]">
+          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Your Unique Domains</span>
+        </div>
+        <div className="px-3 py-2">
+          <TopList items={backlinks.youOnly.map((d: any) => ({
+            id: d.domain,
+            primary: d.domain,
+            secondary: `DR ${d.dr}`,
+            tail: `~${compactNum(d.traffic)}`,
+          }))} />
+        </div>
+      </Card>
+
+      {/* Trend */}
+      <Trendable hasPrior={s.hasPrior}>
+        <Card padded={false}>
+          <div className="px-3 py-2 border-b border-[#1f1f1f]">
+            <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Ref Domain Growth</span>
+          </div>
+          <div className="px-3 py-3">
+            <div className="w-full"><Sparkline values={backlinks.youSeries} tone="info" /></div>
+          </div>
+        </Card>
+      </Trendable>
+
+      {!s.hasPrior && <SingleCrawlNotice />}
     </div>
   )
 }

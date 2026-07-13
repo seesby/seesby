@@ -79,7 +79,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
                                     onChange={(e) => setWhiteLabel(e.target.checked)}
                                     className="w-4 h-4 bg-[#080808] border-[#333] rounded"
                                 />
-                                <label htmlFor="whiteLabel" className="text-sm text-gray-300 select-none">White-label report (Remove Headlight branding)</label>
+                                <label htmlFor="whiteLabel" className="text-sm text-gray-300 select-none">White-label report (Remove Seesby branding)</label>
                             </div>
 
                             {whiteLabel && (

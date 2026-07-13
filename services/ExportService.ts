@@ -246,7 +246,7 @@ export async function exportToGoogleSheets(
         },
         body: JSON.stringify({
             properties: {
-                title: `Headlight Crawl Export ${new Date().toISOString().slice(0, 10)}`
+                title: `Seesby Crawl Export ${new Date().toISOString().slice(0, 10)}`
             },
             sheets: [{ properties: { title: 'Crawl Data' } }]
         })
@@ -315,7 +315,7 @@ export async function exportPDF(
     doc.setTextColor(255, 255, 255);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(24);
-    doc.text(pdfOptions?.whiteLabel ? 'SEO Crawl Report' : 'Headlight SEO Crawl Report', marginX, cursorY);
+    doc.text(pdfOptions?.whiteLabel ? 'SEO Crawl Report' : 'Seesby SEO Crawl Report', marginX, cursorY);
     cursorY += 28;
     doc.setFontSize(12);
     doc.setFont('helvetica', 'normal');

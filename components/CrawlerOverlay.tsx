@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 /**
  * CrawlerOverlay
  * Full-screen overlay to render the crawler within the app.
- * Listens for 'headlight:open-crawler' event.
+ * Listens for 'seesby:open-crawler' event.
  */
 export const CrawlerOverlay: React.FC = () => {
     const [url, setUrl] = useState<string | null>(null);
@@ -14,8 +14,8 @@ export const CrawlerOverlay: React.FC = () => {
             setUrl(e.detail.url);
             setIsMinimized(false);
         };
-        window.addEventListener('headlight:open-crawler', handleOpen);
-        return () => window.removeEventListener('headlight:open-crawler', handleOpen);
+        window.addEventListener('seesby:open-crawler', handleOpen);
+        return () => window.removeEventListener('seesby:open-crawler', handleOpen);
     }, []);
 
     if (!url) return null;
@@ -59,7 +59,7 @@ export const CrawlerOverlay: React.FC = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
-                    <span className="text-sm font-semibold text-white">Headlight Crawler</span>
+                    <span className="text-sm font-semibold text-white">Seesby Crawler</span>
                 </div>
                 
                 <div className="flex items-center gap-2">

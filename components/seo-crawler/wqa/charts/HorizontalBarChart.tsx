@@ -15,7 +15,7 @@ interface Props {
 
 export default function HorizontalBarChart({ data, formatValue, onClick }: Props) {
   const chartData = useMemo(
-    () => data.map((d) => ({ ...d, color: d.color || '#F5364E' })),
+    () => data.map((d) => ({ ...d, color: d.color || '#F59E0B' })),
     [data]
   );
 
@@ -46,7 +46,7 @@ export default function HorizontalBarChart({ data, formatValue, onClick }: Props
             cursor={onClick ? 'pointer' : 'default'}
           >
             {chartData.map((entry) => (
-              <Cell key={entry.label} fill={entry.color || '#F5364E'} />
+              <Cell key={entry.label} fill={entry.color || '#F59E0B'} />
             ))}
           </Bar>
         </BarChart>

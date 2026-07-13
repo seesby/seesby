@@ -1,7 +1,7 @@
 import React from 'react'
 
 export function RsSparkline({
-    values, width = 120, height = 24, stroke = '#F5364E', fill = 'rgba(245,54,78,0.12)',
+    values, width = 120, height = 24, stroke = '#F59E0B', fill = 'rgba(245,158,11,0.12)',
 }: {
     values: number[]
     width?: number

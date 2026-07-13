@@ -85,14 +85,14 @@ function compareCells(
 }
 
 const CELL_TEXT: Record<CellComparison, string> = {
-  winning: 'text-green-400',
+  winning: 'text-emerald-400',
   losing: 'text-red-400',
   tie: 'text-[#888]',
   neutral: 'text-[#ccc]',
 };
 
 const CELL_BG: Record<CellComparison, string> = {
-  winning: 'bg-green-500/5',
+  winning: 'bg-emerald-500/5',
   losing: 'bg-red-500/5',
   tie: '',
   neutral: '',
@@ -101,7 +101,7 @@ const CELL_BG: Record<CellComparison, string> = {
 // ─── Trend indicator ───
 function TrendArrow({ comparison }: { comparison: CellComparison }) {
   if (comparison === 'winning') {
-    return <span className="ml-1 text-[9px] text-green-500">▲</span>;
+    return <span className="ml-1 text-[9px] text-emerald-500">▲</span>;
   }
   if (comparison === 'losing') {
     return <span className="ml-1 text-[9px] text-red-500">▼</span>;
@@ -378,7 +378,7 @@ export default function CompetitorMatrixGrid() {
               <th
                 key={profile.domain}
                 className={`py-2.5 px-3 text-center min-w-[140px] ${
-                  i === 0 ? 'bg-[#F5364E]/[0.03]' : 'bg-[#0d0d0f]'
+                  i === 0 ? 'bg-[#F59E0B]/[0.03]' : 'bg-[#0d0d0f]'
                 }`}
               >
                 <div className="text-[11px] font-bold text-white truncate max-w-[130px] mx-auto">
@@ -391,7 +391,7 @@ export default function CompetitorMatrixGrid() {
                 )}
                 {i > 0 && winLossCounts[i - 1] && (
                   <div className="text-[9px] mt-0.5">
-                    <span className="text-green-400 font-bold">
+                    <span className="text-emerald-400 font-bold">
                       {winLossCounts[i - 1].wins}W
                     </span>
                     <span className="text-[#333] mx-0.5">/</span>
@@ -403,7 +403,7 @@ export default function CompetitorMatrixGrid() {
                 <div className="mt-1">
                   <span className={`inline-flex rounded-full px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wide ${
                     profile.dataConfidence === 'high'
-                      ? 'bg-green-500/10 text-green-300'
+                      ? 'bg-emerald-500/10 text-emerald-300'
                       : profile.dataConfidence === 'medium'
                         ? 'bg-amber-500/10 text-amber-300'
                         : 'bg-zinc-500/10 text-zinc-300'
@@ -482,7 +482,7 @@ export default function CompetitorMatrixGrid() {
                               key={`${row.id}-${profile.domain}`}
                               className={`py-1.5 px-3 text-center font-mono text-[11px] ${
                                 i === 0
-                                  ? 'text-white bg-[#F5364E]/[0.03]'
+                                  ? 'text-white bg-[#F59E0B]/[0.03]'
                                   : `${CELL_TEXT[comparison]} ${CELL_BG[comparison]}`
                               }`}
                             >

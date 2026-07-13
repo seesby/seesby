@@ -4,8 +4,8 @@
 
 :root {
   /* Default Dark Mode */
-  --brand-red: #E63946;
-  --brand-red-glow: rgba(230, 57, 70, 0.2);
+  --brand-amber: #F59E0B;
+  --brand-amber-glow: rgba(245, 158, 11, 0.22);
   --bg-main: #0A0A0B;
   --panel-bg: rgba(18, 18, 20, 0.8);
   --glass-border: rgba(255, 255, 255, 0.06);
@@ -22,8 +22,8 @@
 }
 
 [data-theme="light"] {
-  --brand-red: #E63946;
-  --brand-red-glow: rgba(230, 57, 70, 0.14);
+  --brand-amber: #D97706;
+  --brand-amber-glow: rgba(217, 119, 6, 0.16);
   --bg-main: #FFFFFF;
   --panel-bg: #FAFAFA;
   --glass-border: rgba(0, 0, 0, 0.08);
@@ -40,8 +40,8 @@
 }
 
 [data-theme="high-contrast"] {
-  --brand-red: #FF0000;
-  --brand-red-glow: transparent;
+  --brand-amber: #FFB020;
+  --brand-amber-glow: transparent;
   --bg-main: #000000;
   --panel-bg: #000000;
   --glass-border: #FFFFFF;
@@ -59,8 +59,8 @@
 
 @media (prefers-color-scheme: light) {
   [data-theme="system"] {
-    --brand-red: #E63946;
-    --brand-red-glow: rgba(230, 57, 70, 0.14);
+    --brand-amber: #D97706;
+    --brand-amber-glow: rgba(217, 119, 6, 0.16);
     --bg-main: #FFFFFF;
     --panel-bg: #FAFAFA;
     --glass-border: rgba(0, 0, 0, 0.08);
@@ -75,7 +75,7 @@
 
 @layer base {
   body {
-    @apply bg-[var(--bg-main)] text-[var(--text-secondary)] font-sans antialiased selection:bg-[var(--brand-red)] selection:text-white;
+    @apply bg-[var(--bg-main)] text-[var(--text-secondary)] font-sans antialiased selection:bg-[var(--brand-amber)] selection:text-white;
   }
   h1, h2, h3, h4 {
     @apply text-[var(--text-primary)] font-medium tracking-tight;
@@ -102,7 +102,7 @@
 
   .premium-input:focus {
     outline: none;
-    border-color: #E63946;
+    border-color: #F59E0B;
   }
 
   .premium-input::placeholder {
@@ -169,7 +169,7 @@
 
 /* Refined Backdrop Glow */
 .auth-glow {
-  background: radial-gradient(circle at 50% 50%, var(--brand-red-glow) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 50%, var(--brand-amber-glow) 0%, transparent 70%);
   filter: blur(80px);
 }
 

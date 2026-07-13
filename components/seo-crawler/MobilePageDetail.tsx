@@ -118,7 +118,7 @@ export default function MobilePageDetail({ page, onClose }: MobilePageDetailProp
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id)}
                         className={`rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] ${
-                            activeTab === tab.id ? 'bg-[#F5364E] text-white' : 'bg-[#141419] text-[#888]'
+                            activeTab === tab.id ? 'bg-[#F59E0B] text-white' : 'bg-[#141419] text-[#888]'
                         }`}
                     >
                         {tab.label}

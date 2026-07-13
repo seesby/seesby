@@ -7,7 +7,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useSeoCrawler } from '../../contexts/SeoCrawlerContext';
 import { useProject } from '../../services/ProjectContext';
-import { allIndustries, INDUSTRY_LABEL } from '@headlight/types';
+import { allIndustries, INDUSTRY_LABEL } from '@seesby/types';
 
 const extractDomain = (url: string) => {
     try {
@@ -70,7 +70,7 @@ export default function CrawlerEmptyState() {
                                 value={projectName}
                                 onChange={e => setProjectName(e.target.value)}
                                 placeholder="Auto-generated if left blank"
-                                className="w-full h-10 px-4 bg-[#0a0a0a] border border-[#222] rounded-lg text-sm text-white focus:outline-none focus:border-[#F5364E] transition-colors"
+                                className="w-full h-10 px-4 bg-[#0a0a0a] border border-[#222] rounded-lg text-sm text-white focus:outline-none focus:border-[#F59E0B] transition-colors"
                                 autoFocus
                             />
                         </div>
@@ -101,7 +101,7 @@ export default function CrawlerEmptyState() {
                                 value={url}
                                 onChange={e => handleUrlChange(e.target.value)}
                                 placeholder="https://example.com"
-                                className="w-full h-10 px-4 bg-[#0a0a0a] border border-[#222] rounded-lg text-sm text-white focus:outline-none focus:border-[#F5364E] transition-colors"
+                                className="w-full h-10 px-4 bg-[#0a0a0a] border border-[#222] rounded-lg text-sm text-white focus:outline-none focus:border-[#F59E0B] transition-colors"
                             />
                         </div>
 

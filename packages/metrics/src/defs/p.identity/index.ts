@@ -1,5 +1,5 @@
 // packages/metrics/src/defs/p.identity/index.ts
-import type { MetricDef } from '@headlight/types';
+import type { MetricDef } from '@seesby/types';
 
 export const IDENTITY_METRICS: MetricDef[] = [
 	{
@@ -13,6 +13,7 @@ export const IDENTITY_METRICS: MetricDef[] = [
 		i18nLabelKey: 'metric.p.identity.url.label',
 		description: 'The canonical URL of the page.',
 		legacyAlias: ['url', 'canonical'],
+		defaultVisible: true,
 	},
 	{
 		key: 'p.identity.category',

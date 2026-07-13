@@ -65,8 +65,8 @@ class WebhookService {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-Headlight-Event': event,
-                    'X-Headlight-Signature': this.computeSignature(payload, config.secret)
+                    'X-Seesby-Event': event,
+                    'X-Seesby-Signature': this.computeSignature(payload, config.secret)
                 },
                 body: JSON.stringify({
                     event,
@@ -83,7 +83,7 @@ class WebhookService {
 
     static computeSignature(payload: any, secret: string) {
         // Simple placeholder for HMAC-SHA256
-        return `sha256=${secret || 'headlight'}-${JSON.stringify(payload).length}`;
+        return `sha256=${secret || 'seesby'}-${JSON.stringify(payload).length}`;
     }
 }
 

@@ -1,8 +1,8 @@
 import { crawlDb } from './CrawlDatabase';
-import type { SavedView, SavedViewSeed } from '@headlight/modes';
-import type { Mode } from '@headlight/types';
+import type { SavedView, SavedViewSeed } from '@seesby/modes';
+import type { Mode } from '@seesby/types';
 
-const LS_FALLBACK = 'headlight.savedViews.v1';
+const LS_FALLBACK = 'seesby.savedViews.v1';
 
 export const SavedViewsStore = {
 	async list(mode: Mode): Promise<SavedView[]> {

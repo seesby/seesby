@@ -20,17 +20,17 @@ const Home: React.FC = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
 
                     <div className={`transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-100 text-brand-red text-xs font-bold uppercase tracking-widest mb-8">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-100 text-brand-amber text-xs font-bold uppercase tracking-widest mb-8">
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-red"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-amber"></span>
                             </span>
                             Start growing your traffic today
                         </div>
 
                         <h1 className="text-5xl lg:text-7xl font-heading font-extrabold text-gray-900 tracking-tight leading-none mb-8">
                             Automate your SEO.<br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-orange-500">Outsmart your competitors.</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-amber to-orange-500">Outsmart your competitors.</span>
                         </h1>
 
                         <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed mb-10 font-light">
@@ -51,9 +51,9 @@ const Home: React.FC = () => {
                         </div>
 
                         <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-xs font-bold text-gray-400 uppercase tracking-widest">
-                            <span className="flex items-center gap-2"><Check size={14} className="text-brand-red" /> No credit card required</span>
-                            <span className="flex items-center gap-2"><Check size={14} className="text-brand-red" /> Cancel anytime</span>
-                            <span className="flex items-center gap-2"><Check size={14} className="text-brand-red" /> Setup in 2 minutes</span>
+                            <span className="flex items-center gap-2"><Check size={14} className="text-brand-amber" /> No credit card required</span>
+                            <span className="flex items-center gap-2"><Check size={14} className="text-brand-amber" /> Cancel anytime</span>
+                            <span className="flex items-center gap-2"><Check size={14} className="text-brand-amber" /> Setup in 2 minutes</span>
                         </div>
                     </div>
 
@@ -65,7 +65,7 @@ const Home: React.FC = () => {
                                 <div className="absolute inset-0 flex">
                                     {/* Sidebar */}
                                     <div className="w-64 border-r border-white/10 p-4 hidden md:block">
-                                        <div className="h-8 w-8 bg-[#F5364E] rounded-lg mb-8"></div>
+                                        <div className="h-8 w-8 bg-[#F59E0B] rounded-lg mb-8"></div>
                                         <div className="space-y-4">
                                             <div className="h-4 w-3/4 bg-white/10 rounded"></div>
                                             <div className="h-4 w-1/2 bg-white/10 rounded"></div>
@@ -101,7 +101,7 @@ const Home: React.FC = () => {
             <section className="py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <h2 className="text-brand-red font-bold uppercase tracking-widest text-xs mb-2">Built For You</h2>
+                        <h2 className="text-brand-amber font-bold uppercase tracking-widest text-xs mb-2">Built For You</h2>
                         <h3 className="text-3xl font-heading font-bold text-gray-900">SEO doesn't have to be complicated</h3>
                     </div>
                     <div className="grid md:grid-cols-3 gap-10">
@@ -128,39 +128,39 @@ const Home: React.FC = () => {
             <section className="py-24 bg-[#080808] text-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <h2 className="text-[#F5364E] font-bold uppercase tracking-widest text-xs mb-2">Features</h2>
+                        <h2 className="text-[#F59E0B] font-bold uppercase tracking-widest text-xs mb-2">Features</h2>
                         <h3 className="text-3xl font-heading font-bold text-white">Everything you need to grow</h3>
                     </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <FeatureCard
                             title="Daily Rank Tracking"
                             desc="Wake up every day to see exactly where your website ranks on Google for the keywords you care about."
-                            icon={<Zap className="text-[#F5364E]" size={24} />}
+                            icon={<Zap className="text-[#F59E0B]" size={24} />}
                         />
                         <FeatureCard
                             title="Actionable AI Tips"
                             desc="No more guessing. We give you a simple checklist of what you need to do to beat the other websites."
-                            icon={<Search className="text-[#F5364E]" size={24} />}
+                            icon={<Search className="text-[#F59E0B]" size={24} />}
                         />
                         <FeatureCard
                             title="Beautiful Reports"
                             desc="See your progress in simple, easy-to-read charts that make sense, without any of the confusing tech talk."
-                            icon={<Layers className="text-[#F5364E]" size={24} />}
+                            icon={<Layers className="text-[#F59E0B]" size={24} />}
                         />
                         <FeatureCard
                             title="Competitor Spy"
                             desc="We alert you when competing businesses start ranking higher, so you can adjust your strategy quickly."
-                            icon={<Globe className="text-[#F5364E]" size={24} />}
+                            icon={<Globe className="text-[#F59E0B]" size={24} />}
                         />
                         <FeatureCard
                             title="Brand Alerts"
                             desc="We'll send you an email when someone mentions your brand name out on the internet."
-                            icon={<Shield className="text-[#F5364E]" size={24} />}
+                            icon={<Shield className="text-[#F59E0B]" size={24} />}
                         />
                         <FeatureCard
                             title="Automated Audits"
                             desc="We automatically check your website for broken links, slow pages, and other issues that hurt your rankings."
-                            icon={<TrendingUp className="text-[#F5364E]" size={24} />}
+                            icon={<TrendingUp className="text-[#F59E0B]" size={24} />}
                         />
                     </div>
                 </div>
@@ -172,20 +172,20 @@ const Home: React.FC = () => {
                     <div className="mb-6 flex justify-center items-center gap-2">
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 text-gray-900">
                             <circle cx="9" cy="16" r="5" fill="currentColor" />
-                            <path d="M17 11H27" stroke="#F5364E" strokeWidth="2.5" strokeLinecap="round" />
-                            <path d="M17 16H31" stroke="#F5364E" strokeWidth="2.5" strokeLinecap="round" />
-                            <path d="M17 21H27" stroke="#F5364E" strokeWidth="2.5" strokeLinecap="round" />
+                            <path d="M17 11H27" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" />
+                            <path d="M17 16H31" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" />
+                            <path d="M17 21H27" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" />
                         </svg>
-                        <span className="font-heading font-extrabold text-xl text-gray-900 tracking-wider uppercase">Headlight</span>
+                        <span className="font-heading font-extrabold text-xl text-gray-900 tracking-wider uppercase">Seesby</span>
                     </div>
 
                     <div className="flex justify-center items-center gap-6 mb-6">
-                        <Link to="/crawler" className="text-sm text-gray-600 hover:text-brand-red font-semibold transition-colors">
-                            Headlight Scanner
+                        <Link to="/crawler" className="text-sm text-gray-600 hover:text-brand-amber font-semibold transition-colors">
+                            Seesby Scanner
                         </Link>
                     </div>
 
-                    <p className="text-sm text-gray-500 mb-8">© 2026 HeadlightSEO Inc. All rights reserved.</p>
+                    <p className="text-sm text-gray-500 mb-8">© 2026 Seesby Inc. All rights reserved.</p>
                 </div>
             </footer>
         </div>
@@ -194,15 +194,15 @@ const Home: React.FC = () => {
 
 const InfoBlock = ({ title, stat, desc }: any) => (
     <div className="p-8 bg-gray-50 rounded-2xl border border-gray-100 flex flex-col items-center text-center">
-        <div className="text-4xl font-extrabold text-brand-red mb-4">{stat}</div>
+        <div className="text-4xl font-extrabold text-brand-amber mb-4">{stat}</div>
         <div className="text-lg font-bold text-gray-900 mb-3">{title}</div>
         <p className="text-gray-500 leading-relaxed text-sm">{desc}</p>
     </div>
 );
 
 const FeatureCard = ({ title, desc, icon }: any) => (
-    <div className="bg-[#111] p-8 rounded-2xl border border-[#222] hover:border-[#F5364E] transition-colors group">
-        <div className="w-12 h-12 bg-[#1A1A1A] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#F5364E]/10 transition-colors">
+    <div className="bg-[#111] p-8 rounded-2xl border border-[#222] hover:border-[#F59E0B] transition-colors group">
+        <div className="w-12 h-12 bg-[#1A1A1A] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#F59E0B]/10 transition-colors">
             {icon}
         </div>
         <h3 className="text-lg font-bold text-white mb-3 font-heading">{title}</h3>

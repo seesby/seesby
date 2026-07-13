@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import type { SidebarSection as Section, SidebarFacetSection, SidebarListSection } from '@headlight/modes';
+import type { SidebarSection as Section, SidebarFacetSection, SidebarListSection } from '@seesby/modes';
 import { useSeoCrawler } from '../../../contexts/SeoCrawlerContext';
 import { SidebarFacetRow } from './SidebarFacetRow';
 import { SidebarTreeRow } from './SidebarTreeRow';
@@ -79,11 +79,11 @@ function HistogramBody({ section, counts }: { section: SidebarFacetSection; coun
 					<button
 						key={r.value}
 						onClick={() => toggleSelection(key, r.value)}
-						className={`relative group w-full h-[24px] flex items-center justify-between px-2 text-[11px] font-medium transition-colors outline-none rounded-sm border ${selected ? 'border-[#E63946]/30 bg-[#F5364E]/5' : 'border-transparent hover:bg-white/[0.02]'}`}
+						className={`relative group w-full h-[24px] flex items-center justify-between px-2 text-[11px] font-medium transition-colors outline-none rounded-sm border ${selected ? 'border-[#F59E0B]/30 bg-[#F59E0B]/5' : 'border-transparent hover:bg-white/[0.02]'}`}
 					>
 						{/* Horizontal Bar Fill */}
 						<div 
-							className={`absolute left-0 top-0 bottom-0 rounded-sm transition-all duration-500 ease-out ${selected ? 'bg-[#E63946]/20' : 'bg-[#333338]/60 group-hover:bg-[#44444A]/80'}`}
+							className={`absolute left-0 top-0 bottom-0 rounded-sm transition-all duration-500 ease-out ${selected ? 'bg-[#F59E0B]/20' : 'bg-[#333338]/60 group-hover:bg-[#44444A]/80'}`}
 							style={{ width: `${w}%` }}
 						/>
 						

@@ -1,15 +1,18 @@
 import React from 'react';
-import { useSeoCrawler } from '../../../../contexts/SeoCrawlerContext';
-import WqaGridView    from './WqaGridView';
-import WqaMapView     from './WqaMapView';
-import WqaReportsView from './WqaReportsView';
+import { ViewCanvas } from '../../views/_shared/ViewCanvas';
+import { useViewMode } from '../../views/_hooks/useViewMode';
+import WqaPagesView       from './WqaPagesView';
+import WqaStructureView   from './WqaStructureView';
+import WqaPerformanceView from './WqaPerformanceView';
 
 export default function WqaViewRouter() {
-    const { wqaState } = useSeoCrawler();
-    switch (wqaState.viewMode) {
-        case 'map':     return <WqaMapView />;
-        case 'reports': return <WqaReportsView />;
-        case 'grid':
-        default:        return <WqaGridView />;
-    }
+  const [view] = useViewMode('wqa');
+
+  return (
+    <ViewCanvas>
+      {view === 'map'     ? <WqaStructureView /> :
+       view === 'reports' ? <WqaPerformanceView /> :
+                            <WqaPagesView />}
+    </ViewCanvas>
+  );
 }

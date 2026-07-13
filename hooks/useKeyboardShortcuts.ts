@@ -54,7 +54,7 @@ export function useKeyboardShortcuts(handlers: ShortcutHandlers = {}) {
                 e.preventDefault();
                 handlers.search?.();
                 if (handlers.search) return;
-                const searchInput = document.getElementById('headlight-grid-search');
+                const searchInput = document.getElementById('seesby-grid-search');
                 if (searchInput) {
                     searchInput.focus();
                 } else {

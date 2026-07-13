@@ -1,5 +1,5 @@
 // packages/metrics/src/visibility.ts
-import type { MetricDef, Mode, Industry, CmsKey, LanguageCode, MetricSurface, MetricRole } from '@headlight/types';
+import type { MetricDef, Mode, Industry, CmsKey, LanguageCode, MetricSurface, MetricRole } from '@seesby/types';
 
 export interface VisibilityContext {
 	mode: Mode;

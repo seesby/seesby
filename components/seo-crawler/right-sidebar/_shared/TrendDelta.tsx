@@ -13,7 +13,7 @@ export function TrendDelta({
   const pct = (delta / Math.abs(previous)) * 100
   const better = invert ? delta < 0 : delta > 0
   const Icon = delta === 0 ? Minus : delta > 0 ? ArrowUp : ArrowDown
-  const tone = delta === 0 ? 'text-[#666]' : better ? 'text-emerald-400' : 'text-[#F5364E]'
+  const tone = delta === 0 ? 'text-[#666]' : better ? 'text-emerald-400' : 'text-[#F59E0B]'
   return (
     <span className={`inline-flex items-center gap-0.5 text-[10px] font-mono ${tone}`}>
       <Icon size={10} />

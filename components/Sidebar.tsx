@@ -9,6 +9,7 @@ import { useProject } from '../services/ProjectContext';
 import { IndustryType } from '../services/app-types';
 import { useAuth } from '../services/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { BeeMark } from './BeeMark';
 
 interface SidebarProps {
     currentView: ViewType;
@@ -16,17 +17,12 @@ interface SidebarProps {
 }
 
 // Custom Logo Component
-const HeadlightLogo = ({ collapsed }: { collapsed?: boolean }) => (
+const SeesbyLogo = ({ collapsed }: { collapsed?: boolean }) => (
     <div className={`flex items-center gap-3 ${collapsed ? 'justify-center' : ''}`}>
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 text-white drop-shadow-[0_0_8px_rgba(245,54,78,0.5)]">
-            <circle cx="9" cy="16" r="5" fill="currentColor" />
-            <path d="M17 11H27" stroke="#F5364E" strokeWidth="2.5" strokeLinecap="round" />
-            <path d="M17 16H31" stroke="#F5364E" strokeWidth="2.5" strokeLinecap="round" />
-            <path d="M17 21H27" stroke="#F5364E" strokeWidth="2.5" strokeLinecap="round" />
-        </svg>
+        <BeeMark size={32} glow />
         {!collapsed && (
             <div className="flex flex-col justify-center transition-opacity duration-300">
-                <span className="text-white font-extrabold text-lg tracking-wider uppercase font-heading">Headlight</span>
+                <span className="text-white font-extrabold text-lg tracking-wider uppercase font-heading">Seesby</span>
             </div>
         )}
     </div>
@@ -42,7 +38,7 @@ const SidebarItem = ({ icon, label, active, onClick, hasNotification, badge, col
                 } ${collapsed ? 'justify-center px-2' : ''} ${indent ? 'pl-8' : ''}`}
             title={collapsed ? label : undefined}
         >
-            <div className={`transition-transform duration-200 ${active ? 'scale-110 text-brand-red' : 'group-hover:scale-110'}`}>
+            <div className={`transition-transform duration-200 ${active ? 'scale-110 text-brand-amber' : 'group-hover:scale-110'}`}>
                 {icon}
             </div>
             {!collapsed && (
@@ -51,10 +47,10 @@ const SidebarItem = ({ icon, label, active, onClick, hasNotification, badge, col
                 </span>
             )}
             {hasNotification && (
-                <div className={`absolute w-2 h-2 rounded-full bg-brand-red border-2 border-[#0A0A0A] ${collapsed ? 'top-2 right-2' : 'right-3 top-1/2 -translate-y-1/2'}`}></div>
+                <div className={`absolute w-2 h-2 rounded-full bg-brand-amber border-2 border-[#0A0A0A] ${collapsed ? 'top-2 right-2' : 'right-3 top-1/2 -translate-y-1/2'}`}></div>
             )}
             {badge && !collapsed && (
-                <span className={`ml-auto text-[9px] uppercase font-bold px-1.5 py-0.5 rounded ${active ? 'bg-white/20 text-white' : 'bg-brand-red/10 text-brand-red'
+                <span className={`ml-auto text-[9px] uppercase font-bold px-1.5 py-0.5 rounded ${active ? 'bg-white/20 text-white' : 'bg-brand-amber/10 text-brand-amber'
                     }`}>
                     {badge}
                 </span>
@@ -95,7 +91,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
             {/* Collapse Toggle */}
             <button
                 onClick={() => setIsCollapsed(!isCollapsed)}
-                className="absolute -right-3 top-[26px] w-6 h-6 bg-[#1A1A1A] border border-white/10 rounded-full flex items-center justify-center text-gray-500 hover:text-white hover:border-brand-red transition-all z-50 cursor-pointer shadow-lg group"
+                className="absolute -right-3 top-[26px] w-6 h-6 bg-[#1A1A1A] border border-white/10 rounded-full flex items-center justify-center text-gray-500 hover:text-white hover:border-brand-amber transition-all z-50 cursor-pointer shadow-lg group"
             >
                 <ChevronLeft size={12} className={`transition-transform duration-300 ${isCollapsed ? 'rotate-180' : ''} group-hover:scale-110`} />
             </button>
@@ -104,7 +100,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
             <div className={`pt-4 pb-2 flex flex-col gap-2 ${isCollapsed ? 'px-2 items-center' : 'px-4'}`}>
                 {/* Logo Area */}
                 <div className={`h-10 flex items-center ${isCollapsed ? 'justify-center' : ''}`}>
-                    <HeadlightLogo collapsed={isCollapsed} />
+                    <SeesbyLogo collapsed={isCollapsed} />
                 </div>
 
                 {/* Project Select */}
@@ -130,7 +126,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                     {isProjectMenuOpen && !isCollapsed && (
                         <div className="absolute top-full left-0 w-full mt-2 bg-[#1A1A1A] border border-white/10 rounded-xl shadow-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
                             <div className="p-2 border-b border-white/5">
-                                <input type="text" placeholder="Find project..." className="w-full bg-black/20 text-xs text-white p-2 rounded-lg border border-white/5 focus:outline-none focus:border-brand-red/50" />
+                                <input type="text" placeholder="Find project..." className="w-full bg-black/20 text-xs text-white p-2 rounded-lg border border-white/5 focus:outline-none focus:border-brand-amber/50" />
                             </div>
                             <div className="max-h-48 overflow-y-auto scrollbar-thin">
                                 {projects.map((p) => (
@@ -142,7 +138,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                                         }}
                                         className={`w-full flex items-center gap-3 p-2 hover:bg-white/5 transition-colors ${activeProject?.id === p.id ? 'bg-white/5' : ''}`}
                                     >
-                                        <div className="w-6 h-6 rounded-md bg-gradient-to-br from-brand-red to-orange-500 flex items-center justify-center text-[10px] font-bold text-white uppercase">
+                                        <div className="w-6 h-6 rounded-md bg-gradient-to-br from-brand-amber to-orange-500 flex items-center justify-center text-[10px] font-bold text-white uppercase">
                                             {p.name.substring(0, 2)}
                                         </div>
                                         <div className="text-left">
@@ -170,7 +166,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                 {/* New Analysis Action */}
                 <button
                     onClick={() => setCurrentView('content_predictor')}
-                    className={`mt-2 bg-gradient-to-r from-brand-red to-[#FF5065] text-white rounded-xl flex items-center justify-center gap-2 group shadow-glow-sm hover:shadow-glow transition-all
+                    className={`mt-2 bg-gradient-to-r from-brand-amber to-[#FF5065] text-white rounded-xl flex items-center justify-center gap-2 group shadow-glow-sm hover:shadow-glow transition-all
                     ${isCollapsed ? 'w-10 h-10 p-0' : 'w-full py-2.5 px-4'}`}
                     title="New Analysis"
                 >
@@ -348,13 +344,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                             <span className="text-xs text-white font-bold">4.2k <span className="text-gray-600">/ 5k</span></span>
                         </div>
                         <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                            <div className="h-full w-[84%] bg-brand-red"></div>
+                            <div className="h-full w-[84%] bg-brand-amber"></div>
                         </div>
                     </div>
                 ) : (
                     <div className="mt-2 flex justify-center">
                         <div className="w-8 h-1 bg-white/10 rounded-full overflow-hidden">
-                            <div className="w-[84%] h-full bg-brand-red"></div>
+                            <div className="w-[84%] h-full bg-brand-amber"></div>
                         </div>
                     </div>
                 )}
@@ -373,7 +369,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                             </div>
                             <button 
                                 onClick={() => signOut()}
-                                className="p-2 text-gray-500 hover:text-[#F5364E] hover:bg-[#F5364E]/10 rounded-lg transition-all"
+                                className="p-2 text-gray-500 hover:text-[#F59E0B] hover:bg-[#F59E0B]/10 rounded-lg transition-all"
                                 title="Sign Out"
                             >
                                 <LogOut size={14} />
@@ -400,7 +396,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                                     value={newProjectName}
                                     onChange={e => setNewProjectName(e.target.value)}
                                     placeholder="e.g. Acme Corp"
-                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-red transition-colors"
+                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors"
                                 />
                             </div>
                             <div>
@@ -410,7 +406,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                                     value={newProjectUrl}
                                     onChange={e => setNewProjectUrl(e.target.value)}
                                     placeholder="https://acme.com"
-                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-red transition-colors"
+                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors"
                                 />
                             </div>
                             <div>
@@ -418,7 +414,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                                 <select
                                     value={newProjectIndustry}
                                     onChange={e => setNewProjectIndustry(e.target.value as any)}
-                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-red transition-colors appearance-none"
+                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors appearance-none"
                                 >
                                     <option value="saas">SaaS / B2B</option>
                                     <option value="ecommerce">E-Commerce</option>
@@ -439,7 +435,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                                         setNewProjectUrl('');
                                     }
                                 }}
-                                className="w-full mt-4 bg-brand-red text-white font-bold py-3 rounded-xl hover:bg-brand-red/90 transition-colors disabled:opacity-50"
+                                className="w-full mt-4 bg-brand-amber text-white font-bold py-3 rounded-xl hover:bg-brand-amber/90 transition-colors disabled:opacity-50"
                             >
                                 {isSubmitting ? 'Creating...' : 'Create Project'}
                             </button>

@@ -25,7 +25,7 @@ const AuthBackground: React.FC = () => {
             repeat: prefersReducedMotion ? 0 : Infinity, 
             ease: "easeInOut" 
           }}
-          className="absolute -top-[20%] -right-[10%] w-[60%] h-[60%] rounded-full bg-[#F5364E]/20 blur-[120px]"
+          className="absolute -top-[20%] -right-[10%] w-[60%] h-[60%] rounded-full bg-[#F59E0B]/20 blur-[120px]"
         />
 
         {/* Bottom Left Glow */}
@@ -43,11 +43,11 @@ const AuthBackground: React.FC = () => {
             ease: "easeInOut",
             delay: 2
           }}
-          className="absolute -bottom-[20%] -left-[10%] w-[70%] h-[70%] rounded-full bg-[#F5364E]/10 blur-[140px]"
+          className="absolute -bottom-[20%] -left-[10%] w-[70%] h-[70%] rounded-full bg-[#F59E0B]/10 blur-[140px]"
         />
 
         {/* Center Soft Field */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,54,78,0.02)_0%,transparent_70%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,158,11,0.02)_0%,transparent_70%)]"></div>
       </div>
 
       {/* Subtle Mesh Grid - Optimized */}
@@ -71,7 +71,7 @@ const AuthBackground: React.FC = () => {
           ease: "linear",
           delay: 5
         }}
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-[#F5364E] to-transparent w-1/2 h-full skew-x-12 blur-[100px]"
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-[#F59E0B] to-transparent w-1/2 h-full skew-x-12 blur-[100px]"
       />
     </div>
   );

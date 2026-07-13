@@ -9,7 +9,7 @@ export function ProgressRing({
   const r = (size - stroke) / 2
   const c = 2 * Math.PI * r
   const off = c - (v / 100) * c
-  const tone = v >= 75 ? '#22c55e' : v >= 50 ? '#f59e0b' : '#F5364E'
+  const tone = v >= 75 ? '#22c55e' : v >= 50 ? '#f59e0b' : '#F59E0B'
   const styleSize = { width: size, height: size }
   return (
     <div className="relative inline-flex items-center justify-center" style={styleSize}>

@@ -1,8 +1,8 @@
 // packages/fingerprint/src/detectors/industry/ai.ts
-import { runPrompt } from '@headlight/ai';
-import { fingerprintIndustryClassify } from '@headlight/ai/prompts';
+import { runPrompt } from '@seesby/ai';
+import { fingerprintIndustryClassify } from '@seesby/ai/prompts';
 import type { DetectorStep } from '../types';
-import type { Industry } from '@headlight/types';
+import type { Industry } from '@seesby/types';
 import { extractSchemas, extractTitle } from '../lang/util';
 
 export const detectIndustryFromAi: DetectorStep<Industry> = async (ctx) => {

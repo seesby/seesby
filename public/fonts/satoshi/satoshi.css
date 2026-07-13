@@ -1,0 +1,28 @@
+/* Satoshi — local copy (Fontshare free license).
+   Note: Fontshare did not expose a 600 cut via API; 600 maps to the 700 file
+   so the bold wordmark renders in real Satoshi instead of faux-bold. */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('satoshi-300.woff2') format('woff2');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('satoshi-400.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('satoshi-500.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('satoshi-700.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('satoshi-700.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}

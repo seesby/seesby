@@ -74,7 +74,7 @@ export const ContentPredictorView = () => {
                     <div className="animate-in slide-in-from-bottom-4 duration-500 space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                             <div className="col-span-1 bg-[#151515] p-6 rounded-2xl border border-white/5 text-center flex flex-col justify-center relative overflow-hidden">
-                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-purple via-pink-500 to-brand-red"></div>
+                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-purple via-pink-500 to-brand-amber"></div>
                                 <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Predictive Score</span>
                                 <div className="text-6xl font-black text-white font-heading">{result.score}</div>
                                 <span className="text-xs text-brand-purple font-bold mt-2">Highly Likely to Rank</span>

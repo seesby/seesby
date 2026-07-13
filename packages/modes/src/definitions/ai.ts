@@ -80,8 +80,12 @@ export function registerAiMode() {
 	defineMode({
 		id: 'ai',
 		description: 'Visibility in AI and Answer Engines.',
-		defaultViewId: 'grid',
-		views: [{ id: 'grid', kind: 'table', label: 'Grid' }],
+		defaultViewId: 'pages',
+		views: [
+			{ id: 'pages',    kind: 'table',  label: 'Pages',    shortcut: '1' },
+			{ id: 'prompts',  kind: 'canvas', label: 'Prompts',  shortcut: '2' },
+			{ id: 'entities', kind: 'graph',  label: 'Entities', shortcut: '3' },
+		],
 				lsSections: aiLsSections,
 		rsTabs: [
 			{ id: 'ai_overview', label: 'Overview' },
@@ -90,7 +94,25 @@ export function registerAiMode() {
 			{ id: 'ai_entities', label: 'Entities' },
 			{ id: 'ai_schema', label: 'Schema' },
 		],
+		inspectorTabs: [
+			{ id: 'summary',    label: 'Summary',    icon: 'LayoutDashboard' },
+			{ id: 'bots',       label: 'Bots',       icon: 'Bot' },
+			{ id: 'schema',     label: 'Schema',     icon: 'Braces' },
+			{ id: 'entities',   label: 'Entities',   icon: 'Network' },
+			{ id: 'citations',  label: 'Citations',  icon: 'Quote' },
+			{ id: 'history',    label: 'History',    icon: 'History' },
+		],
 		actionCodes: MODE_ACTIONS.ai,
-		visible: ['p.identity.url', 'p.ai.passageReadiness', 'p.ai.entityCoverage'],
+		visible: [
+			'p.identity.url',
+			'p.ai.botsAllowed',
+			'p.ai.extractability',
+			'p.ai.citation.rate',
+			'p.ai.llmsTxt',
+			'p.ai.entityCoverage',
+			'p.ai.schemaForAI',
+			'p.content.eeatScore',
+			'p.action.topAction',
+		],
 	});
 }

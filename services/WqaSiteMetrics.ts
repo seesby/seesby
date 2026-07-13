@@ -1,9 +1,9 @@
 // services/WqaSiteMetrics.ts
-import { filterVisibleMetrics, ALL_METRICS } from '@headlight/metrics';
-import { resolveMetricFromLadder } from '@headlight/compute';
+import { filterVisibleMetrics, ALL_METRICS } from '@seesby/metrics';
+import { resolveMetricFromLadder } from '@seesby/compute';
 // @ts-ignore
 import { siteProducers } from '@/services/producers/site';
-import type { Industry } from '@headlight/types';
+import type { Industry } from '@seesby/types';
 
 export interface WqaSiteMetrics {
 	sitemapCoverage: number;

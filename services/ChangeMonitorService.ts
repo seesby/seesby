@@ -19,7 +19,7 @@ export interface PageSnapshot {
     snapshotAt: string;
 }
 
-const storageKey = (projectId: string) => `headlight:monitor:snapshots:${projectId}`;
+const storageKey = (projectId: string) => `seesby:monitor:snapshots:${projectId}`;
 
 class ChangeMonitorService {
     static compareSnapshots(oldSnap: PageSnapshot, newSnap: PageSnapshot) {

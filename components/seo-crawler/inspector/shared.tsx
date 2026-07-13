@@ -22,6 +22,13 @@ export const formatNumber = (value: any, options?: Intl.NumberFormatOptions) => 
     return Number(value).toLocaleString(undefined, options);
 };
 
+export const formatSignedNumber = (value: any, options?: Intl.NumberFormatOptions) => {
+    if (value === null || value === undefined || Number.isNaN(Number(value))) return EMPTY_VALUE;
+    const num = Number(value);
+    const formatted = Math.abs(num).toLocaleString(undefined, options);
+    return num >= 0 ? `+${formatted}` : `-${formatted}`;
+};
+
 export const formatDuration = (ms: any) => {
     if (ms === null || ms === undefined || Number.isNaN(Number(ms))) return EMPTY_VALUE;
     return `${Math.round(Number(ms))}ms`;
@@ -29,25 +36,27 @@ export const formatDuration = (ms: any) => {
 
 export const formatDate = (date: any) => {
     if (!date) return EMPTY_VALUE;
+    const str = String(date).trim();
+    if (str.length > 50) return EMPTY_VALUE;
     try {
-        const d = new Date(date);
-        if (isNaN(d.getTime())) return String(date);
+        const d = new Date(str);
+        if (isNaN(d.getTime())) return EMPTY_VALUE;
         return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
     } catch {
-        return String(date);
+        return EMPTY_VALUE;
     }
 };
 
-// D1 fix: Re-export from constants.tsx to avoid duplicate implementations.
+// D1 fix: Re-export from formatters.ts (canonical location).
 // Wraps the canonical version with null/NaN handling for inspector context.
-import { formatBytes as _formatBytesFn } from '../constants';
+import { fmtBytes as _fmtBytesFn } from '../views/_shared/formatters';
 export const formatBytes = (bytes: any): string => {
     if (bytes === null || bytes === undefined || Number.isNaN(Number(bytes))) return EMPTY_VALUE;
-    return _formatBytesFn(Number(bytes));
+    return _fmtBytesFn(Number(bytes));
 };
 
 export const getSafeHostname = (url: string | undefined | null) => {
-    if (!url) return 'example.com';
+    if (!url) return '';
     try {
         return new URL(url).hostname;
     } catch {
@@ -101,7 +110,7 @@ export const StatusBadge = ({ status, label, onClick }: {
     };
 
     return (
-        <span 
+        <span
             onClick={onClick}
             className={`px-2 py-0.5 rounded text-[10px] font-bold border ${styles[status]} ${onClick ? 'cursor-pointer hover:bg-opacity-30' : ''}`}
         >
@@ -109,6 +118,21 @@ export const StatusBadge = ({ status, label, onClick }: {
         </span>
     );
 };
+
+export const Card = ({ title, children }: { title: string; children: React.ReactNode }) => (
+    <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
+        <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2.5">{title}</div>
+        <div className="space-y-0">{children}</div>
+    </div>
+);
+
+export const MetricPill = ({ label, value, good, sub }: { label: string; value: string; good?: boolean; sub?: string }) => (
+    <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-2 text-center">
+        <div className={`text-[12px] font-bold ${good === true ? 'text-[#22c55e]' : good === false ? 'text-[#F59E0B]' : 'text-white'}`}>{value}</div>
+        <div className="text-[9px] text-[#444] uppercase tracking-widest">{label}</div>
+        {sub && <div className="text-[8px] text-[#555] mt-0.5">{sub}</div>}
+    </div>
+);
 
 export const MetricCard = ({ label, value, sub, color }: {
     label: string;
@@ -188,3 +212,14 @@ export const IssuesList = ({ issues, page }: {
         </div>
     );
 };
+
+export function FlagRow({ label, fail }: { label: string; fail: boolean }) {
+  return (
+    <div className="flex items-center justify-between py-[3px] text-[11px]">
+      <span className="text-[#666]">{label}</span>
+      <span className={`text-[10px] font-medium ${fail ? 'text-[#F59E0B]' : 'text-[#22c55e]'}`}>
+        {fail ? 'Yes' : 'No'}
+      </span>
+    </div>
+  );
+}

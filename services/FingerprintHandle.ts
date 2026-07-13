@@ -1,4 +1,4 @@
-import type { CmsKey, Industry, ProjectFingerprint, SourceStamp } from '@headlight/types';
+import type { CmsKey, Industry, ProjectFingerprint, SourceStamp } from '@seesby/types';
 import { normalizeCms, normalizeIndustry } from '../packages/modes/src';
 import { detectSiteType } from './SiteTypeDetector';
 import { discoverFingerprintSamples } from './discoverFingerprintSamples';
@@ -28,7 +28,7 @@ type StartOptions = {
   pages?: any[];
 };
 
-const storageKey = (projectId: string) => `headlight:fingerprint:${projectId}`;
+const storageKey = (projectId: string) => `seesby:fingerprint:${projectId}`;
 
 export class FingerprintHandle {
   private listeners = new Set<Listener>();
@@ -146,7 +146,7 @@ async function fetchPageSignals(rootUrl: string): Promise<PageSignal[]> {
 
 async function fetchSingleSignal(url: string): Promise<PageSignal> {
   const response = await fetch(url, {
-    headers: { 'user-agent': 'HeadlightFingerprint/1.0' },
+    headers: { 'user-agent': 'SeesbyFingerprint/1.0' },
   });
   const html = await response.text();
 

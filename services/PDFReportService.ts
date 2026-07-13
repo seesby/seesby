@@ -14,10 +14,10 @@ export async function generatePDFReport(data: {
     try {
       pdf.addImage(data.logo, 'PNG', 20, 20, 40, 40);
     } catch {
-      pdf.setFontSize(24).text('Headlight SEO Report', 20, 40);
+      pdf.setFontSize(24).text('Seesby SEO Report', 20, 40);
     }
   } else {
-    pdf.setFontSize(24).text('Headlight SEO Report', 20, 40);
+    pdf.setFontSize(24).text('Seesby SEO Report', 20, 40);
   }
 
   pdf.setFontSize(16).text(data.siteName, 20, 60);

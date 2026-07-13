@@ -1,5 +1,5 @@
 // packages/fingerprint/src/detectors/types.ts
-import type { SourceTag, SourceTier } from '@headlight/types';
+import type { SourceTag, SourceTier } from '@seesby/types';
 
 export interface DetectorOutcome<T> {
 	value: T;

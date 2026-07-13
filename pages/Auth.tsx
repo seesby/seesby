@@ -466,7 +466,7 @@ const Auth: React.FC = () => {
     if (!clerkEnabled) {
         return (
             <div className="h-screen bg-[#050505] text-gray-800 flex flex-col items-center justify-center p-12 text-center">
-                <div className="w-1 h-1 bg-[#F5364E] rounded-full mb-6 animate-pulse" />
+                <div className="w-1 h-1 bg-[#F59E0B] rounded-full mb-6 animate-pulse" />
                 <p className="max-w-xs text-[9px] font-bold uppercase tracking-widest leading-relaxed">
                     System setup required. Please check your environment keys.
                 </p>
@@ -489,8 +489,8 @@ const Auth: React.FC = () => {
                     animate={{ opacity: 1, height: 'auto' }}
                     className="mb-8 overflow-hidden"
                 >
-                    <div className="p-3.5 rounded-xl bg-[#F5364E]/[0.02] border border-[#F5364E]/10 text-[#F5364E] text-[11px] font-bold uppercase tracking-wider flex items-center gap-3">
-                        <div className="w-1 h-1 rounded-full bg-[#F5364E]" />
+                    <div className="p-3.5 rounded-xl bg-[#F59E0B]/[0.02] border border-[#F59E0B]/10 text-[#F59E0B] text-[11px] font-bold uppercase tracking-wider flex items-center gap-3">
+                        <div className="w-1 h-1 rounded-full bg-[#F59E0B]" />
                         {error}
                     </div>
                 </motion.div>
@@ -561,7 +561,7 @@ const Auth: React.FC = () => {
 
             {mode === 'sso_callback' && (
                 <div className="py-12 text-center space-y-4">
-                   <div className="w-8 h-8 border-2 border-white/5 border-t-[#F5364E] rounded-full animate-spin mx-auto" />
+                   <div className="w-8 h-8 border-2 border-white/5 border-t-[#F59E0B] rounded-full animate-spin mx-auto" />
                    <p className="text-gray-600 font-bold uppercase tracking-widest text-[9px]">Just a moment...</p>
                 </div>
             )}

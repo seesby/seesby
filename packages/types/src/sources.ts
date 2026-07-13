@@ -2,7 +2,7 @@
 
 export type SourceTier = 'T0' | 'T1' | 'T2' | 'T3' | 'T4' | 'T5' | 'T6' | 'T7' | 'T8';
 
-export type SourceTag = 'source' | 'live' | 'browser' | 'scrape' | 'stale' | 'ai' | 'default';
+export type SourceTag = 'source' | 'live' | 'browser' | 'scrape' | 'stale' | 'ai' | 'est' | 'low-n' | 'default';
 
 export interface SourceStamp {
 	tier: SourceTier;
@@ -15,13 +15,13 @@ export interface SourceStamp {
 
 export const TIER_TAG_DEFAULT: Record<SourceTier, ReadonlyArray<SourceTag>> = {
 	T0: ['source', 'live'],
-	T1: ['browser'],
-	T2: ['source'],
-	T3: ['source'],
+	T1: ['source'],
+	T2: ['browser'],
+	T3: ['scrape'],
 	T4: ['scrape', 'stale'],
 	T5: ['scrape'],
 	T6: ['ai'],
-	T7: ['scrape'],
+	T7: ['est'],
 	T8: ['default'],
 };
 

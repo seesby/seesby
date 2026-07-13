@@ -1,5 +1,5 @@
 // packages/actions/src/ProposedAction.ts
-import type { ActionCode, SeverityBand } from '@headlight/types';
+import type { ActionCode, SeverityBand } from '@seesby/types';
 
 export interface ProposedAction {
 	code: ActionCode;

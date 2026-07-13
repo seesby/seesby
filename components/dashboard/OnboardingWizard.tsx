@@ -126,14 +126,14 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
         <div className="flex items-center justify-center min-h-[80vh]">
             <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-10 max-w-xl w-full relative overflow-hidden shadow-2xl">
                 <div className="absolute top-0 left-0 w-full h-1 bg-white/5">
-                    <div className="h-full bg-brand-red transition-all duration-500" style={{ width: `${(step / 3) * 100}%` }}></div>
+                    <div className="h-full bg-brand-amber transition-all duration-500" style={{ width: `${(step / 3) * 100}%` }}></div>
                 </div>
 
                 <div className="text-center mb-10 mt-4">
                     <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-white/10">
-                        {step === 1 && <Globe className="text-brand-red" size={24} />}
-                        {step === 2 && <Search className="text-brand-red" size={24} />}
-                        {step === 3 && <PlayCircle className="text-brand-red" size={24} />}
+                        {step === 1 && <Globe className="text-brand-amber" size={24} />}
+                        {step === 2 && <Search className="text-brand-amber" size={24} />}
+                        {step === 3 && <PlayCircle className="text-brand-amber" size={24} />}
                     </div>
                     <h2 className="text-2xl font-bold font-heading text-white">
                         {step === 1 && "Create Your Project"}
@@ -156,7 +156,7 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
                                 placeholder="e.g. Acme Corp"
                                 value={name}
                                 onChange={e => setName(e.target.value)}
-                                className="w-full bg-[#151515] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red/50 transition-colors"
+                                className="w-full bg-[#151515] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
                             />
                         </div>
                         <div>
@@ -166,7 +166,7 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
                                 placeholder="https://example.com"
                                 value={url}
                                 onChange={e => setUrl(e.target.value)}
-                                className="w-full bg-[#151515] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red/50 transition-colors"
+                                className="w-full bg-[#151515] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
                             />
                         </div>
                         <div>
@@ -174,7 +174,7 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
                             <select
                                 value={industry}
                                 onChange={e => setIndustry(e.target.value as any)}
-                                className="w-full bg-[#151515] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red/50 transition-colors appearance-none"
+                                className="w-full bg-[#151515] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 transition-colors appearance-none"
                             >
                                 <option value="ecommerce">E-Commerce</option>
                                 <option value="local">Local Service / Home Service</option>
@@ -186,7 +186,7 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
                         <button
                             onClick={handleCreateProject}
                             disabled={!name.trim() || !url.trim() || loading}
-                            className="w-full bg-brand-red text-white font-bold py-3 rounded-xl hover:bg-brand-redHover transition-colors mt-4 flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full bg-brand-amber text-white font-bold py-3 rounded-xl hover:bg-brand-amberHover transition-colors mt-4 flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {loading ? <Loader2 size={16} className="animate-spin" /> : "Next Step"}
                         </button>
@@ -207,7 +207,7 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
                                         newKw[idx] = e.target.value;
                                         setKeywords(newKw);
                                     }}
-                                    className="w-full bg-[#151515] border border-white/10 rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red/50 transition-colors"
+                                    className="w-full bg-[#151515] border border-white/10 rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
                                 />
                             </div>
                         ))}
@@ -240,7 +240,7 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
                                 placeholder="e.g. sc-domain:example.com or https://example.com/"
                                 value={gscUrl}
                                 onChange={e => setGscUrl(e.target.value)}
-                                className="w-full bg-[#0A0A0A] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-red font-mono mb-4"
+                                className="w-full bg-[#0A0A0A] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-amber font-mono mb-4"
                             />
 
                             {gscConnected ? (
@@ -262,7 +262,7 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
                             <button onClick={finishOnboarding} className="text-xs text-gray-500 hover:text-white">Skip for now</button>
                             <button
                                 onClick={finishOnboarding}
-                                className="bg-brand-red text-white font-bold py-2.5 px-6 rounded-xl hover:bg-brand-redHover transition-colors flex justify-center items-center gap-2"
+                                className="bg-brand-amber text-white font-bold py-2.5 px-6 rounded-xl hover:bg-brand-amberHover transition-colors flex justify-center items-center gap-2"
                             >
                                 Finish Setup <ChevronRight size={16} />
                             </button>

@@ -1,23 +1,38 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "headlight",
+  "name": "seesby-ghost-bridge",
   "account_id": "978fb1dd7582d0a618969901e9b5460d",
   "main": "workers/ghost-bridge/index.ts",
   "compatibility_date": "2024-04-01",
   "observability": {
     "enabled": true
   },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "CRAWL_SESSION",
+        "class_name": "CrawlSessionDO"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["CrawlSessionDO"]
+    }
+  ],
   "d1_databases": [
     {
-      "binding": "HEADLIGHT_D1",
-      "database_name": "headlight-overflow",
-      "database_id": "542c7ce7-d5d2-419b-9da4-31cb9006fcbe"
+      "binding": "SEESBY_D1",
+      "database_name": "seesby-overflow",
+      "database_id": "33374bec-0b84-43f2-828f-c216bde17f96"
     }
   ],
   "r2_buckets": [
     {
-      "binding": "HEADLIGHT_R2",
-      "bucket_name": "headlight-archives"
+      "binding": "SEESBY_R2",
+      "bucket_name": "seesby-archives"
     }
-  ]
+  ],
+  "compatibility_flags": ["nodejs_compat"]
 }

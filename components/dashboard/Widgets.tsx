@@ -162,7 +162,7 @@ export const LinkOpportunity: React.FC<any> = ({ source, target, anchor, impact 
                     'bg-gray-500/10 text-gray-500 border-gray-500/20'
                 }`}>{impact} Value</span>
             </div>
-            <button className="text-xs font-bold text-white bg-brand-red hover:bg-brand-redHover px-3 py-1.5 rounded-lg transition-all shadow-glow-sm opacity-0 group-hover:opacity-100 flex items-center gap-1">
+            <button className="text-xs font-bold text-white bg-brand-amber hover:bg-brand-amberHover px-3 py-1.5 rounded-lg transition-all shadow-glow-sm opacity-0 group-hover:opacity-100 flex items-center gap-1">
                 Auto-Link <LinkIcon size={10}/>
             </button>
         </div>

@@ -1,5 +1,5 @@
 // packages/fingerprint/src/detectors/LanguageDetector.ts
-import { normalizeLanguage, type LanguageCode } from '@headlight/types';
+import { normalizeLanguage, type LanguageCode } from '@seesby/types';
 import type { DetectorStep } from './types';
 import { stripTags, iso6393to1 } from './lang/util';
 

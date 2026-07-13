@@ -1,5 +1,5 @@
 import { isCloudSyncEnabled, turso } from './turso';
-import type { Industry, Mode } from '@headlight/types';
+import type { Industry, Mode } from '@seesby/types';
 
 export interface CustomAuditPreset {
     id: string;
@@ -15,7 +15,7 @@ export interface CustomAuditPreset {
     disabledCheckOverrides?: string[];
 }
 
-const STORAGE_KEY = 'headlight:audit-presets';
+const STORAGE_KEY = 'seesby:audit-presets';
 
 const canUseLocalStorage = () => typeof window !== 'undefined' && Boolean(window.localStorage);
 
@@ -112,9 +112,19 @@ function normalizePreset(input: any): CustomAuditPreset {
     };
 }
 
-import { LEGACY_MODE_MAP, MODE_SET } from '@headlight/modes/legacy';
+import { LEGACY_MODE_MAP, MODE_SET } from '@seesby/modes/legacy';
 export { LEGACY_MODE_MAP, MODE_SET };
-import { LEGACY_INDUSTRY_MAP, INDUSTRY_SET } from '@headlight/types/industries-legacy';
+
+/** Inline of former LEGACY_INDUSTRY_MAP — only two entries differ from canonical keys. */
+const SNAKE_TO_CAMEL: Record<string, string> = {
+    real_estate: 'realEstate',
+    job_board: 'jobBoard',
+};
+const VALID_INDUSTRIES = new Set<string>([
+    'ecommerce','saas','blog','news','finance','education','healthcare',
+    'local','realEstate','jobBoard','restaurant','portfolio','media',
+    'government','nonprofit','general',
+]);
 
 function normalizeModes(value: unknown): Mode[] {
     if (!Array.isArray(value)) return ['fullAudit'];
@@ -127,7 +137,8 @@ function normalizeModes(value: unknown): Mode[] {
 function normalizeIndustry(value: unknown): Industry | 'all' {
     const key = String(value ?? 'all');
     if (key === 'all') return 'all';
-    return LEGACY_INDUSTRY_MAP[key] ?? (isIndustry(key) ? key : 'general');
+    const resolved = SNAKE_TO_CAMEL[key] ?? key;
+    return isIndustry(resolved) ? resolved : 'general';
 }
 
 function isMode(value: string): value is Mode {
@@ -135,5 +146,5 @@ function isMode(value: string): value is Mode {
 }
 
 function isIndustry(value: string): value is Industry {
-    return value in INDUSTRY_SET;
+    return VALID_INDUSTRIES.has(value);
 }

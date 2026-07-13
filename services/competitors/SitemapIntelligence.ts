@@ -112,7 +112,7 @@ async function fetchAndParseSitemap(domain: string): Promise<SitemapUrl[]> {
   for (const sitemapUrl of sitemapUrls) {
     try {
       const resp = await fetch(sitemapUrl, {
-        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; HeadlightBot/1.0)' },
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; SeesbyBot/1.0)' },
         signal: AbortSignal.timeout(8000),
       });
       if (!resp.ok) continue;
@@ -123,7 +123,7 @@ async function fetchAndParseSitemap(domain: string): Promise<SitemapUrl[]> {
         for (const childUrl of childUrls.slice(0, 10)) {
           try {
             const childResp = await fetch(childUrl, {
-              headers: { 'User-Agent': 'Mozilla/5.0 (compatible; HeadlightBot/1.0)' },
+              headers: { 'User-Agent': 'Mozilla/5.0 (compatible; SeesbyBot/1.0)' },
               signal: AbortSignal.timeout(8000),
             });
             if (!childResp.ok) continue;

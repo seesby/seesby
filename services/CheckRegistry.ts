@@ -1,7 +1,7 @@
 // import { ISSUE_TO_CHECK_MAP } from '../components/seo-crawler/IssueTaxonomy';
-import { CANONICAL_AUDIT_MODES, type AuditMode, type IndustryFilter } from '@headlight/types';
+import { CANONICAL_AUDIT_MODES, type AuditMode, type IndustryFilter } from '@seesby/types';
 
-export type { AuditMode, IndustryFilter } from '@headlight/types';
+export type { AuditMode, IndustryFilter } from '@seesby/types';
 
 export type CheckTier = 1 | 2 | 3 | 4;
 export type CheckSeverity = 'critical' | 'warning' | 'info' | 'pass';

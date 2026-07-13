@@ -6,7 +6,7 @@ export async function dispatchSlackAlert(webhookUrl: string, data: {
   link?: string;
 }) {
   const blocks: any[] = [
-    { type: 'header', text: { type: 'plain_text', text: `Headlight: ${data.event}` } },
+    { type: 'header', text: { type: 'plain_text', text: `Seesby: ${data.event}` } },
     { type: 'section', text: { type: 'mrkdwn', text: `*${data.siteName}*\n${data.details}` } },
   ];
 
@@ -42,7 +42,7 @@ export async function dispatchEmailAlert(to: string, subject: string, html: stri
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      from: 'Headlight <alerts@headlight.app>',
+      from: 'Seesby <alerts@seesby.app>',
       to,
       subject,
       html

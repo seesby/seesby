@@ -1,5 +1,5 @@
 // packages/fingerprint/src/detectors/industry/scrape.ts
-import { type Industry } from '@headlight/types';
+import { type Industry } from '@seesby/types';
 import { detectSiteType } from '../../../../services/SiteTypeDetector';
 import type { DetectorStep } from '../types';
 

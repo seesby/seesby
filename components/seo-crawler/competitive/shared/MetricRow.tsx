@@ -27,7 +27,7 @@ export default function MetricRow({
       onClick={onClick}
       disabled={!onClick}
       className={`w-full flex items-center gap-2 py-2.5 px-3 rounded-lg text-left transition-all ${
-        selected ? 'border border-[#F5364E]/20 bg-[#F5364E]/5' : 'border border-transparent hover:bg-[#111]'
+        selected ? 'border border-[#F59E0B]/20 bg-[#F59E0B]/5' : 'border border-transparent hover:bg-[#111]'
       } ${onClick ? 'cursor-pointer' : 'cursor-default'}`}
     >
       <span className="flex-1 text-[11px] text-[#888]">{label}</span>

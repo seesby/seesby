@@ -1,7 +1,7 @@
 // services/CrawlScheduler.ts
 import { CrawlerConfig } from './CrawlerConfigTypes';
 
-const SCHEDULE_CHECK_KEY = 'headlight:schedule-last-check';
+const SCHEDULE_CHECK_KEY = 'seesby:schedule-last-check';
 const SCHEDULE_INTERVAL = 60 * 1000; // Check every 60 seconds
 
 let intervalId: ReturnType<typeof setInterval> | null = null;

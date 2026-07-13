@@ -17,386 +17,79 @@ import {
     Sparkles
 } from 'lucide-react';
 import { ISSUE_TO_CHECK_MAP } from '../../services/UnifiedIssueTaxonomy';
+import { ALL_METRICS } from '@seesby/metrics';
+import type { MetricDef } from '@seesby/types';
 
-export const formatBytes = (bytes: number) => {
-    if (bytes === 0) return '0 B';
-    const k = 1024;
-    const sizes = ['B', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+// formatBytes removed — canonical version lives in views/_shared/formatters.ts as fmtBytes
+
+
+// ─── Registry-generated columns (canonical metric keys) ───────────────
+const NAMESPACE_GROUP: Record<string, string> = {
+    'p.indexing': 'Indexing',
+    'p.tech': 'Technical',
+    'p.content': 'Content',
+    'p.links': 'Links',
+    'p.search': 'Search',
+    'p.ga': 'Analytics',
+    'p.ai': 'AI',
+    'p.social': 'Social',
+    'p.paid': 'Paid',
+    'p.commerce': 'Commerce',
+    'p.local': 'Local',
+    'p.ux': 'UX',
+    'fp': 'Fingerprint',
+    's.score': 'Scores',
+    's.social': 'Site Social',
+    's.paid': 'Site Paid',
+    's.email': 'Email',
+    's.ux': 'Site UX',
+    's.crawl': 'Crawl',
+    's.news': 'News',
+    's.local': 'Site Local',
+    's.saas': 'SaaS',
+    'e.competitor': 'Competitors',
+    'e.local': 'Local Entity',
+    'q': 'Keywords',
+    'l': 'Link Details',
 };
 
-export const ALL_COLUMNS = [
-    // General
-    { key: 'url', label: 'Address', width: '350px', group: 'General' },
-    { key: 'contentType', label: 'Content Type', width: '120px', group: 'General' },
-    { key: 'statusCode', label: 'Status Code', width: '90px', group: 'General' },
-    { key: 'status', label: 'Status', width: '100px', group: 'General' },
-    { key: 'indexable', label: 'Indexability', width: '100px', group: 'General' },
-    { key: 'indexabilityStatus', label: 'Indexability Status', width: '140px', group: 'General' },
-    { key: 'title', label: 'Title 1', width: '300px', group: 'General' },
-    { key: 'titleLength', label: 'Title 1 Length', width: '100px', group: 'General' },
-    { key: 'titlePixelWidth', label: 'Title 1 Pixel Width', width: '130px', group: 'General' },
-    { key: 'metaDesc', label: 'Meta Description 1', width: '350px', group: 'General' },
-    { key: 'metaDescLength', label: 'Meta Description 1 Length', width: '160px', group: 'General' },
-    { key: 'metaDescPixelWidth', label: 'Meta Description 1 Pixel Width', width: '180px', group: 'General' },
-    { key: 'metaKeywords', label: 'Meta Keywords 1', width: '200px', group: 'General' },
-    { key: 'metaKeywordsLength', label: 'Meta Keywords 1 Length', width: '160px', group: 'General' },
-    { key: 'h1_1', label: 'H1-1', width: '250px', group: 'General' },
-    { key: 'h1_1Length', label: 'H1-1 Length', width: '100px', group: 'General' },
-    { key: 'h1_2', label: 'H1-2', width: '250px', group: 'General' },
-    { key: 'h1_2Length', label: 'H1-2 Length', width: '100px', group: 'General' },
-    { key: 'h2_1', label: 'H2-1', width: '250px', group: 'General' },
-    { key: 'h2_1Length', label: 'H2-1 Length', width: '100px', group: 'General' },
-    { key: 'h2_2', label: 'H2-2', width: '250px', group: 'General' },
-    { key: 'h2_2Length', label: 'H2-2 Length', width: '100px', group: 'General' },
+function getGroupLabel(namespace: string): string {
+    for (const [prefix, label] of Object.entries(NAMESPACE_GROUP)) {
+        if (namespace.startsWith(prefix)) return label;
+    }
+    const last = namespace.split('.').pop() ?? namespace;
+    return last.charAt(0).toUpperCase() + last.slice(1);
+}
 
-    // WQA Classification
-    { key: 'pageCategory', label: 'Page Category', width: '140px', group: 'WQA' },
-    { key: 'pageValueTier', label: 'Page Value', width: '100px', group: 'WQA' },
-    { key: 'pageValue', label: 'Page Value Score', width: '130px', group: 'WQA' },
-    { key: 'speedScore', label: 'Speed', width: '100px', group: 'WQA' },
-    { key: 'contentAge', label: 'Content Age', width: '120px', group: 'WQA' },
-    { key: 'isCannibalized', label: 'Cannibalized', width: '110px', group: 'WQA' },
+function shortLabel(m: MetricDef): string {
+    const parts = m.key.split('.');
+    return parts[parts.length - 1]
+        .replace(/([A-Z])/g, ' $1')
+        .replace(/^./, s => s.toUpperCase())
+        .trim();
+}
 
-    // WQA Actions
-    { key: 'technicalAction', label: 'Technical Action', width: '180px', group: 'WQA Actions' },
-    { key: 'contentAction', label: 'Content Action', width: '180px', group: 'WQA Actions' },
-    { key: 'industryAction', label: 'Industry Action', width: '180px', group: 'WQA Actions' },
-    { key: 'estimatedImpact', label: 'Est. Impact (clicks)', width: '150px', group: 'WQA Actions' },
-    { key: 'actionPriority', label: 'Action Priority', width: '120px', group: 'WQA Actions' },
+const seenKeys = new Set<string>();
+export const REGISTRY_COLUMNS = ALL_METRICS
+    .filter(m => m.roles?.includes('G'))
+    .filter(m => {
+        if (seenKeys.has(m.key)) return false;
+        seenKeys.add(m.key);
+        return true;
+    })
+    .map(m => ({
+        key: m.key,
+        label: shortLabel(m),
+        width: m.width ?? '120px',
+        group: getGroupLabel(m.namespace),
+        format: m.format,
+        namespace: m.namespace,
+        level: m.level,
+    }));
 
-    // WQA Search Performance
-    { key: 'expectedCtr', label: 'Expected CTR', width: '110px', group: 'WQA Search' },
-    { key: 'ctrGap', label: 'CTR Gap', width: '100px', group: 'WQA Search' },
-    { key: 'intentMatch', label: 'Intent Match', width: '110px', group: 'WQA Search' },
-    
-    // Technical
-    { key: 'metaRobots1', label: 'Meta Robots 1', width: '120px', group: 'Technical' },
-    { key: 'metaRobots2', label: 'Meta Robots 2', width: '120px', group: 'Technical' },
-    { key: 'xRobots', label: 'X-Robots-Tag 1', width: '120px', group: 'Technical' },
-    { key: 'metaRefresh', label: 'Meta Refresh 1', width: '120px', group: 'Technical' },
-    { key: 'canonical', label: 'Canonical Link Element 1', width: '350px', group: 'Technical' },
-    { key: 'relNextTag', label: 'rel="next" 1', width: '150px', group: 'Technical' },
-    { key: 'relPrevTag', label: 'rel="prev" 1', width: '150px', group: 'Technical' },
-    { key: 'httpRelNext', label: 'HTTP rel="next" 1', width: '150px', group: 'Technical' },
-    { key: 'httpRelPrev', label: 'HTTP rel="prev" 1', width: '150px', group: 'Technical' },
-    { key: 'amphtml', label: 'amphtml Link Element', width: '200px', group: 'Technical' },
-    { key: 'httpVersion', label: 'HTTP Version', width: '100px', group: 'Technical' },
-    { key: 'contentEncoding', label: 'Content Encoding', width: '140px', group: 'Technical' },
-    { key: 'contentTypeMime', label: 'Content MIME', width: '180px', group: 'Technical' },
-    { key: 'contentTypeCharset', label: 'Charset', width: '110px', group: 'Technical' },
-    { key: 'contentTypeValid', label: 'Content Type Valid', width: '140px', group: 'Technical' },
-    { key: 'mobileAlt', label: 'Mobile Alternate Link', width: '200px', group: 'Technical' },
-    { key: 'redirectUrl', label: 'Redirect URL', width: '350px', group: 'Technical' },
-    { key: 'finalUrl', label: 'Final URL', width: '350px', group: 'Technical' },
-    { key: 'redirectChainLength', label: 'Redirect Hops', width: '120px', group: 'Technical' },
-    { key: 'isRedirectLoop', label: 'Redirect Loop', width: '120px', group: 'Technical' },
-    { key: 'redirectType', label: 'Redirect Type', width: '120px', group: 'Technical' },
-    { key: 'cnameChainLength', label: 'CNAME Hops', width: '110px', group: 'Technical' },
-    { key: 'inSitemap', label: 'In Sitemap', width: '110px', group: 'Technical' },
-    { key: 'sitemapBrokenUrls', label: 'Broken Sitemap URLs', width: '150px', group: 'Technical' },
-    { key: 'sitemapLastmodAccurate', label: 'Sitemap Lastmod Accurate', width: '170px', group: 'Technical' },
-    { key: 'sitemapLastmodMismatchCount', label: 'Sitemap Lastmod Mismatches', width: '190px', group: 'Technical' },
-    { key: 'cookies', label: 'Cookies', width: '80px', group: 'Technical' },
-    { key: 'language', label: 'Language', width: '80px', group: 'Technical' },
-    { key: 'xRobotsNoindex', label: 'X-Robots Noindex', width: '140px', group: 'Technical' },
-    { key: 'xRobotsNofollow', label: 'X-Robots Nofollow', width: '140px', group: 'Technical' },
-    
-    // Metrics
-    { key: 'sizeBytes', label: 'Size (bytes)', width: '110px', group: 'Metrics' },
-    { key: 'transferredBytes', label: 'Transferred (bytes)', width: '140px', group: 'Metrics' },
-    { key: 'totalTransferred', label: 'Total Transferred (bytes)', width: '160px', group: 'Metrics' },
-    { key: 'co2Mg', label: 'CO2 (mg)', width: '100px', group: 'Metrics' },
-    { key: 'carbonRating', label: 'Carbon Rating', width: '110px', group: 'Metrics' },
-    { key: 'lcp', label: 'LCP (ms)', tooltip: 'Largest Contentful Paint: Good < 2500ms, Needs Work 2500-4000ms, Poor > 4000ms.', width: '100px', group: 'Metrics' },
-    { key: 'fcp', label: 'FCP (ms)', width: '100px', group: 'Metrics' },
-    { key: 'cls', label: 'CLS', width: '90px', group: 'Metrics' },
-    { key: 'inp', label: 'INP (ms)', width: '100px', group: 'Metrics' },
-    { key: 'httpRequestCount', label: 'HTTP Requests', width: '120px', group: 'Metrics' },
-    { key: 'totalJsBytes', label: 'JS Bytes', width: '120px', group: 'Metrics' },
-    { key: 'totalCssBytes', label: 'CSS Bytes', width: '120px', group: 'Metrics' },
-    { key: 'unusedJsPercent', label: 'Unused JS (%)', width: '130px', group: 'Metrics' },
-    { key: 'unusedCssPercent', label: 'Unused CSS (%)', width: '140px', group: 'Metrics' },
-    { key: 'wordCount', label: 'Word Count', width: '110px', group: 'Metrics' },
-    { key: 'sentenceCount', label: 'Sentence Count', width: '120px', group: 'Metrics' },
-    { key: 'avgWordsPerSentence', label: 'Average Words Per Sentence', width: '180px', group: 'Metrics' },
-    { key: 'fleschScore', label: 'Flesch Reading Ease Score', width: '180px', group: 'Metrics' },
-    { key: 'readability', label: 'Readability', width: '120px', group: 'Metrics' },
-    { key: 'textRatio', label: 'Text Ratio', width: '100px', group: 'Metrics' },
-    { key: 'loadTime', label: 'Response Time', width: '120px', group: 'Metrics' },
-    { key: 'dnsResolutionTime', label: 'DNS Time (ms)', width: '110px', group: 'Metrics' },
-    { key: 'lastModified', label: 'Last Modified', width: '180px', group: 'Metrics' },
-    { key: 'missingAltImages', label: 'Missing Alt Images', width: '140px', group: 'Metrics' },
-    { key: 'longAltImages', label: 'Long Alt Images', width: '130px', group: 'Metrics' },
-    { key: 'totalImages', label: 'Total Images', width: '110px', group: 'Metrics' },
-    { key: 'oversizedImages', label: 'Oversized Images', width: '140px', group: 'Metrics' },
-    { key: 'brokenImages', label: 'Broken Images', width: '120px', group: 'Metrics' },
-    { key: 'domNodeCount', label: 'DOM Nodes', width: '110px', group: 'Metrics' },
-    { key: 'renderBlockingCss', label: 'Render-Blocking CSS', width: '150px', group: 'Metrics' },
-    { key: 'renderBlockingJs', label: 'Render-Blocking JS', width: '150px', group: 'Metrics' },
-    { key: 'thirdPartyScriptCount', label: '3rd-Party Scripts', width: '140px', group: 'Metrics' },
-    { key: 'preconnectCount', label: 'Preconnect Hints', width: '130px', group: 'Metrics' },
-    { key: 'prefetchCount', label: 'DNS Prefetch Hints', width: '140px', group: 'Metrics' },
-    { key: 'preloadCount', label: 'Preload Hints', width: '120px', group: 'Metrics' },
-    { key: 'legacyFormatImages', label: 'Legacy Image Formats', width: '150px', group: 'Metrics' },
-    { key: 'modernFormatImages', label: 'Modern Image Formats', width: '150px', group: 'Metrics' },
-    { key: 'imagesWithoutSrcset', label: 'Images Without Srcset', width: '150px', group: 'Metrics' },
-    { key: 'imagesWithoutLazy', label: 'Images Without Lazy', width: '150px', group: 'Metrics' },
-    { key: 'imagesWithoutDimensions', label: 'Images Without Dimensions', width: '170px', group: 'Metrics' },
-    
-    // Links
-    { key: 'crawlDepth', label: 'Crawl Depth', width: '100px', group: 'Links' },
-    { key: 'folderDepth', label: 'Folder Depth', width: '110px', group: 'Links' },
-    { key: 'linkScore', label: 'Link Score', width: '100px', group: 'Links' },
-    { key: 'inlinks', label: 'Inlinks', width: '90px', group: 'Links' },
-    { key: 'uniqueInlinks', label: 'Unique Inlinks', width: '120px', group: 'Links' },
-    { key: 'uniqueJsInlinks', label: 'Unique JS Inlinks', width: '130px', group: 'Links' },
-    { key: 'percentOfTotal', label: '% of Total', width: '100px', group: 'Links' },
-    { key: 'outlinks', label: 'Outlinks', width: '90px', group: 'Links' },
-    { key: 'uniqueOutlinks', label: 'Unique Outlinks', width: '120px', group: 'Links' },
-    { key: 'uniqueJsOutlinks', label: 'Unique JS Outlinks', width: '130px', group: 'Links' },
-    { key: 'externalOutlinks', label: 'External Outlinks', width: '130px', group: 'Links' },
-    { key: 'uniqueExternalOutlinks', label: 'Unique External Outlinks', width: '180px', group: 'Links' },
-    { key: 'uniqueExternalJsOutlinks', label: 'Unique External JS Outlinks', width: '200px', group: 'Links' },
-    
-    // Advanced
-    { key: 'nearDuplicateMatch', label: 'Closest Near Duplicate Match', width: '300px', group: 'Advanced' },
-    { key: 'noNearDuplicates', label: 'No. Near Duplicates', width: '140px', group: 'Advanced' },
-    { key: 'spellingErrors', label: 'Spelling Errors', width: '120px', group: 'Advanced' },
-    { key: 'grammarErrors', label: 'Grammar Errors', width: '120px', group: 'Advanced' },
-    { key: 'hash', label: 'Hash', width: '300px', group: 'Advanced' },
-    { key: 'closestSemanticAddress', label: 'Closest Semantically Similar Address', width: '350px', group: 'Advanced' },
-    { key: 'semanticSimilarityScore', label: 'Semantic Similarity Score', width: '180px', group: 'Advanced' },
-    { key: 'topicCluster', label: 'AI Topic Cluster', width: '200px', group: 'Advanced' },
-    { key: 'internalPageRank', label: 'Internal PageRank', tooltip: 'Iterative internal authority score based on the site link graph.', width: '150px', group: 'Advanced' },
-    { key: 'linkEquity', label: 'Link Equity (0-10)', tooltip: 'Composite authority from internal PageRank, backlinks, and content quality.', width: '150px', group: 'Advanced' },
-    { key: 'funnelStage', label: 'Funnel Stage (AI)', width: '150px', group: 'Advanced' },
-    { key: 'searchIntent', label: 'Search Intent (AI)', width: '160px', group: 'Advanced' },
-    { key: 'strategicPriority', label: 'Strategic Priority', width: '160px', group: 'Advanced' },
-    { key: 'contentDecay', label: 'Content Decay', width: '150px', group: 'Advanced' },
-    { key: 'multipleH1s', label: 'Multiple H1s', width: '120px', group: 'Advanced' },
-    { key: 'incorrectHeadingOrder', label: 'Heading Order Issue', width: '150px', group: 'Advanced' },
-    { key: 'schemaErrors', label: 'Schema Errors', width: '120px', group: 'Advanced' },
-    { key: 'schemaWarnings', label: 'Schema Warnings', width: '130px', group: 'Advanced' },
-    { key: 'schemaMissingRequired', label: 'Schema Missing Required', width: '220px', group: 'Advanced' },
-    { key: 'hasBreadcrumbSchema', label: 'Breadcrumb Schema', width: '150px', group: 'Advanced' },
-    { key: 'hasFaqSchema', label: 'FAQ Schema', width: '120px', group: 'Advanced' },
-    { key: 'hasArticleSchema', label: 'Article Schema', width: '130px', group: 'Advanced' },
-    { key: 'hasOrgSchema', label: 'Organization Schema', width: '150px', group: 'Advanced' },
-    { key: 'crawlTimestamp', label: 'Crawl Timestamp', width: '200px', group: 'Advanced' },
-    { key: 'visibleDate', label: 'Visible Date', width: '160px', group: 'Advanced' },
-    { key: 'anchorTextDiversity', label: 'Anchor Text Diversity', width: '160px', group: 'Advanced' },
-    { key: 'isSoft404', label: 'Soft 404', width: '100px', group: 'Advanced' },
-    { key: 'hasFavicon', label: 'Favicon', width: '90px', group: 'Advanced' },
-    { key: 'hasCharset', label: 'Charset', width: '90px', group: 'Advanced' },
-    { key: 'hasRssFeed', label: 'RSS/Atom Feed', width: '120px', group: 'Advanced' },
-    { key: 'hasServiceWorker', label: 'Service Worker', width: '120px', group: 'Advanced' },
-    { key: 'hasWebManifest', label: 'Web Manifest', width: '120px', group: 'Advanced' },
-
-    // CMS Metadata
-    { key: 'cmsType', label: 'CMS Type', width: '120px', group: 'Advanced' },
-    { key: 'wpPostType', label: 'WP Post Type', width: '130px', group: 'Advanced' },
-    { key: 'wpAuthor', label: 'WP Author', width: '120px', group: 'Advanced' },
-    { key: 'wpCategories', label: 'WP Categories', width: '180px', group: 'Advanced' },
-    { key: 'wpTags', label: 'WP Tags', width: '180px', group: 'Advanced' },
-    { key: 'wpPublishDate', label: 'WP Published', width: '160px', group: 'Advanced' },
-    { key: 'wpModifiedDate', label: 'WP Modified', width: '160px', group: 'Advanced' },
-    { key: 'shopifyProductType', label: 'Shopify Product Type', width: '160px', group: 'Advanced' },
-    { key: 'shopifyVendor', label: 'Shopify Vendor', width: '140px', group: 'Advanced' },
-    { key: 'shopifyTags', label: 'Shopify Tags', width: '180px', group: 'Advanced' },
-
-
-    // Security
-    { key: 'hasHsts', label: 'HSTS', width: '80px', group: 'Security' },
-    { key: 'hstsMaxAge', label: 'HSTS Max-Age', width: '120px', group: 'Security' },
-    { key: 'hstsPreload', label: 'HSTS Preload', width: '100px', group: 'Security' },
-    { key: 'hasCsp', label: 'CSP', width: '80px', group: 'Security' },
-    { key: 'cspHasUnsafeInline', label: 'CSP Unsafe-Inline', width: '150px', group: 'Security' },
-    { key: 'cspHasUnsafeEval', label: 'CSP Unsafe-Eval', width: '140px', group: 'Security' },
-    { key: 'hasXFrameOptions', label: 'X-Frame-Options', width: '130px', group: 'Security' },
-    { key: 'hasXContentTypeOptions', label: 'X-Content-Type-Options', width: '170px', group: 'Security' },
-    { key: 'hasReferrerPolicy', label: 'Referrer Policy', width: '120px', group: 'Security' },
-    { key: 'hasPermissionsPolicy', label: 'Permissions Policy', width: '140px', group: 'Security' },
-    { key: 'corsWildcard', label: 'CORS Wildcard Enabled', width: '120px', group: 'Security' },
-    { key: 'sslValid', label: 'SSL Valid', width: '90px', group: 'Security' },
-    { key: 'sslProtocol', label: 'TLS Version', width: '110px', group: 'Security' },
-    { key: 'sslDaysUntilExpiry', label: 'SSL Expiry (days)', width: '140px', group: 'Security' },
-    { key: 'sslIsWeakProtocol', label: 'Weak TLS', width: '90px', group: 'Security' },
-    { key: 'cookieCount', label: 'Cookie Count', width: '110px', group: 'Security' },
-    { key: 'insecureCookies', label: 'Insecure Cookies', width: '130px', group: 'Security' },
-    { key: 'cookiesMissingSameSite', label: 'Cookies Missing SameSite', width: '170px', group: 'Security' },
-    { key: 'scriptsWithoutSri', label: 'Scripts Without SRI', width: '140px', group: 'Security' },
-    { key: 'exposedApiKeys', label: 'Exposed API Keys', width: '130px', group: 'Security' },
-    { key: 'privacyPageLinked', label: 'Privacy Policy Link', width: '140px', group: 'Security' },
-    { key: 'termsPageLinked', label: 'Terms Link', width: '110px', group: 'Security' },
-    { key: 'hasCookieBanner', label: 'Cookie Banner', width: '120px', group: 'Security' },
-    { key: 'isDirectoryListing', label: 'Directory Listing', width: '140px', group: 'Security' },
-    { key: 'hasInlinedCSS', label: 'Inlined CSS (>500b)', width: '140px', group: 'Technical' },
-    { key: 'hasNoscript', label: 'Noscript Tag', width: '120px', group: 'Technical' },
-    { key: 'jsConsoleErrors', label: 'JS Console Errors', width: '220px', group: 'Technical' },
-    { key: 'videosWithoutPoster', label: 'Videos No Poster', width: '140px', group: 'Metrics' },
-    { key: 'videosWithoutLazy', label: 'Videos No Lazy', width: '140px', group: 'Metrics' },
-
-    // Collaboration (P5)
-    { key: 'commentCount', label: 'Comments', width: '90px', group: 'Collaboration' },
-    { key: 'taskCount', label: 'Tasks', width: '90px', group: 'Collaboration' },
-
-    // Accessibility
-    { key: 'hasMainLandmark', label: 'Main Landmark', width: '120px', group: 'Accessibility' },
-    { key: 'hasNavLandmark', label: 'Nav Landmark', width: '120px', group: 'Accessibility' },
-    { key: 'hasHeaderLandmark', label: 'Header Landmark', width: '130px', group: 'Accessibility' },
-    { key: 'hasFooterLandmark', label: 'Footer Landmark', width: '130px', group: 'Accessibility' },
-    { key: 'hasSkipLink', label: 'Skip Link', width: '100px', group: 'Accessibility' },
-    { key: 'formsWithoutLabels', label: 'Form Inputs Without Labels', width: '150px', group: 'Accessibility' },
-    { key: 'viewportNoScale', label: 'Zoom Disabled', width: '110px', group: 'Accessibility' },
-    { key: 'genericLinkTextCount', label: 'Generic Links', width: '120px', group: 'Accessibility' },
-    { key: 'invalidAriaCount', label: 'Invalid ARIA', width: '110px', group: 'Accessibility' },
-    { key: 'tablesWithoutHeaders', label: 'Tables Without Headers', width: '160px', group: 'Accessibility' },
-
-    // Cache
-    { key: 'hasCacheControl', label: 'Cache-Control', width: '120px', group: 'Cache' },
-    { key: 'cacheMaxAge', label: 'Cache Max-Age', width: '120px', group: 'Cache' },
-    { key: 'cacheNoCache', label: 'No-Cache', width: '100px', group: 'Cache' },
-    { key: 'cacheNoStore', label: 'No-Store', width: '100px', group: 'Cache' },
-    { key: 'hasEtag', label: 'ETag', width: '80px', group: 'Cache' },
-    { key: 'hasLastModified', label: 'Last-Modified Header', width: '150px', group: 'Cache' },
-    { key: 'hasExpires', label: 'Expires Header', width: '120px', group: 'Cache' },
-
-    // Mobile
-    { key: 'hasViewportMeta', label: 'Viewport Meta', width: '120px', group: 'Mobile' },
-    { key: 'viewportWidth', label: 'Device Width Viewport', width: '150px', group: 'Mobile' },
-    { key: 'smallTapTargets', label: 'Small Tap Targets', width: '130px', group: 'Mobile' },
-    { key: 'smallFontCount', label: 'Small Fonts', width: '110px', group: 'Mobile' },
-    { key: 'minFontSize', label: 'Min Font Size', width: '120px', group: 'Mobile' },
-
-    // URL Structure
-    { key: 'urlLength', label: 'URL Length', width: '100px', group: 'URL Structure' },
-    { key: 'hasQueryParams', label: 'Has Query Params', width: '130px', group: 'URL Structure' },
-    { key: 'hasUppercase', label: 'Uppercase URL', width: '120px', group: 'URL Structure' },
-    { key: 'hasTrailingSlash', label: 'Trailing Slash', width: '110px', group: 'URL Structure' },
-    { key: 'hasSessionId', label: 'Session ID in URL', width: '140px', group: 'URL Structure' },
-    { key: 'hasSpacesEncoded', label: 'Encoded Spaces', width: '120px', group: 'URL Structure' },
-    
-    // Search Performance (GSC & Keywords)
-    { key: 'gscClicks', label: 'Clicks (30d)', width: '130px', group: 'Search Console' },
-    { key: 'gscImpressions', label: 'Impressions (30d)', width: '160px', group: 'Search Console' },
-    { key: 'gscCtr', label: 'CTR', width: '100px', group: 'Search Console' },
-    { key: 'gscPosition', label: 'Avg Position', width: '140px', group: 'Search Console' },
-    { key: 'mainKeyword', label: 'Main Keyword', width: '180px', group: 'Search Console' },
-    { key: 'mainKwPosition', label: 'Main KW Position', width: '140px', group: 'Search Console' },
-    { key: 'mainKwVolume', label: 'Search Volume', width: '130px', group: 'Search Console' },
-    { key: 'bestKeyword', label: 'Best Keyword', width: '180px', group: 'Search Console' },
-    { key: 'bestKwPosition', label: 'Best KW Position', width: '140px', group: 'Search Console' },
-    { key: 'bestKwVolume', label: 'Best KW Volume', width: '140px', group: 'Search Console' },
-
-    // Bing Search
-    { key: 'bingClicks', label: 'Bing Clicks', width: '130px', group: 'Search Console' },
-    { key: 'bingImpressions', label: 'Bing Impressions', width: '160px', group: 'Search Console' },
-    { key: 'bingCtr', label: 'Bing CTR', width: '100px', group: 'Search Console' },
-    { key: 'bingPosition', label: 'Bing Position', width: '140px', group: 'Search Console' },
-    { key: 'bingCrawlErrors', label: 'Bing Crawl Errors', width: '150px', group: 'Search Console' },
-
-
-    // Analytics (GA4)
-    { key: 'ga4Views', label: 'Views (30d)', width: '140px', group: 'Analytics' },
-    { key: 'ga4Sessions', label: 'Sessions (30d)', width: '150px', group: 'Analytics' },
-    { key: 'sessionsDeltaAbsolute', label: 'Traffic Δ (Abs)', width: '140px', group: 'Analytics' },
-    { key: 'sessionsDeltaPct', label: 'Traffic Δ (%)', width: '120px', group: 'Analytics' },
-    { key: 'ga4Users', label: 'Users (30d)', width: '140px', group: 'Analytics' },
-    { key: 'ga4BounceRate', label: 'Bounce Rate', width: '140px', group: 'Analytics' },
-    { key: 'ga4EngagementTimePerPage', label: 'Avg. Time on Page', width: '160px', group: 'Analytics' },
-    { key: 'ga4Conversions', label: 'Conversions', width: '130px', group: 'Analytics' },
-    { key: 'ga4ConversionRate', label: 'Conversion Rate', width: '150px', group: 'Analytics' },
-    { key: 'ga4GoalCompletions', label: 'Goal Completions', width: '150px', group: 'Analytics' },
-    { key: 'ga4EcommerceRevenue', label: 'Ecom Revenue', width: '140px', group: 'Analytics' },
-    { key: 'ga4Transactions', label: 'Transactions', width: '120px', group: 'Analytics' },
-    { key: 'ga4AddtoCart', label: 'Add to Cart', width: '120px', group: 'Analytics' },
-    { key: 'ga4Checkouts', label: 'Checkouts', width: '120px', group: 'Analytics' },
-    { key: 'ga4Revenue', label: 'Revenue (Total)', width: '120px', group: 'Analytics' },
-
-    // Backlinks & Authority
-    { key: 'authorityScore', label: 'Authority Score', width: '150px', group: 'Authority' },
-    { key: 'urlRating', label: 'URL Rating (UR)', width: '150px', group: 'Authority' },
-    { key: 'referringDomains', label: 'Ref. Domains', width: '160px', group: 'Authority' },
-    { key: 'backlinks', label: 'Backlinks', width: '150px', group: 'Authority' },
-    { key: 'backlinkSource', label: 'Backlink Source', width: '130px', group: 'Authority' },
-
-
-    // Strategic Decisions
-    { key: 'opportunityScore', label: 'Opportunity Score', width: '150px', group: 'Strategic' },
-    { key: 'businessValueScore', label: 'Business Value Score', width: '160px', group: 'Strategic' },
-    { key: 'techHealthScore', label: 'Technical Health', width: '140px', group: 'Strategic' },
-    { key: 'searchVisibilityScore', label: 'Search Visibility', width: '150px', group: 'Strategic' },
-    { key: 'engagementScore', label: 'Engagement', width: '130px', group: 'Strategic' },
-    { key: 'recommendedAction', label: 'Recommended Action', width: '220px', group: 'Strategic' },
-    { key: 'recommendedActionReason', label: 'Action Reason', width: '300px', group: 'Strategic' },
-    { key: 'isLosingTraffic', label: 'Traffic Alert', width: '130px', group: 'Strategic' },
-
-    // Phase C: AI & Industry
-    { key: 'summary', label: 'AI Summary', width: '300px', group: 'AI Insights' },
-    { key: 'contentQualityScore', label: 'AI Quality Score', width: '130px', group: 'AI Insights' },
-    { key: 'eeatScore', label: 'AI E-E-A-T', width: '110px', group: 'AI Insights' },
-    { key: 'sentiment', label: 'AI Sentiment', width: '120px', group: 'AI Insights' },
-    { key: 'aiLikelihood', label: 'AI Generated', width: '130px', group: 'AI Insights' },
-    { key: 'originalityScore', label: 'Originality Score', width: '140px', group: 'AI Insights' },
-    { key: 'fieldLcp', label: 'CrUX LCP (ms)', width: '120px', group: 'Performance' },
-    { key: 'fieldCls', label: 'CrUX CLS', width: '100px', group: 'Performance' },
-    { key: 'lighthousePerformance', label: 'LH Performance', width: '130px', group: 'Performance' },
-    { key: 'lighthouseSeo', label: 'LH SEO', width: '100px', group: 'Performance' },
-    { key: 'htmlErrors', label: 'W3C Errors', width: '110px', group: 'Technical' },
-    { key: 'securityGrade', label: 'Security Grade', width: '120px', group: 'Security' },
-    { key: 'sslGrade', label: 'SSL Grade', width: '100px', group: 'Security' },
-    { key: 'sslChainComplete', label: 'SSL Chain Complete', width: '150px', group: 'Security' },
-    { key: 'hydrationMismatch', label: 'Hydration Mismatch', width: '150px', group: 'Security' },
-    { key: 'industry', label: 'Detected Industry', width: '140px', group: 'Business' },
-    { key: 'hasTwitterCard', label: 'Twitter Card', width: '110px', group: 'Business' },
-    { key: 'twitterCardType', label: 'Twitter Card Type', width: '150px', group: 'Business' },
-    { key: 'hasPricingPage', label: 'Pricing Page', width: '110px', group: 'Business' },
-    { key: 'hasTrustBadges', label: 'Trust Badges', width: '120px', group: 'Business' },
-    
-    // Google Business Profile (Local SEO)
-    { key: 'gbpName', label: 'GBP Name', width: '180px', group: 'Business' },
-    { key: 'gbpAddress', label: 'GBP Address', width: '300px', group: 'Business' },
-    { key: 'gbpPhone', label: 'GBP Phone', width: '140px', group: 'Business' },
-    { key: 'gbpReviewCount', label: 'GBP Reviews', width: '110px', group: 'Business' },
-    { key: 'gbpAvgRating', label: 'GBP Rating', width: '110px', group: 'Business' },
-
-    { key: 'hasPassageStructure', label: 'Passage Ready', width: '130px', group: 'AI Discoverability' },
-    { key: 'passageReadiness', label: 'Passage Readiness (%)', width: '150px', group: 'AI Discoverability' },
-    { key: 'hasFeaturedSnippetPatterns', label: 'Snippet Ready', width: '130px', group: 'AI Discoverability' },
-    { key: 'voiceSearchScore', label: 'Voice Search Score', width: '150px', group: 'AI Discoverability' },
-    { key: 'geoScore', label: 'GEO Score', width: '120px', group: 'AI Discoverability' },
-    { key: 'citationWorthiness', label: 'Citation Worthiness', width: '150px', group: 'AI Discoverability' },
-    { key: 'hasLlmsTxt', label: 'llms.txt Present', width: '130px', group: 'AI Discoverability' },
-    { key: 'llmsTxtStatus', label: 'llms.txt Status', width: '150px', group: 'AI Discoverability' },
-    { key: 'aiBotAccessSummary', label: 'AI Bot Access', width: '180px', group: 'AI Discoverability' },
-    { key: 'jsRenderDiff.textDiffPercent', label: 'JS Text Diff (%)', width: '130px', group: 'Technical' },
-    { key: 'jsRenderDiff.jsOnlyLinks', label: 'JS Only Links', width: '120px', group: 'Technical' },
-    { key: 'jsRenderDiff.jsOnlyImages', label: 'JS Only Images', width: '130px', group: 'Technical' },
-    { key: 'jsRenderDiff.criticalContentJsOnly', label: 'JS Required', width: '120px', group: 'Technical' },
-    { key: 'spaRouteBroken', label: 'SPA Route Broken', width: '130px', group: 'Technical' },
-    { key: 'googlebotVisits30d', label: 'Googlebot (30d)', width: '130px', group: 'Log Analysis' },
-    { key: 'botCrawlBudgetShare', label: 'Crawl Budget %', width: '130px', group: 'Log Analysis' },
-];
+// ─── All columns (registry only — legacy flat-key columns removed) ────
+export const ALL_COLUMNS = [...REGISTRY_COLUMNS];
 
 export const resolveIssueCheckId = (issueId: string, explicitCheckId?: string) => {
     return explicitCheckId || ISSUE_TO_CHECK_MAP[issueId] || issueId;
 };
-
-
-
-export const performanceData = [
-    { name: 'Mon', value: 400 },
-    { name: 'Tue', value: 300 },
-    { name: 'Wed', value: 600 },
-    { name: 'Thu', value: 800 },
-    { name: 'Fri', value: 500 },
-    { name: 'Sat', value: 900 },
-    { name: 'Sun', value: 1000 }
-];
-
-export const sparklineData1 = [10, 20, 15, 30, 25, 40, 35];
-export const sparklineData2 = [50, 40, 45, 30, 35, 20, 25];
-export const sparklineData3 = [15, 25, 20, 35, 30, 45, 40];
-export const sparklineData4 = [40, 35, 45, 30, 50, 40, 55];

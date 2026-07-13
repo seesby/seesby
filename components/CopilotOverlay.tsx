@@ -4,7 +4,7 @@ import { getAIRouter } from '../services/ai';
 
 export const CopilotOverlay = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) => {
     const [messages, setMessages] = useState<{role: 'user'|'ai', text: string}[]>([
-        {role: 'ai', text: "Hello. I'm Headlight. I've looked at your latest data. You have 3 critical errors and a new competitor in the top 10. What would you like to handle first?"}
+        {role: 'ai', text: "Hello. I'm Seesby. I've looked at your latest data. You have 3 critical errors and a new competitor in the top 10. What would you like to handle first?"}
     ]);
     const [input, setInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
@@ -32,7 +32,7 @@ export const CopilotOverlay = ({ isOpen, onClose }: { isOpen: boolean, onClose: 
             const router = getAIRouter();
             const response = await router.complete({
                 taskType: 'summarize', // Using summarize for general chat/help
-                systemPrompt: "You are HeadlightSEO's AI Copilot. You help business owners understand their website performance. Explain things in very simple, plain English. Avoid complex SEO jargon like 'canonicalization' or 'link equity' unless you explain them simply first. Be helpful and concise.",
+                systemPrompt: "You are Seesby's AI Copilot. You help business owners understand their website performance. Explain things in very simple, plain English. Avoid complex SEO jargon like 'canonicalization' or 'link equity' unless you explain them simply first. Be helpful and concise.",
                 prompt: `History:\n${currentHistory.map(m => `${m.role}: ${m.text}`).join('\n')}\nUser: ${userMsg}`,
                 maxTokens: 512,
                 temperature: 0.7,
@@ -51,11 +51,11 @@ export const CopilotOverlay = ({ isOpen, onClose }: { isOpen: boolean, onClose: 
                 {/* Header */}
                 <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/5">
                     <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-brand-red flex items-center justify-center shadow-glow-sm">
+                        <div className="w-8 h-8 rounded-lg bg-brand-amber flex items-center justify-center shadow-glow-sm">
                             <Bot size={18} className="text-white" />
                         </div>
                         <div>
-                            <h3 className="text-white font-bold font-heading">Headlight AI</h3>
+                            <h3 className="text-white font-bold font-heading">Seesby AI</h3>
                             <div className="flex items-center gap-1.5">
                                 <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
                                 <span className="text-[10px] text-gray-400 uppercase tracking-wide">Online</span>
@@ -97,7 +97,7 @@ export const CopilotOverlay = ({ isOpen, onClose }: { isOpen: boolean, onClose: 
                     <div className="relative">
                         <input 
                             type="text" 
-                            className="w-full bg-[#1A1A1A] border border-white/10 rounded-xl pl-4 pr-12 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:border-brand-red/50 transition-colors"
+                            className="w-full bg-[#1A1A1A] border border-white/10 rounded-xl pl-4 pr-12 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:border-brand-amber/50 transition-colors"
                             placeholder="Ask me to audit a page, write content, or check rankings..."
                             value={input}
                             onChange={e => setInput(e.target.value)}
@@ -106,7 +106,7 @@ export const CopilotOverlay = ({ isOpen, onClose }: { isOpen: boolean, onClose: 
                         />
                         <button 
                             onClick={handleSend}
-                            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-brand-red hover:bg-brand-redHover text-white rounded-lg transition-colors shadow-glow-sm"
+                            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-brand-amber hover:bg-brand-amberHover text-white rounded-lg transition-colors shadow-glow-sm"
                         >
                             <ArrowUp size={16} />
                         </button>

@@ -1,5 +1,5 @@
 import { AlertTriangle, Check } from 'lucide-react';
-import type { SidebarFacetSection, SidebarFacetBucket } from '@headlight/modes';
+import type { SidebarFacetSection, SidebarFacetBucket } from '@seesby/modes';
 import { useSeoCrawler } from '../../../contexts/SeoCrawlerContext';
 import { TONE_CLASSES } from './tokens';
 
@@ -26,12 +26,12 @@ export function SidebarFacetRow({ section, bucket, count }: { section: SidebarFa
 			onClick={onClick}
 			aria-pressed={selected}
 			className={`group w-full h-[26px] flex items-center gap-1 ${bulletClass} rounded-sm text-[11px] font-medium transition-colors
-				${selected ? 'bg-[#F5364E]/10 text-white' : 'text-[#A0A0A5] hover:bg-white/[0.03] hover:text-white'}
+				${selected ? 'bg-[#F59E0B]/10 text-white' : 'text-[#A0A0A5] hover:bg-white/[0.03] hover:text-white'}
 				${dim ? 'opacity-40' : ''}`}
 		>
 			<div className="w-4 shrink-0 flex items-center justify-start">
 				{bullet === 'check' || bullet === 'square-check' ? (
-					<div className={`w-3 h-3 border rounded-sm flex items-center justify-center transition-colors ${selected ? 'bg-[#E63946] border-[#E63946]' : 'border-[#2A2A2F] group-hover:border-[#44444A]'}`}>
+					<div className={`w-3 h-3 border rounded-sm flex items-center justify-center transition-colors ${selected ? 'bg-[#F59E0B] border-[#F59E0B]' : 'border-[#2A2A2F] group-hover:border-[#44444A]'}`}>
 						{selected && <Check size={10} strokeWidth={3} className="text-white" />}
 					</div>
 				) : bullet === 'arrow' ? (

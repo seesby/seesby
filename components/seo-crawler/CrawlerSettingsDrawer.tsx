@@ -179,7 +179,7 @@ export default function CrawlerSettingsDrawer({ isOpen, onClose }: CrawlerSettin
                 <div className="w-[220px] bg-[#111] border-r border-[#222] flex flex-col">
                     <div className="h-[60px] flex items-center px-5 border-b border-[#222]">
                         <h3 className="text-[14px] font-bold text-white flex items-center gap-2">
-                            <SettingsIcon size={16} className="text-[#F5364E]" /> Configuration
+                            <SettingsIcon size={16} className="text-[#F59E0B]" /> Configuration
                         </h3>
                     </div>
                     
@@ -190,10 +190,10 @@ export default function CrawlerSettingsDrawer({ isOpen, onClose }: CrawlerSettin
                                 onClick={() => setActiveTab(tab.id)}
                                 className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12px] font-medium transition-all
                                     ${activeTab === tab.id 
-                                        ? 'bg-[#F5364E]/10 text-[#F5364E] shadow-[inset_0_0_0_1px_rgba(245,54,78,0.2)]' 
+                                        ? 'bg-[#F59E0B]/10 text-[#F59E0B] shadow-[inset_0_0_0_1px_rgba(245,158,11,0.2)]' 
                                         : 'text-[#888] hover:bg-[#222] hover:text-[#ccc]'}`}
                             >
-                                <span className={activeTab === tab.id ? 'text-[#F5364E]' : 'text-[#666]'}>{tab.icon}</span>
+                                <span className={activeTab === tab.id ? 'text-[#F59E0B]' : 'text-[#666]'}>{tab.icon}</span>
                                 {tab.label}
                             </button>
                         ))}
@@ -230,7 +230,7 @@ export default function CrawlerSettingsDrawer({ isOpen, onClose }: CrawlerSettin
 
                         <button 
                             onClick={onStart}
-                            className="px-8 py-2 bg-[#F5364E] text-white text-[12px] font-bold rounded-lg hover:bg-[#e02d43] shadow-lg shadow-[#F5364E]/20 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2"
+                            className="px-8 py-2 bg-[#F59E0B] text-white text-[12px] font-bold rounded-lg hover:bg-[#e02d43] shadow-lg shadow-[#F59E0B]/20 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2"
                         >
                             <Play size={12} fill="currentColor" />
                             Launch Project

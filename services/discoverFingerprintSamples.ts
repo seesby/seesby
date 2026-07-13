@@ -10,7 +10,7 @@ export async function discoverFingerprintSamples(rootUrl: string): Promise<strin
   try {
     const sitemapUrl = new URL('/sitemap.xml', rootUrl).toString();
     const response = await fetch(sitemapUrl, {
-      headers: { 'user-agent': 'HeadlightFingerprint/1.0' },
+      headers: { 'user-agent': 'SeesbyFingerprint/1.0' },
     });
 
     if (response.ok) {

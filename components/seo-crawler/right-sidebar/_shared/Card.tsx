@@ -11,10 +11,10 @@ export function Card({
 }) {
 	const bg =
 		tone === 'sunken' ? 'bg-[#0a0a0a]' :
-		tone === 'accent' ? 'bg-[#F5364E]/[0.06]' :
+		tone === 'accent' ? 'bg-[#F59E0B]/[0.06]' :
 		'bg-[#111]'
 	const border =
-		tone === 'accent' ? 'border-[#F5364E]/25' : 'border-[#1f1f1f]'
+		tone === 'accent' ? 'border-[#F59E0B]/25' : 'border-[#1f1f1f]'
 
 	return (
 		<div className={`rounded-md border ${border} ${bg} shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] ${padded ? 'p-3' : ''} ${className}`}>

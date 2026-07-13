@@ -1,3 +1,8 @@
+import { CrawlSessionDO } from './crawl-session-do';
+import { handleCrawlQueue } from './crawl-queue-routes';
+import { handleArchive, handleRestore, handleSyncBatch } from './storage-routes';
+export { CrawlSessionDO };
+
 interface Env {
 	STRIPE_SECRET_KEY?: string;
 	STRIPE_TRIAL_DAYS?: string;
@@ -6,6 +11,8 @@ interface Env {
 	CLERK_API_URL?: string;
 	TURSO_DATABASE_URL?: string;
 	TURSO_AUTH_TOKEN?: string;
+	CRAWL_SESSION: DurableObjectNamespace;
+	SEESBY_R2?: R2Bucket;
 }
 
 type BillingCheckoutBody = {
@@ -398,7 +405,7 @@ const handleGhostBridge = async (request: Request) => {
 
 	const targetResponse = await fetch(targetUrl, {
 		headers: {
-			'User-Agent': request.headers.get('User-Agent') || 'Headlight-Ghost/1.0',
+			'User-Agent': request.headers.get('User-Agent') || 'Seesby-Ghost/1.0',
 			'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 			'Accept-Language': 'en-US,en;q=0.5'
 		},
@@ -444,6 +451,22 @@ export default {
 
 			if (pathname.startsWith('/api/report/') && request.method === 'GET') {
 				return await handlePublicReport(request, env);
+			}
+
+			if (pathname.startsWith('/api/crawl-queue/')) {
+				return await handleCrawlQueue(request, env);
+			}
+
+			if (pathname === '/api/storage/archive' && request.method === 'POST') {
+				return await handleArchive(request, env);
+			}
+
+			if (pathname === '/api/storage/restore' && request.method === 'GET') {
+				return await handleRestore(request, env);
+			}
+
+			if (pathname === '/api/crawler/sync/batch' && request.method === 'POST') {
+				return await handleSyncBatch(request, env);
 			}
 
 			return await handleGhostBridge(request);

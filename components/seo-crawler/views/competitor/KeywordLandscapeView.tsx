@@ -20,14 +20,14 @@ import { BRAND_RED, EMPTY_STATE_BOX, EMPTY_STATE_TEXT } from '../../competitive/
 const INTENT_STYLES: Record<string, string> = {
   informational: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
   commercial: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
-  transactional: 'bg-green-500/10 text-green-400 border-green-500/20',
+  transactional: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
   navigational: 'bg-gray-500/10 text-gray-400 border-gray-500/20',
 };
 
 const DIFFICULTY_STYLES: Record<string, string> = {
   High: 'text-red-400',
   Medium: 'text-yellow-400',
-  Low: 'text-green-400',
+  Low: 'text-emerald-400',
 };
 
 type GapSortKey = 'keyword' | 'intent' | 'volume' | 'position' | 'difficulty';
@@ -53,7 +53,7 @@ function ScatterTooltip({ active, payload }: any) {
         </div>
         <div className="flex justify-between gap-4">
           <span>Opportunity</span>
-          <span className={`font-mono font-bold ${d.opportunity > 60 ? 'text-[#F5364E]' : d.opportunity > 30 ? 'text-yellow-400' : 'text-blue-400'}`}>
+          <span className={`font-mono font-bold ${d.opportunity > 60 ? 'text-[#F59E0B]' : d.opportunity > 30 ? 'text-yellow-400' : 'text-blue-400'}`}>
             {d.opportunity}/100
           </span>
         </div>
@@ -96,11 +96,11 @@ export default function KeywordLandscapeView() {
 
   const allKeywordGaps = useMemo(() => {
     if (activeComps.length === 0) return [];
-    const competitorFakePages = activeComps.flatMap((comp) => [
+    const competitorPages = activeComps.flatMap((comp) => [
       ...(comp.topBlogPages || []).map((p) => ({ ...p, url: p.url || '' })),
       ...(comp.topOrganicPages || []).map((p) => ({ ...p, url: p.url || '' })),
     ]);
-    return findKeywordGaps(analysisPages, competitorFakePages);
+    return findKeywordGaps(analysisPages, competitorPages);
   }, [analysisPages, activeComps]);
 
   const filteredGaps = useMemo(() => {
@@ -146,9 +146,9 @@ export default function KeywordLandscapeView() {
       <div className="grid grid-cols-5 gap-3 border-b border-[#1a1a1e] px-5 py-4">
         {[
           { label: 'Ranking Keywords', value: stats.total, color: 'text-white' },
-          { label: 'Top 3 Positions', value: stats.top3Count, color: 'text-green-400' },
+          { label: 'Top 3 Positions', value: stats.top3Count, color: 'text-emerald-400' },
           { label: 'Quick Win Zone', value: stats.quickWins, color: 'text-yellow-400' },
-          { label: 'High Opportunity', value: stats.highOpp, color: 'text-[#F5364E]' },
+          { label: 'High Opportunity', value: stats.highOpp, color: 'text-[#F59E0B]' },
           { label: 'Keyword Gaps', value: stats.gapCount, color: 'text-purple-400' },
         ].map((s) => (
           <div key={s.label} className="rounded-xl border border-[#1a1a1e] bg-[#111] px-4 py-3">
@@ -216,9 +216,9 @@ export default function KeywordLandscapeView() {
                   {scatterData.map((entry, i) => (
                     <Cell
                       key={`kw-${i}`}
-                      fill={entry.opportunity > 60 ? '#F5364E' : entry.opportunity > 30 ? '#F59E0B' : '#3B82F6'}
+                      fill={entry.opportunity > 60 ? '#F59E0B' : entry.opportunity > 30 ? '#F59E0B' : '#3B82F6'}
                       fillOpacity={0.75}
-                      stroke={entry.opportunity > 60 ? '#F5364E' : entry.opportunity > 30 ? '#F59E0B' : '#3B82F6'}
+                      stroke={entry.opportunity > 60 ? '#F59E0B' : entry.opportunity > 30 ? '#F59E0B' : '#3B82F6'}
                       strokeOpacity={0.3}
                       strokeWidth={1}
                     />
@@ -230,7 +230,7 @@ export default function KeywordLandscapeView() {
         </div>
 
         <div className="mt-2 flex items-center gap-6 text-[9px] text-[#555]">
-          <span><span className="text-green-500">|</span> Position 3 — Top results</span>
+          <span><span className="text-emerald-500">|</span> Position 3 — Top results</span>
           <span><span className="text-yellow-500">|</span> Position 10 — First page</span>
           <span><span className="text-red-500">|</span> Position 20 — Second page</span>
         </div>
@@ -254,7 +254,7 @@ export default function KeywordLandscapeView() {
             <select
               value={intentFilter}
               onChange={(e) => setIntentFilter(e.target.value)}
-              className="rounded-lg border border-[#222] bg-[#111] px-2 py-1 text-[10px] text-[#ccc] outline-none focus:border-[#F5364E]/30"
+              className="rounded-lg border border-[#222] bg-[#111] px-2 py-1 text-[10px] text-[#ccc] outline-none focus:border-[#F59E0B]/30"
             >
               <option value="all">All Intents</option>
               <option value="informational">Informational</option>
@@ -305,12 +305,12 @@ export default function KeywordLandscapeView() {
                     return (
                       <tr
                         key={`${gap.keyword}-${i}`}
-                        className="border-b border-[#111] transition-colors hover:bg-[#F5364E]/[0.02]"
+                        className="border-b border-[#111] transition-colors hover:bg-[#F59E0B]/[0.02]"
                       >
                         <td className="px-3 py-2">
                           <div className="flex items-center gap-2">
                             <span className="text-[11px] font-medium text-[#ddd]">{gap.keyword}</span>
-                            {gap.volume > 500 && <ArrowUpRight size={10} className="shrink-0 text-[#F5364E]" />}
+                            {gap.volume > 500 && <ArrowUpRight size={10} className="shrink-0 text-[#F59E0B]" />}
                           </div>
                           {gap.source && (
                             <div className="mt-0.5 text-[9px] text-[#444]">from {gap.source}</div>

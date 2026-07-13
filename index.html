@@ -3,27 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HeadlightSEO | Smart SEO Platform & Agency</title>
+    <title>Seesby | Smart SEO Platform & Agency</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/fonts/satoshi/satoshi.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/fonts/satoshi/satoshi.css"></noscript>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#F59E0B" />
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              heading: ['Manrope', 'sans-serif'],
+              sans: ['Satoshi', 'Inter', 'sans-serif'],
+              heading: ['Satoshi', 'Inter', 'sans-serif'],
             },
             colors: {
               brand: {
-                bg: '#050505',      // Slightly softer black for main bg
-                card: '#0F0F0F',    // Distinct card background
-                sidebar: '#0A0A0A', // Sidebar background
-                red: '#F5364E',     // Core Brand Red
-                redHover: '#ff4d63',
-                purple: '#7C3AED',  // Neon Purple
+                bg: '#0B0B0A',      // Soft near-black main bg
+                card: '#141412',    // Distinct card background
+                sidebar: '#0E0E0C', // Sidebar background
+                amber: '#F59E0B',   // Seesby Amber (hero)
+                amberHover: '#FBBF24',
+                amberDeep: '#D97706',
+                purple: '#7C3AED',  // Neon Purple (kept for accents)
                 yellow: '#FACC15',  // Neon Yellow
-                green: '#22C55E',   // Neon Green
+                green: '#22C55E',   // Neon Green (status)
+                ink: '#1C1917',     // Bee ink
+                stone: '#78716C',   // Muted gray wordmark suffix
                 gray: '#9CA3AF',    // Text Gray
                 darkgray: '#27272A', // Borders/Separators
               }
@@ -34,8 +41,8 @@
               '5xl': '2.5rem',
             },
             boxShadow: {
-              'glow': '0 0 20px rgba(245, 54, 78, 0.15)',
-              'glow-sm': '0 0 10px rgba(245, 54, 78, 0.1)',
+              'glow': '0 0 20px rgba(245, 158, 11, 0.18)',
+              'glow-sm': '0 0 10px rgba(245, 158, 11, 0.12)',
             },
             backgroundImage: {
               'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

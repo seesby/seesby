@@ -1,7 +1,7 @@
 /**
  * McpBridge — Model Context Protocol (MCP) Connector
  * 
- * Enables Headlight to bridge private enterprise data silos 
+ * Enables Seesby to bridge private enterprise data silos 
  * (local CSVs, SQL databases, internal logs) into the SEO Crawler
  * via a local MCP server.
  */

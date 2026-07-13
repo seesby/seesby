@@ -102,7 +102,7 @@ const GoogleIntegrationCard = ({ project }: { project: any }) => {
                         <span className="text-[10px] font-bold uppercase">Connected</span>
                     </div>
                 ) : (
-                    <button onClick={handleConnect} disabled={!siteUrl.trim()} className="px-3 py-1.5 rounded-lg text-[10px] font-bold border transition-colors text-brand-red border-brand-red/20 hover:bg-brand-red/10 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <button onClick={handleConnect} disabled={!siteUrl.trim()} className="px-3 py-1.5 rounded-lg text-[10px] font-bold border transition-colors text-brand-amber border-brand-amber/20 hover:bg-brand-amber/10 disabled:opacity-50 disabled:cursor-not-allowed">
                         Connect
                     </button>
                 )}
@@ -115,7 +115,7 @@ const GoogleIntegrationCard = ({ project }: { project: any }) => {
                         placeholder="e.g. sc-domain:example.com or https://example.com/"
                         value={siteUrl}
                         onChange={(e) => setSiteUrl(e.target.value)}
-                        className="w-full bg-transparent border border-white/10 rounded px-2 py-1 text-xs text-white focus:outline-none focus:border-brand-red font-mono"
+                        className="w-full bg-transparent border border-white/10 rounded px-2 py-1 text-xs text-white focus:outline-none focus:border-brand-amber font-mono"
                     />
                 </div>
             )}
@@ -155,7 +155,7 @@ const BillingSection = () => {
     return (
         <div className="bg-[#0F0F0F] rounded-2xl border border-white/5 p-6">
             <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-                <CreditCard size={18} className="text-brand-red" /> Billing & Subscription
+                <CreditCard size={18} className="text-brand-amber" /> Billing & Subscription
             </h3>
             <div className="flex items-center justify-between p-4 bg-[#151515] rounded-xl border border-white/5">
                 <div>
@@ -176,7 +176,7 @@ const BillingSection = () => {
                 ) : (
                     <a
                         href="/pricing"
-                        className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-white bg-brand-red rounded-lg hover:bg-brand-redHover transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-white bg-brand-amber rounded-lg hover:bg-brand-amberHover transition-colors"
                     >
                         Upgrade Plan
                     </a>
@@ -262,7 +262,7 @@ export const ProjectSettingsView = () => {
                                     type="text"
                                     value={name}
                                     onChange={e => setName(e.target.value)}
-                                    className="w-full bg-[#111] border border-white/10 rounded-lg p-3 text-sm text-white focus:border-brand-red/50 focus:outline-none"
+                                    className="w-full bg-[#111] border border-white/10 rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none"
                                 />
                             </div>
                             <div>
@@ -271,12 +271,12 @@ export const ProjectSettingsView = () => {
                                     type="text"
                                     value={url}
                                     onChange={e => setUrl(e.target.value)}
-                                    className="w-full bg-[#111] border border-white/10 rounded-lg p-3 text-sm text-white focus:border-brand-red/50 focus:outline-none"
+                                    className="w-full bg-[#111] border border-white/10 rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none"
                                 />
                             </div>
                             <div>
                                 <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Sitemap URL</label>
-                                <input type="text" defaultValue={`${url}/sitemap.xml`} className="w-full bg-[#111] border border-white/10 rounded-lg p-3 text-sm text-white focus:border-brand-red/50 focus:outline-none" disabled />
+                                <input type="text" defaultValue={`${url}/sitemap.xml`} className="w-full bg-[#111] border border-white/10 rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none" disabled />
                             </div>
                         </div>
                     </div>
@@ -323,11 +323,11 @@ export const ProjectSettingsView = () => {
                                 <span className="text-xs font-bold text-white bg-black px-2 py-1 rounded border border-white/10">Googlebot</span>
                             </div>
                             <div className="flex items-center gap-3 mt-4">
-                                <input type="checkbox" checked readOnly className="rounded bg-black border-white/10 text-brand-red focus:ring-0" />
+                                <input type="checkbox" checked readOnly className="rounded bg-black border-white/10 text-brand-amber focus:ring-0" />
                                 <span className="text-xs text-gray-400">Respect robots.txt</span>
                             </div>
                             <div className="flex items-center gap-3">
-                                <input type="checkbox" checked readOnly className="rounded bg-black border-white/10 text-brand-red focus:ring-0" />
+                                <input type="checkbox" checked readOnly className="rounded bg-black border-white/10 text-brand-amber focus:ring-0" />
                                 <span className="text-xs text-gray-400">Crawl subdomains</span>
                             </div>
                         </div>

@@ -5,6 +5,8 @@ export * from './metric-def';
 export * from './modes';
 export * from './roles';
 export * from './sources';
+export * from './languages';
 export * from './actions';
 export * from './core';
+export * from './crawl-config';
 

@@ -21,7 +21,7 @@ export function WqaActions() {
 	const forecast = useMemo(() => selectImpactForecast(pages), [pages])
 	const owners = useMemo(() => selectOwnerLoad(pages), [pages])
 
-	if (!pages?.length) return <EmptyState label="No pages crawled yet" />
+	if (!pages?.length) return <EmptyState title="No pages crawled yet" />
 
 	const priorityTotal = byPriority.high + byPriority.medium + byPriority.low
 	const typeTotal = byType.content + byType.tech + byType.links + byType.merge + byType.deprecate

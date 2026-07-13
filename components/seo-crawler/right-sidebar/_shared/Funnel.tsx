@@ -15,7 +15,7 @@ export function Funnel({ steps }: { steps: ReadonlyArray<FunnelStep> }) {
           <div key={s.id} className="flex items-center gap-2">
             <span className="text-[10px] text-[#888] w-20 truncate">{s.label}</span>
             <div className="flex-1 h-5 rounded-sm bg-[#0d0d0d] border border-[#1a1a1a] overflow-hidden">
-              <div className="h-full bg-[#F5364E]/30 border-r border-[#F5364E]" style={widthStyle} />
+              <div className="h-full bg-[#F59E0B]/30 border-r border-[#F59E0B]" style={widthStyle} />
             </div>
             <span className="text-[10px] font-mono text-white tabular-nums w-12 text-right">{s.value.toLocaleString()}</span>
             {i > 0 && <span className="text-[10px] font-mono text-[#666] w-10 text-right">-{drop.toFixed(0)}%</span>}

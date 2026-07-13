@@ -30,7 +30,7 @@ export default function ActionCard({
   return (
     <div
       className={`rounded border px-3 py-2.5 ${
-        primary ? 'border-[#F5364E]/40 bg-[#F5364E]/5' : (CAT_COLOR[category || ''] || 'border-[#222] bg-[#0a0a0a]')
+        primary ? 'border-[#F59E0B]/40 bg-[#F59E0B]/5' : (CAT_COLOR[category || ''] || 'border-[#222] bg-[#0a0a0a]')
       }`}
     >
       <div className="flex items-start justify-between gap-3">

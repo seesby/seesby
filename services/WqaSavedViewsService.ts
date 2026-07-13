@@ -9,7 +9,7 @@ export interface WqaSavedView {
 	createdAt: number;
 }
 
-const STORAGE_KEY = 'headlight:wqa-saved-views';
+const STORAGE_KEY = 'seesby:wqa-saved-views';
 
 const canUseLocalStorage = () =>
 	typeof window !== 'undefined' && Boolean(window.localStorage);

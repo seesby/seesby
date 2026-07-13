@@ -9,15 +9,15 @@ import { INTENT_CASCADE } from './detectors/IntentDetector';
 import { SIZE_CASCADE } from './detectors/SizeDetector';
 import { scoreReadiness } from './scoring/readiness';
 import type { ProbeContext } from './detectors/types';
-import type { LanguageCode } from '@headlight/types';
+import type { LanguageCode } from '@seesby/types';
 
 export interface FingerprintResult {
 	projectId: string;
-	industry: import('./cascades').FpValue<import('@headlight/types').Industry>;
-	industrySecondary?: import('./cascades').FpValue<import('@headlight/types').Industry>;
-	cms: import('./cascades').FpValue<import('@headlight/types').CmsKey>;
-	languagePrimary: import('./cascades').FpValue<import('@headlight/types').LanguageCode>;
-	languageSet: ReadonlyArray<{ code: import('@headlight/types').LanguageCode; ratio: number }>;
+	industry: import('./cascades').FpValue<import('@seesby/types').Industry>;
+	industrySecondary?: import('./cascades').FpValue<import('@seesby/types').Industry>;
+	cms: import('./cascades').FpValue<import('@seesby/types').CmsKey>;
+	languagePrimary: import('./cascades').FpValue<import('@seesby/types').LanguageCode>;
+	languageSet: ReadonlyArray<{ code: import('@seesby/types').LanguageCode; ratio: number }>;
 	stack: import('./detectors/StackDetector').FpStack;
 	geo: { primary: import('./cascades').FpValue<string>; locales: import('./cascades').FpValue<string[]> };
 	intent: import('./cascades').FpValue<string>;
@@ -52,5 +52,38 @@ export async function runFingerprint(input: { ctx: ProbeContext }): Promise<Fing
 }
 
 function deriveLanguageSet(ctx: ProbeContext): Array<{ code: LanguageCode; ratio: number }> {
-    return [{ code: 'en' as LanguageCode, ratio: 1.0 }];
+	const langCounts = new Map<string, number>();
+	let total = 0;
+
+	for (const page of ctx.htmlSamples) {
+		// Extract lang from <html lang="..."> attribute
+		const langMatch = page.html.match(/<html[^>]*\slang="([a-z]{2}(?:-[A-Z]{2})?)"/i);
+		if (langMatch) {
+			const code = langMatch[1].split('-')[0].toLowerCase();
+			langCounts.set(code, (langCounts.get(code) || 0) + 1);
+			total++;
+			continue;
+		}
+
+		// Fallback: extract from hreflang links
+		const hreflangMatches = page.html.matchAll(/hreflang="([a-z]{2}(?:-[A-Z]{2})?)"/gi);
+		for (const m of hreflangMatches) {
+			const code = m[1].split('-')[0].toLowerCase();
+			langCounts.set(code, (langCounts.get(code) || 0) + 1);
+			total++;
+		}
+	}
+
+	if (total === 0) {
+		return [{ code: 'en' as LanguageCode, ratio: 1.0 }];
+	}
+
+	const result: Array<{ code: LanguageCode; ratio: number }> = [];
+	for (const [code, count] of langCounts) {
+		result.push({ code: code as LanguageCode, ratio: count / total });
+	}
+
+	// Sort by ratio descending
+	result.sort((a, b) => b.ratio - a.ratio);
+	return result;
 }

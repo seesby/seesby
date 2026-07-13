@@ -11,7 +11,8 @@
     ],
     "skipLibCheck": true,
     "types": [
-      "node"
+      "node",
+      "@cloudflare/workers-types"
     ],
     "moduleResolution": "bundler",
     "isolatedModules": true,
@@ -22,44 +23,57 @@
       "@/*": [
         "./*"
       ],
-      "@headlight/types": [
+      "@seesby/types": [
         "./packages/types/src"
       ],
-      "@headlight/types/*": [
+      "@seesby/types/*": [
         "./packages/types/src/*"
       ],
-      "@headlight/metrics": [
+      "@seesby/metrics": [
         "./packages/metrics/src"
       ],
-      "@headlight/metrics/*": [
+      "@seesby/metrics/*": [
         "./packages/metrics/src/*"
       ],
-      "@headlight/modes": [
+      "@seesby/modes": [
         "./packages/modes/src"
       ],
-      "@headlight/modes/*": [
+      "@seesby/modes/*": [
         "./packages/modes/src/*"
       ],
-      "@headlight/actions": [
+      "@seesby/actions": [
         "./packages/actions/src"
       ],
-      "@headlight/actions/*": [
+      "@seesby/actions/*": [
         "./packages/actions/src/*"
       ],
-      "@headlight/fingerprint": [
+      "@seesby/fingerprint": [
         "./packages/fingerprint/src"
       ],
-      "@headlight/fingerprint/*": [
+      "@seesby/fingerprint/*": [
         "./packages/fingerprint/src/*"
       ],
-      "@headlight/compute": [
+      "@seesby/compute": [
         "./packages/compute/src"
       ],
-      "@headlight/compute/*": [
+      "@seesby/compute/*": [
         "./packages/compute/src/*"
       ]
     },
     "allowImportingTsExtensions": true,
-    "noEmit": true
-  }
+    "noEmit": true,
+    "strict": false,
+    "incremental": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.mts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

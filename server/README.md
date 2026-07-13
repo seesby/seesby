@@ -1,5 +1,5 @@
 ---
-title: Headlight Crawler
+title: Seesby Crawler
 emoji: 🏎️
 colorFrom: red
 colorTo: yellow
@@ -8,6 +8,6 @@ app_port: 7860
 pinned: false
 ---
 
-# Headlight Crawler
+# Seesby Crawler
 
-This is the AI-powered search intelligence engine for Headlight. It uses Playwright and Gemini to analyze and automate SEO workflows.
+This is the AI-powered search intelligence engine for Seesby. It uses Playwright and Gemini to analyze and automate SEO workflows.

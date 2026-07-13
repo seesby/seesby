@@ -1,16 +1,23 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { 
-    Network, List,
-    Settings, X,
-    LogIn,
-    Keyboard, Database, Sparkles, Bot,
+import React, { useState, useRef, useEffect, useMemo } from 'react';
+import {
+    Settings, X, HelpCircle,
+    LogIn, LogOut, User, CreditCard, Key, Database,
+    Sparkles, Bot,
     FolderOpen, Plus, ChevronDown, Check, ArrowRight,
-    Pause, Play, Pencil, Trash2, GitCompare
+    Pause, Play, Pencil, Trash2
 } from 'lucide-react';
 import { useSeoCrawler } from '../../contexts/SeoCrawlerContext';
 import { useOptionalProject } from '../../services/ProjectContext';
 import { NotificationBell } from '../NotificationBell';
 import { useNavigate } from 'react-router-dom';
+import { BeeMark } from '../BeeMark';
+import { MODE_ACCENT } from './views/_shared/tokens';
+import { allModes, registerAllModes } from '../../packages/modes/src';
+import { allIndustries, INDUSTRY_LABEL, MODE_LABEL, type Mode } from '@seesby/types';
+import { getMode } from '@seesby/modes';
+import { MODE_DOT_CLASS } from './left-sidebar/tokens';
+
+registerAllModes();
 
 // ─── Mini "New Project" form rendered inside the dropdown ───────────────────
 
@@ -67,14 +74,14 @@ function NewProjectForm({ onCreated, onCancel }: NewProjectFormProps) {
                 value={name}
                 onChange={e => setName(e.target.value)}
                 placeholder="Project name (optional)"
-                className="w-full h-8 px-3 bg-[#0a0a0a] border border-[#222] rounded text-[12px] text-white placeholder-[#444] focus:outline-none focus:border-[#F5364E] transition-colors"
+                className="w-full h-8 px-3 bg-[#0a0a0a] border border-[#222] rounded text-[12px] text-white placeholder-[#444] focus:outline-none focus:border-[#F59E0B] transition-colors"
             />
             <input
                 value={url}
                 onChange={e => handleUrlChange(e.target.value)}
                 placeholder="https://example.com"
                 onKeyDown={e => e.key === 'Enter' && handleCreate()}
-                className="w-full h-8 px-3 bg-[#0a0a0a] border border-[#222] rounded text-[12px] text-white placeholder-[#444] focus:outline-none focus:border-[#F5364E] transition-colors"
+                className="w-full h-8 px-3 bg-[#0a0a0a] border border-[#222] rounded text-[12px] text-white placeholder-[#444] focus:outline-none focus:border-[#F59E0B] transition-colors"
             />
             <select
                 value={industry}
@@ -189,7 +196,7 @@ function ProjectSelector() {
                 onClick={() => { setOpen(o => !o); setShowNewForm(false); }}
                 className={`w-full h-[32px] flex items-center gap-2 px-3 rounded-md text-[13px] transition-all duration-200
                     bg-gradient-to-b from-[#111] to-[#0a0a0a] border shadow-[inset_0_1px_4px_rgba(0,0,0,0.5)] relative overflow-hidden
-                    ${open ? 'border-[#F5364E]/40 shadow-[0_0_10px_rgba(245,54,78,0.08)]' : 'border-white/10 hover:border-white/20'}`}
+                    ${open ? 'border-[#F59E0B]/40 shadow-[0_0_10px_rgba(245,158,11,0.08)]' : 'border-white/10 hover:border-white/20'}`}
                 style={isActive ? {
                     backgroundImage: `linear-gradient(to right, ${isError ? 'rgba(245, 54, 78, 0.2)' : 'rgba(34, 197, 94, 0.2)'} ${progress}%, transparent ${progress}%), linear-gradient(to bottom, #111, #0a0a0a)`
                 } : {}}
@@ -225,14 +232,14 @@ function ProjectSelector() {
                                                 autoFocus
                                                 value={editForm.name}
                                                 onChange={(e) => setEditForm(prev => ({ ...prev, name: e.target.value }))}
-                                                className="w-full bg-black border border-white/10 rounded px-2 py-1 text-[11px] text-white focus:outline-none focus:border-[#F5364E]/50"
+                                                className="w-full bg-black border border-white/10 rounded px-2 py-1 text-[11px] text-white focus:outline-none focus:border-[#F59E0B]/50"
                                                 placeholder="Project Name"
                                             />
                                             <div className="flex items-center gap-2">
                                                 <input 
                                                     value={editForm.url}
                                                     onChange={(e) => setEditForm(prev => ({ ...prev, url: e.target.value }))}
-                                                    className="flex-1 bg-black border border-white/10 rounded px-2 py-1 text-[11px] text-[#888] focus:outline-none focus:border-[#F5364E]/50"
+                                                    className="flex-1 bg-black border border-white/10 rounded px-2 py-1 text-[11px] text-[#888] focus:outline-none focus:border-[#F59E0B]/50"
                                                     placeholder="URL or Domain"
                                                 />
                                                 <div className="flex items-center gap-1">
@@ -260,7 +267,7 @@ function ProjectSelector() {
                                                     : 'text-[#999] hover:bg-[#161616] hover:text-white'
                                                 }`}
                                         >
-                                            <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${p.id === active?.id ? 'bg-[#F5364E]' : 'bg-[#333]'}`} />
+                                            <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${p.id === active?.id ? 'bg-[#F59E0B]' : 'bg-[#333]'}`} />
                                             <span className="flex-1 text-[12px] font-medium truncate">{p.name}</span>
                                             <span className="text-[10px] text-[#444] truncate max-w-[80px] hidden sm:block">{p.domain}</span>
                                             
@@ -282,7 +289,7 @@ function ProjectSelector() {
                                                 </button>
                                             </div>
 
-                                            {p.id === active?.id && <Check size={10} className="shrink-0 text-[#F5364E]" />}
+                                            {p.id === active?.id && <Check size={10} className="shrink-0 text-[#F59E0B]" />}
                                         </div>
                                     )}
                                 </div>
@@ -299,7 +306,7 @@ function ProjectSelector() {
                         <div className="border-t border-[#1e1e1e]">
                             <button
                                 onClick={() => setShowNewForm(true)}
-                                className="w-full flex items-center gap-2 px-3 py-2 text-[11px] font-bold text-[#F5364E] hover:bg-[#F5364E]/5 transition-colors"
+                                className="w-full flex items-center gap-2 px-3 py-2 text-[11px] font-bold text-[#F59E0B] hover:bg-[#F59E0B]/5 transition-colors"
                             >
                                 <Plus size={12} />
                                 New Project
@@ -317,141 +324,247 @@ function ProjectSelector() {
     );
 }
 
+// ─── Profile Dropdown ──────────────────────────────────────────────────────
+
+function ProfileDropdown({ isAuthenticated, user, profile }: { isAuthenticated: boolean; user: any; profile: any }) {
+    const [open, setOpen] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!open) return;
+        const handler = (e: MouseEvent) => {
+            if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+        };
+        document.addEventListener('mousedown', handler);
+        return () => document.removeEventListener('mousedown', handler);
+    }, [open]);
+
+    if (!isAuthenticated) {
+        return (
+            <button
+                onClick={() => window.location.assign('/auth')}
+                className="flex items-center gap-1.5 px-2.5 py-1 bg-[#F59E0B]/10 hover:bg-[#F59E0B]/20 border border-[#F59E0B]/30 rounded text-[11px] font-bold text-[#F59E0B] transition-colors"
+                title="Sign in for unlimited scans and saved history"
+            >
+                <LogIn size={11}/> Sign in
+            </button>
+        );
+    }
+
+    const initials = (profile?.full_name || user?.email || '?')[0].toUpperCase();
+    const firstName = (profile?.full_name || user?.email?.split('@')[0] || 'User').split(' ')[0];
+
+    return (
+        <div ref={ref} className="relative ml-1">
+            <button
+                onClick={() => setOpen(!open)}
+                className="flex items-center gap-1.5 px-1.5 py-1 bg-[#1a1a1a] border border-[#222] rounded hover:border-[#333] transition-colors"
+                title={user?.email || ''}
+            >
+                <div className="w-5 h-5 rounded-full bg-[#F59E0B]/20 flex items-center justify-center text-[9px] font-bold text-[#F59E0B]">
+                    {initials}
+                </div>
+                <span className="text-[10px] text-[#888] hidden xl:block">{firstName}</span>
+                <ChevronDown size={10} className={`text-[#555] transition-transform ${open ? 'rotate-180' : ''}`} />
+            </button>
+
+            {open && (
+                <div className="absolute right-0 top-full mt-1 w-52 bg-[#111] border border-[#333] rounded-lg shadow-2xl z-[100] py-1 animate-in fade-in slide-in-from-top-1 duration-100">
+                    <div className="px-3 py-2 border-b border-[#222]">
+                        <div className="text-[11px] font-medium text-white truncate">{profile?.full_name || user?.email?.split('@')[0]}</div>
+                        <div className="text-[10px] text-[#666] truncate">{user?.email}</div>
+                    </div>
+                    <button
+                        onClick={() => { window.location.assign('/account'); setOpen(false); }}
+                        className="w-full flex items-center gap-2 px-3 py-1.5 text-[11px] text-[#ccc] hover:bg-[#1a1a1a] transition-colors"
+                    >
+                        <User size={12} /> Account
+                    </button>
+                    <button
+                        onClick={() => { window.location.assign('/team'); setOpen(false); }}
+                        className="w-full flex items-center gap-2 px-3 py-1.5 text-[11px] text-[#ccc] hover:bg-[#1a1a1a] transition-colors"
+                    >
+                        <User size={12} /> Team
+                    </button>
+                    <button
+                        onClick={() => { window.location.assign('/usage'); setOpen(false); }}
+                        className="w-full flex items-center gap-2 px-3 py-1.5 text-[11px] text-[#ccc] hover:bg-[#1a1a1a] transition-colors"
+                    >
+                        <Database size={12} /> Usage
+                    </button>
+                    <button
+                        onClick={() => { window.location.assign('/api-keys'); setOpen(false); }}
+                        className="w-full flex items-center gap-2 px-3 py-1.5 text-[11px] text-[#ccc] hover:bg-[#1a1a1a] transition-colors"
+                    >
+                        <Key size={12} /> API Keys
+                    </button>
+                    <button
+                        onClick={() => { window.location.assign('/billing'); setOpen(false); }}
+                        className="w-full flex items-center gap-2 px-3 py-1.5 text-[11px] text-[#ccc] hover:bg-[#1a1a1a] transition-colors"
+                    >
+                        <CreditCard size={12} /> Billing
+                    </button>
+                    <div className="border-t border-[#222] mt-1 pt-1">
+                        <button
+                            onClick={() => { window.location.assign('/auth/signout'); setOpen(false); }}
+                            className="w-full flex items-center gap-2 px-3 py-1.5 text-[11px] text-[#888] hover:bg-[#1a1a1a] hover:text-[#F59E0B] transition-colors"
+                        >
+                            <LogOut size={12} /> Sign out
+                        </button>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
+
 // ─── Main Header ─────────────────────────────────────────────────────────────
 
 export default function CrawlerHeader() {
     const {
-        crawlingMode, setCrawlingMode,
-        urlInput, setUrlInput,
-        listUrls, showListModal, setShowListModal,
+        mode, setMode,
         isCrawling, handleStartPause,
         pages,
-        setAutoFixItems, setShowAutoFixModal,
         showSettings, setShowSettings,
-        saveCrawlSession, currentSessionId, crawlHistory,
-        isAuthenticated, user, profile, trialPagesLimit,
-        showScheduleModal, setShowScheduleModal,
-        crawlRuntime, elapsedTime, crawlRate,
+        isAuthenticated, user, profile,
+        crawlRuntime,
         clearCrawlerWorkspace,
-        integrationConnections,
-        integrationsSource,
-        runFullEnrichment,
-        runIncrementalEnrichment,
-        auditFilter, applyAuditMode, saveCustomPreset,
-        runAIAnalysis, isAnalyzingAI, aiProgress,
         analysisRuntime, runCompleteAnalysis,
-        setShowComparisonView, setShowExportDialog,
-        setShowAiChat
-    } = useSeoCrawler();
+        setShowAiChat,
+        fingerprint, setWqaIndustryOverride,
+    } = useSeoCrawler() as any;
 
     const [showShortcuts, setShowShortcuts] = useState(false);
     const isPausedSession = !isCrawling && crawlRuntime.stage === 'paused' && pages.length > 0;
+
+    // Listen for shortcuts panel open from StatusBar
+    useEffect(() => {
+        const handler = () => setShowShortcuts(true);
+        window.addEventListener('open-shortcuts', handler);
+        return () => window.removeEventListener('open-shortcuts', handler);
+    }, []);
     const isActiveSession = isCrawling || crawlRuntime.stage === 'crawling' || crawlRuntime.stage === 'connecting';
-    const crawlButtonLabel = isActiveSession ? 'Pause Scan' : isPausedSession ? 'Resume Scan' : 'Start Scan';
+
+    const modeAccent = MODE_ACCENT[mode] || '#94a3b8';
+
+    const activeModeDescriptor = useMemo(() => {
+        try { return getMode(mode); } catch { return null; }
+    }, [mode]);
+
+    // Mode-specific primary action labels
+    const MODE_ACTION: Record<string, string> = useMemo(() => ({
+        fullAudit: 'New Crawl',
+        wqa: 'Rescore',
+        technical: 'Sub-crawl',
+        content: 'New Brief',
+        linksAuthority: 'Import CSV',
+        ai: 'Run Prompts',
+        competitors: 'Add Competitor',
+        commerce: 'Feed Check',
+        local: 'New Post',
+        uxConversion: 'New Test',
+        paid: 'Sync Ads',
+        socialBrand: 'New Audit',
+    }), []);
+    const primaryActionLabel = MODE_ACTION[mode] || 'New Scan';
 
     return (
-        <header className="h-[52px] border-b border-[#222] bg-[#141414] flex items-center px-3 justify-between shrink-0 relative z-40">
-            <div className="flex items-center gap-5">
-                <div className="flex items-center gap-2 relative">
+        <header className="h-[48px] bg-[#141414] flex items-center px-3 justify-between shrink-0 relative z-40">
+            {/* ── Left: Logo + Breadcrumb ── */}
+            <div className="flex items-center gap-3 min-w-0">
+                {/* Logo */}
+                <div className="flex items-center gap-2 relative shrink-0">
                     {isCrawling && (
-                        <div className="absolute -inset-2 bg-[#F5364E]/20 rounded-full blur-md animate-pulse z-0 hidden md:block" />
+                        <div className="absolute -inset-2 bg-[#F59E0B]/20 rounded-full blur-md animate-pulse z-0 hidden md:block" />
                     )}
-                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className={`shrink-0 relative z-10 transition-colors duration-500 ${isCrawling ? 'text-[#F5364E] drop-shadow-[0_0_12px_rgba(245,54,78,0.8)]' : 'text-white drop-shadow-[0_0_8px_rgba(245,54,78,0.3)]'}`}>
-                        <circle cx="9" cy="16" r="5" fill="currentColor" />
-                        <path d="M17 11H27" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                        <path d="M17 16H31" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                        <path d="M17 21H27" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                    </svg>
-                    <span className="font-bold text-white text-[15px] tracking-tight relative z-10">Headlight <span className="text-gray-500 font-medium transition-colors">Scanner</span></span>
+                    <BeeMark size={22} className={`shrink-0 relative z-10 transition-all duration-500 ${isCrawling ? 'drop-shadow-[0_0_12px_rgba(245,158,11,0.8)]' : 'drop-shadow-[0_0_8px_rgba(245,158,11,0.3)]'}`} />
+                    <span className="font-bold text-white text-[14px] tracking-tight relative z-10">Seesby <span className="text-gray-500 font-medium">Scanner</span></span>
                 </div>
 
-                <div className="h-4 border-l border-[#333] hidden md:block"></div>
+                <span className="text-[#333] text-[14px]">|</span>
+
+                {/* Project */}
+                <div className="shrink-0">
+                    <ProjectSelector />
+                </div>
+
+                <span className="text-[#333] text-[14px]">|</span>
+
+                {/* Mode */}
+                <div className="relative flex items-center gap-1.5 h-[28px] px-2 bg-[#0a0a0a] border border-[#222] rounded hover:border-[#333] transition-colors shrink-0">
+                    {activeModeDescriptor && (
+                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${MODE_DOT_CLASS[activeModeDescriptor.accent] || 'bg-white'}`} />
+                    )}
+                    <select
+                        value={mode}
+                        onChange={(e) => setMode(e.target.value as Mode)}
+                        className="bg-transparent text-[11px] text-[#ccc] focus:outline-none appearance-none cursor-pointer"
+                    >
+                        {allModes().map((entry) => (
+                            <option key={entry.id} value={entry.id}>{MODE_LABEL[entry.id]}</option>
+                        ))}
+                    </select>
+                    <ChevronDown size={10} className="text-[#555] pointer-events-none" />
+                </div>
+
+                <span className="text-[#333] text-[14px]">|</span>
+
+                {/* Industry */}
+                <div className="relative h-[28px] flex items-center">
+                    <select
+                        value={fingerprint?.industry?.value || 'general'}
+                        onChange={(e) => setWqaIndustryOverride?.(e.target.value || null)}
+                        className="h-full pl-2 pr-6 bg-[#0a0a0a] border border-[#222] rounded text-[11px] text-[#ccc] hover:border-[#333] focus:outline-none appearance-none cursor-pointer transition-colors"
+                    >
+                        {allIndustries().map((industry) => (
+                            <option key={industry} value={industry}>{INDUSTRY_LABEL[industry]}</option>
+                        ))}
+                    </select>
+                    <ChevronDown size={10} className="absolute right-1.5 top-1/2 -translate-y-1/2 text-[#555] pointer-events-none" />
+                </div>
             </div>
 
-            {/* Project Selector (replaces scan input) */}
-            <div className="flex items-center gap-2 flex-1 max-w-[600px] ml-6">
-                <ProjectSelector />
-
-                <button 
-                    onClick={() => handleStartPause()}
-                    className={`h-[28px] px-3 rounded-md text-[11px] font-bold transition-all duration-300 flex items-center justify-center gap-1.5 min-w-[100px] shadow-sm ${
-                        isActiveSession
-                        ? 'bg-[#1a0508] text-[#F5364E] border border-[#F5364E]/30 hover:bg-[#2a080d] hover:border-[#F5364E]/50' 
-                        : isPausedSession
-                        ? 'bg-[#1c1403] text-amber-400 border border-amber-500/30 hover:bg-[#261a04] hover:border-amber-400/50'
-                        : 'bg-gradient-to-t from-[#d62839] to-[#F5364E] text-white hover:to-[#ff455d] border border-transparent shadow-[0_2px_10px_rgba(245,54,78,0.2)]'
-                    }`}
-                >
-                    {isActiveSession ? <Pause size={11} fill="currentColor" /> : <Play size={11} fill="currentColor" />}
-                    {crawlButtonLabel}
-                </button>
-            </div>
-
-            <div className="flex items-center gap-2 ml-4">
-                <button 
+            {/* ── Right: Actions + Profile ── */}
+            <div className="flex items-center gap-1.5 shrink-0">
+                {/* Clear */}
+                <button
                     onClick={clearCrawlerWorkspace}
                     disabled={pages.length === 0 || isCrawling}
-                    className="flex items-center gap-1.5 px-2 py-0.5 bg-transparent hover:bg-[#222] border border-[#333] rounded text-[10px] font-medium text-[#ccc] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-                    title={isCrawling ? 'Pause the crawl before clearing' : 'Clear current crawler workspace'}
+                    className="flex items-center gap-1 px-2 py-1 bg-transparent hover:bg-[#222] border border-[#333] rounded text-[10px] font-medium text-[#888] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                    title="Clear workspace"
                 >
-                    <X size={11} /> Clear
+                    <X size={10} /> Clear
                 </button>
 
-                <div className="hidden xl:flex items-center gap-1.5 ml-4">
+                {/* Analyze + AI (xl+) */}
+                <div className="hidden xl:flex items-center gap-1.5">
                     {pages.length > 0 && !isCrawling && (
-                        <div className="flex items-center gap-1.5">
-                            {/* Unified Analysis Button */}
-                            <button 
+                        <>
+                            <button
                                 onClick={() => runCompleteAnalysis()}
-                                disabled={analysisRuntime.isAnalyzing || isCrawling}
-                                className={`group relative flex items-center gap-2 px-3 py-1 rounded text-[10px] font-bold shadow-lg transition-all duration-300 overflow-hidden ${
-                                    analysisRuntime.isAnalyzing 
-                                    ? 'bg-[#1a1a1a] text-gray-400 border border-[#333] cursor-wait min-w-[140px]'
-                                    : 'bg-gradient-to-t from-[#4f46e5] to-[#6366f1] text-white hover:to-[#818cf8] shadow-[0_2px_8px_rgba(79,70,229,0.3)] min-w-[110px]'
+                                disabled={analysisRuntime.isAnalyzing}
+                                className={`relative flex items-center gap-1 px-2 py-1 rounded text-[10px] font-bold transition-all overflow-hidden ${
+                                    analysisRuntime.isAnalyzing
+                                    ? 'bg-[#1a1a1a] text-gray-400 border border-[#333] cursor-wait'
+                                    : 'bg-gradient-to-t from-[#4f46e5] to-[#6366f1] text-white hover:to-[#818cf8]'
                                 }`}
-                                title="Run full analysis pipeline: AI analysis + GSC/GA4 Strategic Audit + Automatic Enrichment"
                             >
-                                {/* Progress Background Glow */}
                                 {analysisRuntime.isAnalyzing && (
-                                    <div 
-                                        className="absolute inset-0 bg-white/5 transition-all duration-500 ease-out z-0"
-                                        style={{ width: `${analysisRuntime.progress}%` }}
-                                    />
+                                    <div className="absolute inset-0 bg-white/5 transition-all duration-500" style={{ width: `${analysisRuntime.progress}%` }} />
                                 )}
-
-                                <div className="relative z-10 flex items-center gap-2 w-full justify-center">
+                                <div className="relative z-10 flex items-center gap-1">
                                     {analysisRuntime.isAnalyzing ? (
-                                        <div className="flex items-center gap-2">
-                                            {/* Circular Progress SVG */}
-                                            <svg className="w-3.5 h-3.5 -rotate-90 animate-in fade-in duration-500" viewBox="0 0 24 24">
-                                                <circle 
-                                                    className="text-white/10" 
-                                                    strokeWidth="3.5" 
-                                                    stroke="currentColor" 
-                                                    fill="transparent" 
-                                                    r="10" 
-                                                    cx="12" 
-                                                    cy="12" 
-                                                />
-                                                <circle 
-                                                    className="text-white transition-all duration-700 ease-in-out" 
-                                                    strokeWidth="3.5" 
-                                                    strokeDasharray={2 * Math.PI * 10}
-                                                    strokeDashoffset={2 * Math.PI * 10 * (1 - analysisRuntime.progress / 100)}
-                                                    strokeLinecap="round" 
-                                                    stroke="currentColor" 
-                                                    fill="transparent" 
-                                                    r="10" 
-                                                    cx="12" 
-                                                    cy="12" 
-                                                />
+                                        <>
+                                            <svg className="w-3 h-3 -rotate-90" viewBox="0 0 24 24">
+                                                <circle className="text-white/10" strokeWidth="3.5" stroke="currentColor" fill="transparent" r="10" cx="12" cy="12" />
+                                                <circle className="text-white transition-all duration-700" strokeWidth="3.5" strokeDasharray={62.83} strokeDashoffset={62.83 * (1 - analysisRuntime.progress / 100)} strokeLinecap="round" stroke="currentColor" fill="transparent" r="10" cx="12" cy="12" />
                                             </svg>
                                             <span className="truncate">{analysisRuntime.label}</span>
-                                        </div>
+                                        </>
                                     ) : (
                                         <>
-                                            <Sparkles size={11} className={analysisRuntime.stage === 'completed' ? 'text-green-400' : 'text-white'} fill="currentColor" /> 
-                                            <span>{analysisRuntime.stage === 'completed' ? 'Audit Complete' : 'Run Analysis'}</span>
+                                            <Sparkles size={10} className={analysisRuntime.stage === 'completed' ? 'text-green-400' : 'text-white'} fill="currentColor" />
+                                            <span>{analysisRuntime.stage === 'completed' ? 'Done' : 'Analyze'}</span>
                                         </>
                                     )}
                                 </div>
@@ -459,69 +572,43 @@ export default function CrawlerHeader() {
 
                             <button
                                 onClick={() => setShowAiChat(true)}
-                                className="ai-tab flex items-center gap-1.5 px-2.5 py-1 bg-[#111827] hover:bg-[#172033] border border-[#2c3344] text-[#c6d3ff] rounded text-[10px] font-bold transition-all shadow-sm"
-                                title="Open AI chat assistant for crawl questions and actions"
+                                className="flex items-center gap-1 px-2 py-1 bg-[#111827] hover:bg-[#172033] border border-[#2c3344] text-[#c6d3ff] rounded text-[10px] font-bold transition-all"
                             >
-                                <Bot size={11} /> AI Chat
+                                <Bot size={10} /> AI
                             </button>
-                        </div>
+                        </>
                     )}
                 </div>
 
-                {/* Utilities Group (Bell, Shortcuts, Settings) */}
-                <div className="flex items-center gap-1 ml-2 border-l border-[#333] pl-3">
+                {/* Utilities */}
+                <div className="flex items-center gap-0.5 border-l border-[#2a2a2a] pl-2">
                     <NotificationBell />
-
-                    <div className="relative">
-                        <button 
-                            onClick={() => setShowShortcuts(!showShortcuts)} 
-                            className="p-1.5 rounded text-[#666] hover:bg-[#222] hover:text-white transition-colors"
-                            title="Keyboard Shortcuts"
-                        >
-                            <Keyboard size={13}/>
-                        </button>
-                        {showShortcuts && (
-                            <div className="absolute right-0 top-full mt-1 w-[260px] bg-[#111] border border-[#333] rounded-lg shadow-2xl z-[100] p-4 animate-in fade-in slide-in-from-top-2 duration-150">
-                                <h4 className="text-[11px] font-bold text-[#888] uppercase tracking-wider mb-3">Keyboard Shortcuts</h4>
-                                <div className="space-y-2">
-                                    {[
-                                        { keys: '⌘ + Enter', desc: 'Start / Pause crawl' },
-                                        { keys: '⌘ + F', desc: 'Search URLs' },
-                                        { keys: '⌘ + E', desc: 'Export to CSV' },
-                                        { keys: 'Escape', desc: 'Close / Clear' },
-                                    ].map(s => (
-                                        <div key={s.keys} className="flex items-center justify-between text-[11px]">
-                                            <span className="text-[#888]">{s.desc}</span>
-                                            <kbd className="px-1.5 py-0.5 bg-[#222] border border-[#333] rounded text-[10px] text-[#ccc] font-mono">{s.keys}</kbd>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div>
-
-                    <button onClick={() => setShowSettings(!showSettings)} className={`p-1.5 rounded transition-colors ${showSettings ? 'bg-[#333] text-white' : 'text-[#888] hover:bg-[#222] hover:text-white'}`} title="Configuration">
-                        <Settings size={14}/>
+                    <a href="https://docs.seesby.com" target="_blank" rel="noopener noreferrer" className="p-1.5 rounded text-[#555] hover:bg-[#222] hover:text-white transition-colors" title="Help">
+                        <HelpCircle size={13}/>
+                    </a>
+                    <button onClick={() => setShowSettings(!showSettings)} className={`p-1.5 rounded transition-colors ${showSettings ? 'bg-[#333] text-white' : 'text-[#555] hover:bg-[#222] hover:text-white'}`} title="Settings">
+                        <Settings size={13}/>
                     </button>
                 </div>
 
-                {/* Auth indicator */}
-                {isAuthenticated ? (
-                    <div className="flex items-center gap-2 px-2 py-1 bg-[#1a1a1a] border border-[#222] rounded ml-1" title={user?.email || ''}>
-                        <div className="w-5 h-5 rounded-full bg-[#F5364E]/20 flex items-center justify-center text-[9px] font-bold text-[#F5364E]">
-                            {(profile?.full_name || user?.email || '?')[0].toUpperCase()}
-                        </div>
-                        <span className="text-[10px] text-[#888] max-w-[80px] truncate hidden xl:block">{profile?.full_name || user?.email?.split('@')[0]}</span>
-                    </div>
-                ) : (
-                    <button 
-                        onClick={() => window.location.assign('/auth')}
-                        className="flex items-center gap-1.5 px-2.5 py-1 bg-[#F5364E]/10 hover:bg-[#F5364E]/20 border border-[#F5364E]/30 rounded text-[11px] font-bold text-[#F5364E] transition-colors ml-1"
-                        title="Sign in for unlimited scans and saved history"
-                    >
-                        <LogIn size={11}/> Sign in
-                    </button>
-                )}
+                {/* Profile */}
+                <ProfileDropdown isAuthenticated={isAuthenticated} user={user} profile={profile} />
+
+                {/* Primary Action */}
+                <button
+                    onClick={() => handleStartPause()}
+                    className={`h-[28px] px-3 rounded-md text-[11px] font-bold transition-all duration-300 flex items-center justify-center gap-1.5 shadow-sm ${
+                        isActiveSession
+                        ? 'bg-[#1a0508] text-[#F59E0B] border border-[#F59E0B]/30 hover:bg-[#2a080d]'
+                        : isPausedSession
+                        ? 'bg-[#1c1403] text-amber-400 border border-amber-500/30 hover:bg-[#261a04]'
+                        : 'text-white hover:opacity-90 border border-transparent'
+                    }`}
+                    style={!isActiveSession && !isPausedSession ? { backgroundColor: modeAccent } : undefined}
+                >
+                    {isActiveSession ? <Pause size={11} fill="currentColor" /> : <Play size={11} fill="currentColor" />}
+                    {primaryActionLabel}
+                </button>
             </div>
         </header>
     );

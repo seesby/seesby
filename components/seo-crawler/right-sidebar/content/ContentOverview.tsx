@@ -1,63 +1,121 @@
-import React, { useMemo } from 'react'
-import { useSeoCrawler } from '@/contexts/SeoCrawlerContext'
+import React from 'react'
 import { useContentInsights } from '../_hooks/useContentInsights'
-import { useDrill } from '../_shared/drill'
-import {
-  HeroStrip, HealthBlock, DistBlock, DonutBlock, DistRowsBlock, TrendBlock,
-  TopListBlock, SegmentBlock, HeatmapBlock, BenchmarkBar,
-  CompareBlock, KvBlock, TimelineList, DrillFooter,
-  AlertsBlock, ActionsBlock,
-  EmptyState, fmtNum, fmtPct, fmtMs, compactNum, scoreToTone,
-} from '../_shared'
-import { templateOf, depthBucket } from '../_shared/derive'
+import { useHasTrend } from '../_hooks/useSessionsCount'
+import { Card } from '../_shared/Card'
+import { KpiTile } from '../_shared/KpiTile'
+import { Distribution } from '../_shared/Distribution'
+import { ProgressRing } from '../_shared/ProgressRing'
+import { HealthStrip } from '../_shared/HealthStrip'
+import { DeltaChip } from '../_shared/DeltaChip'
+import { RsSparkline } from '../parts/RsSparkline'
+import { RowItem } from '../_shared/RowItem'
+import { EmptyState } from '../_shared/empty'
+import { compactNum } from '../_shared/format'
 
 export function ContentOverview() {
-  const { pages } = useSeoCrawler()
   const s = useContentInsights()
-  const drill = useDrill()
-  if (!pages?.length) return <EmptyState title="No crawl data yet" />
+  const hasTrend = useHasTrend()
 
-  const lowest = [...pages].sort((a, b) => Number(a.qualityScore) - Number(b.qualityScore)).slice(0, 6)
+  if (!s.total) return <EmptyState title="No crawl data yet" />
+
+  const delta = hasTrend && s.avgQualityPrev > 0
+    ? s.avgQuality - s.avgQualityPrev
+    : undefined
+
+  const gaps = [
+    { label: 'Thin <300 words', value: s.thin },
+    { label: 'Stale >180 days', value: s.staleCount },
+    { label: 'Near-duplicates', value: s.dup.near },
+    { label: 'Exact duplicates', value: s.dup.exact },
+    { label: 'Cannibalization', value: s.dup.cannibal },
+    { label: 'No byline', value: s.missing.noByline },
+    { label: 'Missing schema', value: s.missing.noSchema },
+    { label: 'No meta desc', value: s.missing.noMeta },
+  ]
+    .filter(g => g.value > 0)
+    .sort((a, b) => b.value - a.value)
+    .slice(0, 5)
+
+  const scoreGrade = s.avgQuality >= 90 ? 'A' : s.avgQuality >= 75 ? 'B' : s.avgQuality >= 60 ? 'C' : s.avgQuality >= 40 ? 'D' : 'F'
+
+  const categoryRows = s.categoryMix.map(([label, count]) => ({
+    label,
+    value: count,
+  }))
+
+  const freshnessPercent = s.total > 0 ? Math.round(((s.freshness.live + s.freshness.recent) / s.total) * 100) : 0
+  const uniquePages = s.total - s.dup.exact - s.dup.near
 
   return (
-    <div className="space-y-3 p-3">
-      <HeroStrip ring="gauge" score={s.score} scoreLabel="Content"
-        kpis={[
-          { label: 'Pages', value: compactNum(s.total) },
-          { label: 'Clusters', value: s.clusters.length },
-          { label: 'Avg quality', value: s.avgQuality.toFixed(0), tone: scoreToTone(s.avgQuality) },
-        ]} />
-      <DistBlock title="Quality bands" segments={[
-        { value: s.bands.excellent, tone: 'good', label: 'Excellent' },
-        { value: s.bands.good, tone: 'good', label: 'Good' },
-        { value: s.bands.fair, tone: 'info', label: 'Fair' },
-        { value: s.bands.poor, tone: 'warn', label: 'Poor' },
-        { value: s.bands.critical, tone: 'bad', label: 'Critical' },
-      ]} />
-      <DistRowsBlock title="Length mix" rows={[
-        { label: '<300 words', value: s.lengthMix.tiny, tone: 'bad' },
-        { label: '300–800', value: s.lengthMix.short, tone: 'warn' },
-        { label: '800–2000', value: s.lengthMix.medium, tone: 'good' },
-        { label: '>2000', value: s.lengthMix.long, tone: 'good' },
-      ]} />
-      <TrendBlock title="Avg quality (12 weeks)" values={s.qualitySeries} tone="info" />
-      <TopListBlock title="Lowest quality pages" items={lowest.map(p => ({
-        id: p.url, primary: p.title || p.url, tail: Number(p.qualityScore).toFixed(0),
-        onClick: () => drill.toPage(p),
-      }))} />
-      <SegmentBlock title="By cluster" headers={['Cluster','Pages','Thin','Avg q']} rows={s.clusters.slice(0, 6).map((c: any) => ({
-        id: c.id, label: c.label, values: [c.pages, c.thin, c.avgQuality.toFixed(0)],
-      }))} />
-      <CompareBlock title="vs last crawl" rows={[
-        { label: 'Avg quality', a: { v: s.avgQuality, tag: 'now' }, b: { v: s.avgQualityPrev, tag: 'prev' }, format: v => v.toFixed(0) },
-        { label: 'Thin', a: { v: s.thin, tag: 'now' }, b: { v: s.thinPrev, tag: 'prev' } },
-      ]} />
+    <div className="flex flex-col gap-3 p-3">
+      {/* Score card */}
+      <Card>
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <div className="text-[11px] uppercase tracking-wide text-[#888]">Content score</div>
+            <div className="mt-1 flex items-baseline gap-2">
+              <span className="text-3xl font-bold tabular-nums text-white">{s.avgQuality}</span>
+              <span className="text-sm font-medium text-[#666]">{scoreGrade}</span>
+            </div>
+            <div className="mt-1 flex items-center gap-2">
+              {typeof delta === 'number' && <DeltaChip value={delta} />}
+              {hasTrend && s.scoreSeries.length > 1 && (
+                <RsSparkline values={s.scoreSeries} />
+              )}
+            </div>
+            <div className="mt-1.5 flex gap-4 text-[10px] text-[#666]">
+              <span>p50 <span className="text-[#aaa]">{s.p50}</span></span>
+              <span className="w-px h-2 bg-[#222]" />
+              <span>p90 <span className="text-[#aaa]">{s.p90}</span></span>
+            </div>
+          </div>
+          <ProgressRing value={s.avgQuality} size={72} />
+        </div>
+      </Card>
 
-      <DrillFooter chips={[
-        { label: 'Topics', count: s.clusters.length },
-        { label: 'Thin', count: s.thin },
-        { label: 'Dup', count: s.dup.exact + s.dup.near },
-      ]} />
+      {/* KPIs with secondary info */}
+      <div className="grid grid-cols-2 gap-2">
+        <KpiTile label="Pages" value={compactNum(s.total)} sub={`${compactNum(uniquePages)} unique`} />
+        <KpiTile label="Words" value={compactNum(s.totalWords)} sub={`${compactNum(s.avgWords)} avg`} />
+        <KpiTile label="Clusters" value={String(s.clusters.length)} sub={`${s.hubs} hubs`} />
+        <KpiTile label="Fresh" value={`${freshnessPercent}%`} tone={freshnessPercent >= 70 ? 'good' : 'warn'} sub={`${s.freshness.stale} stale`} />
+      </div>
+
+      {/* Score distribution as HealthStrip */}
+      <Card title="Quality breakdown">
+        <HealthStrip
+          total={s.total}
+          segments={[
+            { label: 'Excellent', value: s.bands.excellent, color: '#22c55e' },
+            { label: 'Good', value: s.bands.good, color: '#10b981' },
+            { label: 'Fair', value: s.bands.fair, color: '#f59e0b' },
+            { label: 'Poor', value: s.bands.poor, color: '#f97316' },
+            { label: 'Critical', value: s.bands.critical, color: '#ef4444' },
+          ].filter(seg => seg.value > 0)}
+        />
+      </Card>
+
+      {/* Page categories */}
+      {categoryRows.length > 0 && (
+        <Card title="Page types">
+          <Distribution rows={categoryRows} />
+        </Card>
+      )}
+
+      {/* Top issues to fix */}
+      {gaps.length > 0 && (
+        <Card title="Needs attention" padded={false}>
+          <div className="flex flex-col border-t border-[#1f1f1f]">
+            {gaps.map((g, i) => (
+              <RowItem
+                key={i}
+                title={g.label}
+                badge={<span className="text-[10px] font-mono text-[#f59e0b]">{g.value}</span>}
+              />
+            ))}
+          </div>
+        </Card>
+      )}
     </div>
   )
 }

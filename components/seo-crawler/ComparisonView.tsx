@@ -265,7 +265,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
     const gridTemplateString = `${colWidths[0]}px minmax(300px, 1fr) ${colWidths.slice(2).map(w => `${w}px`).join(' ')}`;
 
     return (
-        <div className="fixed inset-0 z-50 flex flex-col bg-[#0a0a0a] text-[#e0e0e0] font-sans selection:bg-[#F5364E]/30 min-w-[700px]">
+        <div className="fixed inset-0 z-50 flex flex-col bg-[#0a0a0a] text-[#e0e0e0] font-sans selection:bg-[#F59E0B]/30 min-w-[700px]">
             
             <header className="flex h-12 shrink-0 items-center justify-between border-b border-[#222] bg-[#0a0a0a] px-3 z-20 shadow-sm relative">
                 <div className="flex items-center gap-3 shrink-0">
@@ -295,7 +295,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                             <div className="flex items-center gap-1.5 bg-[#151515] rounded px-2 py-0.5 border border-[#222]">
                                 <span className="text-white font-mono">{Number(summary.healthScore?.new || 0).toFixed(0)}%</span>
                                 {healthDelta !== 0 && (
-                                    <span className={healthDelta > 0 ? 'text-emerald-500 font-mono flex items-center' : 'text-[#F5364E] font-mono flex items-center'}>
+                                    <span className={healthDelta > 0 ? 'text-emerald-500 font-mono flex items-center' : 'text-[#F59E0B] font-mono flex items-center'}>
                                         {healthDelta > 0 ? <TrendingUp size={10} className="mr-1" /> : <TrendingDown size={10} className="mr-1" />}
                                         {Math.abs(healthDelta).toFixed(0)}
                                     </span>
@@ -308,7 +308,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                             <div className="flex items-center gap-1.5 bg-[#151515] rounded px-2 py-0.5 border border-[#222]">
                                 <span className="text-white font-mono">{formatValue(summary.totalClicks?.new || 0)}</span>
                                 {clickDelta !== 0 && (
-                                    <span className={clickDelta > 0 ? 'text-emerald-500 font-mono flex items-center' : 'text-[#F5364E] font-mono flex items-center'}>
+                                    <span className={clickDelta > 0 ? 'text-emerald-500 font-mono flex items-center' : 'text-[#F59E0B] font-mono flex items-center'}>
                                         {clickDelta > 0 ? <TrendingUp size={10} className="mr-1" /> : <TrendingDown size={10} className="mr-1" />}
                                         {formatValue(Math.abs(clickDelta))}
                                     </span>
@@ -318,11 +318,11 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
 
                         <div className="flex gap-3 ml-2">
                             {totalAdded > 0 && <span className="text-emerald-500 font-mono flex items-center gap-1">+{totalAdded} Added</span>}
-                            {totalMissing > 0 && <span className="text-[#F5364E] font-mono flex items-center gap-1">-{totalMissing} Removed</span>}
+                            {totalMissing > 0 && <span className="text-[#F59E0B] font-mono flex items-center gap-1">-{totalMissing} Removed</span>}
                         </div>
 
                         <div className="flex gap-3 ml-2">
-                            {totalIssuesIntroduced > 0 && <span className="text-[#F5364E] font-mono flex items-center gap-1">+{totalIssuesIntroduced} Issues</span>}
+                            {totalIssuesIntroduced > 0 && <span className="text-[#F59E0B] font-mono flex items-center gap-1">+{totalIssuesIntroduced} Issues</span>}
                             {totalIssuesFixed > 0 && <span className="text-emerald-500 font-mono flex items-center gap-1">-{totalIssuesFixed} Fixed</span>}
                         </div>
                     </div>
@@ -364,7 +364,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                                 <ResponsiveContainer width="100%" height="100%">
                                     <BarChart 
                                         data={[
-                                            { name: 'New Issues', value: totalIssuesIntroduced, fill: '#F5364E' }, 
+                                            { name: 'New Issues', value: totalIssuesIntroduced, fill: '#F59E0B' }, 
                                             { name: 'Fixed Issues', value: totalIssuesFixed, fill: '#10B981' }
                                         ].filter(d => d.value > 0)} 
                                         margin={{ top: 15, right: 20, left: 0, bottom: 5 }}
@@ -376,7 +376,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                                         <Bar dataKey="value" radius={[4, 4, 0, 0]} barSize={45}>
                                             {
                                                 [
-                                                    { name: 'New Issues', value: totalIssuesIntroduced, fill: '#F5364E' }, 
+                                                    { name: 'New Issues', value: totalIssuesIntroduced, fill: '#F59E0B' }, 
                                                     { name: 'Fixed Issues', value: totalIssuesFixed, fill: '#10B981' }
                                                 ].filter(d => d.value > 0).map((entry, index) => (
                                                     <Cell key={`cell-${index}`} fill={entry.fill} />
@@ -399,7 +399,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                                         <Pie 
                                             data={[
                                                 { name: 'Added', value: totalAdded, color: '#10B981' },
-                                                { name: 'Missing', value: totalMissing, color: '#F5364E' },
+                                                { name: 'Missing', value: totalMissing, color: '#F59E0B' },
                                                 { name: 'Modified', value: totalModified, color: '#3B82F6' }
                                             ].filter(i => i.value > 0)} 
                                             cx="40%"
@@ -412,7 +412,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                                             {
                                                 [
                                                     { name: 'Added', value: totalAdded, color: '#10B981' },
-                                                    { name: 'Missing', value: totalMissing, color: '#F5364E' },
+                                                    { name: 'Missing', value: totalMissing, color: '#F59E0B' },
                                                     { name: 'Modified', value: totalModified, color: '#3B82F6' }
                                                 ].filter(i => i.value > 0).map((entry, index) => (
                                                     <Cell key={`cell-${index}`} fill={entry.color} />
@@ -447,7 +447,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                                     <BarChart 
                                         data={[
                                             { period: 'Historical', Clicks: summary.totalClicks?.old || 0, fill: '#444' },
-                                            { period: 'Live Crawl', Clicks: summary.totalClicks?.new || 0, fill: clickDelta >= 0 ? '#3B82F6' : '#F5364E' }
+                                            { period: 'Live Crawl', Clicks: summary.totalClicks?.new || 0, fill: clickDelta >= 0 ? '#3B82F6' : '#F59E0B' }
                                         ]} 
                                         margin={{ top: 15, right: 30, left: 10, bottom: 5 }}
                                     >
@@ -459,7 +459,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                                             {
                                                 [
                                                     { period: 'Historical', Clicks: summary.totalClicks?.old || 0, fill: '#444' },
-                                                    { period: 'Live Crawl', Clicks: summary.totalClicks?.new || 0, fill: clickDelta >= 0 ? '#3B82F6' : '#F5364E' }
+                                                    { period: 'Live Crawl', Clicks: summary.totalClicks?.new || 0, fill: clickDelta >= 0 ? '#3B82F6' : '#F59E0B' }
                                                 ].map((entry, index) => (
                                                     <Cell key={`cell-${index}`} fill={entry.fill} />
                                                 ))
@@ -487,7 +487,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                                     { id: 'missing', label: 'Missing', count: totalMissing },
                                     { id: 'modified', label: 'Modified Data', count: diffResult?.changed?.length || 0 },
                                 ].map(f => (
-                                    <label key={f.id} onClick={() => toggleFilter(setSelectedTypes, f.id)} className={`flex items-center justify-between px-2 py-1.5 text-[11px] font-medium cursor-pointer rounded transition-colors ${selectedTypes.has(f.id) ? 'bg-[#F5364E]/10 text-[#F5364E]' : 'text-[#aaa] hover:bg-[#1a1a1a] hover:text-[#fff]'}`}>
+                                    <label key={f.id} onClick={() => toggleFilter(setSelectedTypes, f.id)} className={`flex items-center justify-between px-2 py-1.5 text-[11px] font-medium cursor-pointer rounded transition-colors ${selectedTypes.has(f.id) ? 'bg-[#F59E0B]/10 text-[#F59E0B]' : 'text-[#aaa] hover:bg-[#1a1a1a] hover:text-[#fff]'}`}>
                                         <span>{f.label}</span>
                                         <span className="font-mono text-[10px] opacity-70">{f.count}</span>
                                     </label>
@@ -498,7 +498,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                                 <div className="flex flex-col gap-2">
                                     <span className="text-[11px] font-bold text-[#777] uppercase tracking-wider border-b border-[#222] pb-2">Issues Found</span>
                                     {availableNewIssues.slice(0, 10).map(([label, count]) => (
-                                        <label key={label} onClick={() => toggleFilter(setSelectedNewIssues, label)} className={`flex items-center justify-between px-2 py-1.5 text-[11px] font-medium cursor-pointer rounded transition-colors ${selectedNewIssues.has(label) ? 'bg-[#F5364E]/10 text-[#F5364E]' : 'text-[#aaa] hover:bg-[#1a1a1a] hover:text-[#fff]'}`}>
+                                        <label key={label} onClick={() => toggleFilter(setSelectedNewIssues, label)} className={`flex items-center justify-between px-2 py-1.5 text-[11px] font-medium cursor-pointer rounded transition-colors ${selectedNewIssues.has(label) ? 'bg-[#F59E0B]/10 text-[#F59E0B]' : 'text-[#aaa] hover:bg-[#1a1a1a] hover:text-[#fff]'}`}>
                                             <span className="truncate pr-2 leading-tight">{label}</span>
                                             <span className="font-mono text-[10px] opacity-70 shrink-0">{count}</span>
                                         </label>
@@ -510,7 +510,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                                 <div className="flex flex-col gap-2">
                                     <span className="text-[11px] font-bold text-[#777] uppercase tracking-wider border-b border-[#222] pb-2">Issues Fixed</span>
                                     {availableFixedIssues.slice(0, 10).map(([label, count]) => (
-                                        <label key={label} onClick={() => toggleFilter(setSelectedFixedIssues, label)} className={`flex items-center justify-between px-2 py-1.5 text-[11px] font-medium cursor-pointer rounded transition-colors ${selectedFixedIssues.has(label) ? 'bg-[#F5364E]/10 text-[#F5364E]' : 'text-[#aaa] hover:bg-[#1a1a1a] hover:text-[#fff]'}`}>
+                                        <label key={label} onClick={() => toggleFilter(setSelectedFixedIssues, label)} className={`flex items-center justify-between px-2 py-1.5 text-[11px] font-medium cursor-pointer rounded transition-colors ${selectedFixedIssues.has(label) ? 'bg-[#F59E0B]/10 text-[#F59E0B]' : 'text-[#aaa] hover:bg-[#1a1a1a] hover:text-[#fff]'}`}>
                                             <span className="truncate pr-2 leading-tight">{label}</span>
                                             <span className="font-mono text-[10px] opacity-70 shrink-0">{count}</span>
                                         </label>
@@ -629,26 +629,26 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                                             
                                             <div className="flex items-center pl-3 w-full">
                                                 {row.primaryType === 'new' && <span className="text-emerald-500 font-medium">Added</span>}
-                                                {row.primaryType === 'missing' && <span className="text-[#F5364E] font-medium">Missing</span>}
+                                                {row.primaryType === 'missing' && <span className="text-[#F59E0B] font-medium">Missing</span>}
                                                 {row.primaryType === 'new_issues' && <span className="text-orange-400 font-medium">Issues</span>}
                                                 {row.primaryType === 'modified' && <span className="text-[#888] font-medium">Modified</span>}
                                                 {row.primaryType === 'fixed' && <span className="text-emerald-500 font-medium">Fixed</span>}
                                             </div>
 
                                             <div className="text-right pr-5 w-full font-mono">
-                                                {row.healthDelta > 0 ? <span className="text-emerald-500">+{row.healthDelta}</span> : row.healthDelta < 0 ? <span className="text-[#F5364E]">{row.healthDelta}</span> : <span className="text-[#444]">—</span>}
+                                                {row.healthDelta > 0 ? <span className="text-emerald-500">+{row.healthDelta}</span> : row.healthDelta < 0 ? <span className="text-[#F59E0B]">{row.healthDelta}</span> : <span className="text-[#444]">—</span>}
                                             </div>
                                             <div className="text-right pr-5 w-full font-mono">
-                                                {row.clicksDelta > 0 ? <span className="text-emerald-500">+{formatValue(row.clicksDelta)}</span> : row.clicksDelta < 0 ? <span className="text-[#F5364E]">{formatValue(row.clicksDelta)}</span> : <span className="text-[#444]">—</span>}
+                                                {row.clicksDelta > 0 ? <span className="text-emerald-500">+{formatValue(row.clicksDelta)}</span> : row.clicksDelta < 0 ? <span className="text-[#F59E0B]">{formatValue(row.clicksDelta)}</span> : <span className="text-[#444]">—</span>}
                                             </div>
                                             <div className="text-right pr-5 w-full font-mono">
-                                                {row.positionDelta > 0 ? <span className="text-[#F5364E]">+{formatValue(row.positionDelta)}</span> : row.positionDelta < 0 ? <span className="text-emerald-500">{formatValue(row.positionDelta)}</span> : <span className="text-[#444]">—</span>}
+                                                {row.positionDelta > 0 ? <span className="text-[#F59E0B]">+{formatValue(row.positionDelta)}</span> : row.positionDelta < 0 ? <span className="text-emerald-500">{formatValue(row.positionDelta)}</span> : <span className="text-[#444]">—</span>}
                                             </div>
                                             <div className="text-right pr-5 w-full font-mono">
-                                                {row.loadTimeDelta > 0 ? <span className="text-[#F5364E]">+{formatValue(row.loadTimeDelta)}</span> : row.loadTimeDelta < 0 ? <span className="text-emerald-500">{formatValue(row.loadTimeDelta)}</span> : <span className="text-[#444]">—</span>}
+                                                {row.loadTimeDelta > 0 ? <span className="text-[#F59E0B]">+{formatValue(row.loadTimeDelta)}</span> : row.loadTimeDelta < 0 ? <span className="text-emerald-500">{formatValue(row.loadTimeDelta)}</span> : <span className="text-[#444]">—</span>}
                                             </div>
                                             <div className="text-right pr-5 w-full font-mono">
-                                                {row.issuesDelta > 0 ? <span className="text-[#F5364E]">+{row.issuesDelta}</span> : row.issuesDelta < 0 ? <span className="text-emerald-500">{row.issuesDelta}</span> : <span className="text-[#444]">—</span>}
+                                                {row.issuesDelta > 0 ? <span className="text-[#F59E0B]">+{row.issuesDelta}</span> : row.issuesDelta < 0 ? <span className="text-emerald-500">{row.issuesDelta}</span> : <span className="text-[#444]">—</span>}
                                             </div>
                                             
                                         </div>
@@ -746,8 +746,8 @@ function PageDetailsSidebar({ row, pages, activeProject, user, addLog, onClose }
                 <div className="flex flex-col gap-1.5 py-3 border-b border-[#222]">
                     <span className="text-[11px] font-bold text-[#888]">{displayLabel}</span>
                     <div className="flex flex-col gap-1.5 font-mono text-[11px] mt-1">
-                        <div className="flex items-center justify-between bg-[#F5364E]/10 border border-[#F5364E]/20 text-[#F5364E] rounded px-3 py-1.5">
-                            <span className="text-[9px] font-bold opacity-70 tracking-widest px-1.5 bg-[#F5364E]/20 rounded-sm">OLD</span>
+                        <div className="flex items-center justify-between bg-[#F59E0B]/10 border border-[#F59E0B]/20 text-[#F59E0B] rounded px-3 py-1.5">
+                            <span className="text-[9px] font-bold opacity-70 tracking-widest px-1.5 bg-[#F59E0B]/20 rounded-sm">OLD</span>
                             <span className="truncate max-w-[200px]" title={formatDetailedValue(diffRecord.oldValue, propKey)}>{formatDetailedValue(diffRecord.oldValue, propKey)}</span>
                         </div>
                         <div className="flex items-center justify-between bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 rounded px-3 py-1.5">
@@ -816,12 +816,12 @@ function PageDetailsSidebar({ row, pages, activeProject, user, addLog, onClose }
                     <div className="mb-8 flex flex-col gap-4">
                         {row.newIssues.length > 0 && (
                             <div className="flex flex-col gap-1.5">
-                                <span className="text-[11px] font-bold text-[#F5364E] uppercase tracking-wide">Issues Found</span>
+                                <span className="text-[11px] font-bold text-[#F59E0B] uppercase tracking-wide">Issues Found</span>
                                 <div className="flex flex-col gap-1.5">
                                     {row.newIssues.map((iss: any) => (
-                                        <div key={iss.id} className="flex justify-between items-center py-2 px-2.5 bg-[#F5364E]/10 rounded border border-[#F5364E]/20 text-[11px] text-[#eee]">
+                                        <div key={iss.id} className="flex justify-between items-center py-2 px-2.5 bg-[#F59E0B]/10 rounded border border-[#F59E0B]/20 text-[11px] text-[#eee]">
                                             <span className="truncate pr-2">{iss.label}</span>
-                                            <button onClick={() => void handleCreateTask(iss.label)} className="text-[10px] font-bold text-[#F5364E] hover:text-white transition-colors shrink-0">
+                                            <button onClick={() => void handleCreateTask(iss.label)} className="text-[10px] font-bold text-[#F59E0B] hover:text-white transition-colors shrink-0">
                                                 Create Task
                                             </button>
                                         </div>

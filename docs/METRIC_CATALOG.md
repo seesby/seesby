@@ -1,6 +1,6 @@
-# Headlight Metric Catalog
+# Seesby Metric Catalog
 
-> **Single source of truth** for all metrics in the Headlight Crawler Pipeline.
+> **Single source of truth** for all metrics in the Seesby Crawler Pipeline.
 > ~1,700 distinct fields across 18 namespaces, 8 levels, 13 roles, 9 source tiers.
 
 ---

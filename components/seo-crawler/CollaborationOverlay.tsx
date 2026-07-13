@@ -195,7 +195,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
             <div className="p-6 border-b border-white/10 flex justify-between items-start">
                 <div>
                     <div className="flex items-center gap-2 mb-1">
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-red px-2 py-0.5 bg-brand-red/10 rounded border border-brand-red/20">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-amber px-2 py-0.5 bg-brand-amber/10 rounded border border-brand-amber/20">
                             {collabOverlayTarget.type}
                         </span>
                         {activeTask && (
@@ -229,7 +229,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                     {activeTask.assignee_avatar ? (
                                         <img src={activeTask.assignee_avatar} className="w-6 h-6 rounded-full" alt="" />
                                     ) : (
-                                        <div className="w-6 h-6 rounded-full bg-brand-red/20 flex items-center justify-center text-brand-red">
+                                        <div className="w-6 h-6 rounded-full bg-brand-amber/20 flex items-center justify-center text-brand-amber">
                                             <User size={12} />
                                         </div>
                                     )}
@@ -241,7 +241,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                 <select 
                                     value={activeTask.status}
                                     onChange={(e) => handleUpdateTaskStatus(e.target.value as TaskStatus)}
-                                    className="w-full bg-white/5 border border-white/5 rounded-xl p-2 text-sm text-white focus:outline-none focus:border-brand-red/50"
+                                    className="w-full bg-white/5 border border-white/5 rounded-xl p-2 text-sm text-white focus:outline-none focus:border-brand-amber/50"
                                 >
                                     <option value="todo">To Do</option>
                                     <option value="in_progress">In Progress</option>
@@ -269,7 +269,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                             type="checkbox" 
                                             checked={sub.completed}
                                             onChange={(e) => handleToggleSubtask(sub.id, e.target.checked)}
-                                            className="w-4 h-4 rounded border-white/10 bg-black text-brand-red focus:ring-brand-red focus:ring-offset-0"
+                                            className="w-4 h-4 rounded border-white/10 bg-black text-brand-amber focus:ring-brand-amber focus:ring-offset-0"
                                         />
                                         <span className={`text-sm flex-1 ${sub.completed ? 'text-gray-600 line-through' : 'text-gray-300'}`}>
                                             {sub.title}
@@ -298,7 +298,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                 ) : collabOverlayTarget.type === 'task' ? (
                     <section className="bg-white/5 border border-dashed border-white/10 rounded-2xl p-6 space-y-4">
                         <div className="flex flex-col items-center text-center space-y-2 mb-2">
-                            <div className="w-12 h-12 rounded-full bg-brand-red/10 flex items-center justify-center text-brand-red">
+                            <div className="w-12 h-12 rounded-full bg-brand-amber/10 flex items-center justify-center text-brand-amber">
                                 <CheckCircle size={24} />
                             </div>
                             <h3 className="text-lg font-bold text-white">No task created yet</h3>
@@ -309,7 +309,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                             <div className="space-y-1.5">
                                 <label className="text-[10px] font-bold text-gray-500 uppercase">Description (Optional)</label>
                                 <textarea 
-                                    className="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-red/50 resize-none min-h-[80px]"
+                                    className="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 resize-none min-h-[80px]"
                                     placeholder="What needs to be done?"
                                     value={newTaskDescription}
                                     onChange={(e) => setNewTaskDescription(e.target.value)}
@@ -326,7 +326,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                                 onClick={() => setNewTaskPriority(p)}
                                                 className={`px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase transition-all ${
                                                     newTaskPriority === p 
-                                                    ? 'bg-brand-red text-white' 
+                                                    ? 'bg-brand-amber text-white' 
                                                     : 'bg-white/5 text-gray-500 hover:text-white hover:bg-white/10'
                                                 }`}
                                             >
@@ -338,7 +338,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                 <button 
                                     onClick={handleCreateTask}
                                     disabled={isCreatingTask}
-                                    className="px-6 py-2.5 bg-brand-red hover:bg-red-600 text-white rounded-xl text-xs font-bold transition-all shadow-lg active:scale-95 disabled:opacity-50"
+                                    className="px-6 py-2.5 bg-brand-amber hover:bg-red-600 text-white rounded-xl text-xs font-bold transition-all shadow-lg active:scale-95 disabled:opacity-50"
                                 >
                                     {isCreatingTask ? 'Creating...' : 'Create Task'}
                                 </button>
@@ -356,7 +356,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                     <div className="space-y-6">
                         {loading && comments.length === 0 ? (
                             <div className="py-10 text-center">
-                                <div className="w-8 h-8 border-2 border-brand-red border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+                                <div className="w-8 h-8 border-2 border-brand-amber border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
                                 <p className="text-xs text-gray-500 italic">Loading conversation...</p>
                             </div>
                         ) : comments.length === 0 ? (
@@ -418,12 +418,12 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                 handleSendComment();
                             }
                         }}
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 pr-12 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-brand-red/30 focus:ring-1 focus:ring-brand-red/30 transition-all resize-none min-h-[100px]"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 pr-12 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-brand-amber/30 focus:ring-1 focus:ring-brand-amber/30 transition-all resize-none min-h-[100px]"
                     />
                     <button 
                         onClick={handleSendComment}
                         disabled={!commentText.trim()}
-                        className="absolute right-3 bottom-3 p-2 bg-brand-red hover:bg-red-600 disabled:bg-white/5 disabled:text-gray-600 text-white rounded-xl transition-all shadow-lg"
+                        className="absolute right-3 bottom-3 p-2 bg-brand-amber hover:bg-red-600 disabled:bg-white/5 disabled:text-gray-600 text-white rounded-xl transition-all shadow-lg"
                     >
                         <Send size={18} />
                     </button>

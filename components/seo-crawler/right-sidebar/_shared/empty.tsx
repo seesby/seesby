@@ -17,7 +17,7 @@ export function NotConnected({ source, onConnect }: { source: string; onConnect?
       <div className="mt-1 text-[10px] text-[#666]">Connect to populate this tab.</div>
       {onConnect && (
         <button onClick={onConnect}
-          className="mt-2 rounded bg-[#F5364E] px-2.5 py-1 text-[10px] font-bold text-white hover:bg-[#df3248]">
+          className="mt-2 rounded bg-[#F59E0B] px-2.5 py-1 text-[10px] font-bold text-white hover:bg-[#df3248]">
           Connect {source}
         </button>
       )}

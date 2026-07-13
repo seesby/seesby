@@ -9,8 +9,7 @@ export const competitorsLsSections: ReadonlyArray<SidebarSection> = [
 			const counts: Record<string, number> = {};
 			for (const p of pages) if ((p as any).competitorId) counts[(p as any).competitorId] = (counts[(p as any).competitorId] || 0) + 1;
 			const rows = Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([id, n]) => {
-				const dr = 60 + (id.length % 35); // mock DR
-				return { id, label: id, meta: `DR ${dr} ${n > 0 ? '●' : ''}` };
+				return { id, label: id, meta: n > 0 ? '●' : '' };
 			});
 			return [
 				...rows,
@@ -73,8 +72,13 @@ export function registerCompetitorsMode() {
 	defineMode({
 		id: 'competitors',
 		description: 'Topic coverage vs competitors.',
-		defaultViewId: 'grid',
-		views: [{ id: 'grid', kind: 'table', label: 'Grid' }],
+		defaultViewId: 'comparison',
+		views: [
+			{ id: 'comparison',   kind: 'table',  label: 'Comparison',    shortcut: '1' },
+			{ id: 'gap',          kind: 'canvas', label: 'Gap',           shortcut: '2' },
+			{ id: 'serpOverlap',  kind: 'canvas', label: 'SERP Overlap',  shortcut: '3' },
+			{ id: 'contentDepth', kind: 'canvas', label: 'Content Depth', shortcut: '4' },
+		],
 				lsSections: competitorsLsSections,
 		rsTabs: [
 			{ id: 'comp_overview',     label: 'Overview' },
@@ -83,7 +87,25 @@ export function registerCompetitorsMode() {
 			{ id: 'comp_content',      label: 'Content' },
 			{ id: 'comp_actions',      label: 'Actions' },
 		],
+		inspectorTabs: [
+			{ id: 'summary',    label: 'Summary',    icon: 'LayoutDashboard' },
+			{ id: 'gaps',       label: 'Gaps',       icon: 'Target' },
+			{ id: 'wins',       label: 'Wins',       icon: 'TrendingUp' },
+			{ id: 'losses',     label: 'Losses',     icon: 'TrendingDown' },
+			{ id: 'backlinks',  label: 'Backlinks',  icon: 'Link2' },
+			{ id: 'history',    label: 'History',    icon: 'History' },
+		],
 		actionCodes: MODE_ACTIONS.competitors,
-		visible: ['p.identity.url', 'p.search.gsc.position', 'p.search.ctrGap'],
+		visible: [
+			'e.competitor.domain',
+			'e.competitor.kwOverlap',
+			'e.competitor.sovOrganic',
+			'e.competitor.sovPaid',
+			'e.competitor.backlinkOverlap',
+			'e.competitor.pricing',
+			'e.competitor.contentVelocity',
+			'e.competitor.wins',
+			'e.competitor.losses',
+		],
 	});
 }

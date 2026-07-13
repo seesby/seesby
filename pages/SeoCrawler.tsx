@@ -4,6 +4,7 @@ import CrawlerHeader from '../components/seo-crawler/CrawlerHeader';
 import CrawlerSubHeader from '../components/seo-crawler/CrawlerSubHeader';
 import { LeftSidebar } from '../components/seo-crawler/left-sidebar/LeftSidebar';
 import AuditViewRouter from '../components/seo-crawler/AuditViewRouter';
+import InspectorShell from '../components/seo-crawler/inspector/InspectorShell';
 import WqaMainCanvas from '../components/seo-crawler/wqa/WqaMainCanvas';
 
 
@@ -160,11 +161,14 @@ function SeoCrawlerLayout() {
                     </PanelErrorBoundary>
                 )}
 
-                <div className="flex-1 flex flex-col min-h-0">
-                    <div className="flex-1 flex min-h-0 relative">
-                        <PanelErrorBoundary name="Audit View" fallback={<div className="m-3 rounded border border-[#2b2b2f] bg-[#111] p-3 text-[12px] text-[#999]">Audit view failed to load.</div>}>
-                            {isWqaMode ? <WqaMainCanvas /> : <AuditViewRouter />}
-                        </PanelErrorBoundary>
+                <div className="flex-1 flex flex-col min-h-0 min-w-0 overflow-hidden">
+                    <div className="flex-1 flex min-h-0 min-w-0 relative">
+                        <div className="flex-1 flex flex-col min-h-0 min-w-0 overflow-hidden">
+                            <PanelErrorBoundary name="Audit View" fallback={<div className="m-3 rounded border border-[#2b2b2f] bg-[#111] p-3 text-[12px] text-[#999]">Audit view failed to load.</div>}>
+                                {isWqaMode ? <WqaMainCanvas /> : <AuditViewRouter />}
+                            </PanelErrorBoundary>
+                            <InspectorShell />
+                        </div>
 
                         {!isCompactLayout && (
                             <PanelErrorBoundary name="Audit Sidebar" fallback={<div className="m-3 rounded border border-[#2b2b2f] bg-[#111] p-3 text-[12px] text-[#999]">Audit panel failed to load.</div>}>

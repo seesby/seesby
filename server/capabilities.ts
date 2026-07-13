@@ -1,6 +1,6 @@
 // server/capabilities.ts
-import { CMS_DESCRIPTORS } from '@headlight/types';
-import type { FingerprintResult } from '@headlight/fingerprint';
+import { CMS_DESCRIPTORS } from '@seesby/types';
+import type { FingerprintResult } from '@seesby/fingerprint';
 
 export function deriveCapabilities(fp: FingerprintResult, conn: Record<string, boolean>): string[] {
 	const caps: string[] = ['cms.any'];

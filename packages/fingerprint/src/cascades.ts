@@ -1,6 +1,6 @@
 // packages/fingerprint/src/cascades.ts
 import type { ProbeContext, DetectorStep, DetectorOutcome } from './detectors/types';
-import type { SourceStamp } from '@headlight/types';
+import type { SourceStamp } from '@seesby/types';
 
 export interface FpValue<T> {
 	value: T;

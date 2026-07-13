@@ -33,18 +33,18 @@ export const MODE_LABEL: Record<Mode, string> = {
 };
 
 export const MODE_ACCENT: Record<Mode, string> = {
-	fullAudit: 'slate',
-	wqa: 'violet',
-	technical: 'blue',
-	content: 'amber',
-	linksAuthority: 'teal',
-	uxConversion: 'rose',
-	paid: 'cyan',
-	commerce: 'green',
-	socialBrand: 'indigo',
-	ai: 'fuchsia',
-	competitors: 'red',
-	local: 'orange',
+	fullAudit: '#94a3b8', // slate
+	wqa: '#a78bfa', // violet
+	technical: '#3b82f6', // blue
+	content: '#f59e0b', // amber
+	linksAuthority: '#14b8a6', // teal
+	uxConversion: '#f43f5e', // rose
+	paid: '#06b6d4', // cyan
+	commerce: '#10b981', // green
+	socialBrand: '#6366f1', // indigo
+	ai: '#d946ef', // fuchsia
+	competitors: '#ef4444', // red
+	local: '#f97316', // orange
 };
 
 export const MODE_SHORTCUT: Record<Mode, string> = {

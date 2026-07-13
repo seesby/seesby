@@ -41,7 +41,7 @@ const SmartScoreCard = ({ score, isSimulating, toggleSimulation }: any) => {
     return (
         <div className={`lg:col-span-1 bg-[#0F0F0F] rounded-3xl border ${isSimulating ? 'border-brand-green/30' : 'border-white/5'} p-0 flex flex-col relative overflow-hidden transition-all duration-500 group shadow-2xl h-full`}>
             {/* Background Effects */}
-            <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${isSimulating ? 'from-brand-green via-white to-brand-green' : 'from-brand-red via-orange-500 to-brand-red'} transition-all duration-1000`}></div>
+            <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${isSimulating ? 'from-brand-green via-white to-brand-green' : 'from-brand-amber via-orange-500 to-brand-amber'} transition-all duration-1000`}></div>
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-[80px] rounded-full pointer-events-none"></div>
 
             {/* Header */}
@@ -81,7 +81,7 @@ const SmartScoreCard = ({ score, isSimulating, toggleSimulation }: any) => {
                         <circle
                             cx="100" cy="100" r={radius}
                             fill="none"
-                            stroke={isSimulating ? "#22C55E" : "#F5364E"}
+                            stroke={isSimulating ? "#22C55E" : "#F59E0B"}
                             strokeWidth="12"
                             strokeLinecap="round"
                             strokeDasharray={`${progressLength} ${circumference}`}
@@ -364,7 +364,7 @@ const IssueGroup = ({ title, type, issues, openFix }: any) => {
                                         <span className="text-[9px] text-gray-600 font-bold">Est. Recovery</span>
                                     </div>
                                 )}
-                                <span className="text-xs font-bold text-brand-red flex items-center gap-1 group-hover:translate-x-1 transition-transform">Details <ArrowRight size={12} /></span>
+                                <span className="text-xs font-bold text-brand-amber flex items-center gap-1 group-hover:translate-x-1 transition-transform">Details <ArrowRight size={12} /></span>
                             </div>
                         </div>
                     </div>
@@ -425,7 +425,7 @@ const AuditAllIssues = ({ openPanel, auditChecks, healthScore }: any) => {
                             </div>
                             <div className="h-4 bg-[#222] rounded-full overflow-hidden relative flex shadow-inner">
                                 {/* Base Score */}
-                                <div className="h-full bg-brand-red/80 z-20 transition-all duration-1000" style={{ width: `${healthScore}%` }} title="Current Score"></div>
+                                <div className="h-full bg-brand-amber/80 z-20 transition-all duration-1000" style={{ width: `${healthScore}%` }} title="Current Score"></div>
                                 {/* Potential Gain */}
                                 <div className="h-full bg-brand-green/40 animate-pulse z-10 transition-all duration-1000" style={{ width: `${Math.min(100 - healthScore, criticalIssues.length * 5)}%` }} title="Potential Gain"></div>
                             </div>
@@ -458,7 +458,7 @@ const AuditAllIssues = ({ openPanel, auditChecks, healthScore }: any) => {
                                 <input
                                     type="text"
                                     placeholder="Search specific error..."
-                                    className="w-full bg-[#111] border border-white/10 rounded-lg pl-9 pr-4 py-2 text-xs text-white focus:outline-none focus:border-brand-red/50 transition-colors"
+                                    className="w-full bg-[#111] border border-white/10 rounded-lg pl-9 pr-4 py-2 text-xs text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
                                 />
                             </div>
                         </div>
@@ -928,7 +928,7 @@ export const SiteAuditView = ({ showHelp, openPanel }: { showHelp: (t: string, d
                     <button
                         onClick={handleCrawl}
                         disabled={isCrawling || !activeProject}
-                        className={`flex items-center gap-2 text-white font-bold px-4 py-2.5 rounded-xl shadow-glow-sm transition-colors ${isCrawling ? 'bg-gray-600 cursor-not-allowed' : 'bg-brand-red hover:bg-brand-redHover'
+                        className={`flex items-center gap-2 text-white font-bold px-4 py-2.5 rounded-xl shadow-glow-sm transition-colors ${isCrawling ? 'bg-gray-600 cursor-not-allowed' : 'bg-brand-amber hover:bg-brand-amberHover'
                             }`}
                     >
                         {isCrawling ? <><Loader2 size={16} className="animate-spin" /> Crawling...</> : <><RefreshCw size={16} /> Re-Crawl</>}

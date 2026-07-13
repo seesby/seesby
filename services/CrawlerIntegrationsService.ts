@@ -100,8 +100,8 @@ type IntegrationRecord = {
     sync?: CrawlerIntegrationSyncState | null;
 };
 
-const ANON_STORAGE_KEY = 'headlight:seo-crawler-integrations:anonymous';
-const PROJECT_STORAGE_KEY_PREFIX = 'headlight:seo-crawler-integrations:project:';
+const ANON_STORAGE_KEY = 'seesby:seo-crawler-integrations:anonymous';
+const PROJECT_STORAGE_KEY_PREFIX = 'seesby:seo-crawler-integrations:project:';
 export const DEFAULT_GOOGLE_SCOPES = [
     'webmasters.readonly',
     'analytics.readonly',

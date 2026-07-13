@@ -43,7 +43,7 @@ export default function CrawlDepthFunnel({
           <Bar
             dataKey="count"
             radius={[0, 4, 4, 0]}
-            fill="#E63946"
+            fill="#F59E0B"
             fillOpacity={0.8}
           />
         </BarChart>

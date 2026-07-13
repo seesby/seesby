@@ -2,10 +2,10 @@
 // Keeps WqaGridView lean and avoids touching MainDataView's giant cell branch.
 
 export const ACTION_KIND_BY_COL: Record<string, 'technical' | 'content' | 'industry' | 'monitor'> = {
-    technicalAction: 'technical',
-    contentAction:   'content',
-    industryAction:  'industry',
-    primaryAction:   'monitor', // tinted by primaryActionCategory at render time
+    'p.tech.action':      'technical',
+    'p.content.action':   'content',
+    'fp.industry':        'industry',
+    's.score.qOverall':   'monitor', // tinted by primaryActionCategory at render time
 };
 
 export const WQA_COLUMN_PRESETS: Array<{ id: string; label: string; columns: string[] }> = [
@@ -13,45 +13,72 @@ export const WQA_COLUMN_PRESETS: Array<{ id: string; label: string; columns: str
         id: 'default',
         label: 'Default',
         columns: [
-            'pageCategory', 'url', 'statusCode', 'indexabilityStatus',
-            'pageValueTier', 'primaryAction', 'estimatedImpact', 'actionPriority',
-            'gscClicks', 'gscImpressions', 'gscPosition', 'ctrGap',
-            'ga4Sessions', 'sessionsDeltaPct',
-            'backlinks', 'inlinks',
-            'contentAge', 'healthScore', 'issueCount',
+            'p.identity.url',
+            'p.content.contentType.classified',
+            's.score.qOverall',
+            'p.tech.action',
+            'p.content.action',
+            'p.search.gsc.clicks',
+            'p.search.gsc.impressions',
+            'p.search.gsc.position',
+            'p.search.gsc.ctr',
+            'p.ga.sessions',
+            'p.links.inlinks',
+            'p.tech.cwv.bucket',
+            'p.content.freshness.days',
         ],
     },
     {
         id: 'search',
         label: 'Search-focused',
         columns: [
-            'url', 'pageCategory', 'mainKeyword', 'mainKwPosition',
-            'gscClicks', 'gscImpressions', 'gscCtr', 'expectedCtr', 'ctrGap',
-            'searchIntent', 'intentMatch', 'isCannibalized',
-            'sessionsDeltaPct', 'primaryAction',
+            'p.identity.url',
+            'p.content.contentType.classified',
+            'p.search.mainKw',
+            'p.search.mainKwPos',
+            'p.search.gsc.clicks',
+            'p.search.gsc.impressions',
+            'p.search.gsc.ctr',
+            'p.search.gsc.position',
+            'p.content.intentSearch',
+            'p.search.gsc.isLosing',
+            'p.tech.action',
         ],
     },
     {
         id: 'quality',
         label: 'Quality-focused',
         columns: [
-            'url', 'pageCategory', 'pageValueTier', 'healthScore',
-            'contentQualityScore', 'eeatScore', 'wordCount', 'contentAge',
-            'issueCount', 'contentAction',
+            'p.identity.url',
+            'p.content.contentType.classified',
+            's.score.qOverall',
+            'p.content.wordCount',
+            'p.content.readabilityFlesch',
+            'p.content.eeat.score',
+            'p.content.freshness.days',
+            'p.content.schema.errors',
+            'p.content.duplicate.status',
+            'p.content.action',
         ],
     },
     {
         id: 'tech',
         label: 'Tech-focused',
         columns: [
-            'url', 'pageCategory', 'statusCode', 'indexabilityStatus',
-            'speedScore', 'healthScore', 'issueCount',
-            'inSitemap', 'internalPageRank', 'technicalAction',
+            'p.identity.url',
+            'p.indexing.statusCode',
+            'p.indexing.indexable',
+            'p.tech.cwv.bucket',
+            'p.tech.sec.grade',
+            'p.tech.a11y.score',
+            'p.indexing.inSitemap',
+            'p.links.inlinks',
+            'p.tech.action',
         ],
     },
 ];
 
-import { ALL_METRICS } from '@headlight/metrics';
+import { ALL_METRICS } from '@seesby/metrics';
 
 export function getWqaColumnPreset(id: string) {
     return WQA_COLUMN_PRESETS.find((p) => p.id === id) || WQA_COLUMN_PRESETS[0];

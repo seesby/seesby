@@ -1,7 +1,7 @@
 import { turso, isCloudSyncEnabled } from './turso';
 import { SEO_ISSUES_TAXONOMY } from '../components/seo-crawler/IssueTaxonomy';
 
-const DB_NAME = 'headlight_crawler';
+const DB_NAME = 'seesby_crawler';
 const DB_VERSION = 4;
 const SESSIONS_STORE = 'crawl_sessions';
 const PAGES_STORE = 'crawl_pages';

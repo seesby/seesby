@@ -21,10 +21,10 @@ export type MetricSurface = 'grid' | 'sidebar' | 'inspector' | 'header' | 'canva
 
 export type MetricFormat =
 	| 'number' | 'percent' | 'duration' | 'bytes' | 'date' | 'enum'
-	| 'text' | 'score' | 'money' | 'boolean' | 'url' | 'list';
+	| 'text' | 'score' | 'money' | 'boolean' | 'url' | 'list' | 'json';
 
 export type Capability = 'cms.any' | `cms.${CmsKey}` | 'crawl' | 'serp' | 'browser' | 'ai' | 'gbp' | 'bing' | 'gsc' | 'ga4' | 'backlinks';
-export type IntegrationId = 'gsc' | 'ga4' | 'gbp' | 'bing' | 'backlinks' | 'serp';
+export type IntegrationId = 'gsc' | 'ga4' | 'gbp' | 'bing' | 'backlinks' | 'serp' | 'ads' | 'social' | 'email';
 
 export interface MetricGate {
 	modes?: ReadonlyArray<Mode>;
@@ -39,6 +39,15 @@ export interface MetricGate {
 	hideWhenLowConfidence?: boolean;
 	custom?: string;
 }
+
+export type RecomputeCadence =
+	| 'on-crawl'       // recompute each time the page is crawled
+	| 'end-of-session' // recompute at end of each crawl session
+	| 'daily'          // recompute once per day (background jobs)
+	| 'weekly'         // recompute once per week
+	| 'monthly'        // recompute once per month
+	| 'on-change'      // recompute when upstream config/data changes
+	| 'event-driven';  // recompute on specific event (core update, schema spec change)
 
 export interface MetricDef {
 	key: string;                    // dotted, e.g. 'p.content.wordCount'
@@ -55,11 +64,13 @@ export interface MetricDef {
 	gate?: MetricGate;
 	description?: string;
 	deprecated?: boolean;
-	scoreComponent?: 'health' | 'tech' | 'content' | 'links' | 'commerce' | 'local' | 'ai' | 'social' | 'ux' | 'paid' | 'quality';
+	scoreComponent?: 'health' | 'tech' | 'content' | 'links' | 'commerce' | 'local' | 'ai' | 'social' | 'ux' | 'paid' | 'email' | 'quality';
 	actionKeys?: ReadonlyArray<string>;
 	fallbackKey?: string;
 	legacyAlias?: ReadonlyArray<string>; // page-object property names this def replaces
 	tags?: ReadonlyArray<string>;
+	/** How often this metric value is revalidated in the background. */
+	recomputeCadence?: RecomputeCadence;
 }
 
 export interface MetricSample {

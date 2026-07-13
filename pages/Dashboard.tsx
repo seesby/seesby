@@ -112,11 +112,11 @@ export const Dashboard: React.FC = () => {
     }
 
     return (
-        <div className="flex h-screen bg-brand-bg font-sans overflow-hidden selection:bg-brand-red selection:text-white relative text-gray-200">
+        <div className="flex h-screen bg-brand-bg font-sans overflow-hidden selection:bg-brand-amber selection:text-white relative text-gray-200">
 
             {/* Background Grid Pattern */}
             <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none z-0"></div>
-            <div className="absolute inset-0 bg-gradient-radial from-brand-red/5 via-transparent to-transparent opacity-20 pointer-events-none z-0"></div>
+            <div className="absolute inset-0 bg-gradient-radial from-brand-amber/5 via-transparent to-transparent opacity-20 pointer-events-none z-0"></div>
 
             {/* 1. Sidebar */}
             <Sidebar
@@ -156,7 +156,7 @@ export const Dashboard: React.FC = () => {
 
                     {/* Actions */}
                     <div className="flex items-center gap-4">
-                        <div className="hidden md:flex items-center px-4 py-2 bg-white/[0.03] border border-white/[0.08] rounded-xl gap-3 text-sm text-gray-400 w-72 hover:border-white/20 transition-colors cursor-text group focus-within:border-brand-red/50 focus-within:bg-black/20">
+                        <div className="hidden md:flex items-center px-4 py-2 bg-white/[0.03] border border-white/[0.08] rounded-xl gap-3 text-sm text-gray-400 w-72 hover:border-white/20 transition-colors cursor-text group focus-within:border-brand-amber/50 focus-within:bg-black/20">
                             <Search size={14} className="group-hover:text-white transition-colors" />
                             <span className="text-xs">Search projects, keywords...</span>
                             <div className="ml-auto flex items-center gap-1">
@@ -173,8 +173,8 @@ export const Dashboard: React.FC = () => {
                         >
                             <Bot size={18} className="text-gray-400 group-hover:text-white transition-colors" />
                             <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-red opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-red border-2 border-brand-bg"></span>
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-amber opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-amber border-2 border-brand-bg"></span>
                             </span>
                         </button>
                     </div>
@@ -240,12 +240,12 @@ export const Dashboard: React.FC = () => {
                 >
                     <div className="h-[76px] flex items-center justify-between px-6 border-b border-white/5 bg-transparent shrink-0">
                         <h3 className="text-lg font-heading font-bold text-white flex items-center gap-2 truncate pr-4">
-                            {activePanel === 'competitor_add' && <><Globe size={18} className="text-brand-red shrink-0" /> Add Competitor</>}
-                            {activePanel === 'keyword_detail' && <><Target size={18} className="text-brand-red shrink-0" /> Keyword Detail</>}
-                            {activePanel === 'insight' && <><Sparkles size={18} className="text-brand-red shrink-0" /> AI Insight</>}
-                            {activePanel === 'context_help' && <><Info size={18} className="text-brand-red shrink-0" /> Context & Definitions</>}
-                            {activePanel === 'audit_issue_detail' && <><AlertTriangle size={18} className="text-brand-red shrink-0" /> Issue Details</>}
-                            {activePanel === 'url_detail' && <><Globe size={18} className="text-brand-red shrink-0" /> URL Inspection</>}
+                            {activePanel === 'competitor_add' && <><Globe size={18} className="text-brand-amber shrink-0" /> Add Competitor</>}
+                            {activePanel === 'keyword_detail' && <><Target size={18} className="text-brand-amber shrink-0" /> Keyword Detail</>}
+                            {activePanel === 'insight' && <><Sparkles size={18} className="text-brand-amber shrink-0" /> AI Insight</>}
+                            {activePanel === 'context_help' && <><Info size={18} className="text-brand-amber shrink-0" /> Context & Definitions</>}
+                            {activePanel === 'audit_issue_detail' && <><AlertTriangle size={18} className="text-brand-amber shrink-0" /> Issue Details</>}
+                            {activePanel === 'url_detail' && <><Globe size={18} className="text-brand-amber shrink-0" /> URL Inspection</>}
                         </h3>
                         <button onClick={closePanel} className="text-gray-500 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full">
                             <X size={20} />
@@ -290,7 +290,7 @@ export const Dashboard: React.FC = () => {
                                     <div>
                                         <div className="flex justify-between items-end mb-4">
                                             <h3 className="text-sm font-bold text-white uppercase tracking-wide">Affected Pages ({panelData.count})</h3>
-                                            <button className="text-xs text-brand-red font-bold hover:underline">Export CSV</button>
+                                            <button className="text-xs text-brand-amber font-bold hover:underline">Export CSV</button>
                                         </div>
                                         <div className="bg-[#111] rounded-xl border border-white/5 overflow-hidden">
                                             {(panelData.preview || []).map((url: string, i: number) => (
@@ -346,7 +346,7 @@ export const Dashboard: React.FC = () => {
                                             key={tab}
                                             onClick={() => setPanelTab(tab)}
                                             className={`px-4 py-3 text-xs font-bold uppercase tracking-wide border-b-2 transition-colors ${panelTab === tab
-                                                ? 'text-brand-red border-brand-red'
+                                                ? 'text-brand-amber border-brand-amber'
                                                 : 'text-gray-500 border-transparent hover:text-white'
                                                 }`}
                                         >
@@ -444,7 +444,7 @@ export const Dashboard: React.FC = () => {
                                             <span className="text-blue-400">&lt;!DOCTYPE html&gt;</span><br />
                                             <span className="text-blue-400">&lt;html</span> <span className="text-purple-400">lang</span>=<span className="text-orange-300">"en"</span><span className="text-blue-400">&gt;</span><br />
                                             &nbsp;&nbsp;<span className="text-blue-400">&lt;head&gt;</span><br />
-                                            &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">&lt;title&gt;</span><span className="text-white">Page Title | HeadlightSEO</span><span className="text-blue-400">&lt;/title&gt;</span><br />
+                                            &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">&lt;title&gt;</span><span className="text-white">Page Title | Seesby</span><span className="text-blue-400">&lt;/title&gt;</span><br />
                                             &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">&lt;meta</span> <span className="text-purple-400">name</span>=<span className="text-orange-300">"description"</span> <span className="text-purple-400">content</span>=<span className="text-orange-300">"..."</span><span className="text-blue-400">/&gt;</span><br />
                                             &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-gray-500">&lt;!-- Missing Canonical --&gt;</span><br />
                                             &nbsp;&nbsp;<span className="text-blue-400">&lt;/head&gt;</span><br />

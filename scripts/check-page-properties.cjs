@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const { execSync } = require('node:child_process');
-// Note: In a real environment, we'd import buildCatalog from @headlight/metrics
+// Note: In a real environment, we'd import buildCatalog from @seesby/metrics
 // But since we are in the middle of refactoring, we might not have it available yet
 // or it might be broken. For now, I'll mock the registered set if it fails.
 

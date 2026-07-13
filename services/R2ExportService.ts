@@ -18,7 +18,7 @@ export async function exportToUserR2(
   // In a real browser implementation, you'd use a lightweight S3 client 
   // or a signed request proxy since AWS SDK is heavy.
   
-  const key = `headlight/${data.projectName}/${new Date().toISOString()}-${data.sessionId.substring(0, 8)}.json`;
+  const key = `seesby/${data.projectName}/${new Date().toISOString()}-${data.sessionId.substring(0, 8)}.json`;
   const url = `https://${config.accountId}.r2.cloudflarestorage.com/${config.bucketName}/${key}`;
   
   // This is a placeholder for the actual S3 PUT request logic

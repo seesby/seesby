@@ -127,7 +127,7 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
         const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = `headlight-activity-${new Date().toISOString().slice(0, 10)}.log`;
+        a.download = `seesby-activity-${new Date().toISOString().slice(0, 10)}.log`;
         a.click();
         URL.revokeObjectURL(a.href);
     }, [filtered]);

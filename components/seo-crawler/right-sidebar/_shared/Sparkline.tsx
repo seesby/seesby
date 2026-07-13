@@ -51,10 +51,10 @@ export function Sparkline({
 }
 
 const TONE_STROKE: Record<Tone, string> = {
-  good: '#22c55e', warn: '#f59e0b', bad: '#F5364E',
+  good: '#22c55e', warn: '#f59e0b', bad: '#F59E0B',
   info: '#60a5fa', neutral: '#666',
 }
 const TONE_FILL: Record<Tone, string> = {
-  good: 'rgba(34,197,94,0.12)', warn: 'rgba(245,158,11,0.12)', bad: 'rgba(245,54,78,0.12)',
+  good: 'rgba(34,197,94,0.12)', warn: 'rgba(245,158,11,0.12)', bad: 'rgba(245,158,11,0.12)',
   info: 'rgba(96,165,250,0.12)', neutral: 'rgba(140,140,140,0.10)',
 }

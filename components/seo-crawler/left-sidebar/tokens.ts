@@ -17,7 +17,7 @@ export const SIDEBAR_TOKENS = {
 	textSubtle:  '#44444A',
 
 	// Accents
-	accent:      '#E63946',  // --brand-red
+	accent:      '#F59E0B',  // --brand-amber
 	good:        '#22c55e',
 	warn:        '#f59e0b',
 	bad:         '#ef4444',
@@ -48,16 +48,16 @@ export const TONE_CLASSES = {
 } as const;
 
 export const MODE_DOT_CLASS: Record<string, string> = {
-	slate:   'bg-slate-400',
-	violet:  'bg-violet-400',
-	blue:    'bg-blue-400',
-	amber:   'bg-amber-400',
-	teal:    'bg-teal-400',
-	rose:    'bg-rose-400',
-	cyan:    'bg-cyan-400',
-	green:   'bg-green-400',
-	indigo:  'bg-indigo-400',
-	fuchsia: 'bg-fuchsia-400',
-	red:     'bg-red-400',
-	orange:  'bg-orange-400',
+	'#94a3b8': 'bg-slate-400',   // fullAudit
+	'#a78bfa': 'bg-violet-400',  // wqa
+	'#3b82f6': 'bg-blue-400',    // technical
+	'#f59e0b': 'bg-amber-400',   // content
+	'#14b8a6': 'bg-teal-400',    // linksAuthority
+	'#f43f5e': 'bg-rose-400',    // uxConversion
+	'#06b6d4': 'bg-cyan-400',    // paid
+	'#10b981': 'bg-green-400',   // commerce
+	'#6366f1': 'bg-indigo-400',  // socialBrand
+	'#d946ef': 'bg-fuchsia-400', // ai
+	'#ef4444': 'bg-red-400',     // competitors
+	'#f97316': 'bg-orange-400',  // local
 };

@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useSeoCrawler } from '../../../../contexts/SeoCrawlerContext';
+import { STATUS_HEX } from '../_shared/shared-columns';
 import {
   RadarChart,
   Radar,
@@ -72,7 +73,7 @@ function ChartCard({
 
 function GaugeMeter({ value, label }: { value: number; label: string; maxLabel?: string }) {
   const clampedValue = Math.min(100, Math.max(0, value));
-  const color = clampedValue >= 70 ? '#22c55e' : clampedValue >= 40 ? '#eab308' : '#ef4444';
+  const color = clampedValue >= 70 ? STATUS_HEX.good : clampedValue >= 40 ? STATUS_HEX.warn : STATUS_HEX.bad;
   return (
     <div className="text-center">
       <div className="relative mx-auto h-16 w-16">
@@ -631,7 +632,7 @@ export default function CompetitorChartsView() {
                         {allProfiles.map((p) => (
                           <td key={p.domain} className="px-3 py-1.5 text-center">
                             {row[p.domain] ? (
-                              <span className="text-[11px] text-green-400">✓</span>
+                              <span className="text-[11px] text-emerald-400">✓</span>
                             ) : (
                               <span className="text-[11px] text-[#333]">—</span>
                             )}

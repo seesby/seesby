@@ -13,10 +13,10 @@ import { brotliDecompressSync, gunzipSync, inflateSync } from 'zlib';
 import tls from 'tls';
 
 // Canonical Foundation
-import { FingerprintProbe } from '@headlight/fingerprint';
-import { ALL_METRICS } from '@headlight/metrics';
-import { catalog as actionCatalog } from '@headlight/actions';
-import { resolveMetricFromLadder } from '@headlight/compute';
+import { FingerprintProbe } from '@seesby/fingerprint';
+import { ALL_METRICS } from '@seesby/metrics';
+import { catalog as actionCatalog } from '@seesby/actions';
+import { resolveMetricFromLadder } from '@seesby/compute';
 import { deriveCapabilities } from './capabilities.js';
 import { saveFingerprint } from './persistence/FingerprintPersistence.js';
 import { saveMetricSamples } from './persistence/MetricPersistence.js';
@@ -1569,7 +1569,7 @@ export function runCrawler(config, rawOnEvent, initialState = null) {
         maxDepth = null,
         threads = 10,
         crawlSpeed = 'normal',
-        userAgent = 'Mozilla/5.0 (compatible; HeadlightSEOCrawler/2.1)',
+        userAgent = 'Mozilla/5.0 (compatible; SeesbyCrawler/2.1)',
         respectRobots = true,
         ignoreQueryParams = false,
         includeRules = '',
@@ -2072,14 +2072,14 @@ export function runCrawler(config, rawOnEvent, initialState = null) {
                     try {
                         if (fetchWebVitals) {
                             await page.addInitScript(() => {
-                                window.__headlightVitals = { fcp: null, lcp: null, cls: 0, inp: null };
+                                window.__seesbyVitals = { fcp: null, lcp: null, cls: 0, inp: null };
 
                                 try {
                                     new PerformanceObserver((entryList) => {
                                         const entries = entryList.getEntries();
                                         const firstEntry = entries[0];
-                                        if (firstEntry && !window.__headlightVitals.fcp) {
-                                            window.__headlightVitals.fcp = Math.round(firstEntry.startTime);
+                                        if (firstEntry && !window.__seesbyVitals.fcp) {
+                                            window.__seesbyVitals.fcp = Math.round(firstEntry.startTime);
                                         }
                                     }).observe({ type: 'paint', buffered: true });
                                 } catch {}
@@ -2089,7 +2089,7 @@ export function runCrawler(config, rawOnEvent, initialState = null) {
                                         const entries = entryList.getEntries();
                                         const lastEntry = entries[entries.length - 1];
                                         if (lastEntry) {
-                                            window.__headlightVitals.lcp = Math.round(lastEntry.startTime);
+                                            window.__seesbyVitals.lcp = Math.round(lastEntry.startTime);
                                         }
                                     }).observe({ type: 'largest-contentful-paint', buffered: true });
                                 } catch {}
@@ -2098,7 +2098,7 @@ export function runCrawler(config, rawOnEvent, initialState = null) {
                                     new PerformanceObserver((entryList) => {
                                         for (const entry of entryList.getEntries()) {
                                             if (!entry.hadRecentInput) {
-                                                window.__headlightVitals.cls += entry.value || 0;
+                                                window.__seesbyVitals.cls += entry.value || 0;
                                             }
                                         }
                                     }).observe({ type: 'layout-shift', buffered: true });
@@ -2110,8 +2110,8 @@ export function runCrawler(config, rawOnEvent, initialState = null) {
                                             const interactionId = entry.interactionId || 0;
                                             if (!interactionId) continue;
                                             const duration = Math.round(entry.duration || 0);
-                                            if (!window.__headlightVitals.inp || duration > window.__headlightVitals.inp) {
-                                                window.__headlightVitals.inp = duration;
+                                            if (!window.__seesbyVitals.inp || duration > window.__seesbyVitals.inp) {
+                                                window.__seesbyVitals.inp = duration;
                                             }
                                         }
                                     }).observe({ type: 'event', buffered: true, durationThreshold: 40 });
@@ -2317,10 +2317,10 @@ export function runCrawler(config, rawOnEvent, initialState = null) {
                                 } catch {}
 
                                 return {
-                                    fcp: window.__headlightVitals?.fcp ?? null,
-                                    lcp: window.__headlightVitals?.lcp ?? null,
-                                    cls: window.__headlightVitals?.cls ?? null,
-                                    inp: window.__headlightVitals?.inp ?? null,
+                                    fcp: window.__seesbyVitals?.fcp ?? null,
+                                    lcp: window.__seesbyVitals?.lcp ?? null,
+                                    cls: window.__seesbyVitals?.cls ?? null,
+                                    inp: window.__seesbyVitals?.inp ?? null,
                                     contrastIssues,
                                     focusIssues,
                                     hasHorizontalScroll,

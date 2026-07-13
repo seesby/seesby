@@ -14,7 +14,7 @@ const TOUR_STEPS: TourStep[] = [
   { target: '.ai-tab', title: 'AI Analysis', content: 'Run AI analysis to generate page summaries and fix suggestions.' },
 ];
 
-const TOUR_KEY = 'headlight:tour-completed';
+const TOUR_KEY = 'seesby:tour-completed';
 
 export default function OnboardingTour() {
   const [open, setOpen] = useState(false);
@@ -62,7 +62,7 @@ export default function OnboardingTour() {
                   setIndex((prev) => prev + 1);
                 }
               }}
-              className="rounded bg-[#F5364E] px-3 py-1.5 text-[11px] font-bold text-white hover:bg-[#dd2e44]"
+              className="rounded bg-[#F59E0B] px-3 py-1.5 text-[11px] font-bold text-white hover:bg-[#dd2e44]"
             >
               {isLast ? 'Finish' : 'Next'}
             </button>

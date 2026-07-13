@@ -8,7 +8,20 @@ export type AIProvider =
   | 'huggingface'     // HuggingFace Inference
   | 'openai'          // User-provided key (optional)
   | 'anthropic'       // User-provided key (optional)
-  | 'server';         // Custom server-side implementation
+  | 'server'          // Custom server-side implementation
+  | 'together'        // Together AI
+  | 'openrouter'      // OpenRouter
+  | 'deepseek'        // DeepSeek AI
+  | 'mistral'         // Mistral Le Chat
+  | 'cohere'          // Cohere
+  | 'ai21'            // AI21 Labs
+  | 'fireworks'       // Fireworks AI
+  | 'replicate'       // Replicate
+  | 'nvidia'          // NVIDIA NIM
+  | 'cerebras'        // Cerebras Inference
+  | 'ibm'             // IBM watsonx
+  | 'tencent'         // Tencent Hunyuan
+  | 'zhipu';          // Zhipu GLM
 
 export type AITaskType =
   | 'classify'        // Intent, sentiment, category

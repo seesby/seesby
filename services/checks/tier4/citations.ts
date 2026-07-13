@@ -12,7 +12,7 @@ const safeParseJson = (raw: string | null) => {
 
 const readProjectMentions = (projectId?: string) => {
   if (!projectId || typeof window === 'undefined') return [];
-  return safeParseJson(window.localStorage.getItem(`headlight:data:brand_mentions:${projectId}`));
+  return safeParseJson(window.localStorage.getItem(`seesby:data:brand_mentions:${projectId}`));
 };
 
 const getProjectId = (page: any, ctx?: any) =>

@@ -1,6 +1,6 @@
 import type { SidebarState } from '../contexts/SeoCrawlerContext';
 
-const KEY = 'headlight.sidebarState.v1';
+const KEY = 'seesby.sidebarState.v1';
 
 // Provide a default here or re-import the constant if defined there
 const DEFAULT_SIDEBAR_STATE: SidebarState = {

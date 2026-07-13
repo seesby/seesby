@@ -31,12 +31,12 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
-        '@headlight/types': path.resolve(__dirname, './packages/types/src'),
-        '@headlight/metrics': path.resolve(__dirname, './packages/metrics/src'),
-        '@headlight/modes': path.resolve(__dirname, './packages/modes/src'),
-        '@headlight/actions': path.resolve(__dirname, './packages/actions/src'),
-        '@headlight/fingerprint': path.resolve(__dirname, './packages/fingerprint/src'),
-        '@headlight/compute': path.resolve(__dirname, './packages/compute/src'),
+        '@seesby/types': path.resolve(__dirname, './packages/types/src'),
+        '@seesby/metrics': path.resolve(__dirname, './packages/metrics/src'),
+        '@seesby/modes': path.resolve(__dirname, './packages/modes/src'),
+        '@seesby/actions': path.resolve(__dirname, './packages/actions/src'),
+        '@seesby/fingerprint': path.resolve(__dirname, './packages/fingerprint/src'),
+        '@seesby/compute': path.resolve(__dirname, './packages/compute/src'),
       }
     },
     build: {

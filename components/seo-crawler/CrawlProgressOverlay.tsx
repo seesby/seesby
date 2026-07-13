@@ -77,11 +77,11 @@ export default function CrawlProgressOverlay() {
                 className="fixed bottom-0 left-0 right-0 z-40 flex h-[40px] items-center gap-4 border-t border-[#222] bg-[#111] px-4 text-left"
             >
                 <div className="flex items-center gap-2 text-[11px] font-semibold text-white">
-                    <Zap size={13} className="text-[#F5364E]" />
+                    <Zap size={13} className="text-[#F59E0B]" />
                     Crawl in progress
                 </div>
                 <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[#1c1c20]">
-                    <div className="h-full rounded-full bg-gradient-to-r from-[#F5364E] via-[#ff6b7d] to-[#f8b4bd]" style={{ width: `${progress}%` }} />
+                    <div className="h-full rounded-full bg-gradient-to-r from-[#F59E0B] via-[#ff6b7d] to-[#f8b4bd]" style={{ width: `${progress}%` }} />
                 </div>
                 <div className="hidden text-[11px] text-[#9a9aa0] md:block">{crawlRuntime.crawled} pages · {crawlRate} p/s · {elapsedTime}</div>
                 <div className="flex items-center gap-2" onClick={(event) => event.stopPropagation()}>
@@ -104,7 +104,7 @@ export default function CrawlProgressOverlay() {
                         <div>
                             <div className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#777]">Live Crawl</div>
                             <h2 className="mt-1 flex items-center gap-2 text-[22px] font-black tracking-tight text-white">
-                                <Zap size={20} className="text-[#F5364E]" />
+                                <Zap size={20} className="text-[#F59E0B]" />
                                 Crawl in Progress
                             </h2>
                         </div>
@@ -117,7 +117,7 @@ export default function CrawlProgressOverlay() {
                         </button>
                     </div>
                     <div className="mt-4 h-2 overflow-hidden rounded-full bg-[#1d1d21]">
-                        <div className="h-full rounded-full bg-gradient-to-r from-[#F5364E] via-[#ff6b7d] to-[#f8b4bd] transition-all" style={{ width: `${progress}%` }} />
+                        <div className="h-full rounded-full bg-gradient-to-r from-[#F59E0B] via-[#ff6b7d] to-[#f8b4bd] transition-all" style={{ width: `${progress}%` }} />
                     </div>
                 </div>
 

@@ -1,139 +1,233 @@
 import React from 'react';
 import {
-  MetricCard, SectionHeader, StatusBadge, DataRow, TruncatedUrl, IssuesList,
-  formatNumber, formatPercent, getPageIssues, getMetric, getActions
+  DataRow, Card, MetricPill, TruncatedUrl,
+  formatNumber, formatDuration, formatBytes, getMetric, getActions,
 } from '../../../inspector/shared';
-import ActionCard from '../parts/ActionCard';
-import { Sparkline } from '@/components/seo-crawler/right-sidebar/_shared';
-import { formatCat } from '../../wqaUtils';
+import { DeltaChip } from '@/components/seo-crawler/right-sidebar/_shared';
 
-function trend28d(page: any, key: string): number[] {
-  const s = page?.[`${key}Series28d`];
-  return Array.isArray(s) ? s.map(Number) : [];
-}
+export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: boolean }) {
+  const actions = getActions(page);
+  const topAction = actions[0];
+  const healthScore = Number(getMetric(page, 'healthScore') || 0);
+  const healthTone = healthScore >= 80 ? 'good' : healthScore >= 50 ? 'mid' : 'bad';
+  const metaDescLen = Number(getMetric(page, 'metaDescLength') || page?.metaDesc?.length || 0);
+  const h1 = getMetric(page, 'h1') || page?.h1_1 || page?.h1 || '';
+  const title = getMetric(page, 'title') || page?.title || '';
+  const canonical = getMetric(page, 'canonical') || page?.canonical || 'self';
+  const language = page?.language || 'en';
 
-export default function SummaryTab({ page }: { page: any }) {
-  const issues = getActions(page);
-  const tier = getMetric(page, 'pageValueTier') || '☆';
-  const pri = Number(getMetric(page, 'actionPriority') || 0);
+  // Crawl
+  const statusCode = Number(getMetric(page, 'statusCode') || page?.statusCode || 0);
+  const renderType = getMetric(page, 'renderType') || page?.renderType || 'static';
+  const sizeBytes = getMetric(page, 'sizeBytes') || page?.sizeBytes;
+  const crawlDepth = Number(getMetric(page, 'crawlDepth') || page?.crawlDepth || 0);
+  const firstSeen = getMetric(page, 'firstSeenDate') || page?.firstSeenDate;
+  const lastCrawl = getMetric(page, 'lastCrawlDate') || page?.lastCrawlDate;
+
+  // Schema
+  const hasArticle = !!getMetric(page, 'hasArticleSchema');
+  const hasBreadcrumb = !!getMetric(page, 'hasBreadcrumbSchema');
+  const hasAuthor = !!getMetric(page, 'hasAuthorSchema');
+  const hasFaq = !!getMetric(page, 'hasFaqSchema');
+  const hasWebPage = !!getMetric(page, 'hasWebPageSchema');
+  const hasHowTo = !!getMetric(page, 'hasHowToSchema');
+  const hasReview = !!getMetric(page, 'hasReviewSchema');
+
+  // Signals
+  const clicks = Number(getMetric(page, 'gscClicks') || page?.gscClicks || 0);
+  const impressions = Number(getMetric(page, 'gscImpressions') || page?.gscImpressions || 0);
+  const ctr = Number(getMetric(page, 'gscCtr') || page?.gscCtr || 0);
+  const position = Number(getMetric(page, 'gscPosition') || page?.gscPosition || 0);
+  const kwRanked = Number(getMetric(page, 'kwRanked') || page?.kwRanked || 0);
+  const backlinks = Number(getMetric(page, 'backlinksCount') || page?.backlinksCount || 0);
+  const words = Number(getMetric(page, 'wordCount') || page?.wordCount || 0);
+  const inlinks = Number(getMetric(page, 'inlinks') || page?.inlinks || 0);
+  const clicksDelta = Number(page?.clicksDelta || 0);
+  const imprDelta = Number(page?.imprDelta || 0);
+  const ctrDelta = Number(page?.ctrDelta || 0);
+  const posDelta = Number(page?.posDelta || 0);
+
+  // Decision
+  const recommendation = topAction?.label || (healthScore >= 80 ? 'Monitor' : 'Improve');
+  const recType = recommendation.toLowerCase().includes('rewrite') ? 'REWRITE + EXPAND'
+    : recommendation.toLowerCase().includes('expand') ? 'EXPAND'
+    : recommendation.toLowerCase().includes('fix') ? 'FIX'
+    : recommendation;
+
+  const gaugeColor = healthTone === 'good' ? '#22c55e' : healthTone === 'mid' ? '#f59e0b' : '#ef4444';
+  // Circumference of circle with r=15: 2 * PI * 15 = 94.25
+  const gaugeDash = (healthScore / 100) * 94.25;
+
+  // Quick metrics
+  const imageCount = Number(getMetric(page, 'imgCount') || page?.imageCount || 0);
+  const imgMissingAlt = Number(getMetric(page, 'imgMissingAlt') || page?.imgMissingAlt || 0);
+  const internalLinksCount = Number(getMetric(page, 'internalLinks') || page?.internalLinks || 0);
+  const externalLinksCount = Number(getMetric(page, 'externalOutlinks') || page?.externalOutlinks || 0);
+  const brokenLinks = Number(getMetric(page, 'brokenLinks') || page?.brokenLinks || 0);
+  const schemaCount = [hasArticle, hasBreadcrumb, hasAuthor, hasFaq, hasWebPage, hasHowTo, hasReview].filter(Boolean).length;
 
   return (
-    <div>
-      <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1.4fr_1fr] gap-4 mb-5">
-        {/* Hero */}
-        <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 min-w-0 overflow-hidden flex flex-col">
-          <div className="text-[10px] uppercase tracking-widest text-[#555] mb-1">Page</div>
-          <div className="text-[13px] text-white font-semibold truncate"><TruncatedUrl url={page?.url || ''} /></div>
-          <div className="flex flex-wrap gap-2 mt-2">
-            <StatusBadge status="info" label={formatCat(page?.pageCategory)} />
-            {Number(page?.wordCount || 0) > 0 && (
-              <StatusBadge status="info" label={`${formatNumber(page?.wordCount)} words`} />
-            )}
-            {page?.visibleDate && <StatusBadge status="info" label={`Pub ${String(page.visibleDate).slice(0, 10)}`} />}
-            {page?.lastModified && <StatusBadge status="info" label={`Upd ${String(page.lastModified).slice(0, 10)}`} />}
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-2 gap-x-3 gap-y-2 mt-3 pt-3 border-t border-[#1a1a1a]">
-            <PageField label="Author" value={getMetric(page, 'author') || getMetric(page, 'wpAuthorName')} />
-            <PageField label="Topic" value={getMetric(page, 'topicCluster')} />
-            <PageField label="Industry" value={getMetric(page, 'industryCategory')} />
-            <PageField label="Intent" value={getMetric(page, 'searchIntent')} />
-          </div>
-          {page?.industrySignals && (
-            <div className="mt-3 p-2 bg-[#1a1a1a] rounded text-[10px] text-[#888]">
-              <span className="text-[#F5364E] font-bold mr-1">INDUSTRY:</span>
-              {Object.entries(page.industrySignals).map(([k, v]) => `${k}: ${v}`).join(' · ')}
+    <div className="space-y-3">
+      {/* Hero strip */}
+      <div className="flex items-center gap-3 p-2.5 rounded-lg bg-gradient-to-r from-[#0f0f0f] to-[#0a0a0a] border border-[#1a1a1a]">
+        <div className="flex-1 min-w-0">
+          <div className="text-[13px] text-white font-semibold truncate">{title || 'Untitled'}</div>
+          <div className="text-[11px] text-[#555] font-mono truncate mt-0.5">{page?.url}</div>
+        </div>
+        {healthScore > 0 && (
+          <div className="shrink-0 flex items-center gap-2">
+            <div className="relative w-10 h-10">
+              <svg className="w-10 h-10 -rotate-90" viewBox="0 0 36 36">
+                <circle cx="18" cy="18" r="15" fill="none" stroke="#1a1a1a" strokeWidth="3" />
+                <circle
+                  cx="18" cy="18" r="15" fill="none"
+                  stroke={gaugeColor} strokeWidth="3"
+                  strokeDasharray={`${gaugeDash} 94.25`}
+                  strokeLinecap="round"
+                />
+              </svg>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-[11px] font-bold text-white">{healthScore}</span>
+              </div>
             </div>
-          )}
+          </div>
+        )}
+      </div>
+
+      {/* Quick metrics */}
+      <div className="grid grid-cols-5 gap-2">
+        <MetricPill label="Words" value={formatNumber(words)} good={words >= 300} />
+        <MetricPill label="Images" value={formatNumber(imageCount)} good={imgMissingAlt === 0} sub={imgMissingAlt > 0 ? `${imgMissingAlt} alt missing` : undefined} />
+        <MetricPill label="Links" value={`${formatNumber(internalLinksCount)}\u2009/\u2009${formatNumber(externalLinksCount)}`} />
+        <MetricPill label="Broken" value={formatNumber(brokenLinks)} good={brokenLinks === 0} />
+        <MetricPill label="Schema" value={`${schemaCount}/7`} good={schemaCount >= 3} />
+      </div>
+
+      {/* 2-column grid */}
+      <div className="grid grid-cols-2 gap-3">
+        {/* Identity */}
+        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2.5">Identity</div>
+          <div className="mb-2 pb-2 border-b border-[#141414]">
+            <div className="text-[9px] text-[#444] uppercase tracking-wider mb-0.5">Title</div>
+            <div className="text-[11px] text-white leading-snug break-words">{title || '\u2014'}</div>
+          </div>
+          <div className="mb-2 pb-2 border-b border-[#141414]">
+            <div className="text-[9px] text-[#444] uppercase tracking-wider mb-0.5">H1</div>
+            <div className="text-[11px] text-white leading-snug break-words">{h1 || '\u2014'}</div>
+          </div>
+          <div className="space-y-0">
+            <DataRow label="URL" value={<TruncatedUrl url={String(page?.url || '')} />} mono />
+            <DataRow label="Canonical" value={<TruncatedUrl url={String(canonical || '')} />}
+              status={canonical && canonical !== page?.url ? 'info' : 'pass'} />
+            <DataRow label="Language" value={language} />
+            <DataRow label="Meta desc" value={metaDescLen > 0 ? `${metaDescLen} chars` : '\u2014'}
+              status={metaDescLen >= 120 && metaDescLen <= 155 ? 'pass' : metaDescLen > 0 ? 'warn' : 'fail'} />
+          </div>
         </div>
 
-        {/* Primary actions */}
-        <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 min-w-0">
-          <SectionHeader title="Primary actions" />
-          <div className="space-y-2">
-            {issues.slice(0, 3).map((a, i) => (
-              <ActionCard
-                key={`${a.id}-${i}`}
-                title={a.label}
-                reason={a.description || a.reason}
-                priority={a.priority || (a.severity === 'CRITICAL' ? 1 : a.severity === 'HIGH' ? 3 : a.severity === 'MEDIUM' ? 6 : 9)}
-                estimatedImpact={a.estimatedImpact || (a.impactHint === 'high' ? 100 : a.impactHint === 'medium' ? 50 : 10)}
-                effort={a.effort || (a.effortMinutes < 60 ? 'low' : a.effortMinutes < 240 ? 'medium' : 'high')}
-                category={a.category || (a.id.startsWith('C') ? 'content' : a.id.startsWith('T') ? 'technical' : 'industry')}
-                primary={i === 0 && (a.type === 'error' || a.severity === 'HIGH' || a.severity === 'CRITICAL')}
-              />
+        {/* Crawl */}
+        <Card title="Crawl">
+          <DataRow label="Status" value={statusCode || '\u2014'}
+            status={statusCode >= 400 ? 'fail' : statusCode >= 300 ? 'info' : 'pass'} />
+          <DataRow label="Render" value={renderType} />
+          <DataRow label="Size" value={sizeBytes ? formatBytes(sizeBytes) : '\u2014'} />
+          <DataRow label="Depth" value={crawlDepth || '\u2014'} mono />
+          <DataRow label="First seen" value={firstSeen || '\u2014'} />
+          <DataRow label="Last crawl" value={lastCrawl || '\u2014'} />
+        </Card>
+
+        {/* Signals */}
+        <Card title="Signals">
+          <div className="space-y-0">
+            {[
+              { label: 'Q score', value: String(healthScore), delta: hasTrend ? Number(page?.healthDelta || 0) : null },
+              { label: 'Clicks', value: formatNumber(clicks), delta: hasTrend && clicksDelta !== 0 ? clicksDelta : null },
+              { label: 'Impr.', value: formatNumber(impressions), delta: hasTrend && imprDelta !== 0 ? imprDelta : null },
+              { label: 'CTR', value: ctr > 0 ? `${(ctr * 100).toFixed(1)}%` : '\u2014', delta: hasTrend && ctrDelta !== 0 ? ctrDelta : null },
+              { label: 'Pos.', value: position > 0 ? position.toFixed(1) : '\u2014', delta: hasTrend && posDelta !== 0 ? posDelta : null },
+              { label: 'Kw ranked', value: formatNumber(kwRanked) },
+              { label: 'Backlinks', value: formatNumber(backlinks) },
+              { label: 'Words', value: formatNumber(words) },
+              { label: 'In-links', value: formatNumber(inlinks) },
+            ].map((row) => (
+              <div key={row.label} className="flex items-center justify-between py-1 border-b border-[#111] last:border-b-0">
+                <span className="text-[10px] text-[#666]">{row.label}</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] text-white font-mono">{row.value}</span>
+                  {row.delta !== null && row.delta !== undefined && <DeltaChip value={row.delta} />}
+                </div>
+              </div>
             ))}
-            {issues.length === 0 && (
-              <div className="text-[12px] text-[#666] italic">No actions assigned. Page is healthy.</div>
+          </div>
+        </Card>
+
+        {/* Schema + Decision */}
+        <div className="space-y-3">
+          <Card title="Schema">
+            <div className="grid grid-cols-2 gap-2">
+              {[
+                { key: 'Article', present: hasArticle },
+                { key: 'Breadcrumb', present: hasBreadcrumb },
+                { key: 'Author', present: hasAuthor },
+                { key: 'FAQ', present: hasFaq },
+                { key: 'WebPage', present: hasWebPage },
+                { key: 'HowTo', present: hasHowTo },
+                { key: 'Review', present: hasReview },
+              ].map(s => (
+                <div key={s.key} className={`flex items-center justify-between px-3 py-2 rounded-md text-[11px] ${
+                  s.present ? 'bg-[#22c55e]/5 border border-[#22c55e]/20' : 'bg-[#0a0a0a] border border-[#1a1a1a]'
+                }`}>
+                  <span className="text-[#ccc]">{s.key}</span>
+                  <span className={`text-[10px] font-medium ${s.present ? 'text-[#22c55e]' : 'text-[#555]'}`}>
+                    {s.present ? '\u2713' : '\u2717'}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </Card>
+
+          <Card title="Decision">
+            <div className="mb-2 pb-2 border-b border-[#141414]">
+              <div className="text-[9px] text-[#444] uppercase tracking-widest mb-1">Recommendation</div>
+              <div className="text-[13px] font-bold text-white">{recType}</div>
+            </div>
+            {topAction && (
+              <>
+                <div className="mb-2 pb-2 border-b border-[#141414]">
+                  <div className="text-[9px] text-[#444] uppercase tracking-widest mb-1">Why</div>
+                  <div className="text-[10px] text-[#888] leading-relaxed">{topAction.description || topAction.reason || '\u2014'}</div>
+                </div>
+                {topAction.targetKeyword && (
+                  <div className="mb-2 pb-2 border-b border-[#141414]">
+                    <div className="text-[9px] text-[#444] uppercase tracking-widest mb-1">Target</div>
+                    <div className="text-[10px] text-[#ccc]">Keyword: &ldquo;{topAction.targetKeyword}&rdquo;</div>
+                    {topAction.targetWords && <div className="text-[10px] text-[#888]">Length: {formatNumber(topAction.targetWords)}w</div>}
+                  </div>
+                )}
+                <div className="mb-2">
+                  <div className="text-[9px] text-[#444] uppercase tracking-widest mb-1">Forecast</div>
+                  <div className="text-[10px] text-[#888]">
+                    Q: {healthScore} &rarr; {healthScore + Math.round(Number(topAction.estimatedImpact || 0) / 10)}
+                    {topAction.estimatedImpact ? <span className="text-[#22c55e]"> +{topAction.estimatedImpact}</span> : ''}
+                  </div>
+                </div>
+              </>
             )}
-          </div>
-        </div>
-
-        {/* Key numbers */}
-        <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 min-w-0">
-          <SectionHeader title="Key numbers" />
-          <div className="grid grid-cols-2 gap-2">
-            <MetricCard label="Tier" value={tier} />
-            <MetricCard label="Value" value={formatNumber(getMetric(page, 'pageValue'))} />
-            <MetricCard label="Health" value={formatNumber(getMetric(page, 'healthScore'))} />
-            <MetricCard label="Speed" value={getMetric(page, 'speedScore') || '—'} />
-            <MetricCard label="Issues" value={formatNumber(issues.length)} />
-            <MetricCard
-              label="Traffic Δ"
-              value={`${formatNumber(getMetric(page, 'sessionsDeltaPct'))}%`}
-              color={Number(getMetric(page, 'sessionsDeltaPct') || 0) < 0 ? 'text-red-400' : 'text-green-400'}
-            />
-            <MetricCard label="Position" value={formatNumber(getMetric(page, 'gscPosition'), { maximumFractionDigits: 1 })} />
-            <MetricCard label="CTR" value={formatPercent(getMetric(page, 'gscCtr'), 100)} />
-          </div>
+            <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#141414]">
+              <button className="px-2 py-1 text-[9px] font-medium uppercase tracking-widest bg-[#1a1a1a] border border-[#262626] rounded text-white hover:bg-[#222] transition-colors">
+                Approve
+              </button>
+              <button className="px-2 py-1 text-[9px] font-medium uppercase tracking-widest bg-[#0a0a0a] border border-[#262626] rounded text-[#888] hover:text-white hover:border-[#444] transition-colors">
+                Edit
+              </button>
+              <button className="px-2 py-1 text-[9px] font-medium uppercase tracking-widest bg-[#0a0a0a] border border-[#262626] rounded text-[#888] hover:text-white hover:border-[#444] transition-colors">
+                Dismiss
+              </button>
+            </div>
+          </Card>
         </div>
       </div>
-
-      <IssuesList issues={issues as any} page={page} />
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5">
-        <TrendCard label="Clicks 28d" values={trend28d(page, 'gscClicks')} />
-        <TrendCard label="Impressions 28d" values={trend28d(page, 'gscImpressions')} />
-        <TrendCard label="CTR 28d" values={trend28d(page, 'gscCtr')} />
-      </div>
-
-      {issues.length > 3 && (
-        <div>
-          <SectionHeader title="Other suggested fixes" />
-          <div className="space-y-2">
-            {issues.slice(3).map((a, i) => (
-              <ActionCard
-                key={`${a.id}-${i}`}
-                title={a.label}
-                reason={a.description || a.reason}
-                priority={a.priority || (a.severity === 'CRITICAL' ? 1 : a.severity === 'HIGH' ? 3 : a.severity === 'MEDIUM' ? 6 : 9)}
-                estimatedImpact={a.estimatedImpact || (a.impactHint === 'high' ? 100 : a.impactHint === 'medium' ? 50 : 10)}
-                effort={a.effort || (a.effortMinutes < 60 ? 'low' : a.effortMinutes < 240 ? 'medium' : 'high')}
-                category={a.category || (a.id.startsWith('C') ? 'content' : a.id.startsWith('T') ? 'technical' : 'industry')}
-                confidence={a.confidence}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function TrendCard({ label, values }: { label: string; values: number[] }) {
-  return (
-    <div className="bg-[#0a0a0a] border border-[#222] rounded p-3">
-      <div className="text-[10px] uppercase tracking-widest text-[#666] mb-2">{label}</div>
-      <Sparkline points={values} width={200} height={36} />
-    </div>
-  );
-}
-
-function PageField({ label, value }: { label: string; value: any }) {
-  const val = value === null || value === undefined || value === '' ? '—' : String(value);
-  return (
-    <div className="min-w-0">
-      <div className="text-[9px] uppercase tracking-wider text-[#555] mb-0.5">{label}</div>
-      <div className="text-[11px] text-[#ccc] truncate" title={val}>{val}</div>
     </div>
   );
 }

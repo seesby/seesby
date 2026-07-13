@@ -3,7 +3,7 @@ import { CrawlerIntegrationProvider } from './CrawlerIntegrationsService';
 type SecretRecord = Record<string, string>;
 
 const secretVault = new Map<string, SecretRecord>();
-const STORAGE_KEY = 'headlight:seo-crawler-secrets';
+const STORAGE_KEY = 'seesby:seo-crawler-secrets';
 let hydrated = false;
 
 const buildKey = (scope: string, provider: CrawlerIntegrationProvider) => `${scope}:${provider}`;

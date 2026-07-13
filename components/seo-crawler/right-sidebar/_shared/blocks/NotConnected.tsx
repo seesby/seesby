@@ -11,7 +11,7 @@ export function NotConnected({ source, reason, onConnect }: {
       <div className="text-[11px] text-[#888] mt-1">{reason}</div>
       <button
         onClick={onConnect}
-        className="mt-3 px-3 py-1.5 text-[11px] font-bold bg-[#F5364E] text-white rounded hover:bg-[#df3248] transition-colors"
+        className="mt-3 px-3 py-1.5 text-[11px] font-bold bg-[#F59E0B] text-white rounded hover:bg-[#df3248] transition-colors"
       >
         Connect {source}
       </button>

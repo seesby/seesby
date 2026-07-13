@@ -1,25 +1,25 @@
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'red';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'amber';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
 }
 
-export const Button: React.FC<ButtonProps> = ({ 
-  variant = 'primary', 
-  size = 'md', 
-  className = '', 
-  children, 
-  ...props 
+export const Button: React.FC<ButtonProps> = ({
+  variant = 'primary',
+  size = 'md',
+  className = '',
+  children,
+  ...props
 }) => {
   const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed rounded uppercase tracking-wide text-xs";
-  
+
   const variants = {
-    primary: "bg-brand-teal text-white hover:bg-teal-600 shadow-sm active:bg-teal-700",
-    red: "bg-brand-red text-white hover:bg-red-600 shadow-float hover:shadow-lg active:bg-red-700",
+    primary: "bg-brand-amber text-white hover:bg-[#FBBF24] shadow-float hover:shadow-lg active:bg-[#D97706]",
+    amber: "bg-brand-amber text-white hover:bg-[#FBBF24] shadow-float hover:shadow-lg active:bg-[#D97706]",
     secondary: "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200",
-    outline: "bg-transparent border border-brand-teal text-brand-teal hover:bg-teal-50",
+    outline: "bg-transparent border border-brand-amber text-brand-amber hover:bg-[#F59E0B]/10",
     ghost: "bg-transparent text-gray-500 hover:bg-gray-100 hover:text-gray-900",
   };
 

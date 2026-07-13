@@ -83,7 +83,7 @@ export async function dispatchAlert(
     try {
       await dispatchEmailAlert(
         config.notificationEmail,
-        `[Headlight] ${payload.title}`,
+        `[Seesby] ${payload.title}`,
         `<h2>${payload.title}</h2><p>${payload.body}</p><p><small>${payload.projectName} — ${payload.projectUrl}</small></p>`
       );
       dispatched.push('email');
@@ -97,7 +97,7 @@ export async function dispatchAlert(
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               to: config.notificationEmail,
-              subject: `[Headlight] ${payload.title}`,
+              subject: `[Seesby] ${payload.title}`,
               html: `<h2>${payload.title}</h2><p>${payload.body}</p><p><small>${payload.projectName} — ${payload.projectUrl}</small></p>`
             })
           });

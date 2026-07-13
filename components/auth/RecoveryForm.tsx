@@ -62,7 +62,7 @@ const RecoveryForm: React.FC<RecoveryFormProps> = ({
           <button
             type="submit"
             disabled={loading}
-            className="w-full h-11 bg-[#F5364E] text-white font-bold rounded-xl hover:bg-[#D42D41] disabled:opacity-50 transition-all uppercase tracking-[0.1em] text-[10px] shadow-[0_8px_24px_rgba(245,54,78,0.2)] active:scale-[0.98]"
+            className="w-full h-11 bg-[#F59E0B] text-white font-bold rounded-xl hover:bg-[#D42D41] disabled:opacity-50 transition-all uppercase tracking-[0.1em] text-[10px] shadow-[0_8px_24px_rgba(245,158,11,0.2)] active:scale-[0.98]"
           >
             {loading ? (
                <div className="flex items-center justify-center gap-2">
@@ -80,7 +80,7 @@ const RecoveryForm: React.FC<RecoveryFormProps> = ({
         <form onSubmit={onVerifyCode} className="space-y-8">
            <div className="text-center space-y-3">
              <div className="w-14 h-14 rounded-2xl bg-white/[0.03] flex items-center justify-center border border-white/10 mx-auto">
-               <ShieldCheck className="text-[#F5364E]" size={28} />
+               <ShieldCheck className="text-[#F59E0B]" size={28} />
              </div>
              <p className="text-gray-500 text-xs font-medium max-w-[240px] mx-auto leading-relaxed">
                Sent to <span className="text-white/80 font-bold">{email}</span>.
@@ -100,7 +100,7 @@ const RecoveryForm: React.FC<RecoveryFormProps> = ({
              />
 
              {errors?.code && (
-               <p className="text-[11px] text-[#F5364E] mt-3 font-bold uppercase tracking-wider text-center">
+               <p className="text-[11px] text-[#F59E0B] mt-3 font-bold uppercase tracking-wider text-center">
                  {errors.code}
                </p>
              )}
@@ -109,7 +109,7 @@ const RecoveryForm: React.FC<RecoveryFormProps> = ({
            <button
              type="submit"
              disabled={loading || code.length !== 6}
-             className="w-full h-12 bg-[#F5364E] text-white font-bold rounded-xl hover:bg-[#D42D41] disabled:opacity-50 transition-all uppercase tracking-[0.1em] text-[11px] shadow-[0_8px_24px_rgba(245,54,78,0.2)] active:scale-[0.98]"
+             className="w-full h-12 bg-[#F59E0B] text-white font-bold rounded-xl hover:bg-[#D42D41] disabled:opacity-50 transition-all uppercase tracking-[0.1em] text-[11px] shadow-[0_8px_24px_rgba(245,158,11,0.2)] active:scale-[0.98]"
            >
              {loading ? (
                 <div className="flex items-center justify-center gap-2">
@@ -142,7 +142,7 @@ const RecoveryForm: React.FC<RecoveryFormProps> = ({
            <button
              type="submit"
              disabled={loading}
-             className="w-full h-11 bg-[#F5364E] text-white font-bold rounded-xl hover:bg-[#D42D41] disabled:opacity-50 transition-all uppercase tracking-[0.1em] text-[10px] shadow-[0_8px_24px_rgba(245,54,78,0.2)] active:scale-[0.98]"
+             className="w-full h-11 bg-[#F59E0B] text-white font-bold rounded-xl hover:bg-[#D42D41] disabled:opacity-50 transition-all uppercase tracking-[0.1em] text-[10px] shadow-[0_8px_24px_rgba(245,158,11,0.2)] active:scale-[0.98]"
            >
              {loading ? (
                 <div className="flex items-center justify-center gap-2">

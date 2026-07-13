@@ -89,7 +89,7 @@ const SignupForm: React.FC<SignupFormProps> = ({
           className="flex items-start gap-2.5 px-1 group cursor-pointer" 
           onClick={() => setAgreed(!agreed)}
         >
-          <div className={`mt-0.5 flex-shrink-0 w-3.5 h-3.5 rounded-md border transition-all flex items-center justify-center ${agreed ? 'bg-[#F5364E] border-[#F5364E]' : 'bg-transparent border-white/10 group-hover:border-white/40'}`}>
+          <div className={`mt-0.5 flex-shrink-0 w-3.5 h-3.5 rounded-md border transition-all flex items-center justify-center ${agreed ? 'bg-[#F59E0B] border-[#F59E0B]' : 'bg-transparent border-white/10 group-hover:border-white/40'}`}>
             {agreed && <Check size={10} className="text-white stroke-[3]" />}
           </div>
           <p className="text-[10px] text-gray-600 leading-tight select-none pt-0.5 font-medium">
@@ -100,7 +100,7 @@ const SignupForm: React.FC<SignupFormProps> = ({
         <button
           type="submit"
           disabled={loading || !agreed}
-          className="w-full h-11 bg-[#F5364E] text-white font-bold rounded-xl hover:bg-[#D42D41] disabled:opacity-50 transition-all uppercase tracking-[0.1em] text-[10px] mt-2 shadow-[0_8px_24px_rgba(245,54,78,0.2)] active:scale-[0.98]"
+          className="w-full h-11 bg-[#F59E0B] text-white font-bold rounded-xl hover:bg-[#D42D41] disabled:opacity-50 transition-all uppercase tracking-[0.1em] text-[10px] mt-2 shadow-[0_8px_24px_rgba(245,158,11,0.2)] active:scale-[0.98]"
         >
           {loading ? (
              <div className="flex items-center justify-center gap-2">
