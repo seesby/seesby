@@ -124,10 +124,10 @@ export default function SocialPostsView() {
         )}
         <span className="text-[#333]">|</span>
         {platformFilter && (
-          <button onClick={() => setPlatformFilter(null)} className="px-2 py-1 text-[10px] rounded bg-[#6366f1]/10 text-[#6366f1] flex items-center gap-1">platform:{platformFilter} ×</button>
+          <button onClick={() => setPlatformFilter(null)} className="px-2 py-1 text-[10px] rounded bg-[#F59E0B]/10 text-[#F59E0B] flex items-center gap-1">platform:{platformFilter} ×</button>
         )}
         {typeFilter && (
-          <button onClick={() => setTypeFilter(null)} className="px-2 py-1 text-[10px] rounded bg-[#6366f1]/10 text-[#6366f1] flex items-center gap-1">type:{typeFilter} ×</button>
+          <button onClick={() => setTypeFilter(null)} className="px-2 py-1 text-[10px] rounded bg-[#F59E0B]/10 text-[#F59E0B] flex items-center gap-1">type:{typeFilter} ×</button>
         )}
         <div className="flex-1" />
         <span className="text-[10px] text-[#666]">{rows.length} posts</span>
@@ -152,7 +152,7 @@ export default function SocialPostsView() {
           <div className="flex items-start justify-between">
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[10px] uppercase" style={{ color: NETWORK_COLORS[selectedPost.network] ?? '#6366f1' }}>{selectedPost.network}</span>
+                <span className="text-[10px] uppercase" style={{ color: NETWORK_COLORS[selectedPost.network] ?? '#F59E0B' }}>{selectedPost.network}</span>
                 <span className="text-[10px] text-[#666]">{selectedPost.type}</span>
                 <span className="text-[10px]" style={{ color: STATUS[selectedPost.status as keyof typeof STATUS] ?? '#888' }}>{selectedPost.status}</span>
               </div>
@@ -224,9 +224,9 @@ function MonthView({ currentDate, posts, selectedPost, onSelectPost }: { current
               key={i}
               className={`border-b border-r border-[#111] p-1 flex flex-col ${
                 !cell.isCurrentMonth ? 'bg-[#060606]' : 'bg-[#0a0a0a]'
-              } ${isToday ? 'ring-1 ring-inset ring-[#6366f1]/40' : ''}`}
+              } ${isToday ? 'ring-1 ring-inset ring-[#F59E0B]/40' : ''}`}
             >
-              <div className={`text-[10px] mb-1 ${isToday ? 'text-[#6366f1] font-bold' : cell.isCurrentMonth ? 'text-[#888]' : 'text-[#444]'}`}>
+              <div className={`text-[10px] mb-1 ${isToday ? 'text-[#F59E0B] font-bold' : cell.isCurrentMonth ? 'text-[#888]' : 'text-[#444]'}`}>
                 {cell.day}
               </div>
               <div className="flex-1 space-y-0.5 overflow-hidden">
@@ -268,9 +268,9 @@ function WeekView({ currentDate, posts, selectedPost, onSelectPost }: { currentD
         {weekDays.map(d => {
           const isToday = d.date.toDateString() === today.toDateString();
           return (
-            <div key={d.day} className={`flex-1 py-1.5 text-center border-l border-[#111] ${isToday ? 'text-[#6366f1]' : ''}`}>
+            <div key={d.day} className={`flex-1 py-1.5 text-center border-l border-[#111] ${isToday ? 'text-[#F59E0B]' : ''}`}>
               <div className="text-[10px] uppercase text-[#666]">{d.day}</div>
-              <div className={`text-[14px] font-mono ${isToday ? 'text-[#6366f1] font-bold' : 'text-white'}`}>{d.date.getDate()}</div>
+              <div className={`text-[14px] font-mono ${isToday ? 'text-[#F59E0B] font-bold' : 'text-white'}`}>{d.date.getDate()}</div>
             </div>
           );
         })}
@@ -289,7 +289,7 @@ function WeekView({ currentDate, posts, selectedPost, onSelectPost }: { currentD
         {weekDays.map(d => {
           const isToday = d.date.toDateString() === today.toDateString();
           return (
-            <div key={d.day} className={`flex-1 border-l border-[#111] ${isToday ? 'bg-[#6366f1]/[0.02]' : ''}`}>
+            <div key={d.day} className={`flex-1 border-l border-[#111] ${isToday ? 'bg-[#F59E0B]/[0.02]' : ''}`}>
               {hours.map(h => (
                 <div key={h} className="h-14 border-b border-[#111] relative">
                   {d.posts.filter((p: any) => {
@@ -327,7 +327,7 @@ function DayView({ currentDate, posts, selectedPost, onSelectPost }: { currentDa
       {/* Day header */}
       <div className="shrink-0 px-3 py-2 border-b border-[#1a1a1a] flex items-center gap-4">
         <div>
-          <div className={`text-[14px] font-medium ${isToday ? 'text-[#6366f1]' : 'text-white'}`}>
+          <div className={`text-[14px] font-medium ${isToday ? 'text-[#F59E0B]' : 'text-white'}`}>
             {DAYS[currentDate.getDay()]}, {MONTHS[currentDate.getMonth()]} {currentDate.getDate()}
           </div>
           <div className="text-[10px] text-[#666]">{dayPosts.length} posts</div>
@@ -360,7 +360,7 @@ function DayView({ currentDate, posts, selectedPost, onSelectPost }: { currentDa
               return pd.getHours() === h;
             });
             return (
-              <div key={h} className={`h-16 border-b border-[#111] relative ${hourPosts.length > 0 ? 'bg-[#6366f1]/[0.02]' : ''}`}>
+              <div key={h} className={`h-16 border-b border-[#111] relative ${hourPosts.length > 0 ? 'bg-[#F59E0B]/[0.02]' : ''}`}>
                 {hourPosts.map((p: any) => (
                   <PostChip key={p.id} post={p} selected={selectedPost?.id === p.id} onClick={() => onSelectPost(p)} expanded />
                 ))}
@@ -376,7 +376,7 @@ function DayView({ currentDate, posts, selectedPost, onSelectPost }: { currentDa
 /* ── Shared Components ───────────────────────────────────────────────────── */
 
 function PostChip({ post, selected, onClick, compact, expanded }: { post: any; selected: boolean; onClick: () => void; compact?: boolean; expanded?: boolean }) {
-  const color = NETWORK_COLORS[post.network] ?? '#6366f1';
+  const color = NETWORK_COLORS[post.network] ?? '#F59E0B';
   const statusColor = post.status === 'live' ? STATUS.good : post.status === 'sched' ? '#3b82f6' : post.status === 'draft' ? '#888' : post.status === 'pending' ? '#f59e0b' : post.status === 'failed' ? STATUS.bad : '#888';
 
   if (expanded) {
@@ -384,7 +384,7 @@ function PostChip({ post, selected, onClick, compact, expanded }: { post: any; s
       <button
         onClick={onClick}
         className={`absolute inset-x-1 top-0.5 rounded px-1.5 py-1 text-left border transition-colors ${
-          selected ? 'border-[#6366f1] bg-[#6366f1]/10' : 'border-transparent hover:bg-[#171717]'
+          selected ? 'border-[#F59E0B] bg-[#F59E0B]/10' : 'border-transparent hover:bg-[#171717]'
         }`}
         style={{ minHeight: '56px' }}
       >
@@ -407,7 +407,7 @@ function PostChip({ post, selected, onClick, compact, expanded }: { post: any; s
       <button
         onClick={onClick}
         className={`absolute inset-x-0.5 top-0.5 h-5 rounded px-1 flex items-center gap-1 text-left border transition-colors ${
-          selected ? 'border-[#6366f1] bg-[#6366f1]/10' : 'border-transparent hover:bg-[#171717]'
+          selected ? 'border-[#F59E0B] bg-[#F59E0B]/10' : 'border-transparent hover:bg-[#171717]'
         }`}
       >
         <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: color }} />
@@ -422,7 +422,7 @@ function PostChip({ post, selected, onClick, compact, expanded }: { post: any; s
     <button
       onClick={onClick}
       className={`w-full rounded px-1 py-0.5 text-left border transition-colors mb-0.5 ${
-        selected ? 'border-[#6366f1] bg-[#6366f1]/10' : 'border-transparent hover:bg-[#171717]'
+        selected ? 'border-[#F59E0B] bg-[#F59E0B]/10' : 'border-transparent hover:bg-[#171717]'
       }`}
     >
       <div className="flex items-center gap-1">

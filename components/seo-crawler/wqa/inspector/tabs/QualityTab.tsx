@@ -166,7 +166,7 @@ export default function QualityTab({ page, hasTrend }: { page: any; hasTrend?: b
                     );
                   })}
                   {/* Data shape */}
-                  <path d={radarPath} fill="rgba(99,102,241,0.15)" stroke="#6366f1" strokeWidth="1.5" />
+                  <path d={radarPath} fill="rgba(245,158,11,0.15)" stroke="#F59E0B" strokeWidth="1.5" />
                   {/* Data points */}
                   {radarPoints.map((p, i) => (
                     <circle key={i} cx={p.x} cy={p.y} r="3" fill={categories[i].color} />

@@ -50,7 +50,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
                 return (
                   <div key={i} className="flex items-center gap-3 py-1.5 border-b border-[#111] last:border-b-0">
                     <span className="text-[10px] text-[#555] w-[70px] shrink-0">{formatDate(date)}</span>
-                    <span className="block w-1.5 h-1.5 rounded-full bg-[#6366f1] shrink-0" />
+                    <span className="block w-1.5 h-1.5 rounded-full bg-[#F59E0B] shrink-0" />
                     <span className="text-[11px] text-[#ccc] flex-1">
                       Crawl {history.length - i}
                       {wcDelta !== 0 && (

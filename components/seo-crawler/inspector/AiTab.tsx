@@ -40,8 +40,8 @@ export default function AiTab({ page }: { page: any }) {
             </div>
 
             {page?.aiSummary && (
-                <div className="bg-[#1a1a1a]/50 border border-indigo-500/20 rounded-lg p-4">
-                    <div className="flex items-center gap-2 mb-2 text-indigo-400 font-bold text-[13px]">
+                <div className="bg-[#1a1a1a]/50 border border-amber-500/20 rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-2 text-amber-400 font-bold text-[13px]">
                         <Sparkles size={14} /> AI Content Summary
                     </div>
                     <p className="text-[13px] text-gray-300 leading-relaxed italic">

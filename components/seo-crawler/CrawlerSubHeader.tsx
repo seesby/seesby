@@ -159,15 +159,15 @@ export default function CrawlerSubHeader() {
                                 style={{
                                     gap: 2,
                                     padding: '2px 6px',
-                                    background: 'rgba(99,102,241,0.1)',
-                                    border: '1px solid rgba(99,102,241,0.2)',
+                                    background: 'var(--brand-amber-soft)',
+                                    border: '1px solid var(--brand-amber-border-soft)',
                                     borderRadius: R.sm,
                                     fontSize: 10,
-                                    color: '#a5b4fc',
+                                    color: 'var(--brand-amber)',
                                 }}
                             >
                                 <span style={{ color: TEXT.tertiary }}>{chip.label}:</span>
-                                <span style={{ color: '#c7d2fe' }}>{chip.value}</span>
+                                <span style={{ color: 'var(--brand-amber)' }}>{chip.value}</span>
                                 <button onClick={() => toggleSelection(chip.field, chip.rawValue)} className="ml-0.5" style={{ color: TEXT.tertiary }}>
                                     <X size={8} />
                                 </button>
@@ -232,8 +232,8 @@ export default function CrawlerSubHeader() {
                                                 style={{
                                                     padding: '4px 12px',
                                                     fontSize: 11,
-                                                    color: isSelected ? '#a5b4fc' : TEXT.secondary,
-                                                    background: isSelected ? 'rgba(99,102,241,0.1)' : 'transparent',
+                                                    color: isSelected ? 'var(--brand-amber)' : TEXT.secondary,
+                                                    background: isSelected ? 'var(--brand-amber-soft)' : 'transparent',
                                                     textAlign: 'left',
                                                     transition: 'all 0.1s',
                                                 }}

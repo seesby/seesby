@@ -41,7 +41,7 @@ function depthColor(depth: number, maxDepth: number): string {
 
 const CLUSTER_COLORS = [
   '#a78bfa', '#3b82f6', '#14b8a6', '#22c55e', '#f59e0b',
-  '#ef4444', '#06b6d4', '#f43f5e', '#6366f1', '#10b981',
+  '#ef4444', '#06b6d4', '#f43f5e', '#F59E0B', '#10b981',
 ];
 
 const DEFAULT_LINK_METRICS: LinkMetrics = { avgLinksPerPage: 0, hubToSpokePct: 0, spokeToHubPct: 0 };

@@ -469,7 +469,7 @@ export default function CrawlerHeader() {
     const primaryActionLabel = MODE_ACTION[mode] || 'New Scan';
 
     return (
-        <header className="h-[48px] bg-[#141414] flex items-center px-3 justify-between shrink-0 relative z-40">
+        <header className="h-[48px] bg-[var(--brand-card)] border-b border-[var(--brand-border-1)] flex items-center px-3 justify-between shrink-0 relative z-40">
             {/* ── Left: Logo + Breadcrumb ── */}
             <div className="flex items-center gap-3 min-w-0">
                 {/* Logo */}
@@ -546,7 +546,7 @@ export default function CrawlerHeader() {
                                 className={`relative flex items-center gap-1 px-2 py-1 rounded text-[10px] font-bold transition-all overflow-hidden ${
                                     analysisRuntime.isAnalyzing
                                     ? 'bg-[#1a1a1a] text-gray-400 border border-[#333] cursor-wait'
-                                    : 'bg-gradient-to-t from-[#4f46e5] to-[#6366f1] text-white hover:to-[#818cf8]'
+                                    : 'bg-gradient-to-t from-[#D97706] to-[#F59E0B] text-black hover:to-[#FBBF24]'
                                 }`}
                             >
                                 {analysisRuntime.isAnalyzing && (
@@ -572,7 +572,7 @@ export default function CrawlerHeader() {
 
                             <button
                                 onClick={() => setShowAiChat(true)}
-                                className="flex items-center gap-1 px-2 py-1 bg-[#111827] hover:bg-[#172033] border border-[#2c3344] text-[#c6d3ff] rounded text-[10px] font-bold transition-all"
+                                className="flex items-center gap-1 px-2 py-1 bg-[var(--brand-amber-soft)] hover:bg-[var(--brand-amber-soft-2)] border border-[var(--brand-amber-border-soft)] text-[var(--brand-amber)] rounded text-[10px] font-bold transition-all"
                             >
                                 <Bot size={10} /> AI
                             </button>

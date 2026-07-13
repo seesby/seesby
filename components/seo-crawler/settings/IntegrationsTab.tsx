@@ -28,7 +28,7 @@ function Toggle({ checked, onChange, small = false }: { checked: boolean; onChan
   return (
     <div 
       onClick={() => onChange(!checked)}
-      className={`${small ? 'w-8 h-4.5' : 'w-10 h-6'} rounded-full p-1 transition-colors cursor-pointer ${checked ? 'bg-indigo-500' : 'bg-white/10'}`}
+      className={`${small ? 'w-8 h-4.5' : 'w-10 h-6'} rounded-full p-1 transition-colors cursor-pointer ${checked ? 'bg-amber-500' : 'bg-white/10'}`}
     >
       <div className={`${small ? 'w-2.5 h-2.5' : 'w-4 h-4'} bg-white rounded-full transition-transform ${checked ? (small ? 'translate-x-3.5' : 'translate-x-4') : ''}`}></div>
     </div>
@@ -328,7 +328,7 @@ export default function IntegrationsTab() {
                   // This would trigger the Bing OAuth flow on the server
                   window.location.href = '/api/auth/bing';
                 }}
-                className="w-full px-4 py-2 text-[10px] font-bold rounded border border-indigo-500/20 bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20"
+                className="w-full px-4 py-2 text-[10px] font-bold rounded border border-amber-500/20 bg-amber-500/10 text-amber-400 hover:bg-amber-500/20"
               >
                 Connect Bing Account (OAuth)
               </button>
@@ -384,7 +384,7 @@ export default function IntegrationsTab() {
         <div className="rounded-lg border border-white/[0.06] bg-white/[0.01] p-5">
           <div className="flex items-center justify-between mb-1">
             <h4 className="text-xs font-semibold text-white/90 uppercase tracking-wider">Model Context Protocol (MCP)</h4>
-            <div className={`w-2 h-2 rounded-full ${mcpServers.length > 0 ? 'bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.4)]' : 'bg-white/10'}`} />
+            <div className={`w-2 h-2 rounded-full ${mcpServers.length > 0 ? 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.4)]' : 'bg-white/10'}`} />
           </div>
           <p className="text-[11px] text-white/40 mb-4">Connect to external AI tool providers (Linear, Amplitude, Slack).</p>
           
@@ -396,7 +396,7 @@ export default function IntegrationsTab() {
                   <span className="text-[9px] text-white/30 font-mono">{server.url}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="px-1.5 py-0.5 rounded bg-indigo-500/10 text-indigo-400 text-[9px] font-bold border border-indigo-500/20">Connected</span>
+                  <span className="px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 text-[9px] font-bold border border-amber-500/20">Connected</span>
                   <button className="p-1 text-white/20 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all">
                     <X size={12} />
                   </button>
@@ -411,14 +411,14 @@ export default function IntegrationsTab() {
                   placeholder="Server Name (e.g. Linear)" 
                   value={newServerName}
                   onChange={(e) => setNewServerName(e.target.value)}
-                  className="px-3 py-2 text-[11px] bg-white/[0.03] border border-white/10 rounded focus:border-indigo-500/50 outline-none text-white"
+                  className="px-3 py-2 text-[11px] bg-white/[0.03] border border-white/10 rounded focus:border-amber-500/50 outline-none text-white"
                 />
                 <input 
                   type="text" 
                   placeholder="https://mcp.example.com" 
                   value={newServerUrl}
                   onChange={(e) => setNewServerUrl(e.target.value)}
-                  className="px-3 py-2 text-[11px] bg-white/[0.03] border border-white/10 rounded focus:border-indigo-500/50 outline-none text-white"
+                  className="px-3 py-2 text-[11px] bg-white/[0.03] border border-white/10 rounded focus:border-amber-500/50 outline-none text-white"
                 />
               </div>
               <button 

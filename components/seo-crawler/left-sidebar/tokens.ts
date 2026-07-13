@@ -56,7 +56,7 @@ export const MODE_DOT_CLASS: Record<string, string> = {
 	'#f43f5e': 'bg-rose-400',    // uxConversion
 	'#06b6d4': 'bg-cyan-400',    // paid
 	'#10b981': 'bg-green-400',   // commerce
-	'#6366f1': 'bg-indigo-400',  // socialBrand
+	'#F59E0B': 'bg-amber-400',  // socialBrand
 	'#d946ef': 'bg-fuchsia-400', // ai
 	'#ef4444': 'bg-red-400',     // competitors
 	'#f97316': 'bg-orange-400',  // local

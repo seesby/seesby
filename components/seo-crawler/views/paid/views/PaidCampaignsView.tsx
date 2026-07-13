@@ -32,7 +32,7 @@ export default function PaidCampaignsView() {
           ]} />
           {Object.keys(summary.networks).length > 1 && (
             <DistributionStrip title="Network" segments={Object.entries(summary.networks).map(([name, count]) => ({
-              label: name, count, color: name === 'google' ? '#4285f4' : name === 'meta' ? '#1877f2' : name === 'bing' ? '#00809d' : '#6366f1',
+              label: name, count, color: name === 'google' ? '#4285f4' : name === 'meta' ? '#1877f2' : name === 'bing' ? '#00809d' : '#F59E0B',
             }))} />
           )}
         </div>

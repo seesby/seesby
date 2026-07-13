@@ -105,7 +105,7 @@ function ProfileCard({ profile: p }: { profile: any }) {
             <polyline
               points={p.sparkData.map((v: number, i: number) => `${(i / (p.sparkData.length - 1)) * 100},${24 - (v / Math.max(...p.sparkData)) * 20}`).join(' ')}
               fill="none"
-              stroke="#6366f1"
+              stroke="#F59E0B"
               strokeWidth="1.5"
             />
           </svg>

@@ -11,7 +11,7 @@ export default function HorizontalBar({
   label,
   value,
   maxValue,
-  color = '#6366f1',
+  color = '#F59E0B',
   isOwn = false,
   suffix = '',
 }: HorizontalBarProps) {

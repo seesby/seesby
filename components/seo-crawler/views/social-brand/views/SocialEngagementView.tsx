@@ -79,7 +79,7 @@ export default function SocialEngagementView() {
               getValue={(r, c) => heatmapData.data[r]?.[c] ?? 0}
               fullWidth
               cellSize={24}
-              accentColor="#6366f1"
+              accentColor="#F59E0B"
             />
           </div>
 
@@ -88,7 +88,7 @@ export default function SocialEngagementView() {
             <div className={`${CARD} col-span-12 md:col-span-4`}>
               <H>Content-type lift</H>
               {contentTypes.length > 0 ? (
-                <BarChart data={contentTypes} x="name" y="value" color="#6366f1" height={180} />
+                <BarChart data={contentTypes} x="name" y="value" color="#F59E0B" height={180} />
               ) : (
                 <div className="py-4 text-[12px] text-[#666] text-center">No data.</div>
               )}
@@ -98,7 +98,7 @@ export default function SocialEngagementView() {
             <div className={`${CARD} col-span-12 md:col-span-4`}>
               <H>Eng-rate trend 12w</H>
               {engRateTrend.length > 1 ? (
-                <LineChart data={engRateTrend} x="date" series={[{ key: 'engRate', color: '#6366f1' }]} height={180} />
+                <LineChart data={engRateTrend} x="date" series={[{ key: 'engRate', color: '#F59E0B' }]} height={180} />
               ) : (
                 <div className="py-4 text-[12px] text-[#666] text-center">Need more data.</div>
               )}
@@ -150,7 +150,7 @@ export default function SocialEngagementView() {
                     <div key={h.tag} className="flex items-center gap-2 text-[11px]">
                       <span className="text-[#888] w-24 truncate">#{h.tag}</span>
                       <div className="flex-1 h-2 rounded bg-[#171717] overflow-hidden">
-                        <div className="h-full rounded bg-[#6366f1]" style={{ width: `${Math.min(100, (h.engRate ?? 0) * 10)}%` }} />
+                        <div className="h-full rounded bg-[#F59E0B]" style={{ width: `${Math.min(100, (h.engRate ?? 0) * 10)}%` }} />
                       </div>
                       <span className="font-mono text-white w-10 text-right">{fmtPct(h.engRate ?? 0)}</span>
                     </div>

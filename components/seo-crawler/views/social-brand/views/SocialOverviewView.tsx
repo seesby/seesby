@@ -140,7 +140,7 @@ export default function SocialOverviewView() {
                     <div key={c.name} className="flex items-center gap-2 text-[11px]">
                       <span className="w-10 text-[#888]">{c.name}</span>
                       <div className="flex-1 h-4 rounded bg-[#171717] overflow-hidden">
-                        <div className="h-full rounded" style={{ width: `${(c.share ?? 0) / 50 * 100}%`, background: c.color ?? '#6366f1' }} />
+                        <div className="h-full rounded" style={{ width: `${(c.share ?? 0) / 50 * 100}%`, background: c.color ?? '#F59E0B' }} />
                       </div>
                       <span className="w-10 text-right font-mono text-white">{c.share ?? 0}%</span>
                     </div>
@@ -208,7 +208,7 @@ export default function SocialOverviewView() {
                     <AuditRow label="Image wrong ratio (1.91:1)" count={ogIssues.wrongRatio} warning={ogIssues.wrongRatio > 15} />
                   </div>
                   <div className="mt-2 pt-2 border-t border-[#171717]">
-                    <span className="text-[11px] text-[#6366f1] cursor-pointer hover:underline">[Open audit →]</span>
+                    <span className="text-[11px] text-[#F59E0B] cursor-pointer hover:underline">[Open audit →]</span>
                   </div>
                 </>
               ) : (
@@ -234,7 +234,7 @@ export default function SocialOverviewView() {
                   </div>
                   {influencers.length > 3 && (
                     <div className="mt-2 pt-2 border-t border-[#171717]">
-                      <span className="text-[11px] text-[#6366f1] cursor-pointer hover:underline">[See all {influencers.length}]</span>
+                      <span className="text-[11px] text-[#F59E0B] cursor-pointer hover:underline">[See all {influencers.length}]</span>
                     </div>
                   )}
                 </>

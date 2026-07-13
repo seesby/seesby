@@ -37,7 +37,7 @@ export default function SchemaTab({ page }: { page: any }) {
                     ) : (
                         <div className="flex flex-wrap gap-2">
                             {schemaTypes.map((type: string) => (
-                                <span key={type} className="px-2 py-1 bg-indigo-500/10 text-indigo-300 rounded text-[11px] font-mono border border-indigo-500/20">
+                                <span key={type} className="px-2 py-1 bg-amber-500/10 text-amber-300 rounded text-[11px] font-mono border border-amber-500/20">
                                     {type}
                                 </span>
                             ))}

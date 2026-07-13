@@ -99,12 +99,12 @@ export default function SocialMentionsView() {
         <span className="px-2 py-1 text-[10px] rounded bg-[#171717] text-white">topic ▾</span>
         <span className="text-[#333]">|</span>
         {sentFilter && (
-          <button onClick={() => setSentFilter(null)} className="px-2 py-1 text-[10px] rounded bg-[#6366f1]/10 text-[#6366f1] flex items-center gap-1">
+          <button onClick={() => setSentFilter(null)} className="px-2 py-1 text-[10px] rounded bg-[#F59E0B]/10 text-[#F59E0B] flex items-center gap-1">
             sent: {sentFilter[0]} ×
           </button>
         )}
         {tierFilter && (
-          <button onClick={() => setTierFilter(null)} className="px-2 py-1 text-[10px] rounded bg-[#6366f1]/10 text-[#6366f1] flex items-center gap-1">
+          <button onClick={() => setTierFilter(null)} className="px-2 py-1 text-[10px] rounded bg-[#F59E0B]/10 text-[#F59E0B] flex items-center gap-1">
             tier:{tierFilter} ×
           </button>
         )}
@@ -143,7 +143,7 @@ export default function SocialMentionsView() {
                         className="w-full rounded-t"
                         style={{
                           height: `${Math.max(4, h)}px`,
-                          background: isSpike ? '#f59e0b' : '#6366f1',
+                          background: isSpike ? '#f59e0b' : '#F59E0B',
                         }}
                         title={`${w.date}: ${w.count} mentions`}
                       />
@@ -225,7 +225,7 @@ function TopicCard({ topic, expanded, onToggle }: { topic: any; expanded: boolea
                 {topic.crisisMention.author} {topic.crisisMention.network} · sentiment −{Math.abs(topic.crisisMention.sentiment === 'negative' ? 0.8 : 0.4).toFixed(1)} · reach {fmtCompact(topic.crisisMention.reach)} in 4h · velocity {(topic.crisisMention.velocity ?? 3).toFixed(1)}× baseline
               </div>
               <div className="flex items-center gap-2">
-                <button className="px-2 py-1 text-[10px] rounded bg-[#6366f1]/10 text-[#6366f1]">Draft response [review]</button>
+                <button className="px-2 py-1 text-[10px] rounded bg-[#F59E0B]/10 text-[#F59E0B]">Draft response [review]</button>
                 <button className="px-2 py-1 text-[10px] rounded bg-[#ef4444]/10 text-[#ef4444]">Escalate to PR [open]</button>
               </div>
             </div>

@@ -41,7 +41,7 @@ export default function SocialTrafficView() {
           <div className={`${CARD}`}>
             <H>Funnel: social → site → conv</H>
             {funnelSteps.length > 0 ? (
-              <Funnel steps={funnelSteps} accent="#6366f1" />
+              <Funnel steps={funnelSteps} accent="#F59E0B" />
             ) : (
               <div className="py-4 text-[12px] text-[#666] text-center">No funnel data.</div>
             )}

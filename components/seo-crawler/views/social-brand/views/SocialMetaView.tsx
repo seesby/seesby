@@ -183,14 +183,14 @@ export default function SocialMetaView() {
             <button
               key={f.key}
               onClick={() => setIssueFilter(issueFilter === f.key ? null : f.key)}
-              className={`px-2 py-1 text-[10px] rounded ${issueFilter === f.key ? 'bg-[#6366f1]/20 text-[#6366f1]' : 'text-[#888] hover:text-[#aaa] hover:bg-[#171717]'}`}
+              className={`px-2 py-1 text-[10px] rounded ${issueFilter === f.key ? 'bg-[#F59E0B]/20 text-[#F59E0B]' : 'text-[#888] hover:text-[#aaa] hover:bg-[#171717]'}`}
             >
               {f.label}
             </button>
           ))}
         </div>
         {issueFilter && (
-          <button onClick={() => setIssueFilter(null)} className="px-1.5 py-0.5 text-[10px] rounded bg-[#6366f1]/10 text-[#6366f1]">×</button>
+          <button onClick={() => setIssueFilter(null)} className="px-1.5 py-0.5 text-[10px] rounded bg-[#F59E0B]/10 text-[#F59E0B]">×</button>
         )}
         <div className="flex-1" />
         <span className="text-[10px] text-[#666]">{filteredRows.length} pages</span>
@@ -326,7 +326,7 @@ function FixPanel({ row }: { row: any }) {
       <div className="p-3 space-y-1.5">
         {suggestions.map((s, i) => (
           <div key={i} className="flex items-start gap-2 text-[11px]">
-            <span className="text-[#6366f1] mt-0.5">○</span>
+            <span className="text-[#F59E0B] mt-0.5">○</span>
             <div>
               <span className="text-[#888]">Suggested {s.label}: </span>
               <span className="text-[#ccc] font-mono text-[10px]">"{s.value}"</span>
@@ -334,7 +334,7 @@ function FixPanel({ row }: { row: any }) {
           </div>
         ))}
         <div className="flex items-center gap-2 pt-2">
-          <button className="px-2 py-1 text-[10px] rounded bg-[#6366f1]/10 text-[#6366f1]">[Apply via CMS]</button>
+          <button className="px-2 py-1 text-[10px] rounded bg-[#F59E0B]/10 text-[#F59E0B]">[Apply via CMS]</button>
           <button className="px-2 py-1 text-[10px] rounded bg-[#171717] text-[#888]">[Export patch]</button>
         </div>
       </div>

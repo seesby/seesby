@@ -21,7 +21,7 @@ export default function AreaTrendChart({
   data,
   label1 = 'Series 1',
   label2,
-  color1 = '#6366f1',
+  color1 = '#F59E0B',
   color2 = '#F59E0B',
   height = 140,
   formatValue = (v) => v.toLocaleString(),

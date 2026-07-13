@@ -24,7 +24,7 @@ export const CrawlerOverlay: React.FC = () => {
         return (
             <div className="fixed bottom-4 right-4 z-[9999] bg-[#1a1a1a] border border-[#333] rounded-lg shadow-2xl p-3 flex items-center gap-4 animate-in slide-in-from-bottom-4">
                 <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                    <div className="w-2 h-2 rounded-full bg-[var(--brand-amber)] animate-pulse" />
                     <span className="text-sm font-medium text-white">Crawler Active</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -52,9 +52,9 @@ export const CrawlerOverlay: React.FC = () => {
     return (
         <div className="fixed inset-0 z-[9999] bg-black flex flex-col animate-in fade-in duration-200">
             {/* Header / Toolbar */}
-            <div className="h-12 border-b border-[#222] bg-[#0a0a0a] flex items-center justify-between px-4">
+            <div className="h-12 border-b border-[var(--brand-border-2)] bg-[var(--brand-surface-0)] flex items-center justify-between px-4">
                 <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
+                    <div className="w-6 h-6 bg-[var(--brand-amber)] rounded flex items-center justify-center">
                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
@@ -95,7 +95,7 @@ export const CrawlerOverlay: React.FC = () => {
             </div>
 
             {/* Content */}
-            <div className="flex-1 bg-[#080808]">
+            <div className="flex-1 bg-[var(--brand-bg)]">
                 <iframe 
                     src={url} 
                     className="w-full h-full border-none"

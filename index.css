@@ -6,7 +6,45 @@
   /* Default Dark Mode */
   --brand-amber: #F59E0B;
   --brand-amber-glow: rgba(245, 158, 11, 0.22);
-  --bg-main: #0A0A0B;
+  --bg-main: #0B0B0A;
+
+  /* ── Seesby brand surface system (single source of truth) ── */
+  --brand-amber-hover: #FBBF24;
+  --brand-amber-deep: #D97706;
+  --brand-amber-soft: rgba(245, 158, 11, 0.10);
+  --brand-amber-soft-2: rgba(245, 158, 11, 0.16);
+  --brand-amber-border: rgba(245, 158, 11, 0.30);
+  --brand-amber-border-soft: rgba(245, 158, 11, 0.20);
+
+  --brand-bg: #0B0B0A;
+  --brand-card: #141412;
+  --brand-sidebar: #0E0E0C;
+
+  --brand-surface-0: #0A0A0A;
+  --brand-surface-1: #0C0C0C;
+  --brand-surface-2: #111111;
+  --brand-surface-3: #161616;
+  --brand-surface-4: #1A1A1A;
+
+  --brand-border-1: #161616;
+  --brand-border-2: #222222;
+  --brand-border-3: #2A2A2A;
+
+  --brand-text-strong: #FFFFFF;
+  --brand-text-mid: #AAAAAA;
+  --brand-text-faint: #666666;
+  --brand-text-muted: #444444;
+  --brand-text-dim: #333333;
+
+  /* Status — amber-led, neutral (no blue/purple) */
+  --brand-success: #22C55E;
+  --brand-success-soft: rgba(34, 197, 94, 0.10);
+  --brand-danger: #EF4444;
+  --brand-danger-soft: rgba(239, 68, 68, 0.10);
+  --brand-danger-border: rgba(239, 68, 68, 0.20);
+  --brand-warn: #F59E0B;
+  --brand-status-neutral: #71717A;
+  --brand-status-neutral-soft: rgba(113, 113, 122, 0.12);
   --panel-bg: rgba(18, 18, 20, 0.8);
   --glass-border: rgba(255, 255, 255, 0.06);
   --border-subtle: rgba(255, 255, 255, 0.08);
@@ -135,7 +173,7 @@
   .bg-rs-green   { background-color: #10b981; }
   .bg-rs-indigo  { background-color: #6366f1; }
   .bg-rs-fuchsia { background-color: #d946ef; }
-  .bg-rs-red     { background-color: #f5364e; }
+  .bg-rs-red     { background-color: #ef4444; }
   .bg-rs-orange  { background-color: #f97316; }
 
   .text-rs-slate   { color: #64748b; }
@@ -148,7 +186,7 @@
   .text-rs-green   { color: #10b981; }
   .text-rs-indigo  { color: #6366f1; }
   .text-rs-fuchsia { color: #d946ef; }
-  .text-rs-red     { color: #f5364e; }
+  .text-rs-red     { color: #ef4444; }
   .text-rs-orange  { color: #f97316; }
 
   .border-rs-slate   { border-color: #64748b; }
@@ -161,7 +199,7 @@
   .border-rs-green   { border-color: #10b981; }
   .border-rs-indigo  { border-color: #6366f1; }
   .border-rs-fuchsia { border-color: #d946ef; }
-  .border-rs-red     { border-color: #f5364e; }
+  .border-rs-red     { border-color: #ef4444; }
   .border-rs-orange  { border-color: #f97316; }
 
 

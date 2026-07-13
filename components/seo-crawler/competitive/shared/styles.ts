@@ -63,7 +63,7 @@ export function heatmapCell(score: number): string {
 
 // Brand color
 export const BRAND_RED = '#F59E0B';
-export const COMP_COLORS = ['#6366f1', '#06b6d4', '#f59e0b', '#10b981', '#ec4899'];
+export const COMP_COLORS = ['#F59E0B', '#06b6d4', '#f59e0b', '#10b981', '#ec4899'];
 export function getCompColor(index: number): string {
   return COMP_COLORS[index % COMP_COLORS.length];
 }

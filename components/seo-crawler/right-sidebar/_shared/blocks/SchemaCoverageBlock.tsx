@@ -23,7 +23,7 @@ export function SchemaCoverageBlock({ title = 'Schema coverage', coveragePct = 0
             <button
               key={t.type}
               onClick={() => onTypeClick?.(t.type)}
-              className="text-[10px] font-mono px-2 py-1 rounded border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 hover:brightness-125 transition-all"
+              className="text-[10px] font-mono px-2 py-1 rounded border border-amber-500/30 bg-amber-500/10 text-amber-300 hover:brightness-125 transition-all"
             >
               {t.type} · {t.count}
             </button>

@@ -35,7 +35,7 @@ export const RS_REGISTRY: RsRegistry = {
   uxConversion:   { label: 'UX & conversion',    accent: '#f43f5e', tabs: uxTabs },
   paid:           { label: 'Paid',               accent: '#06b6d4', tabs: paidTabs },
   commerce:       { label: 'Commerce',           accent: '#10b981', tabs: commerceTabs },
-  socialBrand:    { label: 'Social & brand',     accent: '#6366f1', tabs: socialTabs },
+  socialBrand:    { label: 'Social & brand',     accent: '#F59E0B', tabs: socialTabs },
   ai:             { label: 'AI & answer engines', accent: '#d946ef', tabs: aiTabs },
   competitors:    { label: 'Competitors',        accent: '#ef4444', tabs: competitorsTabs },
   local:          { label: 'Local',              accent: '#f97316', tabs: localTabs },
