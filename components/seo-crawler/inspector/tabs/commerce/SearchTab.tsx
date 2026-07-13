@@ -49,23 +49,23 @@ export default function SearchTab({ page, hasTrend }: { page: any; hasTrend?: bo
       {/* Top queries */}
       {topQueries.length > 0 && (
         <Card title="Top queries">
-          <div className="bg-[#060606] border border-[#1a1a1a] rounded-lg overflow-hidden">
+          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-lg overflow-hidden">
             <table className="w-full text-[11px]">
               <thead>
-                <tr className="border-b border-[#1a1a1a]">
-                  <th className="px-3 py-1.5 text-left text-[9px] text-[#444] uppercase tracking-widest font-bold">Query</th>
-                  <th className="px-3 py-1.5 text-left text-[9px] text-[#444] uppercase tracking-widest font-bold">Pos</th>
-                  <th className="px-3 py-1.5 text-left text-[9px] text-[#444] uppercase tracking-widest font-bold">Clk</th>
-                  <th className="px-3 py-1.5 text-left text-[9px] text-[#444] uppercase tracking-widest font-bold">CTR</th>
+                <tr className="border-b border-[var(--brand-surface-3)]]">
+                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">Query</th>
+                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">Pos</th>
+                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">Clk</th>
+                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">CTR</th>
                 </tr>
               </thead>
               <tbody>
                 {topQueries.slice(0, 10).map((q: any, i: number) => (
-                  <tr key={i} className="border-b border-[#111] bg-[#0a0a0a] hover:bg-[#141414]">
-                    <td className="px-3 py-1.5 text-[#ccc] truncate max-w-[200px]">{q.query || q.keyword}</td>
-                    <td className="px-3 py-1.5 text-[#ccc]">{q.position ?? q.pos ?? '—'}</td>
-                    <td className="px-3 py-1.5 text-[#ccc]">{q.clicks ?? q.clk ?? '—'}</td>
-                    <td className="px-3 py-1.5 text-[#ccc]">{q.ctr ? formatPercent(q.ctr, 100) : '—'}</td>
+                  <tr key={i} className="border-b border-[var(--brand-surface-2)]] bg-[var(--brand-surface-0)]] hover:bg-[var(--brand-surface-2)]]">
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]] truncate max-w-[200px]">{q.query || q.keyword}</td>
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{q.position ?? q.pos ?? '—'}</td>
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{q.clicks ?? q.clk ?? '—'}</td>
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{q.ctr ? formatPercent(q.ctr, 100) : '—'}</td>
                   </tr>
                 ))}
               </tbody>

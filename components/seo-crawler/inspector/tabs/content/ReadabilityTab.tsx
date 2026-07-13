@@ -64,27 +64,27 @@ export default function ReadabilityTab({ page, hasTrend }: { page: any; hasTrend
         <Card title="Grade distribution">
           <div className="space-y-2">
             <div className="flex items-center justify-between text-[11px]">
-              <span className="text-[#666]">Cluster avg</span>
-              <span className="text-[#ccc] font-mono">{clusterAvgFlesch > 0 ? clusterAvgFlesch.toFixed(0) : '—'}</span>
+              <span className="text-[var(--brand-text-faint)]]">Cluster avg</span>
+              <span className="text-[var(--brand-text-mid)]] font-mono">{clusterAvgFlesch > 0 ? clusterAvgFlesch.toFixed(0) : '—'}</span>
             </div>
             <div className="flex items-center justify-between text-[11px]">
-              <span className="text-[#666]">Benchmark (article)</span>
-              <span className="text-[#ccc] font-mono">{benchmarkFlesch}</span>
+              <span className="text-[var(--brand-text-faint)]]">Benchmark (article)</span>
+              <span className="text-[var(--brand-text-mid)]] font-mono">{benchmarkFlesch}</span>
             </div>
             <div className="flex items-center justify-between text-[11px]">
-              <span className="text-[#666]">This page</span>
-              <span className={`font-mono ${fleschTone === 'pass' ? 'text-[#22c55e]' : fleschTone === 'warn' ? 'text-[#ef4444]' : 'text-[#ccc]'}`}>{fleschScore || '—'}</span>
+              <span className="text-[var(--brand-text-faint)]]">This page</span>
+              <span className={`font-mono ${fleschTone === 'pass' ? 'text-[#22c55e]' : fleschTone === 'warn' ? 'text-[#ef4444]' : 'text-[var(--brand-text-mid)]]'}`}>{fleschScore || '—'}</span>
             </div>
           </div>
           {clusterAvgFlesch > 0 && fleschScore > 0 && (
             <div className="mt-3">
-              <div className="relative h-2 bg-[#1a1a1a] rounded-full overflow-hidden">
+              <div className="relative h-2 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
                 <div
                   className={`h-full rounded-full ${fleschScore >= clusterAvgFlesch ? 'bg-[#22c55e]' : 'bg-[#f59e0b]'}`}
                   style={{ width: `${Math.min(100, (fleschScore / 100) * 100)}%` }}
                 />
               </div>
-              <div className="text-[10px] text-[#555] mt-1">
+              <div className="text-[10px] text-[var(--brand-text-faint)]] mt-1">
                 {fleschScore >= clusterAvgFlesch ? 'Above cluster average' : 'Below cluster average'}
               </div>
             </div>

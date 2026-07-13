@@ -19,7 +19,7 @@ export function useAiEntities() {
       label: e.label,
       size: Math.max(2, Math.sqrt(e.size) * 4),
       group: e.type,
-      color: e.type === 'brand' ? '#d946ef' : e.type === 'product' ? '#3b82f6' : e.type === 'person' ? '#22c55e' : '#666',
+      color: e.type === 'brand' ? '#d946ef' : e.type === 'product' ? '#3b82f6' : e.type === 'person' ? '#22c55e' : 'text-[var(--brand-text-faint)]',
     }));
     // Edges between entities co-occurring on the same page.
     const edges = new Map<string, number>();

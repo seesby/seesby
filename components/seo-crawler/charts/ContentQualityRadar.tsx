@@ -13,7 +13,7 @@ export default function ContentQualityRadar({
   if (data.length === 0) {
     return (
       <ChartCard title="Content Quality">
-        <div className="flex items-center justify-center h-[240px] text-[#666] text-xs">
+        <div className="flex items-center justify-center h-[240px] text-[var(--brand-text-faint)]] text-xs">
           No HTML pages to analyze.
         </div>
       </ChartCard>
@@ -24,7 +24,7 @@ export default function ContentQualityRadar({
     <ChartCard title="Content Quality">
       <ResponsiveContainer width="100%" height={240}>
         <RadarChart data={data} cx="50%" cy="50%" outerRadius="70%">
-          <PolarGrid stroke="#2a2a2a" />
+          <PolarGrid stroke="border-[var(--brand-border-3)]" />
           <PolarAngleAxis
             dataKey="metric"
             tick={{ fill: '#a0a0a0', fontSize: 10 }}
@@ -32,7 +32,7 @@ export default function ContentQualityRadar({
           <PolarRadiusAxis
             angle={90}
             domain={[0, 100]}
-            tick={{ fill: '#555', fontSize: 9 }}
+            tick={{ fill: 'text-[var(--brand-text-faint)]', fontSize: 9 }}
             axisLine={false}
           />
           <Radar
@@ -44,8 +44,8 @@ export default function ContentQualityRadar({
           />
           <Tooltip
             contentStyle={{
-              background: '#1a1a1a',
-              border: '1px solid #333',
+              background: 'bg-[var(--brand-surface-3)]',
+              border: '1px solid bg-[var(--brand-surface-4)]',
               borderRadius: 8,
               fontSize: 12,
               color: '#f5f5f5',

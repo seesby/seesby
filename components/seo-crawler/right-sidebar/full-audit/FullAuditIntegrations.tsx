@@ -33,14 +33,14 @@ export default function FullAuditIntegrations() {
       {/* Connected integrations */}
       {connected.length > 0 && (
         <Card title={`Connected (${connected.length})`} padded={false}>
-          <ul className="flex flex-col border-t border-[#1f1f1f]">
+          <ul className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {connected.map((c) => (
-              <li key={c.id} className="flex items-center justify-between border-b border-[#1a1a1a] px-3 py-2.5">
+              <li key={c.id} className="flex items-center justify-between border-b border-[var(--brand-surface-3)]] px-3 py-2.5">
                 <span className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  <span className="text-[12px] text-[#ccc]">{c.label}</span>
+                  <span className="text-[12px] text-[var(--brand-text-mid)]]">{c.label}</span>
                 </span>
-                <span className="text-[11px] text-[#666]">
+                <span className="text-[11px] text-[var(--brand-text-faint)]]">
                   {c.lastSyncAt ? fmtAgo(c.lastSyncAt) : 'Synced'}
                 </span>
               </li>
@@ -52,12 +52,12 @@ export default function FullAuditIntegrations() {
       {/* Error integrations */}
       {error.length > 0 && (
         <Card title={`Needs attention (${error.length})`} padded={false}>
-          <ul className="flex flex-col border-t border-[#1f1f1f]">
+          <ul className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {error.map((c) => (
-              <li key={c.id} className="flex items-center justify-between border-b border-[#1a1a1a] px-3 py-2.5">
+              <li key={c.id} className="flex items-center justify-between border-b border-[var(--brand-surface-3)]] px-3 py-2.5">
                 <span className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
-                  <span className="text-[12px] text-[#ccc]">{c.label}</span>
+                  <span className="text-[12px] text-[var(--brand-text-mid)]]">{c.label}</span>
                 </span>
                 <button
                   onClick={() => openSettings?.('integrations', c.id)}
@@ -74,12 +74,12 @@ export default function FullAuditIntegrations() {
       {/* Disconnected integrations */}
       {disconnected.length > 0 && (
         <Card title="Available" padded={false}>
-          <ul className="flex flex-col border-t border-[#1f1f1f]">
+          <ul className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {disconnected.map((c) => (
-              <li key={c.id} className="flex items-center justify-between border-b border-[#1a1a1a] px-3 py-2.5">
+              <li key={c.id} className="flex items-center justify-between border-b border-[var(--brand-surface-3)]] px-3 py-2.5">
                 <span className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#444]" />
-                  <span className="text-[12px] text-[#888]">{c.label}</span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-border-2)]]" />
+                  <span className="text-[12px] text-[var(--brand-text-mid)]]">{c.label}</span>
                 </span>
                 <button
                   onClick={() => openSettings?.('integrations', c.id)}
@@ -97,8 +97,8 @@ export default function FullAuditIntegrations() {
       {connected.length > 0 && disconnected.length === 0 && error.length === 0 && (
         <Card>
           <div className="text-center py-2">
-            <div className="text-[12px] text-[#ccc]">All integrations connected</div>
-            <div className="text-[11px] text-[#666] mt-1">Data is synced from connected sources</div>
+            <div className="text-[12px] text-[var(--brand-text-mid)]]">All integrations connected</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]] mt-1">Data is synced from connected sources</div>
           </div>
         </Card>
       )}

@@ -4,7 +4,7 @@ import { useAuctionInsights } from '../selectors/useAuctionInsights.tsx';
 import { fmtPct } from '../../_shared/formatters';
 import { STATUS_HEX } from '../../_shared/shared-columns';
 
-const CARD = 'rounded border border-[#1a1a1a] bg-[#0a0a0a] p-3 min-h-0';
+const CARD = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3 min-h-0';
 
 function heatmapBg(value: number, max: number): string {
   const ratio = max > 0 ? value / max : 0;
@@ -24,7 +24,7 @@ export default function PaidAuctionInsightsView() {
         <div className={`${CARD} col-span-12 lg:col-span-8 overflow-auto custom-scrollbar`}>
           <H>Matrix: us × competitors</H>
           <table className="w-full text-[11px] border-collapse">
-            <thead className="text-[9px] uppercase text-[#666]">
+            <thead className="text-[9px] uppercase text-[var(--brand-text-faint)]]">
               <tr>
                 <th className="text-left py-1.5 pr-4 font-normal">Competitor</th>
                 <th className="text-right py-1.5 px-2 font-normal">Overlap</th>
@@ -39,17 +39,17 @@ export default function PaidAuctionInsightsView() {
               {d.matrix.map((row: any) => {
                 const maxOverlap = Math.max(...d.matrix.map((m: any) => m.overlap), 1);
                 return (
-                  <tr key={row.host} className={`border-t border-[#171717] ${row.isOur ? 'bg-[#0c0c0c]' : 'hover:bg-[#0c0c0c]/50'}`}>
-                    <td className="py-1.5 pr-4 text-[#ddd] font-medium whitespace-nowrap">{row.isOur ? 'us' : row.host}</td>
+                  <tr key={row.host} className={`border-t border-[var(--brand-surface-3)]] ${row.isOur ? 'bg-[var(--brand-surface-1)]]' : 'hover:bg-[var(--brand-surface-1)]]/50'}`}>
+                    <td className="py-1.5 pr-4 text-[var(--brand-text-mid)]] font-medium whitespace-nowrap">{row.isOur ? 'us' : row.host}</td>
                     <td className="text-right font-mono px-2 tabular-nums" style={{ background: heatmapBg(row.overlap, maxOverlap) }}>
                       {row.isOur ? '—' : fmtPct(row.overlap)}
                     </td>
-                    <td className="text-right font-mono px-2 tabular-nums" style={{ color: row.posAbove > 0.05 ? STATUS_HEX.bad : row.posAbove < -0.05 ? STATUS_HEX.good : '#ddd' }}>
+                    <td className="text-right font-mono px-2 tabular-nums" style={{ color: row.posAbove > 0.05 ? STATUS_HEX.bad : row.posAbove < -0.05 ? STATUS_HEX.good : 'text-[var(--brand-text-mid)]' }}>
                       {row.isOur ? '—' : `${row.posAbove > 0 ? '+' : ''}${fmtPct(row.posAbove)}`}
                     </td>
                     <td className="text-right font-mono px-2 tabular-nums">{fmtPct(row.topShare)}</td>
                     <td className="text-right font-mono px-2 tabular-nums">{fmtPct(row.absTopShare)}</td>
-                    <td className="text-right font-mono px-2 tabular-nums" style={{ color: row.outrankUs > 0.2 ? STATUS_HEX.bad : '#ddd' }}>
+                    <td className="text-right font-mono px-2 tabular-nums" style={{ color: row.outrankUs > 0.2 ? STATUS_HEX.bad : 'text-[var(--brand-text-mid)]' }}>
                       {row.isOur ? '—' : fmtPct(row.outrankUs)}
                     </td>
                     <td className="text-right font-mono pl-2 tabular-nums" style={{ color: row.impressionShare >= 0.3 ? STATUS_HEX.good : row.impressionShare >= 0.15 ? STATUS_HEX.warn : STATUS_HEX.bad }}>
@@ -80,7 +80,7 @@ export default function PaidAuctionInsightsView() {
                 height={200}
               />
             ) : (
-              <div className="flex-1 grid place-items-center text-[12px] text-[#666]">Run another crawl to see trends.</div>
+              <div className="flex-1 grid place-items-center text-[12px] text-[var(--brand-text-faint)]]">Run another crawl to see trends.</div>
             )}
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function PaidAuctionInsightsView() {
         {/* Lost breakdown — 6 cols */}
         <div className={`${CARD} col-span-12 md:col-span-6`}>
           <H>Impr share lost breakdown</H>
-          <div className="text-[12px] text-white mb-3">
+          <div className="text-[12px] text-[var(--brand-text-strong)] mb-3">
             Total lost <span className="font-mono font-medium">{fmtPct(totalLost)}</span>
           </div>
           {d.lostBreakdown.length > 0 ? (
@@ -98,7 +98,7 @@ export default function PaidAuctionInsightsView() {
                 return (
                   <div key={l.reason} className="flex items-center gap-3">
                     <div className="flex-1 min-w-0">
-                      <div className="h-2.5 rounded-sm overflow-hidden bg-[#111]">
+                      <div className="h-2.5 rounded-sm overflow-hidden bg-[var(--brand-surface-2)]]">
                         <div
                           className="h-full rounded-sm"
                           style={{
@@ -109,16 +109,16 @@ export default function PaidAuctionInsightsView() {
                       </div>
                     </div>
                     <div className="shrink-0 flex items-center gap-2 min-w-0">
-                      <span className="font-mono text-[#ccc] tabular-nums">{fmtPct(l.value)}</span>
-                      <span className="text-[#aaa]">{l.label}</span>
-                      <span className="text-[10px] text-[#555]">{l.action}</span>
+                      <span className="font-mono text-[var(--brand-text-mid)]] tabular-nums">{fmtPct(l.value)}</span>
+                      <span className="text-[var(--brand-text-mid)]]">{l.label}</span>
+                      <span className="text-[10px] text-[var(--brand-text-faint)]]">{l.action}</span>
                     </div>
                   </div>
                 );
               })}
             </div>
           ) : (
-            <div className="text-[12px] text-[#666]">No lost share data.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]]">No lost share data.</div>
           )}
         </div>
 
@@ -132,8 +132,8 @@ export default function PaidAuctionInsightsView() {
               const delta = prev > 0 ? (latest - prev) / prev : 0;
               return (
                 <div key={ct.host} className="flex items-center gap-3 text-[11px]">
-                  <span className="w-28 text-[#ddd] truncate shrink-0">{ct.host}</span>
-                  <div className="flex-1 min-w-0 h-2 rounded-sm overflow-hidden bg-[#111]">
+                  <span className="w-28 text-[var(--brand-text-mid)]] truncate shrink-0">{ct.host}</span>
+                  <div className="flex-1 min-w-0 h-2 rounded-sm overflow-hidden bg-[var(--brand-surface-2)]]">
                     <div
                       className="h-full rounded-sm"
                       style={{
@@ -142,15 +142,15 @@ export default function PaidAuctionInsightsView() {
                       }}
                     />
                   </div>
-                  <span className="w-12 text-right font-mono text-[#ccc] tabular-nums shrink-0">{fmtPct(latest)}</span>
-                  <span className="w-4 text-right shrink-0" style={{ color: delta > 0 ? STATUS_HEX.bad : delta < 0 ? STATUS_HEX.good : '#666' }}>
+                  <span className="w-12 text-right font-mono text-[var(--brand-text-mid)]] tabular-nums shrink-0">{fmtPct(latest)}</span>
+                  <span className="w-4 text-right shrink-0" style={{ color: delta > 0 ? STATUS_HEX.bad : delta < 0 ? STATUS_HEX.good : 'text-[var(--brand-text-faint)]' }}>
                     {delta > 0 ? '▲' : delta < 0 ? '▼' : '─'}
                   </span>
                 </div>
               );
             })}
             {d.competitorTrends.length === 0 && (
-              <div className="text-[12px] text-[#666]">No competitor data.</div>
+              <div className="text-[12px] text-[var(--brand-text-faint)]]">No competitor data.</div>
             )}
           </div>
         </div>
@@ -160,4 +160,4 @@ export default function PaidAuctionInsightsView() {
 }
 
 const H = ({ children }: { children: React.ReactNode }) =>
-  <div className="text-[10px] uppercase tracking-wider text-[#666] mb-2">{children}</div>;
+  <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">{children}</div>;

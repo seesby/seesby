@@ -33,7 +33,7 @@ function GaugeRing({ value, max, color, label, unit }: {
     <div className="flex flex-col items-center">
       <div className="relative w-24 h-24">
         <svg className="w-full h-full -rotate-90" viewBox="0 0 80 80">
-          <circle cx="40" cy="40" r="36" stroke="#222" strokeWidth="6" fill="none" />
+          <circle cx="40" cy="40" r="36" stroke="border-[var(--brand-border-2)]" strokeWidth="6" fill="none" />
           <circle
             cx="40" cy="40" r="36"
             stroke={color}
@@ -46,12 +46,12 @@ function GaugeRing({ value, max, color, label, unit }: {
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-lg font-black text-white">
+          <span className="text-lg font-black text-[var(--brand-text-strong)]">
             {typeof value === 'number' && value > 10 ? Math.round(value) : value.toFixed(2)}
           </span>
         </div>
       </div>
-      <div className="text-[11px] text-[#ccc] font-semibold mt-1">{label}</div>
+      <div className="text-[11px] text-[var(--brand-text-mid)]] font-semibold mt-1">{label}</div>
       <div className="text-[10px] mt-0.5" style={{ color }}>
         {unit}
       </div>

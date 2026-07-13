@@ -6,7 +6,7 @@ import { useSeoCrawler } from '@/contexts/SeoCrawlerContext';
 import type { RowSelectionState } from '@tanstack/react-table';
 import clsx from 'clsx';
 
-const PANEL = 'rounded border border-[#1a1a1a] bg-[#0a0a0a]';
+const PANEL = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]]';
 
 const SCOPE_FILTERS = [
   { id: 'all', label: 'All' },
@@ -62,14 +62,14 @@ export default function LinksBacklinksView() {
       {/* Controls */}
       <div className="flex items-center gap-4 p-3 pb-0">
         <div className="flex items-center gap-1">
-          <span className="text-[10px] text-[#666] mr-1">Scope:</span>
+          <span className="text-[10px] text-[var(--brand-text-faint)]] mr-1">Scope:</span>
           {SCOPE_FILTERS.map(f => (
             <button
               key={f.id}
               onClick={() => setScope(f.id)}
               className={clsx(
                 'h-[22px] px-2 text-[10px] rounded transition-colors',
-                scope === f.id ? 'bg-[#171717] text-white' : 'text-[#666] hover:text-[#999]'
+                scope === f.id ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]'
               )}
             >
               {f.label}
@@ -77,11 +77,11 @@ export default function LinksBacklinksView() {
           ))}
         </div>
         <div className="flex items-center gap-1">
-          <span className="text-[10px] text-[#666] mr-1">Sort:</span>
+          <span className="text-[10px] text-[var(--brand-text-faint)]] mr-1">Sort:</span>
           <select
             value={sort}
             onChange={e => setSort(e.target.value)}
-            className="h-[22px] px-2 text-[10px] bg-[#111] text-[#888] border border-[#1a1a1a] rounded outline-none cursor-pointer"
+            className="h-[22px] px-2 text-[10px] bg-[var(--brand-surface-2)]] text-[var(--brand-text-mid)]] border border-[var(--brand-surface-3)]] rounded outline-none cursor-pointer"
           >
             {SORT_OPTIONS.map(o => (
               <option key={o.id} value={o.id}>{o.label}</option>
@@ -110,8 +110,8 @@ export default function LinksBacklinksView() {
         <div className="px-3 py-2 space-y-2">
           {/* DR distribution */}
           <div className="flex items-center gap-2">
-            <span className="text-[9px] text-[#666] w-[24px] shrink-0">DR</span>
-            <div className="flex-1 flex h-[6px] rounded-full overflow-hidden bg-[#171717]">
+            <span className="text-[9px] text-[var(--brand-text-faint)]] w-[24px] shrink-0">DR</span>
+            <div className="flex-1 flex h-[6px] rounded-full overflow-hidden bg-[var(--brand-surface-3)]]">
               {metrics.drDistribution.map(d => (
                 <div
                   key={d.range}
@@ -124,7 +124,7 @@ export default function LinksBacklinksView() {
                 />
               ))}
             </div>
-            <div className="flex gap-2 text-[9px] text-[#666] shrink-0">
+            <div className="flex gap-2 text-[9px] text-[var(--brand-text-faint)]] shrink-0">
               {metrics.drDistribution.map(d => (
                 <span key={d.range}>{d.range} {d.count}</span>
               ))}
@@ -133,8 +133,8 @@ export default function LinksBacklinksView() {
 
           {/* Rel distribution */}
           <div className="flex items-center gap-2">
-            <span className="text-[9px] text-[#666] w-[24px] shrink-0">Rel</span>
-            <div className="flex-1 flex h-[6px] rounded-full overflow-hidden bg-[#171717]">
+            <span className="text-[9px] text-[var(--brand-text-faint)]] w-[24px] shrink-0">Rel</span>
+            <div className="flex-1 flex h-[6px] rounded-full overflow-hidden bg-[var(--brand-surface-3)]]">
               {metrics.relDistribution.map(r => (
                 <div
                   key={r.rel}
@@ -147,7 +147,7 @@ export default function LinksBacklinksView() {
                 />
               ))}
             </div>
-            <div className="flex gap-2 text-[9px] text-[#666] shrink-0">
+            <div className="flex gap-2 text-[9px] text-[var(--brand-text-faint)]] shrink-0">
               {metrics.relDistribution.map(r => (
                 <span key={r.rel} className="flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full" style={{ background: relColors[r.rel] }} />
@@ -159,14 +159,14 @@ export default function LinksBacklinksView() {
 
           {/* 90d trend */}
           <div className="flex items-center gap-2">
-            <span className="text-[9px] text-[#666] w-[24px] shrink-0">90d</span>
+            <span className="text-[9px] text-[var(--brand-text-faint)]] w-[24px] shrink-0">90d</span>
             <div className="flex-1 flex items-center gap-3">
               <div className="flex items-center gap-1.5 flex-1">
-                <span className="text-[9px] text-[#666]">New</span>
+                <span className="text-[9px] text-[var(--brand-text-faint)]]">New</span>
                 <Sparkline data={metrics.trendNew} color="#22c55e" />
               </div>
               <div className="flex items-center gap-1.5 flex-1">
-                <span className="text-[9px] text-[#666]">Lost</span>
+                <span className="text-[9px] text-[var(--brand-text-faint)]]">Lost</span>
                 <Sparkline data={metrics.trendLost} color="#ef4444" />
               </div>
             </div>

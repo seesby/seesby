@@ -85,7 +85,7 @@ export default function SocialMetaView() {
       size: 80,
       cell: c => {
         const val = c.getValue();
-        return <span className={val ? 'text-[#888]' : 'text-[#ef4444]'}>{val ? String(val) : '⚠ —'}</span>;
+        return <span className={val ? 'text-[var(--brand-text-mid)]]' : 'text-[#ef4444]'}>{val ? String(val) : '⚠ —'}</span>;
       },
     },
     {
@@ -94,7 +94,7 @@ export default function SocialMetaView() {
       size: 80,
       cell: c => {
         const val = c.getValue();
-        return <span className={val ? 'text-[#888]' : 'text-[#ef4444]'}>{val ? String(val).replace('summary_large_image', 'large ✓') : '⚠ —'}</span>;
+        return <span className={val ? 'text-[var(--brand-text-mid)]]' : 'text-[#ef4444]'}>{val ? String(val).replace('summary_large_image', 'large ✓') : '⚠ —'}</span>;
       },
     },
     {
@@ -103,7 +103,7 @@ export default function SocialMetaView() {
       size: 80,
       cell: c => {
         const val = c.getValue();
-        return <span className={val ? 'text-[#888]' : 'text-[#666]'}>{val ? String(val) : '—'}</span>;
+        return <span className={val ? 'text-[var(--brand-text-mid)]]' : 'text-[var(--brand-text-faint)]]'}>{val ? String(val) : '—'}</span>;
       },
     },
     {
@@ -112,12 +112,12 @@ export default function SocialMetaView() {
       size: 70,
       cell: c => {
         const v = c.getValue() as number;
-        if (!v) return <span className="text-[#666]">—</span>;
+        if (!v) return <span className="text-[var(--brand-text-faint)]]">—</span>;
         const mb = v / 1048576;
         const kb = v / 1024;
         const label = mb >= 1 ? `${mb.toFixed(1)}MB` : `${Math.round(kb)}k`;
         const heavy = v > 1048576;
-        return <span className={heavy ? 'text-[#ef4444]' : 'text-[#888]'}>{label}{heavy && ' ⚠'}</span>;
+        return <span className={heavy ? 'text-[#ef4444]' : 'text-[var(--brand-text-mid)]]'}>{label}{heavy && ' ⚠'}</span>;
       },
     },
     {
@@ -176,14 +176,14 @@ export default function SocialMetaView() {
   return (
     <div className="flex-1 flex flex-col min-h-0">
       {/* Toolbar */}
-      <div className="shrink-0 px-3 py-2 flex items-center gap-3 border-b border-[#1a1a1a]">
+      <div className="shrink-0 px-3 py-2 flex items-center gap-3 border-b border-[var(--brand-surface-3)]]">
         <div className="flex items-center gap-1">
-          <span className="text-[10px] text-[#666] mr-1">issue:</span>
+          <span className="text-[10px] text-[var(--brand-text-faint)]] mr-1">issue:</span>
           {issueFilters.map(f => (
             <button
               key={f.key}
               onClick={() => setIssueFilter(issueFilter === f.key ? null : f.key)}
-              className={`px-2 py-1 text-[10px] rounded ${issueFilter === f.key ? 'bg-[#F59E0B]/20 text-[#F59E0B]' : 'text-[#888] hover:text-[#aaa] hover:bg-[#171717]'}`}
+              className={`px-2 py-1 text-[10px] rounded ${issueFilter === f.key ? 'bg-[#F59E0B]/20 text-[#F59E0B]' : 'text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-mid)]] hover:bg-[var(--brand-surface-3)]]'}`}
             >
               {f.label}
             </button>
@@ -193,7 +193,7 @@ export default function SocialMetaView() {
           <button onClick={() => setIssueFilter(null)} className="px-1.5 py-0.5 text-[10px] rounded bg-[#F59E0B]/10 text-[#F59E0B]">×</button>
         )}
         <div className="flex-1" />
-        <span className="text-[10px] text-[#666]">{filteredRows.length} pages</span>
+        <span className="text-[10px] text-[var(--brand-text-faint)]]">{filteredRows.length} pages</span>
       </div>
 
       {/* Table - takes remaining space */}
@@ -210,7 +210,7 @@ export default function SocialMetaView() {
 
       {/* Fixed bottom panels - always visible when row selected */}
       {selectedRow && (
-        <div className="shrink-0 border-t border-[#1a1a1a] bg-[#0a0a0a] max-h-[280px] overflow-auto custom-scrollbar">
+        <div className="shrink-0 border-t border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] max-h-[280px] overflow-auto custom-scrollbar">
           <PreviewPanel row={selectedRow} />
           {(selectedRow as any).issues?.length > 0 && (
             <FixPanel row={selectedRow} />
@@ -263,9 +263,9 @@ function PreviewPanel({ row }: { row: any }) {
   };
 
   return (
-    <div className="shrink-0 border-t border-[#1a1a1a] bg-[#0a0a0a]">
-      <div className="px-3 py-2 border-b border-[#171717]">
-        <div className="text-[10px] uppercase tracking-wider text-[#666]">
+    <div className="shrink-0 border-t border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]]">
+      <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+        <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]]">
           Live preview — {fmtUrl(row.url)} across 6 platforms
         </div>
       </div>
@@ -273,16 +273,16 @@ function PreviewPanel({ row }: { row: any }) {
         {platforms.map(p => {
           const preview = getPreview(p.key);
           return (
-            <div key={p.key} className="rounded border border-[#1a1a1a] bg-[#111] p-2 text-center">
-              <div className="text-[10px] text-[#888] mb-1.5">{p.name}</div>
+            <div key={p.key} className="rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-2)]] p-2 text-center">
+              <div className="text-[10px] text-[var(--brand-text-mid)]] mb-1.5">{p.name}</div>
               {preview.ok ? (
                 <div className="space-y-1">
-                  <div className="text-[9px] text-[#ddd] line-clamp-2">{row.ogTitle ?? row.url}</div>
-                  <div className="h-12 bg-[#1a1a1a] rounded flex items-center justify-center text-[8px] text-[#666]">image</div>
-                  <div className="text-[8px] text-[#666] line-clamp-1">{row.ogDesc ?? ''}</div>
+                  <div className="text-[9px] text-[var(--brand-text-mid)]] line-clamp-2">{row.ogTitle ?? row.url}</div>
+                  <div className="h-12 bg-[var(--brand-surface-3)]] rounded flex items-center justify-center text-[8px] text-[var(--brand-text-faint)]]">image</div>
+                  <div className="text-[8px] text-[var(--brand-text-faint)]] line-clamp-1">{row.ogDesc ?? ''}</div>
                 </div>
               ) : (
-                <div className="py-3 text-[9px] text-[#666]">{preview.note}</div>
+                <div className="py-3 text-[9px] text-[var(--brand-text-faint)]]">{preview.note}</div>
               )}
               <div className="mt-1.5 text-[9px]">{preview.ok ? '✓' : '⚠'}</div>
             </div>
@@ -319,23 +319,23 @@ function FixPanel({ row }: { row: any }) {
   if (suggestions.length === 0) return null;
 
   return (
-    <div className="shrink-0 border-t border-[#1a1a1a] bg-[#0a0a0a]">
-      <div className="px-3 py-2 border-b border-[#171717]">
-        <div className="text-[10px] uppercase tracking-wider text-[#666]">Fix panel (auto-generate)</div>
+    <div className="shrink-0 border-t border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]]">
+      <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+        <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]]">Fix panel (auto-generate)</div>
       </div>
       <div className="p-3 space-y-1.5">
         {suggestions.map((s, i) => (
           <div key={i} className="flex items-start gap-2 text-[11px]">
             <span className="text-[#F59E0B] mt-0.5">○</span>
             <div>
-              <span className="text-[#888]">Suggested {s.label}: </span>
-              <span className="text-[#ccc] font-mono text-[10px]">"{s.value}"</span>
+              <span className="text-[var(--brand-text-mid)]]">Suggested {s.label}: </span>
+              <span className="text-[var(--brand-text-mid)]] font-mono text-[10px]">"{s.value}"</span>
             </div>
           </div>
         ))}
         <div className="flex items-center gap-2 pt-2">
           <button className="px-2 py-1 text-[10px] rounded bg-[#F59E0B]/10 text-[#F59E0B]">[Apply via CMS]</button>
-          <button className="px-2 py-1 text-[10px] rounded bg-[#171717] text-[#888]">[Export patch]</button>
+          <button className="px-2 py-1 text-[10px] rounded bg-[var(--brand-surface-3)]] text-[var(--brand-text-mid)]]">[Export patch]</button>
         </div>
       </div>
     </div>

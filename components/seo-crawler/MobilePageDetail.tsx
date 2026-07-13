@@ -19,9 +19,9 @@ const tabs: Array<{ id: DetailTab; label: string }> = [
 ];
 
 const Metric = ({ label, value }: { label: string; value: React.ReactNode }) => (
-    <div className="rounded-xl border border-[#212126] bg-[#0d0d10] p-4">
-        <div className="text-[10px] uppercase tracking-[0.22em] text-[#666]">{label}</div>
-        <div className="mt-2 text-[16px] font-black text-white">{value}</div>
+    <div className="rounded-xl border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-4">
+        <div className="text-[10px] uppercase tracking-[0.22em] text-[var(--brand-text-faint)]]">{label}</div>
+        <div className="mt-2 text-[16px] font-black text-[var(--brand-text-strong)]">{value}</div>
     </div>
 );
 
@@ -100,25 +100,25 @@ export default function MobilePageDetail({ page, onClose }: MobilePageDetailProp
     };
 
     return (
-        <div className="fixed inset-0 z-[75] flex flex-col bg-[#09090b]">
-            <div className="border-b border-[#202025] px-4 py-3">
-                <button onClick={onClose} className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#ddd]">
+        <div className="fixed inset-0 z-[75] flex flex-col bg-[var(--brand-surface-0)]]">
+            <div className="border-b border-[var(--brand-surface-3)]] px-4 py-3">
+                <button onClick={onClose} className="inline-flex items-center gap-2 text-[12px] font-semibold text-[var(--brand-text-mid)]]">
                     <ArrowLeft size={16} />
                     Back
                 </button>
                 <div className="mt-3">
-                    <div className="truncate text-[15px] font-black text-white">{page.title || page.url}</div>
+                    <div className="truncate text-[15px] font-black text-[var(--brand-text-strong)]">{page.title || page.url}</div>
                     <div className="mt-1 truncate text-[12px] text-[#6d93ff]">{page.url}</div>
                 </div>
             </div>
 
-            <div className="flex gap-2 overflow-x-auto border-b border-[#202025] px-4 py-3 custom-scrollbar-hidden">
+            <div className="flex gap-2 overflow-x-auto border-b border-[var(--brand-surface-3)]] px-4 py-3 custom-scrollbar-hidden">
                 {tabs.map((tab) => (
                     <button
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id)}
                         className={`rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] ${
-                            activeTab === tab.id ? 'bg-[#F59E0B] text-white' : 'bg-[#141419] text-[#888]'
+                            activeTab === tab.id ? 'bg-[#F59E0B] text-[var(--brand-text-strong)]' : 'bg-[#141419] text-[var(--brand-text-mid)]]'
                         }`}
                     >
                         {tab.label}
@@ -128,7 +128,7 @@ export default function MobilePageDetail({ page, onClose }: MobilePageDetailProp
 
             <div className="flex-1 overflow-y-auto px-4 py-4">
                 <div className="mb-4 rounded-2xl border border-[#23232a] bg-[#111115] p-4">
-                    <div className="text-[10px] uppercase tracking-[0.22em] text-[#666]">Issue tracking</div>
+                    <div className="text-[10px] uppercase tracking-[0.22em] text-[var(--brand-text-faint)]]">Issue tracking</div>
                     <div className="mt-3 flex flex-wrap gap-2">
                         {issues.length === 0 ? (
                             <span className="rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-[11px] font-semibold text-green-300">
@@ -136,7 +136,7 @@ export default function MobilePageDetail({ page, onClose }: MobilePageDetailProp
                             </span>
                         ) : (
                             issues.map((issue) => (
-                                <span key={issue.id} className="rounded-full border border-[#2f2f36] bg-[#17171b] px-3 py-1 text-[11px] font-semibold text-[#ddd]">
+                                <span key={issue.id} className="rounded-full border border-[#2f2f36] bg-[#17171b] px-3 py-1 text-[11px] font-semibold text-[var(--brand-text-mid)]]">
                                     {issue.label}
                                 </span>
                             ))
@@ -146,13 +146,13 @@ export default function MobilePageDetail({ page, onClose }: MobilePageDetailProp
                 {renderTab()}
             </div>
 
-            <div className="grid grid-cols-4 gap-2 border-t border-[#202025] px-4 py-3">
+            <div className="grid grid-cols-4 gap-2 border-t border-[var(--brand-surface-3)]] px-4 py-3">
                 <button
                     onClick={() => {
                         setAutoFixItems([{ ...page, fixStatus: 'pending', generatedMeta: page.metaDesc || '' }]);
                         setShowAutoFixModal(true);
                     }}
-                    className="inline-flex flex-col items-center gap-1 rounded-xl border border-[#2e2e33] bg-[#141419] px-2 py-3 text-[10px] font-bold text-white"
+                    className="inline-flex flex-col items-center gap-1 rounded-xl border border-[#2e2e33] bg-[#141419] px-2 py-3 text-[10px] font-bold text-[var(--brand-text-strong)]"
                 >
                     <Sparkles size={16} />
                     AI Fix All
@@ -162,7 +162,7 @@ export default function MobilePageDetail({ page, onClose }: MobilePageDetailProp
                         setCollabOverlayTarget({ type: 'page', id: page.url, title: page.title || page.url });
                         setShowCollabOverlay(true);
                     }}
-                    className="inline-flex flex-col items-center gap-1 rounded-xl border border-[#2e2e33] bg-[#141419] px-2 py-3 text-[10px] font-bold text-white"
+                    className="inline-flex flex-col items-center gap-1 rounded-xl border border-[#2e2e33] bg-[#141419] px-2 py-3 text-[10px] font-bold text-[var(--brand-text-strong)]"
                 >
                     <UserPlus size={16} />
                     Assign
@@ -172,14 +172,14 @@ export default function MobilePageDetail({ page, onClose }: MobilePageDetailProp
                         setCollabOverlayTarget({ type: 'page', id: page.url, title: page.title || page.url });
                         setShowCollabOverlay(true);
                     }}
-                    className="inline-flex flex-col items-center gap-1 rounded-xl border border-[#2e2e33] bg-[#141419] px-2 py-3 text-[10px] font-bold text-white"
+                    className="inline-flex flex-col items-center gap-1 rounded-xl border border-[#2e2e33] bg-[#141419] px-2 py-3 text-[10px] font-bold text-[var(--brand-text-strong)]"
                 >
                     <MessageSquare size={16} />
                     Comment
                 </button>
                 <button
                     onClick={() => { void handleShare(); }}
-                    className="inline-flex flex-col items-center gap-1 rounded-xl border border-[#2e2e33] bg-[#141419] px-2 py-3 text-[10px] font-bold text-white"
+                    className="inline-flex flex-col items-center gap-1 rounded-xl border border-[#2e2e33] bg-[#141419] px-2 py-3 text-[10px] font-bold text-[var(--brand-text-strong)]"
                 >
                     <Share2 size={16} />
                     Share

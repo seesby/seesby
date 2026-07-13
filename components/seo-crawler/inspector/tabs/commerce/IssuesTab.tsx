@@ -20,10 +20,10 @@ export default function IssuesTab({ page, hasTrend }: { page: any; hasTrend?: bo
           {critical.length > 0 ? critical.map((issue: any, i: number) => (
             <div key={`${issue.id}-${i}`} className="flex items-start gap-2 py-[3px]">
               <span className="block w-1.5 h-1.5 rounded-full bg-[#ef4444] mt-0.5 shrink-0" />
-              <span className="text-[11px] text-[#ccc]">{issue.label || issue.title}</span>
+              <span className="text-[11px] text-[var(--brand-text-mid)]]">{issue.label || issue.title}</span>
             </div>
           )) : (
-            <div className="text-[11px] text-[#555]">(none)</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]]">(none)</div>
           )}
         </Card>
 
@@ -33,12 +33,12 @@ export default function IssuesTab({ page, hasTrend }: { page: any; hasTrend?: bo
             <div key={`${issue.id}-${i}`} className="flex items-start gap-2 py-[3px]">
               <span className="block w-1.5 h-1.5 rounded-full bg-[#ef4444] mt-0.5 shrink-0" />
               <div className="flex-1 min-w-0">
-                <span className="text-[11px] text-[#ccc]">{issue.label || issue.title}</span>
-                {issue.description && <div className="text-[10px] text-[#444] mt-0.5 line-clamp-2">{issue.description}</div>}
+                <span className="text-[11px] text-[var(--brand-text-mid)]]">{issue.label || issue.title}</span>
+                {issue.description && <div className="text-[10px] text-[var(--brand-border-2)]] mt-0.5 line-clamp-2">{issue.description}</div>}
               </div>
             </div>
           )) : (
-            <div className="text-[11px] text-[#555]">(none)</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]]">(none)</div>
           )}
         </Card>
 
@@ -49,10 +49,10 @@ export default function IssuesTab({ page, hasTrend }: { page: any; hasTrend?: bo
               <span className={`block w-1.5 h-1.5 rounded-full mt-0.5 shrink-0 ${
                 issue.type === 'warning' ? 'bg-[#f59e0b]' : 'bg-[#6b7280]'
               }`} />
-              <span className="text-[11px] text-[#ccc]">{issue.label || issue.title}</span>
+              <span className="text-[11px] text-[var(--brand-text-mid)]]">{issue.label || issue.title}</span>
             </div>
           )) : (
-            <div className="text-[11px] text-[#555]">(none)</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]]">(none)</div>
           )}
         </Card>
       </div>
@@ -62,8 +62,8 @@ export default function IssuesTab({ page, hasTrend }: { page: any; hasTrend?: bo
         <Card title={`Suppressed (trivial) (${suppressed.length})`}>
           {suppressed.map((issue: any, i: number) => (
             <div key={`${issue.id}-${i}`} className="flex items-start gap-2 py-[3px]">
-              <span className="block w-1.5 h-1.5 rounded-full bg-[#333] mt-0.5 shrink-0" />
-              <span className="text-[11px] text-[#555]">{issue.label || issue.title}</span>
+              <span className="block w-1.5 h-1.5 rounded-full bg-[var(--brand-surface-4)]] mt-0.5 shrink-0" />
+              <span className="text-[11px] text-[var(--brand-text-faint)]]">{issue.label || issue.title}</span>
             </div>
           ))}
         </Card>
@@ -71,7 +71,7 @@ export default function IssuesTab({ page, hasTrend }: { page: any; hasTrend?: bo
 
       {commerceIssues.length === 0 && (
         <div className="flex flex-col items-center justify-center py-16 text-center">
-          <div className="text-[13px] text-[#666] max-w-[280px]">
+          <div className="text-[13px] text-[var(--brand-text-faint)]] max-w-[280px]">
             No commerce issues detected. All checks are passing.
           </div>
         </div>

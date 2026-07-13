@@ -37,10 +37,10 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
 
     return (
         <div className="fixed inset-0 z-[10000] bg-black/80 flex items-center justify-center p-4">
-            <div className="max-w-md w-full bg-[#111] border border-[#222] rounded-xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-200">
-                <div className="p-6 border-b border-[#222] flex items-center justify-between">
-                    <h2 className="text-lg font-bold text-white">Share Report</h2>
-                    <button onClick={onClose} className="text-gray-500 hover:text-white transition-colors">
+            <div className="max-w-md w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] rounded-xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-200">
+                <div className="p-6 border-b border-[var(--brand-border-2)]] flex items-center justify-between">
+                    <h2 className="text-lg font-bold text-[var(--brand-text-strong)]">Share Report</h2>
+                    <button onClick={onClose} className="text-gray-500 hover:text-[var(--brand-text-strong)] transition-colors">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
@@ -56,7 +56,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
                                     type="text" 
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
-                                    className="w-full bg-[#080808] border border-[#333] rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-500"
+                                    className="w-full bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-4)]] rounded-lg px-4 py-2 text-[var(--brand-text-strong)] focus:outline-none focus:border-blue-500"
                                 />
                             </div>
 
@@ -66,7 +66,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
                                     type="password" 
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full bg-[#080808] border border-[#333] rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-500"
+                                    className="w-full bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-4)]] rounded-lg px-4 py-2 text-[var(--brand-text-strong)] focus:outline-none focus:border-blue-500"
                                     placeholder="Leave empty for public access"
                                 />
                             </div>
@@ -77,7 +77,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
                                     id="whiteLabel"
                                     checked={whiteLabel}
                                     onChange={(e) => setWhiteLabel(e.target.checked)}
-                                    className="w-4 h-4 bg-[#080808] border-[#333] rounded"
+                                    className="w-4 h-4 bg-[var(--brand-surface-0)]] border-[var(--brand-surface-4)]] rounded"
                                 />
                                 <label htmlFor="whiteLabel" className="text-sm text-gray-300 select-none">White-label report (Remove Seesby branding)</label>
                             </div>
@@ -89,7 +89,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
                                         type="text" 
                                         value={companyName}
                                         onChange={(e) => setCompanyName(e.target.value)}
-                                        className="w-full bg-[#080808] border border-[#333] rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-500"
+                                        className="w-full bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-4)]] rounded-lg px-4 py-2 text-[var(--brand-text-strong)] focus:outline-none focus:border-blue-500"
                                         placeholder="Your Agency Name"
                                     />
                                 </div>
@@ -98,10 +98,10 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
                             <button 
                                 onClick={handleShare}
                                 disabled={loading}
-                                className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-medium py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+                                className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-[var(--brand-text-strong)] font-medium py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
                             >
                                 {loading ? (
-                                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                    <div className="w-5 h-5 border-2 border-[var(--brand-border-3)] border-t-white rounded-full animate-spin" />
                                 ) : (
                                     <>
                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -116,7 +116,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
                         <div className="animate-in fade-in zoom-in-95">
                             <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4 mb-6 flex items-center gap-3">
                                 <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg className="w-5 h-5 text-[var(--brand-text-strong)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                     </svg>
                                 </div>
@@ -130,14 +130,14 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
                                         type="text" 
                                         readOnly
                                         value={shareUrl}
-                                        className="flex-1 bg-[#080808] border border-[#333] rounded-lg px-4 py-2 text-white text-sm focus:outline-none"
+                                        className="flex-1 bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-4)]] rounded-lg px-4 py-2 text-[var(--brand-text-strong)] text-sm focus:outline-none"
                                     />
                                     <button 
                                         onClick={() => {
                                             navigator.clipboard.writeText(shareUrl);
                                             alert('Copied to clipboard!');
                                         }}
-                                        className="p-2 bg-[#222] hover:bg-[#333] rounded-lg text-white transition-colors"
+                                        className="p-2 bg-[var(--brand-border-2)]] hover:bg-[var(--brand-surface-4)]] rounded-lg text-[var(--brand-text-strong)] transition-colors"
                                         title="Copy Link"
                                     >
                                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

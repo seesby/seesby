@@ -36,7 +36,7 @@ export function Sparkline({
   }, [values, height, width])
 
   if (!values?.length) {
-    return <div className="h-7 w-[120px] rounded bg-[#0d0d0d] border border-[#1a1a1a]" aria-label="No trend data yet" />
+    return <div className="h-7 w-[120px] rounded bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]]" aria-label="No trend data yet" />
   }
 
   return (
@@ -52,7 +52,7 @@ export function Sparkline({
 
 const TONE_STROKE: Record<Tone, string> = {
   good: '#22c55e', warn: '#f59e0b', bad: '#F59E0B',
-  info: '#60a5fa', neutral: '#666',
+  info: '#60a5fa', neutral: 'text-[var(--brand-text-faint)]',
 }
 const TONE_FILL: Record<Tone, string> = {
   good: 'rgba(34,197,94,0.12)', warn: 'rgba(245,158,11,0.12)', bad: 'rgba(245,158,11,0.12)',

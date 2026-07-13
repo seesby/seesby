@@ -66,19 +66,19 @@ export default function RobotsTab({ page }: { page: any }) {
       {/* Hreflang */}
       {hreflangs.length > 0 && (
         <Card title={`Hreflang (${hreflangs.length})`}>
-          <div className="bg-[#060606] border border-[#1a1a1a] rounded-lg overflow-hidden max-h-[180px] overflow-y-auto custom-scrollbar">
+          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-lg overflow-hidden max-h-[180px] overflow-y-auto custom-scrollbar">
             <table className="w-full text-[11px]">
               <thead>
-                <tr className="border-b border-[#1a1a1a]">
-                  <th className="px-3 py-2 text-left text-[#444] uppercase tracking-widest text-[9px] font-bold">Lang</th>
-                  <th className="px-3 py-2 text-left text-[#444] uppercase tracking-widest text-[9px] font-bold">URL</th>
-                  <th className="px-3 py-2 text-left text-[#444] uppercase tracking-widest text-[9px] font-bold">Valid</th>
+                <tr className="border-b border-[var(--brand-surface-3)]]">
+                  <th className="px-3 py-2 text-left text-[var(--brand-border-2)]] uppercase tracking-widest text-[9px] font-bold">Lang</th>
+                  <th className="px-3 py-2 text-left text-[var(--brand-border-2)]] uppercase tracking-widest text-[9px] font-bold">URL</th>
+                  <th className="px-3 py-2 text-left text-[var(--brand-border-2)]] uppercase tracking-widest text-[9px] font-bold">Valid</th>
                 </tr>
               </thead>
               <tbody>
                 {hreflangs.map((h: any, i: number) => (
-                  <tr key={i} className={`border-b border-[#111] ${i % 2 === 0 ? '' : 'bg-[#0a0a0a]'} hover:bg-[#141414]`}>
-                    <td className="px-3 py-1.5 text-[#ccc] font-mono">{h?.lang || h?.hreflang || '—'}</td>
+                  <tr key={i} className={`border-b border-[var(--brand-surface-2)]] ${i % 2 === 0 ? '' : 'bg-[var(--brand-surface-0)]]'} hover:bg-[var(--brand-surface-2)]]`}>
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]] font-mono">{h?.lang || h?.hreflang || '—'}</td>
                     <td className="px-3 py-1.5 text-blue-400 break-all font-mono">{h?.url || h?.href || '—'}</td>
                     <td className="px-3 py-1.5">
                       <StatusBadge status={h?.valid !== false ? 'pass' : 'fail'} label={h?.valid !== false ? 'OK' : 'Invalid'} />

@@ -5,7 +5,7 @@ export const TONE_BG: Record<Tone, string> = {
   warn: 'bg-[#f59e0b]',
   bad: 'bg-[#ef4444]',
   info: 'bg-[#3b82f6]',
-  neutral: 'bg-[#444]',
+  neutral: 'bg-[var(--brand-border-2)]]',
 }
 
 export const TONE_TEXT: Record<Tone, string> = {
@@ -13,7 +13,7 @@ export const TONE_TEXT: Record<Tone, string> = {
   warn: 'text-[#f59e0b]',
   bad: 'text-[#ef4444]',
   info: 'text-[#3b82f6]',
-  neutral: 'text-[#888]',
+  neutral: 'text-[var(--brand-text-mid)]]',
 }
 
 export const TONE_BORDER: Record<Tone, string> = {
@@ -21,7 +21,7 @@ export const TONE_BORDER: Record<Tone, string> = {
   warn: 'border-[#f59e0b]/30',
   bad: 'border-[#ef4444]/30',
   info: 'border-[#3b82f6]/30',
-  neutral: 'border-[#222]',
+  neutral: 'border-[var(--brand-border-2)]]',
 }
 
 // Map a 0..100 score to a tone bucket using fixed thresholds.

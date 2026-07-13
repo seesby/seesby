@@ -17,7 +17,7 @@ export default function CrawlDepthFunnel({
         >
           <XAxis
             type="number"
-            tick={{ fill: '#888', fontSize: 10 }}
+            tick={{ fill: 'text-[var(--brand-text-mid)]', fontSize: 10 }}
             axisLine={false}
             tickLine={false}
           />
@@ -31,8 +31,8 @@ export default function CrawlDepthFunnel({
           />
           <Tooltip
             contentStyle={{
-              background: '#1a1a1a',
-              border: '1px solid #333',
+              background: 'bg-[var(--brand-surface-3)]',
+              border: '1px solid bg-[var(--brand-surface-4)]',
               borderRadius: 8,
               fontSize: 12,
               color: '#f5f5f5',

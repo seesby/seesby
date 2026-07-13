@@ -42,7 +42,7 @@ function colorByRender(p: any): { color: string; group: string } {
   if (r === 'static') return { color: STATUS_HEX.good, group: 'static' };
   if (r === 'ssr') return { color: STATUS_HEX.info, group: 'ssr' };
   if (r === 'csr') return { color: STATUS_HEX.bad, group: 'csr' };
-  return { color: '#666', group: 'unknown' };
+  return { color: 'text-[var(--brand-text-faint)]', group: 'unknown' };
 }
 
 function pickColor(p: any, colorBy: CrawlColorBy) {

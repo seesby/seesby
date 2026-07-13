@@ -2,7 +2,7 @@ import React from 'react'
 
 export function Card({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={`rounded-md border border-[#1a1a1a] bg-[#0a0a0a] ${className}`}>
+    <div className={`rounded-md border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] ${className}`}>
       {children}
     </div>
   )
@@ -12,7 +12,7 @@ export function Section({
   title, action, dense = false, children,
 }: { title?: React.ReactNode; action?: React.ReactNode; dense?: boolean; children: React.ReactNode }) {
   const containerClass = dense ? 'p-2.5' : 'p-3'
-  const titleClass = "text-[10px] font-semibold uppercase tracking-widest text-[#666]"
+  const titleClass = "text-[10px] font-semibold uppercase tracking-widest text-[var(--brand-text-faint)]]"
   
   return (
     <div className={containerClass}>
@@ -32,5 +32,5 @@ export function Section({
 }
 
 export function RowDivider() {
-  return <div className="my-1 h-px bg-[#1a1a1a]" />
+  return <div className="my-1 h-px bg-[var(--brand-surface-3)]]" />
 }

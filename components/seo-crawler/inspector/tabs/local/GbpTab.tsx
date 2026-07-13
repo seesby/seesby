@@ -60,12 +60,12 @@ export default function GbpTab({ page, hasTrend }: { page: any; hasTrend?: boole
       {/* Top row: Profile completeness, Category, Hours */}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
         {/* Profile completeness */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2">Profile completeness</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2">Profile completeness</div>
           <div className="space-y-0">
             {fields.map((f, i) => (
               <div key={i} className="flex items-center justify-between py-[3px] text-[11px]">
-                <span className="text-[#888]">{f.label}</span>
+                <span className="text-[var(--brand-text-mid)]]">{f.label}</span>
                 <span className={f.present ? (f.warn ? 'text-orange-400 text-[10px]' : 'text-green-400 text-[10px]') : 'text-red-400 text-[10px]'}>
                   {f.detail !== undefined ? f.detail : f.present ? '\u2713' : '\u2717'}
                   {f.warn && ' \u26A0'}
@@ -76,15 +76,15 @@ export default function GbpTab({ page, hasTrend }: { page: any; hasTrend?: boole
         </div>
 
         {/* Category */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2">Category</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2">Category</div>
           <DataRow label="Primary" value={primaryCat || '\u2014'} />
           {additionalCats.length > 0 && (
-            <div className="mt-2 pt-2 border-t border-[#141414]">
-              <div className="text-[9px] text-[#444] uppercase tracking-wider mb-1">Additional</div>
+            <div className="mt-2 pt-2 border-t border-[var(--brand-surface-2)]]">
+              <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-1">Additional</div>
               <div className="flex flex-wrap gap-1">
                 {additionalCats.map((cat: string, i: number) => (
-                  <span key={i} className="px-2 py-0.5 bg-[#1a1a1a] border border-[#222] rounded text-[10px] text-[#ccc]">{cat}</span>
+                  <span key={i} className="px-2 py-0.5 bg-[var(--brand-surface-3)]] border border-[var(--brand-border-2)]] rounded text-[10px] text-[var(--brand-text-mid)]]">{cat}</span>
                 ))}
               </div>
             </div>
@@ -92,12 +92,12 @@ export default function GbpTab({ page, hasTrend }: { page: any; hasTrend?: boole
         </div>
 
         {/* Hours */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2">Hours</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2">Hours</div>
           {hours ? (
-            <div className="text-[11px] text-[#ccc]">{hours}</div>
+            <div className="text-[11px] text-[var(--brand-text-mid)]]">{hours}</div>
           ) : (
-            <div className="text-[11px] text-[#555]">Not set</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]]">Not set</div>
           )}
           {specialHours && (
             <div className="mt-1">
@@ -110,34 +110,34 @@ export default function GbpTab({ page, hasTrend }: { page: any; hasTrend?: boole
       {/* Bottom row: Attributes, Posts, Q&A */}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
         {/* Attributes */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2">Attributes</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2">Attributes</div>
           {attributes.length > 0 ? (
             <div className="space-y-0">
               {attributes.slice(0, 10).map((attr: any, i: number) => (
                 <div key={i} className="flex items-center justify-between py-[3px] text-[11px]">
-                  <span className="text-[#888]">{typeof attr === 'string' ? attr : attr.name || attr.label}</span>
+                  <span className="text-[var(--brand-text-mid)]]">{typeof attr === 'string' ? attr : attr.name || attr.label}</span>
                   <span className="text-[10px] text-green-400">\u2713</span>
                 </div>
               ))}
-              {attributes.length > 10 && <div className="text-[10px] text-[#555] mt-1">+{attributes.length - 10} more</div>}
+              {attributes.length > 10 && <div className="text-[10px] text-[var(--brand-text-faint)]] mt-1">+{attributes.length - 10} more</div>}
             </div>
           ) : (
-            <div className="text-[11px] text-[#555]">No attributes set</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]]">No attributes set</div>
           )}
         </div>
 
         {/* Posts */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2">Posts (30d)</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2">Posts (30d)</div>
           <DataRow label="Count" value={formatNumber(postCadence)} status={Number(postCadence) >= 2 ? 'pass' : 'warn'} />
           <DataRow label="Last post" value={lastPost || '\u2014'} />
           {lastPostDate && <DataRow label="Date" value={lastPostDate} />}
         </div>
 
         {/* Q&A */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2">Q&A</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2">Q&A</div>
           <DataRow label="Asked" value={formatNumber(questionsAsked)} />
           <DataRow
             label="Unanswered"
@@ -152,7 +152,7 @@ export default function GbpTab({ page, hasTrend }: { page: any; hasTrend?: boole
         <Card title="Service Areas">
           <div className="flex flex-wrap gap-1.5">
             {serviceAreas.map((area: string, i: number) => (
-              <span key={i} className="px-2 py-0.5 rounded text-[10px] bg-[#1a1a1a] text-[#888] border border-[#222]">{area}</span>
+              <span key={i} className="px-2 py-0.5 rounded text-[10px] bg-[var(--brand-surface-3)]] text-[var(--brand-text-mid)]] border border-[var(--brand-border-2)]]">{area}</span>
             ))}
           </div>
         </Card>
@@ -164,7 +164,7 @@ export default function GbpTab({ page, hasTrend }: { page: any; hasTrend?: boole
           <div className="space-y-1">
             {fieldGaps.map((gap: any, i: number) => (
               <div key={i} className="flex items-center justify-between py-[3px] text-[11px]">
-                <span className="text-[#ccc]">{typeof gap === 'string' ? gap : gap.field || gap.name}</span>
+                <span className="text-[var(--brand-text-mid)]]">{typeof gap === 'string' ? gap : gap.field || gap.name}</span>
                 <StatusBadge status="warn" label="Missing" />
               </div>
             ))}

@@ -47,13 +47,13 @@ export default function OnboardingTour() {
     <div className="fixed inset-0 z-[120]">
       <div className="absolute inset-0 bg-black/55" />
       <div className="absolute w-[340px] rounded-xl border border-[#2f2f35] bg-[#121216] p-4 shadow-2xl" style={{ top, left }}>
-        <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.24em] text-[#777]">Onboarding</div>
-        <div className="text-[15px] font-bold text-white">{step.title}</div>
+        <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--brand-text-mid)]]">Onboarding</div>
+        <div className="text-[15px] font-bold text-[var(--brand-text-strong)]">{step.title}</div>
         <p className="mt-2 text-[12px] text-[#b8b8be]">{step.content}</p>
         <div className="mt-4 flex items-center justify-between">
-          <button onClick={finish} className="text-[11px] text-[#888] hover:text-white">Skip</button>
+          <button onClick={finish} className="text-[11px] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)]">Skip</button>
           <div className="flex items-center gap-2">
-            <span className="text-[10px] text-[#666]">{index + 1}/{TOUR_STEPS.length}</span>
+            <span className="text-[10px] text-[var(--brand-text-faint)]]">{index + 1}/{TOUR_STEPS.length}</span>
             <button
               onClick={() => {
                 if (isLast) {
@@ -62,7 +62,7 @@ export default function OnboardingTour() {
                   setIndex((prev) => prev + 1);
                 }
               }}
-              className="rounded bg-[#F59E0B] px-3 py-1.5 text-[11px] font-bold text-white hover:bg-[#dd2e44]"
+              className="rounded bg-[#F59E0B] px-3 py-1.5 text-[11px] font-bold text-[var(--brand-text-strong)] hover:bg-[#dd2e44]"
             >
               {isLast ? 'Finish' : 'Next'}
             </button>

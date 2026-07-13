@@ -61,10 +61,10 @@ function ChartCard({
   className?: string;
 }) {
   return (
-    <div className={`rounded-xl border border-[#1a1a1e] bg-[#0d0d0f] p-4 ${className}`}>
+    <div className={`rounded-xl border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-4 ${className}`}>
       <div className="mb-3">
-        <div className="text-[11px] font-semibold text-[#888]">{title}</div>
-        {subtitle && <div className="mt-0.5 text-[9px] text-[#555]">{subtitle}</div>}
+        <div className="text-[11px] font-semibold text-[var(--brand-text-mid)]]">{title}</div>
+        {subtitle && <div className="mt-0.5 text-[9px] text-[var(--brand-text-faint)]]">{subtitle}</div>}
       </div>
       {children}
     </div>
@@ -78,7 +78,7 @@ function GaugeMeter({ value, label }: { value: number; label: string; maxLabel?:
     <div className="text-center">
       <div className="relative mx-auto h-16 w-16">
         <svg viewBox="0 0 100 100" className="h-full w-full -rotate-90">
-          <circle cx="50" cy="50" r="42" fill="none" stroke="#1a1a1e" strokeWidth="8" />
+          <circle cx="50" cy="50" r="42" fill="none" stroke="bg-[var(--brand-surface-3)]" strokeWidth="8" />
           <circle
             cx="50"
             cy="50"
@@ -91,10 +91,10 @@ function GaugeMeter({ value, label }: { value: number; label: string; maxLabel?:
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-mono text-[14px] font-black text-white">{clampedValue}</span>
+          <span className="font-mono text-[14px] font-black text-[var(--brand-text-strong)]">{clampedValue}</span>
         </div>
       </div>
-      <div className="mt-1 max-w-[80px] truncate text-[9px] text-[#666]">{label}</div>
+      <div className="mt-1 max-w-[80px] truncate text-[9px] text-[var(--brand-text-faint)]]">{label}</div>
     </div>
   );
 }
@@ -102,13 +102,13 @@ function GaugeMeter({ value, label }: { value: number; label: string; maxLabel?:
 function ChartTooltip({ active, payload, label }: any) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-lg border border-[#333] bg-[#111] px-3 py-2 shadow-xl">
-      {label && <div className="mb-1 text-[10px] font-bold text-white">{label}</div>}
+    <div className="rounded-lg border border-[var(--brand-surface-4)]] bg-[var(--brand-surface-2)]] px-3 py-2 shadow-xl">
+      {label && <div className="mb-1 text-[10px] font-bold text-[var(--brand-text-strong)]">{label}</div>}
       {payload.map((p: any, i: number) => (
         <div key={i} className="flex items-center gap-2 text-[10px]">
           <span className="h-2 w-2 rounded-full" style={{ backgroundColor: p.color || p.fill }} />
-          <span className="text-[#888]">{p.name || p.dataKey}</span>
-          <span className="ml-auto font-mono text-white">
+          <span className="text-[var(--brand-text-mid)]]">{p.name || p.dataKey}</span>
+          <span className="ml-auto font-mono text-[var(--brand-text-strong)]">
             {typeof p.value === 'number' ? p.value.toLocaleString() : p.value}
           </span>
         </div>
@@ -281,7 +281,7 @@ export default function CompetitorChartsView() {
 
   if (allProfiles.length === 0) {
     return (
-      <div className="flex h-full items-center justify-center bg-[#0a0a0a] p-8">
+      <div className="flex h-full items-center justify-center bg-[var(--brand-surface-0)]] p-8">
         <div className={EMPTY_STATE_BOX}>
           <p className={EMPTY_STATE_TEXT}>No competitor data yet. Add competitors and run a crawl.</p>
         </div>
@@ -296,12 +296,12 @@ export default function CompetitorChartsView() {
   }));
 
   return (
-    <div className="custom-scrollbar h-full overflow-y-auto bg-[#0a0a0a] p-5 space-y-5">
+    <div className="custom-scrollbar h-full overflow-y-auto bg-[var(--brand-surface-0)]] p-5 space-y-5">
       <div className="mb-5 flex flex-wrap items-center gap-4">
         {profileLegend.map((p) => (
           <div key={p.domain} className="flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: p.color }} />
-            <span className={`text-[10px] font-bold ${p.isOwn ? 'text-white' : 'text-[#888]'}`}>
+            <span className={`text-[10px] font-bold ${p.isOwn ? 'text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-mid)]]'}`}>
               {p.domain} {p.isOwn && <span className={YOU_BADGE}>YOU</span>}
             </span>
           </div>
@@ -314,8 +314,8 @@ export default function CompetitorChartsView() {
             <ChartCard title="Competitive Radar" subtitle="8-dimension comparison across all competitors">
               <ResponsiveContainer width="100%" height={300}>
                 <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="75%">
-                  <PolarGrid stroke="#1a1a1e" />
-                  <PolarAngleAxis dataKey="subject" tick={{ fontSize: 9, fill: '#666' }} />
+                  <PolarGrid stroke="bg-[var(--brand-surface-3)]" />
+                  <PolarAngleAxis dataKey="subject" tick={{ fontSize: 9, fill: 'text-[var(--brand-text-faint)]' }} />
                   <PolarRadiusAxis tick={false} axisLine={false} domain={[0, 100]} />
                   {allProfiles.map((p, i) => (
                     <Radar
@@ -335,17 +335,17 @@ export default function CompetitorChartsView() {
             <ChartCard title="Overall SEO Score" subtitle="All competitors ranked by composite score">
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={scoreRanking} layout="vertical" margin={{ left: 4, right: 24 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1a1a1e" horizontal={false} />
-                  <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 10, fill: '#555' }} axisLine={{ stroke: '#222' }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="bg-[var(--brand-surface-3)]" horizontal={false} />
+                  <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 10, fill: 'text-[var(--brand-text-faint)]' }} axisLine={{ stroke: 'border-[var(--brand-border-2)]' }} />
                   <YAxis
                     dataKey="domain"
                     type="category"
                     width={110}
-                    tick={{ fontSize: 10, fill: '#888' }}
+                    tick={{ fontSize: 10, fill: 'text-[var(--brand-text-mid)]' }}
                     axisLine={false}
                     tickLine={false}
                   />
-                  <Tooltip content={<ChartTooltip />} cursor={{ fill: '#ffffff06' }} />
+                  <Tooltip content={<ChartTooltip />} cursor={{ fill: 'bg-[var(--brand-surface-4)]06' }} />
                   <Bar dataKey="score" radius={[0, 4, 4, 0]} barSize={20}>
                     {scoreRanking.map((entry, i) => (
                       <Cell key={`sc-${i}`} fill={entry.fill} fillOpacity={entry.isOwn ? 1 : 0.7} />
@@ -362,18 +362,18 @@ export default function CompetitorChartsView() {
             <ChartCard title="Keyword Distribution" subtitle="Keywords by ranking position">
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={keywordDistData} margin={{ left: 0, right: 8 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1a1a1e" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="bg-[var(--brand-surface-3)]" />
                   <XAxis
                     dataKey="domain"
-                    tick={{ fontSize: 8, fill: '#666' }}
-                    axisLine={{ stroke: '#222' }}
+                    tick={{ fontSize: 8, fill: 'text-[var(--brand-text-faint)]' }}
+                    axisLine={{ stroke: 'border-[var(--brand-border-2)]' }}
                     interval={0}
                     angle={-20}
                     textAnchor="end"
                     height={40}
                   />
-                  <YAxis tick={{ fontSize: 9, fill: '#555' }} axisLine={{ stroke: '#222' }} />
-                  <Tooltip content={<ChartTooltip />} cursor={{ fill: '#ffffff06' }} />
+                  <YAxis tick={{ fontSize: 9, fill: 'text-[var(--brand-text-faint)]' }} axisLine={{ stroke: 'border-[var(--brand-border-2)]' }} />
+                  <Tooltip content={<ChartTooltip />} cursor={{ fill: 'bg-[var(--brand-surface-4)]06' }} />
                   <Bar dataKey="Top 3" stackId="a" fill="#22c55e" radius={[0, 0, 0, 0]} />
                   <Bar dataKey="Top 10" stackId="a" fill="#3b82f6" />
                   <Bar dataKey="Top 20" stackId="a" fill="#a855f7" />
@@ -385,22 +385,22 @@ export default function CompetitorChartsView() {
             <ChartCard title="Organic Traffic" subtitle="Estimated monthly organic visits">
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={trafficData} margin={{ left: 0, right: 8 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1a1a1e" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="bg-[var(--brand-surface-3)]" />
                   <XAxis
                     dataKey="domain"
-                    tick={{ fontSize: 8, fill: '#666' }}
-                    axisLine={{ stroke: '#222' }}
+                    tick={{ fontSize: 8, fill: 'text-[var(--brand-text-faint)]' }}
+                    axisLine={{ stroke: 'border-[var(--brand-border-2)]' }}
                     interval={0}
                     angle={-20}
                     textAnchor="end"
                     height={40}
                   />
                   <YAxis
-                    tick={{ fontSize: 9, fill: '#555' }}
-                    axisLine={{ stroke: '#222' }}
+                    tick={{ fontSize: 9, fill: 'text-[var(--brand-text-faint)]' }}
+                    axisLine={{ stroke: 'border-[var(--brand-border-2)]' }}
                     tickFormatter={(v: number) => (v >= 1000 ? `${(v / 1000).toFixed(0)}k` : String(v))}
                   />
-                  <Tooltip content={<ChartTooltip />} cursor={{ fill: '#ffffff06' }} />
+                  <Tooltip content={<ChartTooltip />} cursor={{ fill: 'bg-[var(--brand-surface-4)]06' }} />
                   <Bar dataKey="traffic" radius={[4, 4, 0, 0]} barSize={28}>
                     {trafficData.map((e, i) => (
                       <Cell key={`tr-${i}`} fill={e.fill} />
@@ -412,7 +412,7 @@ export default function CompetitorChartsView() {
 
             <ChartCard title="Share of Voice" subtitle="Keyword universe split by site">
               {sovData.length === 0 ? (
-                <div className="flex h-[220px] items-center justify-center text-[11px] text-[#555]">No keyword data</div>
+                <div className="flex h-[220px] items-center justify-center text-[11px] text-[var(--brand-text-faint)]]">No keyword data</div>
               ) : (
                 <ResponsiveContainer width="100%" height={220}>
                   <PieChart>
@@ -444,27 +444,27 @@ export default function CompetitorChartsView() {
             <ChartCard title="Content Volume vs Freshness" subtitle="X = pages, Y = freshness %, bubble size = traffic">
               <ResponsiveContainer width="100%" height={260}>
                 <ScatterChart margin={{ bottom: 8, right: 16 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1a1a1e" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="bg-[var(--brand-surface-3)]" />
                   <XAxis
                     type="number"
                     dataKey="pages"
-                    tick={{ fontSize: 9, fill: '#555' }}
-                    axisLine={{ stroke: '#222' }}
-                    label={{ value: 'Pages', position: 'insideBottomRight', offset: -4, fontSize: 9, fill: '#444' }}
+                    tick={{ fontSize: 9, fill: 'text-[var(--brand-text-faint)]' }}
+                    axisLine={{ stroke: 'border-[var(--brand-border-2)]' }}
+                    label={{ value: 'Pages', position: 'insideBottomRight', offset: -4, fontSize: 9, fill: 'border-[var(--brand-border-2)]' }}
                   />
                   <YAxis
                     type="number"
                     dataKey="freshness"
                     domain={[0, 100]}
-                    tick={{ fontSize: 9, fill: '#555' }}
-                    axisLine={{ stroke: '#222' }}
+                    tick={{ fontSize: 9, fill: 'text-[var(--brand-text-faint)]' }}
+                    axisLine={{ stroke: 'border-[var(--brand-border-2)]' }}
                     label={{
                       value: 'Freshness %',
                       angle: -90,
                       position: 'insideLeft',
                       offset: 4,
                       fontSize: 9,
-                      fill: '#444',
+                      fill: 'border-[var(--brand-border-2)]',
                     }}
                   />
                   <ZAxis type="number" dataKey="traffic" range={[60, 600]} />
@@ -473,17 +473,17 @@ export default function CompetitorChartsView() {
                       if (!active || !payload?.[0]?.payload) return null;
                       const d = payload[0].payload;
                       return (
-                        <div className="rounded-lg border border-[#333] bg-[#111] px-3 py-2 shadow-xl">
-                          <div className="text-[10px] font-bold text-white">{d.domain}</div>
-                          <div className="mt-1 space-y-0.5 text-[9px] text-[#999]">
+                        <div className="rounded-lg border border-[var(--brand-surface-4)]] bg-[var(--brand-surface-2)]] px-3 py-2 shadow-xl">
+                          <div className="text-[10px] font-bold text-[var(--brand-text-strong)]">{d.domain}</div>
+                          <div className="mt-1 space-y-0.5 text-[9px] text-[var(--brand-text-mid)]]">
                             <div>
-                              Pages: <span className="font-mono text-white">{d.pages.toLocaleString()}</span>
+                              Pages: <span className="font-mono text-[var(--brand-text-strong)]">{d.pages.toLocaleString()}</span>
                             </div>
                             <div>
-                              Freshness: <span className="font-mono text-white">{d.freshness}%</span>
+                              Freshness: <span className="font-mono text-[var(--brand-text-strong)]">{d.freshness}%</span>
                             </div>
                             <div>
-                              Traffic: <span className="font-mono text-white">{d.traffic.toLocaleString()}</span>
+                              Traffic: <span className="font-mono text-[var(--brand-text-strong)]">{d.traffic.toLocaleString()}</span>
                             </div>
                           </div>
                         </div>
@@ -502,28 +502,28 @@ export default function CompetitorChartsView() {
             <ChartCard title="Authority Landscape" subtitle="X = referring domains, Y = traffic, bubble size = authority">
               <ResponsiveContainer width="100%" height={260}>
                 <ScatterChart margin={{ bottom: 8, right: 16 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1a1a1e" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="bg-[var(--brand-surface-3)]" />
                   <XAxis
                     type="number"
                     dataKey="referringDomains"
-                    tick={{ fontSize: 9, fill: '#555' }}
-                    axisLine={{ stroke: '#222' }}
+                    tick={{ fontSize: 9, fill: 'text-[var(--brand-text-faint)]' }}
+                    axisLine={{ stroke: 'border-[var(--brand-border-2)]' }}
                     tickFormatter={(v: number) => (v >= 1000 ? `${(v / 1000).toFixed(0)}k` : String(v))}
                     label={{
                       value: 'Referring Domains',
                       position: 'insideBottomRight',
                       offset: -4,
                       fontSize: 9,
-                      fill: '#444',
+                      fill: 'border-[var(--brand-border-2)]',
                     }}
                   />
                   <YAxis
                     type="number"
                     dataKey="traffic"
-                    tick={{ fontSize: 9, fill: '#555' }}
-                    axisLine={{ stroke: '#222' }}
+                    tick={{ fontSize: 9, fill: 'text-[var(--brand-text-faint)]' }}
+                    axisLine={{ stroke: 'border-[var(--brand-border-2)]' }}
                     tickFormatter={(v: number) => (v >= 1000 ? `${(v / 1000).toFixed(0)}k` : String(v))}
-                    label={{ value: 'Traffic', angle: -90, position: 'insideLeft', offset: 4, fontSize: 9, fill: '#444' }}
+                    label={{ value: 'Traffic', angle: -90, position: 'insideLeft', offset: 4, fontSize: 9, fill: 'border-[var(--brand-border-2)]' }}
                   />
                   <ZAxis type="number" dataKey="authority" range={[60, 600]} />
                   <Tooltip
@@ -531,18 +531,18 @@ export default function CompetitorChartsView() {
                       if (!active || !payload?.[0]?.payload) return null;
                       const d = payload[0].payload;
                       return (
-                        <div className="rounded-lg border border-[#333] bg-[#111] px-3 py-2 shadow-xl">
-                          <div className="text-[10px] font-bold text-white">{d.domain}</div>
-                          <div className="mt-1 space-y-0.5 text-[9px] text-[#999]">
+                        <div className="rounded-lg border border-[var(--brand-surface-4)]] bg-[var(--brand-surface-2)]] px-3 py-2 shadow-xl">
+                          <div className="text-[10px] font-bold text-[var(--brand-text-strong)]">{d.domain}</div>
+                          <div className="mt-1 space-y-0.5 text-[9px] text-[var(--brand-text-mid)]]">
                             <div>
                               Referring Domains:{' '}
-                              <span className="font-mono text-white">{d.referringDomains.toLocaleString()}</span>
+                              <span className="font-mono text-[var(--brand-text-strong)]">{d.referringDomains.toLocaleString()}</span>
                             </div>
                             <div>
-                              Traffic: <span className="font-mono text-white">{d.traffic.toLocaleString()}</span>
+                              Traffic: <span className="font-mono text-[var(--brand-text-strong)]">{d.traffic.toLocaleString()}</span>
                             </div>
                             <div>
-                              Authority: <span className="font-mono text-white">{d.authority}/100</span>
+                              Authority: <span className="font-mono text-[var(--brand-text-strong)]">{d.authority}/100</span>
                             </div>
                           </div>
                         </div>
@@ -573,10 +573,10 @@ export default function CompetitorChartsView() {
             <ChartCard title="AI Readiness" subtitle="GEO score, citation, passage & snippet readiness">
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={aiData} layout="vertical" margin={{ left: 4, right: 16 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1a1a1e" horizontal={false} />
-                  <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 9, fill: '#555' }} axisLine={{ stroke: '#222' }} />
-                  <YAxis dataKey="metric" type="category" width={85} tick={{ fontSize: 9, fill: '#888' }} axisLine={false} tickLine={false} />
-                  <Tooltip content={<ChartTooltip />} cursor={{ fill: '#ffffff06' }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="bg-[var(--brand-surface-3)]" horizontal={false} />
+                  <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 9, fill: 'text-[var(--brand-text-faint)]' }} axisLine={{ stroke: 'border-[var(--brand-border-2)]' }} />
+                  <YAxis dataKey="metric" type="category" width={85} tick={{ fontSize: 9, fill: 'text-[var(--brand-text-mid)]' }} axisLine={false} tickLine={false} />
+                  <Tooltip content={<ChartTooltip />} cursor={{ fill: 'bg-[var(--brand-surface-4)]06' }} />
                   {allProfiles.map((p, i) => (
                     <Bar key={p.domain} dataKey={p.domain} fill={getColor(i)} barSize={8} radius={[0, 3, 3, 0]} />
                   ))}
@@ -590,14 +590,14 @@ export default function CompetitorChartsView() {
           <ChartCard title="Social Following by Platform" subtitle="Follower counts across major platforms">
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={socialData} margin={{ left: 0, right: 16 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1a1a1e" />
-                <XAxis dataKey="platform" tick={{ fontSize: 10, fill: '#666' }} axisLine={{ stroke: '#222' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="bg-[var(--brand-surface-3)]" />
+                <XAxis dataKey="platform" tick={{ fontSize: 10, fill: 'text-[var(--brand-text-faint)]' }} axisLine={{ stroke: 'border-[var(--brand-border-2)]' }} />
                 <YAxis
-                  tick={{ fontSize: 9, fill: '#555' }}
-                  axisLine={{ stroke: '#222' }}
+                  tick={{ fontSize: 9, fill: 'text-[var(--brand-text-faint)]' }}
+                  axisLine={{ stroke: 'border-[var(--brand-border-2)]' }}
                   tickFormatter={(v: number) => (v >= 1000 ? `${(v / 1000).toFixed(0)}k` : String(v))}
                 />
-                <Tooltip content={<ChartTooltip />} cursor={{ fill: '#ffffff06' }} />
+                <Tooltip content={<ChartTooltip />} cursor={{ fill: 'bg-[var(--brand-surface-4)]06' }} />
                 {allProfiles.map((p, i) => (
                   <Bar key={p.domain} dataKey={p.domain} fill={getColor(i)} barSize={14} radius={[3, 3, 0, 0]} />
                 ))}
@@ -612,8 +612,8 @@ export default function CompetitorChartsView() {
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-[#1a1a1e]">
-                      <th className="px-3 py-2 text-left text-[9px] font-bold uppercase tracking-widest text-[#555]">Technology</th>
+                    <tr className="border-b border-[var(--brand-surface-3)]]">
+                      <th className="px-3 py-2 text-left text-[9px] font-bold uppercase tracking-widest text-[var(--brand-text-faint)]]">Technology</th>
                       {allProfiles.map((p, i) => (
                         <th
                           key={p.domain}
@@ -627,14 +627,14 @@ export default function CompetitorChartsView() {
                   </thead>
                   <tbody>
                     {techStackData.map((row) => (
-                      <tr key={row.tech} className="border-b border-[#111] transition-colors hover:bg-white/[0.01]">
-                        <td className="px-3 py-1.5 text-[10px] text-[#ccc]">{row.tech}</td>
+                      <tr key={row.tech} className="border-b border-[var(--brand-surface-2)]] transition-colors hover:bg-[var(--brand-surface-3)]/[0.01]">
+                        <td className="px-3 py-1.5 text-[10px] text-[var(--brand-text-mid)]]">{row.tech}</td>
                         {allProfiles.map((p) => (
                           <td key={p.domain} className="px-3 py-1.5 text-center">
                             {row[p.domain] ? (
                               <span className="text-[11px] text-emerald-400">✓</span>
                             ) : (
-                              <span className="text-[11px] text-[#333]">—</span>
+                              <span className="text-[11px] text-[var(--brand-surface-4)]]">—</span>
                             )}
                           </td>
                         ))}

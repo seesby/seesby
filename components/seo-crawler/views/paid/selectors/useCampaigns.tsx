@@ -70,7 +70,7 @@ export function useCampaigns() {
       accessorKey: 'budget', header: 'Budget', size: 80,
       cell: c => {
         const v = c.getValue() as number;
-        return <span className="text-[#aaa]">{v > 0 ? `$${fmtCompact(v)}/d` : '—'}</span>;
+        return <span className="text-[var(--brand-text-mid)]]">{v > 0 ? `$${fmtCompact(v)}/d` : '—'}</span>;
       },
     },
     { accessorKey: 'spend', header: 'Spend 30d', size: 90, cell: c => fmtCompact(c.getValue() as number) },
@@ -117,14 +117,14 @@ export function useCampaigns() {
         const v = c.getValue() as number;
         return v > 0
           ? <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-500/15 text-red-400">{v} ⚠</span>
-          : <span className="text-[#555]">0</span>;
+          : <span className="text-[var(--brand-text-faint)]]">0</span>;
       },
     },
     {
       accessorKey: 'delta7d', header: 'Δ 7d', size: 70,
       cell: c => {
         const v = c.getValue() as number;
-        if (v === 0) return <span className="text-[#555]">—</span>;
+        if (v === 0) return <span className="text-[var(--brand-text-faint)]]">—</span>;
         return (
           <span style={{ color: v > 0 ? STATUS_HEX.good : STATUS_HEX.bad }}>
             {v > 0 ? '▲' : '▼'} {Math.abs(v)}%

@@ -28,13 +28,13 @@ export function CompetitorsLosses() {
       <Card>
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Recoverable</div>
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Recoverable</div>
             <div className="mt-1 text-2xl font-bold tabular-nums text-amber-400">
-              {losses.recoverable} <span className="text-sm text-[#888]">keywords</span>
+              {losses.recoverable} <span className="text-sm text-[var(--brand-text-mid)]]">keywords</span>
             </div>
           </div>
           <div className="text-right">
-            <div className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">vs Last Period</div>
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">vs Last Period</div>
             <div className="mt-1 text-lg font-bold tabular-nums text-emerald-400">
               {losses.total < losses.totalPrev ? 'Improved' : 'Worsened'}
             </div>
@@ -44,8 +44,8 @@ export function CompetitorsLosses() {
 
       {/* Loss types */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Loss Types</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Loss Types</span>
         </div>
         <div className="px-3 py-3">
           <BarStack segments={[
@@ -59,25 +59,25 @@ export function CompetitorsLosses() {
 
       {/* Severity breakdown */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Severity</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Severity</span>
         </div>
         <div className="px-3 py-3">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1.5">
               <div className="w-2 h-2 rounded-full bg-red-500" />
-              <span className="text-[10px] text-[#888]">High</span>
-              <span className="text-[11px] font-mono tabular-nums text-[#ddd]">{losses.severity.high}</span>
+              <span className="text-[10px] text-[var(--brand-text-mid)]]">High</span>
+              <span className="text-[11px] font-mono tabular-nums text-[var(--brand-text-mid)]]">{losses.severity.high}</span>
             </div>
             <div className="flex items-center gap-1.5">
               <div className="w-2 h-2 rounded-full bg-amber-500" />
-              <span className="text-[10px] text-[#888]">Medium</span>
-              <span className="text-[11px] font-mono tabular-nums text-[#ddd]">{losses.severity.medium}</span>
+              <span className="text-[10px] text-[var(--brand-text-mid)]]">Medium</span>
+              <span className="text-[11px] font-mono tabular-nums text-[var(--brand-text-mid)]]">{losses.severity.medium}</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="w-2 h-2 rounded-full bg-[#444]" />
-              <span className="text-[10px] text-[#888]">Low</span>
-              <span className="text-[11px] font-mono tabular-nums text-[#ddd]">{losses.severity.low}</span>
+              <div className="w-2 h-2 rounded-full bg-[var(--brand-border-2)]]" />
+              <span className="text-[10px] text-[var(--brand-text-mid)]]">Low</span>
+              <span className="text-[11px] font-mono tabular-nums text-[var(--brand-text-mid)]]">{losses.severity.low}</span>
             </div>
           </div>
         </div>
@@ -85,8 +85,8 @@ export function CompetitorsLosses() {
 
       {/* Recent losses */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Recent Losses</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Recent Losses</span>
         </div>
         <div className="px-3 py-2">
           <TopList items={losses.recent.map((l: any) => ({
@@ -100,8 +100,8 @@ export function CompetitorsLosses() {
 
       {/* Recovery recommendations */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Recovery Actions</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Recovery Actions</span>
         </div>
         <div className="px-3 py-2">
           <TopList items={losses.recommendations.map((r: any) => ({
@@ -115,8 +115,8 @@ export function CompetitorsLosses() {
 
       {/* Loss by competitor */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Losses by Competitor</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Losses by Competitor</span>
         </div>
         <div className="px-3 py-2">
           <TopList items={losses.byCompetitor.map((c: any) => ({
@@ -131,8 +131,8 @@ export function CompetitorsLosses() {
       {/* Trend */}
       <Trendable hasPrior={s.hasPrior}>
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[#1f1f1f]">
-            <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Loss Trend</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+            <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Loss Trend</span>
           </div>
           <div className="px-3 py-3">
             <div className="w-full"><Sparkline values={losses.series} tone="bad" /></div>

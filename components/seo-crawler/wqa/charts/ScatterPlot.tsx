@@ -49,7 +49,7 @@ export default function ScatterPlot({
             x: pos,
             y: getExpectedCtr(pos) * 100,
             size: 0,
-            color: '#444',
+            color: 'border-[var(--brand-border-2)]',
             label: `Expected @${pos}`,
           }))
         : [],
@@ -60,28 +60,28 @@ export default function ScatterPlot({
     <div style={{ width: '100%', height }}>
       <ResponsiveContainer width="100%" height="100%">
         <ScatterChart margin={{ left: -8, right: 8, top: 8, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1a1a1a" />
+          <CartesianGrid strokeDasharray="3 3" stroke="bg-[var(--brand-surface-3)]" />
           <XAxis
             type="number"
             dataKey="x"
             name={xLabel}
             domain={[1, 100]}
-            tick={{ fill: '#666', fontSize: 9 }}
-            axisLine={{ stroke: '#222' }}
+            tick={{ fill: 'text-[var(--brand-text-faint)]', fontSize: 9 }}
+            axisLine={{ stroke: 'border-[var(--brand-border-2)]' }}
             tickLine={false}
           />
           <YAxis
             type="number"
             dataKey="y"
             name={yLabel}
-            tick={{ fill: '#666', fontSize: 9 }}
-            axisLine={{ stroke: '#222' }}
+            tick={{ fill: 'text-[var(--brand-text-faint)]', fontSize: 9 }}
+            axisLine={{ stroke: 'border-[var(--brand-border-2)]' }}
             tickLine={false}
           />
           <Tooltip
             contentStyle={{ 
-              backgroundColor: '#141414', 
-              border: '1px solid #222', 
+              backgroundColor: 'bg-[var(--brand-surface-2)]', 
+              border: '1px solid border-[var(--brand-border-2)]', 
               borderRadius: '8px', 
               fontSize: '11px',
               boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.4)',
@@ -106,7 +106,7 @@ export default function ScatterPlot({
             <Scatter key={color} data={points} fill={color} opacity={0.75} />
           ))}
           {curvePoints.length > 0 && (
-            <Scatter data={curvePoints} fill="#444" line={{ stroke: '#333', strokeDasharray: '4 4' }} shape={() => null} />
+            <Scatter data={curvePoints} fill="border-[var(--brand-border-2)]" line={{ stroke: 'bg-[var(--brand-surface-4)]', strokeDasharray: '4 4' }} shape={() => null} />
           )}
         </ScatterChart>
       </ResponsiveContainer>

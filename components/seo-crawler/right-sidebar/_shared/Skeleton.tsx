@@ -6,7 +6,7 @@ export function Skeleton({
   return (
     <div className={`space-y-2 ${className}`}>
       {Array.from({ length: rows }).map((_, i) => (
-        <div key={i} className="rounded-sm bg-[#0d0d0d] border border-[#1a1a1a] animate-pulse" style={{ height: h }}  />
+        <div key={i} className="rounded-sm bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] animate-pulse" style={{ height: h }}  />
       ))}
     </div>
   )

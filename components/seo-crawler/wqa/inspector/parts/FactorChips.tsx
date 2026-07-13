@@ -8,7 +8,7 @@ export default function FactorChips({ factors }: { factors?: unknown }) {
       {list.map((f, i) => (
         <span
           key={`${f}-${i}`}
-          className="px-1.5 py-0.5 rounded border border-[#262626] bg-[#0a0a0a] text-[10px] text-[#bbb] font-mono"
+          className="px-1.5 py-0.5 rounded border border-[var(--brand-border-3)]] bg-[var(--brand-surface-0)]] text-[10px] text-[var(--brand-text-mid)]] font-mono"
         >
           {f}
         </span>

@@ -40,16 +40,16 @@ export function LinksAnchors() {
         <Card title="vs last crawl">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] text-[#bbb]">Branded share</span>
+              <span className="text-[11px] text-[var(--brand-text-mid)]]">Branded share</span>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-mono text-white">{fmtPct(s.anchors.brandedShare * 100)}</span>
+                <span className="text-[11px] font-mono text-[var(--brand-text-strong)]">{fmtPct(s.anchors.brandedShare * 100)}</span>
                 <DeltaChip value={Math.round((s.anchors.brandedShare - s.anchors.brandedSharePrev) * 100)} suffix="pp" />
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-[11px] text-[#bbb]">Exact share</span>
+              <span className="text-[11px] text-[var(--brand-text-mid)]]">Exact share</span>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-mono text-white">{fmtPct(s.anchors.exactShare * 100)}</span>
+                <span className="text-[11px] font-mono text-[var(--brand-text-strong)]">{fmtPct(s.anchors.exactShare * 100)}</span>
                 <DeltaChip value={Math.round((s.anchors.exactShare - s.anchors.exactSharePrev) * 100)} suffix="pp" />
               </div>
             </div>
@@ -82,7 +82,7 @@ export function LinksAnchors() {
 
       {/* Top anchor texts */}
       <Card title="Top anchor texts" padded={false}>
-        <div className="flex flex-col border-t border-[#1f1f1f]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
           {s.anchors.top.slice(0, 8).map((a: any) => (
             <RowItem
               key={a.text}
@@ -95,7 +95,7 @@ export function LinksAnchors() {
 
       {/* Over-optimized exact match */}
       <Card title="Over-optimized exact match" padded={false}>
-        <div className="flex flex-col border-t border-[#1f1f1f]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
           {s.anchors.exactRisk.length > 0 ? (
             s.anchors.exactRisk.slice(0, 5).map((a: any) => (
               <RowItem
@@ -105,7 +105,7 @@ export function LinksAnchors() {
               />
             ))
           ) : (
-            <div className="px-2 py-3 text-[11px] text-[#666] italic">No exact-match over-optimization</div>
+            <div className="px-2 py-3 text-[11px] text-[var(--brand-text-faint)]] italic">No exact-match over-optimization</div>
           )}
         </div>
       </Card>

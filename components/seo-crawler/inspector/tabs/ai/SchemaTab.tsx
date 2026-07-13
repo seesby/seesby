@@ -4,7 +4,7 @@ import { Card, StatusBadge } from '../../shared';
 function BoolIcon({ val }: { val: boolean | undefined }) {
   if (val === true) return <StatusBadge status="pass" label="Yes" />;
   if (val === false) return <StatusBadge status="fail" label="No" />;
-  return <span className="text-[#555] text-[11px]">&mdash;</span>;
+  return <span className="text-[var(--brand-text-faint)]] text-[11px]">&mdash;</span>;
 }
 
 const SCHEMA_FOR_LLMS = [
@@ -51,9 +51,9 @@ export default function SchemaTab({ page, hasTrend }: { page: any; hasTrend?: bo
               const found = s.match.some(m => presentSet.has(m));
               return (
                 <div key={s.key} className="flex items-center justify-between text-[11px]">
-                  <span className="text-[#ccc]">
+                  <span className="text-[var(--brand-text-mid)]]">
                     {s.key}
-                    {s.siteWide && found && <span className="text-[#555] ml-1">(site-wide)</span>}
+                    {s.siteWide && found && <span className="text-[var(--brand-text-faint)]] ml-1">(site-wide)</span>}
                   </span>
                   <BoolIcon val={found} />
                 </div>
@@ -83,7 +83,7 @@ export default function SchemaTab({ page, hasTrend }: { page: any; hasTrend?: bo
               return (
                 <div key={r.key} className="flex items-center gap-1.5 text-[11px]">
                   <BoolIcon val={found} />
-                  <span className="text-[#ccc]">{r.key}</span>
+                  <span className="text-[var(--brand-text-mid)]]">{r.key}</span>
                 </div>
               );
             })}
@@ -95,29 +95,29 @@ export default function SchemaTab({ page, hasTrend }: { page: any; hasTrend?: bo
           <div className="space-y-1.5">
             {primaryEntity && (
               <div className="flex items-center justify-between text-[11px]">
-                <span className="text-[#666]">Primary entity</span>
-                <span className="text-white">
+                <span className="text-[var(--brand-text-faint)]]">Primary entity</span>
+                <span className="text-[var(--brand-text-strong)]">
                   {typeof primaryEntity === 'string' ? primaryEntity : primaryEntity.name || '\u2014'}
                   {entityConfidence != null && (
-                    <span className="text-[#555] ml-1">({(entityConfidence * 100).toFixed(0)}% conf)</span>
+                    <span className="text-[var(--brand-text-faint)]] ml-1">({(entityConfidence * 100).toFixed(0)}% conf)</span>
                   )}
                 </span>
               </div>
             )}
             <div className="flex items-center justify-between text-[11px]">
-              <span className="text-[#666]">Wikidata QID</span>
+              <span className="text-[var(--brand-text-faint)]]">Wikidata QID</span>
               {wikidataId ? (
                 <span className="text-[#22c55e]">{wikidataId} &#10003;</span>
               ) : (
-                <span className="text-[#555]">&mdash;</span>
+                <span className="text-[var(--brand-text-faint)]]">&mdash;</span>
               )}
             </div>
             <div className="flex items-center justify-between text-[11px]">
-              <span className="text-[#666]">Wikipedia</span>
+              <span className="text-[var(--brand-text-faint)]]">Wikipedia</span>
               {wikipediaUrl ? (
                 <span className="text-[#22c55e]">{wikipediaUrl} &#10003;</span>
               ) : (
-                <span className="text-[#555]">&mdash;</span>
+                <span className="text-[var(--brand-text-faint)]]">&mdash;</span>
               )}
             </div>
           </div>
@@ -130,7 +130,7 @@ export default function SchemaTab({ page, hasTrend }: { page: any; hasTrend?: bo
 function SameAsRow({ entity, source, val }: { entity: string; source: string; val: boolean | string | undefined }) {
   return (
     <div className="flex items-center justify-between text-[11px]">
-      <span className="text-[#888]">
+      <span className="text-[var(--brand-text-mid)]]">
         {entity} sameAs {source}
       </span>
       {val === true || val === 'present' ? (
@@ -138,7 +138,7 @@ function SameAsRow({ entity, source, val }: { entity: string; source: string; va
       ) : val === false || val === 'missing' ? (
         <StatusBadge status="fail" label="No" />
       ) : (
-        <span className="text-[#555]">&mdash;</span>
+        <span className="text-[var(--brand-text-faint)]]">&mdash;</span>
       )}
     </div>
   );

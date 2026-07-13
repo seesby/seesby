@@ -87,8 +87,8 @@ export default function SourceTab({ page, hasTrend }: { page: any; hasTrend?: bo
         </Card>
 
         <Card title="Source page">
-          <div className="mb-2 pb-2 border-b border-[#141414]">
-            <div className="text-[9px] text-[#444] uppercase tracking-wider mb-0.5">URL</div>
+          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
+            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">URL</div>
             <TruncatedUrl url={sourceUrl} />
           </div>
           <DataRow label="Pub date" value={formatDate(sourcePubDate)} />
@@ -108,17 +108,17 @@ export default function SourceTab({ page, hasTrend }: { page: any; hasTrend?: bo
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         <Card title={`Other links from ${sourceDomain !== '—' ? sourceDomain : 'this source'}${otherLinksCount > 0 ? ` (${otherLinksCount})` : ''}`}>
           {otherLinksFromSource.length === 0 ? (
-            <div className="text-[12px] text-[#666] italic">No other links from this source found.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]] italic">No other links from this source found.</div>
           ) : (
             <div className="max-h-[200px] overflow-y-auto custom-scrollbar">
               {otherLinksFromSource.slice(0, 20).map((link: any, i: number) => {
                 const url = typeof link === 'string' ? link : link?.url || '—';
                 const anchor = typeof link === 'object' ? link?.anchor || link?.anchorText : undefined;
                 return (
-                  <div key={i} className="flex items-center gap-2 text-[11px] py-1 border-b border-[#111] last:border-b-0">
+                  <div key={i} className="flex items-center gap-2 text-[11px] py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0">
                     <TruncatedUrl url={url} />
                     {anchor && (
-                      <span className="text-[10px] text-[#555] shrink-0">"{String(anchor).slice(0, 40)}"</span>
+                      <span className="text-[10px] text-[var(--brand-text-faint)]] shrink-0">"{String(anchor).slice(0, 40)}"</span>
                     )}
                   </div>
                 );
@@ -151,11 +151,11 @@ export default function SourceTab({ page, hasTrend }: { page: any; hasTrend?: bo
         <Card title={`Disavow candidates (${disavowCandidates.length})`}>
           <div className="max-h-[200px] overflow-y-auto custom-scrollbar">
             {disavowCandidates.map((d: any, i: number) => (
-              <div key={i} className="flex items-center justify-between py-1 border-b border-[#111] last:border-b-0 text-[11px]">
+              <div key={i} className="flex items-center justify-between py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0 text-[11px]">
                 <span className="text-red-400 font-mono truncate">{d?.domain || d?.referringDomain || '—'}</span>
                 <div className="flex items-center gap-3 shrink-0">
-                  <span className="text-[#888]">{d?.reason || d?.flag || '—'}</span>
-                  <span className="text-[#666] font-mono">{formatNumber(d?.toxicScore || d?.score)}</span>
+                  <span className="text-[var(--brand-text-mid)]]">{d?.reason || d?.flag || '—'}</span>
+                  <span className="text-[var(--brand-text-faint)]] font-mono">{formatNumber(d?.toxicScore || d?.score)}</span>
                 </div>
               </div>
             ))}

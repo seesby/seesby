@@ -26,8 +26,8 @@ export default function RadarChart({ data, size = 220 }: Props) {
     <div style={{ width: '100%', height }}>
       <ResponsiveContainer width="100%" height="100%">
         <RechartsRadarChart data={data} cx="50%" cy="50%" outerRadius="68%">
-          <PolarGrid stroke="#222" />
-          <PolarAngleAxis dataKey="axis" tick={{ fill: '#888', fontSize: 10 }} />
+          <PolarGrid stroke="border-[var(--brand-border-2)]" />
+          <PolarAngleAxis dataKey="axis" tick={{ fill: 'text-[var(--brand-text-mid)]', fontSize: 10 }} />
           <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} axisLine={false} />
           <Radar
             dataKey="value"
@@ -39,8 +39,8 @@ export default function RadarChart({ data, size = 220 }: Props) {
           />
           <Tooltip
             contentStyle={{ 
-              backgroundColor: '#141414', 
-              border: '1px solid #222', 
+              backgroundColor: 'bg-[var(--brand-surface-2)]', 
+              border: '1px solid border-[var(--brand-border-2)]', 
               borderRadius: '8px', 
               fontSize: '11px',
               boxShadow: '0 8px 16px rgba(0,0,0,0.5)',

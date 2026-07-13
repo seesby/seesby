@@ -17,12 +17,12 @@ export default function CompScoreCard({ domain, score, delta, threatLevel, isOwn
         High: 'text-orange-400 bg-orange-400/10',
         Moderate: 'text-yellow-400 bg-yellow-400/10',
         Low: 'text-green-400 bg-green-400/10',
-    }[threatLevel || 'Low'] || 'text-[#666] bg-[#111]';
+    }[threatLevel || 'Low'] || 'text-[var(--brand-text-faint)]] bg-[var(--brand-surface-2)]]';
 
     return (
-        <div className={`rounded-xl border p-3 ${isOwn ? 'border-[#F59E0B]/30 bg-[#F59E0B]/5' : 'border-[#222] bg-[#0d0d0f]'}`}>
+        <div className={`rounded-xl border p-3 ${isOwn ? 'border-[#F59E0B]/30 bg-[#F59E0B]/5' : 'border-[var(--brand-border-2)]] bg-[var(--brand-surface-1)]]'}`}>
             <div className="mb-2 flex items-center justify-between gap-2">
-                <span className="max-w-[140px] truncate text-[11px] font-bold text-white">
+                <span className="max-w-[140px] truncate text-[11px] font-bold text-[var(--brand-text-strong)]">
                     {isOwn ? 'Your Site' : domain}
                 </span>
                 {threatLevel && !isOwn && (

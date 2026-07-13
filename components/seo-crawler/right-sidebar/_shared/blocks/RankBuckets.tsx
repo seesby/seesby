@@ -37,18 +37,18 @@ export function RankBucketsBlock({
 							<Row
 								key={b.label}
 								onClick={b.onClick}
-								className={`flex items-center gap-2 w-full text-left group ${b.onClick ? 'hover:bg-white/5 -mx-1 px-1 rounded' : ''}`}
+								className={`flex items-center gap-2 w-full text-left group ${b.onClick ? 'hover:bg-[var(--brand-surface-3)] -mx-1 px-1 rounded' : ''}`}
 							>
-								<span className="w-12 text-[10px] text-[#888]">{b.label}</span>
-								<div className="relative h-2.5 flex-1 rounded bg-[#141414] overflow-hidden">
+								<span className="w-12 text-[10px] text-[var(--brand-text-mid)]]">{b.label}</span>
+								<div className="relative h-2.5 flex-1 rounded bg-[var(--brand-surface-2)]] overflow-hidden">
 									<div className={`h-full ${toneToBg[b.tone || 'info']}`} style={{ width: `${width}%` }} />
 								</div>
-								<span className="w-10 text-right text-[10px] font-mono text-[#bbb]">{b.value.toLocaleString()}</span>
+								<span className="w-10 text-right text-[10px] font-mono text-[var(--brand-text-mid)]]">{b.value.toLocaleString()}</span>
 							</Row>
 						)
 					})}
 				</div>
-				{hint ? <div className="mt-2 text-[10px] text-[#666]">{hint}</div> : null}
+				{hint ? <div className="mt-2 text-[10px] text-[var(--brand-text-faint)]]">{hint}</div> : null}
 			</Section>
 		</Card>
 	)

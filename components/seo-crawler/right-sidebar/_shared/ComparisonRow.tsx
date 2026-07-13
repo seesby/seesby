@@ -15,17 +15,17 @@ export function ComparisonRow({
 }) {
   const cells = [a, b, c].filter(Boolean) as Array<{ v: number; tag: string }>
   return (
-    <div className="flex items-center justify-between py-1 border-b border-[#1a1a1a] last:border-0">
+    <div className="flex items-center justify-between py-1 border-b border-[var(--brand-surface-3)]] last:border-0">
       <div className="flex items-center gap-1.5">
-        <span className="text-[11px] text-[#888]">{label}</span>
+        <span className="text-[11px] text-[var(--brand-text-mid)]]">{label}</span>
         <SourceChip tier={source} />
         <FreshnessChip value={freshness} />
       </div>
       <div className="flex gap-3">
         {cells.map((cell, i) => (
           <div key={i} className="text-right">
-            <div className="text-[11px] font-mono text-white tabular-nums">{format(cell.v)}</div>
-            <div className="text-[9px] uppercase text-[#666]">{cell.tag}</div>
+            <div className="text-[11px] font-mono text-[var(--brand-text-strong)] tabular-nums">{format(cell.v)}</div>
+            <div className="text-[9px] uppercase text-[var(--brand-text-faint)]]">{cell.tag}</div>
           </div>
         ))}
       </div>

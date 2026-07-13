@@ -37,8 +37,8 @@ export default function LinkOverlapTab({ page }: { page: any; hasTrend?: boolean
                 const domain = typeof d === 'string' ? d : d.domain || d.referringDomain || '';
                 const dr = d.domainRating ?? d.dr ?? d.authority ?? d.da ?? null;
                 return (
-                  <div key={i} className="flex items-center justify-between py-1.5 border-b border-[#111] last:border-b-0">
-                    <span className="text-[11px] text-[#ccc] font-mono truncate">{domain}</span>
+                  <div key={i} className="flex items-center justify-between py-1.5 border-b border-[var(--brand-surface-2)]] last:border-b-0">
+                    <span className="text-[11px] text-[var(--brand-text-mid)]] font-mono truncate">{domain}</span>
                     {dr !== null && (
                       <StatusBadge status={dr >= 80 ? 'pass' : dr >= 60 ? 'warn' : 'info'} label={`DR ${dr}`} />
                     )}
@@ -47,7 +47,7 @@ export default function LinkOverlapTab({ page }: { page: any; hasTrend?: boolean
               })}
             </div>
           ) : (
-            <div className="text-[12px] text-[#666] py-3">No shared referring domains.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]] py-3">No shared referring domains.</div>
           )}
         </Card>
 
@@ -59,8 +59,8 @@ export default function LinkOverlapTab({ page }: { page: any; hasTrend?: boolean
                 const domain = typeof d === 'string' ? d : d.domain || d.name || '';
                 const dr = d.domainRating ?? d.dr ?? d.authority ?? d.da ?? null;
                 return (
-                  <div key={i} className="flex items-center justify-between py-1.5 border-b border-[#111] last:border-b-0">
-                    <span className="text-[11px] text-[#ccc] font-mono truncate">{domain}</span>
+                  <div key={i} className="flex items-center justify-between py-1.5 border-b border-[var(--brand-surface-2)]] last:border-b-0">
+                    <span className="text-[11px] text-[var(--brand-text-mid)]] font-mono truncate">{domain}</span>
                     {dr !== null && (
                       <StatusBadge status={dr >= 80 ? 'pass' : dr >= 60 ? 'warn' : 'info'} label={`DR ${dr}`} />
                     )}
@@ -68,11 +68,11 @@ export default function LinkOverlapTab({ page }: { page: any; hasTrend?: boolean
                 );
               })}
               {theirExclusive.length > 8 && (
-                <div className="text-[10px] text-[#555] py-1.5">({theirExclusive.length - 8} more)</div>
+                <div className="text-[10px] text-[var(--brand-text-faint)]] py-1.5">({theirExclusive.length - 8} more)</div>
               )}
             </div>
           ) : (
-            <div className="text-[12px] text-[#666] py-3">No unique referrers found.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]] py-3">No unique referrers found.</div>
           )}
         </Card>
       </div>
@@ -87,8 +87,8 @@ export default function LinkOverlapTab({ page }: { page: any; hasTrend?: boolean
                 const domain = typeof d === 'string' ? d : d.domain || d.name || '';
                 const dr = d.domainRating ?? d.dr ?? d.authority ?? d.da ?? null;
                 return (
-                  <div key={i} className="flex items-center justify-between py-1.5 border-b border-[#111] last:border-b-0">
-                    <span className="text-[11px] text-[#ccc] font-mono truncate">{domain}</span>
+                  <div key={i} className="flex items-center justify-between py-1.5 border-b border-[var(--brand-surface-2)]] last:border-b-0">
+                    <span className="text-[11px] text-[var(--brand-text-mid)]] font-mono truncate">{domain}</span>
                     {dr !== null && (
                       <StatusBadge status={dr >= 80 ? 'pass' : dr >= 60 ? 'warn' : 'info'} label={`DR ${dr}`} />
                     )}
@@ -97,7 +97,7 @@ export default function LinkOverlapTab({ page }: { page: any; hasTrend?: boolean
               })}
             </div>
           ) : (
-            <div className="text-[12px] text-[#666] py-3">No unique referrers found.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]] py-3">No unique referrers found.</div>
           )}
         </Card>
 
@@ -106,20 +106,20 @@ export default function LinkOverlapTab({ page }: { page: any; hasTrend?: boolean
           <div className="space-y-2">
             <div className="flex items-center gap-4">
               <div className="flex-1">
-                <div className="text-[9px] text-[#444] uppercase tracking-wider mb-1">Us</div>
-                <div className="text-[12px] text-[#ccc]">
-                  brand <span className="text-white font-medium">{ourBrandPct}%</span>
+                <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-1">Us</div>
+                <div className="text-[12px] text-[var(--brand-text-mid)]]">
+                  brand <span className="text-[var(--brand-text-strong)] font-medium">{ourBrandPct}%</span>
                 </div>
               </div>
               <div className="flex-1">
-                <div className="text-[9px] text-[#444] uppercase tracking-wider mb-1">Competitor</div>
-                <div className="text-[12px] text-[#ccc]">
-                  brand <span className="text-white font-medium">{theirBrandPct}%</span>
+                <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-1">Competitor</div>
+                <div className="text-[12px] text-[var(--brand-text-mid)]]">
+                  brand <span className="text-[var(--brand-text-strong)] font-medium">{theirBrandPct}%</span>
                 </div>
               </div>
             </div>
             {anchorNote && (
-              <div className="text-[10px] text-[#666] leading-snug">{anchorNote}</div>
+              <div className="text-[10px] text-[var(--brand-text-faint)]] leading-snug">{anchorNote}</div>
             )}
           </div>
         </Card>

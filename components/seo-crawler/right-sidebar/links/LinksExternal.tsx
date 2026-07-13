@@ -68,7 +68,7 @@ export function LinksExternal() {
 
       {/* Top referring domains */}
       <Card title="Top referring domains" padded={false}>
-        <div className="flex flex-col border-t border-[#1f1f1f]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
           {s.external.topRefDomains.slice(0, 6).map((r: any) => (
             <RowItem
               key={r.domain}
@@ -82,13 +82,13 @@ export function LinksExternal() {
       {/* Recently lost */}
       {s.hasTrend && s.external.recentlyLost.length > 0 && (
         <Card title="Recently lost" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.external.recentlyLost.slice(0, 4).map((l: any) => (
               <RowItem
                 key={l.domain}
                 title={l.domain}
                 meta={l.targetUrl}
-                badge={<span className="text-[10px] text-[#666]">{l.relTime}</span>}
+                badge={<span className="text-[10px] text-[var(--brand-text-faint)]]">{l.relTime}</span>}
               />
             ))}
           </div>
@@ -116,10 +116,10 @@ export function LinksExternal() {
       <Card>
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-[10px] uppercase tracking-wide text-[#666]">vs competitor avg</div>
+            <div className="text-[10px] uppercase tracking-wide text-[var(--brand-text-faint)]]">vs competitor avg</div>
             <div className="mt-1 flex items-baseline gap-1.5">
-              <span className="text-lg font-bold font-mono text-white">{compactNum(s.refDomains)}</span>
-              <span className="text-[11px] text-[#666]">/ {compactNum(s.bench.refDomains)}</span>
+              <span className="text-lg font-bold font-mono text-[var(--brand-text-strong)]">{compactNum(s.refDomains)}</span>
+              <span className="text-[11px] text-[var(--brand-text-faint)]]">/ {compactNum(s.bench.refDomains)}</span>
             </div>
           </div>
           <div className={`text-[11px] font-mono px-2 py-1 rounded ${benchPct >= 100 ? 'bg-[#22c55e]/10 text-[#22c55e]' : 'bg-[#f59e0b]/10 text-[#f59e0b]'}`}>

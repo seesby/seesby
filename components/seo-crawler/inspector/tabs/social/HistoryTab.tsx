@@ -9,7 +9,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
   if (!hasTrend) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
-        <div className="text-[13px] text-[#666] max-w-[280px]">
+        <div className="text-[13px] text-[var(--brand-text-faint)]] max-w-[280px]">
           Trend data available after 2+ crawls. Run another crawl to see historical trends.
         </div>
       </div>
@@ -52,12 +52,12 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
             <Card key={i} title={m.label}>
               <div className="grid grid-cols-2 gap-2 mb-2">
                 <div className="text-center">
-                  <div className="text-[10px] text-[#555] uppercase tracking-widest">Current</div>
-                  <div className="text-[12px] font-bold text-white">{m.format(m.current)}</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest">Current</div>
+                  <div className="text-[12px] font-bold text-[var(--brand-text-strong)]">{m.format(m.current)}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-[10px] text-[#555] uppercase tracking-widest">Previous</div>
-                  <div className="text-[12px] font-bold text-[#888]">{m.format(m.prev)}</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest">Previous</div>
+                  <div className="text-[12px] font-bold text-[var(--brand-text-mid)]]">{m.format(m.prev)}</div>
                 </div>
               </div>
               <div className="text-center mb-2">
@@ -66,7 +66,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
                 </span>
               </div>
               {m.trend.length > 0 && (
-                <div className="bg-[#0a0a0a] border border-[#222] rounded p-2">
+                <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-2">
                   <Sparkline values={m.trend} tone={isPositive ? 'good' : 'bad'} />
                 </div>
               )}
@@ -80,40 +80,40 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
         <div className="space-y-4">
           {mentionTrend.length > 0 && (
             <div>
-              <div className="text-[10px] text-[#555] uppercase tracking-widest mb-1">Mentions</div>
-              <div className="bg-[#0a0a0a] border border-[#222] rounded p-2">
+              <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest mb-1">Mentions</div>
+              <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-2">
                 <Sparkline values={mentionTrend} tone="info" />
               </div>
             </div>
           )}
           {engagementTrend.length > 0 && (
             <div>
-              <div className="text-[10px] text-[#555] uppercase tracking-widest mb-1">Engagement</div>
-              <div className="bg-[#0a0a0a] border border-[#222] rounded p-2">
+              <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest mb-1">Engagement</div>
+              <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-2">
                 <Sparkline values={engagementTrend} tone="good" />
               </div>
             </div>
           )}
           {socialTrafficTrend.length > 0 && (
             <div>
-              <div className="text-[10px] text-[#555] uppercase tracking-widest mb-1">Social Traffic</div>
-              <div className="bg-[#0a0a0a] border border-[#222] rounded p-2">
+              <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest mb-1">Social Traffic</div>
+              <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-2">
                 <Sparkline values={socialTrafficTrend} tone="info" />
               </div>
             </div>
           )}
           {followerTrend.length > 0 && (
             <div>
-              <div className="text-[10px] text-[#555] uppercase tracking-widest mb-1">Followers</div>
-              <div className="bg-[#0a0a0a] border border-[#222] rounded p-2">
+              <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest mb-1">Followers</div>
+              <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-2">
                 <Sparkline values={followerTrend} tone="info" />
               </div>
             </div>
           )}
           {sentimentTrend.length > 0 && (
             <div>
-              <div className="text-[10px] text-[#555] uppercase tracking-widest mb-1">Sentiment</div>
-              <div className="bg-[#0a0a0a] border border-[#222] rounded p-2">
+              <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest mb-1">Sentiment</div>
+              <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-2">
                 <Sparkline values={sentimentTrend} tone="good" />
               </div>
             </div>

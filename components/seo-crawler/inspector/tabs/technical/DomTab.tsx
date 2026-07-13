@@ -67,10 +67,10 @@ export default function DomTab({ page }: { page: any }) {
         <Card title="Render diff">
           <div className="mb-3">
             <div className="flex items-center justify-between text-[11px] mb-1.5">
-              <span className="text-[#666]">Text diff</span>
+              <span className="text-[var(--brand-text-faint)]]">Text diff</span>
               <span className={`font-bold ${textDiffPct > 10 ? 'text-[#f59e0b]' : 'text-[#22c55e]'}`}>{textDiffPct.toFixed(1)}%</span>
             </div>
-            <div className="h-2 bg-[#1a1a1a] rounded-full overflow-hidden">
+            <div className="h-2 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
               <div
                 className="h-full rounded-full transition-all duration-500"
                 style={{ width: `${Math.min(100, textDiffPct)}%`, background: textDiffPct > 10 ? '#f59e0b' : '#22c55e' }}
@@ -87,19 +87,19 @@ export default function DomTab({ page }: { page: any }) {
       {/* Third-party scripts */}
       {thirdPartyScripts.length > 0 && (
         <Card title={`Third-party scripts (${thirdPartyCount})`}>
-          <div className="bg-[#060606] border border-[#1a1a1a] rounded-lg overflow-hidden max-h-[180px] overflow-y-auto custom-scrollbar">
+          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-lg overflow-hidden max-h-[180px] overflow-y-auto custom-scrollbar">
             <table className="w-full text-[11px]">
               <thead>
-                <tr className="border-b border-[#1a1a1a]">
-                  <th className="px-3 py-2 text-left text-[#444] uppercase tracking-widest text-[9px] font-bold">Script</th>
-                  <th className="px-3 py-2 text-left text-[#444] uppercase tracking-widest text-[9px] font-bold">Type</th>
+                <tr className="border-b border-[var(--brand-surface-3)]]">
+                  <th className="px-3 py-2 text-left text-[var(--brand-border-2)]] uppercase tracking-widest text-[9px] font-bold">Script</th>
+                  <th className="px-3 py-2 text-left text-[var(--brand-border-2)]] uppercase tracking-widest text-[9px] font-bold">Type</th>
                 </tr>
               </thead>
               <tbody>
                 {thirdPartyScripts.map((s: any, i: number) => (
-                  <tr key={i} className={`border-b border-[#111] ${i % 2 === 0 ? '' : 'bg-[#0a0a0a]'} hover:bg-[#141414]`}>
-                    <td className="px-3 py-1.5 text-[#ccc] font-mono break-all">{typeof s === 'string' ? s : s?.url || s?.name || '—'}</td>
-                    <td className="px-3 py-1.5 text-[#888]">{typeof s === 'object' ? (s?.category || s?.type || '—') : '—'}</td>
+                  <tr key={i} className={`border-b border-[var(--brand-surface-2)]] ${i % 2 === 0 ? '' : 'bg-[var(--brand-surface-0)]]'} hover:bg-[var(--brand-surface-2)]]`}>
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]] font-mono break-all">{typeof s === 'string' ? s : s?.url || s?.name || '—'}</td>
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{typeof s === 'object' ? (s?.category || s?.type || '—') : '—'}</td>
                   </tr>
                 ))}
               </tbody>

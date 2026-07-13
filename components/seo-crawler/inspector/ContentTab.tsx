@@ -46,11 +46,11 @@ export default function ContentTab({ page }: { page: any }) {
             <div className="mt-6">
                 <SectionHeader title="Extracted Content Preview" />
                 {page?.textContent ? (
-                    <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 text-[12px] text-[#ccc] whitespace-pre-wrap max-h-[260px] overflow-y-auto custom-scrollbar">
+                    <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3 text-[12px] text-[var(--brand-text-mid)]] whitespace-pre-wrap max-h-[260px] overflow-y-auto custom-scrollbar">
                         {String(page.textContent).slice(0, 1200)}
                     </div>
                 ) : (
-                    <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 text-[12px] text-[#666]">
+                    <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3 text-[12px] text-[var(--brand-text-faint)]]">
                         No extracted text content available for this page.
                     </div>
                 )}

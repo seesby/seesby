@@ -93,7 +93,7 @@ export function UxActions() {
           segments={priorityRows.map(r => ({
             label: r.label,
             value: r.value,
-            color: r.tone === 'bad' ? '#ef4444' : r.tone === 'warn' ? '#f59e0b' : r.tone === 'good' ? '#60a5fa' : '#666',
+            color: r.tone === 'bad' ? '#ef4444' : r.tone === 'warn' ? '#f59e0b' : r.tone === 'good' ? '#60a5fa' : 'text-[var(--brand-text-faint)]',
           }))}
         />
       </Card>
@@ -103,7 +103,7 @@ export function UxActions() {
         {typeRows.length > 0 ? (
           <Distribution rows={typeRows} />
         ) : (
-          <div className="text-[11px] text-[#666]">No action types recorded.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]]">No action types recorded.</div>
         )}
       </Card>
 
@@ -118,14 +118,14 @@ export function UxActions() {
             }))}
           />
         ) : (
-          <div className="text-[11px] text-[#666]">No reason data available.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]]">No reason data available.</div>
         )}
       </Card>
 
       {/* Pages with most actions */}
       <Card title="Most actions">
         {pagesWithActions.length > 0 ? (
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {pagesWithActions.slice(0, 6).map((p: any, i: number) => (
               <RowItem
                 key={i}
@@ -137,7 +137,7 @@ export function UxActions() {
                       ? 'text-[#ef4444]'
                       : p.actionPriority === 'medium'
                         ? 'text-[#f59e0b]'
-                        : 'text-[#888]'
+                        : 'text-[var(--brand-text-mid)]]'
                   }`}>
                     {p.actions?.length || 0}
                   </span>
@@ -147,7 +147,7 @@ export function UxActions() {
             ))}
           </div>
         ) : (
-          <div className="text-[11px] text-[#666]">No pages with actions.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]]">No pages with actions.</div>
         )}
       </Card>
 

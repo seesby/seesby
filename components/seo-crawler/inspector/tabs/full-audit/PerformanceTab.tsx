@@ -9,9 +9,9 @@ function CwvGauge({ label, value, unit, good, warn }: {
 }) {
   if (value === null || !Number.isFinite(value)) {
     return (
-      <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-        <div className="text-[9px] text-[#444] uppercase tracking-widest">{label}</div>
-        <div className="text-[20px] font-bold mt-1 text-[#333]">\u2014</div>
+      <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+        <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest">{label}</div>
+        <div className="text-[20px] font-bold mt-1 text-[var(--brand-surface-4)]]">\u2014</div>
       </div>
     );
   }
@@ -20,13 +20,13 @@ function CwvGauge({ label, value, unit, good, warn }: {
   const colorBar = tone === 'good' ? '#22c55e' : tone === 'mid' ? '#f59e0b' : '#ef4444';
   const pct = Math.min(100, Math.round((value / (warn * 1.2)) * 100));
   return (
-    <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-      <div className="text-[9px] text-[#444] uppercase tracking-widest">{label}</div>
+    <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+      <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest">{label}</div>
       <div className={`text-[20px] font-bold mt-1 ${colorText}`}>{value.toFixed(unit === '' ? 3 : 0)}{unit}</div>
-      <div className="mt-2 h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
+      <div className="mt-2 h-1.5 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
         <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, background: colorBar }} />
       </div>
-      <div className="flex justify-between text-[8px] text-[#333] mt-1">
+      <div className="flex justify-between text-[8px] text-[var(--brand-surface-4)]] mt-1">
         <span>\u2264 {good}{unit}</span>
         <span>&gt; {warn}{unit}</span>
       </div>
@@ -103,11 +103,11 @@ export default function PerformanceTab({ page }: { page: any; hasTrend?: boolean
       <Card title="Page weight">
         <div className="mb-3">
           <div className="flex items-center justify-between text-[11px] mb-1.5">
-            <span className="text-[#666]">Total</span>
-            <span className="text-white font-bold">{formatBytes(totalSize)}</span>
+            <span className="text-[var(--brand-text-faint)]]">Total</span>
+            <span className="text-[var(--brand-text-strong)] font-bold">{formatBytes(totalSize)}</span>
           </div>
           {totalSize > 0 && (
-            <div className="h-2 bg-[#1a1a1a] rounded-full overflow-hidden flex">
+            <div className="h-2 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden flex">
               {sizeBreakdown.map(s => (
                 <div
                   key={s.label}
@@ -121,12 +121,12 @@ export default function PerformanceTab({ page }: { page: any; hasTrend?: boolean
         </div>
         <div className="space-y-0">
           {sizeBreakdown.map(s => (
-            <div key={s.label} className="flex items-center justify-between text-[11px] py-1 border-b border-[#111] last:border-b-0">
+            <div key={s.label} className="flex items-center justify-between text-[11px] py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0">
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full shrink-0" style={{ background: s.color }} />
-                <span className="text-[#888]">{s.label}</span>
+                <span className="text-[var(--brand-text-mid)]]">{s.label}</span>
               </span>
-              <span className="text-[#ccc] font-mono">{formatBytes(s.size)}</span>
+              <span className="text-[var(--brand-text-mid)]] font-mono">{formatBytes(s.size)}</span>
             </div>
           ))}
         </div>

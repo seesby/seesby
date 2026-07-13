@@ -53,19 +53,19 @@ export default function SocialPostsView() {
     }));
 
     const columns: ColumnDef<typeof rows[number]>[] = [
-      { accessorKey: 'text', header: 'Post', size: 280, cell: c => <span className="text-[#ddd] text-[11px] line-clamp-1">{String(c.getValue()).slice(0, 60)}</span> },
-      { accessorKey: 'network', header: 'Platform', size: 90, cell: c => <span className="text-[10px] uppercase text-[#888]">{String(c.getValue())}</span> },
-      { accessorKey: 'publishedAt', header: 'Published', size: 100, cell: c => <span className="text-[11px] text-[#888]">{fmtDate(c.getValue() as string)}</span> },
-      { accessorKey: 'type', header: 'Type', size: 80, cell: c => <span className="text-[10px] text-[#888]">{String(c.getValue())}</span> },
-      { accessorKey: 'impressions', header: 'Impressions', size: 80, cell: c => <span className="font-mono text-white text-[11px]">{fmtCompact(c.getValue() as number)}</span> },
-      { accessorKey: 'engagement', header: 'Engagement', size: 80, cell: c => <span className="font-mono text-white text-[11px]">{fmtCompact(c.getValue() as number)}</span> },
-      { accessorKey: 'engRate', header: 'Eng. Rate', size: 70, cell: c => { const v = c.getValue() as number; return <span className="font-mono text-[11px]" style={{ color: v > 0.05 ? STATUS.good : v > 0.02 ? '#888' : '#666' }}>{fmtPct(v)}</span>; } },
-      { accessorKey: 'shares', header: 'Shares', size: 60, cell: c => <span className="font-mono text-[#888] text-[11px]">{fmtCompact(c.getValue() as number)}</span> },
-      { accessorKey: 'saves', header: 'Saves', size: 60, cell: c => <span className="font-mono text-[#888] text-[11px]">{fmtCompact(c.getValue() as number)}</span> },
-      { accessorKey: 'ctr', header: 'CTR', size: 55, cell: c => <span className="font-mono text-[#888] text-[11px]">{fmtPct(c.getValue() as number)}</span> },
-      { accessorKey: 'sentiment', header: 'Sentiment', size: 70, cell: c => { const v = String(c.getValue()).toLowerCase(); const color = v === 'positive' ? STATUS.good : v === 'negative' ? STATUS.bad : '#888'; return <span style={{ color }} className="text-[10px]">{v ? v[0].toUpperCase() : '—'}</span>; } },
-      { accessorKey: 'score', header: 'Score', size: 55, cell: c => { const v = c.getValue() as number; if (!v) return <span className="text-[#666]">—</span>; return <span className="font-mono text-[11px]" style={{ color: v >= 90 ? STATUS.good : v >= 70 ? '#888' : STATUS.bad }}>✓{v}</span>; } },
-      { accessorKey: 'status', header: 'Status', size: 70, cell: c => { const v = String(c.getValue()); const color = v === 'live' ? STATUS.good : v === 'sched' ? '#3b82f6' : v === 'draft' ? '#888' : v === 'pending' ? '#f59e0b' : v === 'failed' ? STATUS.bad : '#888'; return <span className="text-[10px]" style={{ color }}>{v}</span>; } },
+      { accessorKey: 'text', header: 'Post', size: 280, cell: c => <span className="text-[var(--brand-text-mid)]] text-[11px] line-clamp-1">{String(c.getValue()).slice(0, 60)}</span> },
+      { accessorKey: 'network', header: 'Platform', size: 90, cell: c => <span className="text-[10px] uppercase text-[var(--brand-text-mid)]]">{String(c.getValue())}</span> },
+      { accessorKey: 'publishedAt', header: 'Published', size: 100, cell: c => <span className="text-[11px] text-[var(--brand-text-mid)]]">{fmtDate(c.getValue() as string)}</span> },
+      { accessorKey: 'type', header: 'Type', size: 80, cell: c => <span className="text-[10px] text-[var(--brand-text-mid)]]">{String(c.getValue())}</span> },
+      { accessorKey: 'impressions', header: 'Impressions', size: 80, cell: c => <span className="font-mono text-[var(--brand-text-strong)] text-[11px]">{fmtCompact(c.getValue() as number)}</span> },
+      { accessorKey: 'engagement', header: 'Engagement', size: 80, cell: c => <span className="font-mono text-[var(--brand-text-strong)] text-[11px]">{fmtCompact(c.getValue() as number)}</span> },
+      { accessorKey: 'engRate', header: 'Eng. Rate', size: 70, cell: c => { const v = c.getValue() as number; return <span className="font-mono text-[11px]" style={{ color: v > 0.05 ? STATUS.good : v > 0.02 ? 'text-[var(--brand-text-mid)]' : 'text-[var(--brand-text-faint)]' }}>{fmtPct(v)}</span>; } },
+      { accessorKey: 'shares', header: 'Shares', size: 60, cell: c => <span className="font-mono text-[var(--brand-text-mid)]] text-[11px]">{fmtCompact(c.getValue() as number)}</span> },
+      { accessorKey: 'saves', header: 'Saves', size: 60, cell: c => <span className="font-mono text-[var(--brand-text-mid)]] text-[11px]">{fmtCompact(c.getValue() as number)}</span> },
+      { accessorKey: 'ctr', header: 'CTR', size: 55, cell: c => <span className="font-mono text-[var(--brand-text-mid)]] text-[11px]">{fmtPct(c.getValue() as number)}</span> },
+      { accessorKey: 'sentiment', header: 'Sentiment', size: 70, cell: c => { const v = String(c.getValue()).toLowerCase(); const color = v === 'positive' ? STATUS.good : v === 'negative' ? STATUS.bad : 'text-[var(--brand-text-mid)]'; return <span style={{ color }} className="text-[10px]">{v ? v[0].toUpperCase() : '—'}</span>; } },
+      { accessorKey: 'score', header: 'Score', size: 55, cell: c => { const v = c.getValue() as number; if (!v) return <span className="text-[var(--brand-text-faint)]]">—</span>; return <span className="font-mono text-[11px]" style={{ color: v >= 90 ? STATUS.good : v >= 70 ? 'text-[var(--brand-text-mid)]' : STATUS.bad }}>✓{v}</span>; } },
+      { accessorKey: 'status', header: 'Status', size: 70, cell: c => { const v = String(c.getValue()); const color = v === 'live' ? STATUS.good : v === 'sched' ? '#3b82f6' : v === 'draft' ? 'text-[var(--brand-text-mid)]' : v === 'pending' ? '#f59e0b' : v === 'failed' ? STATUS.bad : 'text-[var(--brand-text-mid)]'; return <span className="text-[10px]" style={{ color }}>{v}</span>; } },
     ];
     return { rows, columns };
   }, [filteredList]);
@@ -101,28 +101,28 @@ export default function SocialPostsView() {
   return (
     <div className="flex-1 flex flex-col min-h-0">
       {/* Toolbar */}
-      <div className="shrink-0 px-3 py-2 flex items-center gap-3 border-b border-[#1a1a1a]">
-        <span className="text-[10px] uppercase text-[#666]">view:</span>
+      <div className="shrink-0 px-3 py-2 flex items-center gap-3 border-b border-[var(--brand-surface-3)]]">
+        <span className="text-[10px] uppercase text-[var(--brand-text-faint)]]">view:</span>
         <div className="flex items-center gap-1">
-          <button onClick={() => setViewMode('table')} className={`px-2 py-1 text-[10px] rounded ${viewMode === 'table' ? 'bg-[#171717] text-white' : 'text-[#666] hover:text-[#888]'}`}>☰ Table</button>
-          <button onClick={() => setViewMode('calendar')} className={`px-2 py-1 text-[10px] rounded ${viewMode === 'calendar' ? 'bg-[#171717] text-white' : 'text-[#666] hover:text-[#888]'}`}>◉ Calendar</button>
+          <button onClick={() => setViewMode('table')} className={`px-2 py-1 text-[10px] rounded ${viewMode === 'table' ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]'}`}>☰ Table</button>
+          <button onClick={() => setViewMode('calendar')} className={`px-2 py-1 text-[10px] rounded ${viewMode === 'calendar' ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]'}`}>◉ Calendar</button>
         </div>
         {viewMode === 'calendar' && (
           <>
-            <span className="text-[#333]">|</span>
+            <span className="text-[var(--brand-surface-4)]]">|</span>
             <div className="flex items-center gap-1">
               {(['month', 'week', 'day'] as CalendarView[]).map(v => (
-                <button key={v} onClick={() => setCalendarView(v)} className={`px-2 py-1 text-[10px] rounded capitalize ${calendarView === v ? 'bg-[#171717] text-white' : 'text-[#666] hover:text-[#888]'}`}>{v}</button>
+                <button key={v} onClick={() => setCalendarView(v)} className={`px-2 py-1 text-[10px] rounded capitalize ${calendarView === v ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]'}`}>{v}</button>
               ))}
             </div>
-            <span className="text-[#333]">|</span>
-            <button onClick={() => navigate(-1)} className="w-6 h-6 flex items-center justify-center text-[#888] hover:text-white rounded hover:bg-[#171717]">‹</button>
-            <button onClick={goToToday} className="px-2 py-1 text-[10px] text-[#888] hover:text-white rounded hover:bg-[#171717]">Today</button>
-            <button onClick={() => navigate(1)} className="w-6 h-6 flex items-center justify-center text-[#888] hover:text-white rounded hover:bg-[#171717]">›</button>
-            <span className="text-[12px] text-white font-medium">{headerLabel}</span>
+            <span className="text-[var(--brand-surface-4)]]">|</span>
+            <button onClick={() => navigate(-1)} className="w-6 h-6 flex items-center justify-center text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] rounded hover:bg-[var(--brand-surface-3)]]">‹</button>
+            <button onClick={goToToday} className="px-2 py-1 text-[10px] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] rounded hover:bg-[var(--brand-surface-3)]]">Today</button>
+            <button onClick={() => navigate(1)} className="w-6 h-6 flex items-center justify-center text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] rounded hover:bg-[var(--brand-surface-3)]]">›</button>
+            <span className="text-[12px] text-[var(--brand-text-strong)] font-medium">{headerLabel}</span>
           </>
         )}
-        <span className="text-[#333]">|</span>
+        <span className="text-[var(--brand-surface-4)]]">|</span>
         {platformFilter && (
           <button onClick={() => setPlatformFilter(null)} className="px-2 py-1 text-[10px] rounded bg-[#F59E0B]/10 text-[#F59E0B] flex items-center gap-1">platform:{platformFilter} ×</button>
         )}
@@ -130,7 +130,7 @@ export default function SocialPostsView() {
           <button onClick={() => setTypeFilter(null)} className="px-2 py-1 text-[10px] rounded bg-[#F59E0B]/10 text-[#F59E0B] flex items-center gap-1">type:{typeFilter} ×</button>
         )}
         <div className="flex-1" />
-        <span className="text-[10px] text-[#666]">{rows.length} posts</span>
+        <span className="text-[10px] text-[var(--brand-text-faint)]]">{rows.length} posts</span>
       </div>
 
       {/* Content */}
@@ -148,24 +148,24 @@ export default function SocialPostsView() {
 
       {/* Selected post detail */}
       {selectedPost && (
-        <div className="shrink-0 border-t border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2">
+        <div className="shrink-0 border-t border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] px-3 py-2">
           <div className="flex items-start justify-between">
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-[10px] uppercase" style={{ color: NETWORK_COLORS[selectedPost.network] ?? '#F59E0B' }}>{selectedPost.network}</span>
-                <span className="text-[10px] text-[#666]">{selectedPost.type}</span>
-                <span className="text-[10px]" style={{ color: STATUS[selectedPost.status as keyof typeof STATUS] ?? '#888' }}>{selectedPost.status}</span>
+                <span className="text-[10px] text-[var(--brand-text-faint)]]">{selectedPost.type}</span>
+                <span className="text-[10px]" style={{ color: STATUS[selectedPost.status as keyof typeof STATUS] ?? 'text-[var(--brand-text-mid)]' }}>{selectedPost.status}</span>
               </div>
-              <p className="text-[12px] text-[#ccc] line-clamp-2">{selectedPost.text}</p>
+              <p className="text-[12px] text-[var(--brand-text-mid)]] line-clamp-2">{selectedPost.text}</p>
             </div>
-            <button onClick={() => setSelectedPost(null)} className="text-[#666] hover:text-white ml-2">✕</button>
+            <button onClick={() => setSelectedPost(null)} className="text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)] ml-2">✕</button>
           </div>
           <div className="flex items-center gap-4 mt-1.5 text-[10px]">
-            <span className="text-[#888]">❤ {fmtCompact(selectedPost.likes ?? 0)}</span>
-            <span className="text-[#888]">💬 {fmtCompact(selectedPost.comments ?? 0)}</span>
-            <span className="text-[#888]">↗ {fmtCompact(selectedPost.shares ?? 0)}</span>
-            <span className="text-[#888]">📊 {fmtCompact(selectedPost.impressions ?? 0)}</span>
-            {selectedPost.score > 0 && <span className="text-[#888]">✓{selectedPost.score}</span>}
+            <span className="text-[var(--brand-text-mid)]]">❤ {fmtCompact(selectedPost.likes ?? 0)}</span>
+            <span className="text-[var(--brand-text-mid)]]">💬 {fmtCompact(selectedPost.comments ?? 0)}</span>
+            <span className="text-[var(--brand-text-mid)]]">↗ {fmtCompact(selectedPost.shares ?? 0)}</span>
+            <span className="text-[var(--brand-text-mid)]]">📊 {fmtCompact(selectedPost.impressions ?? 0)}</span>
+            {selectedPost.score > 0 && <span className="text-[var(--brand-text-mid)]]">✓{selectedPost.score}</span>}
           </div>
         </div>
       )}
@@ -210,9 +210,9 @@ function MonthView({ currentDate, posts, selectedPost, onSelectPost }: { current
   return (
     <div className="flex-1 flex flex-col min-h-0">
       {/* Day headers */}
-      <div className="grid grid-cols-7 border-b border-[#1a1a1a]">
+      <div className="grid grid-cols-7 border-b border-[var(--brand-surface-3)]]">
         {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(d => (
-          <div key={d} className="py-1.5 text-center text-[10px] uppercase text-[#666] font-medium">{d}</div>
+          <div key={d} className="py-1.5 text-center text-[10px] uppercase text-[var(--brand-text-faint)]] font-medium">{d}</div>
         ))}
       </div>
       {/* Grid */}
@@ -222,11 +222,11 @@ function MonthView({ currentDate, posts, selectedPost, onSelectPost }: { current
           return (
             <div
               key={i}
-              className={`border-b border-r border-[#111] p-1 flex flex-col ${
-                !cell.isCurrentMonth ? 'bg-[#060606]' : 'bg-[#0a0a0a]'
+              className={`border-b border-r border-[var(--brand-surface-2)]] p-1 flex flex-col ${
+                !cell.isCurrentMonth ? 'bg-[var(--brand-surface-0)]]' : 'bg-[var(--brand-surface-0)]]'
               } ${isToday ? 'ring-1 ring-inset ring-[#F59E0B]/40' : ''}`}
             >
-              <div className={`text-[10px] mb-1 ${isToday ? 'text-[#F59E0B] font-bold' : cell.isCurrentMonth ? 'text-[#888]' : 'text-[#444]'}`}>
+              <div className={`text-[10px] mb-1 ${isToday ? 'text-[#F59E0B] font-bold' : cell.isCurrentMonth ? 'text-[var(--brand-text-mid)]]' : 'text-[var(--brand-border-2)]]'}`}>
                 {cell.day}
               </div>
               <div className="flex-1 space-y-0.5 overflow-hidden">
@@ -234,7 +234,7 @@ function MonthView({ currentDate, posts, selectedPost, onSelectPost }: { current
                   <PostChip key={p.id} post={p} selected={selectedPost?.id === p.id} onClick={() => onSelectPost(p)} />
                 ))}
                 {cell.posts.length > 3 && (
-                  <div className="text-[9px] text-[#666] px-1">+{cell.posts.length - 3} more</div>
+                  <div className="text-[9px] text-[var(--brand-text-faint)]] px-1">+{cell.posts.length - 3} more</div>
                 )}
               </div>
             </div>
@@ -263,14 +263,14 @@ function WeekView({ currentDate, posts, selectedPost, onSelectPost }: { currentD
   return (
     <div className="flex-1 flex flex-col min-h-0 overflow-auto custom-scrollbar">
       {/* Day headers */}
-      <div className="flex sticky top-0 z-10 bg-[#0a0a0a] border-b border-[#1a1a1a]">
+      <div className="flex sticky top-0 z-10 bg-[var(--brand-surface-0)]] border-b border-[var(--brand-surface-3)]]">
         <div className="w-12 shrink-0" />
         {weekDays.map(d => {
           const isToday = d.date.toDateString() === today.toDateString();
           return (
-            <div key={d.day} className={`flex-1 py-1.5 text-center border-l border-[#111] ${isToday ? 'text-[#F59E0B]' : ''}`}>
-              <div className="text-[10px] uppercase text-[#666]">{d.day}</div>
-              <div className={`text-[14px] font-mono ${isToday ? 'text-[#F59E0B] font-bold' : 'text-white'}`}>{d.date.getDate()}</div>
+            <div key={d.day} className={`flex-1 py-1.5 text-center border-l border-[var(--brand-surface-2)]] ${isToday ? 'text-[#F59E0B]' : ''}`}>
+              <div className="text-[10px] uppercase text-[var(--brand-text-faint)]]">{d.day}</div>
+              <div className={`text-[14px] font-mono ${isToday ? 'text-[#F59E0B] font-bold' : 'text-[var(--brand-text-strong)]'}`}>{d.date.getDate()}</div>
             </div>
           );
         })}
@@ -280,7 +280,7 @@ function WeekView({ currentDate, posts, selectedPost, onSelectPost }: { currentD
         {/* Time labels */}
         <div className="w-12 shrink-0">
           {hours.map(h => (
-            <div key={h} className="h-14 border-b border-[#111] text-[9px] text-[#666] pr-2 text-right leading-[14px]">
+            <div key={h} className="h-14 border-b border-[var(--brand-surface-2)]] text-[9px] text-[var(--brand-text-faint)]] pr-2 text-right leading-[14px]">
               {h === 12 ? '12p' : h > 12 ? `${h - 12}p` : `${h}a`}
             </div>
           ))}
@@ -289,9 +289,9 @@ function WeekView({ currentDate, posts, selectedPost, onSelectPost }: { currentD
         {weekDays.map(d => {
           const isToday = d.date.toDateString() === today.toDateString();
           return (
-            <div key={d.day} className={`flex-1 border-l border-[#111] ${isToday ? 'bg-[#F59E0B]/[0.02]' : ''}`}>
+            <div key={d.day} className={`flex-1 border-l border-[var(--brand-surface-2)]] ${isToday ? 'bg-[#F59E0B]/[0.02]' : ''}`}>
               {hours.map(h => (
-                <div key={h} className="h-14 border-b border-[#111] relative">
+                <div key={h} className="h-14 border-b border-[var(--brand-surface-2)]] relative">
                   {d.posts.filter((p: any) => {
                     const pd = new Date(p.postedAt ?? p.publishedAt);
                     return pd.getHours() === h;
@@ -325,16 +325,16 @@ function DayView({ currentDate, posts, selectedPost, onSelectPost }: { currentDa
   return (
     <div className="flex-1 flex flex-col min-h-0">
       {/* Day header */}
-      <div className="shrink-0 px-3 py-2 border-b border-[#1a1a1a] flex items-center gap-4">
+      <div className="shrink-0 px-3 py-2 border-b border-[var(--brand-surface-3)]] flex items-center gap-4">
         <div>
-          <div className={`text-[14px] font-medium ${isToday ? 'text-[#F59E0B]' : 'text-white'}`}>
+          <div className={`text-[14px] font-medium ${isToday ? 'text-[#F59E0B]' : 'text-[var(--brand-text-strong)]'}`}>
             {DAYS[currentDate.getDay()]}, {MONTHS[currentDate.getMonth()]} {currentDate.getDate()}
           </div>
-          <div className="text-[10px] text-[#666]">{dayPosts.length} posts</div>
+          <div className="text-[10px] text-[var(--brand-text-faint)]]">{dayPosts.length} posts</div>
         </div>
         <div className="flex items-center gap-3 text-[10px]">
           {Object.entries(statusCounts).map(([status, count]) => {
-            const color = status === 'live' ? STATUS.good : status === 'sched' ? '#3b82f6' : status === 'draft' ? '#888' : status === 'pending' ? '#f59e0b' : status === 'failed' ? STATUS.bad : '#888';
+            const color = status === 'live' ? STATUS.good : status === 'sched' ? '#3b82f6' : status === 'draft' ? 'text-[var(--brand-text-mid)]' : status === 'pending' ? '#f59e0b' : status === 'failed' ? STATUS.bad : 'text-[var(--brand-text-mid)]';
             return (
               <span key={status} className="flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
@@ -348,19 +348,19 @@ function DayView({ currentDate, posts, selectedPost, onSelectPost }: { currentDa
       <div className="flex-1 flex min-h-0 overflow-auto custom-scrollbar">
         <div className="w-12 shrink-0">
           {hours.map(h => (
-            <div key={h} className="h-16 border-b border-[#111] text-[9px] text-[#666] pr-2 text-right leading-[16px]">
+            <div key={h} className="h-16 border-b border-[var(--brand-surface-2)]] text-[9px] text-[var(--brand-text-faint)]] pr-2 text-right leading-[16px]">
               {h === 12 ? '12:00' : h > 12 ? `${h - 12}:00` : `${h}:00`}
             </div>
           ))}
         </div>
-        <div className="flex-1 border-l border-[#111]">
+        <div className="flex-1 border-l border-[var(--brand-surface-2)]]">
           {hours.map(h => {
             const hourPosts = dayPosts.filter((p: any) => {
               const pd = new Date(p.postedAt ?? p.publishedAt);
               return pd.getHours() === h;
             });
             return (
-              <div key={h} className={`h-16 border-b border-[#111] relative ${hourPosts.length > 0 ? 'bg-[#F59E0B]/[0.02]' : ''}`}>
+              <div key={h} className={`h-16 border-b border-[var(--brand-surface-2)]] relative ${hourPosts.length > 0 ? 'bg-[#F59E0B]/[0.02]' : ''}`}>
                 {hourPosts.map((p: any) => (
                   <PostChip key={p.id} post={p} selected={selectedPost?.id === p.id} onClick={() => onSelectPost(p)} expanded />
                 ))}
@@ -377,26 +377,26 @@ function DayView({ currentDate, posts, selectedPost, onSelectPost }: { currentDa
 
 function PostChip({ post, selected, onClick, compact, expanded }: { post: any; selected: boolean; onClick: () => void; compact?: boolean; expanded?: boolean }) {
   const color = NETWORK_COLORS[post.network] ?? '#F59E0B';
-  const statusColor = post.status === 'live' ? STATUS.good : post.status === 'sched' ? '#3b82f6' : post.status === 'draft' ? '#888' : post.status === 'pending' ? '#f59e0b' : post.status === 'failed' ? STATUS.bad : '#888';
+  const statusColor = post.status === 'live' ? STATUS.good : post.status === 'sched' ? '#3b82f6' : post.status === 'draft' ? 'text-[var(--brand-text-mid)]' : post.status === 'pending' ? '#f59e0b' : post.status === 'failed' ? STATUS.bad : 'text-[var(--brand-text-mid)]';
 
   if (expanded) {
     return (
       <button
         onClick={onClick}
         className={`absolute inset-x-1 top-0.5 rounded px-1.5 py-1 text-left border transition-colors ${
-          selected ? 'border-[#F59E0B] bg-[#F59E0B]/10' : 'border-transparent hover:bg-[#171717]'
+          selected ? 'border-[#F59E0B] bg-[#F59E0B]/10' : 'border-transparent hover:bg-[var(--brand-surface-3)]]'
         }`}
         style={{ minHeight: '56px' }}
       >
         <div className="flex items-center gap-1 mb-0.5">
           <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: color }} />
           <span className="text-[9px] uppercase" style={{ color }}>{post.network.slice(0, 2)}</span>
-          <span className="text-[9px] text-[#666]">{post.type}</span>
+          <span className="text-[9px] text-[var(--brand-text-faint)]]">{post.type}</span>
           <span className="ml-auto text-[9px]" style={{ color: statusColor }}>{post.status}</span>
         </div>
-        <p className="text-[10px] text-[#ccc] line-clamp-2 leading-tight">{post.text?.slice(0, 50)}</p>
+        <p className="text-[10px] text-[var(--brand-text-mid)]] line-clamp-2 leading-tight">{post.text?.slice(0, 50)}</p>
         {post.engRate > 0 && (
-          <div className="text-[9px] text-[#888] mt-0.5">eng {fmtPct(post.engRate)}</div>
+          <div className="text-[9px] text-[var(--brand-text-mid)]] mt-0.5">eng {fmtPct(post.engRate)}</div>
         )}
       </button>
     );
@@ -407,12 +407,12 @@ function PostChip({ post, selected, onClick, compact, expanded }: { post: any; s
       <button
         onClick={onClick}
         className={`absolute inset-x-0.5 top-0.5 h-5 rounded px-1 flex items-center gap-1 text-left border transition-colors ${
-          selected ? 'border-[#F59E0B] bg-[#F59E0B]/10' : 'border-transparent hover:bg-[#171717]'
+          selected ? 'border-[#F59E0B] bg-[#F59E0B]/10' : 'border-transparent hover:bg-[var(--brand-surface-3)]]'
         }`}
       >
         <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: color }} />
         <span className="text-[9px] truncate" style={{ color }}>{post.network.slice(0, 2)}</span>
-        <span className="text-[9px] text-[#ccc] truncate flex-1">{post.text?.slice(0, 20)}</span>
+        <span className="text-[9px] text-[var(--brand-text-mid)]] truncate flex-1">{post.text?.slice(0, 20)}</span>
         {post.status !== 'live' && <span className="text-[8px]" style={{ color: statusColor }}>●</span>}
       </button>
     );
@@ -422,7 +422,7 @@ function PostChip({ post, selected, onClick, compact, expanded }: { post: any; s
     <button
       onClick={onClick}
       className={`w-full rounded px-1 py-0.5 text-left border transition-colors mb-0.5 ${
-        selected ? 'border-[#F59E0B] bg-[#F59E0B]/10' : 'border-transparent hover:bg-[#171717]'
+        selected ? 'border-[#F59E0B] bg-[#F59E0B]/10' : 'border-transparent hover:bg-[var(--brand-surface-3)]]'
       }`}
     >
       <div className="flex items-center gap-1">
@@ -430,7 +430,7 @@ function PostChip({ post, selected, onClick, compact, expanded }: { post: any; s
         <span className="text-[9px] truncate" style={{ color }}>{post.network.slice(0, 8)}</span>
         {post.status !== 'live' && <span className="text-[8px] ml-auto" style={{ color: statusColor }}>●</span>}
       </div>
-      <p className="text-[9px] text-[#ccc] line-clamp-1 leading-tight">{post.text?.slice(0, 25)}</p>
+      <p className="text-[9px] text-[var(--brand-text-mid)]] line-clamp-1 leading-tight">{post.text?.slice(0, 25)}</p>
     </button>
   );
 }

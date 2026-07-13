@@ -40,7 +40,7 @@ export default function AiTab({ page }: { page: any }) {
             </div>
 
             {page?.aiSummary && (
-                <div className="bg-[#1a1a1a]/50 border border-amber-500/20 rounded-lg p-4">
+                <div className="bg-[var(--brand-surface-3)]]/50 border border-amber-500/20 rounded-lg p-4">
                     <div className="flex items-center gap-2 mb-2 text-amber-400 font-bold text-[13px]">
                         <Sparkles size={14} /> AI Content Summary
                     </div>
@@ -68,7 +68,7 @@ export default function AiTab({ page }: { page: any }) {
                             <SectionHeader title="Extracted Keywords" icon={<Tag size={14} className="text-purple-400" />} />
                             <div className="flex flex-wrap gap-2 mt-2">
                                 {page.extractedKeywords.slice(0, 10).map((kw: any, i: number) => (
-                                    <div key={i} className="px-2 py-1 bg-[#222] border border-[#333] rounded text-[11px] text-[#bbb] flex items-center gap-1.5">
+                                    <div key={i} className="px-2 py-1 bg-[var(--brand-border-2)]] border border-[var(--brand-surface-4)]] rounded text-[11px] text-[var(--brand-text-mid)]] flex items-center gap-1.5">
                                         <span>{kw.phrase}</span>
                                         <span className="text-[9px] text-gray-500 uppercase tracking-tighter bg-black px-1 rounded">{kw.intent}</span>
                                     </div>
@@ -82,20 +82,20 @@ export default function AiTab({ page }: { page: any }) {
                     <div>
                         <SectionHeader title="Suggested Fixes" icon={<Zap size={14} className="text-yellow-400" />} />
                         {suggestions.length === 0 ? (
-                            <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 text-[12px] text-green-400 flex items-center gap-2">
+                            <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3 text-[12px] text-green-400 flex items-center gap-2">
                                 <Sparkles size={14} /> No critical AI suggestions right now.
                             </div>
                         ) : (
                             <div className="space-y-2">
                                 {suggestions.map((suggestion, index) => (
-                                    <div key={`suggestion-${index}`} className="bg-[#0a0a0a] border border-[#222] rounded p-3">
-                                        <div className="text-[12px] text-[#ddd] flex items-start gap-2">
+                                    <div key={`suggestion-${index}`} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+                                        <div className="text-[12px] text-[var(--brand-text-mid)]] flex items-start gap-2">
                                             <Lightbulb size={13} className="text-yellow-400 mt-0.5 shrink-0" />
                                             <span>{suggestion}</span>
                                         </div>
                                         <div className="mt-2 flex gap-2">
                                             <button className="px-2 py-1 text-[10px] font-semibold bg-[#1c2b1c] text-green-400 border border-green-500/30 rounded">Apply Fix</button>
-                                            <button className="px-2 py-1 text-[10px] font-semibold bg-[#202020] text-[#999] border border-[#333] rounded">Ignore</button>
+                                            <button className="px-2 py-1 text-[10px] font-semibold bg-[#202020] text-[var(--brand-text-mid)]] border border-[var(--brand-surface-4)]] rounded">Ignore</button>
                                         </div>
                                     </div>
                                 ))}
@@ -125,7 +125,7 @@ export default function AiTab({ page }: { page: any }) {
                 </div>
             </div>
 
-            <div className="flex flex-wrap gap-2 pt-2 border-t border-[#222]">
+            <div className="flex flex-wrap gap-2 pt-2 border-t border-[var(--brand-border-2)]]">
                 <StatusBadge status={hasAiSignals ? 'pass' : 'info'} label={hasAiSignals ? 'AI analysis complete' : 'AI analysis pending'} />
                 {page?.intentConfidence != null && (
                     <StatusBadge status="info" label={`Intent Confidence: ${Math.round(page.intentConfidence * 100)}%`} />

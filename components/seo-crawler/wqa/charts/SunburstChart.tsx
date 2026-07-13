@@ -49,14 +49,14 @@ export default function SunburstChart({ data, size = 180 }: Props) {
                     </path>
                 );
             })}
-            <circle cx={cx} cy={cy} r={radius * 0.45} fill="#0a0a0a" />
+            <circle cx={cx} cy={cy} r={radius * 0.45} fill="bg-[var(--brand-surface-0)]" />
             {hoveredIndex !== null && (
                 <text
                     x={cx}
                     y={cy}
                     textAnchor="middle"
                     dominantBaseline="middle"
-                    fill="#fff"
+                    fill="text-[var(--brand-text-strong)]"
                     className="text-[10px] font-bold pointer-events-none"
                 >
                     {Math.round((data[hoveredIndex].value / total) * 100)}%

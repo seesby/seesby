@@ -22,9 +22,9 @@ function CustomTreemapContent(props: any) {
       <rect
         x={x} y={y}
         width={width} height={height}
-        fill={CATEGORY_COLORS[name] || '#555'}
+        fill={CATEGORY_COLORS[name] || 'text-[var(--brand-text-faint)]'}
         fillOpacity={0.8}
-        stroke="#0A0A0B"
+        stroke="bg-[var(--brand-surface-0)]"
         strokeWidth={2}
         rx={4}
       />
@@ -33,7 +33,7 @@ function CustomTreemapContent(props: any) {
           <text
             x={x + width / 2} y={y + height / 2 - 6}
             textAnchor="middle"
-            fill="#fff"
+            fill="text-[var(--brand-text-strong)]"
             fontSize={11}
             fontWeight="bold"
           >
@@ -80,8 +80,8 @@ export default function IssueCategoryTreemap({
       </ResponsiveContainer>
       <Tooltip
         contentStyle={{
-          background: '#1a1a1a',
-          border: '1px solid #333',
+          background: 'bg-[var(--brand-surface-3)]',
+          border: '1px solid bg-[var(--brand-surface-4)]',
           borderRadius: 8,
           fontSize: 12,
           color: '#f5f5f5',

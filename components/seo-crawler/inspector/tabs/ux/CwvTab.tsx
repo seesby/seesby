@@ -53,7 +53,7 @@ export default function CwvTab({ page, hasTrend }: { page: any; hasTrend?: boole
       {/* Trend */}
       {hasTrend && (
         <Card title="CWV Trend">
-          <div className="bg-[#0a0a0a] border border-[#222] rounded p-3">
+          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
             <Sparkline values={page?.cwvTrend || []} tone="info" />
           </div>
         </Card>
@@ -85,7 +85,7 @@ export default function CwvTab({ page, hasTrend }: { page: any; hasTrend?: boole
               <DataRow label="INP" value={formatDuration(fieldData.inp)} status={getCwvStatus('inp', Number(fieldData.inp))} />
             </div>
           ) : (
-            <div className="text-[12px] text-[#666]">No field data available.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]]">No field data available.</div>
           )}
         </Card>
 
@@ -98,7 +98,7 @@ export default function CwvTab({ page, hasTrend }: { page: any; hasTrend?: boole
               <DataRow label="INP" value={formatDuration(labData.inp)} status={getCwvStatus('inp', Number(labData.inp))} />
             </div>
           ) : (
-            <div className="text-[12px] text-[#666]">No lab data available.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]]">No lab data available.</div>
           )}
         </Card>
       </div>
@@ -115,20 +115,20 @@ export default function CwvTab({ page, hasTrend }: { page: any; hasTrend?: boole
       {/* Pass / Needs Improvement / Poor */}
       <Card title="Assessment">
         <div className="grid grid-cols-3 gap-3">
-          <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 text-center">
+          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3 text-center">
             <div className="text-[20px] text-green-400 font-bold">{allPass ? '\u2713' : '\u2014'}</div>
-            <div className="text-[10px] text-[#555] uppercase tracking-widest">Pass</div>
-            <div className="text-[9px] text-[#444] mt-1">LCP \u2264 2.5s, CLS \u2264 0.1, INP \u2264 200ms</div>
+            <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest">Pass</div>
+            <div className="text-[9px] text-[var(--brand-border-2)]] mt-1">LCP \u2264 2.5s, CLS \u2264 0.1, INP \u2264 200ms</div>
           </div>
-          <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 text-center">
+          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3 text-center">
             <div className="text-[20px] text-orange-400 font-bold">{!allPass && !anyPoor ? '\u25CB' : '\u2014'}</div>
-            <div className="text-[10px] text-[#555] uppercase tracking-widest">Needs Work</div>
-            <div className="text-[9px] text-[#444] mt-1">LCP \u2264 4s, CLS \u2264 0.25, INP \u2264 500ms</div>
+            <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest">Needs Work</div>
+            <div className="text-[9px] text-[var(--brand-border-2)]] mt-1">LCP \u2264 4s, CLS \u2264 0.25, INP \u2264 500ms</div>
           </div>
-          <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 text-center">
+          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3 text-center">
             <div className="text-[20px] text-red-400 font-bold">{anyPoor ? '\u2717' : '\u2014'}</div>
-            <div className="text-[10px] text-[#555] uppercase tracking-widest">Poor</div>
-            <div className="text-[9px] text-[#444] mt-1">Exceeds "Needs Work" thresholds</div>
+            <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest">Poor</div>
+            <div className="text-[9px] text-[var(--brand-border-2)]] mt-1">Exceeds "Needs Work" thresholds</div>
           </div>
         </div>
       </Card>

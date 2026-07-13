@@ -23,7 +23,7 @@ export function TrendBlock({ title, values, tone, hint }: { title: string; value
     <Card><Section title={title} dense>
       <div className="flex items-center justify-between">
         <Sparkline values={values} tone={tone || 'info'} width={160} />
-        {hint && <span className="text-[10px] text-[#666]">{hint}</span>}
+        {hint && <span className="text-[10px] text-[var(--brand-text-faint)]]">{hint}</span>}
       </div>
     </Section></Card>
   )
@@ -36,7 +36,7 @@ export function TopListBlock({ title, items, max, onSeeAll, emptyText = 'Nothing
     <Card><Section title={title} dense>
       {items.length
         ? <TopList items={items} max={max} onSeeAll={onSeeAll} />
-        : <div className="text-[11px] text-[#666] italic">{emptyText}</div>}
+        : <div className="text-[11px] text-[var(--brand-text-faint)]] italic">{emptyText}</div>}
     </Section></Card>
   )
 }

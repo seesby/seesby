@@ -139,7 +139,7 @@ function ToxBar({ v }: { v: number }) {
   const barStyle: React.CSSProperties = { width: `${Math.round(v * 100)}%`, background: tone };
   return (
     <div className="flex items-center gap-2">
-      <div className="flex-1 h-1 rounded bg-[#171717] overflow-hidden">
+      <div className="flex-1 h-1 rounded bg-[var(--brand-surface-3)]] overflow-hidden">
         <div className="h-full" style={barStyle} />
       </div>
       <span className="w-10 text-right font-mono">{Math.round(v * 100)}</span>

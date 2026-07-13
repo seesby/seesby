@@ -34,7 +34,7 @@ export function ConnectorStatusBlock({ connectors, onConnect }: Props) {
     { id: 'llmsTxt', label: 'llms.txt',              connected: connectors.llmsTxt.connected,lastSync: undefined },
   ]
   return (
-    <div className="rounded-md border border-[#161616] bg-[#0a0a0a] p-3">
+    <div className="rounded-md border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3">
       <div className="mb-2 text-[11px] uppercase tracking-wider text-neutral-500">Connectors</div>
       <ul className="space-y-1">
         {rows.map((r) => (
@@ -45,7 +45,7 @@ export function ConnectorStatusBlock({ connectors, onConnect }: Props) {
             </span>
             <span className="text-[11px] text-neutral-500">
               {r.connected ? fmtAgo(r.lastSync) : (
-                <button onClick={() => onConnect?.(r.id)} className="text-neutral-300 hover:text-white">Connect</button>
+                <button onClick={() => onConnect?.(r.id)} className="text-neutral-300 hover:text-[var(--brand-text-strong)]">Connect</button>
               )}
             </span>
           </li>

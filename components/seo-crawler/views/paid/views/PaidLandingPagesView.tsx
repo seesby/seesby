@@ -94,24 +94,24 @@ function LpAdMatchPreview() {
   if (!preview) return null;
 
   return (
-    <div className="mx-3 mb-2 rounded border border-[#1a1a1a] bg-[#0c0c0c] p-3 text-[11px] shrink-0">
-      <div className="text-[10px] uppercase tracking-wider text-[#666] mb-2">LP-to-ad match preview</div>
+    <div className="mx-3 mb-2 rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-3 text-[11px] shrink-0">
+      <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">LP-to-ad match preview</div>
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <div className="text-[#888] mb-0.5">Ad H1</div>
-          <div className="text-white truncate">{preview.adH1}</div>
-          <div className="text-[#888] mt-1 mb-0.5">Ad desc</div>
-          <div className="text-[#aaa] truncate">{preview.adDesc}</div>
+          <div className="text-[var(--brand-text-mid)]] mb-0.5">Ad H1</div>
+          <div className="text-[var(--brand-text-strong)] truncate">{preview.adH1}</div>
+          <div className="text-[var(--brand-text-mid)]] mt-1 mb-0.5">Ad desc</div>
+          <div className="text-[var(--brand-text-mid)]] truncate">{preview.adDesc}</div>
         </div>
         <div>
-          <div className="text-[#888] mb-0.5">LP <span className="text-[#bdb6ff]">{preview.lpUrl}</span> H1</div>
-          <div className="text-white truncate">{preview.lpH1}</div>
-          <div className="text-[#888] mt-1 mb-0.5">LP hero copy</div>
-          <div className="text-[#aaa] truncate">{preview.lpHero}</div>
+          <div className="text-[var(--brand-text-mid)]] mb-0.5">LP <span className="text-[#bdb6ff]">{preview.lpUrl}</span> H1</div>
+          <div className="text-[var(--brand-text-strong)] truncate">{preview.lpH1}</div>
+          <div className="text-[var(--brand-text-mid)]] mt-1 mb-0.5">LP hero copy</div>
+          <div className="text-[var(--brand-text-mid)]] truncate">{preview.lpHero}</div>
         </div>
       </div>
       <div className="mt-2 flex items-center gap-1.5">
-        <span className="text-[#888]">Match score</span>
+        <span className="text-[var(--brand-text-mid)]]">Match score</span>
         <span className={preview.matchScore >= 0.7 ? 'text-[#22c55e]' : preview.matchScore >= 0.5 ? 'text-[#f59e0b]' : 'text-[#ef4444]'}>
           {preview.matchScore.toFixed(2)}
         </span>

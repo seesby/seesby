@@ -35,7 +35,7 @@ export function PaidSpend() {
   ].filter(t => t.value > 0)
 
   const pacingPct = Math.round(s.pacing * 100)
-  const pacingTone = pacingPct >= 90 && pacingPct <= 110 ? '#22c55e' : pacingPct < 80 ? '#f59e0b' : '#888'
+  const pacingTone = pacingPct >= 90 && pacingPct <= 110 ? '#22c55e' : pacingPct < 80 ? '#f59e0b' : 'text-[var(--brand-text-mid)]'
   const cpcTone = s.cpc <= s.bench.cpc ? '#22c55e' : '#f59e0b'
 
   return (
@@ -50,18 +50,18 @@ export function PaidSpend() {
 
       {/* Conversions & revenue */}
       <Card padded={false}>
-        <div className="flex flex-col border-t border-[#1f1f1f]">
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[#1f1f1f]">
-            <span className="text-[11px] text-[#888]">Conversions (30d)</span>
-            <span className="text-[11px] font-mono font-medium text-white">{compactNum(s.conv30d)}</span>
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">Conversions (30d)</span>
+            <span className="text-[11px] font-mono font-medium text-[var(--brand-text-strong)]">{compactNum(s.conv30d)}</span>
           </div>
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[#1f1f1f]">
-            <span className="text-[11px] text-[#888]">Revenue (30d)</span>
-            <span className="text-[11px] font-mono font-medium text-white">{fmtCurrency(s.revenue30d)}</span>
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">Revenue (30d)</span>
+            <span className="text-[11px] font-mono font-medium text-[var(--brand-text-strong)]">{fmtCurrency(s.revenue30d)}</span>
           </div>
           <div className="flex items-center justify-between px-3 py-2">
-            <span className="text-[11px] text-[#888]">ROAS</span>
-            <span className="text-[11px] font-mono font-medium" style={{ color: s.roas >= 3 ? '#22c55e' : s.roas >= 1 ? '#888' : '#ef4444' }}>
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">ROAS</span>
+            <span className="text-[11px] font-mono font-medium" style={{ color: s.roas >= 3 ? '#22c55e' : s.roas >= 1 ? 'text-[var(--brand-text-mid)]' : '#ef4444' }}>
               {s.roas.toFixed(1)}x
             </span>
           </div>
@@ -92,7 +92,7 @@ export function PaidSpend() {
       {/* Wasted spend */}
       {s.wasted.length > 0 && (
         <Card title={`Wasted spend — ${fmtCurrency(s.wastedTotal)}`} padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.wasted.slice(0, 5).map((w) => (
               <RowItem
                 key={w.id}
@@ -107,15 +107,15 @@ export function PaidSpend() {
 
       {/* Budget & CPC benchmarks */}
       <Card padded={false}>
-        <div className="flex flex-col border-t border-[#1f1f1f]">
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[#1f1f1f]">
-            <span className="text-[11px] text-[#888]">Budget pacing</span>
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">Budget pacing</span>
             <span className="text-[11px] font-mono font-medium" style={{ color: pacingTone }}>
               {pacingPct}%
             </span>
           </div>
           <div className="flex items-center justify-between px-3 py-2">
-            <span className="text-[11px] text-[#888]">CPC vs vertical</span>
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">CPC vs vertical</span>
             <span className="text-[11px] font-mono font-medium" style={{ color: cpcTone }}>
               {fmtCurrency(s.cpc)} / {fmtCurrency(s.bench.cpc)}
             </span>

@@ -62,14 +62,14 @@ export default function GeneralTab({ config, setConfig }: TabProps) {
 
             {config.urlListSource === 'upload' && (
               <div className="space-y-2">
-                <label className="block text-[11px] font-medium text-[#888]">Upload File</label>
-                <div className="flex items-center gap-3 p-4 bg-[#0a0a0a] border border-[#222] border-dashed rounded-lg hover:border-[#F59E0B]/50 transition-colors cursor-pointer group">
-                  <div className="w-10 h-10 rounded-full bg-[#111] flex items-center justify-center text-[#444] group-hover:text-[#F59E0B] transition-colors">
+                <label className="block text-[11px] font-medium text-[var(--brand-text-mid)]]">Upload File</label>
+                <div className="flex items-center gap-3 p-4 bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] border-dashed rounded-lg hover:border-[#F59E0B]/50 transition-colors cursor-pointer group">
+                  <div className="w-10 h-10 rounded-full bg-[var(--brand-surface-2)]] flex items-center justify-center text-[var(--brand-border-2)]] group-hover:text-[#F59E0B] transition-colors">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                   </div>
                   <div className="flex-1">
-                    <div className="text-[12px] text-[#ccc] font-medium">{config.uploadedFileName || 'Click to upload CSV or TXT'}</div>
-                    <div className="text-[10px] text-[#555]">Max size: 10MB</div>
+                    <div className="text-[12px] text-[var(--brand-text-mid)]] font-medium">{config.uploadedFileName || 'Click to upload CSV or TXT'}</div>
+                    <div className="text-[10px] text-[var(--brand-text-faint)]]">Max size: 10MB</div>
                   </div>
                   <input 
                     type="file" 
@@ -80,20 +80,20 @@ export default function GeneralTab({ config, setConfig }: TabProps) {
                       if (file) updateConfig('uploadedFileName', file.name);
                     }}
                   />
-                  <button className="px-3 py-1.5 bg-[#111] hover:bg-[#222] border border-[#333] rounded text-[11px] text-[#888] hover:text-white transition-colors">Browse</button>
+                  <button className="px-3 py-1.5 bg-[var(--brand-surface-2)]] hover:bg-[var(--brand-border-2)]] border border-[var(--brand-surface-4)]] rounded text-[11px] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] transition-colors">Browse</button>
                 </div>
               </div>
             )}
 
             {config.urlListSource === 'import' && (
               <div className="space-y-2">
-                <label className="block text-[11px] font-medium text-[#888]">Google Sheets</label>
-                <button className="w-full flex items-center justify-center gap-2 p-3 bg-[#0a0a0a] border border-[#222] rounded-lg hover:bg-[#1a1a1a] hover:border-[#F59E0B]/50 transition-all group font-bold">
+                <label className="block text-[11px] font-medium text-[var(--brand-text-mid)]]">Google Sheets</label>
+                <button className="w-full flex items-center justify-center gap-2 p-3 bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded-lg hover:bg-[var(--brand-surface-3)]] hover:border-[#F59E0B]/50 transition-all group font-bold">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" fill="#107C41"/>
                     <path d="M14 2V8H20L14 2Z" fill="#33C481"/>
                   </svg>
-                  <span className="text-[12px] text-[#ccc] group-hover:text-white">Connect to Google Sheet</span>
+                  <span className="text-[12px] text-[var(--brand-text-mid)]] group-hover:text-[var(--brand-text-strong)]">Connect to Google Sheet</span>
                 </button>
               </div>
             )}

@@ -1,7 +1,7 @@
 import { scoreToTone } from './scoring'
 import { HelpHint } from './HelpHint'
 
-const toneStroke = { good: '#10b981', warn: '#f59e0b', bad: '#f43f5e', neutral: '#666' } as const
+const toneStroke = { good: '#10b981', warn: '#f59e0b', bad: '#f43f5e', neutral: 'text-[var(--brand-text-faint)]' } as const
 
 export function RingGauge({ value, size = 88, label, hint }: { value: number; size?: number; label?: string; hint?: string }) {
   const v = Math.max(0, Math.min(100, Number(value) || 0))
@@ -12,7 +12,7 @@ export function RingGauge({ value, size = 88, label, hint }: { value: number; si
   return (
     <div className="flex flex-col items-center gap-1">
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-        <circle cx={size/2} cy={size/2} r={r} stroke="#1a1a1a" strokeWidth={6} fill="none" />
+        <circle cx={size/2} cy={size/2} r={r} stroke="bg-[var(--brand-surface-3)]" strokeWidth={6} fill="none" />
         <circle cx={size/2} cy={size/2} r={r} stroke={toneStroke[tone]} strokeWidth={6} fill="none"
           strokeDasharray={`${dash} ${c - dash}`} strokeLinecap="round"
           transform={`rotate(-90 ${size/2} ${size/2})`} />
@@ -20,7 +20,7 @@ export function RingGauge({ value, size = 88, label, hint }: { value: number; si
           className="fill-white text-[20px] font-bold tabular-nums">{Math.round(v)}</text>
       </svg>
       {label && (
-        <div className="text-[10px] uppercase tracking-widest text-[#666] flex items-center gap-1">
+        <div className="text-[10px] uppercase tracking-widest text-[var(--brand-text-faint)]] flex items-center gap-1">
           {label}
           {hint && <HelpHint text={hint} />}
         </div>
@@ -41,7 +41,7 @@ export function HalfArcGauge({ value, size = 120, label }: { value: number; size
       <svg width={size} height={size / 2 + 10} viewBox={`0 0 ${size} ${size / 2 + 10}`}>
         <path
           d={`M 10,${size/2} A ${r},${r} 0 0,1 ${size-10},${size/2}`}
-          stroke="#1a1a1a"
+          stroke="bg-[var(--brand-surface-3)]"
           strokeWidth={10}
           fill="none"
           strokeLinecap="round"
@@ -58,7 +58,7 @@ export function HalfArcGauge({ value, size = 120, label }: { value: number; size
           {Math.round(v)}
         </text>
       </svg>
-      {label && <div className="text-[10px] uppercase tracking-widest text-[#666] mt-1">{label}</div>}
+      {label && <div className="text-[10px] uppercase tracking-widest text-[var(--brand-text-faint)]] mt-1">{label}</div>}
     </div>
   )
 }

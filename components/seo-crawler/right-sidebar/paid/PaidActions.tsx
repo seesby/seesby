@@ -68,7 +68,7 @@ export function PaidActions() {
       {/* By reason */}
       {s.actions.byReason.length > 0 && (
         <Card title="By reason" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.actions.byReason.map((r) => (
               <RowItem
                 key={r.id}

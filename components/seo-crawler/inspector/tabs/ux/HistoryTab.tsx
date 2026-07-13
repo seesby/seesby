@@ -9,7 +9,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
   if (!hasTrend) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
-        <div className="text-[13px] text-[#666] max-w-[280px]">
+        <div className="text-[13px] text-[var(--brand-text-faint)]] max-w-[280px]">
           Trend data available after 2+ crawls. Run another crawl to see historical trends.
         </div>
       </div>
@@ -38,7 +38,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
     <div className="space-y-4">
       {/* Friction Score Trend */}
       <Card title="Friction Score">
-        <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 mb-3">
+        <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3 mb-3">
           <Sparkline values={page?.frictionScoreTrend || []} tone="warn" />
         </div>
         <div className="grid grid-cols-3 gap-3">
@@ -50,7 +50,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
 
       {/* Conversion Rate Trend */}
       <Card title="Conversion Rate">
-        <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 mb-3">
+        <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3 mb-3">
           <Sparkline values={page?.conversionRateTrend || []} tone="good" />
         </div>
         <div className="grid grid-cols-3 gap-3">
@@ -62,7 +62,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
 
       {/* Scroll Depth Trend */}
       <Card title="Scroll Depth">
-        <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 mb-3">
+        <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3 mb-3">
           <Sparkline values={page?.scrollDepthTrend || []} tone="info" />
         </div>
         <div className="grid grid-cols-3 gap-3">
@@ -74,7 +74,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
 
       {/* Engagement Trend */}
       <Card title="Engagement">
-        <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 mb-3">
+        <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3 mb-3">
           <Sparkline values={page?.engagementRateTrend || []} tone="good" />
         </div>
         <div className="grid grid-cols-3 gap-3">
@@ -86,7 +86,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
 
       {/* Bounce Rate Trend */}
       <Card title="Bounce Rate">
-        <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 mb-3">
+        <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3 mb-3">
           <Sparkline values={page?.bounceRateTrend || []} tone="warn" />
         </div>
         <div className="grid grid-cols-3 gap-3">
@@ -98,7 +98,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
 
       {/* CWV Changes */}
       <Card title="Core Web Vitals">
-        <div className="bg-[#0a0a0a] border border-[#222] rounded p-3 mb-3">
+        <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3 mb-3">
           <Sparkline values={page?.cwvTrend || []} tone="info" />
         </div>
         <DataRow label="Current LCP" value={formatDuration(lcp)} />

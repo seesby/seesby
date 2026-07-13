@@ -29,9 +29,9 @@ export function CompetitorsBacklinks() {
       <Card>
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Link Velocity</div>
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Link Velocity</div>
             <div className="mt-1 text-2xl font-bold tabular-nums text-blue-400">
-              +{backlinks.velocity} <span className="text-sm text-[#888]">per month</span>
+              +{backlinks.velocity} <span className="text-sm text-[var(--brand-text-mid)]]">per month</span>
             </div>
           </div>
           <Sparkline values={backlinks.youSeries} tone="info" width={100} height={32} />
@@ -40,8 +40,8 @@ export function CompetitorsBacklinks() {
 
       {/* Quality distribution */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Link Quality</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Link Quality</span>
         </div>
         <div className="px-3 py-3">
           <BarStack segments={[
@@ -54,8 +54,8 @@ export function CompetitorsBacklinks() {
 
       {/* Referring domains comparison */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Referring Domains</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Referring Domains</span>
         </div>
         <div className="px-3 py-2">
           <TopList items={backlinks.byCompetitor.slice(0, 6).map((c: any) => ({
@@ -69,8 +69,8 @@ export function CompetitorsBacklinks() {
 
       {/* Benchmark */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">vs Average</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">vs Average</span>
         </div>
         <div className="px-3 py-3">
           <BenchmarkBar site={backlinks.you.refDomains} benchmark={backlinks.avgCompetitor.refDomains} />
@@ -79,8 +79,8 @@ export function CompetitorsBacklinks() {
 
       {/* High-value targets */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">High-Value Targets</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">High-Value Targets</span>
         </div>
         <div className="px-3 py-2">
           <TopList items={backlinks.highValueTargets.map((t: any) => ({
@@ -94,8 +94,8 @@ export function CompetitorsBacklinks() {
 
       {/* Link gap list */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Link Gap</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Link Gap</span>
         </div>
         <div className="px-3 py-2">
           <TopList items={backlinks.gapList.map((l: any) => ({
@@ -109,8 +109,8 @@ export function CompetitorsBacklinks() {
 
       {/* Your unique domains */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Your Unique Domains</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Your Unique Domains</span>
         </div>
         <div className="px-3 py-2">
           <TopList items={backlinks.youOnly.map((d: any) => ({
@@ -125,8 +125,8 @@ export function CompetitorsBacklinks() {
       {/* Trend */}
       <Trendable hasPrior={s.hasPrior}>
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[#1f1f1f]">
-            <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Ref Domain Growth</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+            <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Ref Domain Growth</span>
           </div>
           <div className="px-3 py-3">
             <div className="w-full"><Sparkline values={backlinks.youSeries} tone="info" /></div>

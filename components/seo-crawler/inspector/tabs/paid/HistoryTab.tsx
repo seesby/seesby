@@ -6,7 +6,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
   if (!hasTrend) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
-        <div className="text-[13px] text-[#666] max-w-[280px]">
+        <div className="text-[13px] text-[var(--brand-text-faint)]] max-w-[280px]">
           Trend data available after 2+ crawls. Run another crawl to see historical trends.
         </div>
       </div>
@@ -30,7 +30,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
     <div className="space-y-4">
       {/* Quality Score trend */}
       <Card title="Quality Score">
-        <div className="bg-[#0a0a0a] border border-[#111] rounded p-3 mb-3">
+        <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]] rounded p-3 mb-3">
           <Sparkline values={page?.qualityScoreTrend || []} tone="info" />
         </div>
         <div className="grid grid-cols-3 gap-2">
@@ -43,7 +43,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
 
       {/* CPC trend */}
       <Card title="CPC">
-        <div className="bg-[#0a0a0a] border border-[#111] rounded p-3 mb-3">
+        <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]] rounded p-3 mb-3">
           <Sparkline values={page?.cpcTrend || []} tone="info" />
         </div>
         <div className="grid grid-cols-3 gap-2">
@@ -56,7 +56,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
 
       {/* ROAS trend */}
       <Card title="ROAS">
-        <div className="bg-[#0a0a0a] border border-[#111] rounded p-3 mb-3">
+        <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]] rounded p-3 mb-3">
           <Sparkline values={page?.roasTrend || []} tone="good" />
         </div>
         <div className="grid grid-cols-3 gap-2">
@@ -70,7 +70,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* Spend + CPA trend */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         <Card title="Spend">
-          <div className="bg-[#0a0a0a] border border-[#111] rounded p-3 mb-3">
+          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]] rounded p-3 mb-3">
             <Sparkline values={page?.spendTrend || []} tone="info" />
           </div>
           <div className="grid grid-cols-2 gap-2">
@@ -80,7 +80,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
         </Card>
 
         <Card title="CPA">
-          <div className="bg-[#0a0a0a] border border-[#111] rounded p-3 mb-3">
+          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]] rounded p-3 mb-3">
             <Sparkline values={page?.cpaTrend || []} tone="info" />
           </div>
           <div className="grid grid-cols-2 gap-2">

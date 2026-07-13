@@ -40,15 +40,15 @@ export default function DonutChart({ data, size = 160 }: Props) {
             </Pie>
             <Tooltip
               contentStyle={{ 
-                backgroundColor: '#141414', 
-                border: '1px solid #222', 
+                backgroundColor: 'bg-[var(--brand-surface-2)]', 
+                border: '1px solid border-[var(--brand-border-2)]', 
                 borderRadius: '8px', 
                 fontSize: '11px',
                 boxShadow: '0 8px 16px rgba(0,0,0,0.5)',
                 padding: '8px 10px'
               }}
               labelStyle={{ color: 'white', fontWeight: 'bold' }}
-              itemStyle={{ color: '#ccc', fontSize: '10px' }}
+              itemStyle={{ color: 'text-[var(--brand-text-mid)]', fontSize: '10px' }}
               formatter={(value: number, name: string, props: any) => [
                 `${value.toLocaleString()} (${total > 0 ? Math.round((value / total) * 100) : 0}%)`,
                 props.payload.label,
@@ -58,8 +58,8 @@ export default function DonutChart({ data, size = 160 }: Props) {
         </ResponsiveContainer>
       </div>
       <div className="min-w-0">
-        <div className="text-[18px] leading-none font-black text-white">{total.toLocaleString()}</div>
-        <div className="text-[10px] text-[#666] mt-0.5">pages</div>
+        <div className="text-[18px] leading-none font-black text-[var(--brand-text-strong)]">{total.toLocaleString()}</div>
+        <div className="text-[10px] text-[var(--brand-text-faint)]] mt-0.5">pages</div>
       </div>
     </div>
   );

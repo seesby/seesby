@@ -81,8 +81,8 @@ export function useCompetitorComparison() {
         size: 300,
         cell: c => (
           <div className="flex flex-col">
-            <span className="text-white truncate text-[11px]">{c.getValue() as string}</span>
-            <span className="text-[9px] text-[#666]">{(c.row.original as ComparisonRow).cluster}</span>
+            <span className="text-[var(--brand-text-strong)] truncate text-[11px]">{c.getValue() as string}</span>
+            <span className="text-[9px] text-[var(--brand-text-faint)]]">{(c.row.original as ComparisonRow).cluster}</span>
           </div>
         ),
       },
@@ -100,7 +100,7 @@ export function useCompetitorComparison() {
         accessorKey: 'volume',
         header: 'Volume',
         size: 90,
-        cell: c => <span className="tabular-nums text-[#888] text-[11px]">{Number(c.getValue()).toLocaleString()}</span>,
+        cell: c => <span className="tabular-nums text-[var(--brand-text-mid)]] text-[11px]">{Number(c.getValue()).toLocaleString()}</span>,
       },
       {
         id: 'us',
@@ -110,7 +110,7 @@ export function useCompetitorComparison() {
           const row = c.row.original as ComparisonRow;
           const v = row.ourRank;
           if (v === null) return <span className="text-[#ef4444] text-[11px]">—</span>;
-          return <span className={`tabular-nums font-medium text-[11px] ${v <= 3 ? 'text-[#22c55e]' : v <= 10 ? 'text-[#f59e0b]' : 'text-white'}`}>{v}</span>;
+          return <span className={`tabular-nums font-medium text-[11px] ${v <= 3 ? 'text-[#22c55e]' : v <= 10 ? 'text-[#f59e0b]' : 'text-[var(--brand-text-strong)]'}`}>{v}</span>;
         },
       },
       ...comps.map(h => ({
@@ -120,8 +120,8 @@ export function useCompetitorComparison() {
         cell: (c: any) => {
           const row = c.row.original as ComparisonRow;
           const v = row.competitorRanks[h] ?? null;
-          if (v === null) return <span className="text-[#555] text-[11px]">—</span>;
-          return <span className={`tabular-nums text-[11px] ${v <= 3 ? 'text-[#22c55e]' : v <= 10 ? 'text-[#f59e0b]' : 'text-[#888]'}`}>{v}</span>;
+          if (v === null) return <span className="text-[var(--brand-text-faint)]] text-[11px]">—</span>;
+          return <span className={`tabular-nums text-[11px] ${v <= 3 ? 'text-[#22c55e]' : v <= 10 ? 'text-[#f59e0b]' : 'text-[var(--brand-text-mid)]]'}`}>{v}</span>;
         },
       })) as any,
       {
@@ -143,7 +143,7 @@ export function useCompetitorComparison() {
           return (
             <span className="flex items-center gap-0.5">
               {Array.from({ length: 5 }, (_, i) => (
-                <span key={i} className={`inline-block w-1.5 h-1.5 rounded-full ${i < row.opportunity ? 'bg-[#a78bfa]' : 'bg-[#222]'}`} />
+                <span key={i} className={`inline-block w-1.5 h-1.5 rounded-full ${i < row.opportunity ? 'bg-[#a78bfa]' : 'bg-[var(--brand-border-2)]]'}`} />
               ))}
             </span>
           );

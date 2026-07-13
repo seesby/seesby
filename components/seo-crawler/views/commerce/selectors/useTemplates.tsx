@@ -120,7 +120,7 @@ export function useTemplates() {
     }},
     { accessorKey: 'primaryIssue', header: 'Primary issue', size: 140, cell: c => {
       const v = c.getValue() as string;
-      return v === '\u2014' ? <span className="text-[#666]">{v}</span> : <span className="text-[#f59e0b]">{v}</span>;
+      return v === '\u2014' ? <span className="text-[var(--brand-text-faint)]]">{v}</span> : <span className="text-[#f59e0b]">{v}</span>;
     }},
   ];
 

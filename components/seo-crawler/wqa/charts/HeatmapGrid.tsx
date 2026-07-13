@@ -44,9 +44,9 @@ export default function HeatmapGrid({ data, rows, cols }: Props) {
         <table className="w-full text-[10px]">
           <thead>
             <tr>
-              <th className="text-left text-[#666] font-normal py-1 pr-2" />
+              <th className="text-left text-[var(--brand-text-faint)]] font-normal py-1 pr-2" />
               {colsResolved.map((col) => (
-                <th key={col} className="text-center text-[#666] font-normal py-1 px-2">
+                <th key={col} className="text-center text-[var(--brand-text-faint)]] font-normal py-1 px-2">
                   {col}
                 </th>
               ))}
@@ -55,7 +55,7 @@ export default function HeatmapGrid({ data, rows, cols }: Props) {
           <tbody>
             {rowsResolved.map((row) => (
               <tr key={row}>
-                <td className="text-[#888] py-1 pr-2 whitespace-nowrap">{row}</td>
+                <td className="text-[var(--brand-text-mid)]] py-1 pr-2 whitespace-nowrap">{row}</td>
                 {colsResolved.map((col) => {
                   const status = cellMap.get(`${row}:${col}`) || 'flat';
                   return (
@@ -88,7 +88,7 @@ export default function HeatmapGrid({ data, rows, cols }: Props) {
     <div className="space-y-1">
       {ys.map((y) => (
         <div key={y} className="flex items-center gap-1">
-          <span className="w-16 text-[9px] text-[#666] truncate">{y}</span>
+          <span className="w-16 text-[9px] text-[var(--brand-text-faint)]] truncate">{y}</span>
           <div className="flex gap-1">
             {xs.map((x) => {
               const value = getVal(x, y);

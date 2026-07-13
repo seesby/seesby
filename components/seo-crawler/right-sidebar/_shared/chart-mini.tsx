@@ -52,7 +52,7 @@ export function Donut({ segments, size = 64 }: { segments: { value: number; tone
   let acc = 0
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-      <circle cx={size/2} cy={size/2} r={r} stroke="#1a1a1a" strokeWidth={6} fill="none" />
+      <circle cx={size/2} cy={size/2} r={r} stroke="bg-[var(--brand-surface-3)]" strokeWidth={6} fill="none" />
       {segments.map((s, i) => {
         const len = (s.value/total) * c
         const dash = `${len} ${c - len}`

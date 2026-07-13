@@ -11,8 +11,8 @@ type Props = {
 function MetricRow({ label, value, warn }: { label: string; value: string; warn?: boolean }) {
   return (
     <div className="flex items-center justify-between text-[11px]">
-      <span className="text-[#888]">{label}</span>
-      <span className={`font-mono ${warn ? 'text-[#f59e0b]' : 'text-white'}`}>{value}</span>
+      <span className="text-[var(--brand-text-mid)]]">{label}</span>
+      <span className={`font-mono ${warn ? 'text-[#f59e0b]' : 'text-[var(--brand-text-strong)]'}`}>{value}</span>
     </div>
   );
 }

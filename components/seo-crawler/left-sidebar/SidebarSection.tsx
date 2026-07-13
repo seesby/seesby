@@ -11,10 +11,10 @@ export function SidebarSection({ section, counts }: { section: Exclude<Section, 
 	const isOpen = stored === undefined ? (section.defaultOpen ?? true) : !stored;
 
 	return (
-		<section className="py-2 border-b border-[#222]">
+		<section className="py-2 border-b border-[var(--brand-border-2)]]">
 			<button
 				onClick={() => toggleSection(pageFilter.mode, section.id)}
-				className="w-full flex items-center justify-between px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#66666E] hover:text-white"
+				className="w-full flex items-center justify-between px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#66666E] hover:text-[var(--brand-text-strong)]"
 			>
 				<span>{section.label}</span>
 				{isOpen ? <ChevronDown size={11} /> : <ChevronRight size={11} />}
@@ -42,7 +42,7 @@ function FacetBody({ section, counts }: { section: SidebarFacetSection; counts?:
 				<SidebarFacetRow key={r.value} section={section} bucket={r} count={r.count} />
 			))}
 			{visible.length > max && (
-				<button className="w-full text-left px-3 py-1 text-[11px] text-[#44444A] hover:text-white">Show all ({visible.length})</button>
+				<button className="w-full text-left px-3 py-1 text-[11px] text-[#44444A] hover:text-[var(--brand-text-strong)]">Show all ({visible.length})</button>
 			)}
 		</div>
 	);
@@ -79,24 +79,24 @@ function HistogramBody({ section, counts }: { section: SidebarFacetSection; coun
 					<button
 						key={r.value}
 						onClick={() => toggleSelection(key, r.value)}
-						className={`relative group w-full h-[24px] flex items-center justify-between px-2 text-[11px] font-medium transition-colors outline-none rounded-sm border ${selected ? 'border-[#F59E0B]/30 bg-[#F59E0B]/5' : 'border-transparent hover:bg-white/[0.02]'}`}
+						className={`relative group w-full h-[24px] flex items-center justify-between px-2 text-[11px] font-medium transition-colors outline-none rounded-sm border ${selected ? 'border-[#F59E0B]/30 bg-[#F59E0B]/5' : 'border-transparent hover:bg-[var(--brand-surface-3)]/[0.02]'}`}
 					>
 						{/* Horizontal Bar Fill */}
 						<div 
-							className={`absolute left-0 top-0 bottom-0 rounded-sm transition-all duration-500 ease-out ${selected ? 'bg-[#F59E0B]/20' : 'bg-[#333338]/60 group-hover:bg-[#44444A]/80'}`}
+							className={`absolute left-0 top-0 bottom-0 rounded-sm transition-all duration-500 ease-out ${selected ? 'bg-[#F59E0B]/20' : 'bg-[var(--brand-surface-4)]]/60 group-hover:bg-[#44444A]/80'}`}
 							style={{ width: `${w}%` }}
 						/>
 						
 						{/* Label Content */}
 						<div className="relative z-10 flex items-center gap-3">
-							<span className={`${selected ? 'text-white' : 'text-[#A0A0A5] group-hover:text-white'} ${r.count === 0 ? 'opacity-50' : ''}`}>
+							<span className={`${selected ? 'text-[var(--brand-text-strong)]' : 'text-[#A0A0A5] group-hover:text-[var(--brand-text-strong)]'} ${r.count === 0 ? 'opacity-50' : ''}`}>
 								Depth {r.label}
 							</span>
 						</div>
 						
 						{/* Count Content */}
 						<div className="relative z-10 flex items-center gap-1.5">
-							<span className={`font-mono tabular-nums ${selected ? 'text-white' : 'text-[#66666E] group-hover:text-[#888]'} ${r.count === 0 ? 'opacity-50' : ''}`}>
+							<span className={`font-mono tabular-nums ${selected ? 'text-[var(--brand-text-strong)]' : 'text-[#66666E] group-hover:text-[var(--brand-text-mid)]]'} ${r.count === 0 ? 'opacity-50' : ''}`}>
 								{r.count}
 							</span>
 						</div>

@@ -31,21 +31,21 @@ export const SEESBY = {
   card:         '#141412',
   sidebar:      '#0E0E0C',
 
-  surface0:     '#0A0A0A',
-  surface1:     '#0C0C0C',
-  surface2:     '#111111',
-  surface3:     '#161616',
+  surface0:     'bg-[var(--brand-surface-0)]',
+  surface1:     'bg-[var(--brand-surface-1)]',
+  surface2:     'bg-[var(--brand-surface-2)]',
+  surface3:     'bg-[var(--brand-surface-3)]',
   surface4:     '#1A1A1A',
 
-  border1:      '#161616',
-  border2:      '#222222',
+  border1:      'bg-[var(--brand-surface-3)]',
+  border2:      'border-[var(--brand-border-2)]',
   border3:      '#2A2A2A',
 
-  textStrong:   '#FFFFFF',
+  textStrong:   'bg-[var(--brand-surface-4)]',
   textMid:      '#AAAAAA',
   textFaint:    '#666666',
-  textMuted:    '#444444',
-  textDim:      '#333333',
+  textMuted:    'border-[var(--brand-border-2)]',
+  textDim:      'bg-[var(--brand-surface-4)]3',
 
   success:      '#22C55E',
   danger:       '#EF4444',
@@ -66,7 +66,7 @@ export const S = { 1: 4, 2: 8, 3: 12, 4: 16, 6: 24, 8: 32, 10: 40, 12: 48, 16: 6
 
 // ── Surfaces (extended) ──────────────────────────────────────────────
 export const SURFACE_EXT = {
-  bgSep:    '#161616',
+  bgSep:    'bg-[var(--brand-surface-3)]',
   bgGlass:  'rgba(11, 11, 10, 0.80)',
 } as const;
 
@@ -79,23 +79,23 @@ export const TEXT_EXT = {
 
 // ── Surfaces ──────────────────────────────────────────────────────────
 export const SURFACE = {
-  bg0:  '#0a0a0a',
-  bg1:  '#0c0c0c',
-  bg2:  '#111111',
-  bg3:  '#161616',
-  bg4:  '#1a1a1a',
-  br0:  '#161616',
-  br1:  '#1a1a1a',
-  br2:  '#222222',
-  br3:  '#2a2a2a',
+  bg0:  'bg-[var(--brand-surface-0)]',
+  bg1:  'bg-[var(--brand-surface-1)]',
+  bg2:  'bg-[var(--brand-surface-2)]',
+  bg3:  'bg-[var(--brand-surface-3)]',
+  bg4:  'bg-[var(--brand-surface-3)]',
+  br0:  'bg-[var(--brand-surface-3)]',
+  br1:  'bg-[var(--brand-surface-3)]',
+  br2:  'border-[var(--brand-border-2)]',
+  br3:  'border-[var(--brand-border-3)]',
 } as const;
 
 // ── Text ──────────────────────────────────────────────────────────────
 export const TEXT = {
-  primary:   '#ffffff',
+  primary:   'bg-[var(--brand-surface-4)]',
   secondary: '#aaaaaa',
   tertiary:  '#666666',
-  muted:     '#444444',
+  muted:     'border-[var(--brand-border-2)]',
 } as const;
 
 // ── Radii ─────────────────────────────────────────────────────────────

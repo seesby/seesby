@@ -4,9 +4,9 @@ import { CHART_PALETTE } from '../../_shared/tokens';
 import { fmtCompact } from '../../_shared/formatters';
 import clsx from 'clsx';
 
-const PANEL = 'rounded border border-[#1a1a1a] bg-[#0a0a0a]';
-const LABEL = 'text-[10px] uppercase tracking-wider text-[#666] mb-2';
-const selectClass = 'h-7 px-2 bg-[#0c0c0c] border border-[#1a1a1a] rounded text-[11px] text-[#ccc] focus:outline-none focus:border-[#333] appearance-none cursor-pointer';
+const PANEL = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]]';
+const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2';
+const selectClass = 'h-7 px-2 bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded text-[11px] text-[var(--brand-text-mid)]] focus:outline-none focus:border-[var(--brand-surface-4)]] appearance-none cursor-pointer';
 
 export default function CompetitorsContentDepthView() {
   const data = useContentDepth();
@@ -21,7 +21,7 @@ export default function CompetitorsContentDepthView() {
   return (
     <div className="flex flex-col h-full min-h-0 overflow-hidden">
       {/* Topic picker */}
-      <div className="flex items-center gap-2 px-3 py-1.5 shrink-0 border-b border-[#161616]">
+      <div className="flex items-center gap-2 px-3 py-1.5 shrink-0 border-b border-[var(--brand-surface-3)]]">
         <span className={LABEL} style={{ marginBottom: 0 }}>Topic:</span>
         <select value={topic} onChange={e => setTopic(e.target.value)}
           className={selectClass}>
@@ -29,7 +29,7 @@ export default function CompetitorsContentDepthView() {
           {topics.map(t => <option key={t} value={t}>{t}</option>)}
         </select>
         <div className="flex-1" />
-        <span className="text-[10px] text-[#888]">{filteredScatter.length} pages</span>
+        <span className="text-[10px] text-[var(--brand-text-mid)]]">{filteredScatter.length} pages</span>
       </div>
 
       {/* Stacked panels */}
@@ -60,9 +60,9 @@ function ScatterPanel({ points }: { points: ContentDepthData['scatterPoints'] })
           {[0, 0.25, 0.5, 0.75, 1].map(pct => (
             <React.Fragment key={`y-${pct}`}>
               <line x1="60" y1={20 + (1 - pct) * 230} x2="580" y2={20 + (1 - pct) * 230}
-                stroke="#1a1a1a" strokeWidth="1" />
+                stroke="bg-[var(--brand-surface-3)]" strokeWidth="1" />
               <text x="55" y={24 + (1 - pct) * 230} textAnchor="end"
-                fill="#555" fontSize="9" fontFamily="monospace">
+                fill="text-[var(--brand-text-faint)]" fontSize="9" fontFamily="monospace">
                 {fmtCompact(Math.round(maxWords * pct))}
               </text>
             </React.Fragment>
@@ -70,17 +70,17 @@ function ScatterPanel({ points }: { points: ContentDepthData['scatterPoints'] })
           {[0, 0.25, 0.5, 0.75, 1].map(pct => (
             <React.Fragment key={`x-${pct}`}>
               <line x1={60 + pct * 520} y1="20" x2={60 + pct * 520} y2="250"
-                stroke="#1a1a1a" strokeWidth="1" />
+                stroke="bg-[var(--brand-surface-3)]" strokeWidth="1" />
               <text x={60 + pct * 520} y="265" textAnchor="middle"
-                fill="#555" fontSize="9" fontFamily="monospace">
+                fill="text-[var(--brand-text-faint)]" fontSize="9" fontFamily="monospace">
                 {fmtCompact(Math.round(maxBl * pct))}
               </text>
             </React.Fragment>
           ))}
 
           {/* Axis labels */}
-          <text x="300" y="280" textAnchor="middle" fill="#666" fontSize="9" fontFamily="sans-serif">Backlinks</text>
-          <text x="10" y="135" textAnchor="middle" fill="#666" fontSize="9" fontFamily="sans-serif" transform="rotate(-90, 10, 135)">Words</text>
+          <text x="300" y="280" textAnchor="middle" fill="text-[var(--brand-text-faint)]" fontSize="9" fontFamily="sans-serif">Backlinks</text>
+          <text x="10" y="135" textAnchor="middle" fill="text-[var(--brand-text-faint)]" fontSize="9" fontFamily="sans-serif" transform="rotate(-90, 10, 135)">Words</text>
 
           {/* Data points */}
           {points.map((p, i) => {
@@ -94,7 +94,7 @@ function ScatterPanel({ points }: { points: ContentDepthData['scatterPoints'] })
                 <circle cx={x} cy={y} r={r} fill={color} opacity={0.65} />
                 <circle cx={x} cy={y} r={r} fill="none" stroke={color} strokeWidth="1.5" opacity={0.3} />
                 <text x={x} y={y - r - 4} textAnchor="middle"
-                  fill={p.isUs ? '#fff' : '#999'} fontSize="8" fontFamily="sans-serif">
+                  fill={p.isUs ? 'text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-mid)]'} fontSize="8" fontFamily="sans-serif">
                   {p.isUs ? 'Us' : p.host.replace(/\..+/, '')}
                 </text>
               </g>
@@ -102,7 +102,7 @@ function ScatterPanel({ points }: { points: ContentDepthData['scatterPoints'] })
           })}
         </svg>
       </div>
-      <div className="flex items-center gap-4 mt-1 text-[9px] text-[#555]">
+      <div className="flex items-center gap-4 mt-1 text-[9px] text-[var(--brand-text-faint)]]">
         <span>X: backlinks</span>
         <span>Y: words</span>
         <span>Size: clicks</span>
@@ -147,7 +147,7 @@ function RadarPanel({ data }: { data: ContentDepthData }) {
                 const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
                 return `${cx + s * r * Math.cos(angle)},${cy + s * r * Math.sin(angle)}`;
               }).join(' ')}
-              fill="none" stroke="#1a1a1a" strokeWidth="1" />
+              fill="none" stroke="bg-[var(--brand-surface-3)]" strokeWidth="1" />
           ))}
           {dims.map((d, i) => {
             const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
@@ -155,7 +155,7 @@ function RadarPanel({ data }: { data: ContentDepthData }) {
             const y = cy + (r + 14) * Math.sin(angle);
             return (
               <text key={i} x={x} y={y} textAnchor="middle" dominantBaseline="central"
-                fill="#888" fontSize="9" fontFamily="sans-serif">
+                fill="text-[var(--brand-text-mid)]" fontSize="9" fontFamily="sans-serif">
                 {d.dimension}
               </text>
             );
@@ -183,8 +183,8 @@ function RadarPanel({ data }: { data: ContentDepthData }) {
           <div className="mt-2 flex flex-col gap-1">
             {dims.map(d => (
               <div key={d.dimension} className="flex justify-between gap-3 text-[9px]">
-                <span className="text-[#666]">{d.dimension}</span>
-                <span className="text-white tabular-nums">{d.us}%</span>
+                <span className="text-[var(--brand-text-faint)]]">{d.dimension}</span>
+                <span className="text-[var(--brand-text-strong)] tabular-nums">{d.us}%</span>
               </div>
             ))}
           </div>
@@ -205,9 +205,9 @@ function FormatGapsPanel({ data }: { data: ContentDepthData }) {
         {gaps.map(f => {
           const whoHas = f.competitors.filter(c => c.present).map(c => c.host.replace(/\..+/, '')).join(', ');
           return (
-            <span key={f.format} className="text-[11px] text-[#888]">
-              <span className="text-white">{f.format}</span>
-              <span className="text-[#555]"> ({whoHas})</span>
+            <span key={f.format} className="text-[11px] text-[var(--brand-text-mid)]]">
+              <span className="text-[var(--brand-text-strong)]">{f.format}</span>
+              <span className="text-[var(--brand-text-faint)]]"> ({whoHas})</span>
             </span>
           );
         })}
@@ -220,7 +220,7 @@ function LegendItem({ color, label }: { color: string; label: string }) {
   return (
     <div className="flex items-center gap-1.5">
       <span className="w-2 h-2 rounded-full" style={{ background: color }} />
-      <span className="text-[10px] text-[#888]">{label}</span>
+      <span className="text-[10px] text-[var(--brand-text-mid)]]">{label}</span>
     </div>
   );
 }

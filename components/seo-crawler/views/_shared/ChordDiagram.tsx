@@ -71,7 +71,7 @@ export function ChordDiagram({
   }, [hosts, matrix, gap]);
 
   if (hosts.length === 0) {
-    return <div className="text-[11px] text-[#666] p-4">No data</div>;
+    return <div className="text-[11px] text-[var(--brand-text-faint)]] p-4">No data</div>;
   }
 
   const maxChordVal = Math.max(...chords.map((c) => c.value), 1);
@@ -136,7 +136,7 @@ export function ChordDiagram({
             textAnchor={flip ? 'end' : 'start'}
             dominantBaseline="central"
             transform={`rotate(${flip ? rotate + 180 : rotate}, ${p.x}, ${p.y})`}
-            className="fill-[#888] text-[9px]"
+            className="fill-[var(--brand-text-mid)]] text-[9px]"
           >
             {arc.host}
           </text>

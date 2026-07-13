@@ -76,10 +76,10 @@ export default function ExtractionTab({ config, setConfig }: TabProps) {
       <SettingsSection title="Custom Field Extractors" description="Map CSS selectors to custom named columns in your data.">
         <div className="space-y-3">
           {customFieldExtractors.map((extractor) => (
-            <div key={extractor.id} className="p-4 bg-[#111] border border-[#222] rounded-lg space-y-3 relative">
+            <div key={extractor.id} className="p-4 bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] rounded-lg space-y-3 relative">
               <button 
                 onClick={() => removeExtractor(extractor.id)}
-                className="absolute top-4 right-4 p-1 text-[#444] hover:text-red-500 transition-colors"
+                className="absolute top-4 right-4 p-1 text-[var(--brand-border-2)]] hover:text-red-500 transition-colors"
               >
                 <Trash2 size={14} />
               </button>
@@ -107,7 +107,7 @@ export default function ExtractionTab({ config, setConfig }: TabProps) {
           ))}
           <button 
             onClick={addExtractor}
-            className="w-full py-2 border border-dashed border-[#333] rounded-lg text-[11px] text-[#666] hover:border-[#F59E0B] hover:text-[#F59E0B] transition-all flex items-center justify-center gap-2"
+            className="w-full py-2 border border-dashed border-[var(--brand-surface-4)]] rounded-lg text-[11px] text-[var(--brand-text-faint)]] hover:border-[#F59E0B] hover:text-[#F59E0B] transition-all flex items-center justify-center gap-2"
           >
             <Plus size={14} /> Add Custom Field Extractor
           </button>

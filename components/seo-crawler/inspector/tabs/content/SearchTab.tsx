@@ -87,28 +87,28 @@ export default function SearchTab({ page, hasTrend }: { page: any; hasTrend?: bo
           <div className="overflow-x-auto">
             <table className="w-full text-[11px]">
               <thead>
-                <tr className="border-b border-[#1a1a1a]">
-                  <th className="text-left text-[10px] text-[#555] uppercase tracking-wider font-medium pb-1.5">Tag</th>
-                  <th className="text-left text-[10px] text-[#555] uppercase tracking-wider font-medium pb-1.5">Content</th>
-                  <th className="text-right text-[10px] text-[#555] uppercase tracking-wider font-medium pb-1.5">Position</th>
+                <tr className="border-b border-[var(--brand-surface-3)]]">
+                  <th className="text-left text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Tag</th>
+                  <th className="text-left text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Content</th>
+                  <th className="text-right text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Position</th>
                 </tr>
               </thead>
               <tbody>
                 {page?.h1_1 && (
-                  <tr className="border-b border-[#111]">
-                    <td className="py-1.5 text-[#666] font-mono">H1</td>
-                    <td className="py-1.5 text-[#ccc] truncate max-w-[180px]">{page.h1_1}</td>
-                    <td className="py-1.5 text-[#666] text-right font-mono">{gscPosition > 0 ? gscPosition.toFixed(0) : '—'}</td>
+                  <tr className="border-b border-[var(--brand-surface-2)]]">
+                    <td className="py-1.5 text-[var(--brand-text-faint)]] font-mono">H1</td>
+                    <td className="py-1.5 text-[var(--brand-text-mid)]] truncate max-w-[180px]">{page.h1_1}</td>
+                    <td className="py-1.5 text-[var(--brand-text-faint)]] text-right font-mono">{gscPosition > 0 ? gscPosition.toFixed(0) : '—'}</td>
                   </tr>
                 )}
                 {(page?.headings || []).slice(0, 5).map((h: any, i: number) => {
                   const tag = typeof h === 'object' ? (h?.tag || 'H2') : 'H2';
                   const text = typeof h === 'string' ? h : (h?.text || h?.content || '');
                   return (
-                    <tr key={i} className="border-b border-[#111] last:border-b-0">
-                      <td className="py-1.5 text-[#666] font-mono">{tag}</td>
-                      <td className="py-1.5 text-[#ccc] truncate max-w-[180px]">{text}</td>
-                      <td className="py-1.5 text-[#666] text-right font-mono">—</td>
+                    <tr key={i} className="border-b border-[var(--brand-surface-2)]] last:border-b-0">
+                      <td className="py-1.5 text-[var(--brand-text-faint)]] font-mono">{tag}</td>
+                      <td className="py-1.5 text-[var(--brand-text-mid)]] truncate max-w-[180px]">{text}</td>
+                      <td className="py-1.5 text-[var(--brand-text-faint)]] text-right font-mono">—</td>
                     </tr>
                   );
                 })}

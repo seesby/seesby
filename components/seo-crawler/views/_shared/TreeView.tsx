@@ -100,7 +100,7 @@ function ScoreBar({ quality }: { quality: number }) {
           key={i}
           className="inline-block w-1.5 h-3 rounded-sm"
           style={{
-            background: i < filled ? color : '#1e1e1e',
+            background: i < filled ? color : 'bg-[var(--brand-surface-3)]',
           }}
         />
       ))}
@@ -192,7 +192,7 @@ export function TreeView({
           return (
             <div
               key={r.node.id}
-              className="flex items-center h-7 hover:bg-[#0c0c0c] cursor-pointer rounded px-1 group"
+              className="flex items-center h-7 hover:bg-[var(--brand-surface-1)]] cursor-pointer rounded px-1 group"
               style={{ paddingLeft: `${r.depth * 18 + 4}px` }}
               onClick={() => onNodeClick?.(r.node.id)}
               onMouseEnter={e => handleMouseEnter(r.node as TooltipNode, e)}
@@ -202,7 +202,7 @@ export function TreeView({
               {hasChildren ? (
                 <button
                   onClick={e => { e.stopPropagation(); toggle(r.node.id); }}
-                  className="w-4 h-4 flex items-center justify-center text-[#555] hover:text-[#999] shrink-0"
+                  className="w-4 h-4 flex items-center justify-center text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]] shrink-0"
                 >
                   {isCollapsed
                     ? <ChevronRight className="w-3 h-3" />
@@ -216,13 +216,13 @@ export function TreeView({
               {/* Color dot */}
               <span
                 className="w-2 h-2 rounded-full shrink-0 mx-1"
-                style={{ background: r.node.color ?? '#666' }}
+                style={{ background: r.node.color ?? 'text-[var(--brand-text-faint)]' }}
               />
 
               {/* Label + child count grouped together */}
-              <span className="min-w-0 text-[11px] text-[#ccc] truncate">{r.node.label}</span>
+              <span className="min-w-0 text-[11px] text-[var(--brand-text-mid)]] truncate">{r.node.label}</span>
               {hasChildren && (
-                <span className="text-[9px] text-[#555] shrink-0 ml-1">({r.node.childCount ?? 0})</span>
+                <span className="text-[9px] text-[var(--brand-text-faint)]] shrink-0 ml-1">({r.node.childCount ?? 0})</span>
               )}
 
               {/* Spacer pushes metadata right */}
@@ -235,14 +235,14 @@ export function TreeView({
 
                 {/* Clicks */}
                 {isLeaf && r.node.clicks != null && r.node.clicks > 0 && (
-                  <span className="text-[10px] font-mono text-[#666]">
-                    {r.node.clicks.toLocaleString()}<span className="text-[#444] ml-0.5">clk</span>
+                  <span className="text-[10px] font-mono text-[var(--brand-text-faint)]]">
+                    {r.node.clicks.toLocaleString()}<span className="text-[var(--brand-border-2)]] ml-0.5">clk</span>
                   </span>
                 )}
 
                 {/* Leaf indicator */}
                 {isLeaf && (r.node.clicks == null || r.node.clicks === 0) && (
-                  <span className="text-[10px] text-[#444]">leaf</span>
+                  <span className="text-[10px] text-[var(--brand-border-2)]]">leaf</span>
                 )}
 
                 {/* Delta */}

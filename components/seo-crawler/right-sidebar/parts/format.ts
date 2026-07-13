@@ -36,6 +36,6 @@ export function toneToColor(tone: Tone | undefined): string {
         case 'warn': return '#f59e0b'
         case 'bad': return '#ef4444'
         case 'info': return '#3b82f6'
-        default: return '#888'
+        default: return 'text-[var(--brand-text-mid)]'
     }
 }

@@ -79,18 +79,18 @@ export const DataRow = ({ label, value, status, mono = false }: {
                 ? 'text-red-400'
                 : status === 'info'
                     ? 'text-blue-400'
-                    : 'text-white';
+                    : 'text-[var(--brand-text-strong)]';
 
     return (
         <div className="grid grid-cols-[120px_1fr] gap-x-3 text-[12px] py-1 min-w-0 overflow-hidden">
-            <span className="text-[#555] truncate min-w-0">{label}</span>
+            <span className="text-[var(--brand-text-faint)]] truncate min-w-0">{label}</span>
             <span className={`${mono ? 'font-mono' : ''} ${tone} break-all min-w-0`}>{normalizeValue(value)}</span>
         </div>
     );
 };
 
 export const SectionHeader = ({ title, color, icon }: { title: string; color?: string; icon?: React.ReactNode }) => (
-    <h4 className={`text-[11px] font-black uppercase tracking-widest border-b border-[#222] pb-1 mb-3 flex items-center gap-2 ${color || 'text-[#444]'}`}>
+    <h4 className={`text-[11px] font-black uppercase tracking-widest border-b border-[var(--brand-border-2)]] pb-1 mb-3 flex items-center gap-2 ${color || 'text-[var(--brand-border-2)]]'}`}>
         {icon}
         {title}
     </h4>
@@ -120,17 +120,17 @@ export const StatusBadge = ({ status, label, onClick }: {
 };
 
 export const Card = ({ title, children }: { title: string; children: React.ReactNode }) => (
-    <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-        <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2.5">{title}</div>
+    <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+        <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">{title}</div>
         <div className="space-y-0">{children}</div>
     </div>
 );
 
 export const MetricPill = ({ label, value, good, sub }: { label: string; value: string; good?: boolean; sub?: string }) => (
-    <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-2 text-center">
-        <div className={`text-[12px] font-bold ${good === true ? 'text-[#22c55e]' : good === false ? 'text-[#F59E0B]' : 'text-white'}`}>{value}</div>
-        <div className="text-[9px] text-[#444] uppercase tracking-widest">{label}</div>
-        {sub && <div className="text-[8px] text-[#555] mt-0.5">{sub}</div>}
+    <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-2 text-center">
+        <div className={`text-[12px] font-bold ${good === true ? 'text-[#22c55e]' : good === false ? 'text-[#F59E0B]' : 'text-[var(--brand-text-strong)]'}`}>{value}</div>
+        <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest">{label}</div>
+        {sub && <div className="text-[8px] text-[var(--brand-text-faint)]] mt-0.5">{sub}</div>}
     </div>
 );
 
@@ -140,10 +140,10 @@ export const MetricCard = ({ label, value, sub, color }: {
     sub?: string;
     color?: string;
 }) => (
-    <div className="bg-[#0a0a0a] border border-[#222] rounded p-3">
-        <div className="text-[10px] text-[#666] uppercase tracking-widest">{label}</div>
-        <div className={`text-[20px] font-black mt-1 ${color || 'text-white'}`}>{normalizeValue(value)}</div>
-        {sub && <div className="text-[10px] text-[#777] mt-1">{sub}</div>}
+    <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+        <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest">{label}</div>
+        <div className={`text-[20px] font-black mt-1 ${color || 'text-[var(--brand-text-strong)]'}`}>{normalizeValue(value)}</div>
+        {sub && <div className="text-[10px] text-[var(--brand-text-mid)]] mt-1">{sub}</div>}
     </div>
 );
 
@@ -182,8 +182,8 @@ export const IssuesList = ({ issues, page }: {
     if (effectiveIssues.length === 0) return null;
 
     return (
-        <div className="flex flex-wrap items-center gap-1.5 mb-4 pb-3 border-b border-[#222]">
-            <span className="text-[10px] text-[#555] uppercase tracking-widest font-bold mr-1">Issues:</span>
+        <div className="flex flex-wrap items-center gap-1.5 mb-4 pb-3 border-b border-[var(--brand-border-2)]]">
+            <span className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold mr-1">Issues:</span>
             {effectiveIssues.map((issue, index) => (
                 <div key={`${issue.id}-${index}`} className="flex items-center gap-0.5 group">
                     <StatusBadge
@@ -202,7 +202,7 @@ export const IssuesList = ({ issues, page }: {
                             setRsTab(mode, tabId);
                             setShowAuditSidebar(true);
                         }}
-                        className="opacity-0 group-hover:opacity-100 p-1 text-[#444] hover:text-white transition-opacity"
+                        className="opacity-0 group-hover:opacity-100 p-1 text-[var(--brand-border-2)]] hover:text-[var(--brand-text-strong)] transition-opacity"
                         title="Create task for this issue"
                     >
                         <ListTodo size={10} />
@@ -216,7 +216,7 @@ export const IssuesList = ({ issues, page }: {
 export function FlagRow({ label, fail }: { label: string; fail: boolean }) {
   return (
     <div className="flex items-center justify-between py-[3px] text-[11px]">
-      <span className="text-[#666]">{label}</span>
+      <span className="text-[var(--brand-text-faint)]]">{label}</span>
       <span className={`text-[10px] font-medium ${fail ? 'text-[#F59E0B]' : 'text-[#22c55e]'}`}>
         {fail ? 'Yes' : 'No'}
       </span>

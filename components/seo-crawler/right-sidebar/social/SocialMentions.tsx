@@ -27,8 +27,8 @@ export function SocialMentions() {
             ? <Sparkline values={s.mentions.series} tone="info" width={80} height={20} />
             : undefined}>
           <div className="flex items-center gap-3 mb-2">
-            <span className="text-[20px] font-bold font-mono text-white">{compactNum(s.mentions.total)}</span>
-            <span className="text-[11px] text-[#888]">total mentions</span>
+            <span className="text-[20px] font-bold font-mono text-[var(--brand-text-strong)]">{compactNum(s.mentions.total)}</span>
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">total mentions</span>
             {s.hasPrior && <TrendDelta current={s.mentions.total} previous={s.mentions.totalPrev} />}
           </div>
           <BarStack segments={[
@@ -55,32 +55,32 @@ export function SocialMentions() {
       </div>
 
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[11px] text-[#888]">By channel</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[11px] text-[var(--brand-text-mid)]]">By channel</span>
         </div>
-        <div className="flex flex-col border-t border-[#1f1f1f]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
           {Object.entries(s.byChannel)
             .filter(([, v]) => (v as number) > 0)
             .sort(([, a], [, b]) => (b as number) - (a as number))
             .slice(0, 6)
             .map(([ch, count]) => (
-              <div key={ch} className="flex items-center justify-between px-3 py-2 border-b border-[#1f1f1f] last:border-b-0">
-                <span className="text-[11px] text-[#ccc] capitalize">{ch}</span>
-                <span className="text-[10px] font-mono text-white">{compactNum(count as number)}</span>
+              <div key={ch} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
+                <span className="text-[11px] text-[var(--brand-text-mid)]] capitalize">{ch}</span>
+                <span className="text-[10px] font-mono text-[var(--brand-text-strong)]">{compactNum(count as number)}</span>
               </div>
             ))}
         </div>
       </Card>
 
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[11px] text-[#888]">Top topics</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[11px] text-[var(--brand-text-mid)]]">Top topics</span>
         </div>
-        <div className="flex flex-col border-t border-[#1f1f1f]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
           {s.topics.list.slice(0, 5).map(t => (
-            <div key={t.id} className="flex items-center justify-between px-3 py-2 border-b border-[#1f1f1f] last:border-b-0">
+            <div key={t.id} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
               <div className="flex items-center gap-2">
-                <span className="text-[11px] text-white">{t.label}</span>
+                <span className="text-[11px] text-[var(--brand-text-strong)]">{t.label}</span>
                 <span className={`text-[9px] px-1.5 py-0.5 rounded ${
                   t.sentiment === 'Positive' ? 'bg-emerald-500/10 text-emerald-400' :
                   t.sentiment === 'Negative' ? 'bg-red-500/10 text-red-400' :
@@ -88,9 +88,9 @@ export function SocialMentions() {
                 }`}>{t.sentiment}</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-[10px] font-mono text-[#888]">{compactNum(t.mentions)}</span>
+                <span className="text-[10px] font-mono text-[var(--brand-text-mid)]]">{compactNum(t.mentions)}</span>
                 {s.hasPrior && (
-                  <span className="text-[10px] font-mono text-[#666]">{compactNum(t.reach)}</span>
+                  <span className="text-[10px] font-mono text-[var(--brand-text-faint)]]">{compactNum(t.reach)}</span>
                 )}
               </div>
             </div>
@@ -100,13 +100,13 @@ export function SocialMentions() {
 
       {s.hasPrior && s.topics.trending.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[#1f1f1f]">
-            <span className="text-[11px] text-[#888]">Trending up</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">Trending up</span>
           </div>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.topics.trending.map(t => (
-              <div key={t.id} className="flex items-center justify-between px-3 py-2 border-b border-[#1f1f1f] last:border-b-0">
-                <span className="text-[11px] text-white">{t.label}</span>
+              <div key={t.id} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
+                <span className="text-[11px] text-[var(--brand-text-strong)]">{t.label}</span>
                 <span className="text-[10px] font-mono text-emerald-400">+{(t.delta * 100).toFixed(0)}%</span>
               </div>
             ))}
@@ -116,20 +116,20 @@ export function SocialMentions() {
 
       {s.mentions.top.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[#1f1f1f]">
-            <span className="text-[11px] text-[#888]">Notable mentions</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">Notable mentions</span>
           </div>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.mentions.top.slice(0, 5).map(m => (
-              <div key={m.id} className="px-3 py-2 border-b border-[#1f1f1f] last:border-b-0">
+              <div key={m.id} className="px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[10px] font-medium text-white">{m.author}</span>
+                  <span className="text-[10px] font-medium text-[var(--brand-text-strong)]">{m.author}</span>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[9px] text-[#666]">{m.channel}</span>
-                    <span className="text-[10px] font-mono text-[#888]">{compactNum(m.engagement)}</span>
+                    <span className="text-[9px] text-[var(--brand-text-faint)]]">{m.channel}</span>
+                    <span className="text-[10px] font-mono text-[var(--brand-text-mid)]]">{compactNum(m.engagement)}</span>
                   </div>
                 </div>
-                <div className="text-[10px] text-[#aaa] leading-snug line-clamp-2">{m.text}</div>
+                <div className="text-[10px] text-[var(--brand-text-mid)]] leading-snug line-clamp-2">{m.text}</div>
               </div>
             ))}
           </div>
@@ -138,17 +138,17 @@ export function SocialMentions() {
 
       {s.mentions.negativeList.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[#1f1f1f]">
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
             <span className="text-[11px] text-red-400">Needs attention</span>
           </div>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.mentions.negativeList.map((m: any) => (
-              <div key={m.id} className="px-3 py-2 border-b border-[#1f1f1f] last:border-b-0">
+              <div key={m.id} className="px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[10px] font-medium text-white">{m.author}</span>
-                  <span className="text-[9px] text-[#666]">{m.channel}</span>
+                  <span className="text-[10px] font-medium text-[var(--brand-text-strong)]">{m.author}</span>
+                  <span className="text-[9px] text-[var(--brand-text-faint)]]">{m.channel}</span>
                 </div>
-                <div className="text-[10px] text-[#aaa] leading-snug line-clamp-2">{m.text}</div>
+                <div className="text-[10px] text-[var(--brand-text-mid)]] leading-snug line-clamp-2">{m.text}</div>
               </div>
             ))}
           </div>

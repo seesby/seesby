@@ -47,7 +47,7 @@ export function MapCanvas({
       el.style.height = '12px';
       el.style.borderRadius = '50%';
       el.style.background = mk.color ?? '#f97316';
-      el.style.border = '2px solid #0a0a0a';
+      el.style.border = '2px solid bg-[var(--brand-surface-0)]';
       el.title = mk.label ?? mk.id;
       const marker = new maplibregl.Marker({ element: el }).setLngLat([mk.lng, mk.lat]).addTo(m);
       els.push(marker);
@@ -55,5 +55,5 @@ export function MapCanvas({
     return () => { els.forEach(e => e.remove()); };
   }, [markers]);
 
-  return <div ref={ref} className="w-full rounded border border-[#1a1a1a] overflow-hidden" style={ { height } } />;
+  return <div ref={ref} className="w-full rounded border border-[var(--brand-surface-3)]] overflow-hidden" style={ { height } } />;
 }

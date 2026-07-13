@@ -197,26 +197,26 @@ export default function ExportDialog({ onClose }: ExportDialogProps) {
     return (
         <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/80 p-4">
             <button type="button" className="absolute inset-0 cursor-default" onClick={onClose} />
-            <div className="relative w-full max-w-[520px] rounded-3xl border border-[#232329] bg-[#111] shadow-[0_30px_90px_rgba(0,0,0,0.55)]">
-                <div className="flex items-center justify-between border-b border-[#202025] px-5 py-4">
+            <div className="relative w-full max-w-[520px] rounded-3xl border border-[var(--brand-border-2)]] bg-[var(--brand-surface-2)]] shadow-[0_30px_90px_rgba(0,0,0,0.55)]">
+                <div className="flex items-center justify-between border-b border-[var(--brand-surface-3)]] px-5 py-4">
                     <div>
-                        <div className="text-[10px] font-bold uppercase tracking-[0.26em] text-[#666]">Export</div>
-                        <h2 className="mt-1 text-[20px] font-black text-white">Export crawl data</h2>
+                        <div className="text-[10px] font-bold uppercase tracking-[0.26em] text-[var(--brand-text-faint)]]">Export</div>
+                        <h2 className="mt-1 text-[20px] font-black text-[var(--brand-text-strong)]">Export crawl data</h2>
                     </div>
-                    <button onClick={onClose} className="rounded-lg border border-[#2e2e34] p-2 text-[#888] hover:text-white">
+                    <button onClick={onClose} className="rounded-lg border border-[var(--brand-border-3)]] p-2 text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)]">
                         <X size={16} />
                     </button>
                 </div>
 
                 <div className="max-h-[80vh] space-y-5 overflow-y-auto px-5 py-5">
                     <section>
-                        <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#666]">Format</div>
+                        <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--brand-text-faint)]]">Format</div>
                         <div className="space-y-2">
                             {(Object.keys(formatLabels) as ExportFormat[]).map((option) => (
-                                <label key={option} className="flex cursor-pointer items-center justify-between rounded-2xl border border-[#242428] bg-[#101013] px-4 py-3">
+                                <label key={option} className="flex cursor-pointer items-center justify-between rounded-2xl border border-[var(--brand-border-2)]] bg-[var(--brand-surface-1)]] px-4 py-3">
                                     <div>
-                                        <div className="text-[12px] font-semibold text-white">{formatLabels[option]}</div>
-                                        <div className="text-[11px] text-[#777]">
+                                        <div className="text-[12px] font-semibold text-[var(--brand-text-strong)]">{formatLabels[option]}</div>
+                                        <div className="text-[11px] text-[var(--brand-text-mid)]]">
                                             {option === 'csv' && 'Spreadsheet-friendly table export'}
                                             {option === 'json' && 'Structured dataset for development workflows'}
                                             {option === 'pdf' && 'Visual report with summary and recommendations'}
@@ -232,7 +232,7 @@ export default function ExportDialog({ onClose }: ExportDialogProps) {
                     </section>
 
                     <section>
-                        <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#666]">Scope</div>
+                        <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--brand-text-faint)]]">Scope</div>
                         <div className="space-y-2">
                             {[
                                 { id: 'all', label: 'All pages', count: counts.all },
@@ -240,8 +240,8 @@ export default function ExportDialog({ onClose }: ExportDialogProps) {
                                 { id: 'issues', label: 'Issues only', count: counts.issues },
                                 { id: 'selected', label: 'Custom selection', count: counts.selected }
                             ].map((option) => (
-                                <label key={option.id} className="flex cursor-pointer items-center justify-between rounded-2xl border border-[#242428] bg-[#101013] px-4 py-3">
-                                    <div className="text-[12px] font-semibold text-white">{option.label} <span className="text-[#666]">({option.count})</span></div>
+                                <label key={option.id} className="flex cursor-pointer items-center justify-between rounded-2xl border border-[var(--brand-border-2)]] bg-[var(--brand-surface-1)]] px-4 py-3">
+                                    <div className="text-[12px] font-semibold text-[var(--brand-text-strong)]">{option.label} <span className="text-[var(--brand-text-faint)]]">({option.count})</span></div>
                                     <input type="radio" name="scope" checked={scope === option.id} onChange={() => setScope(option.id as ExportScope)} className="h-4 w-4 accent-[#F59E0B]" />
                                 </label>
                             ))}
@@ -249,15 +249,15 @@ export default function ExportDialog({ onClose }: ExportDialogProps) {
                     </section>
 
                     <section>
-                        <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#666]">Columns</div>
-                        <div className="space-y-2 rounded-2xl border border-[#242428] bg-[#101013] p-4">
+                        <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--brand-text-faint)]]">Columns</div>
+                        <div className="space-y-2 rounded-2xl border border-[var(--brand-border-2)]] bg-[var(--brand-surface-1)]] p-4">
                             {[
                                 { key: 'includeVisibleColumns', label: 'Include all visible columns' },
                                 { key: 'includeAiAnalysis', label: 'Include AI analysis' },
                                 { key: 'includeIntegrations', label: 'Include GSC / GA4 / authority data' },
                                 { key: 'includeRawHtml', label: 'Include raw HTML fields' }
                             ].map((option) => (
-                                <label key={option.key} className="flex items-center justify-between text-[12px] text-white">
+                                <label key={option.key} className="flex items-center justify-between text-[12px] text-[var(--brand-text-strong)]">
                                     <span>{option.label}</span>
                                     <input
                                         type="checkbox"
@@ -272,8 +272,8 @@ export default function ExportDialog({ onClose }: ExportDialogProps) {
 
                     {format === 'pdf' && (
                         <section>
-                            <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#666]">PDF options</div>
-                            <div className="space-y-2 rounded-2xl border border-[#242428] bg-[#101013] p-4">
+                            <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--brand-text-faint)]]">PDF options</div>
+                            <div className="space-y-2 rounded-2xl border border-[var(--brand-border-2)]] bg-[var(--brand-surface-1)]] p-4">
                                 {[
                                     { key: 'executiveSummary', label: 'Executive summary' },
                                     { key: 'issueBreakdownCharts', label: 'Issue breakdown charts' },
@@ -282,7 +282,7 @@ export default function ExportDialog({ onClose }: ExportDialogProps) {
                                     { key: 'comparisonWithPreviousCrawl', label: 'Comparison with previous crawl' },
                                     { key: 'whiteLabel', label: 'White-label branding' }
                                 ].map((option) => (
-                                    <label key={option.key} className="flex items-center justify-between text-[12px] text-white">
+                                    <label key={option.key} className="flex items-center justify-between text-[12px] text-[var(--brand-text-strong)]">
                                         <span>{option.label}</span>
                                         <input
                                             type="checkbox"
@@ -292,9 +292,9 @@ export default function ExportDialog({ onClose }: ExportDialogProps) {
                                         />
                                     </label>
                                 ))}
-                                <label className="mt-3 flex items-center justify-between rounded-xl border border-[#232329] bg-[#0d0d10] px-3 py-2 text-[12px] text-white">
+                                <label className="mt-3 flex items-center justify-between rounded-xl border border-[var(--brand-border-2)]] bg-[var(--brand-surface-1)]] px-3 py-2 text-[12px] text-[var(--brand-text-strong)]">
                                     <span>Company logo</span>
-                                    <input type="file" accept="image/*" onChange={(event) => { void handleLogoUpload(event); }} className="max-w-[180px] text-[11px] text-[#888]" />
+                                    <input type="file" accept="image/*" onChange={(event) => { void handleLogoUpload(event); }} className="max-w-[180px] text-[11px] text-[var(--brand-text-mid)]]" />
                                 </label>
                             </div>
                         </section>
@@ -311,14 +311,14 @@ export default function ExportDialog({ onClose }: ExportDialogProps) {
                     )}
                 </div>
 
-                <div className="flex items-center justify-end gap-3 border-t border-[#202025] px-5 py-4">
-                    <button onClick={onClose} className="rounded-xl border border-[#2e2e34] px-4 py-3 text-[12px] font-semibold text-[#ccc] hover:border-[#444] hover:text-white">
+                <div className="flex items-center justify-end gap-3 border-t border-[var(--brand-surface-3)]] px-5 py-4">
+                    <button onClick={onClose} className="rounded-xl border border-[var(--brand-border-3)]] px-4 py-3 text-[12px] font-semibold text-[var(--brand-text-mid)]] hover:border-[var(--brand-border-2)]] hover:text-[var(--brand-text-strong)]">
                         Cancel
                     </button>
                     <button
                         onClick={() => { void handleExportClick(); }}
                         disabled={isExporting}
-                        className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-[#ff5b70] to-[#d62839] px-4 py-3 text-[12px] font-bold text-white disabled:opacity-60"
+                        className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-[#ff5b70] to-[#d62839] px-4 py-3 text-[12px] font-bold text-[var(--brand-text-strong)] disabled:opacity-60"
                     >
                         {isExporting ? <Loader2 size={14} className="animate-spin" /> : <Download size={14} />}
                         Export

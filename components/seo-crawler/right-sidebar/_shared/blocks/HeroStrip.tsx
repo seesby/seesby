@@ -24,7 +24,7 @@ export function HeroStrip({
     <div className="flex flex-col @md:flex-row items-stretch gap-2 w-full">
       
       {/* Left: Score & Trend */}
-      <div className="flex items-center gap-5 bg-[#0a0a0a] border border-[#1f1f1f] rounded-md p-4 shrink-0 @md:min-w-[220px] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+      <div className="flex items-center gap-5 bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-md p-4 shrink-0 @md:min-w-[220px] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
         
         {typeof score === 'number' && (
           <div className="relative shrink-0 flex items-center justify-center">
@@ -33,7 +33,7 @@ export function HeroStrip({
         )}
 
         <div className="flex flex-col justify-center">
-          <div className="text-[11px] font-semibold tracking-wider text-[#999] uppercase">
+          <div className="text-[11px] font-semibold tracking-wider text-[var(--brand-text-mid)]] uppercase">
             {scoreLabel || 'Site score'}
           </div>
           
@@ -43,11 +43,11 @@ export function HeroStrip({
                 {scoreDelta > 0 ? '▲' : scoreDelta < 0 ? '▼' : '='} {Math.abs(scoreDelta).toFixed(0)}
               </span>
             ) : (
-              <span className="text-[10px] font-mono text-[#555]">—</span>
+              <span className="text-[10px] font-mono text-[var(--brand-text-faint)]]">—</span>
             )}
           </div>
 
-          {scoreHint && <div className="text-[10px] text-[#666] mt-1.5 max-w-[130px] leading-snug">{scoreHint}</div>}
+          {scoreHint && <div className="text-[10px] text-[var(--brand-text-faint)]] mt-1.5 max-w-[130px] leading-snug">{scoreHint}</div>}
         </div>
 
       </div>

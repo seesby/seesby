@@ -52,7 +52,7 @@ export function WqaContent() {
 			</Card>
 
 			<Card padded={false} title="Duplication">
-				<div className="flex flex-col border-t border-[#1f1f1f]">
+				<div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
 					<RowItem label="Near-dupe groups" value={String(dup.nearDupeGroups)}
 						onClick={() => openIssueDrawer?.('dup:near')} />
 					<RowItem label="Cannibal pairs" value={String(dup.cannibalPairs)}

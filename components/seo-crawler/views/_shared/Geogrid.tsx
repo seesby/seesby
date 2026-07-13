@@ -11,7 +11,7 @@ export function Geogrid({
 }) {
   const map = new Map(cells.map(c => [`${c.row}:${c.col}`, c.rank]));
   return (
-    <div className="grid bg-[#0a0a0a] border border-[#1a1a1a] rounded" style={{
+    <div className="grid bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded" style={{
       gridTemplateColumns: `repeat(${size}, 1fr)`,
       gridTemplateRows: `repeat(${size}, 1fr)`,
       width: '100%',
@@ -24,13 +24,13 @@ export function Geogrid({
         const c = i % size;
         const rank = map.get(`${r}:${c}`);
         const color = rank === undefined
-          ? '#0c0c0c'
+          ? 'bg-[var(--brand-surface-1)]'
           : rank <= 3 ? '#22c55e'
           : rank <= 10 ? mix('#22c55e', '#f59e0b', (rank - 3) / 7)
           : rank <= 20 ? mix('#f59e0b', '#ef4444', (rank - 10) / 10)
           : '#ef4444';
         return (
-          <div key={i} className="grid place-items-center text-[10px] font-mono text-white" style={ { background: color } }>
+          <div key={i} className="grid place-items-center text-[10px] font-mono text-[var(--brand-text-strong)]" style={ { background: color } }>
             {rank ?? ''}
           </div>
         );

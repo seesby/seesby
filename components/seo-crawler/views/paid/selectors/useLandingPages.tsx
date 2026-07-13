@@ -50,7 +50,7 @@ export function useLandingPages() {
       accessorKey: 'campaignCount', header: 'Camp count', size: 85,
       cell: c => {
         const v = c.getValue() as number;
-        return <span className="text-white tabular-nums">{v ?? '—'}</span>;
+        return <span className="text-[var(--brand-text-strong)] tabular-nums">{v ?? '—'}</span>;
       },
     },
     {
@@ -114,7 +114,7 @@ export function useLandingPages() {
       accessorKey: 'issues', header: 'Issues', size: 70,
       cell: c => {
         const v = c.getValue() as number;
-        if (!v) return <span className="text-[#555]">—</span>;
+        if (!v) return <span className="text-[var(--brand-text-faint)]]">—</span>;
         return <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-500/15 text-red-400">{v} issues</span>;
       },
     },

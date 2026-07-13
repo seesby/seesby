@@ -46,12 +46,12 @@ export default function StackedBarChart({ data, legend }: Props) {
               dataKey="name"
               type="category"
               width={78}
-              tick={{ fill: '#888', fontSize: 10 }}
+              tick={{ fill: 'text-[var(--brand-text-mid)]', fontSize: 10 }}
               axisLine={false}
               tickLine={false}
             />
             <Tooltip
-              contentStyle={{ background: '#111', border: '1px solid #333', borderRadius: 6, fontSize: 11 }}
+              contentStyle={{ background: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]', borderRadius: 6, fontSize: 11 }}
             />
             {keys.map((key, idx) => {
               const meta = keyMeta[idx];
@@ -66,7 +66,7 @@ export default function StackedBarChart({ data, legend }: Props) {
           {(legend || keyMeta.map((m) => ({ label: m.label, color: m.color }))).map((l) => (
             <div key={l.label} className="flex items-center gap-1">
               <div className="w-2 h-2 rounded-sm" style={{ backgroundColor: l.color }} />
-              <span className="text-[9px] text-[#666]">{l.label}</span>
+              <span className="text-[9px] text-[var(--brand-text-faint)]]">{l.label}</span>
             </div>
           ))}
         </div>

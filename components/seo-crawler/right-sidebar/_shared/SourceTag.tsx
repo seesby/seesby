@@ -14,10 +14,10 @@ const COLOR: Record<string, string> = {
 }
 
 export function SourceTag({ source }: { source: keyof typeof COLOR | string }) {
-  const c = COLOR[source] ?? '#666'
+  const c = COLOR[source] ?? 'text-[var(--brand-text-faint)]'
   return (
     <span
-      className="inline-flex h-4 items-center rounded-sm border px-1 text-[9px] uppercase tracking-wide text-[#ccc]"
+      className="inline-flex h-4 items-center rounded-sm border px-1 text-[9px] uppercase tracking-wide text-[var(--brand-text-mid)]]"
       style={{ borderColor: c, color: c }}
     >
       {source}

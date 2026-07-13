@@ -11,14 +11,14 @@ export default function CollapseGroup({
 }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="border border-[#1e1e1e] rounded mb-3 overflow-hidden bg-[#0a0a0a]">
+    <div className="border border-[var(--brand-surface-3)]] rounded mb-3 overflow-hidden bg-[var(--brand-surface-0)]]">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-3 py-2 hover:bg-[#111] transition-colors"
+        className="w-full flex items-center justify-between px-3 py-2 hover:bg-[var(--brand-surface-2)]] transition-colors"
       >
         <div className="flex items-center gap-2">
-          {open ? <ChevronDown size={12} className="text-[#666]" /> : <ChevronRight size={12} className="text-[#666]" />}
-          <span className="text-[11px] font-black uppercase tracking-widest text-[#888]">{title}</span>
+          {open ? <ChevronDown size={12} className="text-[var(--brand-text-faint)]]" /> : <ChevronRight size={12} className="text-[var(--brand-text-faint)]]" />}
+          <span className="text-[11px] font-black uppercase tracking-widest text-[var(--brand-text-mid)]]">{title}</span>
         </div>
         {right}
       </button>

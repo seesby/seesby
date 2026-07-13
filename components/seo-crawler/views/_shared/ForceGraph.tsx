@@ -84,12 +84,12 @@ export function ForceGraph({
         graphData={data}
         width={dims.w}
         height={dims.h}
-        backgroundColor="#070707"
+        backgroundColor="bg-[var(--brand-surface-0)]"
         nodeRelSize={5}
         nodeVal={(n: any) => Math.max(3, Math.sqrt(n.size ?? 4))}
         nodeLabel={() => ''}
         nodeColor={(n: any) => n.color ?? '#a78bfa'}
-        linkColor={() => '#333'}
+        linkColor={() => 'bg-[var(--brand-surface-4)]'}
         linkWidth={(l: any) => Math.max(0.8, Math.log2((l.weight ?? 1) + 1))}
         linkDirectionalArrowLength={3}
         linkDirectionalArrowRelPos={1}
@@ -113,15 +113,15 @@ export function ForceGraph({
       />
 
       {/* Zoom controls */}
-      <div className="absolute bottom-12 right-3 z-20 flex flex-col gap-1 bg-[#0a0a0acc] backdrop-blur rounded border border-[#1a1a1a]">
-        <button onClick={zoomIn} className="w-7 h-7 flex items-center justify-center text-[#888] hover:text-white transition-colors" title="Zoom in">
+      <div className="absolute bottom-12 right-3 z-20 flex flex-col gap-1 bg-[var(--brand-surface-0)]cc] backdrop-blur rounded border border-[var(--brand-surface-3)]]">
+        <button onClick={zoomIn} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] transition-colors" title="Zoom in">
           <ZoomIn className="w-3.5 h-3.5" />
         </button>
-        <button onClick={zoomOut} className="w-7 h-7 flex items-center justify-center text-[#888] hover:text-white transition-colors" title="Zoom out">
+        <button onClick={zoomOut} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] transition-colors" title="Zoom out">
           <ZoomOut className="w-3.5 h-3.5" />
         </button>
-        <div className="w-full h-px bg-[#1a1a1a]" />
-        <button onClick={fitToScreen} className="w-7 h-7 flex items-center justify-center text-[#888] hover:text-white transition-colors" title="Fit to screen">
+        <div className="w-full h-px bg-[var(--brand-surface-3)]]" />
+        <button onClick={fitToScreen} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] transition-colors" title="Fit to screen">
           <Maximize2 className="w-3.5 h-3.5" />
         </button>
       </div>

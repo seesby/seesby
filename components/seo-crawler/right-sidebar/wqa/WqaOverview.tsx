@@ -33,13 +33,13 @@ export function WqaOverview() {
 			<Card>
 				<div className="flex items-center justify-between gap-3">
 					<div>
-						<div className="text-[11px] uppercase tracking-wide text-[#888]">Quality score</div>
-						<div className="mt-1 text-2xl font-semibold text-white">{score.score}</div>
+						<div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Quality score</div>
+						<div className="mt-1 text-2xl font-semibold text-[var(--brand-text-strong)]">{score.score}</div>
 						<div className="mt-1.5 flex flex-col gap-1.5">
-							<div className="flex items-center gap-2 text-[10px] text-[#666]">
-								<span>p50 <span className="text-[#aaa]">{score.p50}</span></span>
-								<span className="w-px h-2 bg-[#222]" />
-								<span>p90 <span className="text-[#aaa]">{score.p90}</span></span>
+							<div className="flex items-center gap-2 text-[10px] text-[var(--brand-text-faint)]]">
+								<span>p50 <span className="text-[var(--brand-text-mid)]]">{score.p50}</span></span>
+								<span className="w-px h-2 bg-[var(--brand-border-2)]]" />
+								<span>p90 <span className="text-[var(--brand-text-mid)]]">{score.p90}</span></span>
 							</div>
 							{hasTrend && score.prevScore != null && (
 								<DeltaChip value={score.score - score.prevScore} size="sm" />
@@ -82,7 +82,7 @@ export function WqaOverview() {
 
 			{/* Decisions queue */}
 			<Card padded={false} title={`Needs decision · ${decisions.total}`}>
-				<div className="flex flex-col border-t border-[#1f1f1f]">
+				<div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
 					{decisions.rows.map(r => (
 						<RowItem
 							key={r.id}

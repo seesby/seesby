@@ -5,7 +5,7 @@ import { fmtNum, fmtPct, fmtDate } from '../../_shared/formatters';
 import { STATUS, MODE_ACCENT } from '../../_shared/tokens';
 
 const ACCENT = MODE_ACCENT.ai;
-const BORDER = 'border border-[#1a1a1a] bg-[#0a0a0a] rounded';
+const BORDER = 'border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] rounded';
 
 type PromptSet = 'brand' | 'informational' | 'commercial' | 'comparison' | 'transactional';
 
@@ -80,11 +80,11 @@ export default function AiPromptsView() {
   return (
     <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
       {/* Toolbar */}
-      <div className="flex items-center gap-3 px-3 py-2 border-b border-[#161616]">
+      <div className="flex items-center gap-3 px-3 py-2 border-b border-[var(--brand-surface-3)]]">
         <select
           value={promptSet}
           onChange={e => setPromptSet(e.target.value as PromptSet)}
-          className="h-7 px-2 text-[11px] bg-[#111] border border-[#222] rounded text-[#ccc] cursor-pointer"
+          className="h-7 px-2 text-[11px] bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] rounded text-[var(--brand-text-mid)]] cursor-pointer"
         >
           {PROMPT_SETS.map(ps => (
             <option key={ps.id} value={ps.id}>{ps.label}</option>
@@ -98,8 +98,8 @@ export default function AiPromptsView() {
               onClick={() => toggleModel(m)}
               className={`h-6 px-2 text-[10px] rounded border transition-colors ${
                 enabledModels.has(m)
-                  ? 'border-[#333] bg-[#1a1a2e] text-[#a78bfa]'
-                  : 'border-[#1a1a1a] bg-transparent text-[#555]'
+                  ? 'border-[var(--brand-surface-4)]] bg-[var(--brand-surface-3)]] text-[#a78bfa]'
+                  : 'border-[var(--brand-surface-3)]] bg-transparent text-[var(--brand-text-faint)]]'
               }`}
             >
               {m}
@@ -117,28 +117,28 @@ export default function AiPromptsView() {
       {/* Main content */}
       <div className="flex-1 flex min-h-0 overflow-hidden">
         {/* Prompt list */}
-        <div className="flex-1 flex flex-col min-w-0 border-r border-[#161616]">
-          <div className="px-3 py-2 border-b border-[#161616]">
-            <div className="text-[10px] uppercase tracking-wider text-[#666]">
+        <div className="flex-1 flex flex-col min-w-0 border-r border-[var(--brand-surface-3)]]">
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]]">
               {rows.length} prompts tracked
             </div>
           </div>
           <div className="flex-1 overflow-auto custom-scrollbar">
             {rows.length === 0 ? (
-              <div className="p-4 text-[12px] text-[#666]">No prompts tracked.</div>
+              <div className="p-4 text-[12px] text-[var(--brand-text-faint)]]">No prompts tracked.</div>
             ) : (
               rows.map(r => (
                 <div
                   key={r.id}
                   onClick={() => setSelectedId(r.id)}
-                  className={`px-3 py-2.5 cursor-pointer border-b border-[#0f0f0f] transition-colors ${
-                    selectedId === r.id ? 'bg-[#0e0e0e]' : 'hover:bg-[#0c0c0c]'
+                  className={`px-3 py-2.5 cursor-pointer border-b border-[var(--brand-surface-1)]] transition-colors ${
+                    selectedId === r.id ? 'bg-[var(--brand-surface-1)]]' : 'hover:bg-[var(--brand-surface-1)]]'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex-1 min-w-0">
-                      <div className="text-[12px] text-white truncate">"{r.prompt}"</div>
-                      <div className="text-[10px] text-[#666] mt-0.5">
+                      <div className="text-[12px] text-[var(--brand-text-strong)] truncate">"{r.prompt}"</div>
+                      <div className="text-[10px] text-[var(--brand-text-faint)]] mt-0.5">
                         {r.intent} · {r.citations.length} citations · last {fmtDate(r.lastChecked)}
                       </div>
                     </div>
@@ -148,7 +148,7 @@ export default function AiPromptsView() {
                           #{r.ourPosition}
                         </span>
                       ) : (
-                        <span className="text-[10px] text-[#666]">missed</span>
+                        <span className="text-[10px] text-[var(--brand-text-faint)]]">missed</span>
                       )}
                     </div>
                   </div>
@@ -161,7 +161,7 @@ export default function AiPromptsView() {
                         <span
                           key={m}
                           className={`text-[9px] px-1.5 py-0.5 rounded ${
-                            cited ? 'bg-[#1a1a2e] text-[#a78bfa]' : 'bg-[#111] text-[#555]'
+                            cited ? 'bg-[var(--brand-surface-3)]] text-[#a78bfa]' : 'bg-[var(--brand-surface-2)]] text-[var(--brand-text-faint)]]'
                           }`}
                         >
                           {m}
@@ -181,9 +181,9 @@ export default function AiPromptsView() {
             <>
               {/* Prompt detail */}
               <div className={BORDER + ' p-3'}>
-                <div className="text-[10px] uppercase tracking-wider text-[#666] mb-2">Prompt</div>
-                <div className="text-[14px] text-white font-medium">"{selected.prompt}"</div>
-                <div className="flex items-center gap-3 mt-2 text-[11px] text-[#888]">
+                <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">Prompt</div>
+                <div className="text-[14px] text-[var(--brand-text-strong)] font-medium">"{selected.prompt}"</div>
+                <div className="flex items-center gap-3 mt-2 text-[11px] text-[var(--brand-text-mid)]]">
                   <span>Intent: {selected.intent}</span>
                   <span>·</span>
                   <span>Last checked: {fmtDate(selected.lastChecked)}</span>
@@ -195,13 +195,13 @@ export default function AiPromptsView() {
                     const cite = selected.citations.find(c => c.engine?.toLowerCase().includes(m.toLowerCase()));
                     return (
                       <div key={m} className="flex items-center justify-between text-[11px]">
-                        <span className="text-[#888]">{m}</span>
+                        <span className="text-[var(--brand-text-mid)]]">{m}</span>
                         {cite ? (
                           <span className="text-[#22c55e]">
                             pos {cite.rank} of {selected.citations.filter(c => c.engine === cite.engine).length}
                           </span>
                         ) : (
-                          <span className="text-[#666]">not cited</span>
+                          <span className="text-[var(--brand-text-faint)]]">not cited</span>
                         )}
                       </div>
                     );
@@ -212,10 +212,10 @@ export default function AiPromptsView() {
               {/* Competitors */}
               {selected.competitors.length > 0 && (
                 <div className={BORDER + ' p-3'}>
-                  <div className="text-[10px] uppercase tracking-wider text-[#666] mb-2">Competitors cited</div>
+                  <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">Competitors cited</div>
                   <div className="flex flex-wrap gap-1.5">
                     {selected.competitors.map(c => (
-                      <span key={c} className="px-2 py-0.5 text-[10px] rounded bg-[#1a1a1a] text-[#888]">
+                      <span key={c} className="px-2 py-0.5 text-[10px] rounded bg-[var(--brand-surface-3)]] text-[var(--brand-text-mid)]]">
                         {c}
                       </span>
                     ))}
@@ -225,21 +225,21 @@ export default function AiPromptsView() {
 
               {/* Citation share */}
               <div className={BORDER + ' p-3'}>
-                <div className="text-[10px] uppercase tracking-wider text-[#666] mb-2">Citation share</div>
+                <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">Citation share</div>
                 <div className="space-y-1.5">
                   {citationShare.map(c => (
                     <div key={c.host} className="flex items-center gap-2">
-                      <span className="text-[11px] text-[#ccc] w-24 truncate">{c.host}</span>
-                      <div className="flex-1 h-2 bg-[#111] rounded-full overflow-hidden">
+                      <span className="text-[11px] text-[var(--brand-text-mid)]] w-24 truncate">{c.host}</span>
+                      <div className="flex-1 h-2 bg-[var(--brand-surface-2)]] rounded-full overflow-hidden">
                         <div
                           className="h-full rounded-full"
                           style={{
                             width: `${(c.count / totalCitations) * 100}%`,
-                            backgroundColor: c.host === host ? ACCENT : '#555',
+                            backgroundColor: c.host === host ? ACCENT : 'text-[var(--brand-text-faint)]',
                           }}
                         />
                       </div>
-                      <span className="text-[10px] text-[#888] w-8 text-right">
+                      <span className="text-[10px] text-[var(--brand-text-mid)]] w-8 text-right">
                         {fmtPct(c.count / totalCitations, 1)}
                       </span>
                     </div>
@@ -249,25 +249,25 @@ export default function AiPromptsView() {
 
               {/* Cited pages */}
               <div className={BORDER + ' p-3'}>
-                <div className="text-[10px] uppercase tracking-wider text-[#666] mb-2">Cited pages (from us)</div>
+                <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">Cited pages (from us)</div>
                 <div className="space-y-1.5">
                   {citedPages.map(p => (
                     <div key={p.path} className="flex items-center gap-2">
                       <span className="text-[11px] text-[#c4b5fd] truncate flex-1">{p.path}</span>
-                      <div className="w-20 h-2 bg-[#111] rounded-full overflow-hidden">
+                      <div className="w-20 h-2 bg-[var(--brand-surface-2)]] rounded-full overflow-hidden">
                         <div
                           className="h-full rounded-full bg-[#a78bfa]"
                           style={{ width: `${(p.count / maxPageCitations) * 100}%` }}
                         />
                       </div>
-                      <span className="text-[10px] text-[#888] w-6 text-right">{fmtNum(p.count)}</span>
+                      <span className="text-[10px] text-[var(--brand-text-mid)]] w-6 text-right">{fmtNum(p.count)}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </>
           ) : (
-            <div className="flex-1 grid place-items-center text-[12px] text-[#666]">
+            <div className="flex-1 grid place-items-center text-[12px] text-[var(--brand-text-faint)]]">
               Select a prompt to see details
             </div>
           )}

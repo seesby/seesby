@@ -7,7 +7,7 @@ const COLORS: Record<string, string> = {
   '3xx': '#fb923c',
   '4xx': '#f87171',
   '5xx': '#991b1b',
-  Other: '#555',
+  Other: 'text-[var(--brand-text-faint)]',
 };
 
 export default function StatusDonut({
@@ -28,17 +28,17 @@ export default function StatusDonut({
             innerRadius={60}
             outerRadius={90}
             dataKey="value"
-            stroke="#0A0A0B"
+            stroke="bg-[var(--brand-surface-0)]"
             strokeWidth={2}
           >
             {data.map((entry) => (
-              <Cell key={entry.name} fill={COLORS[entry.name] || '#555'} />
+              <Cell key={entry.name} fill={COLORS[entry.name] || 'text-[var(--brand-text-faint)]'} />
             ))}
           </Pie>
           <Tooltip
             contentStyle={{
-              background: '#1a1a1a',
-              border: '1px solid #333',
+              background: 'bg-[var(--brand-surface-3)]',
+              border: '1px solid bg-[var(--brand-surface-4)]',
               borderRadius: 8,
               fontSize: 12,
               color: '#f5f5f5',
@@ -60,8 +60,8 @@ export default function StatusDonut({
         </PieChart>
       </ResponsiveContainer>
       <div className="text-center -mt-2">
-        <span className="text-2xl font-black text-white">{total}</span>
-        <span className="text-[11px] text-[#666] ml-1">total URLs</span>
+        <span className="text-2xl font-black text-[var(--brand-text-strong)]">{total}</span>
+        <span className="text-[11px] text-[var(--brand-text-faint)]] ml-1">total URLs</span>
       </div>
     </ChartCard>
   );

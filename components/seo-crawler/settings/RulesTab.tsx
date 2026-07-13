@@ -99,10 +99,10 @@ export default function RulesTab({ config, setConfig }: TabProps) {
       <SettingsSection title="Custom Health Checks" description="Define custom pass/fail conditions for pages.">
         <div className="space-y-3">
           {customExtractionRules.map((rule) => (
-            <div key={rule.id} className="p-4 bg-[#111] border border-[#222] rounded-lg space-y-3 relative group">
+            <div key={rule.id} className="p-4 bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] rounded-lg space-y-3 relative group">
               <button 
                 onClick={() => removeExtractionRule(rule.id)}
-                className="absolute top-4 right-4 p-1 text-[#444] hover:text-red-500 transition-colors"
+                className="absolute top-4 right-4 p-1 text-[var(--brand-border-2)]] hover:text-red-500 transition-colors"
               >
                 <Trash2 size={14} />
               </button>
@@ -130,7 +130,7 @@ export default function RulesTab({ config, setConfig }: TabProps) {
           ))}
           <button 
             onClick={addExtractionRule}
-            className="w-full py-2 border border-dashed border-[#333] rounded-lg text-[11px] text-[#666] hover:border-[#F59E0B] hover:text-[#F59E0B] transition-all flex items-center justify-center gap-2"
+            className="w-full py-2 border border-dashed border-[var(--brand-surface-4)]] rounded-lg text-[11px] text-[var(--brand-text-faint)]] hover:border-[#F59E0B] hover:text-[#F59E0B] transition-all flex items-center justify-center gap-2"
           >
             <Plus size={14} /> Add Custom Health Check
           </button>

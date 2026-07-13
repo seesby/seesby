@@ -26,9 +26,9 @@ export function LocalReviews() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[#888]">Review score</div>
-            <div className="mt-1 text-2xl font-semibold text-white">{s.reviews.avg > 0 ? `${s.reviews.avg.toFixed(1)} \u2605` : '\u2014'}</div>
-            <div className="mt-1 text-[10px] text-[#666]">Average rating across all locations</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Review score</div>
+            <div className="mt-1 text-2xl font-semibold text-[var(--brand-text-strong)]">{s.reviews.avg > 0 ? `${s.reviews.avg.toFixed(1)} \u2605` : '\u2014'}</div>
+            <div className="mt-1 text-[10px] text-[var(--brand-text-faint)]]">Average rating across all locations</div>
           </div>
           <ProgressRing value={reviewScore} size={72} />
         </div>
@@ -67,7 +67,7 @@ export function LocalReviews() {
       {/* Recent low-star reviews */}
       {s.reviews.recentLow.length > 0 && (
         <Card title="Recent low-star reviews" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.reviews.recentLow.map(r => (
               <RowItem
                 key={r.id}
@@ -83,7 +83,7 @@ export function LocalReviews() {
       {/* Unanswered reviews */}
       {s.reviews.unanswered.length > 0 && (
         <Card title="Unanswered reviews" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.reviews.unanswered.map(r => (
               <RowItem
                 key={r.id}
@@ -102,7 +102,7 @@ export function LocalReviews() {
           {s.reviews.velocitySeries.length > 1 ? (
             <RsSparkline values={s.reviews.velocitySeries} />
           ) : (
-            <div className="text-[11px] text-[#555] py-2">Not enough data</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]] py-2">Not enough data</div>
           )}
         </Card>
       </Trendable>
@@ -110,7 +110,7 @@ export function LocalReviews() {
       {/* Trend comparison */}
       <Trendable hasPrior={s.hasPrior}>
         <Card title="vs last crawl" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             <ComparisonRow
               label="Avg rating"
               a={{ v: Math.round(s.reviews.avg * 10), tag: 'now' }}

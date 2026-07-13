@@ -22,9 +22,9 @@ export function LocalGbp() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[#888]">GBP score</div>
-            <div className="mt-1 text-2xl font-semibold text-white">{s.gbp.avgScore}</div>
-            <div className="mt-1 text-[10px] text-[#666]">Profile completeness and activity</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">GBP score</div>
+            <div className="mt-1 text-2xl font-semibold text-[var(--brand-text-strong)]">{s.gbp.avgScore}</div>
+            <div className="mt-1 text-[10px] text-[var(--brand-text-faint)]]">Profile completeness and activity</div>
           </div>
           <ProgressRing value={s.gbp.avgScore} size={72} />
         </div>
@@ -67,7 +67,7 @@ export function LocalGbp() {
       {/* Profiles needing attention */}
       {s.gbp.worstProfiles.length > 0 && (
         <Card title="Profiles needing attention" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.gbp.worstProfiles.map(p => (
               <RowItem
                 key={p.id}
@@ -83,7 +83,7 @@ export function LocalGbp() {
       {/* Top profiles */}
       {s.gbp.bestProfiles.length > 0 && (
         <Card title="Top profiles" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.gbp.bestProfiles.map(p => (
               <RowItem
                 key={p.id}
@@ -101,7 +101,7 @@ export function LocalGbp() {
           {s.gbp.viewsSeries.length > 1 ? (
             <RsSparkline values={s.gbp.viewsSeries} />
           ) : (
-            <div className="text-[11px] text-[#555] py-2">Not enough data</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]] py-2">Not enough data</div>
           )}
         </Card>
       </Trendable>
@@ -109,7 +109,7 @@ export function LocalGbp() {
       {/* Trend comparison */}
       <Trendable hasPrior={s.hasPrior}>
         <Card title="vs last crawl" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             <ComparisonRow
               label="GBP score"
               a={{ v: s.gbp.avgScore, tag: 'now' }}

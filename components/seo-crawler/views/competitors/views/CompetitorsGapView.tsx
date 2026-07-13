@@ -13,8 +13,8 @@ import clsx from 'clsx';
 
 type GapMode = 'topics' | 'keywords';
 
-const PANEL = 'rounded border border-[#1a1a1a] bg-[#0a0a0a]';
-const LABEL = 'text-[10px] uppercase tracking-wider text-[#666]';
+const PANEL = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]]';
+const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]]';
 
 export default function CompetitorsGapView() {
   const ctx = useSeoCrawler() as any;
@@ -48,7 +48,7 @@ export default function CompetitorsGapView() {
       size: 200,
       cell: c => (
         <span className="flex items-center gap-2">
-          <span className="text-white truncate">{c.getValue() as string}</span>
+          <span className="text-[var(--brand-text-strong)] truncate">{c.getValue() as string}</span>
           <GapBadge type={(c.row.original as GapRow).gapType} />
         </span>
       ),
@@ -57,7 +57,7 @@ export default function CompetitorsGapView() {
       accessorKey: 'volume',
       header: 'Volume',
       size: 70,
-      cell: c => <span className="tabular-nums text-[#888]">{fmtCompact(c.getValue())}</span>,
+      cell: c => <span className="tabular-nums text-[var(--brand-text-mid)]]">{fmtCompact(c.getValue())}</span>,
     },
     {
       accessorKey: 'ourRank',
@@ -66,7 +66,7 @@ export default function CompetitorsGapView() {
       cell: c => {
         const val = c.getValue() as number | null;
         return (
-          <span className={`tabular-nums font-medium ${val === null ? 'text-[#ef4444]' : val <= 3 ? 'text-[#22c55e]' : val <= 10 ? 'text-[#f59e0b]' : 'text-white'}`}>
+          <span className={`tabular-nums font-medium ${val === null ? 'text-[#ef4444]' : val <= 3 ? 'text-[#22c55e]' : val <= 10 ? 'text-[#f59e0b]' : 'text-[var(--brand-text-strong)]'}`}>
             {val ?? '—'}
           </span>
         );
@@ -82,7 +82,7 @@ export default function CompetitorsGapView() {
       accessorKey: 'bestCompetitor',
       header: 'Who',
       size: 80,
-      cell: c => <span className="text-[#888] truncate">{String(c.getValue() ?? '').replace(/\..+/, '')}</span>,
+      cell: c => <span className="text-[var(--brand-text-mid)]] truncate">{String(c.getValue() ?? '').replace(/\..+/, '')}</span>,
     },
     {
       accessorKey: 'delta',
@@ -93,7 +93,7 @@ export default function CompetitorsGapView() {
         const row = c.row.original as GapRow;
         if (row.ourRank === null) return <span className="text-[10px] text-[#ef4444] font-medium">miss</span>;
         return (
-          <span className={`tabular-nums ${val > 0 ? 'text-[#22c55e]' : val < 0 ? 'text-[#ef4444]' : 'text-[#666]'}`}>
+          <span className={`tabular-nums ${val > 0 ? 'text-[#22c55e]' : val < 0 ? 'text-[#ef4444]' : 'text-[var(--brand-text-faint)]]'}`}>
             {val > 0 ? `+${val}` : val}
           </span>
         );
@@ -104,7 +104,7 @@ export default function CompetitorsGapView() {
       header: 'Intent',
       size: 70,
       cell: c => (
-        <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#222] text-[#888]">
+        <span className="text-[9px] px-1.5 py-0.5 rounded bg-[var(--brand-border-2)]] text-[var(--brand-text-mid)]]">
           {c.getValue() as string}
         </span>
       ),
@@ -113,7 +113,7 @@ export default function CompetitorsGapView() {
       accessorKey: 'cluster',
       header: 'Topic',
       size: 100,
-      cell: c => <span className="text-[#888] truncate">{c.getValue() as string}</span>,
+      cell: c => <span className="text-[var(--brand-text-mid)]] truncate">{c.getValue() as string}</span>,
     },
     {
       accessorKey: 'opportunity',
@@ -124,7 +124,7 @@ export default function CompetitorsGapView() {
         return (
           <span className="flex items-center gap-0.5">
             {Array.from({ length: 5 }, (_, i) => (
-              <span key={i} className={`inline-block w-1.5 h-1.5 rounded-full ${i < val ? 'bg-[#a78bfa]' : 'bg-[#222]'}`} />
+              <span key={i} className={`inline-block w-1.5 h-1.5 rounded-full ${i < val ? 'bg-[#a78bfa]' : 'bg-[var(--brand-border-2)]]'}`} />
             ))}
           </span>
         );
@@ -141,13 +141,13 @@ export default function CompetitorsGapView() {
   return (
     <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
       {/* Mode toggle + scope */}
-      <div className="flex items-center gap-2 px-3 py-1.5 shrink-0 border-b border-[#161616]">
-        <div className="flex items-center gap-0.5 bg-[#0c0c0c] rounded border border-[#1a1a1a] p-0.5">
+      <div className="flex items-center gap-2 px-3 py-1.5 shrink-0 border-b border-[var(--brand-surface-3)]]">
+        <div className="flex items-center gap-0.5 bg-[var(--brand-surface-1)]] rounded border border-[var(--brand-surface-3)]] p-0.5">
           {(['topics', 'keywords'] as const).map(m => (
             <button key={m} onClick={() => setMode(m)}
               className={clsx(
                 'h-[22px] px-3 text-[10px] rounded transition-colors',
-                mode === m ? 'bg-[#171717] text-white' : 'text-[#888] hover:text-[#ddd] hover:bg-[#121212]',
+                mode === m ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-mid)]] hover:bg-[var(--brand-surface-2)]]',
               )}>
               {m === 'topics' ? 'Topics' : 'Keywords'}
             </button>
@@ -217,21 +217,21 @@ function TopicList({ topics }: { topics: TopicGap[] }) {
 
   return (
     <div className={`${PANEL}`}>
-      <div className="px-3 py-2 border-b border-[#1a1a1a]">
+      <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
         <span className={LABEL}>Topic breakdown</span>
       </div>
-      <div className="divide-y divide-[#161616]">
+      <div className="divide-y divide-[var(--brand-surface-3)]]">
         {topics.map(t => (
-          <div key={t.id} className="flex items-center gap-3 px-3 py-2 hover:bg-[#0c0c0c] transition-colors">
-            <span className="text-[11px] text-white truncate min-w-0 flex-1">{t.topic}</span>
-            <span className="text-[10px] tabular-nums text-[#888] shrink-0">{fmtCompact(t.volume)}</span>
-            <div className="w-20 h-1.5 rounded-full bg-[#161616] overflow-hidden shrink-0">
+          <div key={t.id} className="flex items-center gap-3 px-3 py-2 hover:bg-[var(--brand-surface-1)]] transition-colors">
+            <span className="text-[11px] text-[var(--brand-text-strong)] truncate min-w-0 flex-1">{t.topic}</span>
+            <span className="text-[10px] tabular-nums text-[var(--brand-text-mid)]] shrink-0">{fmtCompact(t.volume)}</span>
+            <div className="w-20 h-1.5 rounded-full bg-[var(--brand-surface-3)]] overflow-hidden shrink-0">
               <div className="h-full rounded-full bg-[#a78bfa] transition-all"
                 style={{ width: `${(t.volume / maxVol) * 100}%` }} />
             </div>
             <div className="flex gap-0.5 shrink-0">
               {t.competitors.map((c, i) => (
-                <span key={i} className={`w-2 h-2 rounded-full ${c.ranking ? 'bg-[#22c55e]' : 'bg-[#1a1a1a]'}`}
+                <span key={i} className={`w-2 h-2 rounded-full ${c.ranking ? 'bg-[#22c55e]' : 'bg-[var(--brand-surface-3)]]'}`}
                   title={`${c.host}: ${c.ranking ? 'ranking' : 'not ranking'}`} />
               ))}
             </div>

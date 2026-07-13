@@ -68,15 +68,15 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
   return (
     <div className="space-y-3">
       {/* Hero strip */}
-      <div className="flex items-center gap-3 p-2.5 rounded-lg bg-gradient-to-r from-[#0f0f0f] to-[#0a0a0a] border border-[#1a1a1a]">
+      <div className="flex items-center gap-3 p-2.5 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)]] to-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]">
         <div className="flex-1 min-w-0">
-          <div className="text-[13px] text-white font-semibold truncate">{locationName}</div>
-          <div className="text-[11px] text-[#555] font-mono truncate mt-0.5">{url || address || ''}</div>
+          <div className="text-[13px] text-[var(--brand-text-strong)] font-semibold truncate">{locationName}</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] font-mono truncate mt-0.5">{url || address || ''}</div>
         </div>
         <div className="shrink-0 flex items-center gap-2">
           <div className="relative w-10 h-10">
             <svg className="w-10 h-10 -rotate-90" viewBox="0 0 36 36">
-              <circle cx="18" cy="18" r="15" fill="none" stroke="#1a1a1a" strokeWidth="3" />
+              <circle cx="18" cy="18" r="15" fill="none" stroke="bg-[var(--brand-surface-3)]" strokeWidth="3" />
               <circle
                 cx="18" cy="18" r="15" fill="none"
                 stroke={gaugeColor}
@@ -85,7 +85,7 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
                 strokeLinecap="round"
               />
             </svg>
-            <span className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-white">{localScore}</span>
+            <span className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-[var(--brand-text-strong)]">{localScore}</span>
           </div>
         </div>
       </div>
@@ -102,11 +102,11 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* 2-column grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         {/* Identity */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2.5">Location</div>
-          <div className="mb-2 pb-2 border-b border-[#141414]">
-            <div className="text-[9px] text-[#444] uppercase tracking-wider mb-0.5">Name</div>
-            <div className="text-[11px] text-white leading-snug break-words">{locationName}</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">Location</div>
+          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
+            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">Name</div>
+            <div className="text-[11px] text-[var(--brand-text-strong)] leading-snug break-words">{locationName}</div>
           </div>
           <div className="space-y-0">
             <DataRow label="Address" value={address || '\u2014'} />
@@ -119,8 +119,8 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
         </div>
 
         {/* GBP */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2.5">GBP</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">GBP</div>
           <div className="space-y-0">
             <DataRow label="Linked" value={gbpLinked ? 'Yes' : 'No'} status={gbpLinked ? 'pass' : 'fail'} />
             <DataRow label="Verified" value={gbpVerified ? 'Yes' : 'No'} status={gbpVerified ? 'pass' : 'fail'} />
@@ -133,8 +133,8 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
         </div>
 
         {/* NAP consistency */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2.5">NAP consistency</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">NAP consistency</div>
           <div className="space-y-0">
             <DataRow label="Score" value={formatNumber(napScore)} status={Number(napScore) >= 80 ? 'pass' : Number(napScore) >= 50 ? 'warn' : 'fail'} />
             <DataRow label="Exact matches" value={`${exactCount} / ${napDetails.length || '\u2014'}`} status={exactCount === napDetails.length && napDetails.length > 0 ? 'pass' : 'warn'} />
@@ -143,8 +143,8 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
             <DataRow label="Phone" value={`${napDetails.filter((d: any) => d.phoneMatch !== false).length} / ${napDetails.length || '\u2014'}`} />
           </div>
           {hasTrend && (
-            <div className="mt-2 pt-2 border-t border-[#141414]">
-              <div className="bg-[#0a0a0a] border border-[#222] rounded p-2">
+            <div className="mt-2 pt-2 border-t border-[var(--brand-surface-2)]]">
+              <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-2">
                 <Sparkline values={page?.napScoreTrend || []} tone="info" />
               </div>
             </div>
@@ -152,8 +152,8 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
         </div>
 
         {/* Schema */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2.5">Schema</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">Schema</div>
           <div className="space-y-0">
             <DataRow label="LocalBusiness" value={hasLocalBusiness ? 'Yes' : 'No'} status={hasLocalBusiness ? 'pass' : 'fail'} />
             <DataRow label="GeoCoordinates" value={hasGeo ? 'Yes' : 'No'} status={hasGeo ? 'pass' : 'warn'} />
@@ -165,22 +165,22 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
 
       {/* Bottom row: Reviews, Pack, Flags */}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2.5">Reviews</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">Reviews</div>
           <DataRow label="Average" value={reviewAvg ? `${Number(reviewAvg).toFixed(1)} / 5` : '\u2014'} status={Number(reviewAvg) >= 4 ? 'pass' : Number(reviewAvg) >= 3 ? 'warn' : 'fail'} />
           <DataRow label="Count" value={formatNumber(reviewCount)} />
           <DataRow label="Response" value={formatPercent(responseRate)} status={Number(responseRate) >= 0.8 ? 'pass' : 'warn'} />
           <DataRow label="Velocity" value={`${formatNumber(reviewVelocity)}/mo`} />
         </div>
 
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2.5">Pack</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">Pack</div>
           <DataRow label="Avg position" value={packPos ? Number(packPos).toFixed(1) : '\u2014'} status={Number(packPos) <= 3 ? 'pass' : Number(packPos) <= 10 ? 'warn' : 'fail'} />
           <DataRow label="Visibility" value={formatPercent(packPresence)} status={Number(packPresence) >= 0.3 ? 'pass' : 'warn'} />
         </div>
 
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2.5">Flags</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">Flags</div>
           <FlagRow label="NAP inconsistent" fail={Number(napScore) < 70} />
           <FlagRow label="GBP incomplete" fail={Number(gbpHealth) < 0.7} />
           <FlagRow label="Low review count" fail={Number(reviewCount) < 10} />
@@ -196,7 +196,7 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
         <Card title={`Issues (${localIssues.length})`}>
           <div className="space-y-0">
             {localIssues.map((a: any, i: number) => (
-              <div key={`${a.id}-${i}`} className="flex items-start gap-2.5 py-2 border-b border-[#111] last:border-b-0">
+              <div key={`${a.id}-${i}`} className="flex items-start gap-2.5 py-2 border-b border-[var(--brand-surface-2)]] last:border-b-0">
                 <div className="mt-0.5">
                   {a.type === 'error' || a.severity === 'CRITICAL' || a.severity === 'HIGH' ? (
                     <span className="block w-1.5 h-1.5 rounded-full bg-[#ef4444]" />
@@ -207,9 +207,9 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[11px] text-[#ccc] font-medium">{a.label}</div>
+                  <div className="text-[11px] text-[var(--brand-text-mid)]] font-medium">{a.label}</div>
                   {(a.description || a.reason) && (
-                    <div className="text-[10px] text-[#444] mt-0.5 line-clamp-1">{a.description || a.reason}</div>
+                    <div className="text-[10px] text-[var(--brand-border-2)]] mt-0.5 line-clamp-1">{a.description || a.reason}</div>
                   )}
                 </div>
               </div>

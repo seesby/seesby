@@ -59,26 +59,26 @@ export function Quadrant({
       <rect x={mx} y={my} width={pad.left + plotW - mx} height={pad.top + plotH - my} fill="#ef444408" rx={2} />
 
       {/* Crosshairs */}
-      <line x1={mx} y1={pad.top} x2={mx} y2={pad.top + plotH} stroke="#333" strokeWidth={1} strokeDasharray="3 3" />
-      <line x1={pad.left} y1={my} x2={pad.left + plotW} y2={my} stroke="#333" strokeWidth={1} strokeDasharray="3 3" />
+      <line x1={mx} y1={pad.top} x2={mx} y2={pad.top + plotH} stroke="bg-[var(--brand-surface-4)]" strokeWidth={1} strokeDasharray="3 3" />
+      <line x1={pad.left} y1={my} x2={pad.left + plotW} y2={my} stroke="bg-[var(--brand-surface-4)]" strokeWidth={1} strokeDasharray="3 3" />
 
       {/* Quadrant labels */}
       {QLABEL.map((q, i) => (
-        <text key={i} x={q.x} y={q.y} textAnchor={q.anchor as any} className="fill-[#555] text-[9px] uppercase tracking-wider">
+        <text key={i} x={q.x} y={q.y} textAnchor={q.anchor as any} className="fill-[var(--brand-text-faint)]] text-[9px] uppercase tracking-wider">
           {q.text}
         </text>
       ))}
 
       {/* Axis labels */}
-      <text x={w / 2} y={height - 4} textAnchor="middle" className="fill-[#666] text-[10px]">{xLabel}</text>
-      <text x={8} y={height / 2} textAnchor="middle" transform={`rotate(-90, 8, ${height / 2})`} className="fill-[#666] text-[10px]">{yLabel}</text>
+      <text x={w / 2} y={height - 4} textAnchor="middle" className="fill-[var(--brand-text-faint)]] text-[10px]">{xLabel}</text>
+      <text x={8} y={height / 2} textAnchor="middle" transform={`rotate(-90, 8, ${height / 2})`} className="fill-[var(--brand-text-faint)]] text-[10px]">{yLabel}</text>
 
       {/* Points */}
       {points.map((p) => {
         const px = tx(p.x);
         const py = ty(p.y);
         return (
-          <circle key={p.id} cx={px} cy={py} r={4} fill={p.color ?? '#888'} opacity={0.85} className="hover:opacity-100 transition-opacity">
+          <circle key={p.id} cx={px} cy={py} r={4} fill={p.color ?? 'text-[var(--brand-text-mid)]'} opacity={0.85} className="hover:opacity-100 transition-opacity">
             <title>{p.label}: {xLabel}={p.x}, {yLabel}={p.y}</title>
           </circle>
         );

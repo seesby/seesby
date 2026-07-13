@@ -122,7 +122,7 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                     <div className="flex items-center gap-4">
                         <div className="text-right hidden md:block">
                             <span className="text-white font-bold text-sm font-mono">{crawlStatus.progress}%</span>
-                            <div className="w-32 bg-white/10 rounded-full h-1 mt-1">
+                            <div className="w-32 bg-[var(--brand-surface-4)] rounded-full h-1 mt-1">
                                 <div className="bg-brand-amber h-full rounded-full transition-all duration-500" style={{ width: `${crawlStatus.progress}%` }}></div>
                             </div>
                         </div>
@@ -175,20 +175,20 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* 2. Primary Traffic Chart */}
-                <div className="lg:col-span-2 bg-[#0F0F0F] rounded-3xl border border-white/5 p-6 shadow-2xl h-[450px] flex flex-col relative overflow-hidden group">
+                <div className="lg:col-span-2 bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 shadow-2xl h-[450px] flex flex-col relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-brand-amber/5 blur-[100px] rounded-full pointer-events-none"></div>
                     
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 z-10">
                         <div>
                             <div className="flex items-center gap-2">
                                 <h3 className="text-lg font-bold text-white font-heading">Organic Performance</h3>
-                                <button onClick={() => showHelp("Organic Performance", "Combines clicks from Search Console and sessions from Google Analytics.")} className="text-gray-600 hover:text-white transition-colors"><HelpCircle size={14} /></button>
+                                <button onClick={() => showHelp("Organic Performance", "Combines clicks from Search Console and sessions from Google Analytics.")} className="text-[var(--brand-text-muted)] hover:text-[var(--brand-text-strong)] transition-colors"><HelpCircle size={14} /></button>
                             </div>
-                            <p className="text-gray-500 text-xs mt-1 uppercase tracking-widest font-bold">Clicks & Sessions Trend</p>
+                            <p className="text-[var(--brand-text-faint)] text-xs mt-1 uppercase tracking-widest font-bold">Clicks & Sessions Trend</p>
                         </div>
-                        <div className="flex items-center gap-2 bg-white/5 p-1 rounded-xl border border-white/10">
-                            <button className="px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest bg-white text-black shadow-xl">30 Days</button>
-                            <button className="px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors">90 Days</button>
+                        <div className="flex items-center gap-2 bg-[var(--brand-surface-3)] p-1 rounded-xl border border-[var(--brand-border-2)]">
+                            <button className="px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest bg-[var(--brand-surface-3)] text-black shadow-xl">30 Days</button>
+                            <button className="px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)] transition-colors">90 Days</button>
                         </div>
                     </div>
 
@@ -205,11 +205,11 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                                         <stop offset="95%" stopColor="#3B82F6" stopOpacity={0} />
                                     </linearGradient>
                                 </defs>
-                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#222" />
-                                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#666', fontSize: 10 }} dy={10} />
-                                <YAxis axisLine={false} tickLine={false} tick={{ fill: '#444', fontSize: 10 }} />
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="border-[var(--brand-border-2)]" />
+                                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: 'text-[var(--brand-text-faint)]', fontSize: 10 }} dy={10} />
+                                <YAxis axisLine={false} tickLine={false} tick={{ fill: 'border-[var(--brand-border-2)]', fontSize: 10 }} />
                                 <Tooltip
-                                    contentStyle={{ backgroundColor: '#0A0A0A', border: '1px solid #222', borderRadius: '12px', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)' }}
+                                    contentStyle={{ backgroundColor: 'bg-[var(--brand-surface-1)]', border: '1px solid border-[var(--brand-border-2)]', borderRadius: '12px', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)' }}
                                     itemStyle={{ fontSize: '12px', fontWeight: 'bold' }}
                                 />
                                 <Area type="monotone" dataKey="clicks" stroke="#F59E0B" strokeWidth={3} fillOpacity={1} fill="url(#colorClicks)" name="GSC Clicks" />
@@ -218,29 +218,29 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                         </ResponsiveContainer>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-white/5 z-10">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-[var(--brand-border-1)] z-10">
                         <div className="flex flex-col">
-                            <span className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Total Clicks</span>
+                            <span className="text-[10px] text-[var(--brand-text-faint)] uppercase font-bold tracking-wider">Total Clicks</span>
                             <span className="text-xl font-bold text-white font-mono mt-1">{totalClicks?.toLocaleString() || '—'}</span>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Total Sessions</span>
+                            <span className="text-[10px] text-[var(--brand-text-faint)] uppercase font-bold tracking-wider">Total Sessions</span>
                             <span className="text-xl font-bold text-white font-mono mt-1">{totalSessions?.toLocaleString() || '—'}</span>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">CTR</span>
+                            <span className="text-[10px] text-[var(--brand-text-faint)] uppercase font-bold tracking-wider">CTR</span>
                             <span className="text-xl font-bold text-brand-green font-mono mt-1">3.2%</span>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Bounce Rate</span>
+                            <span className="text-[10px] text-[var(--brand-text-faint)] uppercase font-bold tracking-wider">Bounce Rate</span>
                             <span className="text-xl font-bold text-orange-500 font-mono mt-1">42.1%</span>
                         </div>
                     </div>
                 </div>
 
                 {/* 3. AI Insights / Copilot Panel */}
-                <div className="lg:col-span-1 bg-gradient-to-br from-[#111] to-[#0A0A0A] rounded-3xl border border-white/5 shadow-2xl flex flex-col h-[450px] relative overflow-hidden group">
-                    <div className="p-6 border-b border-white/5 flex justify-between items-center shrink-0">
+                <div className="lg:col-span-1 bg-gradient-to-br from-[var(--brand-surface-2)]] to-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] shadow-2xl flex flex-col h-[450px] relative overflow-hidden group">
+                    <div className="p-6 border-b border-[var(--brand-border-1)] flex justify-between items-center shrink-0">
                         <div className="flex items-center gap-3">
                             <div className="bg-brand-purple p-2 rounded-lg shadow-lg shadow-brand-purple/20">
                                 <Sparkles size={18} className="text-white" />
@@ -254,38 +254,38 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                         {loadingInsights ? (
                             <div className="flex flex-col gap-4">
                                 {[1, 2, 3].map(i => (
-                                    <div key={i} className="h-24 bg-white/5 rounded-2xl animate-pulse"></div>
+                                    <div key={i} className="h-24 bg-[var(--brand-surface-3)] rounded-2xl animate-pulse"></div>
                                 ))}
                             </div>
                         ) : insights.length > 0 ? (
                             insights.map((insight, idx) => (
-                                <div key={idx} className="bg-white/[0.03] border border-white/5 rounded-2xl p-4 hover:border-brand-purple/30 transition-all group/insight cursor-pointer hover:bg-white/[0.05]">
+                                <div key={idx} className="bg-[var(--brand-surface-3)]/[0.03] border border-[var(--brand-border-1)] rounded-2xl p-4 hover:border-brand-purple/30 transition-all group/insight cursor-pointer hover:bg-[var(--brand-surface-3)]/[0.05]">
                                     <div className="flex items-center justify-between mb-2">
-                                        <h4 className="text-xs font-bold text-gray-200 group-hover/insight:text-white transition-colors">{insight.title}</h4>
-                                        <ArrowRight size={14} className="text-gray-600 group-hover/insight:translate-x-1 transition-all" />
+                                        <h4 className="text-xs font-bold text-[var(--brand-text-mid)] group-hover/insight:text-white transition-colors">{insight.title}</h4>
+                                        <ArrowRight size={14} className="text-[var(--brand-text-muted)] group-hover/insight:translate-x-1 transition-all" />
                                     </div>
-                                    <p className="text-[11px] text-gray-500 leading-relaxed group-hover/insight:text-gray-400 transition-colors">{insight.detail}</p>
+                                    <p className="text-[11px] text-[var(--brand-text-faint)] leading-relaxed group-hover/insight:text-[var(--brand-text-mid)] transition-colors">{insight.detail}</p>
                                 </div>
                             ))
                         ) : (
                             <div className="text-center py-12">
-                                <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <Plus size={20} className="text-gray-600" />
+                                <div className="w-12 h-12 bg-[var(--brand-surface-3)] rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <Plus size={20} className="text-[var(--brand-text-muted)]" />
                                 </div>
-                                <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">No New Insights</p>
+                                <p className="text-[var(--brand-text-faint)] text-xs font-bold uppercase tracking-widest">No New Insights</p>
                             </div>
                         )}
                     </div>
 
                     {/* Chat Input */}
-                    <div className="p-4 border-t border-white/5 bg-[#050505] shrink-0">
+                    <div className="p-4 border-t border-[var(--brand-border-1)] bg-[var(--brand-surface-0)]] shrink-0">
                         <div className="relative">
                             <input
                                 type="text"
                                 value={chatInput}
                                 onChange={(e) => setChatInput(e.target.value)}
                                 placeholder="Ask Copilot anything..."
-                                className="w-full bg-white/5 border border-white/10 rounded-xl pl-4 pr-12 py-3 text-xs text-white focus:outline-none focus:border-brand-purple/50 transition-all placeholder:text-gray-600"
+                                className="w-full bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] rounded-xl pl-4 pr-12 py-3 text-xs text-white focus:outline-none focus:border-brand-purple/50 transition-all placeholder:text-[var(--brand-text-muted)]"
                             />
                             <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-brand-purple hover:bg-brand-purple/80 text-white p-2 rounded-lg transition-colors">
                                 <Send size={14} />
@@ -297,18 +297,18 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
 
             {/* 4. Secondary Row: Rankings & Competitors */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-12">
-                <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6 h-[400px] flex flex-col">
+                <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[400px] flex flex-col">
                     <div className="flex justify-between items-center mb-6">
                         <div className="flex items-center gap-2">
                             <h3 className="font-bold text-white">Top Performing Pages</h3>
-                            <button onClick={() => showHelp("Top Performing Pages", "The pages on your site receiving the most organic search traffic based on GSC clicks.")} className="text-gray-600 hover:text-white transition-colors"><HelpCircle size={14} /></button>
+                            <button onClick={() => showHelp("Top Performing Pages", "The pages on your site receiving the most organic search traffic based on GSC clicks.")} className="text-[var(--brand-text-muted)] hover:text-[var(--brand-text-strong)] transition-colors"><HelpCircle size={14} /></button>
                         </div>
-                        <button onClick={() => openPanel('rank_tracker')} className="text-[10px] font-bold text-gray-500 hover:text-white uppercase tracking-widest">Full Tracker</button>
+                        <button onClick={() => openPanel('rank_tracker')} className="text-[10px] font-bold text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)] uppercase tracking-widest">Full Tracker</button>
                     </div>
                     <div className="flex-1 overflow-hidden">
                         <div className="overflow-x-auto h-full scrollbar-hide">
                             <table className="w-full text-left">
-                                <thead className="text-[10px] font-bold text-gray-600 uppercase tracking-widest border-b border-white/5">
+                                <thead className="text-[10px] font-bold text-[var(--brand-text-muted)] uppercase tracking-widest border-b border-[var(--brand-border-1)]">
                                     <tr>
                                         <th className="pb-4">URL</th>
                                         <th className="pb-4 text-center">Clicks</th>
@@ -320,20 +320,20 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                                     {loadingGsc ? (
                                         [1, 2, 3, 4, 5].map(i => (
                                             <tr key={i} className="animate-pulse">
-                                                <td className="py-4"><div className="h-3 w-48 bg-white/5 rounded"></div></td>
-                                                <td className="py-4 text-center"><div className="h-3 w-12 bg-white/5 rounded mx-auto"></div></td>
-                                                <td className="py-4 text-center"><div className="h-3 w-16 bg-white/5 rounded mx-auto"></div></td>
-                                                <td className="py-4 text-right"><div className="h-3 w-8 bg-white/5 rounded ml-auto"></div></td>
+                                                <td className="py-4"><div className="h-3 w-48 bg-[var(--brand-surface-3)] rounded"></div></td>
+                                                <td className="py-4 text-center"><div className="h-3 w-12 bg-[var(--brand-surface-3)] rounded mx-auto"></div></td>
+                                                <td className="py-4 text-center"><div className="h-3 w-16 bg-[var(--brand-surface-3)] rounded mx-auto"></div></td>
+                                                <td className="py-4 text-right"><div className="h-3 w-8 bg-[var(--brand-surface-3)] rounded ml-auto"></div></td>
                                             </tr>
                                         ))
                                     ) : gscData.length > 0 ? (
                                         gscData.map((row, i) => (
-                                            <tr key={i} className="group border-b border-white/[0.02] hover:bg-white/[0.02] transition-colors cursor-pointer" onClick={() => openPanel('url_detail', { url: row.keys[0] })}>
+                                            <tr key={i} className="group border-b border-[var(--brand-border-2)]/[0.02] hover:bg-[var(--brand-surface-3)]/[0.02] transition-colors cursor-pointer" onClick={() => openPanel('url_detail', { url: row.keys[0] })}>
                                                 <td className="py-4 max-w-[200px] truncate text-blue-400 font-mono group-hover:text-blue-300">{row.keys[0]}</td>
                                                 <td className="py-4 text-center font-bold text-white">{row.clicks.toLocaleString()}</td>
-                                                <td className="py-4 text-center text-gray-500">{row.impressions.toLocaleString()}</td>
+                                                <td className="py-4 text-center text-[var(--brand-text-faint)]">{row.impressions.toLocaleString()}</td>
                                                 <td className="py-4 text-right text-white">
-                                                    <span className={`px-2 py-1 rounded ${row.position < 3 ? 'bg-green-500/10 text-green-500' : row.position < 10 ? 'bg-blue-500/10 text-blue-500' : 'bg-gray-500/10 text-gray-500'}`}>
+                                                    <span className={`px-2 py-1 rounded ${row.position < 3 ? 'bg-green-500/10 text-green-500' : row.position < 10 ? 'bg-blue-500/10 text-blue-500' : 'bg-gray-500/10 text-[var(--brand-text-faint)]'}`}>
                                                         {row.position.toFixed(1)}
                                                     </span>
                                                 </td>
@@ -341,7 +341,7 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                                         ))
                                     ) : (
                                         <tr>
-                                            <td colSpan={4} className="py-12 text-center text-gray-600">
+                                            <td colSpan={4} className="py-12 text-center text-[var(--brand-text-muted)]">
                                                 <SearchCheck size={32} className="mx-auto mb-3 opacity-20" />
                                                 <p className="text-xs font-bold uppercase tracking-widest">Connect Search Console to see data</p>
                                             </td>
@@ -353,17 +353,17 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                     </div>
                 </div>
 
-                <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6 h-[400px] flex flex-col">
+                <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[400px] flex flex-col">
                     <div className="flex justify-between items-center mb-6">
                         <div className="flex items-center gap-2">
                             <h3 className="font-bold text-white">Market Positioning</h3>
-                            <button onClick={() => showHelp("Market Positioning", "How your search visibility compares to your primary competitors.")} className="text-gray-600 hover:text-white transition-colors"><HelpCircle size={14} /></button>
+                            <button onClick={() => showHelp("Market Positioning", "How your search visibility compares to your primary competitors.")} className="text-[var(--brand-text-muted)] hover:text-[var(--brand-text-strong)] transition-colors"><HelpCircle size={14} /></button>
                         </div>
                         <div className="flex items-center gap-2">
-                            <div className="flex items-center gap-1 text-[10px] text-gray-500 font-bold uppercase">
+                            <div className="flex items-center gap-1 text-[10px] text-[var(--brand-text-faint)] font-bold uppercase">
                                 <div className="w-2 h-2 rounded-full bg-brand-amber"></div> You
                             </div>
-                            <div className="flex items-center gap-1 text-[10px] text-gray-500 font-bold uppercase ml-2">
+                            <div className="flex items-center gap-1 text-[10px] text-[var(--brand-text-faint)] font-bold uppercase ml-2">
                                 <div className="w-2 h-2 rounded-full bg-gray-600"></div> Competitors
                             </div>
                         </div>
@@ -372,20 +372,20 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={distributionData} layout="vertical">
                                 <XAxis type="number" hide />
-                                <YAxis dataKey="name" type="category" width={100} tick={{ fill: '#888', fontSize: 11, fontWeight: 'bold' }} axisLine={false} tickLine={false} />
-                                <Tooltip cursor={{ fill: 'white', fillOpacity: 0.05 }} contentStyle={{ backgroundColor: '#111', border: '1px solid #333' }} />
+                                <YAxis dataKey="name" type="category" width={100} tick={{ fill: 'text-[var(--brand-text-mid)]', fontSize: 11, fontWeight: 'bold' }} axisLine={false} tickLine={false} />
+                                <Tooltip cursor={{ fill: 'white', fillOpacity: 0.05 }} contentStyle={{ backgroundColor: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]' }} />
                                 <Bar dataKey="visibility" radius={[0, 4, 4, 0]} barSize={20}>
                                     {distributionData.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={entry.name === 'You' ? '#F59E0B' : '#333'} />
+                                        <Cell key={`cell-${index}`} fill={entry.name === 'You' ? '#F59E0B' : 'bg-[var(--brand-surface-4)]'} />
                                     ))}
                                 </Bar>
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
-                    <div className="mt-6 bg-white/5 rounded-2xl p-4 border border-white/5">
+                    <div className="mt-6 bg-[var(--brand-surface-3)] rounded-2xl p-4 border border-[var(--brand-border-1)]">
                         <div className="flex items-start gap-3">
                             <Activity size={16} className="text-orange-500 mt-0.5" />
-                            <p className="text-[11px] text-gray-400 leading-relaxed">
+                            <p className="text-[11px] text-[var(--brand-text-mid)] leading-relaxed">
                                 <span className="text-white font-bold">Threat Detected:</span> Competitor <span className="text-white">Acme Corp</span> has gained 12% impression share on your top 5 commercial keywords this week.
                             </p>
                         </div>

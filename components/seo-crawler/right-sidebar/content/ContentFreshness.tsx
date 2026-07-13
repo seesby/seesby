@@ -147,7 +147,7 @@ export function ContentFreshness() {
             rows={freshnessByType}
           />
         ) : (
-          <div className="text-[11px] text-[#555] py-2">No page type data available</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] py-2">No page type data available</div>
         )}
       </Card>
 
@@ -159,17 +159,17 @@ export function ContentFreshness() {
             rows={cadenceByCluster}
           />
         ) : (
-          <div className="text-[11px] text-[#555] py-2">No cluster data available</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] py-2">No cluster data available</div>
         )}
       </Card>
 
       {/* Evergreen drifts — always show */}
       <Card title={`Evergreen drifts ${evergreenDrifts.length}`} padded={false}>
-        <div className="px-2 pt-2 pb-1 text-[10px] text-[#666]">
+        <div className="px-2 pt-2 pb-1 text-[10px] text-[var(--brand-text-faint)]]">
           Top-ranking pages that need freshening
         </div>
         {evergreenDrifts.length > 0 ? (
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {evergreenDrifts.map((p: any, i: number) => (
               <RowItem
                 key={i}
@@ -181,18 +181,18 @@ export function ContentFreshness() {
             ))}
           </div>
         ) : (
-          <div className="text-[11px] text-[#555] px-2 py-2 border-t border-[#1f1f1f]">No stale top-ranking pages</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] px-2 py-2 border-t border-[var(--brand-surface-3)]]">No stale top-ranking pages</div>
         )}
       </Card>
 
       {/* Content decay (trend only) */}
       {hasTrend && (
         <Card title={`Content decay ${decaying.length}`} padded={false}>
-          <div className="px-2 pt-2 pb-1 text-[10px] text-[#666]">
+          <div className="px-2 pt-2 pb-1 text-[10px] text-[var(--brand-text-faint)]]">
             Pages losing traffic over time
           </div>
           {decaying.length > 0 ? (
-            <div className="flex flex-col border-t border-[#1f1f1f]">
+            <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
               {decaying.map((p: any, i: number) => (
                 <RowItem
                   key={i}
@@ -204,7 +204,7 @@ export function ContentFreshness() {
               ))}
             </div>
           ) : (
-            <div className="text-[11px] text-[#555] px-2 py-2 border-t border-[#1f1f1f]">No decaying pages detected</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]] px-2 py-2 border-t border-[var(--brand-surface-3)]]">No decaying pages detected</div>
           )}
         </Card>
       )}

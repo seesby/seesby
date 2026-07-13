@@ -8,7 +8,7 @@ const META: Record<Freshness, { label: string; tone: string }> = {
   fresh:   { label: 'This week',           tone: 'text-sky-400' },
   ok:      { label: 'This month',          tone: 'text-amber-400' },
   stale:   { label: 'Older than 30 days',  tone: 'text-[#F59E0B]' },
-  unknown: { label: 'Freshness unknown',   tone: 'text-[#666]' },
+  unknown: { label: 'Freshness unknown',   tone: 'text-[var(--brand-text-faint)]]' },
 }
 
 export function FreshnessChip({ value }: { value?: Freshness }) {

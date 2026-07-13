@@ -7,9 +7,9 @@ import { fmtPct } from '../../_shared/formatters';
 import { STATUS } from '../../_shared/tokens';
 import { STATUS_HEX } from '../../_shared/shared-columns';
 
-const CARD = 'rounded border border-[#1a1a1a] bg-[#0a0a0a] p-3 min-h-0';
+const CARD = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3 min-h-0';
 const H = ({ children }: { children: React.ReactNode }) =>
-  <div className="text-[10px] uppercase tracking-wider text-[#666] mb-2">{children}</div>;
+  <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">{children}</div>;
 
 export default function SocialEngagementView() {
   const d = useEngagement() as any;
@@ -90,7 +90,7 @@ export default function SocialEngagementView() {
               {contentTypes.length > 0 ? (
                 <BarChart data={contentTypes} x="name" y="value" color="#F59E0B" height={180} />
               ) : (
-                <div className="py-4 text-[12px] text-[#666] text-center">No data.</div>
+                <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No data.</div>
               )}
             </div>
 
@@ -100,7 +100,7 @@ export default function SocialEngagementView() {
               {engRateTrend.length > 1 ? (
                 <LineChart data={engRateTrend} x="date" series={[{ key: 'engRate', color: '#F59E0B' }]} height={180} />
               ) : (
-                <div className="py-4 text-[12px] text-[#666] text-center">Need more data.</div>
+                <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">Need more data.</div>
               )}
             </div>
 
@@ -109,29 +109,29 @@ export default function SocialEngagementView() {
               <H>Reply rate + response time</H>
               <div className="space-y-2 text-[11px]">
                 <div className="flex justify-between">
-                  <span className="text-[#888]">Reply rate</span>
+                  <span className="text-[var(--brand-text-mid)]]">Reply rate</span>
                   <span style={{ color: replyStats.replyRate >= 0.8 ? STATUS.good : replyStats.replyRate >= 0.6 ? STATUS_HEX.warn : STATUS.bad }}>
                     {fmtPct(replyStats.replyRate)} {replyStats.replyRate < 0.8 && '⚠'}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#888]">Avg time</span>
-                  <span className="text-white">{replyStats.avgResponseTime}</span>
+                  <span className="text-[var(--brand-text-mid)]]">Avg time</span>
+                  <span className="text-[var(--brand-text-strong)]">{replyStats.avgResponseTime}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#888]">DM median</span>
-                  <span className="text-white">{replyStats.dmMedian}</span>
+                  <span className="text-[var(--brand-text-mid)]]">DM median</span>
+                  <span className="text-[var(--brand-text-strong)]">{replyStats.dmMedian}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#888]">DM p90</span>
-                  <span className="text-white">{replyStats.dmP90}</span>
+                  <span className="text-[var(--brand-text-mid)]]">DM p90</span>
+                  <span className="text-[var(--brand-text-strong)]">{replyStats.dmP90}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#888]">Comments median</span>
-                  <span className="text-white">{replyStats.commentMedian}</span>
+                  <span className="text-[var(--brand-text-mid)]]">Comments median</span>
+                  <span className="text-[var(--brand-text-strong)]">{replyStats.commentMedian}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#888]">Negative reply SLA 4h</span>
+                  <span className="text-[var(--brand-text-mid)]]">Negative reply SLA 4h</span>
                   <span style={{ color: replyStats.negativeSla >= 0.8 ? STATUS.good : STATUS_HEX.warn }}>
                     {fmtPct(replyStats.negativeSla)} {replyStats.negativeSla < 0.8 && '⚠'}
                   </span>
@@ -148,16 +148,16 @@ export default function SocialEngagementView() {
                 <div className="space-y-1.5">
                   {hashtags.map((h: any) => (
                     <div key={h.tag} className="flex items-center gap-2 text-[11px]">
-                      <span className="text-[#888] w-24 truncate">#{h.tag}</span>
-                      <div className="flex-1 h-2 rounded bg-[#171717] overflow-hidden">
+                      <span className="text-[var(--brand-text-mid)]] w-24 truncate">#{h.tag}</span>
+                      <div className="flex-1 h-2 rounded bg-[var(--brand-surface-3)]] overflow-hidden">
                         <div className="h-full rounded bg-[#F59E0B]" style={{ width: `${Math.min(100, (h.engRate ?? 0) * 10)}%` }} />
                       </div>
-                      <span className="font-mono text-white w-10 text-right">{fmtPct(h.engRate ?? 0)}</span>
+                      <span className="font-mono text-[var(--brand-text-strong)] w-10 text-right">{fmtPct(h.engRate ?? 0)}</span>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="py-4 text-[12px] text-[#666] text-center">No hashtag data.</div>
+                <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No hashtag data.</div>
               )}
             </div>
 
@@ -166,29 +166,29 @@ export default function SocialEngagementView() {
               <H>Audience demographics (aggregate)</H>
               <div className="grid grid-cols-3 gap-4 text-[11px]">
                 <div>
-                  <div className="text-[10px] text-[#666] mb-1">Role</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)]] mb-1">Role</div>
                   {demographics.roles.map((r: any) => (
                     <div key={r.label} className="flex justify-between py-0.5">
-                      <span className="text-[#888]">{r.label}</span>
-                      <span className="text-white">{fmtPct(r.value)}</span>
+                      <span className="text-[var(--brand-text-mid)]]">{r.label}</span>
+                      <span className="text-[var(--brand-text-strong)]">{fmtPct(r.value)}</span>
                     </div>
                   ))}
                 </div>
                 <div>
-                  <div className="text-[10px] text-[#666] mb-1">Industry</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)]] mb-1">Industry</div>
                   {demographics.industries.map((r: any) => (
                     <div key={r.label} className="flex justify-between py-0.5">
-                      <span className="text-[#888]">{r.label}</span>
-                      <span className="text-white">{fmtPct(r.value)}</span>
+                      <span className="text-[var(--brand-text-mid)]]">{r.label}</span>
+                      <span className="text-[var(--brand-text-strong)]">{fmtPct(r.value)}</span>
                     </div>
                   ))}
                 </div>
                 <div>
-                  <div className="text-[10px] text-[#666] mb-1">Region</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)]] mb-1">Region</div>
                   {demographics.regions.map((r: any) => (
                     <div key={r.label} className="flex justify-between py-0.5">
-                      <span className="text-[#888]">{r.label}</span>
-                      <span className="text-white">{fmtPct(r.value)}</span>
+                      <span className="text-[var(--brand-text-mid)]]">{r.label}</span>
+                      <span className="text-[var(--brand-text-strong)]">{fmtPct(r.value)}</span>
                     </div>
                   ))}
                 </div>

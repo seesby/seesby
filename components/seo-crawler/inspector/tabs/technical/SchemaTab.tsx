@@ -80,7 +80,7 @@ export default function SchemaTab({ page }: { page: any }) {
                 </span>
               </div>
             )) : (
-              <div className="text-[11px] text-[#555] italic py-2 text-center">No schema types found</div>
+              <div className="text-[11px] text-[var(--brand-text-faint)]] italic py-2 text-center">No schema types found</div>
             )}
           </div>
         </Card>
@@ -93,10 +93,10 @@ export default function SchemaTab({ page }: { page: any }) {
                 const errorCount = items.filter(x => x.severity === 'error').length;
                 const warnCount = items.filter(x => x.severity === 'warning').length;
                 return (
-                  <div key={i} className="border-b border-[#111] last:border-b-0 pb-2 last:pb-0">
+                  <div key={i} className="border-b border-[var(--brand-surface-2)]] last:border-b-0 pb-2 last:pb-0">
                     <div className="flex items-center justify-between py-1">
-                      <span className="text-[11px] text-white font-medium">{type}</span>
-                      <span className="text-[10px] text-[#888]">
+                      <span className="text-[11px] text-[var(--brand-text-strong)] font-medium">{type}</span>
+                      <span className="text-[10px] text-[var(--brand-text-mid)]]">
                         {errorCount > 0 && <span className="text-[#F59E0B]">{errorCount} error{errorCount > 1 ? 's' : ''}</span>}
                         {errorCount > 0 && warnCount > 0 && ' · '}
                         {warnCount > 0 && <span className="text-[#f59e0b]">{warnCount} warning{warnCount > 1 ? 's' : ''}</span>}
@@ -104,7 +104,7 @@ export default function SchemaTab({ page }: { page: any }) {
                       </span>
                     </div>
                     {items.map((item, j) => (
-                      <div key={j} className="text-[10px] text-[#666] pl-3 py-0.5">
+                      <div key={j} className="text-[10px] text-[var(--brand-text-faint)]] pl-3 py-0.5">
                         {item.severity === 'error' ? (
                           <span className="text-[#F59E0B]">✗</span>
                         ) : (
@@ -137,12 +137,12 @@ export default function SchemaTab({ page }: { page: any }) {
               const content = typeof block === 'string' ? block : JSON.stringify(block?.content || block, null, 2);
               const blockType = typeof block === 'object' ? (block?.['@type'] || block?.type || '—') : '—';
               return (
-                <div key={i} className="bg-[#060606] border border-[#1a1a1a] rounded-lg overflow-hidden">
-                  <div className="px-3 py-2 border-b border-[#1a1a1a] flex items-center gap-2">
-                    <span className="text-[9px] text-[#444] uppercase tracking-widest font-bold">Block {i + 1}</span>
+                <div key={i} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-lg overflow-hidden">
+                  <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]] flex items-center gap-2">
+                    <span className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">Block {i + 1}</span>
                     <span className="px-1.5 py-0.5 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded text-[10px] font-mono">{blockType}</span>
                   </div>
-                  <pre className="p-2.5 text-[10px] font-mono text-[#888] whitespace-pre-wrap break-all leading-relaxed max-h-[160px] overflow-y-auto custom-scrollbar">
+                  <pre className="p-2.5 text-[10px] font-mono text-[var(--brand-text-mid)]] whitespace-pre-wrap break-all leading-relaxed max-h-[160px] overflow-y-auto custom-scrollbar">
                     {content}
                   </pre>
                 </div>
@@ -150,7 +150,7 @@ export default function SchemaTab({ page }: { page: any }) {
             })}
           </div>
         ) : (
-          <div className="text-[11px] text-[#555] italic py-2 text-center">No JSON-LD found</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] italic py-2 text-center">No JSON-LD found</div>
         )}
       </CollapseGroup>
 
@@ -160,14 +160,14 @@ export default function SchemaTab({ page }: { page: any }) {
           {microdata.length > 0 ? (
             <div className="space-y-1">
               {microdata.map((m: any, i: number) => (
-                <div key={i} className="flex items-center justify-between px-3 py-2 rounded-md text-[11px] bg-[#0a0a0a] border border-[#1a1a1a]">
-                  <span className="text-[#ccc]">{m?.type || m?.itemtype || '—'}</span>
+                <div key={i} className="flex items-center justify-between px-3 py-2 rounded-md text-[11px] bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]">
+                  <span className="text-[var(--brand-text-mid)]]">{m?.type || m?.itemtype || '—'}</span>
                   <StatusBadge status="pass" label="Found" />
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-[11px] text-[#555] italic py-2 text-center">(none)</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]] italic py-2 text-center">(none)</div>
           )}
         </Card>
 
@@ -175,14 +175,14 @@ export default function SchemaTab({ page }: { page: any }) {
           {rdfa.length > 0 ? (
             <div className="space-y-1">
               {rdfa.map((r: any, i: number) => (
-                <div key={i} className="flex items-center justify-between px-3 py-2 rounded-md text-[11px] bg-[#0a0a0a] border border-[#1a1a1a]">
-                  <span className="text-[#ccc]">{r?.type || r?.typeof || '—'}</span>
+                <div key={i} className="flex items-center justify-between px-3 py-2 rounded-md text-[11px] bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]">
+                  <span className="text-[var(--brand-text-mid)]]">{r?.type || r?.typeof || '—'}</span>
                   <StatusBadge status="pass" label="Found" />
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-[11px] text-[#555] italic py-2 text-center">(none)</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]] italic py-2 text-center">(none)</div>
           )}
         </Card>
       </div>
@@ -199,7 +199,7 @@ export default function SchemaTab({ page }: { page: any }) {
                 <span key={i} className={`px-2 py-1 rounded text-[11px] border ${
                   eligible
                     ? 'bg-blue-500/10 text-blue-400 border-blue-500/20'
-                    : 'bg-[#0a0a0a] text-[#555] border-[#1a1a1a]'
+                    : 'bg-[var(--brand-surface-0)]] text-[var(--brand-text-faint)]] border-[var(--brand-surface-3)]]'
                 }`}>
                   {name}{hasFixes ? ' (with fixes)' : ''}
                 </span>

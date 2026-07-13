@@ -50,10 +50,10 @@ export function PaidQuality() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[#888]">Avg Quality Score</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Avg Quality Score</div>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-3xl font-bold tabular-nums text-white">{s.avgQs > 0 ? s.avgQs.toFixed(1) : '—'}</span>
-              <span className="text-sm font-medium text-[#666]">/10</span>
+              <span className="text-3xl font-bold tabular-nums text-[var(--brand-text-strong)]">{s.avgQs > 0 ? s.avgQs.toFixed(1) : '—'}</span>
+              <span className="text-sm font-medium text-[var(--brand-text-faint)]]">/10</span>
             </div>
             <div className="mt-1 flex items-center gap-2">
               {s.hasPrior && typeof qsDelta === 'number' && <DeltaChip value={qsDelta} />}
@@ -67,11 +67,11 @@ export function PaidQuality() {
           <div className="flex items-center gap-3">
             <div className="flex flex-col items-end gap-1">
               <div>
-                <span className="text-[10px] text-[#666]">Below 5 </span>
+                <span className="text-[10px] text-[var(--brand-text-faint)]]">Below 5 </span>
                 <span className="text-sm font-bold text-[#ef4444]">{s.below5}</span>
               </div>
               <div>
-                <span className="text-[10px] text-[#666]">Above 8 </span>
+                <span className="text-[10px] text-[var(--brand-text-faint)]]">Above 8 </span>
                 <span className="text-sm font-bold text-[#22c55e]">{s.above8}</span>
               </div>
             </div>
@@ -102,7 +102,7 @@ export function PaidQuality() {
       {/* Best campaigns */}
       {bestCampaigns.length > 0 && (
         <Card title="Top campaigns" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {bestCampaigns.map((c) => (
               <RowItem
                 key={c.id}
@@ -118,7 +118,7 @@ export function PaidQuality() {
       {/* Worst campaigns */}
       {worstCampaigns.length > 0 && (
         <Card title="Worst campaigns" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {worstCampaigns.map((w) => (
               <RowItem
                 key={w.id}

@@ -23,10 +23,10 @@ export function CompetitorsOverview() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Competitive Score</div>
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Competitive Score</div>
             <div className="mt-1.5 flex items-baseline gap-2">
-              <span className="text-3xl font-bold tabular-nums text-white">{s.score}</span>
-              <span className="text-sm font-semibold text-[#666]">{grade}</span>
+              <span className="text-3xl font-bold tabular-nums text-[var(--brand-text-strong)]">{s.score}</span>
+              <span className="text-sm font-semibold text-[var(--brand-text-faint)]]">{grade}</span>
             </div>
             <Trendable hasPrior={s.hasPrior}>
               <div className="mt-2"><Sparkline values={s.visibilitySeries} tone="info" width={100} height={28} /></div>
@@ -54,20 +54,20 @@ export function CompetitorsOverview() {
 
       {/* Leaderboard with visual bars */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Leaderboard</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Leaderboard</span>
         </div>
-        <div className="divide-y divide-[#1f1f1f]">
+        <div className="divide-y divide-[var(--brand-surface-3)]]">
           {sorted.map((c: any, idx: number) => {
             const barWidth = maxVisibility > 0 ? (c.visibility / maxVisibility) * 100 : 0
             return (
               <div key={c.id} className="flex items-center gap-3 px-3 py-2">
                 <div className="w-5 text-center">
-                  <span className="text-[10px] font-mono text-[#666]">{idx + 1}</span>
+                  <span className="text-[10px] font-mono text-[var(--brand-text-faint)]]">{idx + 1}</span>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className={`text-[11px] truncate ${c.isYou ? 'text-[#F59E0B] font-semibold' : 'text-[#ddd]'}`}>
+                    <span className={`text-[11px] truncate ${c.isYou ? 'text-[#F59E0B] font-semibold' : 'text-[var(--brand-text-mid)]]'}`}>
                       {c.domain}
                     </span>
                     {c.isYou && (
@@ -76,17 +76,17 @@ export function CompetitorsOverview() {
                       </span>
                     )}
                   </div>
-                  <div className="h-1 bg-[#1a1a1a] rounded-full overflow-hidden">
+                  <div className="h-1 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
                     <div
                       className="h-full rounded-full transition-all duration-500"
                       style={{
                         width: `${barWidth}%`,
-                        background: c.isYou ? '#F59E0B' : '#444',
+                        background: c.isYou ? '#F59E0B' : 'border-[var(--brand-border-2)]',
                       }}
                     />
                   </div>
                 </div>
-                <div className="text-[11px] font-mono tabular-nums text-[#888] w-12 text-right">
+                <div className="text-[11px] font-mono tabular-nums text-[var(--brand-text-mid)]] w-12 text-right">
                   {fmtPct(c.visibility * 100)}
                 </div>
               </div>
@@ -97,29 +97,29 @@ export function CompetitorsOverview() {
 
       {/* Side-by-side comparison */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[#1f1f1f]">
-          <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Side by Side</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Side by Side</span>
         </div>
-        <div className="divide-y divide-[#1f1f1f]">
+        <div className="divide-y divide-[var(--brand-surface-3)]]">
           {sorted.map((c: any) => (
             <div key={c.id} className="px-3 py-2">
               <div className="flex items-center justify-between mb-1.5">
-                <span className={`text-[11px] truncate ${c.isYou ? 'text-[#F59E0B] font-semibold' : 'text-[#ddd]'}`}>
+                <span className={`text-[11px] truncate ${c.isYou ? 'text-[#F59E0B] font-semibold' : 'text-[var(--brand-text-mid)]]'}`}>
                   {c.domain}
                 </span>
               </div>
               <div className="grid grid-cols-3 gap-2">
                 <div>
-                  <div className="text-[9px] uppercase tracking-wider text-[#666]">Ref doms</div>
-                  <div className="text-[11px] font-mono tabular-nums text-[#ddd]">{compactNum(c.refDomains)}</div>
+                  <div className="text-[9px] uppercase tracking-wider text-[var(--brand-text-faint)]]">Ref doms</div>
+                  <div className="text-[11px] font-mono tabular-nums text-[var(--brand-text-mid)]]">{compactNum(c.refDomains)}</div>
                 </div>
                 <div>
-                  <div className="text-[9px] uppercase tracking-wider text-[#666]">Top 10</div>
-                  <div className="text-[11px] font-mono tabular-nums text-[#ddd]">{compactNum(c.top10)}</div>
+                  <div className="text-[9px] uppercase tracking-wider text-[var(--brand-text-faint)]]">Top 10</div>
+                  <div className="text-[11px] font-mono tabular-nums text-[var(--brand-text-mid)]]">{compactNum(c.top10)}</div>
                 </div>
                 <div>
-                  <div className="text-[9px] uppercase tracking-wider text-[#666]">Traffic</div>
-                  <div className="text-[11px] font-mono tabular-nums text-[#ddd]">{compactNum(c.traffic)}</div>
+                  <div className="text-[9px] uppercase tracking-wider text-[var(--brand-text-faint)]]">Traffic</div>
+                  <div className="text-[11px] font-mono tabular-nums text-[var(--brand-text-mid)]]">{compactNum(c.traffic)}</div>
                 </div>
               </div>
             </div>
@@ -130,21 +130,21 @@ export function CompetitorsOverview() {
       {/* Movement trend */}
       <Trendable hasPrior={s.hasPrior}>
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[#1f1f1f]">
-            <span className="text-[10px] uppercase tracking-wider text-[#666] font-semibold">Movement (30d)</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+            <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Movement (30d)</span>
           </div>
           <div className="px-3 py-3">
             <div className="flex items-center justify-between gap-2">
               {[
                 { label: 'Climbing', value: s.movers.climbing, color: 'bg-emerald-500' },
-                { label: 'Steady', value: s.movers.steady, color: 'bg-[#444]' },
+                { label: 'Steady', value: s.movers.steady, color: 'bg-[var(--brand-border-2)]]' },
                 { label: 'Falling', value: s.movers.falling, color: 'bg-red-500' },
                 { label: 'New', value: s.movers.new, color: 'bg-blue-500' },
               ].map((m) => (
                 <div key={m.label} className="flex items-center gap-1.5">
                   <div className={`w-2 h-2 rounded-full ${m.color}`} />
-                  <span className="text-[10px] text-[#888]">{m.label}</span>
-                  <span className="text-[11px] font-mono tabular-nums text-[#ddd]">{m.value}</span>
+                  <span className="text-[10px] text-[var(--brand-text-mid)]]">{m.label}</span>
+                  <span className="text-[11px] font-mono tabular-nums text-[var(--brand-text-mid)]]">{m.value}</span>
                 </div>
               ))}
             </div>

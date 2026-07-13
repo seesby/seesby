@@ -46,15 +46,15 @@ export default function ColumnHeaderContextMenu({
 
   return (
     <div ref={ref} style={{ position: 'fixed', top: safeY, left: safeX, zIndex: 9999 }}
-      className="bg-[#1a1a1a] border border-[#333] rounded-lg shadow-2xl py-1 min-w-[220px] animate-in fade-in zoom-in-95 duration-150">
-      <div className="px-3 py-2 border-b border-[#333] mb-1 flex items-center gap-2">
-          <Info size={12} className="text-[#888]" />
-          <span className="text-[11px] font-bold text-[#888] uppercase tracking-wider">{columnLabel}</span>
+      className="bg-[var(--brand-surface-3)]] border border-[var(--brand-surface-4)]] rounded-lg shadow-2xl py-1 min-w-[220px] animate-in fade-in zoom-in-95 duration-150">
+      <div className="px-3 py-2 border-b border-[var(--brand-surface-4)]] mb-1 flex items-center gap-2">
+          <Info size={12} className="text-[var(--brand-text-mid)]]" />
+          <span className="text-[11px] font-bold text-[var(--brand-text-mid)]] uppercase tracking-wider">{columnLabel}</span>
       </div>
       {items.map((item, i) => (
         <button key={i} onClick={item.action}
-          className="w-full flex items-center gap-2.5 px-3 py-2 text-[12px] text-[#ccc] hover:bg-[#252525] hover:text-white transition-colors">
-          <span className="text-[#888]">{item.icon}</span>
+          className="w-full flex items-center gap-2.5 px-3 py-2 text-[12px] text-[var(--brand-text-mid)]] hover:bg-[var(--brand-border-2)]] hover:text-[var(--brand-text-strong)] transition-colors">
+          <span className="text-[var(--brand-text-mid)]]">{item.icon}</span>
           {item.label}
         </button>
       ))}

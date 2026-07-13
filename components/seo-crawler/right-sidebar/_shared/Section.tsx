@@ -16,8 +16,8 @@ export function Section({
     return (
         <section className={dense ? 'mb-3' : 'mb-4'}>
             <header className="flex items-center justify-between mb-2 px-0.5">
-                <h4 className="text-[11px] font-medium text-[#888] tracking-wide">{title}</h4>
-                {renderedAction && <div className="text-[10px] text-[#888]">{renderedAction}</div>}
+                <h4 className="text-[11px] font-medium text-[var(--brand-text-mid)]] tracking-wide">{title}</h4>
+                {renderedAction && <div className="text-[10px] text-[var(--brand-text-mid)]]">{renderedAction}</div>}
             </header>
             {children}
         </section>

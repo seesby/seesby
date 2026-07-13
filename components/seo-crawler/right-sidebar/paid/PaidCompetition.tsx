@@ -79,18 +79,18 @@ export function PaidCompetition() {
       {/* Per-campaign auction data */}
       {campaignAuction.length > 0 && (
         <Card title="By campaign" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {campaignAuction.map((c) => (
-              <div key={c.id} className="flex items-center justify-between px-3 py-2 border-b border-[#1f1f1f] last:border-b-0">
+              <div key={c.id} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
                 <div className="min-w-0 flex-1">
-                  <div className="text-[11px] text-white truncate">{c.name}</div>
-                  <div className="text-[10px] text-[#666]">
+                  <div className="text-[11px] text-[var(--brand-text-strong)] truncate">{c.name}</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)]]">
                     IS {fmtPct(c.is * 100)}
                     {c.lostBudget > 0.1 && <span className="text-[#f59e0b]"> · Lost budget {fmtPct(c.lostBudget * 100)}</span>}
                     {c.lostRank > 0.1 && <span className="text-[#ef4444]"> · Lost rank {fmtPct(c.lostRank * 100)}</span>}
                   </div>
                 </div>
-                <span className="text-[10px] font-mono text-[#888]">{fmtPct(c.is * 100)}</span>
+                <span className="text-[10px] font-mono text-[var(--brand-text-mid)]]">{fmtPct(c.is * 100)}</span>
               </div>
             ))}
           </div>
@@ -100,12 +100,12 @@ export function PaidCompetition() {
       {/* Competitors */}
       {competitors.length > 0 && (
         <Card title="Competitors in auction" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {competitors.map((c) => (
               <RowItem
                 key={c.domain}
                 title={c.domain}
-                badge={<span className="text-[10px] font-mono text-[#888]">{fmtPct(c.overlapRate * 100)}</span>}
+                badge={<span className="text-[10px] font-mono text-[var(--brand-text-mid)]]">{fmtPct(c.overlapRate * 100)}</span>}
               />
             ))}
           </div>

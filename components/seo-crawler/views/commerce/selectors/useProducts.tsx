@@ -80,7 +80,7 @@ export function useProducts() {
     { accessorKey: 'schemaValid', header: 'Schema', size: 90, cell: c => c.getValue() ? <span className="text-[#22c55e]">valid</span> : <span className="text-[#ef4444]">invalid</span> },
     { accessorKey: 'feedStatus', header: 'Feed', size: 80, cell: c => {
       const v = c.getValue() as string;
-      const colors: Record<string, string> = { ok: 'text-[#22c55e]', warn: 'text-[#f59e0b]', err: 'text-[#ef4444]', missing: 'text-[#71717a]', none: 'text-[#555]' };
+      const colors: Record<string, string> = { ok: 'text-[#22c55e]', warn: 'text-[#f59e0b]', err: 'text-[#ef4444]', missing: 'text-[#71717a]', none: 'text-[var(--brand-text-faint)]]' };
       return <span className={colors[v] ?? ''}>{v}</span>;
     }},
     { accessorKey: 'clicks', header: 'Clicks', size: 80, cell: c => fmtCompact(c.getValue() as number) },

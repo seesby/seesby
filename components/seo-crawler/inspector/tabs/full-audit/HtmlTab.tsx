@@ -87,11 +87,11 @@ export default function HtmlTab({ page }: { page: any; hasTrend?: boolean }) {
       {/* Raw HTML */}
       {rawHtml && (
         <CollapseGroup title="Raw HTML source" defaultOpen={false}>
-          <div className="bg-[#060606] border border-[#1a1a1a] rounded-lg overflow-hidden max-h-[360px] overflow-y-auto custom-scrollbar">
-            <pre className="p-3 text-[11px] font-mono leading-relaxed text-[#666] whitespace-pre-wrap break-all">
+          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-lg overflow-hidden max-h-[360px] overflow-y-auto custom-scrollbar">
+            <pre className="p-3 text-[11px] font-mono leading-relaxed text-[var(--brand-text-faint)]] whitespace-pre-wrap break-all">
               {previewLines.map((line: string, i: number) => (
                 <div key={i} className="flex">
-                  <span className="text-[#222] w-[32px] shrink-0 text-right mr-3 select-none">{i + 1}</span>
+                  <span className="text-[var(--brand-border-2)]] w-[32px] shrink-0 text-right mr-3 select-none">{i + 1}</span>
                   <span className="min-w-0" dangerouslySetInnerHTML={{ __html: colorizeHtml(line) }} />
                 </div>
               ))}
@@ -119,5 +119,5 @@ function colorizeHtml(line: string): string {
     .replace(/(&lt;\/?)([\w-]+)/g, '$1<span style="color:#F59E0B">$2</span>')
     .replace(/([\w-]+)(=)/g, '<span style="color:#60a5fa">$1</span>$2')
     .replace(/"([^"]*)"/g, '"<span style="color:#86efac">$1</span>"')
-    .replace(/(&lt;!--.*?--&gt;)/g, '<span style="color:#333">$1</span>');
+    .replace(/(&lt;!--.*?--&gt;)/g, '<span style="color:bg-[var(--brand-surface-4)]">$1</span>');
 }

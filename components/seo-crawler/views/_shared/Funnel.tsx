@@ -21,12 +21,12 @@ export function Funnel({
         const color = s.tone === 'bad' ? '#ef4444' : s.tone === 'warn' ? '#f59e0b' : accent;
         return (
           <div key={i} className="flex items-center gap-3">
-            <div className="w-32 truncate text-[12px] text-[#ccc]">{s.label}</div>
-            <div className="flex-1 h-5 rounded bg-[#0c0c0c] border border-[#1a1a1a] overflow-hidden">
+            <div className="w-32 truncate text-[12px] text-[var(--brand-text-mid)]]">{s.label}</div>
+            <div className="flex-1 h-5 rounded bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] overflow-hidden">
               <div className="h-full" style={{ width: `${w * 100}%`, background: color, opacity: 0.85 }} />
             </div>
-            <div className="w-20 text-right text-[11px] font-mono text-white tabular-nums">{fmtCompact(s.value)}</div>
-            <div className="w-16 text-right text-[10px] text-[#666]">{i === 0 ? '—' : fmtPct(stepPct)}</div>
+            <div className="w-20 text-right text-[11px] font-mono text-[var(--brand-text-strong)] tabular-nums">{fmtCompact(s.value)}</div>
+            <div className="w-16 text-right text-[10px] text-[var(--brand-text-faint)]]">{i === 0 ? '—' : fmtPct(stepPct)}</div>
             <div className="w-16 text-right text-[10px] text-[#ef4444]">{i === 0 ? '' : `▼ ${fmtPct(dropPct)}`}</div>
           </div>
         );

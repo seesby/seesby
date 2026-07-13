@@ -49,7 +49,7 @@ export function AiEntities() {
           <Card title="Entity trend">
             <div className="flex items-center justify-between">
               <RsSparkline values={s.history.entities} />
-              <span className="text-[10px] text-[#666]">{fmtNum(s.entities.totalEntities)} total</span>
+              <span className="text-[10px] text-[var(--brand-text-faint)]]">{fmtNum(s.entities.totalEntities)} total</span>
             </div>
           </Card>
         )}
@@ -68,13 +68,13 @@ export function AiEntities() {
       {/* Top entities */}
       {topEntities.length > 0 && (
         <Card title="Top entities">
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {topEntities.map((e: any) => (
               <RowItem
                 key={e.label}
                 title={e.label}
                 meta={e.type}
-                badge={<span className="text-[10px] text-[#888]">{e.citations} mentions</span>}
+                badge={<span className="text-[10px] text-[var(--brand-text-mid)]]">{e.citations} mentions</span>}
               />
             ))}
           </div>

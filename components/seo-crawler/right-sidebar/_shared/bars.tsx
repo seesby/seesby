@@ -9,7 +9,7 @@ export function Bar({ value, max, tone = 'neutral', color, right }: { value: num
   const pct = max > 0 ? Math.min(100, (value / max) * 100) : 0
   return (
     <div className="flex items-center gap-2 grow min-w-0">
-      <div className="h-1.5 grow overflow-hidden rounded bg-[#1a1a1a]">
+      <div className="h-1.5 grow overflow-hidden rounded bg-[var(--brand-surface-3)]]">
         <div className="h-full transition-all duration-300" 
              style={{ width: `${pct}%`, background: color ?? toneBg[tone] }} />
       </div>
@@ -23,7 +23,7 @@ export function BarStack({ segments }: { segments: { value: number; tone?: Tone;
   const total = segments.reduce((a, s) => a + (Number(s.value) || 0), 0) || 1
   return (
     <div>
-      <div className="flex h-2 w-full overflow-hidden rounded bg-[#1a1a1a]">
+      <div className="flex h-2 w-full overflow-hidden rounded bg-[var(--brand-surface-3)]]">
         {segments.map((s, i) => (
           <div key={i} title={`${s.label}: ${s.value}`}
             style={{ width: `${(s.value/total)*100}%`, background: toneBg[s.tone || 'neutral'] }} />
@@ -31,7 +31,7 @@ export function BarStack({ segments }: { segments: { value: number; tone?: Tone;
       </div>
       <div className="mt-1 flex flex-wrap gap-x-2 gap-y-0.5">
         {segments.map((s, i) => (
-          <span key={i} className="text-[10px] text-[#888] flex items-center gap-1">
+          <span key={i} className="text-[10px] text-[var(--brand-text-mid)]] flex items-center gap-1">
             <span className="inline-block h-1.5 w-1.5 rounded-sm"
               style={{ background: toneBg[s.tone || 'neutral'] }} />
             {s.label} {s.value}
@@ -45,7 +45,7 @@ export function BarStack({ segments }: { segments: { value: number; tone?: Tone;
 export function MiniBar({ value, max, tone = 'neutral' }: { value: number; max: number; tone?: Tone }) {
   const pct = max > 0 ? Math.min(100, (value / max) * 100) : 0
   return (
-    <div className="h-1.5 w-full overflow-hidden rounded bg-[#1a1a1a]">
+    <div className="h-1.5 w-full overflow-hidden rounded bg-[var(--brand-surface-3)]]">
       <div className="h-full" style={{ width: `${pct}%`, background: toneBg[tone] }} />
     </div>
   )
@@ -57,9 +57,9 @@ export function Distribution({ rows }: { rows: { label: string; value: number; t
     <div className="space-y-1">
       {rows.map((r, i) => (
         <div key={i} className="grid grid-cols-[80px_1fr_40px] items-center gap-2">
-          <span className="truncate text-[11px] text-[#bbb]">{r.label}</span>
+          <span className="truncate text-[11px] text-[var(--brand-text-mid)]]">{r.label}</span>
           <MiniBar value={r.value} max={max} tone={r.tone} />
-          <span className="text-right text-[10px] font-mono tabular-nums text-[#888]">{r.value}</span>
+          <span className="text-right text-[10px] font-mono tabular-nums text-[var(--brand-text-mid)]]">{r.value}</span>
         </div>
       ))}
     </div>
@@ -79,7 +79,7 @@ export function RsBar({ value, max, total, label, tail, tone = 'neutral', suffix
   const t = tail ?? (suffix ? `${value}${suffix}` : value)
   return (
     <div className="space-y-1">
-      <div className="flex items-center justify-between gap-2 text-[10px] uppercase tracking-wider text-[#666]">
+      <div className="flex items-center justify-between gap-2 text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]]">
         <div className="truncate">{label}</div>
         <div className="font-mono">{t}</div>
       </div>

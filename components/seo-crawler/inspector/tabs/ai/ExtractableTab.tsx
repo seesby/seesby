@@ -4,7 +4,7 @@ import { Card, StatusBadge } from '../../shared';
 function StatusCell({ ok }: { ok: boolean | undefined }) {
   if (ok === true) return <StatusBadge status="pass" label="Yes" />;
   if (ok === false) return <StatusBadge status="warn" label="No" />;
-  return <span className="text-[#555] text-[11px]">&mdash;</span>;
+  return <span className="text-[var(--brand-text-faint)]] text-[11px]">&mdash;</span>;
 }
 
 export default function ExtractableTab({ page, hasTrend }: { page: any; hasTrend?: boolean }) {
@@ -38,19 +38,19 @@ export default function ExtractableTab({ page, hasTrend }: { page: any; hasTrend
             <div className="overflow-x-auto">
               <table className="w-full text-[11px]">
                 <thead>
-                  <tr className="border-b border-[#1a1a1a]">
-                    <th className="px-2 py-1.5 text-left text-[#555] uppercase tracking-widest font-bold">Block type</th>
-                    <th className="px-2 py-1.5 text-right text-[#555] uppercase tracking-widest font-bold">Count</th>
-                    <th className="px-2 py-1.5 text-right text-[#555] uppercase tracking-widest font-bold">Extractable</th>
-                    <th className="px-2 py-1.5 text-center text-[#555] uppercase tracking-widest font-bold">Score</th>
+                  <tr className="border-b border-[var(--brand-surface-3)]]">
+                    <th className="px-2 py-1.5 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Block type</th>
+                    <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Count</th>
+                    <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Extractable</th>
+                    <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Score</th>
                   </tr>
                 </thead>
                 <tbody>
                   {blockInventory.map((block: any) => (
-                    <tr key={block.type} className="border-b border-[#111] hover:bg-[#111]">
-                      <td className="px-2 py-1.5 text-[#ccc]">{block.type}</td>
-                      <td className="px-2 py-1.5 text-right text-white">{block.count}</td>
-                      <td className="px-2 py-1.5 text-right text-white">
+                    <tr key={block.type} className="border-b border-[var(--brand-surface-2)]] hover:bg-[var(--brand-surface-2)]]">
+                      <td className="px-2 py-1.5 text-[var(--brand-text-mid)]]">{block.type}</td>
+                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-strong)]">{block.count}</td>
+                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-strong)]">
                         {block.extractable != null ? block.extractable : '\u2014'}
                       </td>
                       <td className="px-2 py-1.5 text-center"><StatusCell ok={block.score} /></td>
@@ -68,7 +68,7 @@ export default function ExtractableTab({ page, hasTrend }: { page: any; hasTrend
             <div className="flex items-center gap-3">
               <div className="relative w-14 h-14 shrink-0">
                 <svg className="w-14 h-14 -rotate-90" viewBox="0 0 36 36">
-                  <circle cx="18" cy="18" r="15" fill="none" stroke="#1a1a1a" strokeWidth="3" />
+                  <circle cx="18" cy="18" r="15" fill="none" stroke="bg-[var(--brand-surface-3)]" strokeWidth="3" />
                   <circle
                     cx="18" cy="18" r="15" fill="none"
                     stroke={extractScore >= 70 ? '#22c55e' : extractScore >= 40 ? '#f59e0b' : '#ef4444'}
@@ -77,12 +77,12 @@ export default function ExtractableTab({ page, hasTrend }: { page: any; hasTrend
                     strokeLinecap="round"
                   />
                 </svg>
-                <span className="absolute inset-0 flex items-center justify-center text-[12px] font-bold text-white">
+                <span className="absolute inset-0 flex items-center justify-center text-[12px] font-bold text-[var(--brand-text-strong)]">
                   {extractScore}%
                 </span>
               </div>
               <div>
-                <div className="text-[11px] text-[#666]">Overall</div>
+                <div className="text-[11px] text-[var(--brand-text-faint)]]">Overall</div>
               </div>
             </div>
           </Card>
@@ -94,12 +94,12 @@ export default function ExtractableTab({ page, hasTrend }: { page: any; hasTrend
                 {issues.map((issue, i) => (
                   <div key={i} className="flex items-start gap-2 text-[11px]">
                     <span className="mt-0.5 w-1.5 h-1.5 rounded-full bg-[#f59e0b] shrink-0" />
-                    <span className="text-[#ccc]">{issue}</span>
+                    <span className="text-[var(--brand-text-mid)]]">{issue}</span>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="text-[11px] text-[#555]">No issues</div>
+              <div className="text-[11px] text-[var(--brand-text-faint)]]">No issues</div>
             )}
           </Card>
 
@@ -107,19 +107,19 @@ export default function ExtractableTab({ page, hasTrend }: { page: any; hasTrend
           <Card title="Rendering">
             <div className="space-y-1">
               <div className="flex items-center justify-between text-[11px]">
-                <span className="text-[#666]">Pre-rendered HTML</span>
+                <span className="text-[var(--brand-text-faint)]]">Pre-rendered HTML</span>
                 <span className={isStatic ? 'text-[#22c55e]' : 'text-[#f59e0b]'}>
                   {isStatic ? '\u2713' : '\u2717'}
                 </span>
               </div>
               <div className="flex items-center justify-between text-[11px]">
-                <span className="text-[#666]">Heavy JS dependency</span>
+                <span className="text-[var(--brand-text-faint)]]">Heavy JS dependency</span>
                 <span className={heavyJs ? 'text-[#f59e0b]' : 'text-[#22c55e]'}>
                   {heavyJs ? 'yes' : 'no'}
                 </span>
               </div>
               <div className="flex items-center justify-between text-[11px]">
-                <span className="text-[#666]">Paywall / auth gate</span>
+                <span className="text-[var(--brand-text-faint)]]">Paywall / auth gate</span>
                 <span className={paywallGate ? 'text-[#f59e0b]' : 'text-[#22c55e]'}>
                   {paywallGate ? 'yes' : 'no'}
                 </span>

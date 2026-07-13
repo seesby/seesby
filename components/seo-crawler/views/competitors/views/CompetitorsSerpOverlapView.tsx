@@ -3,9 +3,9 @@ import { useSerpOverlap, type SerpOverlapData } from '../selectors/useSerpOverla
 import { fmtCompact } from '../../_shared/formatters';
 import clsx from 'clsx';
 
-const PANEL = 'rounded border border-[#1a1a1a] bg-[#0a0a0a]';
-const LABEL = 'text-[10px] uppercase tracking-wider text-[#666] mb-2';
-const selectClass = 'h-7 px-2 bg-[#0c0c0c] border border-[#1a1a1a] rounded text-[11px] text-[#ccc] focus:outline-none focus:border-[#333] appearance-none cursor-pointer';
+const PANEL = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]]';
+const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2';
+const selectClass = 'h-7 px-2 bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded text-[11px] text-[var(--brand-text-mid)]] focus:outline-none focus:border-[var(--brand-surface-4)]] appearance-none cursor-pointer';
 
 export default function CompetitorsSerpOverlapView() {
   const data = useSerpOverlap();
@@ -14,7 +14,7 @@ export default function CompetitorsSerpOverlapView() {
   return (
     <div className="flex flex-col h-full min-h-0 overflow-hidden">
       {/* Filter bar */}
-      <div className="flex items-center gap-3 px-3 py-1.5 shrink-0 border-b border-[#161616]">
+      <div className="flex items-center gap-3 px-3 py-1.5 shrink-0 border-b border-[var(--brand-surface-3)]]">
         <span className={LABEL} style={{ marginBottom: 0 }}>Keywords:</span>
         <select value={kwFilter} onChange={e => setKwFilter(e.target.value)}
           className={selectClass}>
@@ -23,7 +23,7 @@ export default function CompetitorsSerpOverlapView() {
           <option value="gap">Gap only</option>
         </select>
         <div className="flex-1" />
-        <span className="text-[10px] text-[#888]">{data.positionData.length} queries</span>
+        <span className="text-[10px] text-[var(--brand-text-mid)]]">{data.positionData.length} queries</span>
       </div>
 
       {/* Stacked panels */}
@@ -67,7 +67,7 @@ function VennPanel({ data }: { data: SerpOverlapData }) {
           <text x={cx1 - 20} y={cy - 8} fill="#a78bfa" fontSize="11" fontFamily="sans-serif" fontWeight="600">
             {us.replace(/\..+/, '')}
           </text>
-          <text x={cx1 - 20} y={cy + 10} fill="#fff" fontSize="14" fontFamily="monospace" fontWeight="700">
+          <text x={cx1 - 20} y={cy + 10} fill="text-[var(--brand-text-strong)]" fontSize="14" fontFamily="monospace" fontWeight="700">
             {usTotal}
           </text>
 
@@ -76,7 +76,7 @@ function VennPanel({ data }: { data: SerpOverlapData }) {
           <text x={cx2 + 5} y={cy - 8} fill="#3b82f6" fontSize="11" fontFamily="sans-serif" fontWeight="600">
             {comps[0].replace(/\..+/, '')}
           </text>
-          <text x={cx2 + 5} y={cy + 10} fill="#fff" fontSize="14" fontFamily="monospace" fontWeight="700">
+          <text x={cx2 + 5} y={cy + 10} fill="text-[var(--brand-text-strong)]" fontSize="14" fontFamily="monospace" fontWeight="700">
             {c1Total}
           </text>
 
@@ -84,7 +84,7 @@ function VennPanel({ data }: { data: SerpOverlapData }) {
           <text x={w * 0.5} y={cy - 4} textAnchor="middle" fill="#22c55e" fontSize="13" fontFamily="monospace" fontWeight="700">
             {usShared}
           </text>
-          <text x={w * 0.5} y={cy + 12} textAnchor="middle" fill="#666" fontSize="9" fontFamily="sans-serif">
+          <text x={w * 0.5} y={cy + 12} textAnchor="middle" fill="text-[var(--brand-text-faint)]" fontSize="9" fontFamily="sans-serif">
             shared
           </text>
         </svg>
@@ -94,10 +94,10 @@ function VennPanel({ data }: { data: SerpOverlapData }) {
           <div className="flex flex-col gap-1 text-[11px]">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#14b8a6]" />
-              <span className="text-white">{comps[1].replace(/\..+/, '')}</span>
+              <span className="text-[var(--brand-text-strong)]">{comps[1].replace(/\..+/, '')}</span>
             </div>
-            <span className="text-[#888] tabular-nums">{compShared} shared with {comps[0].replace(/\..+/, '')}</span>
-            <span className="text-[#888] tabular-nums">{usShared2} shared with us</span>
+            <span className="text-[var(--brand-text-mid)]] tabular-nums">{compShared} shared with {comps[0].replace(/\..+/, '')}</span>
+            <span className="text-[var(--brand-text-mid)]] tabular-nums">{usShared2} shared with us</span>
           </div>
         )}
       </div>
@@ -111,13 +111,13 @@ function PositionTable({ data }: { data: SerpOverlapData }) {
 
   return (
     <div className={`${PANEL}`}>
-      <div className="px-3 py-2 border-b border-[#1a1a1a]">
+      <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
         <span className={LABEL} style={{ marginBottom: 0 }}>SERP positions</span>
       </div>
       <div className="overflow-auto">
         <table className="w-full text-[11px]">
           <thead>
-            <tr className="text-[10px] uppercase tracking-wider text-[#666] border-b border-[#1a1a1a]">
+            <tr className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] border-b border-[var(--brand-surface-3)]]">
               <th className="text-left px-3 py-2 font-normal w-[200px]">Query</th>
               <th className="text-center px-2 py-2 font-normal w-[60px]">Us</th>
               {compHosts.map(h => (
@@ -128,8 +128,8 @@ function PositionTable({ data }: { data: SerpOverlapData }) {
           </thead>
           <tbody>
             {top.map(row => (
-              <tr key={row.keyword} className="border-b border-[#161616] hover:bg-[#0c0c0c] transition-colors">
-                <td className="px-3 py-1.5 text-white truncate">{row.keyword}</td>
+              <tr key={row.keyword} className="border-b border-[var(--brand-surface-3)]] hover:bg-[var(--brand-surface-1)]] transition-colors">
+                <td className="px-3 py-1.5 text-[var(--brand-text-strong)] truncate">{row.keyword}</td>
                 <td className="text-center px-2 py-1.5">
                   <RankCell rank={row.us} />
                 </td>
@@ -149,7 +149,7 @@ function PositionTable({ data }: { data: SerpOverlapData }) {
                         f === 'AI ov' ? 'bg-[#3b82f6]/15 text-[#3b82f6]' :
                         f === 'featured snippet' ? 'bg-[#f59e0b]/15 text-[#f59e0b]' :
                         f === 'video' ? 'bg-[#ef4444]/15 text-[#ef4444]' :
-                        'bg-[#222] text-[#888]',
+                        'bg-[var(--brand-border-2)]] text-[var(--brand-text-mid)]]',
                       )}>
                         {f}
                       </span>
@@ -166,11 +166,11 @@ function PositionTable({ data }: { data: SerpOverlapData }) {
 }
 
 function RankCell({ rank }: { rank: number | null }) {
-  if (rank === null) return <span className="text-[#555]">—</span>;
+  if (rank === null) return <span className="text-[var(--brand-text-faint)]]">—</span>;
   return (
     <span className={clsx(
       'tabular-nums font-medium',
-      rank <= 3 ? 'text-[#22c55e]' : rank <= 10 ? 'text-[#f59e0b]' : 'text-white',
+      rank <= 3 ? 'text-[#22c55e]' : rank <= 10 ? 'text-[#f59e0b]' : 'text-[var(--brand-text-strong)]',
     )}>
       {rank}
     </span>
@@ -192,10 +192,10 @@ function AiOwnershipPanel({ data }: { data: SerpOverlapData }) {
           const isUs = host === us;
           return (
             <div key={row.keyword} className="flex items-start gap-3 text-[11px]">
-              <span className="text-white shrink-0 w-[140px] truncate">"{row.keyword}"</span>
+              <span className="text-[var(--brand-text-strong)] shrink-0 w-[140px] truncate">"{row.keyword}"</span>
               <span className={clsx(
                 'shrink-0',
-                isUs ? 'text-[#22c55e]' : 'text-[#888]',
+                isUs ? 'text-[#22c55e]' : 'text-[var(--brand-text-mid)]]',
               )}>
                 {isUs ? 'cites us' : `${host.replace(/\..+/, '')} → we're out`}
               </span>

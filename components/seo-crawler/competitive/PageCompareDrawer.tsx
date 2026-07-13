@@ -51,28 +51,28 @@ export default function PageCompareDrawer({ competitorUrl, competitorTitle, onCl
 
   return (
     <div className="fixed inset-0 z-[120] flex items-center justify-center bg-black/60">
-      <div className="w-full max-w-2xl rounded-2xl border border-[#222] bg-[#0d0d0f] shadow-2xl">
-        <div className="flex items-center justify-between border-b border-[#222] px-6 py-4">
-          <h3 className="text-[14px] font-bold text-white">Page Comparison</h3>
-          <button onClick={onClose} className="text-[#666] hover:text-white">
+      <div className="w-full max-w-2xl rounded-2xl border border-[var(--brand-border-2)]] bg-[var(--brand-surface-1)]] shadow-2xl">
+        <div className="flex items-center justify-between border-b border-[var(--brand-border-2)]] px-6 py-4">
+          <h3 className="text-[14px] font-bold text-[var(--brand-text-strong)]">Page Comparison</h3>
+          <button onClick={onClose} className="text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)]">
             <X size={18} />
           </button>
         </div>
         <div className="max-h-[60vh] overflow-y-auto p-6">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-[#222]">
-                <th className="w-[120px] pb-2 text-left text-[10px] font-bold uppercase text-[#666]">Metric</th>
+              <tr className="border-b border-[var(--brand-border-2)]]">
+                <th className="w-[120px] pb-2 text-left text-[10px] font-bold uppercase text-[var(--brand-text-faint)]]">Metric</th>
                 <th className="pb-2 text-left text-[10px] font-bold uppercase text-[#F59E0B]">Your Page</th>
                 <th className="pb-2 text-left text-[10px] font-bold uppercase text-[#F59E0B]">Their Page</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row) => (
-                <tr key={row.label} className="border-b border-[#111]">
-                  <td className="py-2.5 text-[11px] text-[#666]">{row.label}</td>
-                  <td className="max-w-[200px] truncate py-2.5 text-[11px] text-[#ccc]">{row.yours ?? '—'}</td>
-                  <td className="max-w-[200px] truncate py-2.5 text-[11px] text-[#ccc]">{row.theirs ?? '—'}</td>
+                <tr key={row.label} className="border-b border-[var(--brand-surface-2)]]">
+                  <td className="py-2.5 text-[11px] text-[var(--brand-text-faint)]]">{row.label}</td>
+                  <td className="max-w-[200px] truncate py-2.5 text-[11px] text-[var(--brand-text-mid)]]">{row.yours ?? '—'}</td>
+                  <td className="max-w-[200px] truncate py-2.5 text-[11px] text-[var(--brand-text-mid)]]">{row.theirs ?? '—'}</td>
                 </tr>
               ))}
             </tbody>

@@ -14,14 +14,14 @@ export function ProgressRing({
   return (
     <div className="relative inline-flex items-center justify-center" style={styleSize}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size/2} cy={size/2} r={r} stroke="#1a1a1a" strokeWidth={stroke} fill="none" />
+        <circle cx={size/2} cy={size/2} r={r} stroke="bg-[var(--brand-surface-3)]" strokeWidth={stroke} fill="none" />
         <circle cx={size/2} cy={size/2} r={r} stroke={tone} strokeWidth={stroke} fill="none"
           strokeDasharray={c} strokeDashoffset={off} strokeLinecap="round" />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-[12px] font-mono font-bold text-white">{Math.round(v)}</span>
+        <span className="text-[12px] font-mono font-bold text-[var(--brand-text-strong)]">{Math.round(v)}</span>
         {label && (
-          <span className="text-[9px] text-[#888] flex items-center gap-1">
+          <span className="text-[9px] text-[var(--brand-text-mid)]] flex items-center gap-1">
             {label}
             {hint && <HelpHint text={hint} />}
           </span>

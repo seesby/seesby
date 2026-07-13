@@ -15,10 +15,10 @@ export function LineChart({
   return (
     <ResponsiveContainer width="100%" height={height}>
       <RLC data={data as any} margin={ { top: 8, right: 8, left: -10, bottom: 0 } }>
-        <CartesianGrid stroke="#171717" vertical={false} />
-        <XAxis dataKey={x} stroke="#555" fontSize={10} tickLine={false} axisLine={false} />
+        <CartesianGrid stroke="bg-[var(--brand-surface-3)]" vertical={false} />
+        <XAxis dataKey={x} stroke="text-[var(--brand-text-faint)]" fontSize={10} tickLine={false} axisLine={false} />
         <YAxis hide />
-        <Tooltip contentStyle={ { background: '#0c0c0c', border: '1px solid #1a1a1a', fontSize: 11 } } />
+        <Tooltip contentStyle={ { background: 'bg-[var(--brand-surface-1)]', border: '1px solid bg-[var(--brand-surface-3)]', fontSize: 11 } } />
         <Legend wrapperStyle={ { fontSize: 11 } } />
         {series.map((s, i) => (
           <Line

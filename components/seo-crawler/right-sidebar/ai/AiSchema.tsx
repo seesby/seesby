@@ -35,9 +35,9 @@ export function AiSchema() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[#888]">Schema score</div>
-            <div className="mt-1 text-2xl font-semibold text-white">{s.schema.score}</div>
-            <div className="mt-1 text-[10px] text-[#666]">{s.schema.pagesWithSchema} of {s.schema.totalPages} pages</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Schema score</div>
+            <div className="mt-1 text-2xl font-semibold text-[var(--brand-text-strong)]">{s.schema.score}</div>
+            <div className="mt-1 text-[10px] text-[var(--brand-text-faint)]]">{s.schema.pagesWithSchema} of {s.schema.totalPages} pages</div>
           </div>
           <ProgressRing value={s.schema.score} size={72} />
         </div>
@@ -57,7 +57,7 @@ export function AiSchema() {
           <Card title="Schema trend">
             <div className="flex items-center justify-between">
               <RsSparkline values={s.history.schema} />
-              <span className="text-[10px] text-[#666]">{s.schema.score}</span>
+              <span className="text-[10px] text-[var(--brand-text-faint)]]">{s.schema.score}</span>
             </div>
           </Card>
         )}
@@ -75,7 +75,7 @@ export function AiSchema() {
 
       {/* AI-key fields coverage */}
       <Card title="AI-key fields">
-        <div className="flex flex-col border-t border-[#1f1f1f]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
           {fields.map(f => (
             <RowItem
               key={f.label}

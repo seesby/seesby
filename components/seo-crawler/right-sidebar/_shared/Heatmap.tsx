@@ -25,13 +25,13 @@ export function Heatmap({
     <div className="flex gap-2">
       <div className="flex flex-col gap-[2px] pt-[18px]">
         {yLabels.map(y => (
-          <div key={y} className="text-[10px] text-[#666] truncate max-w-[80px]" style={styleLabelY}>{y}</div>
+          <div key={y} className="text-[10px] text-[var(--brand-text-faint)]] truncate max-w-[80px]" style={styleLabelY}>{y}</div>
         ))}
       </div>
       <div className="flex flex-col gap-[2px]">
         <div className="flex gap-[2px]">
           {xLabels.map(x => (
-            <div key={x} className="text-[10px] text-[#666] text-center truncate" style={styleLabelX}>{x}</div>
+            <div key={x} className="text-[10px] text-[var(--brand-text-faint)]] text-center truncate" style={styleLabelX}>{x}</div>
           ))}
         </div>
         {yLabels.map(y => (
@@ -47,7 +47,7 @@ export function Heatmap({
                 <div
                   key={x}
                   title={`${y} · ${x}: ${v}`}
-                  className="rounded-[2px] border border-[#1a1a1a]"
+                  className="rounded-[2px] border border-[var(--brand-surface-3)]]"
                   style={styleCell}
                 />
               )

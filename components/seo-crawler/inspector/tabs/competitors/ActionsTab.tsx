@@ -41,19 +41,19 @@ export default function ActionsTab({ page }: { page: any; hasTrend?: boolean }) 
                   status={catchability === 'catchable' ? 'pass' : catchability === 'aspirational' ? 'warn' : 'info'}
                   label={catchability.toUpperCase()}
                 />
-                {topic && <span className="text-[12px] text-white font-medium">"{topic}"</span>}
+                {topic && <span className="text-[12px] text-[var(--brand-text-strong)] font-medium">"{topic}"</span>}
               </div>
             </div>
           )}
 
           {Array.isArray(plan) && plan.length > 0 && (
             <div className="mb-3">
-              <div className="text-[9px] text-[#444] uppercase tracking-wider mb-2">Plan</div>
+              <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-2">Plan</div>
               <div className="space-y-1.5">
                 {plan.map((step: any, j: number) => (
                   <div key={j} className="flex items-start gap-2">
-                    <span className="text-[11px] text-[#666] shrink-0">{j + 1}.</span>
-                    <span className="text-[11px] text-[#ccc] leading-snug">
+                    <span className="text-[11px] text-[var(--brand-text-faint)]] shrink-0">{j + 1}.</span>
+                    <span className="text-[11px] text-[var(--brand-text-mid)]] leading-snug">
                       {typeof step === 'string' ? step : step.text || step.description || ''}
                     </span>
                   </div>
@@ -63,16 +63,16 @@ export default function ActionsTab({ page }: { page: any; hasTrend?: boolean }) 
           )}
 
           {(forecast || effort) && (
-            <div className="pt-2 border-t border-[#141414] space-y-1">
+            <div className="pt-2 border-t border-[var(--brand-surface-2)]] space-y-1">
               {forecast && (
-                <div className="text-[11px] text-[#ccc]">
-                  <span className="text-[#555]">Forecast: </span>
+                <div className="text-[11px] text-[var(--brand-text-mid)]]">
+                  <span className="text-[var(--brand-text-faint)]]">Forecast: </span>
                   {forecast}
                 </div>
               )}
               {effort && (
-                <div className="text-[11px] text-[#ccc]">
-                  <span className="text-[#555]">Effort: </span>
+                <div className="text-[11px] text-[var(--brand-text-mid)]]">
+                  <span className="text-[var(--brand-text-faint)]]">Effort: </span>
                   {effort}
                 </div>
               )}
@@ -96,7 +96,7 @@ function RecommendedPlay({ play }: { play: any }) {
       <div className="mb-3">
         <div className="flex items-center gap-2 mb-2">
           <span className="w-2 h-2 rounded-full bg-[#F59E0B] shrink-0" />
-          <span className="text-[12px] text-white font-semibold">
+          <span className="text-[12px] text-[var(--brand-text-strong)] font-semibold">
             {playType} {topic && `"${topic}"`}
           </span>
         </div>
@@ -104,12 +104,12 @@ function RecommendedPlay({ play }: { play: any }) {
 
       {Array.isArray(plan) && plan.length > 0 && (
         <div className="mb-3">
-          <div className="text-[9px] text-[#444] uppercase tracking-wider mb-2">Plan</div>
+          <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-2">Plan</div>
           <div className="space-y-1.5">
             {plan.map((step: any, j: number) => (
               <div key={j} className="flex items-start gap-2">
-                <span className="text-[11px] text-[#666] shrink-0">{j + 1}.</span>
-                <span className="text-[11px] text-[#ccc] leading-snug">
+                <span className="text-[11px] text-[var(--brand-text-faint)]] shrink-0">{j + 1}.</span>
+                <span className="text-[11px] text-[var(--brand-text-mid)]] leading-snug">
                   {typeof step === 'string' ? step : step.text || step.description || ''}
                 </span>
               </div>
@@ -119,16 +119,16 @@ function RecommendedPlay({ play }: { play: any }) {
       )}
 
       {(forecast || effort) && (
-        <div className="pt-2 border-t border-[#141414] space-y-1">
+        <div className="pt-2 border-t border-[var(--brand-surface-2)]] space-y-1">
           {forecast && (
-            <div className="text-[11px] text-[#ccc]">
-              <span className="text-[#555]">Forecast: </span>
+            <div className="text-[11px] text-[var(--brand-text-mid)]]">
+              <span className="text-[var(--brand-text-faint)]]">Forecast: </span>
               {forecast}
             </div>
           )}
           {effort && (
-            <div className="text-[11px] text-[#ccc]">
-              <span className="text-[#555]">Effort: </span>
+            <div className="text-[11px] text-[var(--brand-text-mid)]]">
+              <span className="text-[var(--brand-text-faint)]]">Effort: </span>
               {effort}
             </div>
           )}

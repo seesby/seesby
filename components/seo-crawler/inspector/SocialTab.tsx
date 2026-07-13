@@ -59,8 +59,8 @@ export default function SocialTab({ page }: { page: any }) {
             {ogImage && (
                 <div className="mt-6">
                     <SectionHeader title="OG Image Preview" />
-                    <div className="bg-[#0a0a0a] border border-[#222] rounded p-3">
-                        <img src={ogImage} alt="Open Graph preview" className="max-h-[280px] w-auto rounded border border-[#333]" />
+                    <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+                        <img src={ogImage} alt="Open Graph preview" className="max-h-[280px] w-auto rounded border border-[var(--brand-surface-4)]]" />
                     </div>
                 </div>
             )}

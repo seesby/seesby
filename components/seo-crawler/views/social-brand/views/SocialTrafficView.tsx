@@ -5,9 +5,9 @@ import { useHasComparison } from '../../_hooks/useHasComparison';
 import { fmtCompact, fmtPct, fmtUrl } from '../../_shared/formatters';
 import { STATUS } from '../../_shared/tokens';
 
-const CARD = 'rounded border border-[#1a1a1a] bg-[#0a0a0a] p-3 min-h-0';
+const CARD = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3 min-h-0';
 const H = ({ children }: { children: React.ReactNode }) =>
-  <div className="text-[10px] uppercase tracking-wider text-[#666] mb-2">{children}</div>;
+  <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">{children}</div>;
 
 export default function SocialTrafficView() {
   const d = useSocialTraffic();
@@ -43,7 +43,7 @@ export default function SocialTrafficView() {
             {funnelSteps.length > 0 ? (
               <Funnel steps={funnelSteps} accent="#F59E0B" />
             ) : (
-              <div className="py-4 text-[12px] text-[#666] text-center">No funnel data.</div>
+              <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No funnel data.</div>
             )}
           </div>
 
@@ -53,7 +53,7 @@ export default function SocialTrafficView() {
             {platformBreakdown.length > 0 ? (
               <div className="overflow-x-auto">
                 <table className="w-full text-[11px]">
-                  <thead className="text-[10px] uppercase text-[#666] border-b border-[#171717]">
+                  <thead className="text-[10px] uppercase text-[var(--brand-text-faint)]] border-b border-[var(--brand-surface-3)]]">
                     <tr>
                       <th className="text-left py-1.5 font-normal">Platform</th>
                       <th className="text-right font-normal">Clicks</th>
@@ -66,29 +66,29 @@ export default function SocialTrafficView() {
                   </thead>
                   <tbody>
                     {platformBreakdown.map((p: any) => (
-                      <tr key={p.platform} className="border-b border-[#111]">
-                        <td className="py-1.5 text-[#ccc]">{p.platform}</td>
-                        <td className="py-1.5 text-right font-mono text-white">{fmtCompact(p.clicks)}</td>
-                        <td className="py-1.5 text-right font-mono text-white">{fmtCompact(p.sessions)}</td>
+                      <tr key={p.platform} className="border-b border-[var(--brand-surface-2)]]">
+                        <td className="py-1.5 text-[var(--brand-text-mid)]]">{p.platform}</td>
+                        <td className="py-1.5 text-right font-mono text-[var(--brand-text-strong)]">{fmtCompact(p.clicks)}</td>
+                        <td className="py-1.5 text-right font-mono text-[var(--brand-text-strong)]">{fmtCompact(p.sessions)}</td>
                         <td className="py-1.5 text-right font-mono" style={{
-                          color: (p.bounceRate ?? 0) > 0.6 ? STATUS.bad : (p.bounceRate ?? 0) > 0.5 ? '#f59e0b' : '#888'
+                          color: (p.bounceRate ?? 0) > 0.6 ? STATUS.bad : (p.bounceRate ?? 0) > 0.5 ? '#f59e0b' : 'text-[var(--brand-text-mid)]'
                         }}>
                           {fmtPct(p.bounceRate)}{(p.bounceRate ?? 0) > 0.6 && ' ⚠'}
                         </td>
                         <td className="py-1.5 text-right font-mono" style={{
-                          color: (p.cvRate ?? 0) > 0.05 ? STATUS.good : (p.cvRate ?? 0) > 0.02 ? '#888' : STATUS.bad
+                          color: (p.cvRate ?? 0) > 0.05 ? STATUS.good : (p.cvRate ?? 0) > 0.02 ? 'text-[var(--brand-text-mid)]' : STATUS.bad
                         }}>
                           {fmtPct(p.cvRate)}{(p.cvRate ?? 0) < 0.02 && ' ⚠'}
                         </td>
-                        <td className="py-1.5 text-right font-mono text-white">${fmtCompact(p.revenue ?? 0)}</td>
-                        <td className="py-1.5 text-right font-mono text-[#888]">{p.cost ? `$${fmtCompact(p.cost)}` : '—'}</td>
+                        <td className="py-1.5 text-right font-mono text-[var(--brand-text-strong)]">${fmtCompact(p.revenue ?? 0)}</td>
+                        <td className="py-1.5 text-right font-mono text-[var(--brand-text-mid)]]">{p.cost ? `$${fmtCompact(p.cost)}` : '—'}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             ) : (
-              <div className="py-4 text-[12px] text-[#666] text-center">No platform data.</div>
+              <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No platform data.</div>
             )}
           </div>
 
@@ -98,7 +98,7 @@ export default function SocialTrafficView() {
             {landingPages.length > 0 ? (
               <div className="overflow-x-auto">
                 <table className="w-full text-[11px]">
-                  <thead className="text-[10px] uppercase text-[#666] border-b border-[#171717]">
+                  <thead className="text-[10px] uppercase text-[var(--brand-text-faint)]] border-b border-[var(--brand-surface-3)]]">
                     <tr>
                       <th className="text-left py-1.5 font-normal">Page</th>
                       <th className="text-right font-normal">Sessions</th>
@@ -110,28 +110,28 @@ export default function SocialTrafficView() {
                   </thead>
                   <tbody>
                     {landingPages.map((l: any, i: number) => (
-                      <tr key={i} className="border-b border-[#111]">
+                      <tr key={i} className="border-b border-[var(--brand-surface-2)]]">
                         <td className="py-1.5 text-[#bdb6ff] truncate max-w-[250px]">{fmtUrl(l.url)}</td>
-                        <td className="py-1.5 text-right font-mono text-white">{fmtCompact(l.sessions)}</td>
+                        <td className="py-1.5 text-right font-mono text-[var(--brand-text-strong)]">{fmtCompact(l.sessions)}</td>
                         <td className="py-1.5 text-right font-mono" style={{
-                          color: (l.bounceRate ?? 0) > 0.6 ? STATUS.bad : '#888'
+                          color: (l.bounceRate ?? 0) > 0.6 ? STATUS.bad : 'text-[var(--brand-text-mid)]'
                         }}>
                           {fmtPct(l.bounceRate)}{(l.bounceRate ?? 0) > 0.6 && ' ⚠'}
                         </td>
                         <td className="py-1.5 text-right font-mono" style={{
-                          color: (l.cvRate ?? 0) > 0.05 ? STATUS.good : (l.cvRate ?? 0) < 0.02 ? STATUS.bad : '#888'
+                          color: (l.cvRate ?? 0) > 0.05 ? STATUS.good : (l.cvRate ?? 0) < 0.02 ? STATUS.bad : 'text-[var(--brand-text-mid)]'
                         }}>
                           {fmtPct(l.cvRate)}{(l.cvRate ?? 0) < 0.02 && ' ⚠'}
                         </td>
-                        <td className="py-1.5 text-right font-mono text-white">${fmtCompact(l.revenue ?? 0)}</td>
-                        <td className="py-1.5 text-[#888] pl-2 truncate max-w-[120px]">{l.topPost ?? '—'}</td>
+                        <td className="py-1.5 text-right font-mono text-[var(--brand-text-strong)]">${fmtCompact(l.revenue ?? 0)}</td>
+                        <td className="py-1.5 text-[var(--brand-text-mid)]] pl-2 truncate max-w-[120px]">{l.topPost ?? '—'}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             ) : (
-              <div className="py-4 text-[12px] text-[#666] text-center">No landing page data.</div>
+              <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No landing page data.</div>
             )}
           </div>
 
@@ -140,7 +140,7 @@ export default function SocialTrafficView() {
             <div className={`${CARD}`}>
               <H>Message-match audit (link card vs LP)</H>
               <table className="w-full text-[11px]">
-                <thead className="text-[10px] uppercase text-[#666] border-b border-[#171717]">
+                <thead className="text-[10px] uppercase text-[var(--brand-text-faint)]] border-b border-[var(--brand-surface-3)]]">
                   <tr>
                     <th className="text-left py-1.5 font-normal">Post</th>
                     <th className="text-left font-normal">LP</th>
@@ -150,15 +150,15 @@ export default function SocialTrafficView() {
                 </thead>
                 <tbody>
                   {messageMatch.map((m: any, i: number) => (
-                    <tr key={i} className="border-b border-[#111]">
-                      <td className="py-1.5 text-[#ccc] truncate max-w-[120px]">{m.post}</td>
+                    <tr key={i} className="border-b border-[var(--brand-surface-2)]]">
+                      <td className="py-1.5 text-[var(--brand-text-mid)]] truncate max-w-[120px]">{m.post}</td>
                       <td className="py-1.5 text-[#bdb6ff] truncate max-w-[150px]">{fmtUrl(m.lp)}</td>
                       <td className="py-1.5 text-right font-mono" style={{
                         color: (m.matchScore ?? 0) >= 0.8 ? STATUS.good : (m.matchScore ?? 0) >= 0.6 ? '#f59e0b' : STATUS.bad
                       }}>
                         {(m.matchScore ?? 0).toFixed(2)}{(m.matchScore ?? 0) >= 0.8 ? ' ✓' : ''}
                       </td>
-                      <td className="py-1.5 text-[#888] pl-2">{m.suggestion ?? '—'}</td>
+                      <td className="py-1.5 text-[var(--brand-text-mid)]] pl-2">{m.suggestion ?? '—'}</td>
                     </tr>
                   ))}
                 </tbody>

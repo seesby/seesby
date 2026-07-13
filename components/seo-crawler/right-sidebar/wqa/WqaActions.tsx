@@ -53,9 +53,9 @@ export function WqaActions() {
 			</Card>
 
 			<Card padded={false} title="Top action templates">
-				<div className="flex flex-col border-t border-[#1f1f1f]">
+				<div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
 					{templates.length === 0
-						? <div className="p-3 text-[11px] text-[#666]">No actions queued.</div>
+						? <div className="p-3 text-[11px] text-[var(--brand-text-faint)]]">No actions queued.</div>
 						: templates.map(t => (
 							<RowItem
 								key={t.id}
@@ -71,12 +71,12 @@ export function WqaActions() {
 			{forecast && (
 				<Card title="Impact forecast">
 					<div className="flex flex-col gap-2">
-						<div className="text-[10px] text-[#666] uppercase tracking-wider">Estimated if all High priority resolved</div>
+						<div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider">Estimated if all High priority resolved</div>
 						<div className="flex gap-4">
 							<KpiTile label="Q-avg gain" value={`▲${forecast.deltaScore}`} />
 							<KpiTile label="Click lift" value={`+${forecast.deltaClicksPerMonth}/mo`} />
 						</div>
-						<div className="text-[10px] text-[#444] italic">
+						<div className="text-[10px] text-[var(--brand-border-2)]] italic">
 							Confidence score: {Math.round(forecast.confidence * 100)}%
 						</div>
 					</div>
@@ -85,7 +85,7 @@ export function WqaActions() {
 
 			{owners.length > 0 && (
 				<Card padded={false} title="Owner load">
-					<div className="flex flex-col border-t border-[#1f1f1f]">
+					<div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
 						{owners.map(o => (
 							<RowItem key={o.id} label={o.label} value={`${o.count}`} />
 						))}

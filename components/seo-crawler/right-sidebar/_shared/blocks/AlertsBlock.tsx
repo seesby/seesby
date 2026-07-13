@@ -10,7 +10,7 @@ const toneCls: Record<Alert['tone'], string> = {
 export function AlertsBlock({ title = 'Top alerts', items }: { title?: string; items: Alert[] }) {
   if (!items.length) return null
   return (
-    <div className="rounded-md border border-[#161616] bg-[#0a0a0a] p-3">
+    <div className="rounded-md border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3">
       <div className="text-[11px] uppercase tracking-wider text-neutral-500 mb-2">{title}</div>
       <div className="flex flex-col gap-1.5">
         {items.map(a => (

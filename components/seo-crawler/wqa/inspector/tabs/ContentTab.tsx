@@ -108,10 +108,10 @@ export default function ContentTab({ page, hasTrend }: { page: any; hasTrend?: b
           )}
           {missingEntities.length > 0 && (
             <div className="mt-2">
-              <div className="text-[9px] text-[#444] uppercase tracking-wider mb-1">Missing</div>
+              <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-1">Missing</div>
               <div className="flex flex-wrap gap-1">
                 {missingEntities.map((e: string) => (
-                  <span key={e} className="px-1.5 py-0.5 text-[10px] rounded bg-[#1a1a1a] text-[#666]">{e}</span>
+                  <span key={e} className="px-1.5 py-0.5 text-[10px] rounded bg-[var(--brand-surface-3)]] text-[var(--brand-text-faint)]]">{e}</span>
                 ))}
               </div>
             </div>
@@ -155,12 +155,12 @@ export default function ContentTab({ page, hasTrend }: { page: any; hasTrend?: b
       <Card title="Freshness">
         <div className="mb-3">
           <div className="flex items-center justify-between text-[11px] mb-1.5">
-            <span className="text-[#666]">Content age</span>
+            <span className="text-[var(--brand-text-faint)]]">Content age</span>
             <span className={`font-bold ${freshTone === 'good' ? 'text-[#22c55e]' : freshTone === 'mid' ? 'text-[#3b82f6]' : freshTone === 'warn' ? 'text-[#f59e0b]' : 'text-[#ef4444]'}`}>
               {formatNumber(contentAge)}d
             </span>
           </div>
-          <div className="h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
+          <div className="h-1.5 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
             <div
               className="h-full rounded-full transition-all"
               style={{
@@ -169,7 +169,7 @@ export default function ContentTab({ page, hasTrend }: { page: any; hasTrend?: b
               }}
             />
           </div>
-          <div className="flex justify-between text-[9px] text-[#333] mt-1">
+          <div className="flex justify-between text-[9px] text-[var(--brand-surface-4)]] mt-1">
             <span>Fresh</span>
             <span>Decaying</span>
           </div>
@@ -195,10 +195,10 @@ export default function ContentTab({ page, hasTrend }: { page: any; hasTrend?: b
             { key: 'Review', present: hasReview },
           ].map(s => (
             <div key={s.key} className={`flex items-center justify-between px-3 py-2 rounded-md text-[11px] ${
-              s.present ? 'bg-[#22c55e]/5 border border-[#22c55e]/20' : 'bg-[#0a0a0a] border border-[#1a1a1a]'
+              s.present ? 'bg-[#22c55e]/5 border border-[#22c55e]/20' : 'bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]'
             }`}>
-              <span className="text-[#ccc]">{s.key}</span>
-              <span className={`text-[10px] font-medium ${s.present ? 'text-[#22c55e]' : 'text-[#555]'}`}>
+              <span className="text-[var(--brand-text-mid)]]">{s.key}</span>
+              <span className={`text-[10px] font-medium ${s.present ? 'text-[#22c55e]' : 'text-[var(--brand-text-faint)]]'}`}>
                 {s.present ? '\u2713 Present' : '\u2717 Missing'}
               </span>
             </div>

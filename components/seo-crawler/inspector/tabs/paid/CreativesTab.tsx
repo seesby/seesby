@@ -31,7 +31,7 @@ export default function CreativesTab({ page, hasTrend }: { page: any; hasTrend?:
         <button
           onClick={() => setView('gallery')}
           className={`px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider transition-colors ${
-            view === 'gallery' ? 'bg-[#222] text-white' : 'text-[#555] hover:text-[#888]'
+            view === 'gallery' ? 'bg-[var(--brand-border-2)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]'
           }`}
         >
           Gallery
@@ -39,7 +39,7 @@ export default function CreativesTab({ page, hasTrend }: { page: any; hasTrend?:
         <button
           onClick={() => setView('table')}
           className={`px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider transition-colors ${
-            view === 'table' ? 'bg-[#222] text-white' : 'text-[#555] hover:text-[#888]'
+            view === 'table' ? 'bg-[var(--brand-border-2)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]'
           }`}
         >
           Table
@@ -58,22 +58,22 @@ export default function CreativesTab({ page, hasTrend }: { page: any; hasTrend?:
             const isFatigued = ad.fatigue || fatigued.includes(ad);
             const isDisapproved = disapprovals.some((d: any) => d.id === ad.id || d.headline === ad.headline);
             return (
-              <div key={i} className={`bg-[#0e0e0e] border rounded-lg p-2.5 ${
-                isDisapproved ? 'border-[#ef4444]/40' : isFatigued ? 'border-[#f59e0b]/40' : 'border-[#1a1a1a]'
+              <div key={i} className={`bg-[var(--brand-surface-1)]] border rounded-lg p-2.5 ${
+                isDisapproved ? 'border-[#ef4444]/40' : isFatigued ? 'border-[#f59e0b]/40' : 'border-[var(--brand-surface-3)]]'
               }`}>
-                <div className="aspect-[4/3] bg-[#1a1a1a] rounded mb-2 flex items-center justify-center text-[10px] text-[#444]">
+                <div className="aspect-[4/3] bg-[var(--brand-surface-3)]] rounded mb-2 flex items-center justify-center text-[10px] text-[var(--brand-border-2)]]">
                   {ad.type === 'video' || ad.format === 'video' ? 'VIDEO' :
                    ad.type === 'carousel' ? 'CAROUSEL' :
                    ad.type === 'image' || ad.format === 'image' ? 'IMAGE' : ad.type || 'AD'}
                 </div>
-                <div className="text-[10px] text-[#ccc] truncate font-medium">{ad.headline || ad.name || `Ad ${i + 1}`}</div>
+                <div className="text-[10px] text-[var(--brand-text-mid)]] truncate font-medium">{ad.headline || ad.name || `Ad ${i + 1}`}</div>
                 <div className="flex items-center gap-1.5 mt-1">
-                  <span className="text-[9px] text-[#888]">CTR {ctr ? formatPercent(ctr, 100) : '—'}</span>
-                  {cvr > 0 && <span className="text-[9px] text-[#888]">CvR {formatPercent(cvr, 100)}</span>}
+                  <span className="text-[9px] text-[var(--brand-text-mid)]]">CTR {ctr ? formatPercent(ctr, 100) : '—'}</span>
+                  {cvr > 0 && <span className="text-[9px] text-[var(--brand-text-mid)]]">CvR {formatPercent(cvr, 100)}</span>}
                 </div>
                 <div className="flex items-center gap-1.5 mt-1">
                   <span className={`w-1.5 h-1.5 rounded-full ${isFatigued ? 'bg-[#f59e0b]' : 'bg-[#22c55e]'}`} />
-                  <span className="text-[9px] text-[#666]">{isFatigued ? 'Fatigued' : 'Healthy'}</span>
+                  <span className="text-[9px] text-[var(--brand-text-faint)]]">{isFatigued ? 'Fatigued' : 'Healthy'}</span>
                   {isDisapproved && <StatusBadge status="fail" label="disapproved" />}
                 </div>
               </div>
@@ -88,26 +88,26 @@ export default function CreativesTab({ page, hasTrend }: { page: any; hasTrend?:
           <div className="overflow-x-auto">
             <table className="w-full text-[10px]">
               <thead>
-                <tr className="border-b border-[#222]">
-                  <th className="px-2 py-1.5 text-left text-[#555] uppercase tracking-widest font-bold">Headline</th>
-                  <th className="px-2 py-1.5 text-left text-[#555] uppercase tracking-widest font-bold">Type</th>
-                  <th className="px-2 py-1.5 text-right text-[#555] uppercase tracking-widest font-bold">Impr</th>
-                  <th className="px-2 py-1.5 text-right text-[#555] uppercase tracking-widest font-bold">CTR</th>
-                  <th className="px-2 py-1.5 text-right text-[#555] uppercase tracking-widest font-bold">Conv</th>
-                  <th className="px-2 py-1.5 text-right text-[#555] uppercase tracking-widest font-bold">CPC</th>
-                  <th className="px-2 py-1.5 text-center text-[#555] uppercase tracking-widest font-bold">Strength</th>
-                  <th className="px-2 py-1.5 text-center text-[#555] uppercase tracking-widest font-bold">Status</th>
+                <tr className="border-b border-[var(--brand-border-2)]]">
+                  <th className="px-2 py-1.5 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Headline</th>
+                  <th className="px-2 py-1.5 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Type</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Impr</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">CTR</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Conv</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">CPC</th>
+                  <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Strength</th>
+                  <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Status</th>
                 </tr>
               </thead>
               <tbody>
                 {creatives.slice(0, 30).map((ad: any, i: number) => (
-                  <tr key={i} className="border-b border-[#1a1a1a] hover:bg-[#111]">
-                    <td className="px-2 py-1.5 text-[#ccc] truncate max-w-[200px]">{ad.headline || ad.name || '—'}</td>
-                    <td className="px-2 py-1.5 text-[#888]">{ad.type || '—'}</td>
-                    <td className="px-2 py-1.5 text-right text-[#ccc]">{formatNumber(ad.impressions)}</td>
-                    <td className="px-2 py-1.5 text-right text-[#ccc]">{ad.ctr ? formatPercent(ad.ctr, 100) : '—'}</td>
-                    <td className="px-2 py-1.5 text-right text-[#ccc]">{formatNumber(ad.conversions)}</td>
-                    <td className="px-2 py-1.5 text-right text-[#ccc]">{ad.cpc ? `$${formatNumber(ad.cpc, { maximumFractionDigits: 2 })}` : '—'}</td>
+                  <tr key={i} className="border-b border-[var(--brand-surface-3)]] hover:bg-[var(--brand-surface-2)]]">
+                    <td className="px-2 py-1.5 text-[var(--brand-text-mid)]] truncate max-w-[200px]">{ad.headline || ad.name || '—'}</td>
+                    <td className="px-2 py-1.5 text-[var(--brand-text-mid)]]">{ad.type || '—'}</td>
+                    <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]]">{formatNumber(ad.impressions)}</td>
+                    <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]]">{ad.ctr ? formatPercent(ad.ctr, 100) : '—'}</td>
+                    <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]]">{formatNumber(ad.conversions)}</td>
+                    <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]]">{ad.cpc ? `$${formatNumber(ad.cpc, { maximumFractionDigits: 2 })}` : '—'}</td>
                     <td className="px-2 py-1.5 text-center">
                       <StatusBadge
                         status={ad.strength === 'excellent' || ad.strength === 'strong' ? 'pass' : ad.strength === 'good' ? 'warn' : 'fail'}
@@ -133,15 +133,15 @@ export default function CreativesTab({ page, hasTrend }: { page: any; hasTrend?:
         <Card title={`Responsive search ads (${rsaAds.length})`}>
           <div className="space-y-0">
             {rsaAds.slice(0, 10).map((ad: any, i: number) => (
-              <div key={i} className="py-2.5 border-b border-[#111] last:border-b-0">
+              <div key={i} className="py-2.5 border-b border-[var(--brand-surface-2)]] last:border-b-0">
                 <div className="flex items-center gap-2">
-                  <span className="text-[11px] text-[#ccc] font-medium">{ad.headline || ad.name || `RSA ${i + 1}`}</span>
+                  <span className="text-[11px] text-[var(--brand-text-mid)]] font-medium">{ad.headline || ad.name || `RSA ${i + 1}`}</span>
                   <StatusBadge
                     status={ad.strength === 'excellent' ? 'pass' : ad.strength === 'strong' ? 'pass' : 'warn'}
                     label={ad.strength || '—'}
                   />
                 </div>
-                <div className="flex items-center gap-3 mt-1 text-[10px] text-[#666]">
+                <div className="flex items-center gap-3 mt-1 text-[10px] text-[var(--brand-text-faint)]]">
                   <span>Headlines {ad.headlineCount || '—'}/{ad.maxHeadlines || 15}</span>
                   <span>Descriptions {ad.descriptionCount || '—'}/{ad.maxDescriptions || 4}</span>
                   <span>Assets {ad.assetCoverage || '—'}</span>
@@ -160,11 +160,11 @@ export default function CreativesTab({ page, hasTrend }: { page: any; hasTrend?:
         <Card title={`Disapprovals (${disapprovals.length})`}>
           <div className="space-y-0">
             {disapprovals.map((ad: any, i: number) => (
-              <div key={i} className="flex items-start gap-2.5 py-2 border-b border-[#111] last:border-b-0">
+              <div key={i} className="flex items-start gap-2.5 py-2 border-b border-[var(--brand-surface-2)]] last:border-b-0">
                 <span className="block w-1.5 h-1.5 rounded-full bg-[#ef4444] mt-1 shrink-0" />
                 <div className="flex-1 min-w-0">
-                  <div className="text-[11px] text-[#ccc] font-medium">{ad.headline || ad.name || `Ad ${i + 1}`}</div>
-                  <div className="text-[10px] text-[#666] mt-0.5">{ad.reason || ad.policy || 'Policy violation'}</div>
+                  <div className="text-[11px] text-[var(--brand-text-mid)]] font-medium">{ad.headline || ad.name || `Ad ${i + 1}`}</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)]] mt-0.5">{ad.reason || ad.policy || 'Policy violation'}</div>
                 </div>
               </div>
             ))}
@@ -173,7 +173,7 @@ export default function CreativesTab({ page, hasTrend }: { page: any; hasTrend?:
       )}
 
       {creatives.length === 0 && (
-        <div className="text-center py-12 text-[12px] text-[#555]">
+        <div className="text-center py-12 text-[12px] text-[var(--brand-text-faint)]]">
           No creative data available. Connect an ad account to see ad performance.
         </div>
       )}

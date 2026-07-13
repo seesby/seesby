@@ -67,11 +67,11 @@ export default function SettingsPanel() {
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setShowSettings(false)} />
       
-      <div className="relative w-full max-w-5xl h-[700px] flex bg-[#0a0a0a] border border-[#222] rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+      <div className="relative w-full max-w-5xl h-[700px] flex bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
         {/* Left sidebar */}
-        <div className="w-[220px] bg-[#111] border-r border-[#222] flex flex-col">
-          <div className="h-[60px] flex items-center px-5 border-b border-[#222]">
-            <h3 className="text-[14px] font-bold text-white flex items-center gap-2">
+        <div className="w-[220px] bg-[var(--brand-surface-2)]] border-r border-[var(--brand-border-2)]] flex flex-col">
+          <div className="h-[60px] flex items-center px-5 border-b border-[var(--brand-border-2)]]">
+            <h3 className="text-[14px] font-bold text-[var(--brand-text-strong)] flex items-center gap-2">
               <Settings size={16} className="text-[#F59E0B]" /> Configuration
             </h3>
           </div>
@@ -84,15 +84,15 @@ export default function SettingsPanel() {
                 className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12px] font-medium transition-all
                   ${settingsTab === tab.id 
                     ? 'bg-[#F59E0B]/10 text-[#F59E0B] shadow-[inset_0_0_0_1px_rgba(245,158,11,0.2)]' 
-                    : 'text-[#888] hover:bg-[#222] hover:text-[#ccc]'}`}
+                    : 'text-[var(--brand-text-mid)]] hover:bg-[var(--brand-border-2)]] hover:text-[var(--brand-text-mid)]]'}`}
               >
-                <span className={settingsTab === tab.id ? 'text-[#F59E0B]' : 'text-[#666]'}>{tab.icon}</span>
+                <span className={settingsTab === tab.id ? 'text-[#F59E0B]' : 'text-[var(--brand-text-faint)]]'}>{tab.icon}</span>
                 {tab.label}
               </button>
             ))}
           </div>
 
-          <div className="p-4 border-t border-[#222] space-y-2">
+          <div className="p-4 border-t border-[var(--brand-border-2)]] space-y-2">
             <input 
               type="file" 
               id="config-import" 
@@ -102,13 +102,13 @@ export default function SettingsPanel() {
             />
             <label 
               htmlFor="config-import"
-              className="w-full px-3 py-2 text-[11px] text-[#666] hover:text-white hover:bg-[#222] rounded-lg transition-colors text-left flex items-center gap-2 cursor-pointer"
+              className="w-full px-3 py-2 text-[11px] text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)] hover:bg-[var(--brand-border-2)]] rounded-lg transition-colors text-left flex items-center gap-2 cursor-pointer"
             >
                📥 Import JSON
             </label>
             <button 
               onClick={handleExport}
-              className="w-full px-3 py-2 text-[11px] text-[#666] hover:text-white hover:bg-[#222] rounded-lg transition-colors text-left flex items-center gap-2"
+              className="w-full px-3 py-2 text-[11px] text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)] hover:bg-[var(--brand-border-2)]] rounded-lg transition-colors text-left flex items-center gap-2"
             >
                📤 Export JSON
             </button>
@@ -116,16 +116,16 @@ export default function SettingsPanel() {
         </div>
 
         {/* Content area */}
-        <div className="flex-1 flex flex-col bg-[#050505]">
-          <div className="h-[60px] flex items-center justify-between px-6 border-b border-[#222]">
+        <div className="flex-1 flex flex-col bg-[var(--brand-surface-0)]]">
+          <div className="h-[60px] flex items-center justify-between px-6 border-b border-[var(--brand-border-2)]]">
             <div className="flex items-center gap-2">
-              <span className="text-[#666] text-[12px]">Configuration</span>
-              <span className="text-[#444] text-[12px]">/</span>
-              <span className="text-white text-[12px] font-bold">{SETTINGS_TABS.find(t => t.id === settingsTab)?.label}</span>
+              <span className="text-[var(--brand-text-faint)]] text-[12px]">Configuration</span>
+              <span className="text-[var(--brand-border-2)]] text-[12px]">/</span>
+              <span className="text-[var(--brand-text-strong)] text-[12px] font-bold">{SETTINGS_TABS.find(t => t.id === settingsTab)?.label}</span>
             </div>
             <button 
               onClick={() => setShowSettings(false)}
-              className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#222] text-[#666] hover:text-white transition-all"
+              className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[var(--brand-border-2)]] text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)] transition-all"
             >
               <X size={16} />
             </button>
@@ -137,16 +137,16 @@ export default function SettingsPanel() {
             </div>
           </div>
 
-          <div className="px-8 py-4 border-t border-[#222] bg-[#0a0a0a]/50 flex justify-end gap-3">
+          <div className="px-8 py-4 border-t border-[var(--brand-border-2)]] bg-[var(--brand-surface-0)]]/50 flex justify-end gap-3">
             <button 
               onClick={() => setShowSettings(false)}
-              className="px-4 py-2 text-[12px] font-bold text-[#666] hover:text-white transition-colors"
+              className="px-4 py-2 text-[12px] font-bold text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)] transition-colors"
             >
               Discard Changes
             </button>
             <button 
               onClick={() => setShowSettings(false)}
-              className="px-8 py-2 bg-[#F59E0B] text-white text-[12px] font-bold rounded-lg hover:bg-[#e02d43] shadow-lg shadow-[#F59E0B]/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="px-8 py-2 bg-[#F59E0B] text-[var(--brand-text-strong)] text-[12px] font-bold rounded-lg hover:bg-[#e02d43] shadow-lg shadow-[#F59E0B]/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               Apply Settings
             </button>

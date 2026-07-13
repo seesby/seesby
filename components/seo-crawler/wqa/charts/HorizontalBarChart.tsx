@@ -30,13 +30,13 @@ export default function HorizontalBarChart({ data, formatValue, onClick }: Props
             type="category"
             dataKey="label"
             width={105}
-            tick={{ fill: '#888', fontSize: 10 }}
+            tick={{ fill: 'text-[var(--brand-text-mid)]', fontSize: 10 }}
             axisLine={false}
             tickLine={false}
           />
           <Tooltip
             cursor={{ fill: 'rgba(255,255,255,0.03)' }}
-            contentStyle={{ background: '#111', border: '1px solid #333', borderRadius: 6, fontSize: 11 }}
+            contentStyle={{ background: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]', borderRadius: 6, fontSize: 11 }}
             formatter={(v: number) => [formatValue ? formatValue(v) : v.toLocaleString(), 'Impact']}
           />
           <Bar

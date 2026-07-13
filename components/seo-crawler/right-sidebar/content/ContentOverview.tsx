@@ -52,10 +52,10 @@ export function ContentOverview() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[#888]">Content score</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Content score</div>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-3xl font-bold tabular-nums text-white">{s.avgQuality}</span>
-              <span className="text-sm font-medium text-[#666]">{scoreGrade}</span>
+              <span className="text-3xl font-bold tabular-nums text-[var(--brand-text-strong)]">{s.avgQuality}</span>
+              <span className="text-sm font-medium text-[var(--brand-text-faint)]]">{scoreGrade}</span>
             </div>
             <div className="mt-1 flex items-center gap-2">
               {typeof delta === 'number' && <DeltaChip value={delta} />}
@@ -63,10 +63,10 @@ export function ContentOverview() {
                 <RsSparkline values={s.scoreSeries} />
               )}
             </div>
-            <div className="mt-1.5 flex gap-4 text-[10px] text-[#666]">
-              <span>p50 <span className="text-[#aaa]">{s.p50}</span></span>
-              <span className="w-px h-2 bg-[#222]" />
-              <span>p90 <span className="text-[#aaa]">{s.p90}</span></span>
+            <div className="mt-1.5 flex gap-4 text-[10px] text-[var(--brand-text-faint)]]">
+              <span>p50 <span className="text-[var(--brand-text-mid)]]">{s.p50}</span></span>
+              <span className="w-px h-2 bg-[var(--brand-border-2)]]" />
+              <span>p90 <span className="text-[var(--brand-text-mid)]]">{s.p90}</span></span>
             </div>
           </div>
           <ProgressRing value={s.avgQuality} size={72} />
@@ -105,7 +105,7 @@ export function ContentOverview() {
       {/* Top issues to fix */}
       {gaps.length > 0 && (
         <Card title="Needs attention" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {gaps.map((g, i) => (
               <RowItem
                 key={i}

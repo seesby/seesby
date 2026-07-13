@@ -21,15 +21,15 @@ interface RadarComparisonChartProps {
 
 export default function RadarComparisonChart({ data, domains }: RadarComparisonChartProps) {
     if (data.length === 0) {
-        return <div className="py-8 text-center text-[11px] text-[#555]">No data yet. Crawl competitors to compare.</div>;
+        return <div className="py-8 text-center text-[11px] text-[var(--brand-text-faint)]]">No data yet. Crawl competitors to compare.</div>;
     }
 
     return (
         <ResponsiveContainer width="100%" height={260}>
             <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
-                <PolarGrid stroke="#222" />
-                <PolarAngleAxis dataKey="dimension" tick={{ fill: '#888', fontSize: 10 }} />
-                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fill: '#555', fontSize: 8 }} />
+                <PolarGrid stroke="border-[var(--brand-border-2)]" />
+                <PolarAngleAxis dataKey="dimension" tick={{ fill: 'text-[var(--brand-text-mid)]', fontSize: 10 }} />
+                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fill: 'text-[var(--brand-text-faint)]', fontSize: 8 }} />
                 {domains.map((d) => (
                     <Radar
                         key={d.domain}
@@ -41,7 +41,7 @@ export default function RadarComparisonChart({ data, domains }: RadarComparisonC
                         strokeWidth={d.isOwn ? 2 : 1}
                     />
                 ))}
-                <Legend wrapperStyle={{ fontSize: 10, color: '#888' }} />
+                <Legend wrapperStyle={{ fontSize: 10, color: 'text-[var(--brand-text-mid)]' }} />
             </RadarChart>
         </ResponsiveContainer>
     );

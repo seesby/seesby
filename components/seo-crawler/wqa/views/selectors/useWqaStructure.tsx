@@ -188,7 +188,7 @@ export function useWqaStructure(colorBy: StructureColorBy = 'quality') {
       } else if (colorBy === 'depth') {
         color = depthColor(p.depth ?? 0, maxDepth);
       } else {
-        color = clusterColorMap[cluster] ?? '#666';
+        color = clusterColorMap[cluster] ?? 'text-[var(--brand-text-faint)]';
       }
       return {
         id: p.url,

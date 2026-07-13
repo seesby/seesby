@@ -38,7 +38,7 @@ export function CrawlHeaderCard({ scope, industry, cms, language, country, lastC
   ].filter(Boolean) as Array<{ icon: React.ReactNode; label: string }>
 
   return (
-    <div className="rounded-md border border-[#161616] bg-[#0a0a0a] p-3">
+    <div className="rounded-md border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3">
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">
           <div className="text-[11px] uppercase tracking-wider text-neutral-500">Scope</div>
@@ -56,7 +56,7 @@ export function CrawlHeaderCard({ scope, industry, cms, language, country, lastC
       {chips.length > 0 ? (
         <div className="mt-2 flex flex-wrap gap-1.5">
           {chips.map((c, i) => (
-            <span key={i} className="inline-flex items-center gap-1 rounded border border-[#1f1f1f] bg-[#0f0f0f] px-1.5 py-0.5 text-[11px] text-neutral-300">
+            <span key={i} className="inline-flex items-center gap-1 rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] px-1.5 py-0.5 text-[11px] text-neutral-300">
               {c.icon}
               {c.label}
             </span>

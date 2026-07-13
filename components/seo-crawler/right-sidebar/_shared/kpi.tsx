@@ -6,17 +6,17 @@ const toneClass: Record<Tone, string> = {
   warn: 'text-amber-400',
   bad:  'text-rose-400',
   info: 'text-sky-400',
-  neutral: 'text-[#ddd]',
+  neutral: 'text-[var(--brand-text-mid)]]',
 }
 
 export function KpiTile({
   label, value, sub, tone = 'neutral', delta,
 }: { label: string; value: React.ReactNode; sub?: React.ReactNode; tone?: Tone; delta?: string }) {
   return (
-    <div className="rounded border border-[#1a1a1a] bg-[#0a0a0a] px-2 py-2">
-      <div className="text-[9px] font-bold uppercase tracking-widest text-[#555]">{label}</div>
+    <div className="rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] px-2 py-2">
+      <div className="text-[9px] font-bold uppercase tracking-widest text-[var(--brand-text-faint)]]">{label}</div>
       <div className={`mt-0.5 text-[16px] font-bold tabular-nums ${toneClass[tone]}`}>{value}</div>
-      <div className="mt-0.5 flex items-center gap-1.5 text-[10px] text-[#666]">
+      <div className="mt-0.5 flex items-center gap-1.5 text-[10px] text-[var(--brand-text-faint)]]">
         {sub}
         {delta && <span className={tone === 'bad' ? 'text-rose-400' : 'text-emerald-400'}>{delta}</span>}
       </div>
@@ -29,7 +29,7 @@ export function KpiRow({ children }: { children: React.ReactNode }) {
 }
 
 export function DeltaPill({ value, suffix = '%' }: { value: number; suffix?: string }) {
-  if (!Number.isFinite(value) || value === 0) return <span className="text-[#666]">—</span>
+  if (!Number.isFinite(value) || value === 0) return <span className="text-[var(--brand-text-faint)]]">—</span>
   const up = value > 0
   return (
     <span className={`text-[10px] font-mono ${up ? 'text-emerald-400' : 'text-rose-400'}`}>

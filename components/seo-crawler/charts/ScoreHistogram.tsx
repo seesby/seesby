@@ -22,19 +22,19 @@ export default function ScoreHistogram({
         <BarChart data={data} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
           <XAxis
             dataKey="range"
-            tick={{ fill: '#888', fontSize: 10 }}
-            axisLine={{ stroke: '#333' }}
+            tick={{ fill: 'text-[var(--brand-text-mid)]', fontSize: 10 }}
+            axisLine={{ stroke: 'bg-[var(--brand-surface-4)]' }}
             tickLine={false}
           />
           <YAxis
-            tick={{ fill: '#888', fontSize: 10 }}
+            tick={{ fill: 'text-[var(--brand-text-mid)]', fontSize: 10 }}
             axisLine={false}
             tickLine={false}
           />
           <Tooltip
             contentStyle={{
-              background: '#1a1a1a',
-              border: '1px solid #333',
+              background: 'bg-[var(--brand-surface-3)]',
+              border: '1px solid bg-[var(--brand-surface-4)]',
               borderRadius: 8,
               fontSize: 12,
               color: '#f5f5f5',

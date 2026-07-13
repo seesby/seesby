@@ -49,9 +49,9 @@ export default function FullAuditIssues() {
       <Card>
         <div className="flex items-end justify-between">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[#888]">Issues open</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Issues open</div>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-2xl font-semibold text-white">{openTotal}</span>
+              <span className="text-2xl font-semibold text-[var(--brand-text-strong)]">{openTotal}</span>
               {hasTrend && prevIssuesOpen != null && (
                 <DeltaChip value={openTotal - prevIssuesOpen} />
               )}
@@ -102,23 +102,23 @@ export default function FullAuditIssues() {
 
       {/* Top issues */}
       <Card title="Top issues" padded={false}>
-        <ul className="flex flex-col border-t border-[#1f1f1f]">
+        <ul className="flex flex-col border-t border-[var(--brand-surface-3)]]">
           {rows.slice(0, 6).map((r) => (
             <li key={r.code}>
               <button
                 onClick={() => openIssueDrawer?.(r.code)}
-                className="flex w-full items-center justify-between gap-2 border-b border-[#1a1a1a] px-3 py-2 text-left hover:bg-[#141414] transition-colors"
+                className="flex w-full items-center justify-between gap-2 border-b border-[var(--brand-surface-3)]] px-3 py-2 text-left hover:bg-[var(--brand-surface-2)]] transition-colors"
               >
                 <span className="flex min-w-0 items-center gap-2">
                   <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: SEV_COLOR[r.severity] }} />
-                  <span className="truncate text-[12px] text-[#ccc]">{r.title}</span>
+                  <span className="truncate text-[12px] text-[var(--brand-text-mid)]]">{r.title}</span>
                 </span>
-                <span className="text-[11px] tabular-nums text-[#888]">{r.count}</span>
+                <span className="text-[11px] tabular-nums text-[var(--brand-text-mid)]]">{r.count}</span>
               </button>
             </li>
           ))}
           {rows.length === 0 && (
-            <li className="px-3 py-3 text-[11px] text-[#666]">No issues found</li>
+            <li className="px-3 py-3 text-[11px] text-[var(--brand-text-faint)]]">No issues found</li>
           )}
         </ul>
       </Card>

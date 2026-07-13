@@ -1083,7 +1083,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
     // ─── 0. Config & Settings State ───
     const [config, setConfig] = useState<CrawlerConfig>(DEFAULT_CONFIG);
     const [settingsTab, setSettingsTab] = useState<SettingsTabId>('general');
-    const [theme, setTheme] = useState<'dark'|'light'|'system'>('dark');
+    const [theme, setTheme] = useState<'dark'|'light'|'system'>('system');
     const [workerFilteredPages, setWorkerFilteredPages] = useState<any[] | null>(null);
     const [integrationConnections, setIntegrationConnections] = useState<Partial<Record<CrawlerIntegrationProvider, CrawlerIntegrationConnection>>>({});
     const [integrationsLoading, setIntegrationsLoading] = useState(false);

@@ -2,8 +2,8 @@ import React from 'react';
 import { BarChart } from '../../views/_shared/BarChart';
 import { useWqaPerformance } from './selectors/useWqaPerformance';
 
-const PANEL = 'rounded border border-[#1a1a1a] bg-[#0a0a0a] p-3';
-const LABEL = 'text-[10px] uppercase tracking-wider text-[#666] mb-2';
+const PANEL = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3';
+const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2';
 
 function Panel({ title, children, className = '' }: { title: string; children: React.ReactNode; className?: string }) {
   return (
@@ -15,7 +15,7 @@ function Panel({ title, children, className = '' }: { title: string; children: R
 }
 
 function EmptyChart({ text }: { text: string }) {
-  return <div className="flex items-center justify-center h-[180px] text-[11px] text-[#555]">{text}</div>;
+  return <div className="flex items-center justify-center h-[180px] text-[11px] text-[var(--brand-text-faint)]]">{text}</div>;
 }
 
 // Heatmap cell with intensity-based background
@@ -34,7 +34,7 @@ function HeatCell({ value, max }: { value: number; max: number }) {
 function Delta({ value, suffix = '%' }: { value: number | null; suffix?: string }) {
   if (value == null) return null;
   const positive = value > 0;
-  const color = positive ? '#22c55e' : value < 0 ? '#ef4444' : '#666';
+  const color = positive ? '#22c55e' : value < 0 ? '#ef4444' : 'text-[var(--brand-text-faint)]';
   const sign = positive ? '+' : '';
   return <span className="ml-1 text-[10px] font-mono" style={{ color }}>{sign}{value}{suffix}</span>;
 }
@@ -48,13 +48,13 @@ export default function WqaPerformanceView() {
       <Panel title="Clicks & Impressions (28d)" className="col-span-12 lg:col-span-8">
         <div className="space-y-2">
           <div className="flex items-center text-[13px]">
-            <span className="text-[#888] w-14">Clicks</span>
-            <span className="ml-2 font-mono text-white">{d.searchPerf.totalClicks.toLocaleString()}</span>
+            <span className="text-[var(--brand-text-mid)]] w-14">Clicks</span>
+            <span className="ml-2 font-mono text-[var(--brand-text-strong)]">{d.searchPerf.totalClicks.toLocaleString()}</span>
             <Delta value={d.searchPerf.clicksDeltaPct} />
           </div>
           <div className="flex items-center text-[13px]">
-            <span className="text-[#888] w-14">Impr</span>
-            <span className="ml-2 font-mono text-white">{d.searchPerf.totalImpr.toLocaleString()}</span>
+            <span className="text-[var(--brand-text-mid)]] w-14">Impr</span>
+            <span className="ml-2 font-mono text-[var(--brand-text-strong)]">{d.searchPerf.totalImpr.toLocaleString()}</span>
             <Delta value={d.searchPerf.imprDeltaPct} />
           </div>
         </div>
@@ -63,20 +63,20 @@ export default function WqaPerformanceView() {
       <Panel title="Search performance" className="col-span-12 lg:col-span-4">
         <div className="space-y-1.5">
           <div className="flex justify-between items-baseline">
-            <span className="text-[11px] text-[#888]">Clicks</span>
-            <span className="text-[12px] font-mono text-white">{d.searchPerf.totalClicks.toLocaleString()}</span>
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">Clicks</span>
+            <span className="text-[12px] font-mono text-[var(--brand-text-strong)]">{d.searchPerf.totalClicks.toLocaleString()}</span>
           </div>
           <div className="flex justify-between items-baseline">
-            <span className="text-[11px] text-[#888]">Impr</span>
-            <span className="text-[12px] font-mono text-white">{d.searchPerf.totalImpr.toLocaleString()}</span>
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">Impr</span>
+            <span className="text-[12px] font-mono text-[var(--brand-text-strong)]">{d.searchPerf.totalImpr.toLocaleString()}</span>
           </div>
           <div className="flex justify-between items-baseline">
-            <span className="text-[11px] text-[#888]">CTR</span>
-            <span className="text-[12px] font-mono text-white">{d.searchPerf.ctr}%</span>
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">CTR</span>
+            <span className="text-[12px] font-mono text-[var(--brand-text-strong)]">{d.searchPerf.ctr}%</span>
           </div>
           <div className="flex justify-between items-baseline">
-            <span className="text-[11px] text-[#888]">Avg Pos</span>
-            <span className="text-[12px] font-mono text-white">{d.searchPerf.avgPos}</span>
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">Avg Pos</span>
+            <span className="text-[12px] font-mono text-[var(--brand-text-strong)]">{d.searchPerf.avgPos}</span>
           </div>
         </div>
       </Panel>
@@ -96,10 +96,10 @@ export default function WqaPerformanceView() {
             <table className="w-full text-[11px]">
               <thead>
                 <tr>
-                  <th className="text-left text-[#666] pr-3 py-1">Position</th>
-                  <th className="text-center text-[#666] px-3 py-1">Your CTR</th>
-                  <th className="text-center text-[#666] px-3 py-1">Benchmark</th>
-                  <th className="text-center text-[#666] pl-3 py-1">Gap</th>
+                  <th className="text-left text-[var(--brand-text-faint)]] pr-3 py-1">Position</th>
+                  <th className="text-center text-[var(--brand-text-faint)]] px-3 py-1">Your CTR</th>
+                  <th className="text-center text-[var(--brand-text-faint)]] px-3 py-1">Benchmark</th>
+                  <th className="text-center text-[var(--brand-text-faint)]] pl-3 py-1">Gap</th>
                 </tr>
               </thead>
               <tbody>
@@ -108,9 +108,9 @@ export default function WqaPerformanceView() {
                   const gapColor = gap >= 0 ? '#22c55e' : gap > -3 ? '#f59e0b' : '#ef4444';
                   return (
                     <tr key={r.pos}>
-                      <td className="text-[#ccc] pr-3 py-1 font-mono">#{r.pos}</td>
-                      <td className="text-center py-1 px-3 font-mono text-white">{r.us}%</td>
-                      <td className="text-center py-1 px-3 font-mono text-[#888]">{r.bench}%</td>
+                      <td className="text-[var(--brand-text-mid)]] pr-3 py-1 font-mono">#{r.pos}</td>
+                      <td className="text-center py-1 px-3 font-mono text-[var(--brand-text-strong)]">{r.us}%</td>
+                      <td className="text-center py-1 px-3 font-mono text-[var(--brand-text-mid)]]">{r.bench}%</td>
                       <td className="text-center py-1 pl-3 font-mono" style={{ color: gapColor }}>
                         {gap >= 0 ? '+' : ''}{gap}pt
                       </td>
@@ -132,12 +132,12 @@ export default function WqaPerformanceView() {
             <table className="w-full text-[11px]">
               <thead>
                 <tr>
-                  <th className="text-left text-[#666] pr-3 py-1">Category</th>
-                  <th className="text-center text-[#666] px-3 py-1">Clicks</th>
-                  <th className="text-center text-[#666] px-3 py-1">Impr</th>
-                  <th className="text-center text-[#666] px-3 py-1">CTR</th>
-                  <th className="text-center text-[#666] px-3 py-1">Pos</th>
-                  <th className="text-center text-[#666] pl-3 py-1">Pages</th>
+                  <th className="text-left text-[var(--brand-text-faint)]] pr-3 py-1">Category</th>
+                  <th className="text-center text-[var(--brand-text-faint)]] px-3 py-1">Clicks</th>
+                  <th className="text-center text-[var(--brand-text-faint)]] px-3 py-1">Impr</th>
+                  <th className="text-center text-[var(--brand-text-faint)]] px-3 py-1">CTR</th>
+                  <th className="text-center text-[var(--brand-text-faint)]] px-3 py-1">Pos</th>
+                  <th className="text-center text-[var(--brand-text-faint)]] pl-3 py-1">Pages</th>
                 </tr>
               </thead>
               <tbody>
@@ -148,7 +148,7 @@ export default function WqaPerformanceView() {
                   const maxPos = Math.max(...d.categoryMetrics.map(r => r.pos), 1);
                   return (
                     <tr key={cm.category}>
-                      <td className="text-[#ccc] pr-3 py-1 font-mono">{cm.category}</td>
+                      <td className="text-[var(--brand-text-mid)]] pr-3 py-1 font-mono">{cm.category}</td>
                       <td className="text-center py-1 px-3"><HeatCell value={cm.clicks} max={maxClicks} /></td>
                       <td className="text-center py-1 px-3"><HeatCell value={cm.impr} max={maxImpr} /></td>
                       <td className="text-center py-1 px-3">
@@ -163,7 +163,7 @@ export default function WqaPerformanceView() {
                           style={{ background: `rgba(167,139,250,${Math.max(0.1, cm.pos / maxPos)})` }}
                         >{cm.pos}</div>
                       </td>
-                      <td className="text-center py-1 pl-3 text-[#666]">{cm.pages}</td>
+                      <td className="text-center py-1 pl-3 text-[var(--brand-text-faint)]]">{cm.pages}</td>
                     </tr>
                   );
                 })}
@@ -183,21 +183,21 @@ export default function WqaPerformanceView() {
               <div className="text-[10px] text-[#22c55e] mb-1">Winners</div>
               {d.winners.map(w => (
                 <div key={w.url} className="flex justify-between py-0.5 text-[11px]">
-                  <span className="text-[#ccc] truncate mr-2">{w.url}</span>
+                  <span className="text-[var(--brand-text-mid)]] truncate mr-2">{w.url}</span>
                   <span className="text-[#22c55e] font-mono">+{w.delta.toLocaleString()}</span>
                 </div>
               ))}
-              {d.winners.length === 0 && <div className="text-[11px] text-[#555]">None</div>}
+              {d.winners.length === 0 && <div className="text-[11px] text-[var(--brand-text-faint)]]">None</div>}
             </div>
             <div>
               <div className="text-[10px] text-[#ef4444] mb-1">Losers</div>
               {d.losers.map(l => (
                 <div key={l.url} className="flex justify-between py-0.5 text-[11px]">
-                  <span className="text-[#ccc] truncate mr-2">{l.url}</span>
+                  <span className="text-[var(--brand-text-mid)]] truncate mr-2">{l.url}</span>
                   <span className="text-[#ef4444] font-mono">{l.delta.toLocaleString()}</span>
                 </div>
               ))}
-              {d.losers.length === 0 && <div className="text-[11px] text-[#555]">None</div>}
+              {d.losers.length === 0 && <div className="text-[11px] text-[var(--brand-text-faint)]]">None</div>}
             </div>
           </div>
         </Panel>

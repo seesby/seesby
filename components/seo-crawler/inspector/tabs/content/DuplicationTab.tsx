@@ -38,21 +38,21 @@ export default function DuplicationTab({ page }: { page: any }) {
         {/* Near-dupes */}
         <Card title={`Near-dupes (${nearDuplicates.length})`}>
           {nearDuplicates.length === 0 && !nearDuplicateMatch ? (
-            <div className="text-[11px] text-[#444] py-2">No near-duplicates found.</div>
+            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No near-duplicates found.</div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-[11px]">
                 <thead>
-                  <tr className="border-b border-[#1a1a1a]">
-                    <th className="text-left text-[10px] text-[#555] uppercase tracking-wider font-medium pb-1.5">URL</th>
-                    <th className="text-right text-[10px] text-[#555] uppercase tracking-wider font-medium pb-1.5">Sim</th>
-                    <th className="text-center text-[10px] text-[#555] uppercase tracking-wider font-medium pb-1.5">Action</th>
+                  <tr className="border-b border-[var(--brand-surface-3)]]">
+                    <th className="text-left text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">URL</th>
+                    <th className="text-right text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Sim</th>
+                    <th className="text-center text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {nearDuplicateMatch && (
-                    <tr className="border-b border-[#111]">
-                      <td className="py-1.5 text-[#ccc] font-mono truncate max-w-[200px]">{nearDuplicateMatch}</td>
+                    <tr className="border-b border-[var(--brand-surface-2)]]">
+                      <td className="py-1.5 text-[var(--brand-text-mid)]] font-mono truncate max-w-[200px]">{nearDuplicateMatch}</td>
                       <td className="py-1.5 text-[#f59e0b] text-right font-mono">{similarityScore > 0 ? `${similarityScore.toFixed(0)}%` : '—'}</td>
                       <td className="py-1.5 text-center"><StatusBadge status="warn" label="Review" /></td>
                     </tr>
@@ -61,8 +61,8 @@ export default function DuplicationTab({ page }: { page: any }) {
                     const url = typeof dupe === 'string' ? dupe : dupe?.url || '';
                     const sim = typeof dupe === 'object' ? (dupe?.similarity || dupe?.score || 0) : 0;
                     return (
-                      <tr key={i} className="border-b border-[#111] last:border-b-0">
-                        <td className="py-1.5 text-[#ccc] font-mono truncate max-w-[200px]">{url}</td>
+                      <tr key={i} className="border-b border-[var(--brand-surface-2)]] last:border-b-0">
+                        <td className="py-1.5 text-[var(--brand-text-mid)]] font-mono truncate max-w-[200px]">{url}</td>
                         <td className="py-1.5 text-[#f59e0b] text-right font-mono">{sim > 0 ? `${sim.toFixed(0)}%` : '—'}</td>
                         <td className="py-1.5 text-center"><StatusBadge status="warn" label="Review" /></td>
                       </tr>
@@ -77,15 +77,15 @@ export default function DuplicationTab({ page }: { page: any }) {
         {/* Cannibalization */}
         <Card title="Cannibalization">
           {cannibalizationSiblings.length === 0 ? (
-            <div className="text-[11px] text-[#444] py-2">No cannibalization detected.</div>
+            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No cannibalization detected.</div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-[11px]">
                 <thead>
-                  <tr className="border-b border-[#1a1a1a]">
-                    <th className="text-left text-[10px] text-[#555] uppercase tracking-wider font-medium pb-1.5">Query</th>
-                    <th className="text-left text-[10px] text-[#555] uppercase tracking-wider font-medium pb-1.5">Page A</th>
-                    <th className="text-left text-[10px] text-[#555] uppercase tracking-wider font-medium pb-1.5">Page B</th>
+                  <tr className="border-b border-[var(--brand-surface-3)]]">
+                    <th className="text-left text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Query</th>
+                    <th className="text-left text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Page A</th>
+                    <th className="text-left text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Page B</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -94,10 +94,10 @@ export default function DuplicationTab({ page }: { page: any }) {
                     const pageA = typeof sib === 'object' ? (sib?.pageA || sib?.url1 || '—') : '—';
                     const pageB = typeof sib === 'object' ? (sib?.pageB || sib?.url2 || sib?.url || '—') : '—';
                     return (
-                      <tr key={i} className="border-b border-[#111] last:border-b-0">
-                        <td className="py-1.5 text-[#ccc]">{query}</td>
-                        <td className="py-1.5 text-[#666] font-mono truncate max-w-[150px]">{pageA}</td>
-                        <td className="py-1.5 text-[#666] font-mono truncate max-w-[150px]">{pageB}</td>
+                      <tr key={i} className="border-b border-[var(--brand-surface-2)]] last:border-b-0">
+                        <td className="py-1.5 text-[var(--brand-text-mid)]]">{query}</td>
+                        <td className="py-1.5 text-[var(--brand-text-faint)]] font-mono truncate max-w-[150px]">{pageA}</td>
+                        <td className="py-1.5 text-[var(--brand-text-faint)]] font-mono truncate max-w-[150px]">{pageB}</td>
                       </tr>
                     );
                   })}

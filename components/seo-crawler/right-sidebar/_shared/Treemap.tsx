@@ -25,22 +25,22 @@ export function Treemap({
   const styleContainer = { height }
 
   if (!total) {
-    return <div className="text-[11px] text-[#666] italic">No data</div>
+    return <div className="text-[11px] text-[var(--brand-text-faint)]] italic">No data</div>
   }
   return (
-    <div className="relative w-full overflow-hidden rounded-md border border-[#1a1a1a]" style={styleContainer}>
+    <div className="relative w-full overflow-hidden rounded-md border border-[var(--brand-surface-3)]]" style={styleContainer}>
       {layout.map(n => {
         const styleNode = { left: `${n.left}%`, width: `${n.width}%`, background: TONE_BG[n.tone || 'info'] }
         return (
           <button
             key={n.id}
             onClick={onClick ? () => onClick(n) : undefined}
-            className="absolute top-0 bottom-0 border-r border-[#0a0a0a] hover:brightness-125 transition-all text-left p-2"
+            className="absolute top-0 bottom-0 border-r border-[var(--brand-surface-0)]] hover:brightness-125 transition-all text-left p-2"
             style={styleNode}
             title={`${n.label}: ${n.value}`}
           >
-            <div className="text-[10px] font-semibold uppercase tracking-wide text-white truncate">{n.label}</div>
-            <div className="text-[11px] font-mono text-white/80">{n.value}</div>
+            <div className="text-[10px] font-semibold uppercase tracking-wide text-[var(--brand-text-strong)] truncate">{n.label}</div>
+            <div className="text-[11px] font-mono text-[var(--brand-text-strong)]/80">{n.value}</div>
           </button>
         )
       })}

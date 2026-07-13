@@ -33,7 +33,7 @@ export default function RepliesTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* Response trend */}
       {hasTrend && (
         <Card title="Response Rate Trend">
-          <div className="bg-[#0a0a0a] border border-[#222] rounded p-3">
+          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
             <Sparkline values={responseTrend} tone="good" />
           </div>
         </Card>
@@ -55,13 +55,13 @@ export default function RepliesTab({ page, hasTrend }: { page: any; hasTrend?: b
           <DataRow label="Positive" value={formatPercent(positiveRate)} status="pass" />
           <DataRow label="Neutral" value={formatPercent(neutralRate)} status="info" />
           <DataRow label="Negative" value={formatPercent(negativeRate)} status={Number(negativeRate) > 0.2 ? 'fail' : 'pass'} />
-          <div className="mt-3 pt-2 border-t border-[#141414]">
-            <div className="w-full bg-[#1a1a1a] rounded h-2 flex overflow-hidden">
+          <div className="mt-3 pt-2 border-t border-[var(--brand-surface-2)]]">
+            <div className="w-full bg-[var(--brand-surface-3)]] rounded h-2 flex overflow-hidden">
               {positiveRate > 0 && <div className="bg-green-500 h-2" style={{ width: `${Number(positiveRate) * 100}%` }} />}
               {neutralRate > 0 && <div className="bg-[#6b7280] h-2" style={{ width: `${Number(neutralRate) * 100}%` }} />}
               {negativeRate > 0 && <div className="bg-red-500 h-2" style={{ width: `${Number(negativeRate) * 100}%` }} />}
             </div>
-            <div className="flex justify-between mt-1 text-[9px] text-[#555]">
+            <div className="flex justify-between mt-1 text-[9px] text-[var(--brand-text-faint)]]">
               <span>Positive</span>
               <span>Neutral</span>
               <span>Negative</span>
@@ -74,15 +74,15 @@ export default function RepliesTab({ page, hasTrend }: { page: any; hasTrend?: b
       {topQuestions.length > 0 && (
         <Card title={`Unanswered Questions (${topQuestions.length})`}>
           {topQuestions.slice(0, 8).map((q: any, i: number) => (
-            <div key={i} className="py-2 border-b border-[#141414] last:border-0">
+            <div key={i} className="py-2 border-b border-[var(--brand-surface-2)]] last:border-0">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-[11px] text-[#ccc] truncate max-w-[350px]">
+                <span className="text-[11px] text-[var(--brand-text-mid)]] truncate max-w-[350px]">
                   {typeof q === 'string' ? q : q.text || q.question || q.content}
                 </span>
                 <StatusBadge status="fail" label="Unanswered" />
               </div>
               {typeof q === 'object' && (
-                <div className="flex items-center gap-3 text-[10px] text-[#888]">
+                <div className="flex items-center gap-3 text-[10px] text-[var(--brand-text-mid)]]">
                   {q.platform && <span>{q.platform}</span>}
                   {q.date && <span>{q.date}</span>}
                   {q.likes !== undefined && <span>{q.likes} likes</span>}
@@ -97,9 +97,9 @@ export default function RepliesTab({ page, hasTrend }: { page: any; hasTrend?: b
       {recentReplies.length > 0 && (
         <Card title="Recent Replies">
           {recentReplies.slice(0, 8).map((reply: any, i: number) => (
-            <div key={i} className="py-2 border-b border-[#141414] last:border-0">
+            <div key={i} className="py-2 border-b border-[var(--brand-surface-2)]] last:border-0">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-[11px] text-[#ccc] truncate max-w-[350px]">
+                <span className="text-[11px] text-[var(--brand-text-mid)]] truncate max-w-[350px]">
                   {typeof reply === 'string' ? reply : reply.text || reply.content || reply.reply}
                 </span>
                 {typeof reply === 'object' && reply.sentiment && (
@@ -110,7 +110,7 @@ export default function RepliesTab({ page, hasTrend }: { page: any; hasTrend?: b
                 )}
               </div>
               {typeof reply === 'object' && (
-                <div className="flex items-center gap-3 text-[10px] text-[#888]">
+                <div className="flex items-center gap-3 text-[10px] text-[var(--brand-text-mid)]]">
                   {reply.platform && <span>{reply.platform}</span>}
                   {reply.date && <span>{reply.date}</span>}
                   {reply.responseTime && <span>{formatDuration(reply.responseTime)}</span>}

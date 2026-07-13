@@ -39,22 +39,22 @@ const SmartScoreCard = ({ score, isSimulating, toggleSimulation }: any) => {
     const progressLength = visibleCircumference * progress;
 
     return (
-        <div className={`lg:col-span-1 bg-[#0F0F0F] rounded-3xl border ${isSimulating ? 'border-brand-green/30' : 'border-white/5'} p-0 flex flex-col relative overflow-hidden transition-all duration-500 group shadow-2xl h-full`}>
+        <div className={`lg:col-span-1 bg-[var(--brand-surface-1)]] rounded-3xl border ${isSimulating ? 'border-brand-green/30' : 'border-[var(--brand-border-1)]'} p-0 flex flex-col relative overflow-hidden transition-all duration-500 group shadow-2xl h-full`}>
             {/* Background Effects */}
             <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${isSimulating ? 'from-brand-green via-white to-brand-green' : 'from-brand-amber via-orange-500 to-brand-amber'} transition-all duration-1000`}></div>
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-[80px] rounded-full pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--brand-surface-3)] blur-[80px] rounded-full pointer-events-none"></div>
 
             {/* Header */}
             <div className="p-6 pb-2 flex justify-between items-start z-10">
                 <div>
-                    <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest">Site Health</h3>
-                    <p className="text-xs text-gray-500 mt-1">Last crawl: Today, 9:00 AM</p>
+                    <h3 className="text-sm font-bold text-[var(--brand-text-mid)] uppercase tracking-widest">Site Health</h3>
+                    <p className="text-xs text-[var(--brand-text-faint)] mt-1">Last crawl: Today, 9:00 AM</p>
                 </div>
                 <button
                     onClick={toggleSimulation}
                     className={`text-[10px] font-bold uppercase tracking-wide px-3 py-1.5 rounded-lg border transition-all flex items-center gap-2 hover:scale-105 active:scale-95 ${isSimulating
                         ? 'bg-brand-green text-black border-brand-green shadow-[0_0_15px_rgba(34,197,94,0.6)]'
-                        : 'bg-white/5 text-white border-white/10 hover:bg-white/10'
+                        : 'bg-[var(--brand-surface-3)] text-white border-[var(--brand-border-2)] hover:bg-[var(--brand-surface-4)]'
                         }`}
                 >
                     {isSimulating ? <CheckCircle2 size={12} /> : <PlayCircle size={12} />}
@@ -71,7 +71,7 @@ const SmartScoreCard = ({ score, isSimulating, toggleSimulation }: any) => {
                         <circle
                             cx="100" cy="100" r={radius}
                             fill="none"
-                            stroke="#222"
+                            stroke="border-[var(--brand-border-2)]"
                             strokeWidth="12"
                             strokeLinecap="round"
                             strokeDasharray={`${visibleCircumference} ${circumference}`}
@@ -94,33 +94,33 @@ const SmartScoreCard = ({ score, isSimulating, toggleSimulation }: any) => {
                         <span className={`text-7xl lg:text-8xl font-heading font-extrabold tracking-tighter leading-none transition-colors duration-300 ${isSimulating ? 'text-brand-green' : 'text-white'}`}>
                             {score}
                         </span>
-                        <span className={`text-sm font-bold uppercase tracking-widest mt-2 bg-white/5 px-3 py-1 rounded border border-white/5 ${isSimulating ? 'text-brand-green border-brand-green/20' : 'text-gray-400'}`}>
+                        <span className={`text-sm font-bold uppercase tracking-widest mt-2 bg-[var(--brand-surface-3)] px-3 py-1 rounded border border-[var(--brand-border-1)] ${isSimulating ? 'text-brand-green border-brand-green/20' : 'text-[var(--brand-text-mid)]'}`}>
                             {score >= 90 ? 'Excellent' : 'Good'}
                         </span>
-                        <span className="text-[10px] text-gray-600 mt-2 font-bold uppercase tracking-wide">Top 10% Industry</span>
+                        <span className="text-[10px] text-[var(--brand-text-muted)] mt-2 font-bold uppercase tracking-wide">Top 10% Industry</span>
                     </div>
                 </div>
             </div>
 
             {/* Bottom: 3 KPIs - Replaces Score Opportunities */}
-            <div className="bg-[#050505] border-t border-white/10 p-5 relative z-10 grid grid-cols-3 gap-0">
+            <div className="bg-[var(--brand-surface-0)]] border-t border-[var(--brand-border-2)] p-5 relative z-10 grid grid-cols-3 gap-0">
                 <div className="flex flex-col items-center justify-center">
                     <span className={`text-2xl font-bold font-heading ${isSimulating ? 'text-brand-green' : 'text-red-500'}`}>
                         {isSimulating ? '0' : '5'}
                     </span>
-                    <span className="text-[10px] uppercase font-bold text-gray-500 mt-1 tracking-wide">Critical</span>
+                    <span className="text-[10px] uppercase font-bold text-[var(--brand-text-faint)] mt-1 tracking-wide">Critical</span>
                 </div>
-                <div className="flex flex-col items-center justify-center border-l border-white/10">
+                <div className="flex flex-col items-center justify-center border-l border-[var(--brand-border-2)]">
                     <span className={`text-2xl font-bold font-heading ${isSimulating ? 'text-brand-green' : 'text-orange-500'}`}>
                         {isSimulating ? '12' : '45'}
                     </span>
-                    <span className="text-[10px] uppercase font-bold text-gray-500 mt-1 tracking-wide">Warnings</span>
+                    <span className="text-[10px] uppercase font-bold text-[var(--brand-text-faint)] mt-1 tracking-wide">Warnings</span>
                 </div>
-                <div className="flex flex-col items-center justify-center border-l border-white/10">
+                <div className="flex flex-col items-center justify-center border-l border-[var(--brand-border-2)]">
                     <span className="text-2xl font-bold font-heading text-brand-green">
                         {isSimulating ? '98%' : '92%'}
                     </span>
-                    <span className="text-[10px] uppercase font-bold text-gray-500 mt-1 tracking-wide">Healthy</span>
+                    <span className="text-[10px] uppercase font-bold text-[var(--brand-text-faint)] mt-1 tracking-wide">Healthy</span>
                 </div>
             </div>
         </div>
@@ -128,13 +128,13 @@ const SmartScoreCard = ({ score, isSimulating, toggleSimulation }: any) => {
 };
 
 const CrawlStatusWidget = () => (
-    <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-5 flex flex-col justify-between h-[160px] relative overflow-hidden">
+    <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-5 flex flex-col justify-between h-[160px] relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-green/20 to-transparent"></div>
 
         <div className="flex justify-between items-start">
             <div>
                 <h3 className="font-bold text-white text-sm">Crawl Status</h3>
-                <p className="text-[10px] text-gray-500 mt-0.5">Googlebot Smartphone</p>
+                <p className="text-[10px] text-[var(--brand-text-faint)] mt-0.5">Googlebot Smartphone</p>
             </div>
             <div className="flex items-center gap-2 bg-green-500/10 px-2 py-1 rounded border border-green-500/10">
                 <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
@@ -144,20 +144,20 @@ const CrawlStatusWidget = () => (
 
         <div className="space-y-3">
             <div className="flex justify-between text-xs">
-                <span className="text-gray-400">Pages Crawled</span>
+                <span className="text-[var(--brand-text-mid)]">Pages Crawled</span>
                 <span className="text-white font-mono">1,215 / 5,000</span>
             </div>
-            <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+            <div className="w-full bg-[var(--brand-surface-3)] rounded-full h-1.5 overflow-hidden">
                 <div className="bg-brand-green h-full w-[24%] shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
             </div>
-            <div className="flex justify-between items-center pt-2 border-t border-white/5">
+            <div className="flex justify-between items-center pt-2 border-t border-[var(--brand-border-1)]">
                 <div className="flex flex-col">
-                    <span className="text-[9px] text-gray-500 uppercase tracking-wide">Duration</span>
+                    <span className="text-[9px] text-[var(--brand-text-faint)] uppercase tracking-wide">Duration</span>
                     <span className="text-xs text-white font-bold">14m 20s</span>
                 </div>
-                <div className="h-4 w-px bg-white/10"></div>
+                <div className="h-4 w-px bg-[var(--brand-surface-4)]"></div>
                 <div className="flex flex-col text-right">
-                    <span className="text-[9px] text-gray-500 uppercase tracking-wide">Avg Speed</span>
+                    <span className="text-[9px] text-[var(--brand-text-faint)] uppercase tracking-wide">Avg Speed</span>
                     <span className="text-xs text-white font-bold">1.2s</span>
                 </div>
             </div>
@@ -169,23 +169,23 @@ const AuditOverview = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
 
         {/* NEW REVENUE AT RISK CARD - AGENCY TOOL */}
-        <div className="bg-gradient-to-r from-red-900/10 to-[#0F0F0F] rounded-3xl border border-red-500/20 p-8 flex flex-col md:flex-row items-center justify-between shadow-[0_0_30px_rgba(239,68,68,0.05)]">
+        <div className="bg-gradient-to-r from-red-900/10 to-[var(--brand-surface-1)]] rounded-3xl border border-red-500/20 p-8 flex flex-col md:flex-row items-center justify-between shadow-[0_0_30px_rgba(239,68,68,0.05)]">
             <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                     <div className="p-2 bg-red-500/10 rounded-lg text-red-500">
                         <DollarSign size={20} />
                     </div>
                     <h3 className="text-xl font-bold font-heading text-white">Estimated Revenue Risk</h3>
-                    <button onClick={() => showHelp("Revenue Risk", "We calculate this by looking at the traffic value of pages that are currently broken (404s) or loading too slowly.")} className="text-gray-600 hover:text-white"><HelpCircle size={16} /></button>
+                    <button onClick={() => showHelp("Revenue Risk", "We calculate this by looking at the traffic value of pages that are currently broken (404s) or loading too slowly.")} className="text-[var(--brand-text-muted)] hover:text-[var(--brand-text-strong)]"><HelpCircle size={16} /></button>
                 </div>
-                <p className="text-gray-400 text-sm max-w-lg">
+                <p className="text-[var(--brand-text-mid)] text-sm max-w-lg">
                     Based on the traffic value of pages currently returning errors or loading too slowly.
                 </p>
             </div>
             <div className="flex items-center gap-6 mt-6 md:mt-0">
                 <div className="text-right">
-                    <p className="text-sm font-bold text-gray-500 uppercase tracking-wide">Monthly Loss</p>
-                    <p className="text-4xl font-extrabold text-white font-heading tracking-tight">$4,250<span className="text-gray-600 text-xl font-normal">.00</span></p>
+                    <p className="text-sm font-bold text-[var(--brand-text-faint)] uppercase tracking-wide">Monthly Loss</p>
+                    <p className="text-4xl font-extrabold text-white font-heading tracking-tight">$4,250<span className="text-[var(--brand-text-muted)] text-xl font-normal">.00</span></p>
                 </div>
                 <button className="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl shadow-glow-sm transition-all text-sm">
                     View Impact Report
@@ -227,14 +227,14 @@ const AuditOverview = ({ showHelp }: any) => (
 
         {/* Health History & Severity Stack */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-            <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6 h-[320px] flex flex-col">
+            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[320px] flex flex-col">
                 <div className="flex justify-between items-center mb-6">
                     <h3 className="font-bold text-white text-lg">Health Trend History</h3>
                     <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-1.5 text-[10px] text-gray-500 font-bold uppercase">
+                        <div className="flex items-center gap-1.5 text-[10px] text-[var(--brand-text-faint)] font-bold uppercase">
                             <div className="w-2 h-2 rounded-full bg-brand-green"></div> Score
                         </div>
-                        <div className="flex items-center gap-1.5 text-[10px] text-gray-500 font-bold uppercase">
+                        <div className="flex items-center gap-1.5 text-[10px] text-[var(--brand-text-faint)] font-bold uppercase">
                             <div className="w-2 h-2 rounded-full bg-red-500/50"></div> Errors
                         </div>
                     </div>
@@ -248,11 +248,11 @@ const AuditOverview = ({ showHelp }: any) => (
                                     <stop offset="95%" stopColor="#22C55E" stopOpacity={0} />
                                 </linearGradient>
                             </defs>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#222" />
-                            <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{ fill: '#666', fontSize: 10 }} dy={10} />
-                            <YAxis yAxisId="left" orientation="left" stroke="#22C55E" axisLine={false} tickLine={false} tick={{ fill: '#444', fontSize: 10 }} domain={[0, 100]} />
-                            <YAxis yAxisId="right" orientation="right" stroke="#EF4444" axisLine={false} tickLine={false} tick={{ fill: '#444', fontSize: 10 }} />
-                            <Tooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333' }} />
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="border-[var(--brand-border-2)]" />
+                            <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{ fill: 'text-[var(--brand-text-faint)]', fontSize: 10 }} dy={10} />
+                            <YAxis yAxisId="left" orientation="left" stroke="#22C55E" axisLine={false} tickLine={false} tick={{ fill: 'border-[var(--brand-border-2)]', fontSize: 10 }} domain={[0, 100]} />
+                            <YAxis yAxisId="right" orientation="right" stroke="#EF4444" axisLine={false} tickLine={false} tick={{ fill: 'border-[var(--brand-border-2)]', fontSize: 10 }} />
+                            <Tooltip contentStyle={{ backgroundColor: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]' }} />
                             <Area yAxisId="left" type="monotone" dataKey="score" stroke="#22C55E" fillOpacity={1} fill="url(#colorScore)" strokeWidth={3} />
                             <Bar yAxisId="right" dataKey="errors" barSize={12} fill="#EF4444" radius={[4, 4, 0, 0]} opacity={0.6} />
                         </ComposedChart>
@@ -260,7 +260,7 @@ const AuditOverview = ({ showHelp }: any) => (
                 </div>
             </div>
 
-            <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6 h-[320px] flex flex-col">
+            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[320px] flex flex-col">
                 <h3 className="font-bold text-white text-lg mb-6">Issue Types</h3>
                 <div className="flex-1 w-full min-h-0">
                     <ResponsiveContainer width="100%" height="100%">
@@ -270,10 +270,10 @@ const AuditOverview = ({ showHelp }: any) => (
                             { name: 'Links', critical: 0, warning: 3, notice: 2 },
                             { name: 'Speed', critical: 1, warning: 4, notice: 8 },
                         ]}>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#222" />
-                            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#666', fontSize: 10 }} dy={10} />
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="border-[var(--brand-border-2)]" />
+                            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: 'text-[var(--brand-text-faint)]', fontSize: 10 }} dy={10} />
                             <YAxis hide />
-                            <Tooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333' }} />
+                            <Tooltip contentStyle={{ backgroundColor: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]' }} />
                             <Legend />
                             <Bar dataKey="critical" stackId="a" fill="#EF4444" radius={[0, 0, 4, 4]} />
                             <Bar dataKey="warning" stackId="a" fill="#F59E0B" />
@@ -299,7 +299,7 @@ const IssueGroup = ({ title, type, issues, openFix }: any) => {
         type === 'critical' ? 'bg-gradient-to-b from-red-500/5 to-transparent' : '';
 
     return (
-        <div className={`space-y-4 rounded-3xl p-6 border border-white/5 ${bgClass}`}>
+        <div className={`space-y-4 rounded-3xl p-6 border border-[var(--brand-border-1)] ${bgClass}`}>
             <div className="flex items-center gap-3 mb-2">
                 <div className={`p-2 rounded-lg border ${colorClass}`}>
                     {type === 'critical' ? <Flame size={18} /> :
@@ -315,7 +315,7 @@ const IssueGroup = ({ title, type, issues, openFix }: any) => {
                         }`}>
                         {title}
                     </h3>
-                    <p className="text-xs text-gray-500 font-medium">{issues.length} {type === 'passed' ? 'Checks Passed' : 'Issues Found'}</p>
+                    <p className="text-xs text-[var(--brand-text-faint)] font-medium">{issues.length} {type === 'passed' ? 'Checks Passed' : 'Issues Found'}</p>
                 </div>
             </div>
 
@@ -324,12 +324,12 @@ const IssueGroup = ({ title, type, issues, openFix }: any) => {
                     <div
                         key={issue.id}
                         onClick={() => openFix(issue)} // Open slide-over directly
-                        className={`bg-[#111] border rounded-2xl transition-all duration-300 overflow-hidden group hover:border-white/20 relative cursor-pointer border-white/5 hover:bg-white/5`}
+                        className={`bg-[var(--brand-surface-2)]] border rounded-2xl transition-all duration-300 overflow-hidden group hover:border-[var(--brand-border-3)] relative cursor-pointer border-[var(--brand-border-1)] hover:bg-[var(--brand-surface-3)]`}
                     >
                         {/* Score Impact Badge (Absolute) - Hide for passed */}
                         {type !== 'passed' && (
                             <div className="absolute top-0 right-0 p-3 z-10 hidden md:block">
-                                <div className="flex items-center gap-1.5 bg-[#050505] border border-white/10 rounded-lg px-2 py-1 shadow-xl">
+                                <div className="flex items-center gap-1.5 bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)] rounded-lg px-2 py-1 shadow-xl">
                                     <span className={`text-[10px] font-bold ${type === 'critical' ? 'text-red-400' : 'text-orange-400'}`}>
                                         -{type === 'critical' ? '5' : '2'} Score
                                     </span>
@@ -341,12 +341,12 @@ const IssueGroup = ({ title, type, issues, openFix }: any) => {
                             <div className="flex items-center gap-4 flex-1 min-w-0 pr-16 md:pr-0">
                                 <div className="min-w-0 flex-1">
                                     <div className="flex items-center gap-3 mb-1.5">
-                                        <h4 className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors truncate">{issue.title}</h4>
+                                        <h4 className="text-sm font-bold text-[var(--brand-text-mid)] group-hover:text-[var(--brand-text-strong)] transition-colors truncate">{issue.title}</h4>
                                         {issue.trend === 'new' && <span className="text-[9px] bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded border border-blue-500/30 uppercase font-bold tracking-wide">New</span>}
                                         {issue.trend === 'recurring' && <span className="text-[9px] bg-orange-500/20 text-orange-400 px-1.5 py-0.5 rounded border border-orange-500/30 uppercase font-bold tracking-wide flex items-center gap-1"><Repeat size={8} /> Recurring</span>}
                                     </div>
-                                    <div className="flex items-center gap-6 text-xs text-gray-500">
-                                        <span className="flex items-center gap-1.5 text-gray-400"><File size={12} /> {issue.count} Pages</span>
+                                    <div className="flex items-center gap-6 text-xs text-[var(--brand-text-faint)]">
+                                        <span className="flex items-center gap-1.5 text-[var(--brand-text-mid)]"><File size={12} /> {issue.count} Pages</span>
                                         {type !== 'passed' && (
                                             <span className="flex items-center gap-1.5">
                                                 <span className={`w-1.5 h-1.5 rounded-full ${issue.effort === 'Low' ? 'bg-brand-green' : 'bg-orange-500'}`}></span>
@@ -361,7 +361,7 @@ const IssueGroup = ({ title, type, issues, openFix }: any) => {
                                 {issue.trafficImpact > 0 && (
                                     <div className="hidden lg:flex flex-col items-end mr-4">
                                         <span className="text-[10px] text-brand-green font-black uppercase tracking-tighter">+ {issue.trafficImpact} Clicks</span>
-                                        <span className="text-[9px] text-gray-600 font-bold">Est. Recovery</span>
+                                        <span className="text-[9px] text-[var(--brand-text-muted)] font-bold">Est. Recovery</span>
                                     </div>
                                 )}
                                 <span className="text-xs font-bold text-brand-amber flex items-center gap-1 group-hover:translate-x-1 transition-transform">Details <ArrowRight size={12} /></span>
@@ -406,11 +406,11 @@ const AuditAllIssues = ({ openPanel, auditChecks, healthScore }: any) => {
             <PanelErrorBoundary name="Audit Issues List">
                 <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500 min-h-[700px]">
                     {/* NEW: Health Projection Bar (Gamification) */}
-                    <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6 flex flex-col md:flex-row items-center gap-6 relative overflow-hidden">
+                    <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 flex flex-col md:flex-row items-center gap-6 relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-1 h-full bg-brand-green shadow-[0_0_15px_rgba(34,197,94,0.4)]"></div>
                         <div className="flex-1 z-10">
                             <h3 className="text-lg font-bold text-white font-heading">Strategic Impact Projection</h3>
-                            <p className="text-sm text-gray-500 mt-1">
+                            <p className="text-sm text-[var(--brand-text-faint)] mt-1">
                                 Resolving the <span className="text-red-500 font-bold">{criticalIssues.length} critical issues</span> could recover an estimated 
                                 <span className="text-brand-green font-bold ml-1">
                                     {filteredIssues.reduce((acc: number, i: any) => acc + (i.trafficImpact || 0), 0)} monthly clicks
@@ -420,10 +420,10 @@ const AuditAllIssues = ({ openPanel, auditChecks, healthScore }: any) => {
 
                         <div className="flex-1 w-full md:max-w-xl z-10">
                             <div className="flex justify-between text-xs font-bold mb-2">
-                                <span className="text-gray-400">Current Health: {healthScore}</span>
+                                <span className="text-[var(--brand-text-mid)]">Current Health: {healthScore}</span>
                                 <span className="text-brand-green">Optimized: {Math.min(100, healthScore + (criticalIssues.length * 5))}</span>
                             </div>
-                            <div className="h-4 bg-[#222] rounded-full overflow-hidden relative flex shadow-inner">
+                            <div className="h-4 bg-[var(--brand-border-2)]] rounded-full overflow-hidden relative flex shadow-inner">
                                 {/* Base Score */}
                                 <div className="h-full bg-brand-amber/80 z-20 transition-all duration-1000" style={{ width: `${healthScore}%` }} title="Current Score"></div>
                                 {/* Potential Gain */}
@@ -432,14 +432,14 @@ const AuditAllIssues = ({ openPanel, auditChecks, healthScore }: any) => {
                         </div>
 
                         <div className="z-10 shrink-0">
-                            <button className="bg-white text-black text-xs font-bold px-4 py-2 rounded-xl hover:bg-gray-200 transition-colors shadow-lg flex items-center gap-2">
+                            <button className="bg-[var(--brand-surface-3)] text-black text-xs font-bold px-4 py-2 rounded-xl hover:bg-gray-200 transition-colors shadow-lg flex items-center gap-2">
                                 <PlayCircle size={14} /> Simulate Fixes
                             </button>
                         </div>
                     </div>
 
                     {/* Filters Row */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sticky top-0 bg-[#050505]/95 backdrop-blur-xl py-4 z-20 border-b border-white/5">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sticky top-0 bg-[var(--brand-surface-0)]]/95 backdrop-blur-xl py-4 z-20 border-b border-[var(--brand-border-1)]">
                         <div className="flex overflow-x-auto gap-2 pb-2 md:pb-0 scrollbar-hide">
                             <FilterButton label="All Issues" count={activeChecks.length} active={filterCategory === 'all'} onClick={() => setFilterCategory('all')} />
                             {categories.filter(c => c !== 'all').map(cat => (
@@ -454,11 +454,11 @@ const AuditAllIssues = ({ openPanel, auditChecks, healthScore }: any) => {
                         </div>
                         <div className="flex items-center gap-3 w-full md:w-auto">
                             <div className="relative flex-1 md:w-64">
-                                <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"><SearchCheck size={14} /></div>
+                                <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--brand-text-faint)]"><SearchCheck size={14} /></div>
                                 <input
                                     type="text"
                                     placeholder="Search specific error..."
-                                    className="w-full bg-[#111] border border-white/10 rounded-lg pl-9 pr-4 py-2 text-xs text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
+                                    className="w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-lg pl-9 pr-4 py-2 text-xs text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
                                 />
                             </div>
                         </div>
@@ -497,12 +497,12 @@ const AuditAllIssues = ({ openPanel, auditChecks, healthScore }: any) => {
 
                         {/* Empty State / All Clear */}
                         {filteredIssues.length === 0 && (
-                            <div className="p-12 text-center bg-[#0F0F0F] rounded-3xl border border-white/5 border-dashed">
+                            <div className="p-12 text-center bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] border-dashed">
                                 <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4 text-green-500">
                                     <CheckCircle2 size={32} />
                                 </div>
                                 <h3 className="text-xl font-bold text-white mb-2">All Clear!</h3>
-                                <p className="text-gray-500">No issues found in this category. Great job.</p>
+                                <p className="text-[var(--brand-text-faint)]">No issues found in this category. Great job.</p>
                             </div>
                         )}
                     </div>
@@ -517,19 +517,19 @@ const AuditCrawledPages = ({ openPanel }: any) => (
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <h3 className="text-xl font-bold font-heading text-white">Crawled Pages (1,215)</h3>
             <div className="flex gap-3">
-                <button className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-xs font-bold text-gray-300 hover:text-white flex items-center gap-2">
+                <button className="px-4 py-2 bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] rounded-lg text-xs font-bold text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] flex items-center gap-2">
                     <Filter size={14} /> Filter
                 </button>
-                <button className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-xs font-bold text-gray-300 hover:text-white flex items-center gap-2">
+                <button className="px-4 py-2 bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] rounded-lg text-xs font-bold text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] flex items-center gap-2">
                     <Download size={14} /> Export CSV
                 </button>
             </div>
         </div>
 
-        <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 overflow-hidden">
+        <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] overflow-hidden">
             <div className="overflow-x-auto">
                 <table className="w-full">
-                    <thead className="bg-white/[0.05] text-xs font-bold text-gray-500 uppercase tracking-wider">
+                    <thead className="bg-[var(--brand-surface-3)]/[0.05] text-xs font-bold text-[var(--brand-text-faint)] uppercase tracking-wider">
                         <tr>
                             <th className="px-6 py-4 text-left">URL</th>
                             <th className="px-6 py-4 text-center">Status</th>
@@ -541,7 +541,7 @@ const AuditCrawledPages = ({ openPanel }: any) => (
                     </thead>
                     <tbody className="divide-y divide-white/5">
                         {crawledPagesData.map((page, i) => (
-                            <tr key={i} onClick={() => openPanel('url_detail', page)} className="group hover:bg-white/[0.02] transition-colors cursor-pointer">
+                            <tr key={i} onClick={() => openPanel('url_detail', page)} className="group hover:bg-[var(--brand-surface-3)]/[0.02] transition-colors cursor-pointer">
                                 <td className="px-6 py-4">
                                     <span className="text-sm text-blue-400 hover:underline hover:text-blue-300 truncate block max-w-xs">{page.url}</span>
                                 </td>
@@ -553,21 +553,21 @@ const AuditCrawledPages = ({ openPanel }: any) => (
                                         {page.status}
                                     </span>
                                 </td>
-                                <td className="px-6 py-4 text-center text-xs text-gray-400">{page.type}</td>
+                                <td className="px-6 py-4 text-center text-xs text-[var(--brand-text-mid)]">{page.type}</td>
                                 <td className="px-6 py-4 text-center text-sm text-white font-mono">{page.depth}</td>
                                 <td className="px-6 py-4 text-center text-sm text-white font-mono">{page.linksIn}</td>
-                                <td className="px-6 py-4 text-right text-sm text-gray-400 font-mono">{page.linksOut}</td>
+                                <td className="px-6 py-4 text-right text-sm text-[var(--brand-text-mid)] font-mono">{page.linksOut}</td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
             {/* Pagination Mockup */}
-            <div className="p-4 border-t border-white/5 flex justify-between items-center text-xs text-gray-500">
+            <div className="p-4 border-t border-[var(--brand-border-1)] flex justify-between items-center text-xs text-[var(--brand-text-faint)]">
                 <span>Showing 1-10 of 1,215</span>
                 <div className="flex gap-2">
-                    <button className="px-3 py-1 bg-white/5 rounded hover:bg-white/10 disabled:opacity-50">Prev</button>
-                    <button className="px-3 py-1 bg-white/5 rounded hover:bg-white/10 text-white">Next</button>
+                    <button className="px-3 py-1 bg-[var(--brand-surface-3)] rounded hover:bg-[var(--brand-surface-4)] disabled:opacity-50">Prev</button>
+                    <button className="px-3 py-1 bg-[var(--brand-surface-3)] rounded hover:bg-[var(--brand-surface-4)] text-white">Next</button>
                 </div>
             </div>
         </div>
@@ -577,7 +577,7 @@ const AuditCrawledPages = ({ openPanel }: any) => (
 const AuditLogAnalysis = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">Log File Analysis</h3>
-        <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6 h-[400px]">
+        <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[400px]">
             <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={logAnalysisData}>
                     <defs>
@@ -590,9 +590,9 @@ const AuditLogAnalysis = ({ showHelp }: any) => (
                             <stop offset="95%" stopColor="#22C55E" stopOpacity={0} />
                         </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#222" />
-                    <XAxis dataKey="time" axisLine={false} tickLine={false} tick={{ fill: '#666', fontSize: 10 }} />
-                    <Tooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333' }} />
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="border-[var(--brand-border-2)]" />
+                    <XAxis dataKey="time" axisLine={false} tickLine={false} tick={{ fill: 'text-[var(--brand-text-faint)]', fontSize: 10 }} />
+                    <Tooltip contentStyle={{ backgroundColor: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]' }} />
                     <Area type="monotone" dataKey="botHits" stroke="#3B82F6" fillOpacity={1} fill="url(#colorBot)" name="Googlebot Hits" />
                     <Area type="monotone" dataKey="userVisits" stroke="#22C55E" fillOpacity={1} fill="url(#colorUser)" name="User Visits" />
                     <Legend />
@@ -606,26 +606,26 @@ const AuditArchitecture = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">Site Architecture</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6">
+            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Crawl Depth</h4>
                 <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={depthData} layout="vertical">
-                            <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#222" />
+                            <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="border-[var(--brand-border-2)]" />
                             <XAxis type="number" hide />
-                            <YAxis dataKey="name" type="category" width={100} tick={{ fill: '#888', fontSize: 11 }} />
-                            <Tooltip cursor={{ fill: 'transparent' }} contentStyle={{ backgroundColor: '#111', border: '1px solid #333' }} />
+                            <YAxis dataKey="name" type="category" width={100} tick={{ fill: 'text-[var(--brand-text-mid)]', fontSize: 11 }} />
+                            <Tooltip cursor={{ fill: 'transparent' }} contentStyle={{ backgroundColor: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]' }} />
                             <Bar dataKey="count" fill="#3B82F6" radius={[0, 4, 4, 0]} barSize={20} />
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
             </div>
-            <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6">
+            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Orphaned Pages</h4>
                 <div className="flex items-center justify-center h-[250px] flex-col text-center">
                     <div className="text-5xl font-bold text-white mb-2 font-heading">8</div>
-                    <p className="text-gray-500 text-sm">Pages with no incoming internal links.</p>
-                    <button className="mt-4 px-4 py-2 bg-white/5 text-white text-xs font-bold rounded-lg border border-white/10 hover:bg-white/10">View Orphans</button>
+                    <p className="text-[var(--brand-text-faint)] text-sm">Pages with no incoming internal links.</p>
+                    <button className="mt-4 px-4 py-2 bg-[var(--brand-surface-3)] text-white text-xs font-bold rounded-lg border border-[var(--brand-border-2)] hover:bg-[var(--brand-surface-4)]">View Orphans</button>
                 </div>
             </div>
         </div>
@@ -640,9 +640,9 @@ const AuditPerformance = ({ showHelp }: any) => (
             <TechCard title="FID" metric="14ms" status="Good" desc="First Input Delay" color="green" icon={<MousePointer2 size={18} />} />
             <TechCard title="CLS" metric="0.05" status="Good" desc="Cumulative Layout Shift" color="green" icon={<LayoutDashboard size={18} />} />
         </div>
-        <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6">
+        <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
             <h4 className="text-lg font-bold text-white mb-4">Speed Trends</h4>
-            <div className="h-[300px] flex items-center justify-center text-gray-500">
+            <div className="h-[300px] flex items-center justify-center text-[var(--brand-text-faint)]">
                 Chart Placeholder
             </div>
         </div>
@@ -653,7 +653,7 @@ const AuditAIReadiness = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">AI Readiness & Schema</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6">
+            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Structured Data Distribution</h4>
                 <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
@@ -663,13 +663,13 @@ const AuditAIReadiness = ({ showHelp }: any) => (
                                     <Cell key={`cell-${index}`} fill={entry.color} />
                                 ))}
                             </Pie>
-                            <Tooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333' }} />
+                            <Tooltip contentStyle={{ backgroundColor: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]' }} />
                             <Legend />
                         </PieChart>
                     </ResponsiveContainer>
                 </div>
             </div>
-            <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6">
+            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">AI Access Control</h4>
                 <div className="space-y-4">
                     <TechnicalRow label="GPTBot Access" status="secure" msg="Allowed" />
@@ -685,14 +685,14 @@ const AuditIndexation = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">Indexation Status</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6">
+            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Status Codes</h4>
                 <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={statusCodeData}>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#222" />
-                            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#666', fontSize: 10 }} />
-                            <Tooltip cursor={{ fill: 'transparent' }} contentStyle={{ backgroundColor: '#111', border: '1px solid #333' }} />
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="border-[var(--brand-border-2)]" />
+                            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: 'text-[var(--brand-text-faint)]', fontSize: 10 }} />
+                            <Tooltip cursor={{ fill: 'transparent' }} contentStyle={{ backgroundColor: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]' }} />
                             <Bar dataKey="value" radius={[4, 4, 0, 0]}>
                                 {statusCodeData.map((entry, index) => (
                                     <Cell key={`cell-${index}`} fill={entry.color} />
@@ -702,12 +702,12 @@ const AuditIndexation = ({ showHelp }: any) => (
                     </ResponsiveContainer>
                 </div>
             </div>
-            <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6">
+            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Canonicalization</h4>
                 <div className="space-y-4">
                     {canonicalData.map((item, i) => (
-                        <div key={i} className="flex items-center justify-between p-3 bg-white/[0.03] rounded-xl">
-                            <span className="text-sm text-gray-300">{item.name}</span>
+                        <div key={i} className="flex items-center justify-between p-3 bg-[var(--brand-surface-3)]/[0.03] rounded-xl">
+                            <span className="text-sm text-[var(--brand-text-mid)]">{item.name}</span>
                             <span className="text-sm font-bold text-white">{item.count}</span>
                         </div>
                     ))}
@@ -721,28 +721,28 @@ const AuditContent = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">Content Audit</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6">
+            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Word Count Distribution</h4>
                 <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={wordCountData}>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#222" />
-                            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#666', fontSize: 10 }} />
-                            <Tooltip cursor={{ fill: 'transparent' }} contentStyle={{ backgroundColor: '#111', border: '1px solid #333' }} />
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="border-[var(--brand-border-2)]" />
+                            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: 'text-[var(--brand-text-faint)]', fontSize: 10 }} />
+                            <Tooltip cursor={{ fill: 'transparent' }} contentStyle={{ backgroundColor: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]' }} />
                             <Bar dataKey="count" fill="#8B5CF6" radius={[4, 4, 0, 0]} />
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
             </div>
-            <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6">
+            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Content Freshness</h4>
                 <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={freshnessData} layout="vertical">
-                            <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#222" />
+                            <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="border-[var(--brand-border-2)]" />
                             <XAxis type="number" hide />
-                            <YAxis dataKey="name" type="category" width={100} tick={{ fill: '#888', fontSize: 11 }} />
-                            <Tooltip cursor={{ fill: 'transparent' }} contentStyle={{ backgroundColor: '#111', border: '1px solid #333' }} />
+                            <YAxis dataKey="name" type="category" width={100} tick={{ fill: 'text-[var(--brand-text-mid)]', fontSize: 11 }} />
+                            <Tooltip cursor={{ fill: 'transparent' }} contentStyle={{ backgroundColor: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]' }} />
                             <Bar dataKey="count" fill="#EC4899" radius={[0, 4, 4, 0]} barSize={20} />
                         </BarChart>
                     </ResponsiveContainer>
@@ -755,7 +755,7 @@ const AuditContent = ({ showHelp }: any) => (
 const AuditTechnical = () => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">Technical Specs</h3>
-        <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6">
+        <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
             <h4 className="text-lg font-bold text-white mb-6">Security & Protocols</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
                 <TechnicalRow label="SSL Certificate" status="secure" msg="Valid (Expires in 200 days)" />
@@ -773,7 +773,7 @@ const AuditLinks = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">Link Analysis</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6">
+            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Internal Link Equity</h4>
                 <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
@@ -781,15 +781,15 @@ const AuditLinks = ({ showHelp }: any) => (
                             data={linkEquityData}
                             dataKey="size"
                             aspectRatio={4 / 3}
-                            stroke="#111"
-                            fill="#333"
+                            stroke="bg-[var(--brand-surface-2)]"
+                            fill="bg-[var(--brand-surface-4)]"
                         >
-                            <Tooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333' }} />
+                            <Tooltip contentStyle={{ backgroundColor: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]' }} />
                         </Treemap>
                     </ResponsiveContainer>
                 </div>
             </div>
-            <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-6">
+            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Link Opportunities</h4>
                 <div className="space-y-4">
                     <LinkOpportunity source="/blog/seo-strategy" target="/features/analytics" anchor="analytics dashboard" impact="High" />
@@ -904,12 +904,12 @@ export const SiteAuditView = ({ showHelp, openPanel }: { showHelp: (t: string, d
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <h1 className="text-3xl font-heading font-extrabold text-white">Site Audit</h1>
-                    <p className="text-gray-400 mt-1 flex items-center gap-2">
+                    <p className="text-[var(--brand-text-mid)] mt-1 flex items-center gap-2">
                         {activeProject ? (
                             <>
                                 Targeting: <a href={activeProject.url} target="_blank" rel="noreferrer" className="text-blue-400 hover:underline">{activeProject.url}</a>
                                 {lastCrawlTimestamp && (
-                                    <span className="text-gray-600 text-xs ml-2">
+                                    <span className="text-[var(--brand-text-muted)] text-xs ml-2">
                                         • Last crawl: {new Date(lastCrawlTimestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
                                     </span>
                                 )}
@@ -936,19 +936,19 @@ export const SiteAuditView = ({ showHelp, openPanel }: { showHelp: (t: string, d
                     <div className="relative">
                         <button
                             onClick={() => setIsExportOpen(!isExportOpen)}
-                            className="flex items-center gap-2 bg-white/5 border border-white/10 text-white font-bold px-4 py-2.5 rounded-xl hover:bg-white/10 transition-colors"
+                            className="flex items-center gap-2 bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] text-white font-bold px-4 py-2.5 rounded-xl hover:bg-[var(--brand-surface-4)] transition-colors"
                         >
                             <Download size={16} /> Export <ChevronDown size={14} />
                         </button>
                         {isExportOpen && (
-                            <div className="absolute top-full right-0 mt-2 w-48 bg-[#111] border border-white/10 rounded-xl shadow-2xl py-1 z-50 animate-in fade-in zoom-in-95 duration-200">
-                                <button className="w-full text-left px-4 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white flex items-center gap-3">
+                            <div className="absolute top-full right-0 mt-2 w-48 bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-xl shadow-2xl py-1 z-50 animate-in fade-in zoom-in-95 duration-200">
+                                <button className="w-full text-left px-4 py-3 text-sm text-[var(--brand-text-mid)] hover:bg-[var(--brand-surface-3)] hover:text-[var(--brand-text-strong)] flex items-center gap-3">
                                     <FileBarChart size={16} className="text-red-500" /> PDF Report
                                 </button>
-                                <button className="w-full text-left px-4 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white flex items-center gap-3">
+                                <button className="w-full text-left px-4 py-3 text-sm text-[var(--brand-text-mid)] hover:bg-[var(--brand-surface-3)] hover:text-[var(--brand-text-strong)] flex items-center gap-3">
                                     <FileSpreadsheet size={16} className="text-green-500" /> Export CSV
                                 </button>
-                                <button className="w-full text-left px-4 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white flex items-center gap-3">
+                                <button className="w-full text-left px-4 py-3 text-sm text-[var(--brand-text-mid)] hover:bg-[var(--brand-surface-3)] hover:text-[var(--brand-text-strong)] flex items-center gap-3">
                                     <FileJson size={16} className="text-blue-500" /> Export JSON
                                 </button>
                             </div>
@@ -962,18 +962,18 @@ export const SiteAuditView = ({ showHelp, openPanel }: { showHelp: (t: string, d
                 <SmartScoreCard score={healthScore} isSimulating={isSimulating} toggleSimulation={() => setIsSimulating(!isSimulating)} />
 
                 {/* Thematic Score Radar */}
-                <div className="lg:col-span-1 bg-[#0F0F0F] rounded-3xl border border-white/5 p-0 overflow-hidden flex flex-col h-full relative group">
+                <div className="lg:col-span-1 bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-0 overflow-hidden flex flex-col h-full relative group">
                     {/* Header / Title Area */}
-                    <div className="px-5 py-4 border-b border-white/5 bg-white/[0.02] shrink-0">
+                    <div className="px-5 py-4 border-b border-[var(--brand-border-1)] bg-[var(--brand-surface-3)]/[0.02] shrink-0">
                         <div className="flex justify-between items-center">
                             <div className="flex items-center gap-2">
                                 <div>
-                                    <h3 className="text-sm font-bold text-gray-200 uppercase tracking-wide">Analysis Breakdown</h3>
-                                    <p className="text-[10px] text-gray-500 mt-0.5">Holistic view of 6 key vectors</p>
+                                    <h3 className="text-sm font-bold text-[var(--brand-text-mid)] uppercase tracking-wide">Analysis Breakdown</h3>
+                                    <p className="text-[10px] text-[var(--brand-text-faint)] mt-0.5">Holistic view of 6 key vectors</p>
                                 </div>
-                                <button onClick={() => showHelp("Analysis Breakdown", "This chart shows your performance across 6 key areas compared to the industry average.")} className="text-gray-600 hover:text-white"><HelpCircle size={14} /></button>
+                                <button onClick={() => showHelp("Analysis Breakdown", "This chart shows your performance across 6 key areas compared to the industry average.")} className="text-[var(--brand-text-muted)] hover:text-[var(--brand-text-strong)]"><HelpCircle size={14} /></button>
                             </div>
-                            <button className="text-[10px] font-bold bg-white/5 hover:bg-white/10 text-gray-400 px-2 py-1 rounded transition-colors">
+                            <button className="text-[10px] font-bold bg-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-4)] text-[var(--brand-text-mid)] px-2 py-1 rounded transition-colors">
                                 Compare
                             </button>
                         </div>
@@ -986,26 +986,26 @@ export const SiteAuditView = ({ showHelp, openPanel }: { showHelp: (t: string, d
                             {/* Recharts Radar */}
                             <ResponsiveContainer width="100%" height="100%">
                                 <RadarChart cx="50%" cy="50%" outerRadius="70%" data={realThematicScores.length > 0 ? realThematicScores : mockThematicScores}>
-                                    <PolarGrid stroke="#222" />
-                                    <PolarAngleAxis dataKey="subject" tick={{ fill: '#666', fontSize: 10, fontWeight: 600 }} />
+                                    <PolarGrid stroke="border-[var(--brand-border-2)]" />
+                                    <PolarAngleAxis dataKey="subject" tick={{ fill: 'text-[var(--brand-text-faint)]', fontSize: 10, fontWeight: 600 }} />
                                     <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
                                     <Radar name="Score" dataKey="score" stroke="#22C55E" strokeWidth={2} fill="#22C55E" fillOpacity={0.2} />
-                                    <Tooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '12px' }} itemStyle={{ color: '#fff' }} />
+                                    <Tooltip contentStyle={{ backgroundColor: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]', fontSize: '12px' }} itemStyle={{ color: '#fff' }} />
                                 </RadarChart>
                             </ResponsiveContainer>
                             {/* Absolute badge for average */}
-                            <div className="absolute top-0 right-0 bg-[#111] border border-white/10 p-2 rounded-lg shadow-xl hidden sm:block">
-                                <div className="text-[10px] text-gray-500 uppercase font-bold">Industry Avg</div>
-                                <div className="text-xs font-bold text-gray-300">68/100</div>
+                            <div className="absolute top-0 right-0 bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] p-2 rounded-lg shadow-xl hidden sm:block">
+                                <div className="text-[10px] text-[var(--brand-text-faint)] uppercase font-bold">Industry Avg</div>
+                                <div className="text-xs font-bold text-[var(--brand-text-mid)]">68/100</div>
                             </div>
                         </div>
 
                         {/* Insight / Text Block */}
-                        <div className="bg-white/[0.03] rounded-xl p-3 border border-white/5 mb-3 shrink-0">
+                        <div className="bg-[var(--brand-surface-3)]/[0.03] rounded-xl p-3 border border-[var(--brand-border-1)] mb-3 shrink-0">
                             <div className="flex items-start gap-2">
                                 <Sparkles size={14} className="text-brand-purple mt-0.5 shrink-0" />
-                                <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
-                                    <span className="text-gray-200 font-bold">Imbalanced Profile:</span> Excellent technical foundation (Security, Crawling) but <span className="text-red-400 font-bold">Speed</span> performance is dragging down your overall mobile rankings.
+                                <p className="text-xs text-[var(--brand-text-mid)] leading-relaxed line-clamp-2">
+                                    <span className="text-[var(--brand-text-mid)] font-bold">Imbalanced Profile:</span> Excellent technical foundation (Security, Crawling) but <span className="text-red-400 font-bold">Speed</span> performance is dragging down your overall mobile rankings.
                                 </p>
                             </div>
                         </div>
@@ -1034,7 +1034,7 @@ export const SiteAuditView = ({ showHelp, openPanel }: { showHelp: (t: string, d
                 <div className="lg:col-span-1 flex flex-col gap-6 h-full">
                     <CrawlStatusWidget />
 
-                    <div className="flex-1 bg-[#0F0F0F] rounded-3xl border border-white/5 p-5 flex flex-col overflow-hidden">
+                    <div className="flex-1 bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-5 flex flex-col overflow-hidden">
                         <div className="flex justify-between items-center mb-3">
                             <h3 className="font-bold text-white text-sm">Top Priorities</h3>
                             <span className="text-[10px] bg-red-500/10 text-red-500 px-2 py-0.5 rounded font-bold border border-red-500/20 uppercase">Action Req</span>
@@ -1044,19 +1044,19 @@ export const SiteAuditView = ({ showHelp, openPanel }: { showHelp: (t: string, d
                                 ? realIssues.filter(c => c.type === 'error' || c.priority === 'Critical' || c.priority === 'High').slice(0, 3)
                                 : allAuditChecks.filter(c => c.type === 'error').slice(0, 3)
                             ).map((issue, idx) => (
-                                <div key={issue.id || idx} onClick={() => openPanel('audit_issue_detail', issue)} className="p-3 bg-white/[0.03] rounded-xl border border-white/5 flex gap-3 items-start group hover:border-red-500/30 transition-colors cursor-pointer hover:bg-white/[0.05]">
+                                <div key={issue.id || idx} onClick={() => openPanel('audit_issue_detail', issue)} className="p-3 bg-[var(--brand-surface-3)]/[0.03] rounded-xl border border-[var(--brand-border-1)] flex gap-3 items-start group hover:border-red-500/30 transition-colors cursor-pointer hover:bg-[var(--brand-surface-3)]/[0.05]">
                                     <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_5px_rgba(239,68,68,0.8)]"></div>
                                     <div className="flex-1 min-w-0">
-                                        <h4 className="text-xs font-bold text-gray-200 group-hover:text-white leading-tight truncate">{issue.title}</h4>
-                                        <p className="text-[10px] text-gray-500 mt-0.5">{issue.count || issue.affected_count || 0} pages • {issue.priority || 'High'} Impact</p>
+                                        <h4 className="text-xs font-bold text-[var(--brand-text-mid)] group-hover:text-[var(--brand-text-strong)] leading-tight truncate">{issue.title}</h4>
+                                        <p className="text-[10px] text-[var(--brand-text-faint)] mt-0.5">{issue.count || issue.affected_count || 0} pages • {issue.priority || 'High'} Impact</p>
                                     </div>
-                                    <ArrowRight size={12} className="text-gray-600 group-hover:text-white mt-1" />
+                                    <ArrowRight size={12} className="text-[var(--brand-text-muted)] group-hover:text-[var(--brand-text-strong)] mt-1" />
                                 </div>
                             ))}
                             {hasRealData && realIssues.length === 0 && (
-                                <div className="p-4 text-center text-gray-500 text-xs">
+                                <div className="p-4 text-center text-[var(--brand-text-faint)] text-xs">
                                     <CheckCircle2 size={20} className="mx-auto mb-2 text-green-500" />
-                                    <p className="font-bold text-gray-400">No critical issues found</p>
+                                    <p className="font-bold text-[var(--brand-text-mid)]">No critical issues found</p>
                                     <p className="mt-1">Your site is in good shape.</p>
                                 </div>
                             )}
@@ -1067,14 +1067,14 @@ export const SiteAuditView = ({ showHelp, openPanel }: { showHelp: (t: string, d
 
             {/* 2. Modern Navigation Tabs */}
             <div className="flex overflow-x-auto pb-2 scrollbar-hide">
-                <div className="flex items-center p-1 bg-white/[0.03] rounded-xl border border-white/10">
+                <div className="flex items-center p-1 bg-[var(--brand-surface-3)]/[0.03] rounded-xl border border-[var(--brand-border-2)]">
                     {auditCategories.map(cat => (
                         <button
                             key={cat.id}
                             onClick={() => setSubView(cat.id)}
                             className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 whitespace-nowrap ${subView === cat.id
-                                ? 'text-black bg-white shadow-lg scale-100'
-                                : 'text-gray-500 hover:text-gray-200 hover:bg-white/5 scale-95 hover:scale-100'
+                                ? 'text-black bg-[var(--brand-surface-3)] shadow-lg scale-100'
+                                : 'text-[var(--brand-text-faint)] hover:text-[var(--brand-text-mid)] hover:bg-[var(--brand-surface-3)] scale-95 hover:scale-100'
                                 }`}
                         >
                             {cat.icon} {cat.label}

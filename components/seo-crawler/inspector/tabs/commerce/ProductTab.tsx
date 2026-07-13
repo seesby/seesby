@@ -42,16 +42,16 @@ export default function ProductTab({ page, hasTrend }: { page: any; hasTrend?: b
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         {/* Identity (Full Audit style) */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2.5">Identity</div>
-          <div className="mb-2 pb-2 border-b border-[#141414]">
-            <div className="text-[9px] text-[#444] uppercase tracking-wider mb-0.5">Title</div>
-            <div className="text-[11px] text-white leading-snug break-words">{title}</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">Identity</div>
+          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
+            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">Title</div>
+            <div className="text-[11px] text-[var(--brand-text-strong)] leading-snug break-words">{title}</div>
           </div>
           {desc && (
-            <div className="mb-2 pb-2 border-b border-[#141414]">
-              <div className="text-[9px] text-[#444] uppercase tracking-wider mb-0.5">Description</div>
-              <div className="text-[11px] text-white leading-snug break-words line-clamp-2">{desc}</div>
+            <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
+              <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">Description</div>
+              <div className="text-[11px] text-[var(--brand-text-strong)] leading-snug break-words line-clamp-2">{desc}</div>
             </div>
           )}
           <div className="space-y-0">
@@ -92,7 +92,7 @@ export default function ProductTab({ page, hasTrend }: { page: any; hasTrend?: b
 
       {/* Category tree */}
       <Card title="Category tree">
-        <div className="text-[12px] text-[#ccc]">{categoryPath}</div>
+        <div className="text-[12px] text-[var(--brand-text-mid)]]">{categoryPath}</div>
       </Card>
     </div>
   );

@@ -24,7 +24,7 @@ export default function WaterfallChart({
 }: Props) {
   const data = useMemo(() => {
     const rows: Array<{ name: string; value: number; fill: string }> = [
-      { name: baselineLabel, value: baseline, fill: '#555' },
+      { name: baselineLabel, value: baseline, fill: 'text-[var(--brand-text-faint)]' },
       ...segments.map((s) => ({ name: s.label, value: s.value, fill: s.color || '#22c55e' })),
       {
         name: resultLabel,
@@ -45,12 +45,12 @@ export default function WaterfallChart({
             dataKey="name"
             type="category"
             width={98}
-            tick={{ fill: '#888', fontSize: 9 }}
+            tick={{ fill: 'text-[var(--brand-text-mid)]', fontSize: 9 }}
             axisLine={false}
             tickLine={false}
           />
           <Tooltip
-            contentStyle={{ background: '#111', border: '1px solid #333', borderRadius: 6, fontSize: 11 }}
+            contentStyle={{ background: 'bg-[var(--brand-surface-2)]', border: '1px solid bg-[var(--brand-surface-4)]', borderRadius: 6, fontSize: 11 }}
             formatter={(v: number, _k, p: any) => [formatValue(v), p?.payload?.name || '']}
           />
           <Bar dataKey="value" radius={[0, 4, 4, 0]}>

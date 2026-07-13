@@ -43,13 +43,13 @@ export default function PaidAdsView() {
   return (
     <div className="flex flex-col h-full">
       {/* Filter strip matching wireframe */}
-      <div className="flex items-center gap-2 p-3 border-b border-[#1a1a1a] bg-[#0a0a0a] shrink-0 flex-wrap">
-        <span className="text-[10px] uppercase tracking-wider text-[#666]">{filtered.length} ads</span>
+      <div className="flex items-center gap-2 p-3 border-b border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] shrink-0 flex-wrap">
+        <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]]">{filtered.length} ads</span>
         <div className="flex gap-1 ml-2">
           {networks.map(n => (
             <button key={n} onClick={() => setNetwork(n)}
               className={clsx('h-6 px-2 text-[10px] rounded transition-colors flex items-center gap-1',
-                network === n ? 'bg-[#1a1a1a] text-white' : 'text-[#666] hover:text-[#999]')}>
+                network === n ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]')}>
               {n === 'all' ? 'All' : n}
               {n !== 'all' && networkCounts[n] && (
                 <span className="text-[9px] opacity-60">{networkCounts[n]}</span>
@@ -57,36 +57,36 @@ export default function PaidAdsView() {
             </button>
           ))}
         </div>
-        <div className="w-[1px] h-4 bg-[#222]" />
+        <div className="w-[1px] h-4 bg-[var(--brand-border-2)]]" />
         <div className="flex gap-1">
           {statuses.map(s => (
             <button key={s} onClick={() => setStatus(s)}
               className={clsx('h-6 px-2 text-[10px] rounded transition-colors',
-                status === s ? 'bg-[#1a1a1a] text-white' : 'text-[#666] hover:text-[#999]')}>
+                status === s ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]')}>
               {s === 'all' ? 'All' : s}
             </button>
           ))}
         </div>
-        <div className="w-[1px] h-4 bg-[#222]" />
+        <div className="w-[1px] h-4 bg-[var(--brand-border-2)]]" />
         <div className="flex gap-1">
           {(['spend', 'ctr', 'conv'] as SortKey[]).map(k => (
             <button key={k} onClick={() => setSortBy(k)}
               className={clsx('h-6 px-2 text-[10px] rounded transition-colors',
-                sortBy === k ? 'bg-[#1a1a1a] text-white' : 'text-[#666] hover:text-[#999]')}>
+                sortBy === k ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]')}>
               {k === 'spend' ? 'Spend' : k === 'ctr' ? 'CTR' : 'Conv'}
             </button>
           ))}
         </div>
-        <div className="w-[1px] h-4 bg-[#222]" />
+        <div className="w-[1px] h-4 bg-[var(--brand-border-2)]]" />
         <div className="flex gap-1">
           <button onClick={() => setViewMode('gallery')}
             className={clsx('h-6 px-2 text-[10px] rounded transition-colors',
-              viewMode === 'gallery' ? 'bg-[#1a1a1a] text-white' : 'text-[#666] hover:text-[#999]')}>
+              viewMode === 'gallery' ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]')}>
             Gallery
           </button>
           <button onClick={() => setViewMode('table')}
             className={clsx('h-6 px-2 text-[10px] rounded transition-colors',
-              viewMode === 'table' ? 'bg-[#1a1a1a] text-white' : 'text-[#666] hover:text-[#999]')}>
+              viewMode === 'table' ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]')}>
             Table
           </button>
         </div>
@@ -103,21 +103,21 @@ export default function PaidAdsView() {
             const fatigue = a.fatigue ?? 0;
             const coverage = a.assetCoverage ?? 0;
             return (
-              <article key={a.id} className="rounded border border-[#1a1a1a] bg-[#0a0a0a] overflow-hidden flex flex-col">
+              <article key={a.id} className="rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] overflow-hidden flex flex-col">
                 {a.imageUrl ? <img src={a.imageUrl} alt="" className="block w-full aspect-video object-cover" /> :
                  a.videoUrl ? <video src={a.videoUrl} className="block w-full aspect-video" muted /> :
-                 <div className="aspect-video grid place-items-center bg-[#111] text-[#444] text-[11px]">RSA · text only</div>}
+                 <div className="aspect-video grid place-items-center bg-[var(--brand-surface-2)]] text-[var(--brand-border-2)]] text-[11px]">RSA · text only</div>}
                 <div className="p-2.5 flex flex-col flex-1">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[9px] uppercase tracking-wider text-[#666]">{a.network} · {a.type}</span>
+                    <span className="text-[9px] uppercase tracking-wider text-[var(--brand-text-faint)]]">{a.network} · {a.type}</span>
                     <span className="inline-block w-1.5 h-1.5 rounded-full" style={{
                       background: ctrPct >= 3 ? STATUS_HEX.good : ctrPct >= 1 ? STATUS_HEX.warn : STATUS_HEX.bad,
                     }} />
-                    <span className="text-[9px] text-[#555] ml-auto">{a.status}</span>
+                    <span className="text-[9px] text-[var(--brand-text-faint)]] ml-auto">{a.status}</span>
                   </div>
-                  {a.campaign && <div className="text-[9px] text-[#555] mt-0.5 truncate">{a.campaign}</div>}
-                  <div className="text-[11px] text-[#ddd] mt-1 line-clamp-2">{(a.headlines ?? [])[0] ?? ''}</div>
-                  <div className="text-[10px] text-[#bbb] line-clamp-1 mt-0.5">{(a.descriptions ?? [])[0] ?? ''}</div>
+                  {a.campaign && <div className="text-[9px] text-[var(--brand-text-faint)]] mt-0.5 truncate">{a.campaign}</div>}
+                  <div className="text-[11px] text-[var(--brand-text-mid)]] mt-1 line-clamp-2">{(a.headlines ?? [])[0] ?? ''}</div>
+                  <div className="text-[10px] text-[var(--brand-text-mid)]] line-clamp-1 mt-0.5">{(a.descriptions ?? [])[0] ?? ''}</div>
 
                   {/* Fatigue + Coverage indicators */}
                   <div className="flex items-center gap-2 mt-1.5 text-[9px]">
@@ -144,12 +144,12 @@ export default function PaidAdsView() {
               </article>
             );
           })}
-          {!filtered.length && <div className="col-span-4 text-[12px] text-[#666] p-4 text-center">No ads match filters.</div>}
+          {!filtered.length && <div className="col-span-4 text-[12px] text-[var(--brand-text-faint)]] p-4 text-center">No ads match filters.</div>}
         </div>
       ) : (
         <div className="flex-1 overflow-auto custom-scrollbar">
           <table className="w-full text-[12px]">
-            <thead className="text-[10px] uppercase text-[#666] sticky top-0 bg-[#0a0a0a] z-10">
+            <thead className="text-[10px] uppercase text-[var(--brand-text-faint)]] sticky top-0 bg-[var(--brand-surface-0)]] z-10">
               <tr>
                 <th className="text-left px-3 py-2 font-normal">Creative</th>
                 <th className="text-left font-normal">Campaign</th>
@@ -170,10 +170,10 @@ export default function PaidAdsView() {
                 const fatigue = a.fatigue ?? 0;
                 const coverage = a.assetCoverage ?? 0;
                 return (
-                  <tr key={a.id} className="border-t border-[#171717] hover:bg-[#0c0c0c]">
-                    <td className="px-3 py-1.5 text-[#ddd] truncate max-w-[250px]">{(a.headlines ?? [])[0] ?? a.id}</td>
-                    <td className="text-[#aaa] truncate max-w-[150px]">{a.campaign ?? '—'}</td>
-                    <td className="text-[#aaa]">{a.type}</td>
+                  <tr key={a.id} className="border-t border-[var(--brand-surface-3)]] hover:bg-[var(--brand-surface-1)]]">
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]] truncate max-w-[250px]">{(a.headlines ?? [])[0] ?? a.id}</td>
+                    <td className="text-[var(--brand-text-mid)]] truncate max-w-[150px]">{a.campaign ?? '—'}</td>
+                    <td className="text-[var(--brand-text-mid)]]">{a.type}</td>
                     <td className="text-right font-mono">{fmtCompact(a.impressions ?? 0)}</td>
                     <td className="text-right font-mono" style={{ color: (a.ctr ?? 0) >= 0.03 ? STATUS_HEX.good : STATUS_HEX.warn }}>{fmtPct(a.ctr)}</td>
                     <td className="text-right font-mono">{(convRate * 100).toFixed(1)}%</td>
@@ -186,7 +186,7 @@ export default function PaidAdsView() {
                     <td className="text-right font-mono" style={{ color: coverage >= 80 ? STATUS_HEX.good : coverage >= 60 ? STATUS_HEX.warn : STATUS_HEX.bad }}>
                       {coverage}%
                     </td>
-                    <td className="text-[#aaa]">{a.status}</td>
+                    <td className="text-[var(--brand-text-mid)]]">{a.status}</td>
                   </tr>
                 );
               })}
@@ -196,7 +196,7 @@ export default function PaidAdsView() {
       )}
 
       {/* Summary bar matching wireframe */}
-      <div className="px-3 py-1.5 border-t border-[#1a1a1a] bg-[#0a0a0a] text-[10px] text-[#666] shrink-0 flex gap-4">
+      <div className="px-3 py-1.5 border-t border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] text-[10px] text-[var(--brand-text-faint)]] shrink-0 flex gap-4">
         <span>◆ {summary.total} ads</span>
         <span>{summary.strong} strong</span>
         {summary.fatigued > 0 && <span className="text-[#f59e0b]">{summary.fatigued} fatigued ⚠</span>}
@@ -211,8 +211,8 @@ function Stat({ label, value, tone }: { label: string; value: React.ReactNode; t
   const color = tone === 'good' ? STATUS_HEX.good : tone === 'warn' ? STATUS_HEX.warn : tone === 'bad' ? STATUS_HEX.bad : undefined;
   return (
     <div>
-      <div className="text-[9px] uppercase text-[#666]">{label}</div>
-      <div className="font-mono" style={{ color: color ?? '#fff' }}>{value}</div>
+      <div className="text-[9px] uppercase text-[var(--brand-text-faint)]]">{label}</div>
+      <div className="font-mono" style={{ color: color ?? 'text-[var(--brand-text-strong)]' }}>{value}</div>
     </div>
   );
 }

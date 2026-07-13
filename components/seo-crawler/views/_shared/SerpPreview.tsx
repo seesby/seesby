@@ -19,14 +19,14 @@ export function SerpPreview({
   const truncate = (s: string, n: number) => s.length > n ? s.slice(0, n - 1) + '…' : s;
   return (
     <div className={clsx(
-      'rounded border border-[#1a1a1a] bg-[#0c0c0c] p-3',
+      'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-3',
       device === 'mobile' ? 'max-w-[360px]' : 'max-w-[580px]',
     )}>
-      <div className="text-[11px] text-[#888]">{url}</div>
+      <div className="text-[11px] text-[var(--brand-text-mid)]]">{url}</div>
       <div className="text-[14px] text-[#7c8cff] hover:underline cursor-pointer">{truncate(title, titleMax)}</div>
-      <div className="text-[12px] text-[#bbb] mt-0.5">{truncate(description, descMax)}</div>
+      <div className="text-[12px] text-[var(--brand-text-mid)]] mt-0.5">{truncate(description, descMax)}</div>
       {(rating || lastUpdated) && (
-        <div className="text-[11px] text-[#888] mt-1">
+        <div className="text-[11px] text-[var(--brand-text-mid)]] mt-1">
           {rating ? `★ ${rating.toFixed(1)} · ${reviewCount ?? 0} reviews · ` : ''}{lastUpdated ?? ''}
         </div>
       )}

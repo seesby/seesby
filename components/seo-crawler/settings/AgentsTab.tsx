@@ -132,7 +132,7 @@ export default function AgentsTab() {
     return (
       <div className="flex flex-col items-center justify-center py-20 gap-4">
         <div className="w-10 h-10 border-2 border-[#F59E0B] border-t-transparent rounded-full animate-spin" />
-        <p className="text-[#888] text-[12px] font-medium">Summoning AI Agents...</p>
+        <p className="text-[var(--brand-text-mid)]] text-[12px] font-medium">Summoning AI Agents...</p>
       </div>
     );
   }
@@ -144,23 +144,23 @@ export default function AgentsTab() {
           {agents.map((agent) => (
             <div 
               key={agent.id}
-              className={`group relative bg-[#0a0a0a] border border-[#222] hover:border-[#444] rounded-2xl p-5 transition-all duration-300
+              className={`group relative bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] hover:border-[var(--brand-border-2)]] rounded-2xl p-5 transition-all duration-300
                          ${!agent.enabled ? 'opacity-60' : ''}`}
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-start gap-4 flex-1">
-                  <div className="w-12 h-12 rounded-xl bg-[#111] border border-[#222] flex items-center justify-center transition-transform group-hover:scale-110 duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] flex items-center justify-center transition-transform group-hover:scale-110 duration-300">
                     {AGENT_ICONS[agent.id] || <Bot size={18} />}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-[14px] font-bold text-white">{agent.name}</h3>
+                      <h3 className="text-[14px] font-bold text-[var(--brand-text-strong)]">{agent.name}</h3>
                       <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider
                                     ${agent.trigger === 'cron' ? 'bg-[#36A0F5]/10 text-[#36A0F5]' : 'bg-[#F536E0]/10 text-[#F536E0]'}`}>
                         {agent.trigger}
                       </span>
                     </div>
-                    <p className="text-[#666] text-[12px] line-clamp-2 mb-3">
+                    <p className="text-[var(--brand-text-faint)]] text-[12px] line-clamp-2 mb-3">
                       {agent.id === 'issue-fixer' && 'Analyzes crawl results and generates technical fixes.'}
                       {agent.id === 'content-monitor' && 'Monitors traffic and flags content decay or stale pages.'}
                       {agent.id === 'rank-guard' && 'Tracks ranking drops and correlates them with site changes.'}
@@ -172,7 +172,7 @@ export default function AgentsTab() {
                     
                     {agent.lastRun && (
                       <div className="flex items-center gap-4 text-[11px]">
-                        <span className="flex items-center gap-1.5 text-[#888]">
+                        <span className="flex items-center gap-1.5 text-[var(--brand-text-mid)]]">
                           <Clock size={12} /> Last run {new Date(agent.lastRun.completedAt).toLocaleDateString()}
                         </span>
                         <span className={`flex items-center gap-1.5 
@@ -194,20 +194,20 @@ export default function AgentsTab() {
                         onChange={(e) => toggleAgent(agent.id, e.target.checked)}
                         className="sr-only peer" 
                       />
-                      <div className="w-9 h-5 bg-[#222] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#F59E0B]"></div>
+                      <div className="w-9 h-5 bg-[var(--brand-border-2)]] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-[var(--brand-border-2)] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[var(--brand-surface-3)] after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#F59E0B]"></div>
                     </label>
                   </div>
                   <div className="flex items-center gap-2">
                     <button 
                       onClick={() => runNow(agent.id)}
-                      className="p-2 rounded-lg bg-[#111] border border-[#222] text-[#888] hover:text-white hover:border-[#444] transition-all"
+                      className="p-2 rounded-lg bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)]] transition-all"
                       title="Run Now"
                     >
                       <Play size={14} />
                     </button>
                     <button 
                       onClick={() => setSelectedAgent(agent)}
-                      className="p-2 rounded-lg bg-[#111] border border-[#222] text-[#888] hover:text-white hover:border-[#444] transition-all"
+                      className="p-2 rounded-lg bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)]] transition-all"
                       title="View History"
                     >
                       <History size={14} />
@@ -220,40 +220,40 @@ export default function AgentsTab() {
         </div>
       ) : (
         <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-[#222] pb-6">
+          <div className="flex items-center justify-between border-b border-[var(--brand-border-2)]] pb-6">
             <div className="flex items-center gap-4">
               <button 
                 onClick={() => setSelectedAgent(null)}
-                className="p-2 rounded-lg hover:bg-[#111] text-[#888] hover:text-white transition-all"
+                className="p-2 rounded-lg hover:bg-[var(--brand-surface-2)]] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] transition-all"
               >
                 <ChevronRight size={20} className="rotate-180" />
               </button>
               <div>
-                <h3 className="text-[16px] font-bold text-white flex items-center gap-2">
+                <h3 className="text-[16px] font-bold text-[var(--brand-text-strong)] flex items-center gap-2">
                   {AGENT_ICONS[selectedAgent.id]} {selectedAgent.name} History
                 </h3>
-                <p className="text-[12px] text-[#666]">Viewing latest 50 autonomous runs</p>
+                <p className="text-[12px] text-[var(--brand-text-faint)]]">Viewing latest 50 autonomous runs</p>
               </div>
             </div>
           </div>
 
           <div className="space-y-2">
             {isRunsLoading ? (
-              <div className="py-12 flex justify-center text-[#444]">Loading history...</div>
+              <div className="py-12 flex justify-center text-[var(--brand-border-2)]]">Loading history...</div>
             ) : runs.length === 0 ? (
-              <div className="py-20 border-2 border-dashed border-[#111] rounded-2xl flex flex-col items-center justify-center text-center">
-                <Activity size={32} className="text-[#222] mb-4" />
-                <p className="text-[#888] text-[14px]">No runs recorded yet.</p>
+              <div className="py-20 border-2 border-dashed border-[var(--brand-surface-2)]] rounded-2xl flex flex-col items-center justify-center text-center">
+                <Activity size={32} className="text-[var(--brand-border-2)]] mb-4" />
+                <p className="text-[var(--brand-text-mid)]] text-[14px]">No runs recorded yet.</p>
                 <button onClick={() => runNow(selectedAgent.id)} className="mt-4 text-[#F59E0B] text-[12px] font-bold">Try Manual Execution</button>
               </div>
             ) : (
               runs.map((run) => (
-                <div key={run.id} className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-xl p-4 flex items-center justify-between gap-4">
+                <div key={run.id} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-xl p-4 flex items-center justify-between gap-4">
                   <div className="flex items-center gap-4 flex-1">
                     <div className={`w-2 h-2 rounded-full ${run.status === 'success' ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]' : 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.4)]'}`} />
                     <div className="flex-1">
-                      <p className="text-white text-[12px] font-medium mb-1">{run.summary}</p>
-                      <div className="flex items-center gap-4 text-[10px] text-[#555]">
+                      <p className="text-[var(--brand-text-strong)] text-[12px] font-medium mb-1">{run.summary}</p>
+                      <div className="flex items-center gap-4 text-[10px] text-[var(--brand-text-faint)]]">
                         <span>{new Date(run.startedAt).toLocaleString()}</span>
                         <span>{Math.round(run.durationMs / 1000)}s duration</span>
                       </div>
@@ -261,12 +261,12 @@ export default function AgentsTab() {
                   </div>
                   <div className="flex items-center gap-6 text-[11px]">
                     <div className="text-center">
-                      <p className="text-white font-bold">{run.findingsCount}</p>
-                      <p className="text-[#444] uppercase tracking-tighter">Findings</p>
+                      <p className="text-[var(--brand-text-strong)] font-bold">{run.findingsCount}</p>
+                      <p className="text-[var(--brand-border-2)]] uppercase tracking-tighter">Findings</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-white font-bold">{run.tasksCreated}</p>
-                      <p className="text-[#444] uppercase tracking-tighter">Tasks Created</p>
+                      <p className="text-[var(--brand-text-strong)] font-bold">{run.tasksCreated}</p>
+                      <p className="text-[var(--brand-border-2)]] uppercase tracking-tighter">Tasks Created</p>
                     </div>
                   </div>
                 </div>

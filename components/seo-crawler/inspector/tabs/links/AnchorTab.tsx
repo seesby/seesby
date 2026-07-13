@@ -69,9 +69,9 @@ export default function AnchorTab({ page }: { page: any }) {
       {/* Wireframe layout: Anchor text | Classification | Target anchor mix */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
         <Card title="Anchor text">
-          <div className="mb-2 pb-2 border-b border-[#141414]">
-            <div className="text-[9px] text-[#444] uppercase tracking-wider mb-0.5">Text</div>
-            <div className={`text-[11px] break-words ${anchorText !== '—' ? 'text-white' : 'text-[#555]'}`}>
+          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
+            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">Text</div>
+            <div className={`text-[11px] break-words ${anchorText !== '—' ? 'text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]]'}`}>
               {anchorText !== '—' ? `"${anchorText}"` : <span className="italic">Missing</span>}
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function AnchorTab({ page }: { page: any }) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
         <Card title="Co-citation (other links)">
           {coCitationCount === 0 ? (
-            <div className="text-[12px] text-[#666] italic">No co-citation data available.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]] italic">No co-citation data available.</div>
           ) : (
             <>
               <DataRow label="Used on" value={`${formatNumber(coCitationCount)} other sites`} />
@@ -112,16 +112,16 @@ export default function AnchorTab({ page }: { page: any }) {
 
         <Card title="Keyword overlap">
           {kwOverlap.length === 0 ? (
-            <div className="text-[12px] text-[#666] italic">No keyword overlap data.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]] italic">No keyword overlap data.</div>
           ) : (
             <div className="max-h-[120px] overflow-y-auto custom-scrollbar">
               {kwOverlap.slice(0, 5).map((kw: any, i: number) => {
                 const text = typeof kw === 'string' ? kw : kw?.keyword || kw?.text || '—';
                 const matched = typeof kw === 'object' && (kw?.matched || kw?.overlap);
                 return (
-                  <div key={i} className="flex items-center gap-2 text-[11px] py-1 border-b border-[#111] last:border-b-0">
-                    <span className="text-[#ccc]">{matched ? 'partial' : 'none'}</span>
-                    <span className="text-white font-mono">"{text}"</span>
+                  <div key={i} className="flex items-center gap-2 text-[11px] py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0">
+                    <span className="text-[var(--brand-text-mid)]]">{matched ? 'partial' : 'none'}</span>
+                    <span className="text-[var(--brand-text-strong)] font-mono">"{text}"</span>
                     {matched && <span className="text-[#22c55e]">✓</span>}
                   </div>
                 );
@@ -129,9 +129,9 @@ export default function AnchorTab({ page }: { page: any }) {
             </div>
           )}
           {kwOverlapMatch && (
-            <div className="mt-2 pt-2 border-t border-[#141414] text-[11px]">
-              <span className="text-[#666]">With target's rank kw: </span>
-              <span className="text-white">{kwOverlapMatch}</span>
+            <div className="mt-2 pt-2 border-t border-[var(--brand-surface-2)]] text-[11px]">
+              <span className="text-[var(--brand-text-faint)]]">With target's rank kw: </span>
+              <span className="text-[var(--brand-text-strong)]">{kwOverlapMatch}</span>
             </div>
           )}
         </Card>
@@ -154,10 +154,10 @@ function AnchorMixBar({ label, pct, color, isCurrent }: {
   return (
     <div className="mb-2">
       <div className="flex items-center justify-between mb-1">
-        <span className={`text-[11px] ${isCurrent ? 'text-white font-medium' : 'text-[#888]'}`}>{label}{isCurrent ? ' (this)' : ''}</span>
-        <span className="text-[11px] font-mono text-[#aaa]">{pct.toFixed(0)}%</span>
+        <span className={`text-[11px] ${isCurrent ? 'text-[var(--brand-text-strong)] font-medium' : 'text-[var(--brand-text-mid)]]'}`}>{label}{isCurrent ? ' (this)' : ''}</span>
+        <span className="text-[11px] font-mono text-[var(--brand-text-mid)]]">{pct.toFixed(0)}%</span>
       </div>
-      <div className="h-[6px] bg-[#151515] rounded-full overflow-hidden">
+      <div className="h-[6px] bg-[var(--brand-surface-2)]] rounded-full overflow-hidden">
         <div
           className={`h-full rounded-full ${color}`}
           style={{ width: `${Math.min(100, pct)}%` }}

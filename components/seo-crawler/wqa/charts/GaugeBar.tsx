@@ -14,7 +14,7 @@ export default function GaugeBar({ label, value, suffix = '%', max = 100 }: Prop
   if (suffix === '✓' || suffix === '✗') {
     return (
       <div className="flex items-center justify-between text-[10px]">
-        <span className="text-[#888]">{label}</span>
+        <span className="text-[var(--brand-text-mid)]]">{label}</span>
         <span className={suffix === '✓' ? 'text-green-400' : 'text-red-400'}>{suffix}</span>
       </div>
     );
@@ -22,11 +22,11 @@ export default function GaugeBar({ label, value, suffix = '%', max = 100 }: Prop
 
   return (
     <div className="flex items-center gap-2">
-      <span className="text-[10px] text-[#888] w-[96px] shrink-0 truncate">{label}</span>
-      <div className="flex-1 h-[6px] bg-[#1a1a1a] rounded-full overflow-hidden">
+      <span className="text-[10px] text-[var(--brand-text-mid)]] w-[96px] shrink-0 truncate">{label}</span>
+      <div className="flex-1 h-[6px] bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
         <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, background: color }} />
       </div>
-      <span className="text-[10px] text-[#aaa] w-[40px] text-right font-mono">{Math.round(value)}{suffix}</span>
+      <span className="text-[10px] text-[var(--brand-text-mid)]] w-[40px] text-right font-mono">{Math.round(value)}{suffix}</span>
     </div>
   );
 }

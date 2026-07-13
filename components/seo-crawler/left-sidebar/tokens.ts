@@ -1,20 +1,20 @@
 export const SIDEBAR_TOKENS = {
 	// Surfaces
-	base:        '#0A0A0B',  // --bg-main
-	surface:     '#0A0A0B',  // Match main background exactly
-	surfaceAlt:  '#111114',  // --card-bg / match subheader
-	card:        '#111114',
+	base:        'bg-[var(--brand-surface-0)]',  // --bg-main
+	surface:     'bg-[var(--brand-surface-0)]',  // Match main background exactly
+	surfaceAlt:  'bg-[var(--brand-surface-2)]',  // --card-bg / match subheader
+	card:        'bg-[var(--brand-surface-2)]',
 	cardAlt:     '#141417',
 
 	// Borders
-	border:      '#222222',  // Match subheader border
-	borderAlt:   '#222222',
+	border:      'border-[var(--brand-border-2)]',  // Match subheader border
+	borderAlt:   'border-[var(--brand-border-2)]',
 
 	// Text
-	text:        '#FFFFFF',
+	text:        'bg-[var(--brand-surface-4)]',
 	textDim:     '#A0A0A5',  // --text-secondary
-	textMuted:   '#66666E',
-	textSubtle:  '#44444A',
+	textMuted:   'text-[var(--brand-text-faint)]',
+	textSubtle:  'border-[var(--brand-border-2)]',
 
 	// Accents
 	accent:      '#F59E0B',  // --brand-amber
@@ -44,7 +44,7 @@ export const TONE_CLASSES = {
 	warn:    { dot: 'bg-[#f59e0b]', text: 'text-[#f59e0b]' },
 	bad:     { dot: 'bg-[#ef4444]', text: 'text-[#ef4444]' },
 	info:    { dot: 'bg-[#3b82f6]', text: 'text-[#3b82f6]' },
-	neutral: { dot: 'bg-[#444]',    text: 'text-[#bdbdbd]' },
+	neutral: { dot: 'bg-[var(--brand-border-2)]]',    text: 'text-[#bdbdbd]' },
 } as const;
 
 export const MODE_DOT_CLASS: Record<string, string> = {

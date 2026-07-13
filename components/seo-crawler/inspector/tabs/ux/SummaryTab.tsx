@@ -8,7 +8,7 @@ import { Sparkline } from '../../../right-sidebar/_shared';
 function FlagRow({ label, fail }: { label: string; fail: boolean }) {
   return (
     <div className="flex items-center justify-between py-[3px] text-[11px]">
-      <span className="text-[#666]">{label}</span>
+      <span className="text-[var(--brand-text-faint)]]">{label}</span>
       <span className={`text-[10px] font-medium ${fail ? 'text-[#F59E0B]' : 'text-[#22c55e]'}`}>
         {fail ? 'Yes' : 'No'}
       </span>
@@ -50,19 +50,19 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
   return (
     <div className="space-y-4">
       {/* Hero strip */}
-      <div className="flex items-center gap-3 p-2.5 rounded-lg bg-gradient-to-r from-[#0f0f0f] to-[#0a0a0a] border border-[#1a1a1a]">
+      <div className="flex items-center gap-3 p-2.5 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)]] to-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]">
         <div className="flex-1 min-w-0">
-          <div className="text-[13px] text-white font-semibold truncate">{page?.title || 'Untitled'}</div>
-          <div className="text-[11px] text-[#555] font-mono truncate mt-0.5">{page?.url}</div>
+          <div className="text-[13px] text-[var(--brand-text-strong)] font-semibold truncate">{page?.title || 'Untitled'}</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] font-mono truncate mt-0.5">{page?.url}</div>
         </div>
         <div className="shrink-0 flex items-center gap-2">
           <div className="relative w-10 h-10">
             <svg className="w-10 h-10 -rotate-90" viewBox="0 0 36 36">
-              <circle cx="18" cy="18" r="15" fill="none" stroke="#1a1a1a" strokeWidth="3" />
+              <circle cx="18" cy="18" r="15" fill="none" stroke="bg-[var(--brand-surface-3)]" strokeWidth="3" />
               <circle cx="18" cy="18" r="15" fill="none" stroke={gaugeColor} strokeWidth="3" strokeDasharray={`${(uxScore / 100) * 94.25} 94.25`} strokeLinecap="round" />
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-[11px] font-bold text-white">{uxScore}</span>
+              <span className="text-[11px] font-bold text-[var(--brand-text-strong)]">{uxScore}</span>
             </div>
           </div>
         </div>
@@ -80,8 +80,8 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* 2-column grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         {/* UX Overview */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2.5">UX Overview</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">UX Overview</div>
           <DataRow label="Friction Score" value={formatNumber(frictionScore)} status={Number(frictionScore) <= 30 ? 'pass' : Number(frictionScore) <= 60 ? 'warn' : 'fail'} />
           <DataRow label="Conversion" value={formatPercent(conversionRate)} />
           <DataRow label="Engagement" value={formatPercent(engagementRate)} />
@@ -123,7 +123,7 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* Trend */}
       {hasTrend && (
         <Card title="Score Trend">
-          <div className="bg-[#0a0a0a] border border-[#222] rounded p-3">
+          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
             <Sparkline values={page?.uxScoreTrend || page?.frictionScoreTrend || []} tone="warn" />
           </div>
         </Card>
@@ -134,7 +134,7 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
         <Card title={`Issues (${topIssues.length})`}>
           <div className="space-y-0">
             {topIssues.map((a: any, i: number) => (
-              <div key={`${a.id}-${i}`} className="flex items-start gap-2.5 py-2 border-b border-[#111] last:border-b-0">
+              <div key={`${a.id}-${i}`} className="flex items-start gap-2.5 py-2 border-b border-[var(--brand-surface-2)]] last:border-b-0">
                 <div className="mt-0.5">
                   {a.type === 'error' || a.severity === 'CRITICAL' || a.severity === 'HIGH' ? (
                     <span className="block w-1.5 h-1.5 rounded-full bg-[#ef4444]" />
@@ -145,9 +145,9 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[11px] text-[#ccc] font-medium">{a.label}</div>
+                  <div className="text-[11px] text-[var(--brand-text-mid)]] font-medium">{a.label}</div>
                   {(a.description || a.reason) && (
-                    <div className="text-[10px] text-[#444] mt-0.5 line-clamp-1">{a.description || a.reason}</div>
+                    <div className="text-[10px] text-[var(--brand-border-2)]] mt-0.5 line-clamp-1">{a.description || a.reason}</div>
                   )}
                 </div>
               </div>

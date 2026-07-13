@@ -5,9 +5,9 @@ import { fmtCompact, fmtPct } from '../../_shared/formatters';
 import { useHasComparison } from '../../_hooks/useHasComparison';
 import { STATUS } from '../../_shared/tokens';
 
-const CARD = 'rounded border border-[#1a1a1a] bg-[#0a0a0a] p-3 min-h-0';
+const CARD = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3 min-h-0';
 const H = ({ children }: { children: React.ReactNode }) =>
-  <div className="text-[10px] uppercase tracking-wider text-[#666] mb-2">{children}</div>;
+  <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">{children}</div>;
 
 export default function SocialOverviewView() {
   const { social = {} } = useSeoCrawler() as any;
@@ -84,7 +84,7 @@ export default function SocialOverviewView() {
 
   if (!hasData) {
     return (
-      <div className="flex-1 flex items-center justify-center text-[12px] text-[#666]">
+      <div className="flex-1 flex items-center justify-center text-[12px] text-[var(--brand-text-faint)]]">
         No social data available.
       </div>
     );
@@ -114,12 +114,12 @@ export default function SocialOverviewView() {
                 <>
                   <div className="space-y-1.5 mb-3">
                     <SentimentBar label="+" pct={sentimentData.positive} color={STATUS.good} />
-                    <SentimentBar label="~" pct={sentimentData.neutral} color="#666" />
+                    <SentimentBar label="~" pct={sentimentData.neutral} color="text-[var(--brand-text-faint)]" />
                     <SentimentBar label="-" pct={sentimentData.negative} color={STATUS.bad} warning={sentimentData.negative > 15} />
                   </div>
                   {sentimentTrend.length > 0 && (
                     <>
-                      <div className="text-[10px] text-[#666] mb-1">trend 12w</div>
+                      <div className="text-[10px] text-[var(--brand-text-faint)]] mb-1">trend 12w</div>
                       <div className="h-[60px] relative">
                         <LineChart data={sentimentTrend} x="date" series={[{ key: 'positive', color: STATUS.good }]} height={60} />
                       </div>
@@ -127,7 +127,7 @@ export default function SocialOverviewView() {
                   )}
                 </>
               ) : (
-                <div className="py-4 text-[12px] text-[#666] text-center">No mentions data.</div>
+                <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No mentions data.</div>
               )}
             </div>
 
@@ -138,16 +138,16 @@ export default function SocialOverviewView() {
                 <div className="space-y-1.5">
                   {competitors.map((c: any) => (
                     <div key={c.name} className="flex items-center gap-2 text-[11px]">
-                      <span className="w-10 text-[#888]">{c.name}</span>
-                      <div className="flex-1 h-4 rounded bg-[#171717] overflow-hidden">
+                      <span className="w-10 text-[var(--brand-text-mid)]]">{c.name}</span>
+                      <div className="flex-1 h-4 rounded bg-[var(--brand-surface-3)]] overflow-hidden">
                         <div className="h-full rounded" style={{ width: `${(c.share ?? 0) / 50 * 100}%`, background: c.color ?? '#F59E0B' }} />
                       </div>
-                      <span className="w-10 text-right font-mono text-white">{c.share ?? 0}%</span>
+                      <span className="w-10 text-right font-mono text-[var(--brand-text-strong)]">{c.share ?? 0}%</span>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="py-4 text-[12px] text-[#666] text-center">No competitor data.</div>
+                <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No competitor data.</div>
               )}
             </div>
           </div>
@@ -158,7 +158,7 @@ export default function SocialOverviewView() {
             {platformScorecard.length > 0 ? (
               <div className="overflow-x-auto">
                 <table className="w-full text-[11px]">
-                  <thead className="text-[10px] uppercase text-[#666] border-b border-[#171717]">
+                  <thead className="text-[10px] uppercase text-[var(--brand-text-faint)]] border-b border-[var(--brand-surface-3)]]">
                     <tr>
                       <th className="text-left py-1.5 font-normal">Platform</th>
                       <th className="text-right font-normal">Followers</th>
@@ -170,19 +170,19 @@ export default function SocialOverviewView() {
                   </thead>
                   <tbody>
                     {platformScorecard.map(p => (
-                      <tr key={p.network} className="border-b border-[#111]">
-                        <td className="py-1.5 text-[#ccc]">{p.network}</td>
-                        <td className="py-1.5 text-right font-mono text-white">{fmtCompact(p.followers)}</td>
-                        <td className="py-1.5 text-right font-mono text-white">{p.posts30d}</td>
+                      <tr key={p.network} className="border-b border-[var(--brand-surface-2)]]">
+                        <td className="py-1.5 text-[var(--brand-text-mid)]]">{p.network}</td>
+                        <td className="py-1.5 text-right font-mono text-[var(--brand-text-strong)]">{fmtCompact(p.followers)}</td>
+                        <td className="py-1.5 text-right font-mono text-[var(--brand-text-strong)]">{p.posts30d}</td>
                         <td className="py-1.5 text-right font-mono" style={{
-                          color: p.engRate > 0.08 ? STATUS.good : p.engRate > 0.03 ? '#888' : '#666'
+                          color: p.engRate > 0.08 ? STATUS.good : p.engRate > 0.03 ? 'text-[var(--brand-text-mid)]' : 'text-[var(--brand-text-faint)]'
                         }}>{fmtPct(p.engRate)}</td>
-                        <td className="py-1.5 text-[#888] pl-2 truncate max-w-[150px]">{p.bestPost}</td>
+                        <td className="py-1.5 text-[var(--brand-text-mid)]] pl-2 truncate max-w-[150px]">{p.bestPost}</td>
                         <td className="py-1.5 text-right">
                           {p.alerts > 0 ? (
                             <span className="text-[#f59e0b]">{p.alerts} ⚠</span>
                           ) : (
-                            <span className="text-[#666]">0</span>
+                            <span className="text-[var(--brand-text-faint)]]">0</span>
                           )}
                         </td>
                       </tr>
@@ -191,7 +191,7 @@ export default function SocialOverviewView() {
                 </table>
               </div>
             ) : (
-              <div className="py-4 text-[12px] text-[#666] text-center">No platform data.</div>
+              <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No platform data.</div>
             )}
           </div>
 
@@ -207,12 +207,12 @@ export default function SocialOverviewView() {
                     <AuditRow label="twitter:card missing" count={ogIssues.missingTwitterCard} />
                     <AuditRow label="Image wrong ratio (1.91:1)" count={ogIssues.wrongRatio} warning={ogIssues.wrongRatio > 15} />
                   </div>
-                  <div className="mt-2 pt-2 border-t border-[#171717]">
+                  <div className="mt-2 pt-2 border-t border-[var(--brand-surface-3)]]">
                     <span className="text-[11px] text-[#F59E0B] cursor-pointer hover:underline">[Open audit →]</span>
                   </div>
                 </>
               ) : (
-                <div className="py-4 text-[12px] text-[#666] text-center">No meta data.</div>
+                <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No meta data.</div>
               )}
             </div>
 
@@ -225,21 +225,21 @@ export default function SocialOverviewView() {
                     {influencers.slice(0, 3).map((inf: any) => (
                       <div key={inf.handle} className="flex items-center justify-between text-[11px]">
                         <div className="flex items-center gap-2">
-                          <span className="text-[#ccc]">{inf.handle}</span>
-                          <span className="text-[#666]">{inf.network}</span>
+                          <span className="text-[var(--brand-text-mid)]]">{inf.handle}</span>
+                          <span className="text-[var(--brand-text-faint)]]">{inf.network}</span>
                         </div>
-                        <span className="font-mono text-white">{fmtCompact(inf.followers)} fol</span>
+                        <span className="font-mono text-[var(--brand-text-strong)]">{fmtCompact(inf.followers)} fol</span>
                       </div>
                     ))}
                   </div>
                   {influencers.length > 3 && (
-                    <div className="mt-2 pt-2 border-t border-[#171717]">
+                    <div className="mt-2 pt-2 border-t border-[var(--brand-surface-3)]]">
                       <span className="text-[11px] text-[#F59E0B] cursor-pointer hover:underline">[See all {influencers.length}]</span>
                     </div>
                   )}
                 </>
               ) : (
-                <div className="py-4 text-[12px] text-[#666] text-center">No influencer data.</div>
+                <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No influencer data.</div>
               )}
             </div>
           </div>
@@ -252,14 +252,14 @@ export default function SocialOverviewView() {
 function KpiTile({ label, value, delta, hint }: { label: string; value: string; delta?: number; hint?: string }) {
   return (
     <div>
-      <div className="text-[10px] uppercase text-[#666]">{label}</div>
-      <div className="text-[18px] font-mono text-white leading-none mt-1">{value}</div>
+      <div className="text-[10px] uppercase text-[var(--brand-text-faint)]]">{label}</div>
+      <div className="text-[18px] font-mono text-[var(--brand-text-strong)] leading-none mt-1">{value}</div>
       {delta !== undefined && (
-        <div className="text-[10px] mt-1" style={{ color: delta > 0 ? STATUS.good : delta < 0 ? STATUS.bad : '#888' }}>
+        <div className="text-[10px] mt-1" style={{ color: delta > 0 ? STATUS.good : delta < 0 ? STATUS.bad : 'text-[var(--brand-text-mid)]' }}>
           {delta > 0 ? '▲' : delta < 0 ? '▼' : ''} {fmtPct(Math.abs(delta))}
         </div>
       )}
-      {hint && <div className="text-[10px] text-[#666] mt-0.5">{hint}</div>}
+      {hint && <div className="text-[10px] text-[var(--brand-text-faint)]] mt-0.5">{hint}</div>}
     </div>
   );
 }
@@ -267,11 +267,11 @@ function KpiTile({ label, value, delta, hint }: { label: string; value: string; 
 function SentimentBar({ label, pct, color, warning }: { label: string; pct: number; color: string; warning?: boolean }) {
   return (
     <div className="flex items-center gap-2 text-[11px]">
-      <span className="w-4 text-[#888]">{label}</span>
-      <div className="flex-1 h-4 rounded bg-[#171717] overflow-hidden">
+      <span className="w-4 text-[var(--brand-text-mid)]]">{label}</span>
+      <div className="flex-1 h-4 rounded bg-[var(--brand-surface-3)]] overflow-hidden">
         <div className="h-full rounded" style={{ width: `${pct}%`, background: color }} />
       </div>
-      <span className="w-10 text-right font-mono text-white">{pct}%</span>
+      <span className="w-10 text-right font-mono text-[var(--brand-text-strong)]">{pct}%</span>
       {warning && <span className="text-[#f59e0b]">⚠</span>}
     </div>
   );
@@ -280,8 +280,8 @@ function SentimentBar({ label, pct, color, warning }: { label: string; pct: numb
 function AuditRow({ label, count, warning }: { label: string; count: number; warning?: boolean }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-[#888]">{label}</span>
-      <span style={{ color: warning ? '#f59e0b' : '#888' }}>
+      <span className="text-[var(--brand-text-mid)]]">{label}</span>
+      <span style={{ color: warning ? '#f59e0b' : 'text-[var(--brand-text-mid)]' }}>
         {count} {warning && '⚠'}
       </span>
     </div>

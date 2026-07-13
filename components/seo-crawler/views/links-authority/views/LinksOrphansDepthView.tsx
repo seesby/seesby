@@ -6,8 +6,8 @@ import { useSeoCrawler } from '@/contexts/SeoCrawlerContext';
 import { BarChart } from '../../_shared/BarChart';
 import type { RowSelectionState } from '@tanstack/react-table';
 
-const PANEL = 'rounded border border-[#1a1a1a] bg-[#0a0a0a]';
-const LABEL = 'text-[10px] uppercase tracking-wider text-[#666] mb-2';
+const PANEL = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]]';
+const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2';
 
 export default function LinksOrphansDepthView() {
   const ctx = useSeoCrawler() as any;

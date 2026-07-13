@@ -125,7 +125,7 @@ export default function PerformanceTab({ config, setConfig }: TabProps) {
           onChange={(val) => updateConfig('useProxy', val)} 
         />
         {config.useProxy && (
-          <div className="space-y-3 mt-2 p-3 bg-[#0a0a0a] rounded-lg border border-[#222]">
+          <div className="space-y-3 mt-2 p-3 bg-[var(--brand-surface-0)]] rounded-lg border border-[var(--brand-border-2)]]">
             <div className="grid grid-cols-4 gap-2">
               <div className="col-span-3">
                 <SettingsInput 

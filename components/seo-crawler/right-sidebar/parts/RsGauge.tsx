@@ -20,7 +20,7 @@ export function RsGauge({
             <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="-rotate-90 block">
                 <circle
                     cx={size / 2} cy={size / 2} r={r}
-                    stroke="#1a1a1a" strokeWidth="6" fill="transparent"
+                    stroke="bg-[var(--brand-surface-3)]" strokeWidth="6" fill="transparent"
                 />
                 <circle
                     cx={size / 2} cy={size / 2} r={r}
@@ -32,9 +32,9 @@ export function RsGauge({
                 />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pt-1">
-                <span className="text-[20px] font-bold font-mono tabular-nums text-white leading-none">{Math.round(v)}</span>
-                {label && <span className="text-[9px] uppercase tracking-widest text-[#666] mt-1">{label}</span>}
-                {sub && <span className="text-[10px] text-[#444] mt-0.5">{sub}</span>}
+                <span className="text-[20px] font-bold font-mono tabular-nums text-[var(--brand-text-strong)] leading-none">{Math.round(v)}</span>
+                {label && <span className="text-[9px] uppercase tracking-widest text-[var(--brand-text-faint)]] mt-1">{label}</span>}
+                {sub && <span className="text-[10px] text-[var(--brand-border-2)]] mt-0.5">{sub}</span>}
             </div>
         </div>
     )

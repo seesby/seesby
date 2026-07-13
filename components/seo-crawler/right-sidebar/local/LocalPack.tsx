@@ -24,9 +24,9 @@ export function LocalPack() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[#888]">Local pack share</div>
-            <div className="mt-1 text-2xl font-semibold text-white">{fmtPct(s.localPack.share * 100)}</div>
-            <div className="mt-1 text-[10px] text-[#666]">Visibility in the local map pack</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Local pack share</div>
+            <div className="mt-1 text-2xl font-semibold text-[var(--brand-text-strong)]">{fmtPct(s.localPack.share * 100)}</div>
+            <div className="mt-1 text-[10px] text-[var(--brand-text-faint)]]">Visibility in the local map pack</div>
           </div>
           <ProgressRing value={packScore} size={72} />
         </div>
@@ -55,20 +55,20 @@ export function LocalPack() {
 
       {/* Your share vs benchmark */}
       <Card title="vs Benchmark">
-        <div className="flex items-center justify-between py-1 border-b border-[#1a1a1a]">
-          <span className="text-[11px] text-[#888]">Your share</span>
-          <span className="text-[11px] font-mono tabular-nums text-white">{fmtPct(s.localPack.share * 100)}</span>
+        <div className="flex items-center justify-between py-1 border-b border-[var(--brand-surface-3)]]">
+          <span className="text-[11px] text-[var(--brand-text-mid)]]">Your share</span>
+          <span className="text-[11px] font-mono tabular-nums text-[var(--brand-text-strong)]">{fmtPct(s.localPack.share * 100)}</span>
         </div>
         <div className="flex items-center justify-between py-1">
-          <span className="text-[11px] text-[#888]">Benchmark</span>
-          <span className="text-[11px] font-mono tabular-nums text-white">{fmtPct(s.localPack.benchmark * 100)}</span>
+          <span className="text-[11px] text-[var(--brand-text-mid)]]">Benchmark</span>
+          <span className="text-[11px] font-mono tabular-nums text-[var(--brand-text-strong)]">{fmtPct(s.localPack.benchmark * 100)}</span>
         </div>
       </Card>
 
       {/* Top keywords in pack */}
       {s.localPack.topKeywords.length > 0 && (
         <Card title="Top keywords in pack" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.localPack.topKeywords.map((kw: any, i: number) => (
               <RowItem
                 key={i}
@@ -85,7 +85,7 @@ export function LocalPack() {
       <Trendable hasPrior={s.hasPrior}>
         {s.localPack.lost.length > 0 && (
           <Card title="Lost rankings" padded={false}>
-            <div className="flex flex-col border-t border-[#1f1f1f]">
+            <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
               {s.localPack.lost.map((kw: any, i: number) => (
                 <RowItem
                   key={i}
@@ -109,7 +109,7 @@ export function LocalPack() {
           {s.localPack.shareSeries90d.length > 1 ? (
             <RsSparkline values={s.localPack.shareSeries90d} />
           ) : (
-            <div className="text-[11px] text-[#555] py-2">Not enough data</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]] py-2">Not enough data</div>
           )}
         </Card>
       </Trendable>
@@ -117,7 +117,7 @@ export function LocalPack() {
       {/* Trend comparison */}
       <Trendable hasPrior={s.hasPrior}>
         <Card title="vs last crawl" padded={false}>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             <ComparisonRow
               label="Pack share"
               a={{ v: Math.round(s.localPack.share * 100), tag: 'now' }}

@@ -7,7 +7,7 @@ import { fmtCompact, fmtPct } from '../../_shared/formatters';
 import { useHasComparison } from '../../_hooks/useHasComparison';
 import { STATUS } from '../../_shared/tokens';
 
-const CARD = 'rounded border border-[#1a1a1a] bg-[#0a0a0a] p-3 min-h-0';
+const CARD = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3 min-h-0';
 
 export default function PaidOverviewView() {
   const d = usePaidOverview();
@@ -35,7 +35,7 @@ export default function PaidOverviewView() {
             {d.scatterData.length > 0 ? (
               <ScatterQuadrant data={d.scatterData} />
             ) : (
-              <div className="flex-1 grid place-items-center text-[12px] text-[#666]">No campaign data.</div>
+              <div className="flex-1 grid place-items-center text-[12px] text-[var(--brand-text-faint)]]">No campaign data.</div>
             )}
           </div>
         </div>
@@ -47,10 +47,10 @@ export default function PaidOverviewView() {
             {d.roasTrend.length > 1 ? (
               <LineChart data={d.roasTrend} x="date" series={[
                 { key: 'roas', color: '#06b6d4' },
-                { key: 'target', label: 'target', color: '#666' },
+                { key: 'target', label: 'target', color: 'text-[var(--brand-text-faint)]' },
               ]} height={280} />
             ) : (
-              <div className="flex-1 grid place-items-center text-[12px] text-[#666]">Run another crawl to see trends.</div>
+              <div className="flex-1 grid place-items-center text-[12px] text-[var(--brand-text-faint)]]">Run another crawl to see trends.</div>
             )}
           </div>
         </div>
@@ -60,7 +60,7 @@ export default function PaidOverviewView() {
           <H>Top movers 7d</H>
           {d.topMovers.length > 0 ? (
             <table className="w-full text-[12px]">
-              <thead className="text-[10px] uppercase text-[#666]">
+              <thead className="text-[10px] uppercase text-[var(--brand-text-faint)]]">
                 <tr>
                   <th className="text-left py-1 font-normal">Campaign</th>
                   <th className="text-right font-normal">Δ spend</th>
@@ -69,12 +69,12 @@ export default function PaidOverviewView() {
               </thead>
               <tbody>
                 {d.topMovers.map((m: any) => (
-                  <tr key={m.name} className="border-t border-[#171717]">
-                    <td className="py-1.5 text-[#ddd] truncate max-w-[200px]">{m.name}</td>
-                    <td className="text-right font-mono" style={{ color: m.spendDelta > 0 ? STATUS.good : m.spendDelta < 0 ? STATUS.bad : '#999' }}>
+                  <tr key={m.name} className="border-t border-[var(--brand-surface-3)]]">
+                    <td className="py-1.5 text-[var(--brand-text-mid)]] truncate max-w-[200px]">{m.name}</td>
+                    <td className="text-right font-mono" style={{ color: m.spendDelta > 0 ? STATUS.good : m.spendDelta < 0 ? STATUS.bad : 'text-[var(--brand-text-mid)]' }}>
                       {m.spendDelta > 0 ? '+' : ''}{fmtCompact(m.spendDelta)}
                     </td>
-                    <td className="text-right font-mono" style={{ color: m.convDelta > 0 ? STATUS.good : m.convDelta < 0 ? STATUS.bad : '#999' }}>
+                    <td className="text-right font-mono" style={{ color: m.convDelta > 0 ? STATUS.good : m.convDelta < 0 ? STATUS.bad : 'text-[var(--brand-text-mid)]' }}>
                       {m.convDelta > 0 ? '+' : ''}{m.convDelta}
                     </td>
                   </tr>
@@ -82,7 +82,7 @@ export default function PaidOverviewView() {
               </tbody>
             </table>
           ) : (
-            <div className="py-4 text-[12px] text-[#666] text-center">No movers this week.</div>
+            <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No movers this week.</div>
           )}
         </div>
 
@@ -92,8 +92,8 @@ export default function PaidOverviewView() {
           <div className="flex-1 flex flex-col justify-center gap-2">
             {d.qsDist.map((q: any) => (
               <div key={q.score} className="flex items-center gap-2 text-[12px]">
-                <span className="w-10 shrink-0 text-right text-[#888] tabular-nums text-[11px]">QS {q.score}</span>
-                <div className="flex-1 h-4 rounded-sm overflow-hidden bg-[#111]">
+                <span className="w-10 shrink-0 text-right text-[var(--brand-text-mid)]] tabular-nums text-[11px]">QS {q.score}</span>
+                <div className="flex-1 h-4 rounded-sm overflow-hidden bg-[var(--brand-surface-2)]]">
                   <div
                     className="h-full rounded-sm"
                     style={{
@@ -102,7 +102,7 @@ export default function PaidOverviewView() {
                     }}
                   />
                 </div>
-                <span className="w-6 text-right text-[#ccc] tabular-nums text-[11px]">{q.count}</span>
+                <span className="w-6 text-right text-[var(--brand-text-mid)]] tabular-nums text-[11px]">{q.count}</span>
               </div>
             ))}
           </div>
@@ -113,7 +113,7 @@ export default function PaidOverviewView() {
           <H>Auction insights preview</H>
           {d.competitors.length > 0 ? (
             <table className="w-full text-[12px]">
-              <thead className="text-[10px] uppercase text-[#666]">
+              <thead className="text-[10px] uppercase text-[var(--brand-text-faint)]]">
                 <tr>
                   <th className="text-left py-1 font-normal">Competitor</th>
                   <th className="text-right font-normal">Overlap</th>
@@ -123,21 +123,21 @@ export default function PaidOverviewView() {
               </thead>
               <tbody>
                 {d.competitors.map((c: any) => (
-                  <tr key={c.host} className="border-t border-[#171717]">
-                    <td className="py-1.5 text-[#ddd]">{c.host}</td>
-                    <td className="text-right font-mono" style={{ color: c.overlap > 0.3 ? STATUS.bad : '#ddd' }}>
+                  <tr key={c.host} className="border-t border-[var(--brand-surface-3)]]">
+                    <td className="py-1.5 text-[var(--brand-text-mid)]]">{c.host}</td>
+                    <td className="text-right font-mono" style={{ color: c.overlap > 0.3 ? STATUS.bad : 'text-[var(--brand-text-mid)]' }}>
                       {fmtPct(c.overlap)}
                     </td>
-                    <td className="text-right font-mono" style={{ color: c.posAbove > 0.05 ? STATUS.bad : c.posAbove < -0.05 ? STATUS.good : '#ddd' }}>
+                    <td className="text-right font-mono" style={{ color: c.posAbove > 0.05 ? STATUS.bad : c.posAbove < -0.05 ? STATUS.good : 'text-[var(--brand-text-mid)]' }}>
                       {c.posAbove > 0 ? '+' : ''}{fmtPct(c.posAbove)}
                     </td>
-                    <td className="text-right font-mono text-white">{fmtPct(c.topShare)}</td>
+                    <td className="text-right font-mono text-[var(--brand-text-strong)]">{fmtPct(c.topShare)}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           ) : (
-            <div className="py-4 text-[12px] text-[#666] text-center">No auction data.</div>
+            <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No auction data.</div>
           )}
         </div>
 
@@ -176,12 +176,12 @@ function ScatterQuadrant({ data }: { data: { x: number; y: number; name: string;
       <span className="absolute bottom-5 left-2 text-[9px] text-[#ef4444]">fix / cut</span>
 
       {/* Crosshair lines */}
-      <div className="absolute left-0 right-0 top-1/2 border-t border-dashed border-[#333]" />
-      <div className="absolute top-0 bottom-0 left-1/2 border-l border-dashed border-[#333]" />
+      <div className="absolute left-0 right-0 top-1/2 border-t border-dashed border-[var(--brand-surface-4)]]" />
+      <div className="absolute top-0 bottom-0 left-1/2 border-l border-dashed border-[var(--brand-surface-4)]]" />
 
       {/* Axis labels */}
-      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[9px] text-[#555]">spend →</span>
-      <span className="absolute left-0 top-1/2 -translate-y-1/2 -rotate-90 text-[9px] text-[#555]">conv →</span>
+      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[9px] text-[var(--brand-text-faint)]]">spend →</span>
+      <span className="absolute left-0 top-1/2 -translate-y-1/2 -rotate-90 text-[9px] text-[var(--brand-text-faint)]]">conv →</span>
 
       {/* Points */}
       {data.map((d, i) => {
@@ -204,11 +204,11 @@ function ScatterQuadrant({ data }: { data: { x: number; y: number; name: string;
 function StatRow({ label, value }: { label: string; value: number }) {
   return (
     <div className="flex items-center justify-between text-[11px]">
-      <span className="text-[#888]">{label}</span>
-      <span className="text-white tabular-nums">{value}</span>
+      <span className="text-[var(--brand-text-mid)]]">{label}</span>
+      <span className="text-[var(--brand-text-strong)] tabular-nums">{value}</span>
     </div>
   );
 }
 
 const H = ({ children }: { children: React.ReactNode }) =>
-  <div className="text-[10px] uppercase tracking-wider text-[#666] mb-2">{children}</div>;
+  <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">{children}</div>;

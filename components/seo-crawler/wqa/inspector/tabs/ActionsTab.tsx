@@ -18,52 +18,52 @@ export default function ActionsTab({ page, hasTrend }: { page: any; hasTrend?: b
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="block w-2 h-2 rounded-full bg-[#F59E0B]" />
-                <span className="text-[12px] font-bold text-white uppercase tracking-wider">{primary.label}</span>
+                <span className="text-[12px] font-bold text-[var(--brand-text-strong)] uppercase tracking-wider">{primary.label}</span>
                 <StatusBadge status="fail" label={`Priority ${primary.priority <= 3 ? 'HIGH' : primary.priority <= 6 ? 'MED' : 'LOW'}`} />
               </div>
               {primary.description && (
-                <div className="text-[10px] text-[#aaa] ml-4">{primary.description}</div>
+                <div className="text-[10px] text-[var(--brand-text-mid)]] ml-4">{primary.description}</div>
               )}
             </div>
           </div>
           {primary.trigger && (
             <div className="ml-4 mb-2">
-              <div className="text-[9px] text-[#444] uppercase tracking-widest mb-0.5">Trigger</div>
-              <div className="text-[10px] text-[#888]">{primary.trigger}</div>
+              <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest mb-0.5">Trigger</div>
+              <div className="text-[10px] text-[var(--brand-text-mid)]]">{primary.trigger}</div>
             </div>
           )}
           {primary.targetKeyword && (
             <div className="ml-4 mb-2">
-              <div className="text-[9px] text-[#444] uppercase tracking-widest mb-0.5">Target</div>
-              <div className="text-[10px] text-[#ccc]">Keyword: "{primary.targetKeyword}"</div>
+              <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest mb-0.5">Target</div>
+              <div className="text-[10px] text-[var(--brand-text-mid)]]">Keyword: "{primary.targetKeyword}"</div>
             </div>
           )}
           {primary.brief && (
             <div className="ml-4 mb-2">
-              <div className="text-[9px] text-[#444] uppercase tracking-widest mb-0.5">Brief</div>
-              <div className="text-[10px] text-[#888] whitespace-pre-line">{primary.brief}</div>
+              <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest mb-0.5">Brief</div>
+              <div className="text-[10px] text-[var(--brand-text-mid)]] whitespace-pre-line">{primary.brief}</div>
             </div>
           )}
           {primary.forecast && (
             <div className="ml-4 mb-2">
-              <div className="text-[9px] text-[#444] uppercase tracking-widest mb-0.5">Forecast</div>
-              <div className="text-[10px] text-[#888]">{primary.forecast}</div>
+              <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest mb-0.5">Forecast</div>
+              <div className="text-[10px] text-[var(--brand-text-mid)]]">{primary.forecast}</div>
             </div>
           )}
           <div className="ml-4 flex flex-wrap gap-1.5 mt-2 pt-2 border-t border-[#F59E0B]/20">
-            <button className="px-2.5 py-1 text-[9px] font-medium uppercase tracking-widest bg-[#1a1a1a] border border-[#262626] rounded text-white hover:bg-[#222] transition-colors">
+            <button className="px-2.5 py-1 text-[9px] font-medium uppercase tracking-widest bg-[var(--brand-surface-3)]] border border-[var(--brand-border-3)]] rounded text-[var(--brand-text-strong)] hover:bg-[var(--brand-border-2)]] transition-colors">
               Approve
             </button>
-            <button className="px-2.5 py-1 text-[9px] font-medium uppercase tracking-widest bg-[#0a0a0a] border border-[#262626] rounded text-[#888] hover:text-white hover:border-[#444] transition-colors">
+            <button className="px-2.5 py-1 text-[9px] font-medium uppercase tracking-widest bg-[var(--brand-surface-0)]] border border-[var(--brand-border-3)]] rounded text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)]] transition-colors">
               Edit Brief
             </button>
-            <button className="px-2.5 py-1 text-[9px] font-medium uppercase tracking-widest bg-[#0a0a0a] border border-[#262626] rounded text-[#888] hover:text-white hover:border-[#444] transition-colors">
+            <button className="px-2.5 py-1 text-[9px] font-medium uppercase tracking-widest bg-[var(--brand-surface-0)]] border border-[var(--brand-border-3)]] rounded text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)]] transition-colors">
               Assign
             </button>
-            <button className="px-2.5 py-1 text-[9px] font-medium uppercase tracking-widest bg-[#0a0a0a] border border-[#262626] rounded text-[#888] hover:text-white hover:border-[#444] transition-colors">
+            <button className="px-2.5 py-1 text-[9px] font-medium uppercase tracking-widest bg-[var(--brand-surface-0)]] border border-[var(--brand-border-3)]] rounded text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)]] transition-colors">
               Send to Jira
             </button>
-            <button className="px-2.5 py-1 text-[9px] font-medium uppercase tracking-widest bg-[#0a0a0a] border border-[#262626] rounded text-[#888] hover:text-white hover:border-[#444] transition-colors">
+            <button className="px-2.5 py-1 text-[9px] font-medium uppercase tracking-widest bg-[var(--brand-surface-0)]] border border-[var(--brand-border-3)]] rounded text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)]] transition-colors">
               Dismiss
             </button>
           </div>
@@ -98,10 +98,10 @@ export default function ActionsTab({ page, hasTrend }: { page: any; hasTrend?: b
           <SectionHeader title="Not suggested (explicitly)" />
           <div className="space-y-1 mt-2">
             {notSuggested.map((a, i) => (
-              <div key={`ns-${i}`} className="flex items-center gap-2 py-1.5 px-2 rounded bg-[#080808] border border-[#141414]">
-                <X size={10} className="text-[#444] shrink-0" />
-                <span className="text-[10px] text-[#666]">{a.label}</span>
-                {a.reason && <span className="text-[9px] text-[#333]">\u2014 {a.reason}</span>}
+              <div key={`ns-${i}`} className="flex items-center gap-2 py-1.5 px-2 rounded bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]]">
+                <X size={10} className="text-[var(--brand-border-2)]] shrink-0" />
+                <span className="text-[10px] text-[var(--brand-text-faint)]]">{a.label}</span>
+                {a.reason && <span className="text-[9px] text-[var(--brand-surface-4)]]">\u2014 {a.reason}</span>}
               </div>
             ))}
           </div>
@@ -110,8 +110,8 @@ export default function ActionsTab({ page, hasTrend }: { page: any; hasTrend?: b
 
       {/* Empty state */}
       {issues.length === 0 && (
-        <div className="bg-[#0a0a0a] border border-[#222] rounded p-4 text-center">
-          <div className="text-[12px] text-[#666]">No actions assigned. Page is healthy.</div>
+        <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-4 text-center">
+          <div className="text-[12px] text-[var(--brand-text-faint)]]">No actions assigned. Page is healthy.</div>
         </div>
       )}
     </div>

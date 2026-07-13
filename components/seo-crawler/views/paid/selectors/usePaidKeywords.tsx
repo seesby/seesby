@@ -137,7 +137,7 @@ export function usePaidKeywords() {
         if (v <= 0) return '—';
         return (
           <span className="text-[11px]">
-            <span className="text-[#888]">{v}→</span>
+            <span className="text-[var(--brand-text-mid)]]">{v}→</span>
             {irrel > 0 && <span className="text-amber-400 ml-1">{irrel} irrel</span>}
           </span>
         );
@@ -148,7 +148,7 @@ export function usePaidKeywords() {
       cell: c => {
         const v = c.getValue() as boolean;
         const irrel = c.row.original.irrelevantTerms ?? 0;
-        if (!v && irrel <= 0) return <span className="text-[#555]">─</span>;
+        if (!v && irrel <= 0) return <span className="text-[var(--brand-text-faint)]]">─</span>;
         if (irrel > 5) return <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-medium cursor-pointer">add!</span>;
         return <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 cursor-pointer">add?</span>;
       },
@@ -157,8 +157,8 @@ export function usePaidKeywords() {
       accessorKey: 'delta7d', header: 'Δ7d', size: 55,
       cell: c => {
         const v = c.getValue() as number;
-        if (v === undefined || v === null) return <span className="text-[#555]">flat</span>;
-        if (v === 0) return <span className="text-[#555]">flat</span>;
+        if (v === undefined || v === null) return <span className="text-[var(--brand-text-faint)]]">flat</span>;
+        if (v === 0) return <span className="text-[var(--brand-text-faint)]]">flat</span>;
         return (
           <span style={{ color: v > 0 ? STATUS_HEX.good : STATUS_HEX.bad }}>
             {v > 0 ? '▲' : '▼'}{Math.abs(v)}%

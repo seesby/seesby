@@ -160,17 +160,17 @@ export function ContentDuplication() {
             }))}
           />
         ) : (
-          <div className="text-[11px] text-[#555] py-2">No similarity data available</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] py-2">No similarity data available</div>
         )}
       </Card>
 
       {/* Duplicate groups — always show */}
       <Card title={`Duplicate groups ${dupGroups.length}`} padded={false}>
-        <div className="px-2 pt-2 pb-1 text-[10px] text-[#666]">
+        <div className="px-2 pt-2 pb-1 text-[10px] text-[var(--brand-text-faint)]]">
           Groups of pages with similar content
         </div>
         {dupGroups.length > 0 ? (
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {dupGroups.map((g, i) => (
               <RowItem
                 key={i}
@@ -182,17 +182,17 @@ export function ContentDuplication() {
             ))}
           </div>
         ) : (
-          <div className="text-[11px] text-[#555] px-2 py-2 border-t border-[#1f1f1f]">No duplicate groups found</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] px-2 py-2 border-t border-[var(--brand-surface-3)]]">No duplicate groups found</div>
         )}
       </Card>
 
       {/* Cannibalization — always show */}
       <Card title={`Cannibalization ${cannibalGroups.length}`} padded={false}>
-        <div className="px-2 pt-2 pb-1 text-[10px] text-[#666]">
+        <div className="px-2 pt-2 pb-1 text-[10px] text-[var(--brand-text-faint)]]">
           Pages competing for the same keywords
         </div>
         {cannibalGroups.length > 0 ? (
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {cannibalGroups.map((g, i) => (
               <RowItem
                 key={i}
@@ -203,7 +203,7 @@ export function ContentDuplication() {
             ))}
           </div>
         ) : (
-          <div className="text-[11px] text-[#555] px-2 py-2 border-t border-[#1f1f1f]">No cannibalization detected</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] px-2 py-2 border-t border-[var(--brand-surface-3)]]">No cannibalization detected</div>
         )}
       </Card>
 
@@ -216,7 +216,7 @@ export function ContentDuplication() {
             tone: 'warn' as const,
           }))} />
         ) : (
-          <div className="text-[11px] text-[#555] py-2">No title duplicates found</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] py-2">No title duplicates found</div>
         )}
       </Card>
 
@@ -229,14 +229,14 @@ export function ContentDuplication() {
             tone: 'warn' as const,
           }))} />
         ) : (
-          <div className="text-[11px] text-[#555] py-2">No cross-language duplicates</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] py-2">No cross-language duplicates</div>
         )}
       </Card>
 
       {/* Canonical mismatches — always show */}
       <Card title={`Canonical mismatches ${canonMismatches.length}`} padded={false}>
         {canonMismatches.length > 0 ? (
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {canonMismatches.map((p: any, i: number) => (
               <RowItem
                 key={i}
@@ -248,13 +248,13 @@ export function ContentDuplication() {
             ))}
           </div>
         ) : (
-          <div className="text-[11px] text-[#555] px-2 py-2 border-t border-[#1f1f1f]">All canonicals match</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] px-2 py-2 border-t border-[var(--brand-surface-3)]]">All canonicals match</div>
         )}
       </Card>
 
       {/* Recommended actions — always show */}
       <Card title="Recommended actions" padded={false}>
-        <div className="flex flex-col border-t border-[#1f1f1f]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
           {recommendedMerges > 0 && (
             <RowItem
               title="Merge duplicate pages"
@@ -270,7 +270,7 @@ export function ContentDuplication() {
             />
           )}
           {recommendedMerges === 0 && recommendedDeprecations === 0 && (
-            <div className="text-[11px] text-[#555] px-2 py-2">No actions needed</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]] px-2 py-2">No actions needed</div>
           )}
         </div>
       </Card>

@@ -27,16 +27,16 @@ export function GraphControls({ layout, onLayoutChange, sizeBy, onSizeByChange }
   return (
     <>
       {/* Layout selector - left side, below main controls bar */}
-      <div className="absolute top-14 left-3 z-10 flex flex-col gap-1 bg-[#0a0a0acc] backdrop-blur p-1.5 rounded border border-[#1a1a1a]">
-        <div className="text-[9px] text-[#555] uppercase tracking-wider px-1 mb-0.5">Layer</div>
+      <div className="absolute top-14 left-3 z-10 flex flex-col gap-1 bg-[var(--brand-surface-0)]cc] backdrop-blur p-1.5 rounded border border-[var(--brand-surface-3)]]">
+        <div className="text-[9px] text-[var(--brand-text-faint)]] uppercase tracking-wider px-1 mb-0.5">Layer</div>
         {LAYOUT_OPTIONS.map(opt => (
           <button
             key={opt.id}
             onClick={() => onLayoutChange(opt.id)}
             className={`flex items-center gap-1.5 h-6 px-2 text-[10px] rounded transition-colors ${
               layout === opt.id
-                ? 'bg-[#1a1a1a] text-white'
-                : 'text-[#666] hover:text-[#999]'
+                ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]'
+                : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]'
             }`}
           >
             {opt.icon}
@@ -46,19 +46,19 @@ export function GraphControls({ layout, onLayoutChange, sizeBy, onSizeByChange }
       </div>
 
       {/* Controls bar - bottom left */}
-      <div className="absolute bottom-3 left-3 z-10 flex items-center gap-2 bg-[#0a0a0acc] backdrop-blur p-1.5 rounded border border-[#1a1a1a]">
-        <span className="text-[10px] text-[#888]">Size:</span>
+      <div className="absolute bottom-3 left-3 z-10 flex items-center gap-2 bg-[var(--brand-surface-0)]cc] backdrop-blur p-1.5 rounded border border-[var(--brand-surface-3)]]">
+        <span className="text-[10px] text-[var(--brand-text-mid)]]">Size:</span>
         <select
           value={sizeBy}
           onChange={e => onSizeByChange(e.target.value as SizeBy)}
-          className="h-6 px-2 bg-[#0c0c0c] border border-[#1a1a1a] rounded text-[10px] text-[#ccc] focus:outline-none"
+          className="h-6 px-2 bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded text-[10px] text-[var(--brand-text-mid)]] focus:outline-none"
         >
           {SIZE_OPTIONS.map(o => <option key={o.id} value={o.id}>{o.label}</option>)}
         </select>
 
-        <div className="w-px h-4 bg-[#1a1a1a]" />
+        <div className="w-px h-4 bg-[var(--brand-surface-3)]]" />
 
-        <span className="text-[10px] text-[#555]">Edge: internal links</span>
+        <span className="text-[10px] text-[var(--brand-text-faint)]]">Edge: internal links</span>
       </div>
     </>
   );

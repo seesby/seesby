@@ -112,7 +112,7 @@ export const Dashboard: React.FC = () => {
     }
 
     return (
-        <div data-theme="dark" className="flex h-screen bg-brand-bg font-sans overflow-hidden selection:bg-brand-amber selection:text-white relative text-gray-200">
+        <div className="flex h-screen bg-brand-bg font-sans overflow-hidden selection:bg-brand-amber selection:text-white relative text-[var(--brand-text-mid)]">
 
             {/* Background Grid Pattern */}
             <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none z-0"></div>
@@ -135,20 +135,20 @@ export const Dashboard: React.FC = () => {
                             {currentView.replace('_', ' ')}
                         </h1>
 
-                        <div className="h-6 w-px bg-white/10"></div>
+                        <div className="h-6 w-px bg-[var(--brand-surface-3)]/10"></div>
 
                         {/* Global Filters */}
                         <div className="flex items-center gap-2">
                             <div className="relative group">
-                                <button className="flex items-center gap-2 text-xs font-bold text-[var(--brand-text-mid)] bg-transparent hover:text-white transition-colors">
+                                <button className="flex items-center gap-2 text-xs font-bold text-[var(--brand-text-mid)] bg-transparent hover:text-[var(--brand-text-strong)] transition-colors">
                                     <Calendar size={14} />
                                     {dateRange === '7d' ? 'Last 7 Days' : dateRange === '30d' ? 'Last 30 Days' : 'Last 90 Days'}
                                     <ChevronDown size={12} />
                                 </button>
-                                <div className="absolute top-full left-0 mt-2 w-32 bg-[var(--brand-surface-2)] border border-white/10 rounded-lg shadow-xl py-1 hidden group-hover:block z-50">
-                                    <button onClick={() => setDateRange('7d')} className="w-full text-left px-3 py-2 text-xs text-[var(--brand-text-mid)] hover:text-white hover:bg-white/5">Last 7 Days</button>
-                                    <button onClick={() => setDateRange('30d')} className="w-full text-left px-3 py-2 text-xs text-[var(--brand-text-mid)] hover:text-white hover:bg-white/5">Last 30 Days</button>
-                                    <button onClick={() => setDateRange('90d')} className="w-full text-left px-3 py-2 text-xs text-[var(--brand-text-mid)] hover:text-white hover:bg-white/5">Last 90 Days</button>
+                                <div className="absolute top-full left-0 mt-2 w-32 bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-lg shadow-xl py-1 hidden group-hover:block z-50">
+                                    <button onClick={() => setDateRange('7d')} className="w-full text-left px-3 py-2 text-xs text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:bg-[var(--brand-surface-3)]/5">Last 7 Days</button>
+                                    <button onClick={() => setDateRange('30d')} className="w-full text-left px-3 py-2 text-xs text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:bg-[var(--brand-surface-3)]/5">Last 30 Days</button>
+                                    <button onClick={() => setDateRange('90d')} className="w-full text-left px-3 py-2 text-xs text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:bg-[var(--brand-surface-3)]/5">Last 90 Days</button>
                                 </div>
                             </div>
                         </div>
@@ -156,22 +156,22 @@ export const Dashboard: React.FC = () => {
 
                     {/* Actions */}
                     <div className="flex items-center gap-4">
-                        <div className="hidden md:flex items-center px-4 py-2 bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] rounded-xl gap-3 text-sm text-[var(--brand-text-mid)] w-72 hover:border-white/20 transition-colors cursor-text group focus-within:border-brand-amber/50 focus-within:bg-black/20">
-                            <Search size={14} className="group-hover:text-white transition-colors" />
+                        <div className="hidden md:flex items-center px-4 py-2 bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] rounded-xl gap-3 text-sm text-[var(--brand-text-mid)] w-72 hover:border-[var(--brand-border-3)] transition-colors cursor-text group focus-within:border-brand-amber/50 focus-within:bg-black/20">
+                            <Search size={14} className="group-hover:text-[var(--brand-text-strong)] transition-colors" />
                             <span className="text-xs">Search projects, keywords...</span>
                             <div className="ml-auto flex items-center gap-1">
-                                <span className="text-[10px] bg-white/5 px-1.5 py-0.5 rounded border border-white/10 text-[var(--brand-text-faint)]"><Command size={10} className="inline" /> K</span>
+                                <span className="text-[10px] bg-[var(--brand-surface-3)]/5 px-1.5 py-0.5 rounded border border-[var(--brand-border-2)] text-[var(--brand-text-faint)]"><Command size={10} className="inline" /> K</span>
                             </div>
                         </div>
-                        <div className="h-8 w-px bg-white/5 mx-2"></div>
+                        <div className="h-8 w-px bg-[var(--brand-surface-3)]/5 mx-2"></div>
 
                         <NotificationBell />
 
                         <button
                             onClick={() => setCopilotOpen(true)}
-                            className="w-9 h-9 rounded-full bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] flex items-center justify-center hover:bg-white/10 hover:border-white/20 transition-colors relative group hover:shadow-glow-sm"
+                            className="w-9 h-9 rounded-full bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] flex items-center justify-center hover:bg-[var(--brand-surface-3)]/10 hover:border-[var(--brand-border-3)] transition-colors relative group hover:shadow-glow-sm"
                         >
-                            <Bot size={18} className="text-[var(--brand-text-mid)] group-hover:text-white transition-colors" />
+                            <Bot size={18} className="text-[var(--brand-text-mid)] group-hover:text-[var(--brand-text-strong)] transition-colors" />
                             <span className="absolute -top-1 -right-1 flex h-3 w-3">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-amber opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-amber border-2 border-brand-bg"></span>
@@ -235,7 +235,7 @@ export const Dashboard: React.FC = () => {
                 )}
 
                 <div
-                    className={`absolute inset-y-0 right-0 w-full sm:w-[550px] bg-[var(--brand-surface-1)]/95 backdrop-blur-2xl border-l border-white/10 z-50 transform transition-transform duration-300 ease-in-out shadow-2xl flex flex-col
+                    className={`absolute inset-y-0 right-0 w-full sm:w-[550px] bg-[var(--brand-surface-1)]/95 backdrop-blur-2xl border-l border-[var(--brand-border-2)] z-50 transform transition-transform duration-300 ease-in-out shadow-2xl flex flex-col
             ${activePanel ? 'translate-x-0' : 'translate-x-full'}`}
                 >
                     <div className="h-[76px] flex items-center justify-between px-6 border-b border-[var(--brand-border-1)] bg-transparent shrink-0">
@@ -247,7 +247,7 @@ export const Dashboard: React.FC = () => {
                             {activePanel === 'audit_issue_detail' && <><AlertTriangle size={18} className="text-brand-amber shrink-0" /> Issue Details</>}
                             {activePanel === 'url_detail' && <><Globe size={18} className="text-brand-amber shrink-0" /> URL Inspection</>}
                         </h3>
-                        <button onClick={closePanel} className="text-[var(--brand-text-faint)] hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full">
+                        <button onClick={closePanel} className="text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)] transition-colors p-2 hover:bg-[var(--brand-surface-3)]/10 rounded-full">
                             <X size={20} />
                         </button>
                     </div>
@@ -279,7 +279,7 @@ export const Dashboard: React.FC = () => {
                                             <Bot size={16} className="text-brand-purple" />
                                             <span className="text-xs font-bold uppercase text-brand-purple tracking-wide">AI Recommendation</span>
                                         </div>
-                                        <p className="text-sm text-gray-200 leading-relaxed relative z-10">{panelData.aiFix}</p>
+                                        <p className="text-sm text-[var(--brand-text-mid)] leading-relaxed relative z-10">{panelData.aiFix}</p>
                                         <div className="mt-4 flex gap-3">
                                             <Button size="sm" variant="primary" className="bg-brand-purple hover:bg-brand-purple/80 text-white border-none text-[10px]">Apply Fix with AI</Button>
                                             <Button size="sm" variant="secondary" className="bg-transparent border-brand-purple/30 text-brand-purple hover:bg-brand-purple/10 text-[10px]">Learn More</Button>
@@ -294,14 +294,14 @@ export const Dashboard: React.FC = () => {
                                         </div>
                                         <div className="bg-[var(--brand-surface-2)] rounded-xl border border-[var(--brand-border-1)] overflow-hidden">
                                             {(panelData.preview || []).map((url: string, i: number) => (
-                                                <div key={i} className="flex items-center justify-between p-3 border-b border-[var(--brand-border-1)] last:border-0 hover:bg-white/5 transition-colors group">
+                                                <div key={i} className="flex items-center justify-between p-3 border-b border-[var(--brand-border-1)] last:border-0 hover:bg-[var(--brand-surface-3)]/5 transition-colors group">
                                                     <div className="flex items-center gap-3 overflow-hidden">
-                                                        <div className="p-1.5 bg-white/5 rounded text-[var(--brand-text-mid)]"><ExternalLink size={12} /></div>
-                                                        <span className="text-sm text-gray-300 truncate font-mono">{url}</span>
+                                                        <div className="p-1.5 bg-[var(--brand-surface-3)]/5 rounded text-[var(--brand-text-mid)]"><ExternalLink size={12} /></div>
+                                                        <span className="text-sm text-[var(--brand-text-mid)] truncate font-mono">{url}</span>
                                                     </div>
                                                     <button
                                                         onClick={() => openPanel('url_detail', { url, status: 200 })}
-                                                        className="opacity-0 group-hover:opacity-100 px-3 py-1 bg-white text-black text-[10px] font-bold rounded hover:bg-gray-200 transition-all"
+                                                        className="opacity-0 group-hover:opacity-100 px-3 py-1 bg-[var(--brand-surface-3)] text-black text-[10px] font-bold rounded hover:bg-gray-200 transition-all"
                                                     >
                                                         Inspect
                                                     </button>
@@ -333,7 +333,7 @@ export const Dashboard: React.FC = () => {
                                         <a href={`https://${panelData.url.replace(/^\//, '')}`} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-xs font-bold text-blue-400 hover:text-blue-300">
                                             <ExternalLink size={12} /> Open URL
                                         </a>
-                                        <button className="flex items-center gap-1.5 text-xs font-bold text-[var(--brand-text-mid)] hover:text-white">
+                                        <button className="flex items-center gap-1.5 text-xs font-bold text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)]">
                                             <Clock size={12} /> History
                                         </button>
                                     </div>
@@ -347,7 +347,7 @@ export const Dashboard: React.FC = () => {
                                             onClick={() => setPanelTab(tab)}
                                             className={`px-4 py-3 text-xs font-bold uppercase tracking-wide border-b-2 transition-colors ${panelTab === tab
                                                 ? 'text-brand-amber border-brand-amber'
-                                                : 'text-[var(--brand-text-faint)] border-transparent hover:text-white'
+                                                : 'text-[var(--brand-text-faint)] border-transparent hover:text-[var(--brand-text-strong)]'
                                                 }`}
                                         >
                                             {tab}
@@ -364,13 +364,13 @@ export const Dashboard: React.FC = () => {
                                             </h3>
                                             {getIssuesForUrl(panelData.url).length > 0 ? (
                                                 getIssuesForUrl(panelData.url).map((issue: any) => (
-                                                    <div key={issue.id} className="p-4 bg-[var(--brand-surface-3)] border border-[var(--brand-border-1)] rounded-xl hover:border-white/10 transition-colors cursor-pointer" onClick={() => openPanel('audit_issue_detail', issue)}>
+                                                    <div key={issue.id} className="p-4 bg-[var(--brand-surface-3)] border border-[var(--brand-border-1)] rounded-xl hover:border-[var(--brand-border-2)] transition-colors cursor-pointer" onClick={() => openPanel('audit_issue_detail', issue)}>
                                                         <div className="flex justify-between items-start mb-1">
                                                             <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded uppercase ${issue.priority === 'Critical' ? 'bg-red-500/10 text-red-500' : 'bg-orange-500/10 text-orange-500'
                                                                 }`}>{issue.priority}</span>
                                                             <ChevronRight size={14} className="text-[var(--brand-text-muted)]" />
                                                         </div>
-                                                        <h4 className="text-sm font-bold text-gray-200 mt-2">{issue.title}</h4>
+                                                        <h4 className="text-sm font-bold text-[var(--brand-text-mid)] mt-2">{issue.title}</h4>
                                                         <p className="text-xs text-[var(--brand-text-faint)] mt-1 line-clamp-2">{issue.desc}</p>
                                                     </div>
                                                 ))
@@ -403,11 +403,11 @@ export const Dashboard: React.FC = () => {
                                                     <p className="text-xl font-bold text-white">85ms</p>
                                                 </div>
                                             </div>
-                                            <div className="p-4 bg-black rounded-xl border border-white/10 font-mono text-xs text-[var(--brand-text-mid)]">
+                                            <div className="p-4 bg-black rounded-xl border border-[var(--brand-border-2)] font-mono text-xs text-[var(--brand-text-mid)]">
                                                 <div className="flex justify-between mb-2"><span>DNS Lookup</span><span>12ms</span></div>
                                                 <div className="flex justify-between mb-2"><span>TCP Handshake</span><span>24ms</span></div>
                                                 <div className="flex justify-between mb-2"><span>SSL Handshake</span><span>35ms</span></div>
-                                                <div className="flex justify-between text-white font-bold border-t border-white/10 pt-2"><span>Total</span><span>71ms</span></div>
+                                                <div className="flex justify-between text-white font-bold border-t border-[var(--brand-border-2)] pt-2"><span>Total</span><span>71ms</span></div>
                                             </div>
                                         </div>
                                     )}
@@ -428,7 +428,7 @@ export const Dashboard: React.FC = () => {
                                                 <h4 className="text-xs font-bold text-[var(--brand-text-mid)] uppercase tracking-wide mb-3">Linked From</h4>
                                                 <div className="space-y-2">
                                                     {['/home', '/blog', '/features/analytics'].map((l, i) => (
-                                                        <div key={i} className="flex items-center gap-2 text-xs p-2 rounded hover:bg-white/5 transition-colors cursor-pointer">
+                                                        <div key={i} className="flex items-center gap-2 text-xs p-2 rounded hover:bg-[var(--brand-surface-3)]/5 transition-colors cursor-pointer">
                                                             <LinkIcon size={12} className="text-[var(--brand-text-muted)]" />
                                                             <span className="text-blue-400">{l}</span>
                                                         </div>
@@ -439,7 +439,7 @@ export const Dashboard: React.FC = () => {
                                     )}
 
                                     {panelTab === 'code' && (
-                                        <div className="bg-[var(--brand-surface-0)] rounded-xl border border-white/10 p-4 font-mono text-xs overflow-x-auto text-[var(--brand-text-mid)] leading-relaxed">
+                                        <div className="bg-[var(--brand-surface-0)] rounded-xl border border-[var(--brand-border-2)] p-4 font-mono text-xs overflow-x-auto text-[var(--brand-text-mid)] leading-relaxed">
                                             <div className="text-[var(--brand-text-faint)] select-none mb-2">view-source:{panelData.url}</div>
                                             <span className="text-blue-400">&lt;!DOCTYPE html&gt;</span><br />
                                             <span className="text-blue-400">&lt;html</span> <span className="text-purple-400">lang</span>=<span className="text-orange-300">"en"</span><span className="text-blue-400">&gt;</span><br />
@@ -458,19 +458,19 @@ export const Dashboard: React.FC = () => {
                         {/* Context Help Panel Content */}
                         {activePanel === 'context_help' && panelData && (
                             <div className="p-6 space-y-6">
-                                <div className="p-4 bg-[var(--brand-surface-3)] rounded-xl border border-white/10">
+                                <div className="p-4 bg-[var(--brand-surface-3)] rounded-xl border border-[var(--brand-border-2)]">
                                     <h4 className="text-lg font-bold text-white mb-2">{panelData.title}</h4>
                                     <p className="text-[var(--brand-text-mid)] leading-relaxed text-sm">{panelData.desc}</p>
                                 </div>
 
-                                <div className="border-t border-white/10 pt-4">
+                                <div className="border-t border-[var(--brand-border-2)] pt-4">
                                     <h5 className="text-xs font-bold text-[var(--brand-text-faint)] uppercase tracking-widest mb-3">Why this matters</h5>
                                     <ul className="space-y-3">
-                                        <li className="flex gap-3 text-sm text-gray-300">
+                                        <li className="flex gap-3 text-sm text-[var(--brand-text-mid)]">
                                             <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-green"></div>
                                             It directly impacts your ability to rank in search results.
                                         </li>
-                                        <li className="flex gap-3 text-sm text-gray-300">
+                                        <li className="flex gap-3 text-sm text-[var(--brand-text-mid)]">
                                             <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-green"></div>
                                             Improving this usually leads to more traffic.
                                         </li>

@@ -53,9 +53,9 @@ export default function CopyTab({ page }: { page: any }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         {/* Structure */}
         <Card title="Structure">
-          <div className="mb-2 pb-2 border-b border-[#141414]">
-            <div className="text-[9px] text-[#444] uppercase tracking-wider mb-0.5">H1</div>
-            <div className={`text-[11px] leading-snug break-words ${h1 ? 'text-white' : 'text-[#ef4444]'}`}>
+          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
+            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">H1</div>
+            <div className={`text-[11px] leading-snug break-words ${h1 ? 'text-[var(--brand-text-strong)]' : 'text-[#ef4444]'}`}>
               {h1 || 'Missing'}
             </div>
           </div>
@@ -72,17 +72,17 @@ export default function CopyTab({ page }: { page: any }) {
           <DataRow label="Cluster avg" value={clusterAvg > 0 ? `${formatNumber(clusterAvg)} words` : '—'} mono />
           {clusterAvg > 0 && (
             <div className="mt-2">
-              <div className="flex items-center justify-between text-[10px] text-[#555] mb-1">
+              <div className="flex items-center justify-between text-[10px] text-[var(--brand-text-faint)]] mb-1">
                 <span>{formatNumber(wordCount)}w</span>
                 <span>{formatNumber(clusterAvg)}w avg</span>
               </div>
-              <div className="relative h-2 bg-[#1a1a1a] rounded-full overflow-hidden">
+              <div className="relative h-2 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
                 <div
                   className={`h-full rounded-full ${wordCount >= clusterAvg ? 'bg-[#22c55e]' : 'bg-[#f59e0b]'}`}
                   style={{ width: `${Math.min(100, (wordCount / Math.max(clusterAvg, 1)) * 100)}%` }}
                 />
               </div>
-              <div className="text-[10px] text-[#555] mt-1">
+              <div className="text-[10px] text-[var(--brand-text-faint)]] mt-1">
                 {wordCount >= clusterAvg
                   ? `+${formatNumber(wordCount - clusterAvg)} words vs avg`
                   : `${formatNumber(clusterAvg - wordCount)} words below avg`}
@@ -101,19 +101,19 @@ export default function CopyTab({ page }: { page: any }) {
 
         {/* Headlines & meta */}
         <Card title="Headlines & meta">
-          <div className="mb-2 pb-2 border-b border-[#141414]">
-            <div className="text-[9px] text-[#444] uppercase tracking-wider mb-0.5">Title tag</div>
-            <div className={`text-[11px] break-words ${titleLen >= 30 && titleLen <= 60 ? 'text-white' : 'text-[#f59e0b]'}`}>
-              {title || <span className="italic text-[#555]">Missing</span>}
+          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
+            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">Title tag</div>
+            <div className={`text-[11px] break-words ${titleLen >= 30 && titleLen <= 60 ? 'text-[var(--brand-text-strong)]' : 'text-[#f59e0b]'}`}>
+              {title || <span className="italic text-[var(--brand-text-faint)]]">Missing</span>}
             </div>
-            <div className="text-[10px] text-[#444] mt-0.5">{titleLen} characters</div>
+            <div className="text-[10px] text-[var(--brand-border-2)]] mt-0.5">{titleLen} characters</div>
           </div>
-          <div className="mb-2 pb-2 border-b border-[#141414]">
-            <div className="text-[9px] text-[#444] uppercase tracking-wider mb-0.5">Meta description</div>
-            <div className={`text-[11px] break-words ${metaLen >= 120 && metaLen <= 155 ? 'text-[#ccc]' : 'text-[#f59e0b]'}`}>
-              {metaDesc || <span className="italic text-[#555]">Missing</span>}
+          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
+            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">Meta description</div>
+            <div className={`text-[11px] break-words ${metaLen >= 120 && metaLen <= 155 ? 'text-[var(--brand-text-mid)]]' : 'text-[#f59e0b]'}`}>
+              {metaDesc || <span className="italic text-[var(--brand-text-faint)]]">Missing</span>}
             </div>
-            <div className="text-[10px] text-[#444] mt-0.5">{metaLen} characters</div>
+            <div className="text-[10px] text-[var(--brand-border-2)]] mt-0.5">{metaLen} characters</div>
           </div>
           <DataRow label="CTAs found" value={formatNumber(ctaTexts.length)} status={ctaTexts.length > 0 ? 'pass' : 'warn'} />
         </Card>

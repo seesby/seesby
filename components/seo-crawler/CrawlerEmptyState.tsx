@@ -56,37 +56,37 @@ export default function CrawlerEmptyState() {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-300">
-            <div className="w-full max-w-md bg-[#111] border border-[#2c2c2f] rounded-xl shadow-2xl overflow-hidden transition-all duration-500 ease-in-out">
+            <div className="w-full max-w-md bg-[var(--brand-surface-2)]] border border-[#2c2c2f] rounded-xl shadow-2xl overflow-hidden transition-all duration-500 ease-in-out">
                 <div className="p-8 space-y-6 animate-in zoom-in-95 duration-300">
                     <div className="space-y-1">
-                        <h2 className="text-xl font-bold text-white tracking-tight">Project</h2>
-                        <p className="text-xs text-[#666]">Enter the target to begin.</p>
+                        <h2 className="text-xl font-bold text-[var(--brand-text-strong)] tracking-tight">Project</h2>
+                        <p className="text-xs text-[var(--brand-text-faint)]]">Enter the target to begin.</p>
                     </div>
 
                     <div className="space-y-4">
                         <div className="space-y-2">
-                            <label className="text-[10px] font-bold uppercase tracking-widest text-[#555]">Name</label>
+                            <label className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-text-faint)]]">Name</label>
                             <input 
                                 value={projectName}
                                 onChange={e => setProjectName(e.target.value)}
                                 placeholder="Auto-generated if left blank"
-                                className="w-full h-10 px-4 bg-[#0a0a0a] border border-[#222] rounded-lg text-sm text-white focus:outline-none focus:border-[#F59E0B] transition-colors"
+                                className="w-full h-10 px-4 bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded-lg text-sm text-[var(--brand-text-strong)] focus:outline-none focus:border-[#F59E0B] transition-colors"
                                 autoFocus
                             />
                         </div>
 
                         <div className="space-y-2.5">
-                            <label className="text-[10px] font-bold uppercase tracking-widest text-[#555]">Mode</label>
-                            <div className="grid grid-cols-2 gap-2 bg-[#0a0a0a] p-1 rounded-lg border border-[#222]">
+                            <label className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-text-faint)]]">Mode</label>
+                            <div className="grid grid-cols-2 gap-2 bg-[var(--brand-surface-0)]] p-1 rounded-lg border border-[var(--brand-border-2)]]">
                                 <button 
                                     onClick={() => setMode('spider')}
-                                    className={`py-1.5 text-xs font-bold rounded transition-all ${mode === 'spider' ? 'bg-[#1a1a1a] text-white shadow-lg' : 'text-[#444] hover:text-[#666]'}`}
+                                    className={`py-1.5 text-xs font-bold rounded transition-all ${mode === 'spider' ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)] shadow-lg' : 'text-[var(--brand-border-2)]] hover:text-[var(--brand-text-faint)]]'}`}
                                 >
                                     Whole Website
                                 </button>
                                 <button 
                                     onClick={() => setMode('list')}
-                                    className={`py-1.5 text-xs font-bold rounded transition-all ${mode === 'list' ? 'bg-[#1a1a1a] text-white shadow-lg' : 'text-[#444] hover:text-[#666]'}`}
+                                    className={`py-1.5 text-xs font-bold rounded transition-all ${mode === 'list' ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)] shadow-lg' : 'text-[var(--brand-border-2)]] hover:text-[var(--brand-text-faint)]]'}`}
                                 >
                                     URL List
                                 </button>
@@ -94,23 +94,23 @@ export default function CrawlerEmptyState() {
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-[10px] font-bold uppercase tracking-widest text-[#555]">
+                            <label className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-text-faint)]]">
                                 {mode === 'spider' ? 'Domain / URL' : 'Target URL'}
                             </label>
                             <input 
                                 value={url}
                                 onChange={e => handleUrlChange(e.target.value)}
                                 placeholder="https://example.com"
-                                className="w-full h-10 px-4 bg-[#0a0a0a] border border-[#222] rounded-lg text-sm text-white focus:outline-none focus:border-[#F59E0B] transition-colors"
+                                className="w-full h-10 px-4 bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded-lg text-sm text-[var(--brand-text-strong)] focus:outline-none focus:border-[#F59E0B] transition-colors"
                             />
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-[10px] font-bold uppercase tracking-widest text-[#555]">Industry</label>
+                            <label className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-text-faint)]]">Industry</label>
                             <select 
                                 value={industry}
                                 onChange={e => setIndustry(e.target.value)}
-                                className="w-full h-10 px-3 bg-[#0a0a0a] border border-[#222] rounded-lg text-sm text-white focus:outline-none appearance-none cursor-pointer"
+                                className="w-full h-10 px-3 bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded-lg text-sm text-[var(--brand-text-strong)] focus:outline-none appearance-none cursor-pointer"
                             >
                                 <option value="all">All Industries</option>
                                 {allIndustries().map((entry) => (
@@ -124,7 +124,7 @@ export default function CrawlerEmptyState() {
                         <button 
                             onClick={onCreate}
                             disabled={loading || !url.trim()}
-                            className="w-full h-10 bg-white hover:bg-[#eee] disabled:opacity-30 disabled:cursor-not-allowed text-black text-xs font-bold rounded-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+                            className="w-full h-10 bg-[var(--brand-surface-3)] hover:bg-[#eee] disabled:opacity-30 disabled:cursor-not-allowed text-black text-xs font-bold rounded-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
                         >
                             {loading ? 'Creating...' : 'Create Project'}
                             {!loading && <ArrowRight size={14} />}

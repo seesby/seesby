@@ -190,9 +190,9 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
     };
 
     return (
-        <div className="fixed inset-y-0 right-0 w-[560px] bg-[#0A0A0A] border-l border-white/10 shadow-2xl z-50 flex flex-col animate-in slide-in-from-right duration-300">
+        <div className="fixed inset-y-0 right-0 w-[560px] bg-[var(--brand-surface-0)]] border-l border-[var(--brand-border-2)] shadow-2xl z-50 flex flex-col animate-in slide-in-from-right duration-300">
             {/* Header */}
-            <div className="p-6 border-b border-white/10 flex justify-between items-start">
+            <div className="p-6 border-b border-[var(--brand-border-2)] flex justify-between items-start">
                 <div>
                     <div className="flex items-center gap-2 mb-1">
                         <span className="text-[10px] font-bold uppercase tracking-widest text-brand-amber px-2 py-0.5 bg-brand-amber/10 rounded border border-brand-amber/20">
@@ -208,11 +208,11 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                             </span>
                         )}
                     </div>
-                    <h2 className="text-xl font-bold text-white leading-tight">{collabOverlayTarget.title}</h2>
+                    <h2 className="text-xl font-bold text-[var(--brand-text-strong)] leading-tight">{collabOverlayTarget.title}</h2>
                 </div>
                 <button 
                     onClick={onClose}
-                    className="p-2 hover:bg-white/5 rounded-full transition-colors text-gray-400 hover:text-white"
+                    className="p-2 hover:bg-[var(--brand-surface-3)] rounded-full transition-colors text-gray-400 hover:text-[var(--brand-text-strong)]"
                 >
                     <X size={20} />
                 </button>
@@ -225,7 +225,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-1.5">
                                 <label className="text-[10px] font-bold text-gray-500 uppercase">Assignee</label>
-                                <div className="flex items-center gap-2 p-2 bg-white/5 rounded-xl border border-white/5">
+                                <div className="flex items-center gap-2 p-2 bg-[var(--brand-surface-3)] rounded-xl border border-[var(--brand-border-1)]">
                                     {activeTask.assignee_avatar ? (
                                         <img src={activeTask.assignee_avatar} className="w-6 h-6 rounded-full" alt="" />
                                     ) : (
@@ -233,7 +233,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                             <User size={12} />
                                         </div>
                                     )}
-                                    <span className="text-sm text-white">{activeTask.assignee_name || 'Unassigned'}</span>
+                                    <span className="text-sm text-[var(--brand-text-strong)]">{activeTask.assignee_name || 'Unassigned'}</span>
                                 </div>
                             </div>
                             <div className="space-y-1.5">
@@ -241,7 +241,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                 <select 
                                     value={activeTask.status}
                                     onChange={(e) => handleUpdateTaskStatus(e.target.value as TaskStatus)}
-                                    className="w-full bg-white/5 border border-white/5 rounded-xl p-2 text-sm text-white focus:outline-none focus:border-brand-amber/50"
+                                    className="w-full bg-[var(--brand-surface-3)] border border-[var(--brand-border-1)] rounded-xl p-2 text-sm text-[var(--brand-text-strong)] focus:outline-none focus:border-brand-amber/50"
                                 >
                                     <option value="todo">To Do</option>
                                     <option value="in_progress">In Progress</option>
@@ -264,12 +264,12 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                             </div>
                             <div className="space-y-2">
                                 {subtasks.map(sub => (
-                                    <div key={sub.id} className="flex items-center gap-3 p-3 bg-white/[0.02] rounded-xl border border-white/5 group">
+                                    <div key={sub.id} className="flex items-center gap-3 p-3 bg-[var(--brand-surface-3)]/[0.02] rounded-xl border border-[var(--brand-border-1)] group">
                                         <input 
                                             type="checkbox" 
                                             checked={sub.completed}
                                             onChange={(e) => handleToggleSubtask(sub.id, e.target.checked)}
-                                            className="w-4 h-4 rounded border-white/10 bg-black text-brand-amber focus:ring-brand-amber focus:ring-offset-0"
+                                            className="w-4 h-4 rounded border-[var(--brand-border-2)] bg-black text-brand-amber focus:ring-brand-amber focus:ring-offset-0"
                                         />
                                         <span className={`text-sm flex-1 ${sub.completed ? 'text-gray-600 line-through' : 'text-gray-300'}`}>
                                             {sub.title}
@@ -288,7 +288,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                         placeholder="Add a subtask..."
                                         value={newSubtaskTitle}
                                         onChange={(e) => setNewSubtaskTitle(e.target.value)}
-                                        className="w-full bg-transparent border border-dashed border-white/10 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-white/20 pl-10"
+                                        className="w-full bg-transparent border border-dashed border-[var(--brand-border-2)] rounded-xl p-3 text-sm text-[var(--brand-text-strong)] focus:outline-none focus:border-[var(--brand-border-3)] pl-10"
                                     />
                                     <Plus size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
                                 </form>
@@ -296,12 +296,12 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                         </div>
                     </section>
                 ) : collabOverlayTarget.type === 'task' ? (
-                    <section className="bg-white/5 border border-dashed border-white/10 rounded-2xl p-6 space-y-4">
+                    <section className="bg-[var(--brand-surface-3)] border border-dashed border-[var(--brand-border-2)] rounded-2xl p-6 space-y-4">
                         <div className="flex flex-col items-center text-center space-y-2 mb-2">
                             <div className="w-12 h-12 rounded-full bg-brand-amber/10 flex items-center justify-center text-brand-amber">
                                 <CheckCircle size={24} />
                             </div>
-                            <h3 className="text-lg font-bold text-white">No task created yet</h3>
+                            <h3 className="text-lg font-bold text-[var(--brand-text-strong)]">No task created yet</h3>
                             <p className="text-xs text-gray-500 max-w-xs">Assign this issue to a team member to track progress and get notifications.</p>
                         </div>
                         
@@ -309,7 +309,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                             <div className="space-y-1.5">
                                 <label className="text-[10px] font-bold text-gray-500 uppercase">Description (Optional)</label>
                                 <textarea 
-                                    className="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 resize-none min-h-[80px]"
+                                    className="w-full bg-black/40 border border-[var(--brand-border-2)] rounded-xl p-3 text-sm text-[var(--brand-text-strong)] focus:outline-none focus:border-brand-amber/50 resize-none min-h-[80px]"
                                     placeholder="What needs to be done?"
                                     value={newTaskDescription}
                                     onChange={(e) => setNewTaskDescription(e.target.value)}
@@ -326,8 +326,8 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                                 onClick={() => setNewTaskPriority(p)}
                                                 className={`px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase transition-all ${
                                                     newTaskPriority === p 
-                                                    ? 'bg-brand-amber text-white' 
-                                                    : 'bg-white/5 text-gray-500 hover:text-white hover:bg-white/10'
+                                                    ? 'bg-brand-amber text-[var(--brand-text-strong)]' 
+                                                    : 'bg-[var(--brand-surface-3)] text-gray-500 hover:text-[var(--brand-text-strong)] hover:bg-[var(--brand-surface-4)]'
                                                 }`}
                                             >
                                                 {p}
@@ -338,7 +338,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                 <button 
                                     onClick={handleCreateTask}
                                     disabled={isCreatingTask}
-                                    className="px-6 py-2.5 bg-brand-amber hover:bg-red-600 text-white rounded-xl text-xs font-bold transition-all shadow-lg active:scale-95 disabled:opacity-50"
+                                    className="px-6 py-2.5 bg-brand-amber hover:bg-red-600 text-[var(--brand-text-strong)] rounded-xl text-xs font-bold transition-all shadow-lg active:scale-95 disabled:opacity-50"
                                 >
                                     {isCreatingTask ? 'Creating...' : 'Create Task'}
                                 </button>
@@ -360,7 +360,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                 <p className="text-xs text-gray-500 italic">Loading conversation...</p>
                             </div>
                         ) : comments.length === 0 ? (
-                            <div className="py-10 text-center bg-white/[0.02] rounded-2xl border border-dashed border-white/5">
+                            <div className="py-10 text-center bg-[var(--brand-surface-3)]/[0.02] rounded-2xl border border-dashed border-[var(--brand-border-1)]">
                                 <p className="text-xs text-gray-500">No comments yet. Start the conversation!</p>
                             </div>
                         ) : (
@@ -369,25 +369,25 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                     {comment.user_avatar ? (
                                         <img src={comment.user_avatar} className="w-8 h-8 rounded-full flex-shrink-0" alt="" />
                                     ) : (
-                                        <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gray-400 flex-shrink-0">
+                                        <div className="w-8 h-8 rounded-full bg-[var(--brand-surface-3)] flex items-center justify-center text-gray-400 flex-shrink-0">
                                             <User size={16} />
                                         </div>
                                     )}
                                     <div className="flex-1 space-y-1.5">
                                         <div className="flex items-center gap-2">
-                                            <span className="text-sm font-bold text-white">{comment.user_name}</span>
+                                            <span className="text-sm font-bold text-[var(--brand-text-strong)]">{comment.user_name}</span>
                                             <span className="text-[10px] text-gray-500">
                                                 {new Date(comment.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                             </span>
                                         </div>
-                                        <div className="text-sm text-gray-300 leading-relaxed bg-white/5 p-4 rounded-2xl rounded-tl-none border border-white/5">
+                                        <div className="text-sm text-gray-300 leading-relaxed bg-[var(--brand-surface-3)] p-4 rounded-2xl rounded-tl-none border border-[var(--brand-border-1)]">
                                             {comment.text}
                                         </div>
                                         <div className="flex items-center gap-2 pt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <button className="p-1 text-gray-500 hover:text-white transition-colors">
+                                            <button className="p-1 text-gray-500 hover:text-[var(--brand-text-strong)] transition-colors">
                                                 <Smile size={14} />
                                             </button>
-                                            <button className="text-[10px] font-bold text-gray-500 hover:text-white uppercase tracking-tighter">Reply</button>
+                                            <button className="text-[10px] font-bold text-gray-500 hover:text-[var(--brand-text-strong)] uppercase tracking-tighter">Reply</button>
                                             {!comment.resolved && (
                                                 <button 
                                                     onClick={() => handleResolveComment(comment.id)}
@@ -406,7 +406,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
             </div>
 
             {/* Input Area */}
-            <div className="p-6 border-t border-white/10 bg-[#0A0A0A]">
+            <div className="p-6 border-t border-[var(--brand-border-2)] bg-[var(--brand-surface-0)]]">
                 <div className="relative">
                     <textarea 
                         placeholder="Write a comment..."
@@ -418,12 +418,12 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
                                 handleSendComment();
                             }
                         }}
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 pr-12 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-brand-amber/30 focus:ring-1 focus:ring-brand-amber/30 transition-all resize-none min-h-[100px]"
+                        className="w-full bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] rounded-2xl p-4 pr-12 text-sm text-[var(--brand-text-strong)] placeholder-gray-600 focus:outline-none focus:border-brand-amber/30 focus:ring-1 focus:ring-brand-amber/30 transition-all resize-none min-h-[100px]"
                     />
                     <button 
                         onClick={handleSendComment}
                         disabled={!commentText.trim()}
-                        className="absolute right-3 bottom-3 p-2 bg-brand-amber hover:bg-red-600 disabled:bg-white/5 disabled:text-gray-600 text-white rounded-xl transition-all shadow-lg"
+                        className="absolute right-3 bottom-3 p-2 bg-brand-amber hover:bg-red-600 disabled:bg-[var(--brand-surface-3)] disabled:text-gray-600 text-[var(--brand-text-strong)] rounded-xl transition-all shadow-lg"
                     >
                         <Send size={18} />
                     </button>

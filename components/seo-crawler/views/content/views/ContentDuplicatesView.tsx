@@ -12,8 +12,8 @@ const TABS: TabDef[] = [
   { id: 'cannibal', label: 'Cannibalization' },
 ];
 
-const PANEL = 'rounded border border-[#1a1a1a] bg-[#0a0a0a]';
-const LABEL = 'text-[10px] uppercase tracking-wider text-[#666] mb-2';
+const PANEL = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]]';
+const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2';
 
 // ─── Types ────────────────────────────────────────────────────────────────
 
@@ -224,13 +224,13 @@ export default function ContentDuplicatesView() {
       {/* Tab bar + threshold — full width */}
       <div className={`${PANEL} col-span-12`}>
         <div className="flex items-center justify-between p-2">
-          <div className="flex items-center gap-0.5 bg-[#111] rounded p-0.5">
+          <div className="flex items-center gap-0.5 bg-[var(--brand-surface-2)]] rounded p-0.5">
             {TABS.map(t => (
               <button
                 key={t.id}
                 onClick={() => setTab(t.id)}
                 className={`h-[24px] px-3 text-[10px] rounded transition-colors ${
-                  tab === t.id ? 'bg-[#1a1a1a] text-white' : 'text-[#666] hover:text-[#aaa]'
+                  tab === t.id ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]'
                 }`}
               >
                 {t.label}
@@ -238,7 +238,7 @@ export default function ContentDuplicatesView() {
             ))}
           </div>
           {tab !== 'cannibal' && (
-            <div className="flex items-center gap-2 text-[10px] text-[#666]">
+            <div className="flex items-center gap-2 text-[10px] text-[var(--brand-text-faint)]]">
               <span>Threshold</span>
               <input
                 type="range"
@@ -248,7 +248,7 @@ export default function ContentDuplicatesView() {
                 onChange={e => setThreshold(Number(e.target.value))}
                 className="w-20 accent-[#a78bfa]"
               />
-              <span className="w-8 text-right text-[#888]">{threshold}%</span>
+              <span className="w-8 text-right text-[var(--brand-text-mid)]]">{threshold}%</span>
             </div>
           )}
         </div>
@@ -257,19 +257,19 @@ export default function ContentDuplicatesView() {
       {/* Summary row — full width */}
       <div className={`${PANEL} col-span-12`}>
         <div className="flex items-center gap-6 p-2 text-[11px]">
-          <span className="text-[#888]">{activeGroups.length} groups</span>
-          <span className="text-[#888]">
+          <span className="text-[var(--brand-text-mid)]]">{activeGroups.length} groups</span>
+          <span className="text-[var(--brand-text-mid)]]">
             {activeGroups.reduce((a, g) => a + g.pages.length, 0)} pages
           </span>
           {tab === 'near' && (
-            <span className="text-[#888]">
+            <span className="text-[var(--brand-text-mid)]]">
               Avg sim {activeGroups.length > 0
                 ? Math.round(activeGroups.reduce((a, g) => a + g.avgSim, 0) / activeGroups.length * 100)
                 : 0}%
             </span>
           )}
           {tab === 'cannibal' && (
-            <span className="text-[#888]">{cannibalPairs.length} competing pairs</span>
+            <span className="text-[var(--brand-text-mid)]]">{cannibalPairs.length} competing pairs</span>
           )}
         </div>
       </div>
@@ -281,7 +281,7 @@ export default function ContentDuplicatesView() {
         ) : activeGroups.length > 0 ? (
           <GroupsTable groups={activeGroups} tab={tab} onSelect={setSelectedPageUrl} onOpen={setInspectorOpen} />
         ) : (
-          <div className="flex items-center justify-center h-[120px] text-[11px] text-[#555]">
+          <div className="flex items-center justify-center h-[120px] text-[11px] text-[var(--brand-text-faint)]]">
             {tab === 'near' ? 'No near-duplicate groups found' : 'No exact duplicates found'}
           </div>
         )}
@@ -318,7 +318,7 @@ function GroupsTable({
   return (
     <div className="max-h-[400px] overflow-auto custom-scrollbar">
       {/* Header */}
-      <div className="flex items-center gap-3 px-3 py-1.5 text-[10px] text-[#666] border-b border-[#111] sticky top-0 bg-[#0a0a0a]">
+      <div className="flex items-center gap-3 px-3 py-1.5 text-[10px] text-[var(--brand-text-faint)]] border-b border-[var(--brand-surface-2)]] sticky top-0 bg-[var(--brand-surface-0)]]">
         <span className="w-8">#</span>
         <span className="w-8">Pages</span>
         <span className="w-14 text-right">{tab === 'near' ? 'Avg sim' : 'Type'}</span>
@@ -326,7 +326,7 @@ function GroupsTable({
         <span className="w-[140px]">Recommendation</span>
       </div>
       {/* Rows */}
-      <div className="divide-y divide-[#111]">
+      <div className="divide-y divide-[var(--brand-surface-2)]]">
         {groups.map(g => {
           const isOpen = expanded.has(g.id);
           return (
@@ -334,32 +334,32 @@ function GroupsTable({
               {/* Group header */}
               <button
                 onClick={() => toggle(g.id)}
-                className="w-full flex items-center gap-3 px-3 py-1.5 text-left hover:bg-[#111] transition-colors"
+                className="w-full flex items-center gap-3 px-3 py-1.5 text-left hover:bg-[var(--brand-surface-2)]] transition-colors"
               >
-                <span className="w-8 text-[10px] text-[#666] tabular-nums">{g.id + 1}</span>
-                <span className="w-8 text-[10px] text-[#888] tabular-nums">{g.pages.length}</span>
-                <span className="w-14 text-[10px] text-right tabular-nums text-[#888]">
+                <span className="w-8 text-[10px] text-[var(--brand-text-faint)]] tabular-nums">{g.id + 1}</span>
+                <span className="w-8 text-[10px] text-[var(--brand-text-mid)]] tabular-nums">{g.pages.length}</span>
+                <span className="w-14 text-[10px] text-right tabular-nums text-[var(--brand-text-mid)]]">
                   {tab === 'near' ? `${Math.round(g.avgSim * 100)}%` : 'exact'}
                 </span>
-                <span className="flex-1 text-[11px] text-[#ccc] truncate">{g.topPage}</span>
+                <span className="flex-1 text-[11px] text-[var(--brand-text-mid)]] truncate">{g.topPage}</span>
                 <span className="w-[140px] text-[10px] text-[#a78bfa] truncate">{g.recommendation}</span>
               </button>
               {/* Expanded pages */}
               {isOpen && (
-                <div className="bg-[#0a0a0a] border-t border-[#111]">
+                <div className="bg-[var(--brand-surface-0)]] border-t border-[var(--brand-surface-2)]]">
                   {g.pages.map(p => (
                     <button
                       key={p.url}
                       onClick={() => { onSelect(p.url); onOpen(true); }}
-                      className="w-full flex items-center gap-3 pl-14 pr-3 py-1 text-left hover:bg-[#111] transition-colors"
+                      className="w-full flex items-center gap-3 pl-14 pr-3 py-1 text-left hover:bg-[var(--brand-surface-2)]] transition-colors"
                     >
                       <span className="text-[10px] text-[#bdb6ff] truncate flex-1 min-w-0">{p.path}</span>
                       {tab === 'near' && (
-                        <span className="text-[10px] text-[#888] tabular-nums w-14 text-right">
+                        <span className="text-[10px] text-[var(--brand-text-mid)]] tabular-nums w-14 text-right">
                           {Math.round(p.similarity * 100)}%
                         </span>
                       )}
-                      <span className="text-[10px] text-[#888] tabular-nums w-14 text-right">{p.clicks}</span>
+                      <span className="text-[10px] text-[var(--brand-text-mid)]] tabular-nums w-14 text-right">{p.clicks}</span>
                       <span className={`text-[10px] tabular-nums w-8 text-right ${
                         p.quality >= 75 ? 'text-[#22c55e]' : p.quality >= 50 ? 'text-[#f59e0b]' : 'text-[#ef4444]'
                       }`}>
@@ -388,7 +388,7 @@ function CannibalTable({
 }) {
   if (pairs.length === 0) {
     return (
-      <div className="flex items-center justify-center h-[120px] text-[11px] text-[#555]">
+      <div className="flex items-center justify-center h-[120px] text-[11px] text-[var(--brand-text-faint)]]">
         No cannibalization detected
       </div>
     );
@@ -396,29 +396,29 @@ function CannibalTable({
 
   return (
     <div className="max-h-[400px] overflow-auto custom-scrollbar">
-      <div className="flex items-center gap-3 px-3 py-1.5 text-[10px] text-[#666] border-b border-[#111] sticky top-0 bg-[#0a0a0a]">
+      <div className="flex items-center gap-3 px-3 py-1.5 text-[10px] text-[var(--brand-text-faint)]] border-b border-[var(--brand-surface-2)]] sticky top-0 bg-[var(--brand-surface-0)]]">
         <span className="w-[120px]">Query</span>
         <span className="flex-1">Page A</span>
         <span className="flex-1">Page B</span>
         <span className="w-[160px]">Recommendation</span>
       </div>
-      <div className="divide-y divide-[#111]">
+      <div className="divide-y divide-[var(--brand-surface-2)]]">
         {pairs.map((p, i) => (
-          <div key={i} className="flex items-center gap-3 px-3 py-2 hover:bg-[#0f0f0f]">
+          <div key={i} className="flex items-center gap-3 px-3 py-2 hover:bg-[var(--brand-surface-1)]]">
             <span className="w-[120px] text-[10px] text-[#f59e0b] truncate">"{p.query}"</span>
             <button
               onClick={() => { onSelect(p.pageA.url); onOpen(true); }}
               className="flex-1 text-left min-w-0"
             >
               <div className="text-[10px] text-[#bdb6ff] truncate">{p.pageA.path}</div>
-              <div className="text-[9px] text-[#666]">pos {p.pageA.position} / {p.pageA.clicks} clk</div>
+              <div className="text-[9px] text-[var(--brand-text-faint)]]">pos {p.pageA.position} / {p.pageA.clicks} clk</div>
             </button>
             <button
               onClick={() => { onSelect(p.pageB.url); onOpen(true); }}
               className="flex-1 text-left min-w-0"
             >
               <div className="text-[10px] text-[#bdb6ff] truncate">{p.pageB.path}</div>
-              <div className="text-[9px] text-[#666]">pos {p.pageB.position} / {p.pageB.clicks} clk</div>
+              <div className="text-[9px] text-[var(--brand-text-faint)]]">pos {p.pageB.position} / {p.pageB.clicks} clk</div>
             </button>
             <span className="w-[160px] text-[10px] text-[#a78bfa] truncate">{p.recommendation}</span>
           </div>
@@ -452,7 +452,7 @@ function SimilarityHeatmap({
               {data.urls.map((url, i) => (
                 <th
                   key={i}
-                  className="text-[8px] text-[#666] font-normal px-px cursor-pointer hover:text-white"
+                  className="text-[8px] text-[var(--brand-text-faint)]] font-normal px-px cursor-pointer hover:text-[var(--brand-text-strong)]"
                   style={{ width: cellSize, maxWidth: cellSize }}
                   onClick={() => { onSelect(url); onOpen(true); }}
                   title={url}
@@ -466,7 +466,7 @@ function SimilarityHeatmap({
             {data.urls.map((url, row) => (
               <tr key={row}>
                 <td
-                  className="text-[8px] text-[#666] text-right pr-1 cursor-pointer hover:text-white"
+                  className="text-[8px] text-[var(--brand-text-faint)]] text-right pr-1 cursor-pointer hover:text-[var(--brand-text-strong)]"
                   onClick={() => { onSelect(url); onOpen(true); }}
                   title={url}
                 >
@@ -483,7 +483,7 @@ function SimilarityHeatmap({
                   return (
                     <td
                       key={col}
-                      className="border border-[#0a0a0a]"
+                      className="border border-[var(--brand-surface-0)]]"
                       style={{ width: cellSize, height: cellSize, background: bg }}
                       title={row === col ? data.urls[row] : `${data.urls[row]} ↔ ${data.urls[col]}: ${pct}%`}
                     />

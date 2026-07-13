@@ -12,8 +12,8 @@ export function Treemap({
   const colored = data.map((d, i) => ({ ...d, color: d.color ?? CHART_PALETTE[i % CHART_PALETTE.length] }));
   return (
     <ResponsiveContainer width="100%" height={height}>
-      <RT data={colored as any} dataKey="size" stroke="#0a0a0a" content={<TreemapNode />}>
-        <Tooltip contentStyle={ { background: '#0c0c0c', border: '1px solid #1a1a1a', fontSize: 11 } } />
+      <RT data={colored as any} dataKey="size" stroke="bg-[var(--brand-surface-0)]" content={<TreemapNode />}>
+        <Tooltip contentStyle={ { background: 'bg-[var(--brand-surface-1)]', border: '1px solid bg-[var(--brand-surface-3)]', fontSize: 11 } } />
       </RT>
     </ResponsiveContainer>
   );
@@ -29,12 +29,12 @@ function TreemapNode(props: any) {
 
   return (
     <g>
-      <rect x={x} y={y} width={width} height={height} fill={color} stroke="#0a0a0a" />
+      <rect x={x} y={y} width={width} height={height} fill={color} stroke="bg-[var(--brand-surface-0)]" />
       {width > 40 && height > 18 && displayName && (
-        <text x={x + 4} y={y + 13} fill="#fff" fontSize={9} fontWeight={500}>{displayName}</text>
+        <text x={x + 4} y={y + 13} fill="text-[var(--brand-text-strong)]" fontSize={9} fontWeight={500}>{displayName}</text>
       )}
       {width > 40 && height > 32 && (
-        <text x={x + 4} y={y + 25} fill="#fff" fontSize={9} opacity={0.7}>{size}</text>
+        <text x={x + 4} y={y + 25} fill="text-[var(--brand-text-strong)]" fontSize={9} opacity={0.7}>{size}</text>
       )}
     </g>
   );

@@ -16,7 +16,7 @@ const BUCKET_COLORS: Record<string, string> = {
   '11-20': '#f59e0b',
   '21-50': '#f97316',
   '50+': '#ef4444',
-  None: '#555',
+  None: 'text-[var(--brand-text-faint)]',
 };
 
 export default function PositionHistogram({ data }: Props) {
@@ -24,26 +24,26 @@ export default function PositionHistogram({ data }: Props) {
     <div style={{ width: '100%', height: 160 }}>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ left: -12, right: 8, top: 2, bottom: 0 }}>
-          <XAxis dataKey="label" tick={{ fill: '#888', fontSize: 10 }} axisLine={false} tickLine={false} />
-          <YAxis tick={{ fill: '#666', fontSize: 9 }} axisLine={false} tickLine={false} width={28} />
+          <XAxis dataKey="label" tick={{ fill: 'text-[var(--brand-text-mid)]', fontSize: 10 }} axisLine={false} tickLine={false} />
+          <YAxis tick={{ fill: 'text-[var(--brand-text-faint)]', fontSize: 9 }} axisLine={false} tickLine={false} width={28} />
           <Tooltip
             contentStyle={{ 
-              backgroundColor: '#141414', 
-              border: '1px solid #222', 
+              backgroundColor: 'bg-[var(--brand-surface-2)]', 
+              border: '1px solid border-[var(--brand-border-2)]', 
               borderRadius: '8px', 
               fontSize: '11px',
               boxShadow: '0 8px 16px rgba(0,0,0,0.5)',
               padding: '8px 10px'
             }}
             itemStyle={{ color: 'white', fontWeight: 'bold' }}
-            cursor={{ fill: '#ffffff08' }}
+            cursor={{ fill: 'bg-[var(--brand-surface-4)]08' }}
             formatter={(v: number) => [v.toLocaleString(), 'Pages']}
           />
           <Bar dataKey="count" radius={[4, 4, 0, 0]} style={{ cursor: 'pointer' }}>
             {data.map((entry) => (
               <Cell 
                 key={entry.label} 
-                fill={BUCKET_COLORS[entry.label] || '#666'}
+                fill={BUCKET_COLORS[entry.label] || 'text-[var(--brand-text-faint)]'}
                 className="hover:opacity-80 transition-opacity"
               />
             ))}

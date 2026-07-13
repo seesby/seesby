@@ -40,11 +40,11 @@ export default function AITab({ config, setConfig }: TabProps) {
       <div className="p-4 bg-gradient-to-br from-[#F59E0B]/20 to-transparent border border-[#F59E0B]/30 rounded-xl mb-6">
         <div className="flex items-center gap-3 mb-2">
           <div className="w-8 h-8 rounded-lg bg-[#F59E0B] flex items-center justify-center">
-            <Wand2 size={18} className="text-white" />
+            <Wand2 size={18} className="text-[var(--brand-text-strong)]" />
           </div>
           <div>
-            <h3 className="text-[14px] font-bold text-white">Advanced AI Intelligence</h3>
-            <p className="text-[11px] text-[#aaa]">Powered by Gemini 1.5 & Cloudflare Workers AI</p>
+            <h3 className="text-[14px] font-bold text-[var(--brand-text-strong)]">Advanced AI Intelligence</h3>
+            <p className="text-[11px] text-[var(--brand-text-mid)]]">Powered by Gemini 1.5 & Cloudflare Workers AI</p>
           </div>
           <div className="ml-auto">
             <SettingsToggle 
@@ -63,16 +63,16 @@ export default function AITab({ config, setConfig }: TabProps) {
               {tasks.map(task => (
                 <div key={task.id} 
                   className={`p-3 rounded-lg border transition-all cursor-pointer flex gap-3
-                    ${aiTasks[task.id as keyof AITaskToggles] ? 'bg-[#111] border-[#F59E0B]/30 shadow-[0_0_15px_rgba(245,158,11,0.05)]' : 'bg-[#0a0a0a] border-[#222] grayscale opacity-60 hover:grayscale-0 hover:opacity-100'}`}
+                    ${aiTasks[task.id as keyof AITaskToggles] ? 'bg-[var(--brand-surface-2)]] border-[#F59E0B]/30 shadow-[0_0_15px_rgba(245,158,11,0.05)]' : 'bg-[var(--brand-surface-0)]] border-[var(--brand-border-2)]] grayscale opacity-60 hover:grayscale-0 hover:opacity-100'}`}
                   onClick={() => updateAiTask(task.id as keyof AITaskToggles, !aiTasks[task.id as keyof AITaskToggles])}
                 >
                   <div className={`w-8 h-8 rounded flex items-center justify-center shrink-0 
-                    ${aiTasks[task.id as keyof AITaskToggles] ? 'bg-[#F59E0B]/20 text-[#F59E0B]' : 'bg-[#222] text-[#666]'}`}>
+                    ${aiTasks[task.id as keyof AITaskToggles] ? 'bg-[#F59E0B]/20 text-[#F59E0B]' : 'bg-[var(--brand-border-2)]] text-[var(--brand-text-faint)]]'}`}>
                     {task.icon}
                   </div>
                   <div>
-                    <div className="text-[12px] font-bold text-white mb-0.5">{task.label}</div>
-                    <div className="text-[10px] text-[#666] leading-tight">{task.desc}</div>
+                    <div className="text-[12px] font-bold text-[var(--brand-text-strong)] mb-0.5">{task.label}</div>
+                    <div className="text-[10px] text-[var(--brand-text-faint)]] leading-tight">{task.desc}</div>
                   </div>
                 </div>
               ))}

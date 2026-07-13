@@ -97,7 +97,7 @@ export const RankTrackerView = () => {
 
     if (!activeProject) {
         return (
-            <div className="flex flex-col items-center justify-center h-96 text-gray-500">
+            <div className="flex flex-col items-center justify-center h-96 text-[var(--brand-text-faint)]">
                 <Search size={48} className="mb-4 opacity-50" />
                 <h3 className="text-xl font-bold text-white mb-2">No Project Selected</h3>
                 <p className="text-sm">Please select or create a project to view keyword rankings.</p>
@@ -110,7 +110,7 @@ export const RankTrackerView = () => {
             <div className="flex justify-between items-center">
                 <div>
                     <h2 className="text-2xl font-bold font-heading text-white">Rank Tracker</h2>
-                    <p className="text-gray-400 text-sm mt-1">Monitoring {keywords.length} keywords for {activeProject.name}.</p>
+                    <p className="text-[var(--brand-text-mid)] text-sm mt-1">Monitoring {keywords.length} keywords for {activeProject.name}.</p>
                 </div>
                 {!isAdding ? (
                     <div className="flex gap-2">
@@ -123,7 +123,7 @@ export const RankTrackerView = () => {
                         <button
                             onClick={refreshRanks}
                             disabled={isRefreshing}
-                            className="bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 px-4 py-2 rounded-xl text-sm font-bold transition-colors flex items-center gap-2 disabled:opacity-50"
+                            className="bg-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-4)] border border-[var(--brand-border-2)] text-[var(--brand-text-mid)] px-4 py-2 rounded-xl text-sm font-bold transition-colors flex items-center gap-2 disabled:opacity-50"
                         >
                             <RefreshCw size={14} className={isRefreshing ? 'animate-spin' : ''} />
                             {isRefreshing ? 'Refreshing...' : 'Refresh Rankings'}
@@ -136,13 +136,13 @@ export const RankTrackerView = () => {
                             placeholder="Enter keyword..."
                             value={newKeyword}
                             onChange={(e) => setNewKeyword(e.target.value)}
-                            className="bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-brand-amber w-64"
+                            className="bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-brand-amber w-64"
                             autoFocus
                         />
                         <button type="submit" className="bg-brand-amber hover:bg-brand-amberHover text-white px-4 py-2 rounded-xl text-sm font-bold transition-colors">
                             Save
                         </button>
-                        <button type="button" onClick={() => setIsAdding(false)} className="bg-white/5 hover:bg-white/10 text-gray-300 px-4 py-2 rounded-xl text-sm font-bold transition-colors">
+                        <button type="button" onClick={() => setIsAdding(false)} className="bg-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-4)] text-[var(--brand-text-mid)] px-4 py-2 rounded-xl text-sm font-bold transition-colors">
                             Cancel
                         </button>
                     </form>
@@ -154,23 +154,23 @@ export const RankTrackerView = () => {
                     <Loader2 className="animate-spin text-brand-amber" size={32} />
                 </div>
             ) : keywords.length === 0 ? (
-                <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 p-12 text-center text-gray-500">
+                <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-12 text-center text-[var(--brand-text-faint)]">
                     <Search size={48} className="mx-auto mb-4 opacity-20" />
                     <h3 className="text-lg font-bold text-white mb-2">No Keywords Tracked</h3>
                     <p className="text-sm mb-6">Add your first keyword to start tracking rankings.</p>
                     <button
                         onClick={() => setIsAdding(true)}
-                        className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-6 py-2 rounded-xl text-sm font-bold transition-colors inline-block"
+                        className="bg-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-4)] border border-[var(--brand-border-2)] text-white px-6 py-2 rounded-xl text-sm font-bold transition-colors inline-block"
                     >
                         Add Keyword
                     </button>
                 </div>
             ) : (
-                <div className="bg-[#0F0F0F] rounded-3xl border border-white/5 overflow-hidden">
+                <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] overflow-hidden">
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className="border-b border-white/5 text-xs font-bold text-gray-500 uppercase tracking-wider bg-white/[0.02]">
+                                <tr className="border-b border-[var(--brand-border-1)] text-xs font-bold text-[var(--brand-text-faint)] uppercase tracking-wider bg-[var(--brand-surface-3)]/[0.02]">
                                     <th className="p-4 pl-6">Keyword</th>
                                     <th className="p-4">Intent</th>
                                     <th className="p-4 text-center">Volume</th>
@@ -181,9 +181,9 @@ export const RankTrackerView = () => {
                             </thead>
                             <tbody className="divide-y divide-white/5">
                                 {keywords.map((kw: any) => (
-                                    <tr key={kw.id} className="group hover:bg-white/[0.02] transition-colors">
+                                    <tr key={kw.id} className="group hover:bg-[var(--brand-surface-3)]/[0.02] transition-colors">
                                         <td className="p-4 pl-6">
-                                            <span className="font-bold text-gray-200 block">{kw.keyword}</span>
+                                            <span className="font-bold text-[var(--brand-text-mid)] block">{kw.keyword}</span>
                                         </td>
                                         <td className="p-4">
                                             {kw.intent && (
@@ -194,13 +194,13 @@ export const RankTrackerView = () => {
                                                 </span>
                                             )}
                                         </td>
-                                        <td className="p-4 text-center text-sm text-gray-400 font-mono">{kw.volume}</td>
+                                        <td className="p-4 text-center text-sm text-[var(--brand-text-mid)] font-mono">{kw.volume}</td>
                                         <td className="p-4 text-center">
                                             <div className="flex items-center justify-center gap-2">
-                                                <div className="w-16 h-1.5 bg-[#222] rounded-full overflow-hidden">
+                                                <div className="w-16 h-1.5 bg-[var(--brand-border-2)]] rounded-full overflow-hidden">
                                                     <div className={`h-full rounded-full ${kw.kd > 60 ? 'bg-red-500' : kw.kd > 40 ? 'bg-orange-500' : 'bg-brand-green'}`} style={{ width: `${kw.kd}%` }}></div>
                                                 </div>
-                                                <span className="text-xs text-gray-500 w-6">{kw.kd}</span>
+                                                <span className="text-xs text-[var(--brand-text-faint)] w-6">{kw.kd}</span>
                                             </div>
                                         </td>
                                         <td className="p-4 text-center">
@@ -229,7 +229,7 @@ export const RankTrackerView = () => {
                                                     </ResponsiveContainer>
                                                 </div>
                                             ) : (
-                                                <span className="text-[10px] text-gray-600">No data</span>
+                                                <span className="text-[10px] text-[var(--brand-text-muted)]">No data</span>
                                             )}
                                         </td>
                                     </tr>

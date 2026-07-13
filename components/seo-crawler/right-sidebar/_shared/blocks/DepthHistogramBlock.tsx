@@ -14,7 +14,7 @@ export function DepthHistogramBlock({ title = 'Click depth', depth, onBucketClic
   const max = Math.max(1, ...buckets.map(b => b.v))
 
   return (
-    <div className="rounded-md border border-[#161616] bg-[#0a0a0a] p-3">
+    <div className="rounded-md border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3">
       <div className="text-[11px] uppercase tracking-wider text-neutral-500 mb-2">{title}</div>
       <div className="grid grid-cols-4 gap-1.5">
         {buckets.map(b => {
@@ -25,11 +25,11 @@ export function DepthHistogramBlock({ title = 'Click depth', depth, onBucketClic
               onClick={() => onBucketClick?.(b.id)}
               className="flex flex-col items-center gap-1 hover:brightness-125 transition-all"
             >
-              <div className="w-full bg-[#141414] rounded relative h-[60px] flex items-end">
+              <div className="w-full bg-[var(--brand-surface-2)]] rounded relative h-[60px] flex items-end">
                 <div className="w-full bg-blue-500 rounded" style={{ height: `${h}px` }} />
               </div>
-              <div className="text-[10px] text-[#bbb] text-center leading-tight">{b.id}</div>
-              <div className="text-[10px] font-mono text-[#888]">{b.v.toLocaleString()}</div>
+              <div className="text-[10px] text-[var(--brand-text-mid)]] text-center leading-tight">{b.id}</div>
+              <div className="text-[10px] font-mono text-[var(--brand-text-mid)]]">{b.v.toLocaleString()}</div>
             </button>
           )
         })}

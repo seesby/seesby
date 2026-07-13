@@ -27,7 +27,7 @@ export function SocialTraffic() {
             ? <Sparkline values={s.traffic.series} tone="info" width={80} height={20} />
             : undefined}>
           <div className="flex items-baseline gap-2">
-            <span className="text-[24px] font-bold font-mono text-white">{compactNum(s.traffic.sessions)}</span>
+            <span className="text-[24px] font-bold font-mono text-[var(--brand-text-strong)]">{compactNum(s.traffic.sessions)}</span>
             {s.hasPrior && (
               <TrendDelta current={s.traffic.sessions} previous={s.traffic.sessionsPrev} />
             )}
@@ -84,17 +84,17 @@ export function SocialTraffic() {
 
       {s.traffic.topLandingPages.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[#1f1f1f]">
-            <span className="text-[11px] text-[#888]">Top landing pages</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">Top landing pages</span>
           </div>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.traffic.topLandingPages.slice(0, 5).map((page, i) => (
-              <div key={i} className="flex items-center justify-between px-3 py-2 border-b border-[#1f1f1f] last:border-b-0">
+              <div key={i} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
                 <div className="min-w-0 flex-1">
-                  <div className="text-[11px] text-white truncate">{page.title || page.url}</div>
-                  <div className="text-[10px] text-[#666] truncate">{page.url}</div>
+                  <div className="text-[11px] text-[var(--brand-text-strong)] truncate">{page.title || page.url}</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)]] truncate">{page.url}</div>
                 </div>
-                <span className="text-[10px] font-mono text-[#888] ml-2 shrink-0">{compactNum(page.sessions)}</span>
+                <span className="text-[10px] font-mono text-[var(--brand-text-mid)]] ml-2 shrink-0">{compactNum(page.sessions)}</span>
               </div>
             ))}
           </div>
@@ -103,16 +103,16 @@ export function SocialTraffic() {
 
       {s.traffic.topPosts.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[#1f1f1f]">
-            <span className="text-[11px] text-[#888]">Top referring posts</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">Top referring posts</span>
           </div>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.traffic.topPosts.slice(0, 4).map(p => (
-              <div key={p.id} className="px-3 py-2 border-b border-[#1f1f1f] last:border-b-0">
-                <div className="text-[11px] text-white leading-snug line-clamp-2">{p.text}</div>
+              <div key={p.id} className="px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
+                <div className="text-[11px] text-[var(--brand-text-strong)] leading-snug line-clamp-2">{p.text}</div>
                 <div className="flex items-center gap-3 mt-1">
-                  <span className="text-[10px] text-[#666]">{p.channel}</span>
-                  <span className="text-[10px] font-mono text-[#888]">{compactNum(p.sessions)} sessions</span>
+                  <span className="text-[10px] text-[var(--brand-text-faint)]]">{p.channel}</span>
+                  <span className="text-[10px] font-mono text-[var(--brand-text-mid)]]">{compactNum(p.sessions)} sessions</span>
                 </div>
               </div>
             ))}
@@ -122,19 +122,19 @@ export function SocialTraffic() {
 
       {s.traffic.byCampaign.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[#1f1f1f]">
-            <span className="text-[11px] text-[#888]">By campaign</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]]">By campaign</span>
           </div>
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.traffic.byCampaign.map(c => (
-              <div key={c.id} className="flex items-center justify-between px-3 py-2 border-b border-[#1f1f1f] last:border-b-0">
+              <div key={c.id} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
                 <div>
-                  <div className="text-[11px] text-white">{c.name}</div>
-                  <div className="text-[10px] text-[#666]">{compactNum(c.sessions)} sessions</div>
+                  <div className="text-[11px] text-[var(--brand-text-strong)]">{c.name}</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)]]">{compactNum(c.sessions)} sessions</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-[11px] font-mono text-white">{fmtPct(c.cvr * 100, 1)}</div>
-                  <div className="text-[10px] text-[#666]">conv.</div>
+                  <div className="text-[11px] font-mono text-[var(--brand-text-strong)]">{fmtPct(c.cvr * 100, 1)}</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)]]">conv.</div>
                 </div>
               </div>
             ))}

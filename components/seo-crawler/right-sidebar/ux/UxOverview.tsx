@@ -51,10 +51,10 @@ export function UxOverview() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[#888]">UX score</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">UX score</div>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-3xl font-bold tabular-nums text-white">{s.score}</span>
-              <span className="text-sm font-medium text-[#666]">{scoreGrade}</span>
+              <span className="text-3xl font-bold tabular-nums text-[var(--brand-text-strong)]">{s.score}</span>
+              <span className="text-sm font-medium text-[var(--brand-text-faint)]]">{scoreGrade}</span>
               {s.hasTrend && scoreDelta !== null && <DeltaChip value={scoreDelta} />}
             </div>
             {s.hasTrend && scoreHistory.length > 1 && (
@@ -118,7 +118,7 @@ export function UxOverview() {
             onClick: () => drill.toPage(p),
           }))} max={5} />
         ) : (
-          <div className="text-[11px] text-[#666]">No conversion events recorded yet.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]]">No conversion events recorded yet.</div>
         )}
       </Card>
 

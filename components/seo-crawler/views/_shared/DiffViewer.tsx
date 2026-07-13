@@ -21,9 +21,9 @@ export function DiffViewer({
 
 function Pane({ label, content }: { label: string; content: string }) {
   return (
-    <div className="border border-[#1a1a1a] rounded bg-[#0a0a0a]">
-      <div className="h-7 px-2 flex items-center text-[10px] uppercase tracking-wider text-[#666] border-b border-[#1a1a1a]">{label}</div>
-      <pre className="p-2 text-[11px] font-mono text-[#bbb] whitespace-pre-wrap break-all overflow-auto max-h-[480px] custom-scrollbar">{content}</pre>
+    <div className="border border-[var(--brand-surface-3)]] rounded bg-[var(--brand-surface-0)]]">
+      <div className="h-7 px-2 flex items-center text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] border-b border-[var(--brand-surface-3)]]">{label}</div>
+      <pre className="p-2 text-[11px] font-mono text-[var(--brand-text-mid)]] whitespace-pre-wrap break-all overflow-auto max-h-[480px] custom-scrollbar">{content}</pre>
     </div>
   );
 }

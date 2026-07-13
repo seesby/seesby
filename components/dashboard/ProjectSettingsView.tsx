@@ -83,19 +83,19 @@ const GoogleIntegrationCard = ({ project }: { project: any }) => {
     };
 
     return (
-        <div className="bg-[#151515] rounded-xl border border-white/5 p-4 flex flex-col gap-4 group hover:border-white/20 transition-all">
+        <div className="bg-[var(--brand-surface-2)]] rounded-xl border border-[var(--brand-border-1)] p-4 flex flex-col gap-4 group hover:border-[var(--brand-border-3)] transition-all">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-gray-400">
+                    <div className="w-10 h-10 bg-[var(--brand-surface-3)] rounded-lg flex items-center justify-center text-[var(--brand-text-mid)]">
                         <Plug size={18} />
                     </div>
                     <div>
                         <h4 className="font-bold text-white text-sm">Google Search Console</h4>
-                        <p className="text-[10px] text-gray-500">{status === 'connected' ? 'Connected via OAuth' : 'Not Connected'}</p>
+                        <p className="text-[10px] text-[var(--brand-text-faint)]">{status === 'connected' ? 'Connected via OAuth' : 'Not Connected'}</p>
                     </div>
                 </div>
                 {status === 'loading' ? (
-                    <span className="text-[10px] text-gray-400">Connecting...</span>
+                    <span className="text-[10px] text-[var(--brand-text-mid)]">Connecting...</span>
                 ) : status === 'connected' ? (
                     <div className="flex items-center gap-1 text-green-500 bg-green-500/10 px-2 py-1 rounded border border-green-500/20">
                         <CheckCircle2 size={12} />
@@ -108,14 +108,14 @@ const GoogleIntegrationCard = ({ project }: { project: any }) => {
                 )}
             </div>
             {status !== 'connected' && status !== 'loading' && (
-                <div className="bg-[#0A0A0A] p-3 rounded-lg border border-white/5">
-                    <label className="text-[10px] text-gray-400 block mb-1">GSC Property URL (Exact Match)</label>
+                <div className="bg-[var(--brand-surface-1)]] p-3 rounded-lg border border-[var(--brand-border-1)]">
+                    <label className="text-[10px] text-[var(--brand-text-mid)] block mb-1">GSC Property URL (Exact Match)</label>
                     <input
                         type="text"
                         placeholder="e.g. sc-domain:example.com or https://example.com/"
                         value={siteUrl}
                         onChange={(e) => setSiteUrl(e.target.value)}
-                        className="w-full bg-transparent border border-white/10 rounded px-2 py-1 text-xs text-white focus:outline-none focus:border-brand-amber font-mono"
+                        className="w-full bg-transparent border border-[var(--brand-border-2)] rounded px-2 py-1 text-xs text-white focus:outline-none focus:border-brand-amber font-mono"
                     />
                 </div>
             )}
@@ -150,14 +150,14 @@ const BillingSection = () => {
     const status = profile?.subscription_status || 'free';
     const statusColor = status === 'active' ? 'text-green-500 bg-green-500/10 border-green-500/20' :
         status === 'trialing' ? 'text-blue-400 bg-blue-400/10 border-blue-400/20' :
-            'text-gray-400 bg-white/5 border-white/10';
+            'text-[var(--brand-text-mid)] bg-[var(--brand-surface-3)] border-[var(--brand-border-2)]';
 
     return (
-        <div className="bg-[#0F0F0F] rounded-2xl border border-white/5 p-6">
+        <div className="bg-[var(--brand-surface-1)]] rounded-2xl border border-[var(--brand-border-1)] p-6">
             <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
                 <CreditCard size={18} className="text-brand-amber" /> Billing & Subscription
             </h3>
-            <div className="flex items-center justify-between p-4 bg-[#151515] rounded-xl border border-white/5">
+            <div className="flex items-center justify-between p-4 bg-[var(--brand-surface-2)]] rounded-xl border border-[var(--brand-border-1)]">
                 <div>
                     <span className="text-sm font-bold text-white block mb-1">Current Plan</span>
                     <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded border ${statusColor}`}>
@@ -168,7 +168,7 @@ const BillingSection = () => {
                     <button
                         onClick={openPortal}
                         disabled={isLoading}
-                        className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-white bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors disabled:opacity-50"
+                        className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-white bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] rounded-lg hover:bg-[var(--brand-surface-4)] transition-colors disabled:opacity-50"
                     >
                         <ExternalLink size={12} />
                         {isLoading ? 'Opening...' : 'Manage Billing'}
@@ -202,7 +202,7 @@ export const ProjectSettingsView = () => {
     }, [activeProject]);
 
     if (!activeProject) {
-        return <div className="p-10 text-center text-gray-500">Please select or add a project first.</div>;
+        return <div className="p-10 text-center text-[var(--brand-text-faint)]">Please select or add a project first.</div>;
     }
 
     const handleSave = async () => {
@@ -227,22 +227,22 @@ export const ProjectSettingsView = () => {
 
     return (
         <div className="space-y-8 animate-in fade-in duration-500">
-            <div className="flex justify-between items-end border-b border-white/10 pb-6">
+            <div className="flex justify-between items-end border-b border-[var(--brand-border-2)] pb-6">
                 <div>
                     <h2 className="text-2xl font-bold font-heading text-white mb-2">Project Settings</h2>
-                    <p className="text-gray-400 text-sm">Configuration for <span className="text-white font-bold">{activeProject.name}</span></p>
+                    <p className="text-[var(--brand-text-mid)] text-sm">Configuration for <span className="text-white font-bold">{activeProject.name}</span></p>
                 </div>
                 <div className="flex gap-3">
                     <button
                         onClick={() => { setName(activeProject.name); setUrl(activeProject.url); }}
-                        className="px-4 py-2 text-xs font-bold text-gray-400 hover:text-white border border-white/10 rounded-lg transition-colors"
+                        className="px-4 py-2 text-xs font-bold text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] border border-[var(--brand-border-2)] rounded-lg transition-colors"
                     >
                         Discard
                     </button>
                     <button
                         onClick={handleSave}
                         disabled={isSaving}
-                        className="px-4 py-2 text-xs font-bold text-black bg-white rounded-lg hover:bg-gray-200 transition-colors disabled:opacity-50"
+                        className="px-4 py-2 text-xs font-bold text-black bg-[var(--brand-surface-3)] rounded-lg hover:bg-gray-200 transition-colors disabled:opacity-50"
                     >
                         {isSaving ? 'Saving...' : 'Save Changes'}
                     </button>
@@ -253,51 +253,51 @@ export const ProjectSettingsView = () => {
                 <div className="lg:col-span-2 space-y-6">
 
                     {/* General Config */}
-                    <div className="bg-[#0F0F0F] rounded-2xl border border-white/5 p-6">
+                    <div className="bg-[var(--brand-surface-1)]] rounded-2xl border border-[var(--brand-border-1)] p-6">
                         <h3 className="text-lg font-bold text-white mb-6">General Configuration</h3>
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Project Name</label>
+                                <label className="block text-xs font-bold text-[var(--brand-text-faint)] uppercase mb-2">Project Name</label>
                                 <input
                                     type="text"
                                     value={name}
                                     onChange={e => setName(e.target.value)}
-                                    className="w-full bg-[#111] border border-white/10 rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none"
+                                    className="w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none"
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Domain URL</label>
+                                <label className="block text-xs font-bold text-[var(--brand-text-faint)] uppercase mb-2">Domain URL</label>
                                 <input
                                     type="text"
                                     value={url}
                                     onChange={e => setUrl(e.target.value)}
-                                    className="w-full bg-[#111] border border-white/10 rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none"
+                                    className="w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none"
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Sitemap URL</label>
-                                <input type="text" defaultValue={`${url}/sitemap.xml`} className="w-full bg-[#111] border border-white/10 rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none" disabled />
+                                <label className="block text-xs font-bold text-[var(--brand-text-faint)] uppercase mb-2">Sitemap URL</label>
+                                <input type="text" defaultValue={`${url}/sitemap.xml`} className="w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none" disabled />
                             </div>
                         </div>
                     </div>
 
                     {/* Integrations (Moved from Main Nav) */}
-                    <div className="bg-[#0F0F0F] rounded-2xl border border-white/5 p-6">
+                    <div className="bg-[var(--brand-surface-1)]] rounded-2xl border border-[var(--brand-border-1)] p-6">
                         <h3 className="text-lg font-bold text-white mb-6">Integrations & Connections</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <GoogleIntegrationCard project={activeProject} />
                             {['Google Analytics 4', 'WordPress', 'Slack'].map((tool, i) => (
-                                <div key={i} className="bg-[#151515] rounded-xl border border-white/5 p-4 flex items-center justify-between group hover:border-white/20 transition-all">
+                                <div key={i} className="bg-[var(--brand-surface-2)]] rounded-xl border border-[var(--brand-border-1)] p-4 flex items-center justify-between group hover:border-[var(--brand-border-3)] transition-all">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-gray-400">
+                                        <div className="w-10 h-10 bg-[var(--brand-surface-3)] rounded-lg flex items-center justify-center text-[var(--brand-text-mid)]">
                                             <Plug size={18} />
                                         </div>
                                         <div>
                                             <h4 className="font-bold text-white text-sm">{tool}</h4>
-                                            <p className="text-[10px] text-gray-500">Not Connected</p>
+                                            <p className="text-[10px] text-[var(--brand-text-faint)]">Not Connected</p>
                                         </div>
                                     </div>
-                                    <button className="px-3 py-1.5 rounded-lg text-[10px] font-bold border transition-colors text-gray-400 border-white/10 hover:text-white">
+                                    <button className="px-3 py-1.5 rounded-lg text-[10px] font-bold border transition-colors text-[var(--brand-text-mid)] border-[var(--brand-border-2)] hover:text-[var(--brand-text-strong)]">
                                         Connect
                                     </button>
                                 </div>
@@ -311,31 +311,31 @@ export const ProjectSettingsView = () => {
                 </div>
 
                 <div className="lg:col-span-1 space-y-6">
-                    <div className="bg-[#0F0F0F] rounded-2xl border border-white/5 p-6">
+                    <div className="bg-[var(--brand-surface-1)]] rounded-2xl border border-[var(--brand-border-1)] p-6">
                         <h3 className="text-lg font-bold text-white mb-4">Crawler Settings</h3>
                         <div className="space-y-4">
-                            <div className="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                                <span className="text-sm text-gray-300">Crawl Frequency</span>
-                                <span className="text-xs font-bold text-white bg-black px-2 py-1 rounded border border-white/10">Weekly</span>
+                            <div className="flex justify-between items-center p-3 bg-[var(--brand-surface-3)] rounded-lg">
+                                <span className="text-sm text-[var(--brand-text-mid)]">Crawl Frequency</span>
+                                <span className="text-xs font-bold text-white bg-black px-2 py-1 rounded border border-[var(--brand-border-2)]">Weekly</span>
                             </div>
-                            <div className="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                                <span className="text-sm text-gray-300">User Agent</span>
-                                <span className="text-xs font-bold text-white bg-black px-2 py-1 rounded border border-white/10">Googlebot</span>
+                            <div className="flex justify-between items-center p-3 bg-[var(--brand-surface-3)] rounded-lg">
+                                <span className="text-sm text-[var(--brand-text-mid)]">User Agent</span>
+                                <span className="text-xs font-bold text-white bg-black px-2 py-1 rounded border border-[var(--brand-border-2)]">Googlebot</span>
                             </div>
                             <div className="flex items-center gap-3 mt-4">
-                                <input type="checkbox" checked readOnly className="rounded bg-black border-white/10 text-brand-amber focus:ring-0" />
-                                <span className="text-xs text-gray-400">Respect robots.txt</span>
+                                <input type="checkbox" checked readOnly className="rounded bg-black border-[var(--brand-border-2)] text-brand-amber focus:ring-0" />
+                                <span className="text-xs text-[var(--brand-text-mid)]">Respect robots.txt</span>
                             </div>
                             <div className="flex items-center gap-3">
-                                <input type="checkbox" checked readOnly className="rounded bg-black border-white/10 text-brand-amber focus:ring-0" />
-                                <span className="text-xs text-gray-400">Crawl subdomains</span>
+                                <input type="checkbox" checked readOnly className="rounded bg-black border-[var(--brand-border-2)] text-brand-amber focus:ring-0" />
+                                <span className="text-xs text-[var(--brand-text-mid)]">Crawl subdomains</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="bg-red-900/10 rounded-2xl border border-red-500/20 p-6">
                         <h3 className="text-sm font-bold text-red-500 mb-2 uppercase tracking-wide flex items-center gap-2"><Trash2 size={14} /> Danger Zone</h3>
-                        <p className="text-xs text-gray-400 mb-4">Deleting a project cannot be undone. All ranking history will be lost.</p>
+                        <p className="text-xs text-[var(--brand-text-mid)] mb-4">Deleting a project cannot be undone. All ranking history will be lost.</p>
                         <button
                             onClick={handleDelete}
                             disabled={isDeleting}

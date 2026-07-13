@@ -66,7 +66,7 @@ export function cwvBucketColor(bucket: string): string {
     case 'good': return 'text-emerald-400';
     case 'needs-improvement': return 'text-yellow-400';
     case 'poor': return 'text-red-400';
-    default: return 'text-[#666]';
+    default: return 'text-[var(--brand-text-faint)]]';
   }
 }
 
@@ -76,7 +76,7 @@ export function secGradeColor(grade: string): string {
   if (['B'].includes(grade)) return 'text-blue-400';
   if (['C'].includes(grade)) return 'text-yellow-400';
   if (['D', 'E', 'F'].includes(grade)) return 'text-red-400';
-  return 'text-[#666]';
+  return 'text-[var(--brand-text-faint)]]';
 }
 
 // ---------------------------------------------------------------------------

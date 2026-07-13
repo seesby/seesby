@@ -13,14 +13,14 @@ function Pill({ label, value, tone }: { label: string; value: React.ReactNode; t
   const bg = tone === 'good' ? 'bg-[#22c55e]/10 border-[#22c55e]/20' :
              tone === 'warn' ? 'bg-[#f59e0b]/10 border-[#f59e0b]/20' :
              tone === 'bad'  ? 'bg-[#ef4444]/10 border-[#ef4444]/20' :
-                               'bg-[#111] border-[#1a1a1a]';
+                               'bg-[var(--brand-surface-2)]] border-[var(--brand-surface-3)]]';
   const fg = tone === 'good' ? 'text-[#22c55e]' :
              tone === 'warn' ? 'text-[#f59e0b]' :
              tone === 'bad'  ? 'text-[#ef4444]' :
-                               'text-white';
+                               'text-[var(--brand-text-strong)]';
   return (
     <span className={clsx('inline-flex items-center gap-1 px-2 py-0.5 rounded-md border text-[11px] tabular-nums', bg)}>
-      <span className="text-[#666] text-[10px]">{label}</span>
+      <span className="text-[var(--brand-text-faint)]] text-[10px]">{label}</span>
       <span className={clsx('font-medium', fg)}>{value}</span>
     </span>
   );
@@ -76,7 +76,7 @@ export default function PaidKeywordsView() {
     <div className="flex-1 flex flex-col min-h-0">
       {/* Summary strip — pill badges */}
       {summary && (
-        <div className="px-3 py-2 border-b border-[#1a1a1a] bg-[#0a0a0a] shrink-0 flex items-center gap-1.5 flex-wrap">
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] shrink-0 flex items-center gap-1.5 flex-wrap">
           <Pill label="kw" value={summary.count.toLocaleString()} />
           <Pill label="spend" value={`$${fmtCompact(summary.totalCost)}`} />
           <Pill label="CPC" value={`$${summary.avgCpc.toFixed(2)}`} />
@@ -108,15 +108,15 @@ export default function PaidKeywordsView() {
 
       {/* Action bar — visible when rows selected */}
       {selectedIds.length > 0 && (
-        <div className="px-3 py-1.5 border-t border-[#1a1a1a] bg-[#0c0c0c] shrink-0 flex items-center gap-2 text-[11px]">
-          <span className="text-[#888] tabular-nums">{selectedIds.length} selected</span>
-          <div className="w-[1px] h-3 bg-[#222]" />
+        <div className="px-3 py-1.5 border-t border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] shrink-0 flex items-center gap-2 text-[11px]">
+          <span className="text-[var(--brand-text-mid)]] tabular-nums">{selectedIds.length} selected</span>
+          <div className="w-[1px] h-3 bg-[var(--brand-border-2)]]" />
           {['Pause', 'Adjust bid', 'Add as negative', 'Move campaign'].map(label => (
-            <button key={label} className="h-6 px-2 rounded bg-[#1a1a1a] text-[#ccc] hover:bg-[#222] hover:text-white transition-colors">
+            <button key={label} className="h-6 px-2 rounded bg-[var(--brand-surface-3)]] text-[var(--brand-text-mid)]] hover:bg-[var(--brand-border-2)]] hover:text-[var(--brand-text-strong)] transition-colors">
               {label}
             </button>
           ))}
-          <button className="h-6 px-2 rounded bg-[#1a1a1a] text-[#06b6d4] hover:bg-[#0c2a2e] transition-colors">
+          <button className="h-6 px-2 rounded bg-[var(--brand-surface-3)]] text-[#06b6d4] hover:bg-[#0c2a2e] transition-colors">
             ◐ Compare
           </button>
         </div>

@@ -72,12 +72,12 @@ export default function SchemaTab({ page, hasTrend }: { page: any; hasTrend?: bo
       {/* Top row: Checklist, JSON-LD, Missing */}
       <div className="grid grid-cols-2 lg:grid-cols-[1fr_1.5fr_180px] gap-2.5">
         {/* Present on location page */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2">Present on location page</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2">Present on location page</div>
           <div className="space-y-0">
             {checks.map((c, i) => (
               <div key={i} className="flex items-center justify-between py-[3px] text-[11px]">
-                <span className="text-[#888]">{c.label}</span>
+                <span className="text-[var(--brand-text-mid)]]">{c.label}</span>
                 <span className={c.present ? (c.warn ? 'text-orange-400 text-[10px]' : 'text-green-400 text-[10px]') : 'text-red-400 text-[10px]'}>
                   {c.detail || (c.present ? '\u2713' : '\u2717')}
                   {c.warn && ' \u26A0'}
@@ -88,10 +88,10 @@ export default function SchemaTab({ page, hasTrend }: { page: any; hasTrend?: bo
         </div>
 
         {/* JSON-LD */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2">JSON-LD</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2">JSON-LD</div>
           {schemaFields.type ? (
-            <div className="bg-[#060606] border border-[#1a1a1a] rounded p-2 font-mono text-[10px] text-[#aaa] leading-relaxed overflow-x-auto">
+            <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded p-2 font-mono text-[10px] text-[var(--brand-text-mid)]] leading-relaxed overflow-x-auto">
               <div>{'{'}</div>
               <div className="pl-2">{'"@type": "' + schemaFields.type + '",'}</div>
               <div className="pl-2">{'"name": "' + (schemaFields.name || '') + '",'}</div>
@@ -112,16 +112,16 @@ export default function SchemaTab({ page, hasTrend }: { page: any; hasTrend?: bo
               <div>{'}'}</div>
             </div>
           ) : (
-            <div className="text-[11px] text-[#555]">No LocalBusiness schema found</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]]">No LocalBusiness schema found</div>
           )}
         </div>
 
         {/* Missing */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2">Missing</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2">Missing</div>
           <div className="space-y-1">
             {missingChecks.length > 0 ? missingChecks.map((c, i) => (
-              <div key={i} className="text-[11px] text-[#ccc]">{c.label}</div>
+              <div key={i} className="text-[11px] text-[var(--brand-text-mid)]]">{c.label}</div>
             )) : (
               <div className="text-[11px] text-green-400">All present</div>
             )}
@@ -136,7 +136,7 @@ export default function SchemaTab({ page, hasTrend }: { page: any; hasTrend?: bo
             {validationErrors.map((err: any, i: number) => (
               <div key={i} className="flex items-start gap-2 py-[3px] text-[11px]">
                 <span className="text-red-400 shrink-0">\u2717</span>
-                <span className="text-[#ccc]">{typeof err === 'string' ? err : err.message || err.error}</span>
+                <span className="text-[var(--brand-text-mid)]]">{typeof err === 'string' ? err : err.message || err.error}</span>
               </div>
             ))}
           </div>
@@ -150,7 +150,7 @@ export default function SchemaTab({ page, hasTrend }: { page: any; hasTrend?: bo
             {validationWarnings.map((warn: any, i: number) => (
               <div key={i} className="flex items-start gap-2 py-[3px] text-[11px]">
                 <span className="text-orange-400 shrink-0">\u26A0</span>
-                <span className="text-[#ccc]">{typeof warn === 'string' ? warn : warn.message || warn.warning}</span>
+                <span className="text-[var(--brand-text-mid)]]">{typeof warn === 'string' ? warn : warn.message || warn.warning}</span>
               </div>
             ))}
           </div>
@@ -162,7 +162,7 @@ export default function SchemaTab({ page, hasTrend }: { page: any; hasTrend?: bo
         <Card title={`All Schema Types (${allSchemas.length})`}>
           <div className="flex flex-wrap gap-1.5">
             {allSchemas.map((s: any, i: number) => (
-              <span key={i} className="px-2 py-0.5 rounded text-[10px] bg-[#1a1a1a] text-[#888] border border-[#222]">
+              <span key={i} className="px-2 py-0.5 rounded text-[10px] bg-[var(--brand-surface-3)]] text-[var(--brand-text-mid)]] border border-[var(--brand-border-2)]]">
                 {s.type || s['@type'] || 'Unknown'}
               </span>
             ))}

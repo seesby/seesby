@@ -57,11 +57,11 @@ export function ContentTopics() {
 
       {/* Top clusters — always show */}
       <Card title={`Top clusters ${s.clusters.length}`} padded={false}>
-        <div className="px-2 pt-2 pb-1 text-[10px] text-[#666]">
+        <div className="px-2 pt-2 pb-1 text-[10px] text-[var(--brand-text-faint)]]">
           Topic groups by page count
         </div>
         {topClusters.length > 0 ? (
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {topClusters.map((c: any) => (
               <RowItem
                 key={c.id}
@@ -73,7 +73,7 @@ export function ContentTopics() {
             ))}
           </div>
         ) : (
-          <div className="text-[11px] text-[#555] px-2 py-2 border-t border-[#1f1f1f]">No clusters detected</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] px-2 py-2 border-t border-[var(--brand-surface-3)]]">No clusters detected</div>
         )}
       </Card>
 
@@ -86,7 +86,7 @@ export function ContentTopics() {
               segments={intentDistribution.map(r => ({
                 label: r.label,
                 value: r.value,
-                color: r.label === 'informational' ? '#22c55e' : r.label === 'transactional' ? '#3b82f6' : r.label === 'commercial' ? '#f59e0b' : '#666',
+                color: r.label === 'informational' ? '#22c55e' : r.label === 'transactional' ? '#3b82f6' : r.label === 'commercial' ? '#f59e0b' : 'text-[var(--brand-text-faint)]',
               }))}
             />
             <div className="mt-2 grid grid-cols-2 gap-2">
@@ -96,7 +96,7 @@ export function ContentTopics() {
             </div>
           </>
         ) : (
-          <div className="text-[11px] text-[#555] py-2">No intent data available</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] py-2">No intent data available</div>
         )}
       </Card>
 
@@ -111,11 +111,11 @@ export function ContentTopics() {
 
       {/* Orphan topics — always show */}
       <Card title={`Unclustered topics ${s.orphanTopics.length}`} padded={false}>
-        <div className="px-2 pt-2 pb-1 text-[10px] text-[#666]">
+        <div className="px-2 pt-2 pb-1 text-[10px] text-[var(--brand-text-faint)]]">
           Pages with traffic but no topic cluster
         </div>
         {s.orphanTopics.length > 0 ? (
-          <div className="flex flex-col border-t border-[#1f1f1f]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
             {s.orphanTopics.slice(0, 8).map((p: any) => (
               <RowItem
                 key={p.url}
@@ -127,7 +127,7 @@ export function ContentTopics() {
             ))}
           </div>
         ) : (
-          <div className="text-[11px] text-[#555] px-2 py-2 border-t border-[#1f1f1f]">All pages are in clusters</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] px-2 py-2 border-t border-[var(--brand-surface-3)]]">All pages are in clusters</div>
         )}
       </Card>
     </div>

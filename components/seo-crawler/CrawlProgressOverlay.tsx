@@ -74,18 +74,18 @@ export default function CrawlProgressOverlay() {
             <button
                 type="button"
                 onClick={() => setIsMinimized(false)}
-                className="fixed bottom-0 left-0 right-0 z-40 flex h-[40px] items-center gap-4 border-t border-[#222] bg-[#111] px-4 text-left"
+                className="fixed bottom-0 left-0 right-0 z-40 flex h-[40px] items-center gap-4 border-t border-[var(--brand-border-2)]] bg-[var(--brand-surface-2)]] px-4 text-left"
             >
-                <div className="flex items-center gap-2 text-[11px] font-semibold text-white">
+                <div className="flex items-center gap-2 text-[11px] font-semibold text-[var(--brand-text-strong)]">
                     <Zap size={13} className="text-[#F59E0B]" />
                     Crawl in progress
                 </div>
-                <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[#1c1c20]">
+                <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[var(--brand-surface-3)]]">
                     <div className="h-full rounded-full bg-gradient-to-r from-[#F59E0B] via-[#ff6b7d] to-[#f8b4bd]" style={{ width: `${progress}%` }} />
                 </div>
                 <div className="hidden text-[11px] text-[#9a9aa0] md:block">{crawlRuntime.crawled} pages · {crawlRate} p/s · {elapsedTime}</div>
                 <div className="flex items-center gap-2" onClick={(event) => event.stopPropagation()}>
-                    <button onClick={() => handleStartPause()} className="rounded border border-[#2e2e33] px-2 py-1 text-[10px] font-bold text-[#ddd] hover:border-[#444]">
+                    <button onClick={() => handleStartPause()} className="rounded border border-[#2e2e33] px-2 py-1 text-[10px] font-bold text-[var(--brand-text-mid)]] hover:border-[var(--brand-border-2)]]">
                         <Pause size={11} />
                     </button>
                     <button onClick={() => clearCrawlerWorkspace()} className="rounded border border-[#44262a] px-2 py-1 text-[10px] font-bold text-[#ff8d99] hover:border-[#6b3037]">
@@ -98,19 +98,19 @@ export default function CrawlProgressOverlay() {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-[2px]">
-            <div className="w-full max-w-[720px] overflow-hidden rounded-2xl border border-[#27272b] bg-[#111] shadow-[0_30px_100px_rgba(0,0,0,0.6)]">
-                <div className="border-b border-[#222] bg-[#151518] px-6 py-4">
+            <div className="w-full max-w-[720px] overflow-hidden rounded-2xl border border-[#27272b] bg-[var(--brand-surface-2)]] shadow-[0_30px_100px_rgba(0,0,0,0.6)]">
+                <div className="border-b border-[var(--brand-border-2)]] bg-[var(--brand-surface-3)]] px-6 py-4">
                     <div className="flex items-center justify-between">
                         <div>
-                            <div className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#777]">Live Crawl</div>
-                            <h2 className="mt-1 flex items-center gap-2 text-[22px] font-black tracking-tight text-white">
+                            <div className="text-[11px] font-bold uppercase tracking-[0.28em] text-[var(--brand-text-mid)]]">Live Crawl</div>
+                            <h2 className="mt-1 flex items-center gap-2 text-[22px] font-black tracking-tight text-[var(--brand-text-strong)]">
                                 <Zap size={20} className="text-[#F59E0B]" />
                                 Crawl in Progress
                             </h2>
                         </div>
                         <button
                             onClick={() => setIsMinimized(true)}
-                            className="inline-flex items-center gap-2 rounded-lg border border-[#2e2e33] px-3 py-2 text-[11px] font-semibold text-[#bbb] hover:border-[#3a3a41] hover:text-white"
+                            className="inline-flex items-center gap-2 rounded-lg border border-[#2e2e33] px-3 py-2 text-[11px] font-semibold text-[var(--brand-text-mid)]] hover:border-[#3a3a41] hover:text-[var(--brand-text-strong)]"
                         >
                             <Minimize2 size={14} />
                             Minimize
@@ -132,25 +132,25 @@ export default function CrawlProgressOverlay() {
                                 { label: 'Errors', value: (stats?.broken || 0) + statusCounts.server },
                                 { label: 'ETA', value: eta }
                             ].map((metric) => (
-                                <div key={metric.label} className="rounded-xl border border-[#212126] bg-[#0d0d10] p-4">
-                                    <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#666]">{metric.label}</div>
-                                    <div className="mt-2 text-[20px] font-black text-white">{metric.value}</div>
+                                <div key={metric.label} className="rounded-xl border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-4">
+                                    <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--brand-text-faint)]]">{metric.label}</div>
+                                    <div className="mt-2 text-[20px] font-black text-[var(--brand-text-strong)]">{metric.value}</div>
                                 </div>
                             ))}
                         </div>
 
-                        <div className="rounded-xl border border-[#212126] bg-[#0d0d10] p-4">
+                        <div className="rounded-xl border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-4">
                             <div className="mb-3 flex items-center justify-between">
-                                <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#666]">Live status feed</div>
-                                <div className="text-[10px] text-[#666]">{liveFeed.length} latest entries</div>
+                                <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--brand-text-faint)]]">Live status feed</div>
+                                <div className="text-[10px] text-[var(--brand-text-faint)]]">{liveFeed.length} latest entries</div>
                             </div>
-                            <div ref={feedRef} className="max-h-[280px] overflow-y-auto rounded-lg border border-[#1a1a1d] bg-[#09090b] p-3 font-mono text-[11px] custom-scrollbar">
+                            <div ref={feedRef} className="max-h-[280px] overflow-y-auto rounded-lg border border-[#1a1a1d] bg-[var(--brand-surface-0)]] p-3 font-mono text-[11px] custom-scrollbar">
                                 {liveFeed.length === 0 ? (
-                                    <div className="text-[#555]">Crawler is warming up...</div>
+                                    <div className="text-[var(--brand-text-faint)]]">Crawler is warming up...</div>
                                 ) : (
                                     liveFeed.map((entry, index) => (
                                         <div key={`${entry.time}-${index}`} className={`border-b border-[#141418] py-2 last:border-b-0 ${getLogTone(entry)}`}>
-                                            <span className="mr-2 text-[#555]">{new Date(entry.time).toLocaleTimeString()}</span>
+                                            <span className="mr-2 text-[var(--brand-text-faint)]]">{new Date(entry.time).toLocaleTimeString()}</span>
                                             <span>{entry.msg}</span>
                                         </div>
                                     ))
@@ -160,20 +160,20 @@ export default function CrawlProgressOverlay() {
                     </div>
 
                     <div className="space-y-5">
-                        <div className="rounded-xl border border-[#212126] bg-[#0d0d10] p-4">
-                            <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#666]">Runtime</div>
+                        <div className="rounded-xl border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-4">
+                            <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--brand-text-faint)]]">Runtime</div>
                             <div className="mt-3 grid gap-3 text-[12px] text-[#c3c3c8]">
-                                <div className="flex items-center justify-between"><span>Stage</span><span className="font-semibold text-white">{crawlRuntime.stage}</span></div>
-                                <div className="flex items-center justify-between"><span>Workers</span><span className="font-semibold text-white">{crawlRuntime.activeWorkers}/{crawlRuntime.concurrency}</span></div>
-                                <div className="flex items-center justify-between"><span>Utilization</span><span className="font-semibold text-white">{Math.round(Number(crawlRuntime.workerUtilization || 0))}%</span></div>
-                                <div className="flex items-center justify-between"><span>Max depth seen</span><span className="font-semibold text-white">{crawlRuntime.maxDepthSeen}</span></div>
-                                <div className="flex items-center justify-between"><span>Mode</span><span className="font-semibold text-white">{crawlRuntime.mode}</span></div>
-                                <div className="flex items-center justify-between"><span>Health so far</span><span className="font-semibold text-white">{healthScore.score}/100</span></div>
+                                <div className="flex items-center justify-between"><span>Stage</span><span className="font-semibold text-[var(--brand-text-strong)]">{crawlRuntime.stage}</span></div>
+                                <div className="flex items-center justify-between"><span>Workers</span><span className="font-semibold text-[var(--brand-text-strong)]">{crawlRuntime.activeWorkers}/{crawlRuntime.concurrency}</span></div>
+                                <div className="flex items-center justify-between"><span>Utilization</span><span className="font-semibold text-[var(--brand-text-strong)]">{Math.round(Number(crawlRuntime.workerUtilization || 0))}%</span></div>
+                                <div className="flex items-center justify-between"><span>Max depth seen</span><span className="font-semibold text-[var(--brand-text-strong)]">{crawlRuntime.maxDepthSeen}</span></div>
+                                <div className="flex items-center justify-between"><span>Mode</span><span className="font-semibold text-[var(--brand-text-strong)]">{crawlRuntime.mode}</span></div>
+                                <div className="flex items-center justify-between"><span>Health so far</span><span className="font-semibold text-[var(--brand-text-strong)]">{healthScore.score}/100</span></div>
                             </div>
                         </div>
 
-                        <div className="rounded-xl border border-[#212126] bg-[#0d0d10] p-4">
-                            <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#666]">Live stats</div>
+                        <div className="rounded-xl border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-4">
+                            <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--brand-text-faint)]]">Live stats</div>
                             <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-semibold">
                                 <span className="rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-green-300">2xx: {statusCounts.ok}</span>
                                 <span className="rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-amber-300">3xx: {statusCounts.redirects}</span>
@@ -186,7 +186,7 @@ export default function CrawlProgressOverlay() {
                         <div className="flex flex-wrap gap-3">
                             <button
                                 onClick={() => handleStartPause()}
-                                className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-[#2e2e33] bg-[#18181c] px-4 py-3 text-[12px] font-bold text-white hover:border-[#3d3d44]"
+                                className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-[#2e2e33] bg-[#18181c] px-4 py-3 text-[12px] font-bold text-[var(--brand-text-strong)] hover:border-[#3d3d44]"
                             >
                                 <Pause size={14} />
                                 Pause

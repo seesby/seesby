@@ -101,10 +101,10 @@ export default function FullAuditOverview() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[#888]">Site score</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Site score</div>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-2xl font-semibold text-white">{overall}</span>
-              <span className="text-sm font-medium text-[#666]">{grade(overall)}</span>
+              <span className="text-2xl font-semibold text-[var(--brand-text-strong)]">{overall}</span>
+              <span className="text-sm font-medium text-[var(--brand-text-faint)]]">{grade(overall)}</span>
               {hasTrend && scoreDelta !== null && <DeltaChip value={scoreDelta} />}
             </div>
             {hasTrend && scoreSpark?.length ? (

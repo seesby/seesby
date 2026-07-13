@@ -17,7 +17,7 @@ export function CwvPassMatrixBlock({ title = 'Core Web Vitals pass rate', matrix
 
   const Row = ({ device, row }: { device: 'mobile' | 'desktop'; row: { lcp: number; inp: number; cls: number } }) => (
     <div className="contents">
-      <div className="text-[10px] uppercase tracking-widest text-[#888] self-center">{device}</div>
+      <div className="text-[10px] uppercase tracking-widest text-[var(--brand-text-mid)]] self-center">{device}</div>
       {(['lcp', 'inp', 'cls'] as const).map(m => (
         <button
           key={m}
@@ -32,7 +32,7 @@ export function CwvPassMatrixBlock({ title = 'Core Web Vitals pass rate', matrix
   )
 
   return (
-    <div className="rounded-md border border-[#161616] bg-[#0a0a0a] p-3">
+    <div className="rounded-md border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3">
       <div className="text-[11px] uppercase tracking-wider text-neutral-500 mb-2">{title}</div>
       <div className="grid grid-cols-[60px_1fr_1fr_1fr] gap-1.5">
         <Row device="mobile" row={matrix.mobile} />

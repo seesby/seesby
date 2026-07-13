@@ -19,7 +19,7 @@ export default function PackTab({ page, hasTrend }: { page: any; hasTrend?: bool
       {hasTrend && (
         <div className="mb-5">
           <SectionHeader title="Pack Position Trend" />
-          <div className="bg-[#0a0a0a] border border-[#222] rounded p-3">
+          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
             <Sparkline values={page?.packPositionTrend || []} tone="info" />
           </div>
         </div>
@@ -38,14 +38,14 @@ export default function PackTab({ page, hasTrend }: { page: any; hasTrend?: bool
           {topKeywords.length > 0 ? (
             <div className="space-y-2">
               {topKeywords.slice(0, 10).map((kw: any, i: number) => (
-                <div key={i} className="bg-[#0a0a0a] border border-[#222] rounded px-3 py-2 flex items-center justify-between">
-                  <span className="text-[12px] text-[#ccc]">{typeof kw === 'string' ? kw : kw.keyword || kw.query}</span>
+                <div key={i} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2 flex items-center justify-between">
+                  <span className="text-[12px] text-[var(--brand-text-mid)]]">{typeof kw === 'string' ? kw : kw.keyword || kw.query}</span>
                   <StatusBadge status="pass" label={`#${typeof kw === 'object' ? kw.position || '?' : '?'}`} />
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-[12px] text-[#666]">No keywords found in local pack.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]]">No keywords found in local pack.</div>
           )}
         </div>
       </div>
@@ -55,8 +55,8 @@ export default function PackTab({ page, hasTrend }: { page: any; hasTrend?: bool
           <SectionHeader title="Lost Positions" />
           <div className="space-y-2">
             {lostPositions.slice(0, 10).map((item: any, i: number) => (
-              <div key={i} className="bg-[#0a0a0a] border border-[#222] rounded px-3 py-2 flex items-center justify-between">
-                <span className="text-[12px] text-[#ccc]">{typeof item === 'string' ? item : item.keyword || item.query}</span>
+              <div key={i} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2 flex items-center justify-between">
+                <span className="text-[12px] text-[var(--brand-text-mid)]]">{typeof item === 'string' ? item : item.keyword || item.query}</span>
                 <StatusBadge status="fail" label={`Lost #${item.position || '?'}`} />
               </div>
             ))}

@@ -18,7 +18,7 @@ export default function TierBadge({ tier, compact = false }: { tier?: string; co
             style={{ color: meta.color, borderColor: `${meta.color}44`, background: `${meta.color}12` }}
         >
             {meta.glyph}
-            <span className="text-[#aaa]">{meta.label}</span>
+            <span className="text-[var(--brand-text-mid)]]">{meta.label}</span>
         </span>
     );
 }

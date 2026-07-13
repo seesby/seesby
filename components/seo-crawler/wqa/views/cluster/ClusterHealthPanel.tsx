@@ -28,16 +28,16 @@ export function ClusterHealthPanel({ clusters, linkMetrics }: Props) {
       <Card title="Cluster health">
         <div className="space-y-1.5">
           <div className="flex items-center justify-between text-[11px]">
-            <span className="text-[#888]">Hubs</span>
-            <span className="text-white font-mono">{totalHubs}</span>
+            <span className="text-[var(--brand-text-mid)]]">Hubs</span>
+            <span className="text-[var(--brand-text-strong)] font-mono">{totalHubs}</span>
           </div>
           <div className="flex items-center justify-between text-[11px]">
-            <span className="text-[#888]">Orphans</span>
-            <span className={`font-mono ${orphanCount > 0 ? 'text-[#f59e0b]' : 'text-white'}`}>{orphanCount}</span>
+            <span className="text-[var(--brand-text-mid)]]">Orphans</span>
+            <span className={`font-mono ${orphanCount > 0 ? 'text-[#f59e0b]' : 'text-[var(--brand-text-strong)]'}`}>{orphanCount}</span>
           </div>
           <div className="flex items-center justify-between text-[11px]">
-            <span className="text-[#888]">Weak hubs</span>
-            <span className={`font-mono ${weakClusters.length > 0 ? 'text-[#f59e0b]' : 'text-white'}`}>{weakClusters.length}</span>
+            <span className="text-[var(--brand-text-mid)]]">Weak hubs</span>
+            <span className={`font-mono ${weakClusters.length > 0 ? 'text-[#f59e0b]' : 'text-[var(--brand-text-strong)]'}`}>{weakClusters.length}</span>
           </div>
         </div>
 
@@ -54,28 +54,28 @@ export function ClusterHealthPanel({ clusters, linkMetrics }: Props) {
       <Card title="Internal links">
         <div className="space-y-2">
           <div className="flex items-center justify-between text-[11px]">
-            <span className="text-[#888]">Avg per page</span>
-            <span className="text-white font-mono">{linkMetrics.avgLinksPerPage}</span>
+            <span className="text-[var(--brand-text-mid)]]">Avg per page</span>
+            <span className="text-[var(--brand-text-strong)] font-mono">{linkMetrics.avgLinksPerPage}</span>
           </div>
 
           <div className="space-y-1">
             <div className="flex items-center justify-between text-[10px]">
-              <span className="text-[#888]">Hub {'\u2192'} Spoke</span>
-              <span className="text-white font-mono">{linkMetrics.hubToSpokePct}%</span>
+              <span className="text-[var(--brand-text-mid)]]">Hub {'\u2192'} Spoke</span>
+              <span className="text-[var(--brand-text-strong)] font-mono">{linkMetrics.hubToSpokePct}%</span>
             </div>
             <MiniBar value={linkMetrics.hubToSpokePct} max={100} tone="good" />
           </div>
 
           <div className="space-y-1">
             <div className="flex items-center justify-between text-[10px]">
-              <span className="text-[#888]">Spoke {'\u2192'} Hub</span>
+              <span className="text-[var(--brand-text-mid)]]">Spoke {'\u2192'} Hub</span>
               {linkMetrics.spokeToHubPct < 50 ? (
                 <div className="flex items-center gap-1.5">
                   <span className="font-mono text-[#f59e0b]">{linkMetrics.spokeToHubPct}%</span>
                   <StatusBadge status="warn" label="low" />
                 </div>
               ) : (
-                <span className="text-white font-mono">{linkMetrics.spokeToHubPct}%</span>
+                <span className="text-[var(--brand-text-strong)] font-mono">{linkMetrics.spokeToHubPct}%</span>
               )}
             </div>
             <MiniBar

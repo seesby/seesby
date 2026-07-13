@@ -31,17 +31,17 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
   return (
     <div className="space-y-4">
       {/* Hero strip */}
-      <div className="flex items-center gap-4 p-3 rounded-lg bg-gradient-to-r from-[#0f0f0f] to-[#0a0a0a] border border-[#1a1a1a]">
+      <div className="flex items-center gap-4 p-3 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)]] to-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]">
         <div className="flex-1 min-w-0">
-          <div className="text-[13px] text-white font-semibold truncate">
+          <div className="text-[13px] text-[var(--brand-text-strong)] font-semibold truncate">
             {getMetric(page, 'title') || page?.title || 'AI Readiness'}
           </div>
-          <div className="text-[11px] text-[#555] font-mono truncate mt-0.5">{page?.url}</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]] font-mono truncate mt-0.5">{page?.url}</div>
         </div>
         <div className="shrink-0 flex items-center gap-2">
           <div className="relative w-10 h-10">
             <svg className="w-10 h-10 -rotate-90" viewBox="0 0 36 36">
-              <circle cx="18" cy="18" r="15" fill="none" stroke="#1a1a1a" strokeWidth="3" />
+              <circle cx="18" cy="18" r="15" fill="none" stroke="bg-[var(--brand-surface-3)]" strokeWidth="3" />
               <circle
                 cx="18" cy="18" r="15" fill="none"
                 stroke={aiTone === 'good' ? '#22c55e' : aiTone === 'mid' ? '#f59e0b' : '#ef4444'}
@@ -50,7 +50,7 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
                 strokeLinecap="round"
               />
             </svg>
-            <span className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-white">{aiReadyScore}</span>
+            <span className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-[var(--brand-text-strong)]">{aiReadyScore}</span>
           </div>
         </div>
       </div>
@@ -73,8 +73,8 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* 2-column grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         {/* URL metadata */}
-        <div className="bg-[#0e0e0e] border border-[#1a1a1a] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#444] mb-2.5">URL metadata</div>
+        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">URL metadata</div>
           <div className="space-y-0">
             <DataRow label="URL" value={<TruncatedUrl url={String(page?.url || '')} />} mono />
             <DataRow label="Category" value={page?.category || page?.pageCategory || '\u2014'} />
@@ -94,7 +94,7 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
               const allowed = botMatrix[name]?.status === 'allowed' || botMatrix[name]?.status === 'Allowed';
               return (
                 <div key={name} className="flex items-center justify-between py-[3px] text-[11px]">
-                  <span className="text-[#666]">{name}</span>
+                  <span className="text-[var(--brand-text-faint)]]">{name}</span>
                   <StatusBadge status={allowed ? 'pass' : 'fail'} label={allowed ? 'Yes' : 'No'} />
                 </div>
               );
@@ -132,7 +132,7 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
         <Card title={`Issues (${aiIssues.length})`}>
           <div className="space-y-0">
             {aiIssues.slice(0, 5).map((a: any, i: number) => (
-              <div key={`${a.id}-${i}`} className="flex items-start gap-2.5 py-2 border-b border-[#111] last:border-b-0">
+              <div key={`${a.id}-${i}`} className="flex items-start gap-2.5 py-2 border-b border-[var(--brand-surface-2)]] last:border-b-0">
                 <div className="mt-0.5">
                   {a.type === 'error' || a.severity === 'CRITICAL' || a.severity === 'HIGH' ? (
                     <span className="block w-1.5 h-1.5 rounded-full bg-[#ef4444]" />
@@ -143,9 +143,9 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[11px] text-[#ccc] font-medium">{a.label}</div>
+                  <div className="text-[11px] text-[var(--brand-text-mid)]] font-medium">{a.label}</div>
                   {(a.description || a.reason) && (
-                    <div className="text-[10px] text-[#444] mt-0.5 line-clamp-1">{a.description || a.reason}</div>
+                    <div className="text-[10px] text-[var(--brand-border-2)]] mt-0.5 line-clamp-1">{a.description || a.reason}</div>
                   )}
                 </div>
               </div>
@@ -160,7 +160,7 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
 function FlagRow({ label, fail }: { label: string; fail: boolean }) {
   return (
     <div className="flex items-center justify-between py-[3px] text-[11px]">
-      <span className="text-[#666]">{label}</span>
+      <span className="text-[var(--brand-text-faint)]]">{label}</span>
       <span className={`text-[10px] font-medium ${fail ? 'text-[#F59E0B]' : 'text-[#22c55e]'}`}>
         {fail ? 'Yes' : 'No'}
       </span>

@@ -11,7 +11,7 @@ interface EmptyStateProps {
 export default function EmptyState({ icon, message, submessage, action }: EmptyStateProps) {
   return (
     <div className={EMPTY_STATE_BOX}>
-      {icon && <div className="mb-2 flex justify-center text-[#333]">{icon}</div>}
+      {icon && <div className="mb-2 flex justify-center text-[var(--brand-surface-4)]]">{icon}</div>}
       <p className={EMPTY_STATE_TEXT}>{message}</p>
       {submessage && <p className={EMPTY_STATE_SUBTEXT}>{submessage}</p>}
       {action && (

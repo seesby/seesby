@@ -63,8 +63,8 @@ export default function TargetTab({ page }: { page: any }) {
       {/* Wireframe layout: Target page | Target role | Other in-links */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
         <Card title="Target page">
-          <div className="mb-2 pb-2 border-b border-[#141414]">
-            <div className="text-[9px] text-[#444] uppercase tracking-wider mb-0.5">URL</div>
+          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
+            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">URL</div>
             <TruncatedUrl url={targetUrl} />
           </div>
           <DataRow label="Quality" value={targetQuality > 0 ? `${formatNumber(targetQuality)}` : '—'} status={targetQuality >= 70 ? 'pass' : targetQuality >= 40 ? 'info' : 'warn'} />
@@ -80,19 +80,19 @@ export default function TargetTab({ page }: { page: any }) {
 
         <Card title={`Other in-links to target${otherInLinksCount > 0 ? ` (${otherInLinksCount})` : ''}`}>
           {otherInLinks.length === 0 ? (
-            <div className="text-[12px] text-[#666] italic">No other in-links data available.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]] italic">No other in-links data available.</div>
           ) : (
             <div className="max-h-[200px] overflow-y-auto custom-scrollbar">
-              <div className="text-[10px] text-[#555] mb-2">Total {formatNumber(otherInLinksCount)} from {formatNumber(otherInLinksDomains)} ref domains</div>
+              <div className="text-[10px] text-[var(--brand-text-faint)]] mb-2">Total {formatNumber(otherInLinksCount)} from {formatNumber(otherInLinksDomains)} ref domains</div>
               {otherInLinks.slice(0, 10).map((link: any, i: number) => {
                 const domain = typeof link === 'string' ? link : link?.domain || link?.url || '—';
                 const anchor = typeof link === 'object' ? link?.anchor || link?.anchorText : undefined;
                 const isCurrent = typeof link === 'object' && (link?.isCurrent || link?.isThisPage);
                 return (
-                  <div key={i} className="flex items-center gap-2 text-[11px] py-1 border-b border-[#111] last:border-b-0">
-                    <span className={`font-mono truncate ${isCurrent ? 'text-white' : 'text-[#888]'}`}>{domain}</span>
+                  <div key={i} className="flex items-center gap-2 text-[11px] py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0">
+                    <span className={`font-mono truncate ${isCurrent ? 'text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-mid)]]'}`}>{domain}</span>
                     {anchor && (
-                      <span className="text-[10px] text-[#555] shrink-0">anchor "{String(anchor).slice(0, 20)}"</span>
+                      <span className="text-[10px] text-[var(--brand-text-faint)]] shrink-0">anchor "{String(anchor).slice(0, 20)}"</span>
                     )}
                     {isCurrent && <span className="text-[10px] text-[#f59e0b] shrink-0">←</span>}
                   </div>
@@ -101,9 +101,9 @@ export default function TargetTab({ page }: { page: any }) {
             </div>
           )}
           {linkEquityShare > 0 && (
-            <div className="mt-2 pt-2 border-t border-[#141414] text-[11px]">
-              <span className="text-[#666]">Link equity share of target: </span>
-              <span className="text-white font-mono">{linkEquityShare}%</span>
+            <div className="mt-2 pt-2 border-t border-[var(--brand-surface-2)]] text-[11px]">
+              <span className="text-[var(--brand-text-faint)]]">Link equity share of target: </span>
+              <span className="text-[var(--brand-text-strong)] font-mono">{linkEquityShare}%</span>
             </div>
           )}
         </Card>
