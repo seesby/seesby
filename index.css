@@ -6,7 +6,7 @@
   /* Default Dark Mode — warm "honeycomb" neutrals (amber/bark biased, not cold slate) */
   --brand-amber: #F59E0B;           /* honey — logo body */
   --brand-amber-glow: rgba(245, 158, 11, 0.22);
-  --bg-main: #0C0907;               /* warm near-black */
+  --bg-main: #2A1A0E;               /* amber-brown canvas (not black) */
 
   /* ── Seesby brand surface system (single source of truth) ── */
   --brand-amber-hover: #FBBF24;
@@ -17,25 +17,25 @@
   --brand-amber-border-soft: rgba(245, 158, 11, 0.20);
   --brand-honey-tint: #FEF3C7;      /* wing tint */
 
-  --brand-bg: #0B0907;
-  --brand-card: #1C160E;            /* clearly raised warm card */
-  --brand-sidebar: #120D08;         /* warm recessed */
+  --brand-bg: #2A1A0E;              /* deep amber-brown canvas (not black) */
+  --brand-card: #3A2614;            /* raised amber panel */
+  --brand-sidebar: #311F10;         /* recessed amber */
 
-  --brand-surface-0: #0E0A06;       /* deepest canvas (warm black) */
-  --brand-surface-1: #181109;
-  --brand-surface-2: #221809;
-  --brand-surface-3: #2E2110;
-  --brand-surface-4: #3C2C16;       /* top elevation, visible honey-step */
+  --brand-surface-0: #2A1A0E;       /* deepest canvas (amber-brown) */
+  --brand-surface-1: #38260F;
+  --brand-surface-2: #46321A;
+  --brand-surface-3: #573F22;
+  --brand-surface-4: #6B4E29;       /* top elevation (honey) */
 
-  --brand-border-1: #2A1E10;
-  --brand-border-2: #3A2A16;
-  --brand-border-3: #503A1E;        /* strong divider (bark-tinted, visible) */
+  --brand-border-1: #4A341C;
+  --brand-border-2: #5E4226;
+  --brand-border-3: #7A5630;        /* strong divider (amber-tinted) */
 
-  --brand-text-strong: #FBF3E4;     /* warm white */
-  --brand-text-mid: #C9B68F;        /* warm sand (clearly warm, not grey) */
-  --brand-text-faint: #8A7B5E;      /* warm stone */
-  --brand-text-muted: #5E5340;
-  --brand-text-dim: #3E3628;
+  --brand-text-strong: #FBEFD9;     /* warm honey white */
+  --brand-text-mid: #E0C79C;        /* warm sand */
+  --brand-text-faint: #B49468;      /* warm stone */
+  --brand-text-muted: #8A6E4A;
+  --brand-text-dim: #5E4528;
 
   /* Status — amber-led, warm-neutral (no cold blue/purple) */
   --brand-success: #34D27B;         /* warmed green */
@@ -45,55 +45,55 @@
   --brand-danger-border: rgba(244, 101, 94, 0.20);
   --brand-warn: #F59E0B;
   --brand-status-neutral: #8A7B63;  /* warm neutral */
-  --brand-status-neutral-soft: rgba(138, 123, 99, 0.14);
-  --panel-bg: rgba(20, 16, 11, 0.82);
-  --glass-border: rgba(245, 158, 11, 0.08);
-  --border-subtle: rgba(245, 158, 11, 0.10);
-  --card-bg: #1C160E;
-  --auth-panel: rgba(12, 9, 7, 0.78);
-  --auth-panel-border: rgba(245, 158, 11, 0.10);
-  --auth-input-bg: rgba(245, 158, 11, 0.05);
-  --auth-input-bg-focus: rgba(245, 158, 11, 0.09);
-  --text-primary: #FBF6EC;
-  --text-secondary: #BBA98A;
-  --text-main: #BBA98A;
-  --text-heading: #FBF6EC;
+  --brand-status-neutral-soft: rgba(178, 148, 104, 0.16);
+  --panel-bg: rgba(58, 38, 20, 0.82);
+  --glass-border: rgba(245, 158, 11, 0.12);
+  --border-subtle: rgba(245, 158, 11, 0.14);
+  --card-bg: #3A2614;
+  --auth-panel: rgba(42, 26, 14, 0.86);
+  --auth-panel-border: rgba(245, 158, 11, 0.16);
+  --auth-input-bg: rgba(245, 158, 11, 0.08);
+  --auth-input-bg-focus: rgba(245, 158, 11, 0.14);
+  --text-primary: #FBEFD9;
+  --text-secondary: #E0C79C;
+  --text-main: #E0C79C;
+  --text-heading: #FBEFD9;
 }
 
 [data-theme="light"] {
   /* Honey-cream + amber light theme (warm, brand-coherent) */
-  --bg-main: #FBF6EC;
-  --panel-bg: #F4ECDD;
+  --bg-main: #FCF4E6;
+  --panel-bg: #F8EEDB;
   --card-bg: #FFFDF8;
   --auth-panel: rgba(255, 253, 248, 0.92);
-  --auth-panel-border: rgba(146, 64, 14, 0.14);
-  --auth-input-bg: rgba(146, 64, 14, 0.05);
-  --auth-input-bg-focus: rgba(146, 64, 14, 0.08);
-  --glass-border: rgba(146, 64, 14, 0.10);
-  --border-subtle: rgba(146, 64, 14, 0.08);
-  --text-primary: #241C12;
-  --text-secondary: #6B5E49;
+  --auth-panel-border: rgba(194, 158, 94, 0.30);
+  --auth-input-bg: rgba(194, 158, 94, 0.12);
+  --auth-input-bg-focus: rgba(194, 158, 94, 0.20);
+  --glass-border: rgba(194, 158, 94, 0.22);
+  --border-subtle: rgba(194, 158, 94, 0.16);
+  --text-primary: #2A1C0E;
+  --text-secondary: #6E5631;
   --text-main: var(--text-secondary);
   --text-heading: var(--text-primary);
   --brand-amber: #D97706;
   --brand-amber-glow: rgba(217, 119, 6, 0.14);
 
   /* Brand surface scale -> honey-cream light */
-  --brand-bg: #FBF6EC;
-  --brand-card: #FFFEFB;
-  --brand-sidebar: #F4ECDD;
-  --brand-surface-0: #FDFAF3;
-  --brand-surface-1: #F3E8D4;
-  --brand-surface-2: #EBDCC0;
-  --brand-surface-3: #E0CDA6;
-  --brand-surface-4: #D2BA8C;
-  --brand-border-1: #E2CFA6;
-  --brand-border-2: #D2BB8C;
-  --brand-border-3: #BE9F66;
-  --brand-text-strong: #241C12;
-  --brand-text-mid: #6B5A3C;
-  --brand-text-faint: #9A875F;
-  --brand-text-muted: #B6A684;
+  --brand-bg: #FCF4E6;
+  --brand-card: #FFFDF8;
+  --brand-sidebar: #F8EEDB;
+  --brand-surface-0: #FBF1DE;
+  --brand-surface-1: #F6E6CB;
+  --brand-surface-2: #F0D9B4;
+  --brand-surface-3: #E8C994;
+  --brand-surface-4: #DEB877;
+  --brand-border-1: #E7CFA0;
+  --brand-border-2: #D9B983;
+  --brand-border-3: #C29E5E;
+  --brand-text-strong: #2A1C0E;
+  --brand-text-mid: #6E5631;
+  --brand-text-faint: #9A7E4F;
+  --brand-text-muted: #B89A6E;
   --brand-honey-tint: #FEF3C7;
   --brand-amber-soft: rgba(217, 119, 6, 0.10);
   --brand-amber-soft-2: rgba(217, 119, 6, 0.16);
@@ -106,36 +106,36 @@
 
 @media (prefers-color-scheme: light) {
   [data-theme="system"] {
-    --bg-main: #FBF6EC;
-    --panel-bg: #F4ECDD;
+    --bg-main: #FCF4E6;
+    --panel-bg: #F8EEDB;
     --card-bg: #FFFDF8;
     --auth-panel: rgba(255, 253, 248, 0.92);
-    --auth-panel-border: rgba(146, 64, 14, 0.14);
-    --auth-input-bg: rgba(146, 64, 14, 0.05);
-    --auth-input-bg-focus: rgba(146, 64, 14, 0.08);
-    --glass-border: rgba(146, 64, 14, 0.10);
-    --border-subtle: rgba(146, 64, 14, 0.08);
-    --text-primary: #241C12;
-    --text-secondary: #6B5E49;
+    --auth-panel-border: rgba(194, 158, 94, 0.30);
+    --auth-input-bg: rgba(194, 158, 94, 0.12);
+    --auth-input-bg-focus: rgba(194, 158, 94, 0.20);
+    --glass-border: rgba(194, 158, 94, 0.22);
+    --border-subtle: rgba(194, 158, 94, 0.16);
+    --text-primary: #2A1C0E;
+    --text-secondary: #6E5631;
     --text-main: var(--text-secondary);
     --text-heading: var(--text-primary);
     --brand-amber: #D97706;
     --brand-amber-glow: rgba(217, 119, 6, 0.14);
-    --brand-bg: #FBF6EC;
-    --brand-card: #FFFEFB;
-    --brand-sidebar: #F4ECDD;
-    --brand-surface-0: #FDFAF3;
-    --brand-surface-1: #F3E8D4;
-    --brand-surface-2: #EBDCC0;
-    --brand-surface-3: #E0CDA6;
-    --brand-surface-4: #D2BA8C;
-    --brand-border-1: #E2CFA6;
-    --brand-border-2: #D2BB8C;
-    --brand-border-3: #BE9F66;
-    --brand-text-strong: #241C12;
-    --brand-text-mid: #6B5A3C;
-    --brand-text-faint: #9A875F;
-    --brand-text-muted: #B6A684;
+    --brand-bg: #FCF4E6;
+    --brand-card: #FFFDF8;
+    --brand-sidebar: #F8EEDB;
+    --brand-surface-0: #FBF1DE;
+    --brand-surface-1: #F6E6CB;
+    --brand-surface-2: #F0D9B4;
+    --brand-surface-3: #E8C994;
+    --brand-surface-4: #DEB877;
+    --brand-border-1: #E7CFA0;
+    --brand-border-2: #D9B983;
+    --brand-border-3: #C29E5E;
+    --brand-text-strong: #2A1C0E;
+    --brand-text-mid: #6E5631;
+    --brand-text-faint: #9A7E4F;
+    --brand-text-muted: #B89A6E;
     --brand-honey-tint: #FEF3C7;
     --brand-amber-soft: rgba(217, 119, 6, 0.10);
     --brand-amber-soft-2: rgba(217, 119, 6, 0.16);
@@ -143,7 +143,7 @@
     --brand-amber-border-soft: rgba(217, 119, 6, 0.18);
     --brand-success-soft: rgba(52, 210, 123, 0.14);
     --brand-danger-soft: rgba(244, 101, 94, 0.12);
-    --brand-status-neutral-soft: rgba(138, 123, 99, 0.14);
+    --brand-status-neutral-soft: rgba(178, 148, 104, 0.16);
   }
 }
 
