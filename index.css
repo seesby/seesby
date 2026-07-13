@@ -36,6 +36,7 @@
   --brand-text-faint: #B49468;      /* warm stone */
   --brand-text-muted: #8A6E4A;
   --brand-text-dim: #5E4528;
+  --brand-ink: #1C1917;             /* dark ink for use on bright honey surfaces */
 
   /* Status — amber-led, warm-neutral (no cold blue/purple) */
   --brand-success: #34D27B;         /* warmed green */
@@ -94,6 +95,7 @@
   --brand-text-mid: #6E5631;
   --brand-text-faint: #9A7E4F;
   --brand-text-muted: #B89A6E;
+  --brand-ink: #1C1917;
   --brand-honey-tint: #FEF3C7;
   --brand-amber-soft: rgba(217, 119, 6, 0.10);
   --brand-amber-soft-2: rgba(217, 119, 6, 0.16);
@@ -136,6 +138,7 @@
     --brand-text-mid: #6E5631;
     --brand-text-faint: #9A7E4F;
     --brand-text-muted: #B89A6E;
+    --brand-ink: #1C1917;
     --brand-honey-tint: #FEF3C7;
     --brand-amber-soft: rgba(217, 119, 6, 0.10);
     --brand-amber-soft-2: rgba(217, 119, 6, 0.16);

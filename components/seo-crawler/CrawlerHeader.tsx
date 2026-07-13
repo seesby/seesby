@@ -469,58 +469,58 @@ export default function CrawlerHeader() {
     const primaryActionLabel = MODE_ACTION[mode] || 'New Scan';
 
     return (
-        <header className="h-[48px] bg-[var(--brand-card)] border-b border-[var(--brand-border-1)] flex items-center px-3 justify-between shrink-0 relative z-40">
+        <header className="h-[48px] bg-[#F59E0B] border-b-2 border-[#D97706] flex items-center px-3 justify-between shrink-0 relative z-40" style={{ color: 'var(--brand-ink)' }}>
             {/* ── Left: Logo + Breadcrumb ── */}
             <div className="flex items-center gap-3 min-w-0">
                 {/* Logo */}
                 <div className="flex items-center gap-2 relative shrink-0">
                     {isCrawling && (
-                        <div className="absolute -inset-2 bg-[#F59E0B]/20 rounded-full blur-md animate-pulse z-0 hidden md:block" />
+                        <div className="absolute -inset-2 bg-[#1C1917]/15 rounded-full blur-md animate-pulse z-0 hidden md:block" />
                     )}
-                    <BeeMark size={22} className={`shrink-0 relative z-10 transition-all duration-500 ${isCrawling ? 'drop-shadow-[0_0_12px_rgba(245,158,11,0.8)]' : 'drop-shadow-[0_0_8px_rgba(245,158,11,0.3)]'}`} />
-                    <span className="font-bold text-[var(--brand-text-strong)] text-[14px] tracking-tight relative z-10">Seesby <span className="text-gray-500 font-medium">Scanner</span></span>
+                    <BeeMark size={22} className={`shrink-0 relative z-10 transition-all duration-500 ${isCrawling ? 'drop-shadow-[0_0_12px_rgba(28,25,23,0.4)]' : 'drop-shadow-[0_0_6px_rgba(28,25,23,0.2)]'}`} />
+                    <span className="font-bold text-[var(--brand-ink)] text-[14px] tracking-tight relative z-10">Seesby <span className="text-[#3A2410] font-semibold">Scanner</span></span>
                 </div>
 
-                <span className="text-[var(--brand-surface-4)] text-[14px]">|</span>
+                <span className="text-[#1C1917]/40 text-[14px]">|</span>
 
                 {/* Project */}
                 <div className="shrink-0">
                     <ProjectSelector />
                 </div>
 
-                <span className="text-[var(--brand-surface-4)] text-[14px]">|</span>
+                <span className="text-[#1C1917]/40 text-[14px]">|</span>
 
                 {/* Mode */}
-                <div className="relative flex items-center gap-1.5 h-[28px] px-2 bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded hover:border-[var(--brand-surface-4)] transition-colors shrink-0">
+                <div className="relative flex items-center gap-1.5 h-[28px] px-2 bg-[#1C1917]/12 border border-[#1C1917]/25 rounded hover:border-[#1C1917]/40 transition-colors shrink-0">
                     {activeModeDescriptor && (
-                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${MODE_DOT_CLASS[activeModeDescriptor.accent] || 'bg-[var(--brand-surface-3)]'}`} />
+                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${MODE_DOT_CLASS[activeModeDescriptor.accent] || 'bg-[#1C1917]/40'}`} />
                     )}
                     <select
                         value={mode}
                         onChange={(e) => setMode(e.target.value as Mode)}
-                        className="bg-transparent text-[11px] text-[var(--brand-text-mid)] focus:outline-none appearance-none cursor-pointer"
+                        className="bg-transparent text-[11px] text-[#1C1917] font-medium focus:outline-none appearance-none cursor-pointer"
                     >
                         {allModes().map((entry) => (
-                            <option key={entry.id} value={entry.id}>{MODE_LABEL[entry.id]}</option>
+                            <option key={entry.id} value={entry.id} className="text-[#1C1917] bg-[#F59E0B]">{MODE_LABEL[entry.id]}</option>
                         ))}
                     </select>
-                    <ChevronDown size={10} className="text-[var(--brand-text-faint)] pointer-events-none" />
+                    <ChevronDown size={10} className="text-[#1C1917]/60 pointer-events-none" />
                 </div>
 
-                <span className="text-[var(--brand-surface-4)] text-[14px]">|</span>
+                <span className="text-[#1C1917]/40 text-[14px]">|</span>
 
                 {/* Industry */}
                 <div className="relative h-[28px] flex items-center">
                     <select
                         value={fingerprint?.industry?.value || 'general'}
                         onChange={(e) => setWqaIndustryOverride?.(e.target.value || null)}
-                        className="h-full pl-2 pr-6 bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded text-[11px] text-[var(--brand-text-mid)] hover:border-[var(--brand-surface-4)] focus:outline-none appearance-none cursor-pointer transition-colors"
+                        className="h-full pl-2 pr-6 bg-[#1C1917]/12 border border-[#1C1917]/25 rounded text-[11px] text-[#1C1917] font-medium hover:border-[#1C1917]/40 focus:outline-none appearance-none cursor-pointer transition-colors"
                     >
                         {allIndustries().map((industry) => (
-                            <option key={industry} value={industry}>{INDUSTRY_LABEL[industry]}</option>
+                            <option key={industry} value={industry} className="text-[#1C1917] bg-[#F59E0B]">{INDUSTRY_LABEL[industry]}</option>
                         ))}
                     </select>
-                    <ChevronDown size={10} className="absolute right-1.5 top-1/2 -translate-y-1/2 text-[var(--brand-text-faint)] pointer-events-none" />
+                    <ChevronDown size={10} className="absolute right-1.5 top-1/2 -translate-y-1/2 text-[#1C1917]/60 pointer-events-none" />
                 </div>
             </div>
 
@@ -530,7 +530,7 @@ export default function CrawlerHeader() {
                 <button
                     onClick={clearCrawlerWorkspace}
                     disabled={pages.length === 0 || isCrawling}
-                    className="flex items-center gap-1 px-2 py-1 bg-transparent hover:bg-[var(--brand-border-2)] border border-[var(--brand-surface-4)] rounded text-[10px] font-medium text-[var(--brand-text-mid)] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="flex items-center gap-1 px-2 py-1 bg-[#1C1917]/10 hover:bg-[#1C1917]/20 border border-[#1C1917]/25 rounded text-[10px] font-semibold text-[#1C1917] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                     title="Clear workspace"
                 >
                     <X size={10} /> Clear
@@ -545,8 +545,8 @@ export default function CrawlerHeader() {
                                 disabled={analysisRuntime.isAnalyzing}
                                 className={`relative flex items-center gap-1 px-2 py-1 rounded text-[10px] font-bold transition-all overflow-hidden ${
                                     analysisRuntime.isAnalyzing
-                                    ? 'bg-[var(--brand-surface-3)] text-gray-400 border border-[var(--brand-surface-4)] cursor-wait'
-                                    : 'bg-gradient-to-t from-[#D97706] to-[#F59E0B] text-black hover:to-[#FBBF24]'
+                                    ? 'bg-[#1C1917]/20 text-[#1C1917]/70 border border-[#1C1917]/30 cursor-wait'
+                                    : 'bg-[#1C1917] text-[#F59E0B] hover:bg-[#2A1A0E]'
                                 }`}
                             >
                                 {analysisRuntime.isAnalyzing && (
@@ -572,7 +572,7 @@ export default function CrawlerHeader() {
 
                             <button
                                 onClick={() => setShowAiChat(true)}
-                                className="flex items-center gap-1 px-2 py-1 bg-[var(--brand-amber-soft)] hover:bg-[var(--brand-amber-soft-2)] border border-[var(--brand-amber-border-soft)] text-[var(--brand-amber)] rounded text-[10px] font-bold transition-all"
+                                className="flex items-center gap-1 px-2 py-1 bg-[#1C1917]/12 hover:bg-[#1C1917]/22 border border-[#1C1917]/30 text-[#1C1917] rounded text-[10px] font-bold transition-all"
                             >
                                 <Bot size={10} /> AI
                             </button>
@@ -581,12 +581,12 @@ export default function CrawlerHeader() {
                 </div>
 
                 {/* Utilities */}
-                <div className="flex items-center gap-0.5 border-l border-[var(--brand-border-3)] pl-2">
+                <div className="flex items-center gap-0.5 border-l border-[#1C1917]/25 pl-2">
                     <NotificationBell />
-                    <a href="https://docs.seesby.com" target="_blank" rel="noopener noreferrer" className="p-1.5 rounded text-[var(--brand-text-faint)] hover:bg-[var(--brand-border-2)] hover:text-[var(--brand-text-strong)] transition-colors" title="Help">
+                    <a href="https://docs.seesby.com" target="_blank" rel="noopener noreferrer" className="p-1.5 rounded text-[#1C1917]/70 hover:bg-[#1C1917]/15 hover:text-[#1C1917] transition-colors" title="Help">
                         <HelpCircle size={13}/>
                     </a>
-                    <button onClick={() => setShowSettings(!showSettings)} className={`p-1.5 rounded transition-colors ${showSettings ? 'bg-[var(--brand-surface-4)] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)] hover:bg-[var(--brand-border-2)] hover:text-[var(--brand-text-strong)]'}`} title="Settings">
+                    <button onClick={() => setShowSettings(!showSettings)} className={`p-1.5 rounded transition-colors ${showSettings ? 'bg-[#1C1917]/20 text-[#1C1917]' : 'text-[#1C1917]/70 hover:bg-[#1C1917]/15 hover:text-[#1C1917]'}`} title="Settings">
                         <Settings size={13}/>
                     </button>
                 </div>
@@ -602,7 +602,7 @@ export default function CrawlerHeader() {
                         ? 'bg-[#1a0508] text-[#F59E0B] border border-[#F59E0B]/30 hover:bg-[#2a080d]'
                         : isPausedSession
                         ? 'bg-[#1c1403] text-amber-400 border border-amber-500/30 hover:bg-[#261a04]'
-                        : 'text-[var(--brand-text-strong)] hover:opacity-90 border border-transparent'
+                        : 'bg-[#1C1917] text-[#F59E0B] hover:bg-[#2A1A0E] border border-transparent'
                     }`}
                     style={!isActiveSession && !isPausedSession ? { backgroundColor: modeAccent } : undefined}
                 >

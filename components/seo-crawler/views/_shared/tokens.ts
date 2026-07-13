@@ -11,6 +11,30 @@ export const STATUS = {
   muted:    '#574E40',
 };
 
+/**
+ * Type scale — single source of truth for crawler typography.
+ * Sizes step by ~1px; weights tied to role. Use in inline style objects:
+ *   style={{ fontSize: TYPE.body, fontWeight: TYPE.w.medium, color: TEXT.secondary }}
+ */
+export const TYPE = {
+  display: 14,   // wordmark, primary headings
+  title:   13,   // panel/section titles
+  body:    12,   // table rows, default text
+  small:   11,   // secondary text, controls
+  micro:   10,   // labels, chip text
+  tiny:    9,    // uppercase eyebrows, badges
+} as const;
+
+export const TYPE_W = {
+  regular:  400,
+  medium:   500,
+  semibold: 600,
+  bold:     700,
+} as const;
+
+// Dark ink for use on bright honey surfaces (e.g. the full-honey header bar).
+export const INK = 'var(--brand-ink, #1C1917)';
+
 /** Categorical chart palette — amber-led, neutral, no blue/purple accents. */
 export const CHART_PALETTE = [
   '#f59e0b', '#d97706', '#fbbf24', '#22c55e', '#14b8a6',
