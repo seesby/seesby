@@ -1083,7 +1083,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
     // ─── 0. Config & Settings State ───
     const [config, setConfig] = useState<CrawlerConfig>(DEFAULT_CONFIG);
     const [settingsTab, setSettingsTab] = useState<SettingsTabId>('general');
-    const [theme, setTheme] = useState<'dark'|'light'|'system'|'high-contrast'>('dark');
+    const [theme, setTheme] = useState<'dark'|'light'|'system'>('dark');
     const [workerFilteredPages, setWorkerFilteredPages] = useState<any[] | null>(null);
     const [integrationConnections, setIntegrationConnections] = useState<Partial<Record<CrawlerIntegrationProvider, CrawlerIntegrationConnection>>>({});
     const [integrationsLoading, setIntegrationsLoading] = useState(false);
@@ -1573,7 +1573,7 @@ export function SeoCrawlerProvider({ children }: { children: ReactNode }) {
         if (typeof window === 'undefined') return;
         try {
             const stored = window.localStorage.getItem('seesby:theme');
-            if (stored === 'dark' || stored === 'light' || stored === 'system' || stored === 'high-contrast') {
+            if (stored === 'dark' || stored === 'light' || stored === 'system') {
                 setTheme(stored);
             }
         } catch {

@@ -3,10 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from './Button';
 import { BeeMark } from './BeeMark';
 import { Menu, X } from 'lucide-react';
+import { useTheme } from '../hooks/useTheme';
+import { ThemeToggle } from './ThemeToggle';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const location = useLocation();
+  const { theme, setTheme } = useTheme();
 
   if (location.pathname.startsWith('/dashboard')) return null;
 
@@ -32,6 +35,7 @@ export const Navbar: React.FC = () => {
 
         {/* CTA Buttons */}
         <div className="hidden md:flex items-center gap-4">
+          <ThemeToggle theme={theme} setTheme={setTheme} />
           <Link to="/auth" className="text-sm font-bold text-gray-500 hover:text-brand-amber uppercase tracking-wide">Log in</Link>
           <Link to="/auth?mode=signup">
             <Button size="sm" variant="amber">Start Free Trial</Button>

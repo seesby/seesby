@@ -22,7 +22,7 @@ const SeesbyLogo = ({ collapsed }: { collapsed?: boolean }) => (
         <BeeMark size={32} glow />
         {!collapsed && (
             <div className="flex flex-col justify-center transition-opacity duration-300">
-                <span className="text-white font-extrabold text-lg tracking-wider uppercase font-heading">Seesby</span>
+                <span className="text-[var(--brand-text-strong)] font-extrabold text-lg tracking-wider uppercase font-heading">Seesby</span>
             </div>
         )}
     </div>
@@ -33,8 +33,8 @@ const SidebarItem = ({ icon, label, active, onClick, hasNotification, badge, col
         <button
             onClick={onClick}
             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all group relative ${active
-                ? 'bg-white/10 text-white shadow-glow-sm border border-white/5'
-                : 'text-gray-500 hover:text-white hover:bg-white/5 border border-transparent'
+                ? 'bg-[var(--brand-surface-3)] text-[var(--brand-text-strong)] shadow-glow-sm border border-[var(--brand-border-1)]'
+                : 'text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:bg-[var(--brand-surface-3)] border border-transparent'
                 } ${collapsed ? 'justify-center px-2' : ''} ${indent ? 'pl-8' : ''}`}
             title={collapsed ? label : undefined}
         >
@@ -42,15 +42,15 @@ const SidebarItem = ({ icon, label, active, onClick, hasNotification, badge, col
                 {icon}
             </div>
             {!collapsed && (
-                <span className={`text-sm font-medium ${active ? 'text-white' : ''} truncate`}>
+                <span className={`text-sm font-medium ${active ? 'text-[var(--brand-text-strong)]' : ''} truncate`}>
                     {label}
                 </span>
             )}
             {hasNotification && (
-                <div className={`absolute w-2 h-2 rounded-full bg-brand-amber border-2 border-[#0A0A0A] ${collapsed ? 'top-2 right-2' : 'right-3 top-1/2 -translate-y-1/2'}`}></div>
+                <div className={`absolute w-2 h-2 rounded-full bg-brand-amber border-2 border-[var(--brand-surface-0)] ${collapsed ? 'top-2 right-2' : 'right-3 top-1/2 -translate-y-1/2'}`}></div>
             )}
             {badge && !collapsed && (
-                <span className={`ml-auto text-[9px] uppercase font-bold px-1.5 py-0.5 rounded ${active ? 'bg-white/20 text-white' : 'bg-brand-amber/10 text-brand-amber'
+                <span className={`ml-auto text-[9px] uppercase font-bold px-1.5 py-0.5 rounded ${active ? 'bg-[var(--brand-surface-4)] text-[var(--brand-text-strong)]' : 'bg-brand-amber/10 text-brand-amber'
                     }`}>
                     {badge}
                 </span>
@@ -86,12 +86,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
 
     return (
         <aside
-            className={`${isCollapsed ? 'w-[80px]' : 'w-[260px]'} relative shrink-0 hidden lg:flex flex-col border-r border-white/[0.08] bg-[#0A0A0A] z-40 transition-all duration-300 ease-in-out`}
+            className={`${isCollapsed ? 'w-[80px]' : 'w-[260px]'} relative shrink-0 hidden lg:flex flex-col border-r border-[var(--border-subtle)] bg-[var(--brand-sidebar)] z-40 transition-all duration-300 ease-in-out`}
         >
             {/* Collapse Toggle */}
             <button
                 onClick={() => setIsCollapsed(!isCollapsed)}
-                className="absolute -right-3 top-[26px] w-6 h-6 bg-[#1A1A1A] border border-white/10 rounded-full flex items-center justify-center text-gray-500 hover:text-white hover:border-brand-amber transition-all z-50 cursor-pointer shadow-lg group"
+                className="absolute -right-3 top-[26px] w-6 h-6 bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] rounded-full flex items-center justify-center text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:border-brand-amber transition-all z-50 cursor-pointer shadow-lg group"
             >
                 <ChevronLeft size={12} className={`transition-transform duration-300 ${isCollapsed ? 'rotate-180' : ''} group-hover:scale-110`} />
             </button>
@@ -107,26 +107,26 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                 <div className="relative mt-2" ref={projectMenuRef}>
                     <button
                         onClick={() => !isCollapsed && setIsProjectMenuOpen(!isProjectMenuOpen)}
-                        className={`w-full flex items-center gap-3 bg-[#151515] border border-white/10 rounded-xl hover:border-white/20 hover:bg-[#1A1A1A] transition-all group ${isCollapsed ? 'p-2 justify-center h-12' : 'p-3'
+                        className={`w-full flex items-center gap-3 bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-xl hover:border-[var(--brand-border-3)] hover:bg-[var(--brand-surface-3)] transition-all group ${isCollapsed ? 'p-2 justify-center h-12' : 'p-3'
                             }`}
                     >
-                        <div className="w-6 h-6 rounded-md bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center text-[10px] font-bold text-white shadow-lg shrink-0 uppercase">
+                        <div className="w-6 h-6 rounded-md bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center text-[10px] font-bold text-[var(--brand-text-strong)] shadow-lg shrink-0 uppercase">
                             {activeProject ? activeProject.name.substring(0, 2) : '?'}
                         </div>
                         {!isCollapsed && (
                             <div className="flex-1 text-left min-w-0">
-                                <p className="text-xs font-bold text-white truncate">{activeProject ? activeProject.name : 'No Project'}</p>
-                                <p className="text-[10px] text-gray-500 truncate">{activeProject ? activeProject.url : 'Add to start'}</p>
+                                <p className="text-xs font-bold text-[var(--brand-text-strong)] truncate">{activeProject ? activeProject.name : 'No Project'}</p>
+                                <p className="text-[10px] text-[var(--brand-text-mid)] truncate">{activeProject ? activeProject.url : 'Add to start'}</p>
                             </div>
                         )}
-                        {!isCollapsed && <ChevronDown size={14} className="text-gray-500 group-hover:text-white transition-colors" />}
+                        {!isCollapsed && <ChevronDown size={14} className="text-[var(--brand-text-mid)] group-hover:text-[var(--brand-text-strong)] transition-colors" />}
                     </button>
 
                     {/* Project Dropdown */}
                     {isProjectMenuOpen && !isCollapsed && (
-                        <div className="absolute top-full left-0 w-full mt-2 bg-[#1A1A1A] border border-white/10 rounded-xl shadow-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-                            <div className="p-2 border-b border-white/5">
-                                <input type="text" placeholder="Find project..." className="w-full bg-black/20 text-xs text-white p-2 rounded-lg border border-white/5 focus:outline-none focus:border-brand-amber/50" />
+                        <div className="absolute top-full left-0 w-full mt-2 bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] rounded-xl shadow-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                            <div className="p-2 border-b border-[var(--brand-border-1)]">
+                                <input type="text" placeholder="Find project..." className="w-full bg-black/30 text-xs text-[var(--brand-text-strong)] p-2 rounded-lg border border-[var(--brand-border-1)] focus:outline-none focus:border-brand-amber/50" />
                             </div>
                             <div className="max-h-48 overflow-y-auto scrollbar-thin">
                                 {projects.map((p) => (
@@ -136,25 +136,25 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                                             navigate(`/project/${p.id}/dashboard?view=${currentView}`);
                                             setIsProjectMenuOpen(false); 
                                         }}
-                                        className={`w-full flex items-center gap-3 p-2 hover:bg-white/5 transition-colors ${activeProject?.id === p.id ? 'bg-white/5' : ''}`}
+                                        className={`w-full flex items-center gap-3 p-2 hover:bg-[var(--brand-surface-3)] transition-colors ${activeProject?.id === p.id ? 'bg-[var(--brand-surface-3)]' : ''}`}
                                     >
-                                        <div className="w-6 h-6 rounded-md bg-gradient-to-br from-brand-amber to-orange-500 flex items-center justify-center text-[10px] font-bold text-white uppercase">
+                                        <div className="w-6 h-6 rounded-md bg-gradient-to-br from-brand-amber to-orange-500 flex items-center justify-center text-[10px] font-bold text-[var(--brand-text-strong)] uppercase">
                                             {p.name.substring(0, 2)}
                                         </div>
                                         <div className="text-left">
-                                            <p className="text-xs font-bold text-white">{p.name}</p>
-                                            <p className="text-[10px] text-gray-500">{p.url}</p>
+                                            <p className="text-xs font-bold text-[var(--brand-text-strong)]">{p.name}</p>
+                                            <p className="text-[10px] text-[var(--brand-text-mid)]">{p.url}</p>
                                         </div>
                                     </button>
                                 ))}
                                 {projects.length === 0 && (
-                                    <div className="p-4 text-center text-xs text-gray-500">No projects yet.</div>
+                                    <div className="p-4 text-center text-xs text-[var(--brand-text-mid)]">No projects yet.</div>
                                 )}
                             </div>
-                            <div className="p-2 border-t border-white/5 bg-[#111]">
+                            <div className="p-2 border-t border-[var(--brand-border-1)] bg-[var(--brand-surface-2)]">
                                 <button
                                     onClick={() => { setIsProjectMenuOpen(false); setIsAddModalOpen(true); }}
-                                    className="w-full flex items-center justify-center gap-2 p-2 rounded-lg border border-white/5 text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+                                    className="w-full flex items-center justify-center gap-2 p-2 rounded-lg border border-[var(--brand-border-1)] text-xs text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)] hover:bg-[var(--brand-surface-3)] transition-colors"
                                 >
                                     <Plus size={12} /> Add Project
                                 </button>
@@ -166,11 +166,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                 {/* New Analysis Action */}
                 <button
                     onClick={() => setCurrentView('content_predictor')}
-                    className={`mt-2 bg-gradient-to-r from-brand-amber to-[#FF5065] text-white rounded-xl flex items-center justify-center gap-2 group shadow-glow-sm hover:shadow-glow transition-all
+                    className={`mt-2 bg-gradient-to-r from-brand-amber to-[#FF5065] text-[var(--brand-text-strong)] rounded-xl flex items-center justify-center gap-2 group shadow-glow-sm hover:shadow-glow transition-all
                     ${isCollapsed ? 'w-10 h-10 p-0' : 'w-full py-2.5 px-4'}`}
                     title="New Analysis"
                 >
-                    <Plus size={16} className="text-white transition-transform" />
+                    <Plus size={16} className="text-[var(--brand-text-strong)] transition-transform" />
                     {!isCollapsed && <span className="text-xs font-bold uppercase tracking-wide">New Analysis</span>}
                 </button>
             </div>
@@ -182,7 +182,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                 <div className="flex flex-col gap-1">
                     {!isCollapsed && (
                         <div className="px-4 mb-1 animate-in fade-in duration-300">
-                            <span className="text-[10px] font-bold text-gray-600 uppercase tracking-widest font-heading">Core</span>
+                            <span className="text-[10px] font-bold text-[var(--brand-text-faint)] uppercase tracking-widest font-heading">Core</span>
                         </div>
                     )}
                     <SidebarItem 
@@ -201,7 +201,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                 <div className="flex flex-col gap-1">
                     {!isCollapsed && (
                         <div className="px-4 mb-1 animate-in fade-in duration-300">
-                            <span className="text-[10px] font-bold text-gray-600 uppercase tracking-widest font-heading">Intelligence</span>
+                            <span className="text-[10px] font-bold text-[var(--brand-text-faint)] uppercase tracking-widest font-heading">Intelligence</span>
                         </div>
                     )}
                     <SidebarItem 
@@ -241,7 +241,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                 <div className="flex flex-col gap-1">
                     {!isCollapsed && (
                         <div className="px-4 mb-1 animate-in fade-in duration-300">
-                            <span className="text-[10px] font-bold text-gray-600 uppercase tracking-widest font-heading">Performance</span>
+                            <span className="text-[10px] font-bold text-[var(--brand-text-faint)] uppercase tracking-widest font-heading">Performance</span>
                         </div>
                     )}
                     <SidebarItem 
@@ -281,7 +281,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                 <div className="flex flex-col gap-1">
                     {!isCollapsed && (
                         <div className="px-4 mb-1 animate-in fade-in duration-300">
-                            <span className="text-[10px] font-bold text-gray-600 uppercase tracking-widest font-heading">Operations</span>
+                            <span className="text-[10px] font-bold text-[var(--brand-text-faint)] uppercase tracking-widest font-heading">Operations</span>
                         </div>
                     )}
                     <SidebarItem 
@@ -315,7 +315,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
             </div>
 
             {/* C. Footer: Settings & Profile */}
-            <div className="p-3 bg-[#0A0A0A] border-t border-white/[0.08] flex flex-col gap-1">
+            <div className="p-3 bg-[var(--brand-sidebar)] border-t border-[var(--border-subtle)] flex flex-col gap-1">
                 <SidebarItem
                     icon={<Settings size={18} />}
                     label="Project Settings"
@@ -338,38 +338,38 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                 />
 
                 {!isCollapsed ? (
-                    <div className="mt-3 bg-[#111] rounded-xl border border-white/5 p-3 flex flex-col gap-2">
+                    <div className="mt-3 bg-[var(--brand-surface-2)] rounded-xl border border-[var(--brand-border-1)] p-3 flex flex-col gap-2">
                         <div className="flex justify-between items-end">
-                            <span className="text-[10px] text-gray-500 font-bold uppercase">Credits</span>
-                            <span className="text-xs text-white font-bold">4.2k <span className="text-gray-600">/ 5k</span></span>
+                            <span className="text-[10px] text-[var(--brand-text-mid)] font-bold uppercase">Credits</span>
+                            <span className="text-xs text-[var(--brand-text-strong)] font-bold">4.2k <span className="text-[var(--brand-text-faint)]">/ 5k</span></span>
                         </div>
-                        <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                        <div className="h-1 w-full bg-[var(--brand-surface-3)] rounded-full overflow-hidden">
                             <div className="h-full w-[84%] bg-brand-amber"></div>
                         </div>
                     </div>
                 ) : (
                     <div className="mt-2 flex justify-center">
-                        <div className="w-8 h-1 bg-white/10 rounded-full overflow-hidden">
+                        <div className="w-8 h-1 bg-[var(--brand-surface-3)] rounded-full overflow-hidden">
                             <div className="w-[84%] h-full bg-brand-amber"></div>
                         </div>
                     </div>
                 )}
 
-                <div className={`mt-2 flex items-center gap-3 px-1 py-1.5 rounded-lg hover:bg-white/5 transition-all group ${isCollapsed ? 'justify-center' : ''}`}>
-                    <div className="w-8 h-8 rounded-full bg-brand-card border border-white/10 flex items-center justify-center text-[10px] font-bold text-gray-400 overflow-hidden shrink-0 uppercase">
+                <div className={`mt-2 flex items-center gap-3 px-1 py-1.5 rounded-lg hover:bg-[var(--brand-surface-3)] transition-all group ${isCollapsed ? 'justify-center' : ''}`}>
+                    <div className="w-8 h-8 rounded-full bg-brand-card border border-[var(--brand-border-2)] flex items-center justify-center text-[10px] font-bold text-[var(--brand-text-faint)] overflow-hidden shrink-0 uppercase">
                         {user?.fullName?.split(' ').map(n => n[0]).join('').substring(0, 2) || '??'}
                     </div>
                     {!isCollapsed && (
                         <>
                             <div className="flex-1 min-w-0">
-                                <p className="text-xs font-bold text-white truncate">{user?.fullName || 'User Account'}</p>
-                                <p className="text-[10px] text-gray-400 truncate leading-tight capitalize">
+                                <p className="text-xs font-bold text-[var(--brand-text-strong)] truncate">{user?.fullName || 'User Account'}</p>
+                                <p className="text-[10px] text-[var(--brand-text-faint)] truncate leading-tight capitalize">
                                     {(profile?.subscription_status || 'Free') + ' Plan'}
                                 </p>
                             </div>
                             <button 
                                 onClick={() => signOut()}
-                                className="p-2 text-gray-500 hover:text-[#F59E0B] hover:bg-[#F59E0B]/10 rounded-lg transition-all"
+                                className="p-2 text-[var(--brand-text-mid)] hover:text-[#F59E0B] hover:bg-[#F59E0B]/10 rounded-lg transition-all"
                                 title="Sign Out"
                             >
                                 <LogOut size={14} />
@@ -381,40 +381,40 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
             {/* Add Project Modal */}
             {isAddModalOpen && (
                 <div className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center backdrop-blur-sm p-4">
-                    <div className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
-                        <div className="p-5 border-b border-white/5 flex justify-between items-center bg-[#151515]">
-                            <h3 className="text-lg font-bold text-white">Create New Project</h3>
-                            <button onClick={() => setIsAddModalOpen(false)} className="text-gray-500 hover:text-white">
+                    <div className="bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
+                        <div className="p-5 border-b border-[var(--brand-border-1)] flex justify-between items-center bg-[var(--brand-surface-2)]">
+                            <h3 className="text-lg font-bold text-[var(--brand-text-strong)]">Create New Project</h3>
+                            <button onClick={() => setIsAddModalOpen(false)} className="text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)]">
                                 <X size={20} />
                             </button>
                         </div>
                         <div className="p-6 space-y-4">
                             <div>
-                                <label className="block text-xs font-bold text-gray-400 mb-1">Project Name</label>
+                                <label className="block text-xs font-bold text-[var(--brand-text-faint)] mb-1">Project Name</label>
                                 <input
                                     type="text"
                                     value={newProjectName}
                                     onChange={e => setNewProjectName(e.target.value)}
                                     placeholder="e.g. Acme Corp"
-                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors"
+                                    className="w-full bg-[var(--brand-surface-1)] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-[var(--brand-text-strong)] focus:outline-none focus:border-brand-amber transition-colors"
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs font-bold text-gray-400 mb-1">Website URL</label>
+                                <label className="block text-xs font-bold text-[var(--brand-text-faint)] mb-1">Website URL</label>
                                 <input
                                     type="url"
                                     value={newProjectUrl}
                                     onChange={e => setNewProjectUrl(e.target.value)}
                                     placeholder="https://acme.com"
-                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors"
+                                    className="w-full bg-[var(--brand-surface-1)] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-[var(--brand-text-strong)] focus:outline-none focus:border-brand-amber transition-colors"
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs font-bold text-gray-400 mb-1">Industry</label>
+                                <label className="block text-xs font-bold text-[var(--brand-text-faint)] mb-1">Industry</label>
                                 <select
                                     value={newProjectIndustry}
                                     onChange={e => setNewProjectIndustry(e.target.value as any)}
-                                    className="w-full bg-[#050505] border border-white/10 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors appearance-none"
+                                    className="w-full bg-[var(--brand-surface-1)] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-[var(--brand-text-strong)] focus:outline-none focus:border-brand-amber transition-colors appearance-none"
                                 >
                                     <option value="saas">SaaS / B2B</option>
                                     <option value="ecommerce">E-Commerce</option>
@@ -435,7 +435,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView })
                                         setNewProjectUrl('');
                                     }
                                 }}
-                                className="w-full mt-4 bg-brand-amber text-white font-bold py-3 rounded-xl hover:bg-brand-amber/90 transition-colors disabled:opacity-50"
+                                className="w-full mt-4 bg-brand-amber text-[var(--brand-text-strong)] font-bold py-3 rounded-xl hover:bg-brand-amber/90 transition-colors disabled:opacity-50"
                             >
                                 {isSubmitting ? 'Creating...' : 'Create Project'}
                             </button>

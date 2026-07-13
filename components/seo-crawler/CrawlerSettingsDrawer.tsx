@@ -7,6 +7,7 @@ import {
 import { useSeoCrawler } from '../../contexts/SeoCrawlerContext';
 import { SETTINGS_TABS } from './settings/SettingsPanel';
 import { SettingsTabId, CrawlerConfig } from '../../services/CrawlerConfigTypes';
+import { ThemeToggle } from '../ThemeToggle';
 
 // Import Tab Components for 1:1 Parity
 import GeneralTab from './settings/GeneralTab';
@@ -52,8 +53,10 @@ export default function CrawlerSettingsDrawer({ isOpen, onClose }: CrawlerSettin
         handleStartPause,
         config,
         setConfig,
-        addLog
-    } = useSeoCrawler();
+        addLog,
+        theme,
+        setTheme
+    } = useSeoCrawler() as any;
 
     const [activeTab, setActiveTab] = useState<SettingsTabId>('general');
     
@@ -210,9 +213,15 @@ export default function CrawlerSettingsDrawer({ isOpen, onClose }: CrawlerSettin
                             <span className="text-[#444] text-[12px]">/</span>
                             <span className="text-white text-[12px] font-bold">{activeTabLabel}</span>
                         </div>
-                        <button onClick={handleClose} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#222] text-[#666] hover:text-white transition-all">
-                            <X size={16} />
-                        </button>
+                        <div className="flex items-center gap-3">
+                            <div className="hidden sm:flex items-center gap-2">
+                                <span className="text-[#666] text-[11px] uppercase tracking-wide">Theme</span>
+                                <ThemeToggle theme={theme} setTheme={setTheme} size="sm" dark />
+                            </div>
+                            <button onClick={handleClose} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#222] text-[#666] hover:text-white transition-all">
+                                <X size={16} />
+                            </button>
+                        </div>
 
                     </div>
 

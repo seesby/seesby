@@ -47,22 +47,22 @@ export const CopilotOverlay = ({ isOpen, onClose }: { isOpen: boolean, onClose: 
 
     return (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-            <div className="bg-[#0C0C0C] border border-white/10 w-full max-w-2xl h-[600px] rounded-2xl shadow-2xl flex flex-col relative overflow-hidden">
+            <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-border-2)] w-full max-w-2xl h-[600px] rounded-2xl shadow-2xl flex flex-col relative overflow-hidden">
                 {/* Header */}
-                <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/5">
+                <div className="p-4 border-b border-[var(--brand-border-1)] flex items-center justify-between bg-[var(--brand-surface-3)]">
                     <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-lg bg-brand-amber flex items-center justify-center shadow-glow-sm">
                             <Bot size={18} className="text-white" />
                         </div>
                         <div>
-                            <h3 className="text-white font-bold font-heading">Seesby AI</h3>
+                            <h3 className="text-[var(--brand-text-strong)] font-bold font-heading">Seesby AI</h3>
                             <div className="flex items-center gap-1.5">
                                 <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
-                                <span className="text-[10px] text-gray-400 uppercase tracking-wide">Online</span>
+                                <span className="text-[10px] text-[var(--brand-text-faint)] uppercase tracking-wide">Online</span>
                             </div>
                         </div>
                     </div>
-                    <button onClick={onClose} className="text-gray-500 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-lg">
+                    <button onClick={onClose} className="text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] transition-colors p-2 hover:bg-[var(--brand-surface-3)] rounded-lg">
                         <X size={20} />
                     </button>
                 </div>
@@ -72,9 +72,9 @@ export const CopilotOverlay = ({ isOpen, onClose }: { isOpen: boolean, onClose: 
                     {messages.map((msg, i) => (
                         <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                             <div className={`max-w-[80%] rounded-2xl p-4 text-sm leading-relaxed ${
-                                msg.role === 'user' 
-                                ? 'bg-white/10 text-white rounded-tr-sm' 
-                                : 'bg-[#151515] border border-white/5 text-gray-300 rounded-tl-sm'
+                                msg.role === 'user'
+                                ? 'bg-[var(--brand-surface-4)] text-[var(--brand-text-strong)] rounded-tr-sm'
+                                : 'bg-[var(--brand-surface-2)] border border-[var(--brand-border-1)] text-[var(--brand-text-mid)] rounded-tl-sm'
                             }`}>
                                 {msg.text}
                             </div>
@@ -82,10 +82,10 @@ export const CopilotOverlay = ({ isOpen, onClose }: { isOpen: boolean, onClose: 
                     ))}
                     {isTyping && (
                          <div className="flex justify-start">
-                             <div className="bg-[#151515] border border-white/5 rounded-2xl rounded-tl-sm p-4 flex gap-1 items-center">
-                                 <div className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce"></div>
-                                 <div className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce [animation-delay:0.2s]"></div>
-                                 <div className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce [animation-delay:0.4s]"></div>
+                             <div className="bg-[var(--brand-surface-2)] border border-[var(--brand-border-1)] rounded-2xl rounded-tl-sm p-4 flex gap-1 items-center">
+                                 <div className="w-1.5 h-1.5 bg-[var(--brand-text-faint)] rounded-full animate-bounce"></div>
+                                 <div className="w-1.5 h-1.5 bg-[var(--brand-text-faint)] rounded-full animate-bounce [animation-delay:0.2s]"></div>
+                                 <div className="w-1.5 h-1.5 bg-[var(--brand-text-faint)] rounded-full animate-bounce [animation-delay:0.4s]"></div>
                              </div>
                          </div>
                     )}
@@ -93,11 +93,11 @@ export const CopilotOverlay = ({ isOpen, onClose }: { isOpen: boolean, onClose: 
                 </div>
 
                 {/* Input Area */}
-                <div className="p-4 border-t border-white/5 bg-[#0C0C0C]">
+                <div className="p-4 border-t border-[var(--brand-border-1)] bg-[var(--brand-surface-1)]">
                     <div className="relative">
-                        <input 
-                            type="text" 
-                            className="w-full bg-[#1A1A1A] border border-white/10 rounded-xl pl-4 pr-12 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:border-brand-amber/50 transition-colors"
+                        <input
+                            type="text"
+                            className="w-full bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] rounded-xl pl-4 pr-12 py-3.5 text-[var(--brand-text-strong)] placeholder-[var(--brand-text-faint)] focus:outline-none focus:border-brand-amber/50 transition-colors"
                             placeholder="Ask me to audit a page, write content, or check rankings..."
                             value={input}
                             onChange={e => setInput(e.target.value)}

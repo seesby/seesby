@@ -5,7 +5,7 @@ const AuthBackground: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none bg-[#050505]">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none bg-[var(--bg-main)]">
       {/* Subtle Grain Overlay */}
       <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.1)_0.4px,transparent_0.5px)] [background-size:4px_4px]" />
 

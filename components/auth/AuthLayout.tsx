@@ -38,7 +38,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, mode, onBack, onSwitc
   const toggleLink = mode === 'login' ? 'Sign up' : 'Log in';
 
   return (
-    <div className="min-h-screen bg-[#050505] flex flex-col items-center justify-center p-6 relative overflow-hidden selection:bg-[#F59E0B] selection:text-white font-sans">
+    <div className="min-h-screen bg-[var(--bg-main)] flex flex-col items-center justify-center p-6 relative overflow-hidden selection:bg-[#F59E0B] selection:text-white font-sans">
       {/* Decorative Strategic Background */}
       <AuthBackground />
 
@@ -48,9 +48,9 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, mode, onBack, onSwitc
            {/* Back Button - Moved Outside Card for zero overlap */}
            <div className="h-6 w-full flex items-center mb-4">
               {showBack && (
-                <button 
+                <button
                   onClick={onBack}
-                  className="p-1 px-2 text-gray-600 hover:text-white transition-colors group flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-bold"
+                  className="p-1 px-2 text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)] transition-colors group flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-bold"
                 >
                   <ArrowLeft size={14} className="group-hover:-translate-x-0.5 transition-transform" />
                   <span>Go Back</span>
@@ -75,10 +75,10 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, mode, onBack, onSwitc
              animate={{ opacity: 1, y: 0 }}
              className="text-center space-y-1 mt-3"
            >
-              <h1 className="text-2xl font-semibold text-white tracking-tight">
+              <h1 className="text-2xl font-semibold text-[var(--text-primary)] tracking-tight">
                 {title}
               </h1>
-              <p className="text-gray-500 text-sm font-medium">
+              <p className="text-[var(--text-secondary)] text-sm font-medium">
                 {subtitle} { (mode === 'login' || mode === 'signup') && (
                   <button onClick={onSwitch} className="text-[#F59E0B] hover:text-[#FBBF24] ml-1 cursor-pointer font-semibold transition-colors">{toggleLink}</button>
                 )}
@@ -96,7 +96,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, mode, onBack, onSwitc
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-          className="relative bg-[#0A0A0A]/60 border border-white/[0.08] rounded-[28px] p-8 backdrop-blur-3xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)]"
+          className="relative bg-[var(--auth-panel)] border border-[var(--auth-panel-border)] rounded-[28px] p-8 backdrop-blur-3xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)]"
         >
           {/* Back button removed from inside card to fix overlap */}
           <div className="relative">
@@ -106,11 +106,11 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, mode, onBack, onSwitc
 
         {/* Footer / Trust Factors */}
         <div className="mt-8 flex flex-col items-center gap-5">
-           <div className="flex items-center gap-1.5 text-[9px] uppercase tracking-[0.1em] font-bold text-gray-700">
-              <Shield size={9} className="text-gray-800" />
+           <div className="flex items-center gap-1.5 text-[9px] uppercase tracking-[0.1em] font-bold text-[var(--brand-text-muted)]">
+              <Shield size={9} className="text-[var(--brand-text-muted)]" />
               <span>Secure & Encrypted</span>
            </div>
-           <p className="text-gray-800 text-[9px] font-bold uppercase tracking-[0.1em] opacity-40">
+           <p className="text-[var(--brand-text-muted)] text-[9px] font-bold uppercase tracking-[0.1em] opacity-40">
               © 2026 Seesby — See clearly. Through craft.
            </p>
         </div>

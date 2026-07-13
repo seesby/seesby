@@ -60,54 +60,87 @@
 }
 
 [data-theme="light"] {
+  /* Warm cream + amber light theme */
+  --bg-main: #FAF7F0;
+  --panel-bg: #F3EEE3;
+  --card-bg: #FFFFFF;
+  --auth-panel: rgba(255, 255, 255, 0.90);
+  --auth-panel-border: rgba(28, 25, 23, 0.12);
+  --auth-input-bg: rgba(28, 25, 23, 0.04);
+  --auth-input-bg-focus: rgba(28, 25, 23, 0.07);
+  --glass-border: rgba(28, 25, 23, 0.08);
+  --border-subtle: rgba(28, 25, 23, 0.06);
+  --text-primary: #1C1917;
+  --text-secondary: #6B635B;
+  --text-main: var(--text-secondary);
+  --text-heading: var(--text-primary);
   --brand-amber: #D97706;
-  --brand-amber-glow: rgba(217, 119, 6, 0.16);
-  --bg-main: #FFFFFF;
-  --panel-bg: #FAFAFA;
-  --glass-border: rgba(0, 0, 0, 0.08);
-  --border-subtle: rgba(0, 0, 0, 0.06);
-  --card-bg: #F5F5F5;
-  --text-primary: #1A1A1A;
-  --text-secondary: #6B7280;
-  --auth-panel: rgba(255, 255, 255, 0.85);
-  --auth-panel-border: rgba(0, 0, 0, 0.12);
-  --auth-input-bg: rgba(0, 0, 0, 0.03);
-  --auth-input-bg-focus: rgba(0, 0, 0, 0.06);
-  --text-main: var(--text-secondary);
-  --text-heading: var(--text-primary);
-}
+  --brand-amber-glow: rgba(217, 119, 6, 0.14);
 
-[data-theme="high-contrast"] {
-  --brand-amber: #FFB020;
-  --brand-amber-glow: transparent;
-  --bg-main: #000000;
-  --panel-bg: #000000;
-  --glass-border: #FFFFFF;
-  --border-subtle: #FFFFFF;
-  --card-bg: #111111;
-  --text-primary: #FFFFFF;
-  --text-secondary: #CCCCCC;
-  --auth-panel: #000000;
-  --auth-panel-border: #FFFFFF;
-  --auth-input-bg: #000000;
-  --auth-input-bg-focus: #FFFFFF;
-  --text-main: var(--text-secondary);
-  --text-heading: var(--text-primary);
+  /* Brand surface scale -> warm light */
+  --brand-bg: #FAF7F0;
+  --brand-card: #FFFFFF;
+  --brand-sidebar: #F3EEE3;
+  --brand-surface-0: #FBF8F2;
+  --brand-surface-1: #F3EEE3;
+  --brand-surface-2: #EDE6D8;
+  --brand-surface-3: #E4DBCB;
+  --brand-surface-4: #D9CFBC;
+  --brand-border-1: #E4DBCB;
+  --brand-border-2: #D9CFBC;
+  --brand-border-3: #C9BDA6;
+  --brand-text-strong: #1C1917;
+  --brand-text-mid: #6B635B;
+  --brand-text-faint: #9A9085;
+  --brand-text-muted: #B6AC9C;
+  --brand-amber-soft: rgba(217, 119, 6, 0.10);
+  --brand-amber-soft-2: rgba(217, 119, 6, 0.16);
+  --brand-amber-border: rgba(217, 119, 6, 0.28);
+  --brand-amber-border-soft: rgba(217, 119, 6, 0.18);
+  --brand-success-soft: rgba(34, 197, 94, 0.12);
+  --brand-danger-soft: rgba(239, 68, 68, 0.10);
+  --brand-status-neutral-soft: rgba(113, 113, 122, 0.12);
 }
 
 @media (prefers-color-scheme: light) {
   [data-theme="system"] {
-    --brand-amber: #D97706;
-    --brand-amber-glow: rgba(217, 119, 6, 0.16);
-    --bg-main: #FFFFFF;
-    --panel-bg: #FAFAFA;
-    --glass-border: rgba(0, 0, 0, 0.08);
-    --border-subtle: rgba(0, 0, 0, 0.06);
-    --card-bg: #F5F5F5;
-    --text-primary: #1A1A1A;
-    --text-secondary: #6B7280;
+    --bg-main: #FAF7F0;
+    --panel-bg: #F3EEE3;
+    --card-bg: #FFFFFF;
+    --auth-panel: rgba(255, 255, 255, 0.90);
+    --auth-panel-border: rgba(28, 25, 23, 0.12);
+    --auth-input-bg: rgba(28, 25, 23, 0.04);
+    --auth-input-bg-focus: rgba(28, 25, 23, 0.07);
+    --glass-border: rgba(28, 25, 23, 0.08);
+    --border-subtle: rgba(28, 25, 23, 0.06);
+    --text-primary: #1C1917;
+    --text-secondary: #6B635B;
     --text-main: var(--text-secondary);
     --text-heading: var(--text-primary);
+    --brand-amber: #D97706;
+    --brand-amber-glow: rgba(217, 119, 6, 0.14);
+    --brand-bg: #FAF7F0;
+    --brand-card: #FFFFFF;
+    --brand-sidebar: #F3EEE3;
+    --brand-surface-0: #FBF8F2;
+    --brand-surface-1: #F3EEE3;
+    --brand-surface-2: #EDE6D8;
+    --brand-surface-3: #E4DBCB;
+    --brand-surface-4: #D9CFBC;
+    --brand-border-1: #E4DBCB;
+    --brand-border-2: #D9CFBC;
+    --brand-border-3: #C9BDA6;
+    --brand-text-strong: #1C1917;
+    --brand-text-mid: #6B635B;
+    --brand-text-faint: #9A9085;
+    --brand-text-muted: #B6AC9C;
+    --brand-amber-soft: rgba(217, 119, 6, 0.10);
+    --brand-amber-soft-2: rgba(217, 119, 6, 0.16);
+    --brand-amber-border: rgba(217, 119, 6, 0.28);
+    --brand-amber-border-soft: rgba(217, 119, 6, 0.18);
+    --brand-success-soft: rgba(34, 197, 94, 0.12);
+    --brand-danger-soft: rgba(239, 68, 68, 0.10);
+    --brand-status-neutral-soft: rgba(113, 113, 122, 0.12);
   }
 }
 
