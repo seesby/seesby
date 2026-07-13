@@ -17,25 +17,25 @@
   --brand-amber-border-soft: rgba(245, 158, 11, 0.20);
   --brand-honey-tint: #FEF3C7;      /* wing tint */
 
-  --brand-bg: #0C0907;
-  --brand-card: #15110B;            /* warm raised card */
-  --brand-sidebar: #100C08;         /* warm recessed */
+  --brand-bg: #0B0907;
+  --brand-card: #1C160E;            /* clearly raised warm card */
+  --brand-sidebar: #120D08;         /* warm recessed */
 
-  --brand-surface-0: #0E0B08;       /* deepest canvas (warm black) */
-  --brand-surface-1: #14100A;
-  --brand-surface-2: #1A140D;
-  --brand-surface-3: #221A10;
-  --brand-surface-4: #2B2114;       /* top elevation */
+  --brand-surface-0: #0E0A06;       /* deepest canvas (warm black) */
+  --brand-surface-1: #181109;
+  --brand-surface-2: #221809;
+  --brand-surface-3: #2E2110;
+  --brand-surface-4: #3C2C16;       /* top elevation, visible honey-step */
 
-  --brand-border-1: #221A10;
-  --brand-border-2: #2E2416;
-  --brand-border-3: #3C2F1C;        /* strong divider (bark-tinted) */
+  --brand-border-1: #2A1E10;
+  --brand-border-2: #3A2A16;
+  --brand-border-3: #503A1E;        /* strong divider (bark-tinted, visible) */
 
-  --brand-text-strong: #FBF6EC;     /* warm white */
-  --brand-text-mid: #BBA98A;        /* warm sand */
-  --brand-text-faint: #7E7160;      /* warm stone */
-  --brand-text-muted: #574E40;
-  --brand-text-dim: #3C352A;
+  --brand-text-strong: #FBF3E4;     /* warm white */
+  --brand-text-mid: #C9B68F;        /* warm sand (clearly warm, not grey) */
+  --brand-text-faint: #8A7B5E;      /* warm stone */
+  --brand-text-muted: #5E5340;
+  --brand-text-dim: #3E3628;
 
   /* Status — amber-led, warm-neutral (no cold blue/purple) */
   --brand-success: #34D27B;         /* warmed green */
@@ -49,7 +49,7 @@
   --panel-bg: rgba(20, 16, 11, 0.82);
   --glass-border: rgba(245, 158, 11, 0.08);
   --border-subtle: rgba(245, 158, 11, 0.10);
-  --card-bg: #15110B;
+  --card-bg: #1C160E;
   --auth-panel: rgba(12, 9, 7, 0.78);
   --auth-panel-border: rgba(245, 158, 11, 0.10);
   --auth-input-bg: rgba(245, 158, 11, 0.05);
@@ -80,20 +80,20 @@
 
   /* Brand surface scale -> honey-cream light */
   --brand-bg: #FBF6EC;
-  --brand-card: #FFFDF8;
+  --brand-card: #FFFEFB;
   --brand-sidebar: #F4ECDD;
   --brand-surface-0: #FDFAF3;
-  --brand-surface-1: #F4ECDD;
-  --brand-surface-2: #EDE2CD;
-  --brand-surface-3: #E4D7BC;
-  --brand-surface-4: #DBCCA8;
-  --brand-border-1: #E4D7BC;
-  --brand-border-2: #D9C8A4;
-  --brand-border-3: #C9B488;
+  --brand-surface-1: #F3E8D4;
+  --brand-surface-2: #EBDCC0;
+  --brand-surface-3: #E0CDA6;
+  --brand-surface-4: #D2BA8C;
+  --brand-border-1: #E2CFA6;
+  --brand-border-2: #D2BB8C;
+  --brand-border-3: #BE9F66;
   --brand-text-strong: #241C12;
-  --brand-text-mid: #6B5E49;
-  --brand-text-faint: #9A8C72;
-  --brand-text-muted: #B6A98C;
+  --brand-text-mid: #6B5A3C;
+  --brand-text-faint: #9A875F;
+  --brand-text-muted: #B6A684;
   --brand-honey-tint: #FEF3C7;
   --brand-amber-soft: rgba(217, 119, 6, 0.10);
   --brand-amber-soft-2: rgba(217, 119, 6, 0.16);
@@ -122,20 +122,20 @@
     --brand-amber: #D97706;
     --brand-amber-glow: rgba(217, 119, 6, 0.14);
     --brand-bg: #FBF6EC;
-    --brand-card: #FFFDF8;
+    --brand-card: #FFFEFB;
     --brand-sidebar: #F4ECDD;
     --brand-surface-0: #FDFAF3;
-    --brand-surface-1: #F4ECDD;
-    --brand-surface-2: #EDE2CD;
-    --brand-surface-3: #E4D7BC;
-    --brand-surface-4: #DBCCA8;
-    --brand-border-1: #E4D7BC;
-    --brand-border-2: #D9C8A4;
-    --brand-border-3: #C9B488;
+    --brand-surface-1: #F3E8D4;
+    --brand-surface-2: #EBDCC0;
+    --brand-surface-3: #E0CDA6;
+    --brand-surface-4: #D2BA8C;
+    --brand-border-1: #E2CFA6;
+    --brand-border-2: #D2BB8C;
+    --brand-border-3: #BE9F66;
     --brand-text-strong: #241C12;
-    --brand-text-mid: #6B5E49;
-    --brand-text-faint: #9A8C72;
-    --brand-text-muted: #B6A98C;
+    --brand-text-mid: #6B5A3C;
+    --brand-text-faint: #9A875F;
+    --brand-text-muted: #B6A684;
     --brand-honey-tint: #FEF3C7;
     --brand-amber-soft: rgba(217, 119, 6, 0.10);
     --brand-amber-soft-2: rgba(217, 119, 6, 0.16);

@@ -32,19 +32,18 @@
             },
             colors: {
               brand: {
-                bg: '#0B0B0A',      // Soft near-black main bg
-                card: '#141412',    // Distinct card background
-                sidebar: '#0E0E0C', // Sidebar background
-                amber: '#F59E0B',   // Seesby Amber (hero)
+                bg: 'var(--brand-bg)',
+                card: 'var(--brand-card)',
+                sidebar: 'var(--brand-sidebar)',
+                amber: '#F59E0B',
                 amberHover: '#FBBF24',
                 amberDeep: '#D97706',
-                purple: '#7C3AED',  // Neon Purple (kept for accents)
-                yellow: '#FACC15',  // Neon Yellow
-                green: '#22C55E',   // Neon Green (status)
-                ink: '#1C1917',     // Bee ink
-                stone: '#78716C',   // Muted gray wordmark suffix
-                gray: '#9CA3AF',    // Text Gray
-                darkgray: '#27272A', // Borders/Separators
+                honey: '#FEF3C7',
+                bark: '#92400E',
+                ink: '#1C1917',
+                stone: '#78716C',
+                gray: 'var(--brand-text-mid)',
+                darkgray: 'var(--brand-border-2)',
               }
             },
             borderRadius: {
@@ -89,10 +88,10 @@
         height: 6px;
       }
       *:hover::-webkit-scrollbar-thumb {
-        background: rgba(39, 39, 42, 0.6);
+        background: rgba(80, 58, 30, 0.6);
       }
       *:hover::-webkit-scrollbar-thumb:hover {
-        background: rgba(63, 63, 70, 0.9);
+        background: rgba(95, 70, 38, 0.9);
       }
       
       /* Firefox support */
