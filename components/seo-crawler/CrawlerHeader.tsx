@@ -101,7 +101,7 @@ function NewProjectForm({ onCreated, onCancel }: NewProjectFormProps) {
                 <button
                     onClick={handleCreate}
                     disabled={loading || !url.trim()}
-                    className="flex-1 h-7 text-[11px] font-bold bg-[var(--brand-surface-3)] hover:bg-[#eee] disabled:opacity-30 disabled:cursor-not-allowed text-black rounded flex items-center justify-center gap-1 transition-all"
+                    className="flex-1 h-7 text-[11px] font-bold bg-[var(--brand-surface-3)] hover:bg-[var(--brand-text-strong)]] disabled:opacity-30 disabled:cursor-not-allowed text-black rounded flex items-center justify-center gap-1 transition-all"
                 >
                     {loading ? 'Creating…' : <><ArrowRight size={11} /> Create</>}
                 </button>
@@ -445,7 +445,7 @@ export default function CrawlerHeader() {
     }, []);
     const isActiveSession = isCrawling || crawlRuntime.stage === 'crawling' || crawlRuntime.stage === 'connecting';
 
-    const modeAccent = MODE_ACCENT[mode] || '#94a3b8';
+    const modeAccent = MODE_ACCENT[mode] || 'text-[var(--brand-text-mid)]';
 
     const activeModeDescriptor = useMemo(() => {
         try { return getMode(mode); } catch { return null; }

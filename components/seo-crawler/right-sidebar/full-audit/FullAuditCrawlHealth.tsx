@@ -134,7 +134,7 @@ export default function FullAuditCrawlHealth() {
         <Card title={`Blocked (${blockedTotal})`}>
           <Distribution
             rows={[
-              { label: 'robots.txt', value: h.blocked.robots, color: '#94a3b8' },
+              { label: 'robots.txt', value: h.blocked.robots, color: 'text-[var(--brand-text-mid)]' },
               { label: 'noindex', value: h.blocked.metaNoindex, color: '#64748b' },
               { label: 'auth', value: h.blocked.auth, color: '#475569' },
             ].filter(r => r.value > 0)}

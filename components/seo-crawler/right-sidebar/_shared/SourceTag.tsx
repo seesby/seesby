@@ -2,7 +2,7 @@
 import React from 'react'
 
 const COLOR: Record<string, string> = {
-  crawl: '#94a3b8',
+  crawl: 'text-[var(--brand-text-mid)]',
   gsc: '#3b82f6',
   bing: '#22c55e',
   gbp: '#f59e0b',

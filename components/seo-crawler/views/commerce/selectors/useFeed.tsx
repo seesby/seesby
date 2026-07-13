@@ -42,7 +42,7 @@ export function useFeed() {
       { label: 'Approved', count: approved, pct: (approved / total) * 100, color: STATUS_HEX.good },
       { label: 'Warnings', count: warnings, pct: (warnings / total) * 100, color: STATUS_HEX.warn },
       { label: 'Errors', count: errors, pct: (errors / total) * 100, color: STATUS_HEX.bad },
-      { label: 'Missing', count: missing, pct: (missing / (products.length || 1)) * 100, color: '#71717a' },
+      { label: 'Missing', count: missing, pct: (missing / (products.length || 1)) * 100, color: 'text-[var(--brand-text-faint)]' },
     ];
   }, [feedDiagnostics, products]);
 

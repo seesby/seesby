@@ -27,7 +27,7 @@ export type RsRegistry = Partial<Record<Mode, {
 }>>
 
 export const RS_REGISTRY: RsRegistry = {
-  fullAudit:      { label: 'Full audit',         accent: '#94a3b8', tabs: fullAuditTabs },
+  fullAudit:      { label: 'Full audit',         accent: 'text-[var(--brand-text-mid)]', tabs: fullAuditTabs },
   wqa:            { label: 'Web quality',        accent: '#a78bfa', tabs: wqaTabs },
   technical:      { label: 'Technical',          accent: '#3b82f6', tabs: technicalTabs },
   content:        { label: 'Content',            accent: '#f59e0b', tabs: contentTabs },

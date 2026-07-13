@@ -1,7 +1,7 @@
 import React from 'react';
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
-const COLORS = ['#F59E0B', '#3b82f6', '#22c55e', '#f59e0b', '#a855f7', '#06b6d4', '#ec4899', '#94a3b8'];
+const COLORS = ['#F59E0B', '#3b82f6', '#22c55e', '#f59e0b', '#a855f7', '#06b6d4', '#ec4899', 'text-[var(--brand-text-mid)]'];
 
 export default function SchemaTypeDonut({ data, size = 120 }: {
     data: Array<{ label: string; value: number }>;

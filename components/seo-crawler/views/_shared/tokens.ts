@@ -7,14 +7,14 @@ export const STATUS = {
   warn:     '#f59e0b',
   bad:      '#ef4444',
   info:     '#3b82f6',
-  neutral:  '#71717a',
+  neutral:  'text-[var(--brand-text-faint)]',
   muted:    '#3f3f46',
 };
 
 /** Categorical chart palette — amber-led, neutral, no blue/purple accents. */
 export const CHART_PALETTE = [
   '#f59e0b', '#d97706', '#fbbf24', '#22c55e', '#14b8a6',
-  '#ef4444', '#71717a', '#f43f5e', '#10b981', '#06b6d4',
+  '#ef4444', 'text-[var(--brand-text-faint)]', '#f43f5e', '#10b981', '#06b6d4',
 ];
 
 /** Single source of truth for Seesby brand colors (mirrors index.css :root). */
@@ -72,7 +72,7 @@ export const SURFACE_EXT = {
 
 // ── Text (extended) ──────────────────────────────────────────────────
 export const TEXT_EXT = {
-  strong:  '#cccccc',
+  strong:  'text-[var(--brand-text-mid)]',
   mid:     '#888888',
   faint:   '#555555',
 } as const;
@@ -93,7 +93,7 @@ export const SURFACE = {
 // ── Text ──────────────────────────────────────────────────────────────
 export const TEXT = {
   primary:   'bg-[var(--brand-surface-4)]',
-  secondary: '#aaaaaa',
+  secondary: 'text-[var(--brand-text-mid)]',
   tertiary:  '#666666',
   muted:     'border-[var(--brand-border-2)]',
 } as const;

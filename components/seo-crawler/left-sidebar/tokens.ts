@@ -48,7 +48,7 @@ export const TONE_CLASSES = {
 } as const;
 
 export const MODE_DOT_CLASS: Record<string, string> = {
-	'#94a3b8': 'bg-slate-400',   // fullAudit
+	'text-[var(--brand-text-mid)]': 'bg-slate-400',   // fullAudit
 	'#a78bfa': 'bg-violet-400',  // wqa
 	'#3b82f6': 'bg-blue-400',    // technical
 	'#f59e0b': 'bg-amber-400',   // content

@@ -67,7 +67,7 @@ export function useProducts() {
     if (counts.ok > 0) segs.push({ label: 'ok', count: counts.ok, color: STATUS_HEX.good });
     if (counts.warn > 0) segs.push({ label: 'warn', count: counts.warn, color: STATUS_HEX.warn });
     if (counts.err > 0) segs.push({ label: 'err', count: counts.err, color: STATUS_HEX.bad });
-    if (counts.missing > 0) segs.push({ label: 'missing', count: counts.missing, color: '#71717a' });
+    if (counts.missing > 0) segs.push({ label: 'missing', count: counts.missing, color: 'text-[var(--brand-text-faint)]' });
     return segs;
   }, [rows]);
 
@@ -80,7 +80,7 @@ export function useProducts() {
     { accessorKey: 'schemaValid', header: 'Schema', size: 90, cell: c => c.getValue() ? <span className="text-[#22c55e]">valid</span> : <span className="text-[#ef4444]">invalid</span> },
     { accessorKey: 'feedStatus', header: 'Feed', size: 80, cell: c => {
       const v = c.getValue() as string;
-      const colors: Record<string, string> = { ok: 'text-[#22c55e]', warn: 'text-[#f59e0b]', err: 'text-[#ef4444]', missing: 'text-[#71717a]', none: 'text-[var(--brand-text-faint)]]' };
+      const colors: Record<string, string> = { ok: 'text-[#22c55e]', warn: 'text-[#f59e0b]', err: 'text-[#ef4444]', missing: 'text-[var(--brand-text-faint)]]', none: 'text-[var(--brand-text-faint)]]' };
       return <span className={colors[v] ?? ''}>{v}</span>;
     }},
     { accessorKey: 'clicks', header: 'Clicks', size: 80, cell: c => fmtCompact(c.getValue() as number) },

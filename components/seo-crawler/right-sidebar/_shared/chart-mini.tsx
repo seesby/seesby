@@ -2,7 +2,7 @@ import React from 'react'
 import type { Tone } from './types'
 
 const toneStroke: Record<Tone, string> = {
-  good: '#10b981', warn: '#f59e0b', bad: '#f43f5e', info: '#3b82f6', neutral: '#71717a',
+  good: '#10b981', warn: '#f59e0b', bad: '#f43f5e', info: '#3b82f6', neutral: 'text-[var(--brand-text-faint)]',
 }
 
 export function Sparkline({ values, height = 22, tone = 'info' }: { values: number[]; height?: number; tone?: Tone }) {

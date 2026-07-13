@@ -124,7 +124,7 @@ export default function CrawlerEmptyState() {
                         <button 
                             onClick={onCreate}
                             disabled={loading || !url.trim()}
-                            className="w-full h-10 bg-[var(--brand-surface-3)] hover:bg-[#eee] disabled:opacity-30 disabled:cursor-not-allowed text-black text-xs font-bold rounded-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+                            className="w-full h-10 bg-[var(--brand-surface-3)] hover:bg-[var(--brand-text-strong)]] disabled:opacity-30 disabled:cursor-not-allowed text-black text-xs font-bold rounded-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
                         >
                             {loading ? 'Creating...' : 'Create Project'}
                             {!loading && <ArrowRight size={14} />}

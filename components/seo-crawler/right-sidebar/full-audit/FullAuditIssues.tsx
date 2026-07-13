@@ -15,7 +15,7 @@ import { DeltaChip } from '../_shared/DeltaChip'
 import { RsSparkline } from '../parts/RsSparkline'
 import { selectIssues } from './_selectors'
 
-const SEV_COLOR = { critical: '#ef4444', high: '#f97316', medium: '#f59e0b', low: '#94a3b8' } as const
+const SEV_COLOR = { critical: '#ef4444', high: '#f97316', medium: '#f59e0b', low: 'text-[var(--brand-text-mid)]' } as const
 
 export default function FullAuditIssues() {
   const { pages, site, openIssueDrawer, compareSession } = useSeoCrawler() as any

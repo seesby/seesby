@@ -41,9 +41,9 @@ export default function StatusDonut({
               border: '1px solid bg-[var(--brand-surface-4)]',
               borderRadius: 8,
               fontSize: 12,
-              color: '#f5f5f5',
+              color: 'text-[var(--brand-text-strong)]',
             }}
-            itemStyle={{ color: '#f5f5f5' }}
+            itemStyle={{ color: 'text-[var(--brand-text-strong)]' }}
             formatter={(value: number, name: string) => [
               `${value} (${((value / total) * 100).toFixed(1)}%)`,
               name,

@@ -47,7 +47,7 @@ export function WqaActions() {
 						{ label: 'Technical', value: byType.tech, color: '#3b82f6' },
 						{ label: 'Link equity', value: byType.links, color: '#14b8a6' },
 						{ label: 'Merge/Redirect', value: byType.merge, color: '#a78bfa' },
-						{ label: 'Deprecate', value: byType.deprecate, color: '#94a3b8' },
+						{ label: 'Deprecate', value: byType.deprecate, color: 'text-[var(--brand-text-mid)]' },
 					]} 
 				/>
 			</Card>

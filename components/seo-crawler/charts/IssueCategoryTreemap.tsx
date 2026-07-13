@@ -10,7 +10,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   Images: '#a78bfa',
   Security: '#f472b6',
   Accessibility: '#34d399',
-  Technical: '#94a3b8',
+  Technical: 'text-[var(--brand-text-mid)]',
 };
 
 function CustomTreemapContent(props: any) {
@@ -84,9 +84,9 @@ export default function IssueCategoryTreemap({
           border: '1px solid bg-[var(--brand-surface-4)]',
           borderRadius: 8,
           fontSize: 12,
-          color: '#f5f5f5',
+          color: 'text-[var(--brand-text-strong)]',
         }}
-        itemStyle={{ color: '#f5f5f5' }}
+        itemStyle={{ color: 'text-[var(--brand-text-strong)]' }}
       />
     </ChartCard>
   );

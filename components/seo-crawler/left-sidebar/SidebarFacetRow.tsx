@@ -35,21 +35,21 @@ export function SidebarFacetRow({ section, bucket, count }: { section: SidebarFa
 						{selected && <Check size={10} strokeWidth={3} className="text-[var(--brand-text-strong)]" />}
 					</div>
 				) : bullet === 'arrow' ? (
-					<span className={`relative left-[2px] text-[14px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[#55555A]'}`}>▸</span>
+					<span className={`relative left-[2px] text-[14px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>▸</span>
 				) : bullet === 'dot' ? (
-					<span className={`relative left-[2px] text-[10px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[#55555A]'}`}>●</span>
+					<span className={`relative left-[2px] text-[10px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>●</span>
 				) : bullet === 'dot-filled' ? (
-					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[#55555A]'}`}>⬤</span>
+					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>⬤</span>
 				) : bullet === 'dot-outline' ? (
-					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[#55555A]'}`}>◉</span>
+					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>◉</span>
 				) : bullet === 'diamond' ? (
-					<span className={`relative left-[2px] text-[10px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[#55555A]'}`}>◆</span>
+					<span className={`relative left-[2px] text-[10px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>◆</span>
 				) : bullet === 'win-loss' ? (
-					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[#55555A]'}`}>
+					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>
 						{bucket.value === 'win' ? '▲' : bucket.value === 'loss' ? '▼' : '●'}
 					</span>
 				) : bullet === 'bucket' ? (
-					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[#55555A]'}`}>
+					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>
 						{bucket.bullet}
 					</span>
 				) : bullet === 'branch' ? (
@@ -58,7 +58,7 @@ export function SidebarFacetRow({ section, bucket, count }: { section: SidebarFa
 			</div>
 			<span className="flex-1 truncate text-left">{bucket.label}</span>
 			<div className="flex items-center gap-1.5">
-				<span className={`text-[11px] font-mono tabular-nums ${(count > 0 && tone) ? tone.text : 'text-[#66666E]'}`}>{formatCount(count)}</span>
+				<span className={`text-[11px] font-mono tabular-nums ${(count > 0 && tone) ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>{formatCount(count)}</span>
 			</div>
 		</button>
 	);

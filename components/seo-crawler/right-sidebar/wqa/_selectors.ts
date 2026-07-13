@@ -99,7 +99,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 	product: '#10b981',
 	pricing: '#a78bfa',
 	home: '#22c55e',
-	legal: '#94a3b8',
+	legal: 'text-[var(--brand-text-mid)]',
 	collection: '#06b6d4',
 	location: '#f97316',
 	other: '#64748b',

@@ -27,7 +27,7 @@ export function NodeTooltip({
       className="fixed z-50 pointer-events-none bg-[var(--brand-surface-2)]] border border-[var(--brand-border-3)]] rounded px-3 py-2 text-[11px] shadow-lg max-w-xs"
       style={{ left: x + 12, top: y - 8 }}
     >
-      <div className="text-[#eee] font-medium truncate mb-1">{node.label || path}</div>
+      <div className="text-[var(--brand-text-strong)]] font-medium truncate mb-1">{node.label || path}</div>
       <div className="text-[var(--brand-text-faint)]] truncate text-[10px] mb-1.5">{path}</div>
       <div className="flex flex-col gap-0.5 text-[10px]">
         {node.statusCode != null && (

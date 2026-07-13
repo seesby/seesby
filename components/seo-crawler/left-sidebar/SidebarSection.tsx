@@ -14,7 +14,7 @@ export function SidebarSection({ section, counts }: { section: Exclude<Section, 
 		<section className="py-2 border-b border-[var(--brand-border-2)]]">
 			<button
 				onClick={() => toggleSection(pageFilter.mode, section.id)}
-				className="w-full flex items-center justify-between px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#66666E] hover:text-[var(--brand-text-strong)]"
+				className="w-full flex items-center justify-between px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)]"
 			>
 				<span>{section.label}</span>
 				{isOpen ? <ChevronDown size={11} /> : <ChevronRight size={11} />}
@@ -96,7 +96,7 @@ function HistogramBody({ section, counts }: { section: SidebarFacetSection; coun
 						
 						{/* Count Content */}
 						<div className="relative z-10 flex items-center gap-1.5">
-							<span className={`font-mono tabular-nums ${selected ? 'text-[var(--brand-text-strong)]' : 'text-[#66666E] group-hover:text-[var(--brand-text-mid)]]'} ${r.count === 0 ? 'opacity-50' : ''}`}>
+							<span className={`font-mono tabular-nums ${selected ? 'text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] group-hover:text-[var(--brand-text-mid)]]'} ${r.count === 0 ? 'opacity-50' : ''}`}>
 								{r.count}
 							</span>
 						</div>

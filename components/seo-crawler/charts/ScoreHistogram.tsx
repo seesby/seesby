@@ -37,9 +37,9 @@ export default function ScoreHistogram({
               border: '1px solid bg-[var(--brand-surface-4)]',
               borderRadius: 8,
               fontSize: 12,
-              color: '#f5f5f5',
+              color: 'text-[var(--brand-text-strong)]',
             }}
-            itemStyle={{ color: '#f5f5f5' }}
+            itemStyle={{ color: 'text-[var(--brand-text-strong)]' }}
             formatter={(value: number) => [`${value} pages`, 'Count']}
           />
           <Bar dataKey="count" radius={[4, 4, 0, 0]}>

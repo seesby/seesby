@@ -1,7 +1,7 @@
 import React from 'react'
 import { scoreToTone } from './scoring'
 
-const toneBg = { good: '#10b981', warn: '#f59e0b', bad: '#f43f5e', neutral: '#71717a' } as const
+const toneBg = { good: '#10b981', warn: '#f59e0b', bad: '#f43f5e', neutral: 'text-[var(--brand-text-faint)]' } as const
 
 export function ScoreBreakdown({ scores }: { scores: { label: string; score: number }[] }) {
   return (

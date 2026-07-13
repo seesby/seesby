@@ -275,7 +275,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                         <div className="w-3.5 h-[1.5px] bg-[var(--brand-text-mid)]] rounded-full"></div>
                     </button>
                     
-                    <span className="font-bold text-[11px] text-[#eee]">Comparison</span>
+                    <span className="font-bold text-[11px] text-[var(--brand-text-strong)]]">Comparison</span>
                     
                     <div className="flex items-center text-[11px] bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] rounded overflow-hidden h-6 ml-1">
                         <select value={leftSessionId || ''} onChange={(e) => setLeftSessionId(e.target.value)} className="bg-transparent text-[var(--brand-text-mid)]] outline-none cursor-pointer px-2 h-full hover:bg-[var(--brand-surface-3)]]">
@@ -339,7 +339,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                     <button onClick={() => void shareComparison()} className="flex items-center gap-1.5 px-2 py-1 h-6 text-[11px] font-bold text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] transition-colors">
                         <Link2 size={13} /> Share
                     </button>
-                    <button onClick={exportDiff} className="flex items-center gap-1.5 bg-[var(--brand-surface-3)]] hover:bg-[var(--brand-border-2)]] border border-[var(--brand-border-2)]] rounded px-3 py-1 h-6 text-[11px] font-bold text-[#eee] transition-colors">
+                    <button onClick={exportDiff} className="flex items-center gap-1.5 bg-[var(--brand-surface-3)]] hover:bg-[var(--brand-border-2)]] border border-[var(--brand-border-2)]] rounded px-3 py-1 h-6 text-[11px] font-bold text-[var(--brand-text-strong)]] transition-colors">
                         <Download size={12} /> Export Table
                     </button>
                     <div className="h-4 w-px bg-[var(--brand-border-2)]] mx-1" />
@@ -356,7 +356,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                     
                     {/* Issues Bar Chart */}
                     <div className="flex-1 flex flex-col p-5">
-                        <span className="text-[12px] font-bold text-[#eee] mb-4">Issues Found vs Fixed</span>
+                        <span className="text-[12px] font-bold text-[var(--brand-text-strong)]] mb-4">Issues Found vs Fixed</span>
                         <div className="flex-1 w-full bg-[var(--brand-surface-1)]] rounded-md border border-[var(--brand-border-2)]]/50 shadow-inner p-2">
                             {totalIssuesIntroduced === 0 && totalIssuesFixed === 0 ? (
                                 <div className="flex h-full items-center justify-center text-[11px] text-[var(--brand-text-faint)]] font-medium">No issue changes detected</div>
@@ -391,7 +391,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
 
                     {/* Structure Pie Chart with Custom Legend */}
                     <div className="flex-1 flex flex-col p-5 border-l border-[var(--brand-border-2)]]/60">
-                        <span className="text-[12px] font-bold text-[#eee] mb-4">Structural Pages Overview</span>
+                        <span className="text-[12px] font-bold text-[var(--brand-text-strong)]] mb-4">Structural Pages Overview</span>
                         <div className="flex-1 w-full flex items-center justify-center bg-[var(--brand-surface-1)]] rounded-md border border-[var(--brand-border-2)]]/50 shadow-inner relative">
                             {(totalAdded > 0 || totalMissing > 0 || totalModified > 0) ? (
                                 <ResponsiveContainer width="100%" height="100%">
@@ -438,7 +438,7 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
 
                     {/* Traffic BarChart Compare */}
                     <div className="flex-[1.2] flex flex-col p-5 border-l border-[var(--brand-border-2)]]/60">
-                        <span className="text-[12px] font-bold text-[#eee] mb-4">A/B Search Traffic Snapshot</span>
+                        <span className="text-[12px] font-bold text-[var(--brand-text-strong)]] mb-4">A/B Search Traffic Snapshot</span>
                         <div className="flex-1 w-full bg-[var(--brand-surface-1)]] rounded-md border border-[var(--brand-border-2)]]/50 shadow-inner p-2">
                             {(summary.totalClicks?.old || 0) === 0 && (summary.totalClicks?.new || 0) === 0 ? (
                                 <div className="flex h-full items-center justify-center text-[11px] text-[var(--brand-text-faint)]] font-medium">No traffic data recorded</div>
@@ -541,11 +541,11 @@ export default function ComparisonView({ onClose }: ComparisonViewProps) {
                             <span className="text-[11px] text-[var(--brand-text-mid)]] font-medium">{filteredData.length} records processed</span>
                             {selectedUrls.size > 0 && (
                                 <div className="flex items-center gap-2 pl-3 border-l border-[var(--brand-border-2)]]">
-                                    <span className="text-[11px] font-bold text-[#eee]">{selectedUrls.size} selected</span>
+                                    <span className="text-[11px] font-bold text-[var(--brand-text-strong)]]">{selectedUrls.size} selected</span>
                                     <button onClick={handleBulkTask} className="h-6 px-3 bg-[var(--brand-surface-3)] hover:bg-[#eaeaea] text-black rounded text-[10px] font-bold transition-colors">
                                         Create Task
                                     </button>
-                                    <button onClick={() => setSelectedUrls(new Set())} className="text-[11px] px-1 text-[var(--brand-text-faint)]] hover:text-[#eee] font-medium">Clear</button>
+                                    <button onClick={() => setSelectedUrls(new Set())} className="text-[11px] px-1 text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)]] font-medium">Clear</button>
                                 </div>
                             )}
                         </div>
@@ -819,7 +819,7 @@ function PageDetailsSidebar({ row, pages, activeProject, user, addLog, onClose }
                                 <span className="text-[11px] font-bold text-[#F59E0B] uppercase tracking-wide">Issues Found</span>
                                 <div className="flex flex-col gap-1.5">
                                     {row.newIssues.map((iss: any) => (
-                                        <div key={iss.id} className="flex justify-between items-center py-2 px-2.5 bg-[#F59E0B]/10 rounded border border-[#F59E0B]/20 text-[11px] text-[#eee]">
+                                        <div key={iss.id} className="flex justify-between items-center py-2 px-2.5 bg-[#F59E0B]/10 rounded border border-[#F59E0B]/20 text-[11px] text-[var(--brand-text-strong)]]">
                                             <span className="truncate pr-2">{iss.label}</span>
                                             <button onClick={() => void handleCreateTask(iss.label)} className="text-[10px] font-bold text-[#F59E0B] hover:text-[var(--brand-text-strong)] transition-colors shrink-0">
                                                 Create Task

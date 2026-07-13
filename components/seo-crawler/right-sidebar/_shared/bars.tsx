@@ -2,7 +2,7 @@ import React from 'react'
 import type { Tone } from './types'
 
 const toneBg: Record<Tone, string> = {
-  good: '#10b981', warn: '#f59e0b', bad: '#f43f5e', info: '#3b82f6', neutral: '#71717a',
+  good: '#10b981', warn: '#f59e0b', bad: '#f43f5e', info: '#3b82f6', neutral: 'text-[var(--brand-text-faint)]',
 }
 
 export function Bar({ value, max, tone = 'neutral', color, right }: { value: number; max: number; tone?: Tone; color?: string; right?: React.ReactNode }) {
