@@ -12,7 +12,7 @@
     "eval:fingerprint": "node scripts/eval-fingerprint.js",
     "gen:metrics": "node scripts/gen-metrics.js",
     "check:canonical": "tsx scripts/check-canonical-keys.ts",
-    "prebuild": "pnpm check:canonical && pnpm gen:metrics"
+    "prebuild": "npm run check:canonical && npm run gen:metrics"
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.61.4",
