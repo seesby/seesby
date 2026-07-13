@@ -31,21 +31,21 @@ export const SEESBY = {
   card:         '#141412',
   sidebar:      '#0E0E0C',
 
-  surface0:     'bg-[var(--brand-surface-0)]',
-  surface1:     'bg-[var(--brand-surface-1)]',
-  surface2:     'bg-[var(--brand-surface-2)]',
-  surface3:     'bg-[var(--brand-surface-3)]',
-  surface4:     '#1A1A1A',
+  surface0:     'var(--brand-surface-0)',
+  surface1:     'var(--brand-surface-1)',
+  surface2:     'var(--brand-surface-2)',
+  surface3:     'var(--brand-surface-3)',
+  surface4:     'var(--brand-surface-4)',
 
-  border1:      'bg-[var(--brand-surface-3)]',
-  border2:      'border-[var(--brand-border-2)]',
-  border3:      '#2A2A2A',
+  border1:      'var(--brand-border-1)',
+  border2:      'var(--brand-border-2)',
+  border3:      'var(--brand-border-3)',
 
-  textStrong:   'bg-[var(--brand-surface-4)]',
-  textMid:      '#AAAAAA',
-  textFaint:    '#666666',
-  textMuted:    'border-[var(--brand-border-2)]',
-  textDim:      'bg-[var(--brand-surface-4)]3',
+  textStrong:   'var(--brand-text-strong)',
+  textMid:      'var(--brand-text-mid)',
+  textFaint:    'var(--brand-text-faint)',
+  textMuted:    'var(--brand-text-muted)',
+  textDim:      'var(--brand-text-dim)',
 
   success:      '#22C55E',
   danger:       '#EF4444',
@@ -65,37 +65,42 @@ export type Density = keyof typeof DENSITY;
 export const S = { 1: 4, 2: 8, 3: 12, 4: 16, 6: 24, 8: 32, 10: 40, 12: 48, 16: 64 } as const;
 
 // ── Surfaces (extended) ──────────────────────────────────────────────
+// NOTE: All SURFACE/TEXT values are consumed inside INLINE style objects
+// (e.g. style={{ background: SURFACE.bg0, borderTop: `1px solid ${SURFACE.br1}` }}),
+// so they MUST be raw CSS values, never Tailwind class strings.
 export const SURFACE_EXT = {
-  bgSep:    'bg-[var(--brand-surface-3)]',
+  bgSep:    'var(--brand-surface-3)',
   bgGlass:  'rgba(11, 11, 10, 0.80)',
 } as const;
 
 // ── Text (extended) ──────────────────────────────────────────────────
 export const TEXT_EXT = {
-  strong:  'text-[var(--brand-text-mid)]',
-  mid:     '#888888',
-  faint:   '#555555',
+  strong:  'var(--brand-text-strong)',
+  mid:     'var(--brand-text-mid)',
+  faint:   'var(--brand-text-faint)',
 } as const;
 
 // ── Surfaces ──────────────────────────────────────────────────────────
+// bg0..bg4 = elevation tiers (deepest -> top).
+// br0..br3 = border tiers (hairline -> strong).
 export const SURFACE = {
-  bg0:  'bg-[var(--brand-surface-0)]',
-  bg1:  'bg-[var(--brand-surface-1)]',
-  bg2:  'bg-[var(--brand-surface-2)]',
-  bg3:  'bg-[var(--brand-surface-3)]',
-  bg4:  'bg-[var(--brand-surface-3)]',
-  br0:  'bg-[var(--brand-surface-3)]',
-  br1:  'bg-[var(--brand-surface-3)]',
-  br2:  'border-[var(--brand-border-2)]',
-  br3:  'border-[var(--brand-border-3)]',
+  bg0:  'var(--brand-surface-0)',
+  bg1:  'var(--brand-surface-1)',
+  bg2:  'var(--brand-surface-2)',
+  bg3:  'var(--brand-surface-3)',
+  bg4:  'var(--brand-surface-4)',
+  br0:  'var(--brand-border-1)',
+  br1:  'var(--brand-border-1)',
+  br2:  'var(--brand-border-2)',
+  br3:  'var(--brand-border-3)',
 } as const;
 
 // ── Text ──────────────────────────────────────────────────────────────
 export const TEXT = {
-  primary:   'bg-[var(--brand-surface-4)]',
-  secondary: 'text-[var(--brand-text-mid)]',
-  tertiary:  '#666666',
-  muted:     'border-[var(--brand-border-2)]',
+  primary:   'var(--brand-text-strong)',
+  secondary: 'var(--brand-text-mid)',
+  tertiary:  'var(--brand-text-faint)',
+  muted:     'var(--brand-text-muted)',
 } as const;
 
 // ── Radii ─────────────────────────────────────────────────────────────

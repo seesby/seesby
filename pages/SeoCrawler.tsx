@@ -156,7 +156,7 @@ function SeoCrawlerLayout() {
             {!showComparisonView && <CrawlerSubHeader />}
             <div className="flex-1 flex min-h-0 relative overflow-hidden">
                 {!isCompactLayout && (
-                    <PanelErrorBoundary name="Sidebar" fallback={<div className="m-3 rounded border border-[#2b2b2f] bg-[#111] p-3 text-[12px] text-[#999]">Sidebar failed to load.</div>}>
+                    <PanelErrorBoundary name="Sidebar" fallback={<div className="m-3 rounded border border-[var(--brand-border-2)] bg-[var(--brand-surface-1)] p-3 text-[12px] text-[var(--brand-text-faint)]">Sidebar failed to load.</div>}>
                         <LeftSidebar />
                     </PanelErrorBoundary>
                 )}
@@ -164,14 +164,14 @@ function SeoCrawlerLayout() {
                 <div className="flex-1 flex flex-col min-h-0 min-w-0 overflow-hidden">
                     <div className="flex-1 flex min-h-0 min-w-0 relative">
                         <div className="flex-1 flex flex-col min-h-0 min-w-0 overflow-hidden">
-                            <PanelErrorBoundary name="Audit View" fallback={<div className="m-3 rounded border border-[#2b2b2f] bg-[#111] p-3 text-[12px] text-[#999]">Audit view failed to load.</div>}>
+                            <PanelErrorBoundary name="Audit View" fallback={<div className="m-3 rounded border border-[var(--brand-border-2)] bg-[var(--brand-surface-1)] p-3 text-[12px] text-[var(--brand-text-faint)]">Audit view failed to load.</div>}>
                                 {isWqaMode ? <WqaMainCanvas /> : <AuditViewRouter />}
                             </PanelErrorBoundary>
                             <InspectorShell />
                         </div>
 
                         {!isCompactLayout && (
-                            <PanelErrorBoundary name="Audit Sidebar" fallback={<div className="m-3 rounded border border-[#2b2b2f] bg-[#111] p-3 text-[12px] text-[#999]">Audit panel failed to load.</div>}>
+                            <PanelErrorBoundary name="Audit Sidebar" fallback={<div className="m-3 rounded border border-[var(--brand-border-2)] bg-[var(--brand-surface-1)] p-3 text-[12px] text-[var(--brand-text-faint)]">Audit panel failed to load.</div>}>
                                 <RsShell />
                             </PanelErrorBoundary>
                         )}
@@ -184,7 +184,7 @@ function SeoCrawlerLayout() {
                 />
             </div>
 
-            <PanelErrorBoundary name="Status Bar" fallback={<div className="h-[36px] border-t border-[#2b2b2f] bg-[#0f0f12]" />}>
+            <PanelErrorBoundary name="Status Bar" fallback={<div className="h-[36px] border-t border-[var(--brand-border-2)] bg-[var(--brand-surface-1)]" />}>
                 <StatusBar />
             </PanelErrorBoundary>
 
