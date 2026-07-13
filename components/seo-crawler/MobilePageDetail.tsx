@@ -19,8 +19,8 @@ const tabs: Array<{ id: DetailTab; label: string }> = [
 ];
 
 const Metric = ({ label, value }: { label: string; value: React.ReactNode }) => (
-    <div className="rounded-xl border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-4">
-        <div className="text-[10px] uppercase tracking-[0.22em] text-[var(--brand-text-faint)]]">{label}</div>
+    <div className="rounded-xl border border-[var(--brand-surface-3)] bg-[var(--brand-surface-1)] p-4">
+        <div className="text-[10px] uppercase tracking-[0.22em] text-[var(--brand-text-faint)]">{label}</div>
         <div className="mt-2 text-[16px] font-black text-[var(--brand-text-strong)]">{value}</div>
     </div>
 );
@@ -100,9 +100,9 @@ export default function MobilePageDetail({ page, onClose }: MobilePageDetailProp
     };
 
     return (
-        <div className="fixed inset-0 z-[75] flex flex-col bg-[var(--brand-surface-0)]]">
-            <div className="border-b border-[var(--brand-surface-3)]] px-4 py-3">
-                <button onClick={onClose} className="inline-flex items-center gap-2 text-[12px] font-semibold text-[var(--brand-text-mid)]]">
+        <div className="fixed inset-0 z-[75] flex flex-col bg-[var(--brand-surface-0)]">
+            <div className="border-b border-[var(--brand-surface-3)] px-4 py-3">
+                <button onClick={onClose} className="inline-flex items-center gap-2 text-[12px] font-semibold text-[var(--brand-text-mid)]">
                     <ArrowLeft size={16} />
                     Back
                 </button>
@@ -112,13 +112,13 @@ export default function MobilePageDetail({ page, onClose }: MobilePageDetailProp
                 </div>
             </div>
 
-            <div className="flex gap-2 overflow-x-auto border-b border-[var(--brand-surface-3)]] px-4 py-3 custom-scrollbar-hidden">
+            <div className="flex gap-2 overflow-x-auto border-b border-[var(--brand-surface-3)] px-4 py-3 custom-scrollbar-hidden">
                 {tabs.map((tab) => (
                     <button
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id)}
                         className={`rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] ${
-                            activeTab === tab.id ? 'bg-[#F59E0B] text-[var(--brand-text-strong)]' : 'bg-[#141419] text-[var(--brand-text-mid)]]'
+                            activeTab === tab.id ? 'bg-[#F59E0B] text-[var(--brand-text-strong)]' : 'bg-[#141419] text-[var(--brand-text-mid)]'
                         }`}
                     >
                         {tab.label}
@@ -128,7 +128,7 @@ export default function MobilePageDetail({ page, onClose }: MobilePageDetailProp
 
             <div className="flex-1 overflow-y-auto px-4 py-4">
                 <div className="mb-4 rounded-2xl border border-[#23232a] bg-[#111115] p-4">
-                    <div className="text-[10px] uppercase tracking-[0.22em] text-[var(--brand-text-faint)]]">Issue tracking</div>
+                    <div className="text-[10px] uppercase tracking-[0.22em] text-[var(--brand-text-faint)]">Issue tracking</div>
                     <div className="mt-3 flex flex-wrap gap-2">
                         {issues.length === 0 ? (
                             <span className="rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-[11px] font-semibold text-green-300">
@@ -136,7 +136,7 @@ export default function MobilePageDetail({ page, onClose }: MobilePageDetailProp
                             </span>
                         ) : (
                             issues.map((issue) => (
-                                <span key={issue.id} className="rounded-full border border-[#2f2f36] bg-[#17171b] px-3 py-1 text-[11px] font-semibold text-[var(--brand-text-mid)]]">
+                                <span key={issue.id} className="rounded-full border border-[#2f2f36] bg-[#17171b] px-3 py-1 text-[11px] font-semibold text-[var(--brand-text-mid)]">
                                     {issue.label}
                                 </span>
                             ))
@@ -146,7 +146,7 @@ export default function MobilePageDetail({ page, onClose }: MobilePageDetailProp
                 {renderTab()}
             </div>
 
-            <div className="grid grid-cols-4 gap-2 border-t border-[var(--brand-surface-3)]] px-4 py-3">
+            <div className="grid grid-cols-4 gap-2 border-t border-[var(--brand-surface-3)] px-4 py-3">
                 <button
                     onClick={() => {
                         setAutoFixItems([{ ...page, fixStatus: 'pending', generatedMeta: page.metaDesc || '' }]);

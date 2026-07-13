@@ -61,7 +61,7 @@ export default function PerformanceHeatmap({ data }: { data: HeatmapRow[] }) {
   if (data.length === 0) {
     return (
       <ChartCard title="Page Performance Heatmap">
-        <div className="flex items-center justify-center h-32 text-[var(--brand-text-faint)]] text-xs">
+        <div className="flex items-center justify-center h-32 text-[var(--brand-text-faint)] text-xs">
           No page data available.
         </div>
       </ChartCard>
@@ -80,12 +80,12 @@ export default function PerformanceHeatmap({ data }: { data: HeatmapRow[] }) {
   return (
     <ChartCard title="Page Performance Heatmap" className="overflow-hidden">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-[10px] text-[var(--brand-text-faint)]]">
+        <span className="text-[10px] text-[var(--brand-text-faint)]">
           Top {data.length} pages by traffic
         </span>
         <button
           onClick={() => setShowValues(v => !v)}
-          className="text-[10px] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] px-2 py-0.5 rounded bg-[var(--brand-surface-3)]] border border-[var(--brand-surface-4)]]"
+          className="text-[10px] text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] px-2 py-0.5 rounded bg-[var(--brand-surface-3)] border border-[var(--brand-surface-4)]"
         >
           {showValues ? 'Show Dots' : 'Show Values'}
         </button>
@@ -94,11 +94,11 @@ export default function PerformanceHeatmap({ data }: { data: HeatmapRow[] }) {
         <table className="w-full text-[11px]">
           <thead>
             <tr>
-              <th className="text-left text-[var(--brand-text-mid)]] font-medium py-1 px-2 sticky left-0 bg-[var(--brand-surface-2)]] z-10 min-w-[180px]">
+              <th className="text-left text-[var(--brand-text-mid)] font-medium py-1 px-2 sticky left-0 bg-[var(--brand-surface-2)] z-10 min-w-[180px]">
                 URL
               </th>
               {METRICS.map(m => (
-                <th key={m.key} className="text-center text-[var(--brand-text-mid)]] font-medium py-1 px-3 whitespace-nowrap">
+                <th key={m.key} className="text-center text-[var(--brand-text-mid)] font-medium py-1 px-3 whitespace-nowrap">
                   {m.label}
                 </th>
               ))}
@@ -106,8 +106,8 @@ export default function PerformanceHeatmap({ data }: { data: HeatmapRow[] }) {
           </thead>
           <tbody>
             {data.map((row, i) => (
-              <tr key={i} className="hover:bg-[var(--brand-surface-3)]] transition-colors">
-                <td className="py-1.5 px-2 text-[var(--brand-text-mid)]] font-mono sticky left-0 bg-[var(--brand-surface-2)]] z-10 border-r border-[var(--brand-surface-3)]]">
+              <tr key={i} className="hover:bg-[var(--brand-surface-3)] transition-colors">
+                <td className="py-1.5 px-2 text-[var(--brand-text-mid)] font-mono sticky left-0 bg-[var(--brand-surface-2)] z-10 border-r border-[var(--brand-surface-3)]">
                   {truncateUrl(row.url)}
                 </td>
                 {METRICS.map(m => {
@@ -135,7 +135,7 @@ export default function PerformanceHeatmap({ data }: { data: HeatmapRow[] }) {
           </tbody>
         </table>
       </div>
-      <div className="flex items-center gap-4 mt-3 text-[10px] text-[var(--brand-text-faint)]]">
+      <div className="flex items-center gap-4 mt-3 text-[10px] text-[var(--brand-text-faint)]">
         <span>🟢 Good</span>
         <span>🟡 Needs Work</span>
         <span>🔴 Poor</span>

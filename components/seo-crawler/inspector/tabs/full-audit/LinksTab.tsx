@@ -61,7 +61,7 @@ export default function LinksTab({ page }: { page: any; hasTrend?: boolean }) {
               <StatusBadge key={domain} status="info" label={domain} />
             ))}
             {uniqueThirdPartyDomains.length > 20 && (
-              <span className="text-[10px] text-[var(--brand-text-faint)]]">+{uniqueThirdPartyDomains.length - 20} more</span>
+              <span className="text-[10px] text-[var(--brand-text-faint)]">+{uniqueThirdPartyDomains.length - 20} more</span>
             )}
           </div>
         </Card>
@@ -72,10 +72,10 @@ export default function LinksTab({ page }: { page: any; hasTrend?: boolean }) {
         <Card title={`In-links (${inLinksList.length})`}>
           <div className="space-y-1 max-h-[200px] overflow-y-auto custom-scrollbar">
             {inLinksList.map((link, i) => (
-              <div key={`${link.url}-${i}`} className="flex items-center gap-2 text-[11px] py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0">
+              <div key={`${link.url}-${i}`} className="flex items-center gap-2 text-[11px] py-1 border-b border-[var(--brand-surface-2)] last:border-b-0">
                 <TruncatedUrl url={link.url} />
                 {link.anchor && (
-                  <span className="text-[10px] text-[var(--brand-text-faint)]] shrink-0">"{String(link.anchor).slice(0, 40)}"</span>
+                  <span className="text-[10px] text-[var(--brand-text-faint)] shrink-0">"{String(link.anchor).slice(0, 40)}"</span>
                 )}
               </div>
             ))}
@@ -88,11 +88,11 @@ export default function LinksTab({ page }: { page: any; hasTrend?: boolean }) {
         <Card title={`Out-links (${outLinksList.length})`}>
           <div className="space-y-1 max-h-[200px] overflow-y-auto custom-scrollbar">
             {outLinksList.map((link, i) => (
-              <div key={`${link.url}-${i}`} className="flex items-center gap-2 text-[11px] py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0">
+              <div key={`${link.url}-${i}`} className="flex items-center gap-2 text-[11px] py-1 border-b border-[var(--brand-surface-2)] last:border-b-0">
                 <TruncatedUrl url={link.url} />
                 {link.external && <StatusBadge status="info" label="ext" />}
                 {link.anchor && (
-                  <span className="text-[10px] text-[var(--brand-text-faint)]] shrink-0">"{String(link.anchor).slice(0, 40)}"</span>
+                  <span className="text-[10px] text-[var(--brand-text-faint)] shrink-0">"{String(link.anchor).slice(0, 40)}"</span>
                 )}
               </div>
             ))}

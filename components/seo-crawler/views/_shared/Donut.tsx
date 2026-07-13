@@ -24,7 +24,7 @@ export function Donut({
       <div className="absolute inset-0 grid place-items-center pointer-events-none">
         <div className="text-center">
           <div className="text-[18px] font-mono text-[var(--brand-text-strong)]">{t.toLocaleString()}</div>
-          {label && <div className="text-[10px] uppercase text-[var(--brand-text-faint)]]">{label}</div>}
+          {label && <div className="text-[10px] uppercase text-[var(--brand-text-faint)]">{label}</div>}
         </div>
       </div>
     </div>

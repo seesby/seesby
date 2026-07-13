@@ -64,14 +64,14 @@ export function Quadrant({
 
       {/* Quadrant labels */}
       {QLABEL.map((q, i) => (
-        <text key={i} x={q.x} y={q.y} textAnchor={q.anchor as any} className="fill-[var(--brand-text-faint)]] text-[9px] uppercase tracking-wider">
+        <text key={i} x={q.x} y={q.y} textAnchor={q.anchor as any} className="fill-[var(--brand-text-faint)] text-[9px] uppercase tracking-wider">
           {q.text}
         </text>
       ))}
 
       {/* Axis labels */}
-      <text x={w / 2} y={height - 4} textAnchor="middle" className="fill-[var(--brand-text-faint)]] text-[10px]">{xLabel}</text>
-      <text x={8} y={height / 2} textAnchor="middle" transform={`rotate(-90, 8, ${height / 2})`} className="fill-[var(--brand-text-faint)]] text-[10px]">{yLabel}</text>
+      <text x={w / 2} y={height - 4} textAnchor="middle" className="fill-[var(--brand-text-faint)] text-[10px]">{xLabel}</text>
+      <text x={8} y={height / 2} textAnchor="middle" transform={`rotate(-90, 8, ${height / 2})`} className="fill-[var(--brand-text-faint)] text-[10px]">{yLabel}</text>
 
       {/* Points */}
       {points.map((p) => {

@@ -43,7 +43,7 @@ export function useDuplicates() {
       accessorKey: 'matchUrl',
       header: 'Matches',
       size: 260,
-      cell: c => <span className="text-[var(--brand-text-mid)]]">{fmtUrl(c.getValue() as string)}</span>,
+      cell: c => <span className="text-[var(--brand-text-mid)]">{fmtUrl(c.getValue() as string)}</span>,
     },
     {
       accessorKey: 'similarity',
@@ -55,10 +55,10 @@ export function useDuplicates() {
         const tone = v >= 0.9 ? STATUS_HEX.bad : v >= 0.7 ? STATUS_HEX.warn : STATUS_HEX.info;
         return (
           <div className="flex items-center gap-1.5">
-            <div className="w-14 h-1.5 rounded-full bg-[var(--brand-surface-3)]] overflow-hidden">
+            <div className="w-14 h-1.5 rounded-full bg-[var(--brand-surface-3)] overflow-hidden">
               <div className="h-full rounded-full" style={{ width: `${pct}%`, background: tone }} />
             </div>
-            <span className="text-[10px] tabular-nums text-[var(--brand-text-mid)]]">{pct}%</span>
+            <span className="text-[10px] tabular-nums text-[var(--brand-text-mid)]">{pct}%</span>
           </div>
         );
       },
@@ -70,7 +70,7 @@ export function useDuplicates() {
       cell: c => {
         const v = c.getValue() as string;
         return (
-          <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--brand-surface-3)]] text-[var(--brand-text-mid)]]">{v}</span>
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--brand-surface-3)] text-[var(--brand-text-mid)]">{v}</span>
         );
       },
     },
@@ -80,7 +80,7 @@ export function useDuplicates() {
       size: 120,
       cell: c => {
         const v = c.getValue() as string;
-        return <span className="text-[10px] text-[var(--brand-text-faint)]]">{v}</span>;
+        return <span className="text-[10px] text-[var(--brand-text-faint)]">{v}</span>;
       },
     },
   ];

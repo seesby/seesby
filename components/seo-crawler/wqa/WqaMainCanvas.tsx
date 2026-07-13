@@ -17,7 +17,7 @@ export default function WqaMainCanvas() {
 
     return (
         <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
-            <React.Suspense fallback={<div className="p-12 text-[var(--brand-border-2)]] text-[12px] font-mono animate-pulse text-center">Loading view engine...</div>}>
+            <React.Suspense fallback={<div className="p-12 text-[var(--brand-border-2)] text-[12px] font-mono animate-pulse text-center">Loading view engine...</div>}>
                 <WqaViewRouter />
             </React.Suspense>
         </div>

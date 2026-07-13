@@ -5,8 +5,8 @@ import { Treemap } from '../../_shared/Treemap';
 import { useFullAuditCharts } from '../selectors/useFullAuditCharts';
 import { STATUS_HEX } from '../../_shared/shared-columns';
 
-const PANEL = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3';
-const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2';
+const PANEL = 'rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3';
+const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-2';
 
 function Panel({ title, children, className = '' }: { title: string; children: React.ReactNode; className?: string }) {
   return (
@@ -80,7 +80,7 @@ export default function FullAuditChartsView() {
       {/* Row 4: Crawl-over-time (only if multiple sessions) */}
       {c.crawlOverTime.length > 1 && (
         <Panel title="Crawl over Time" className="col-span-12">
-          <div className="flex items-center gap-4 text-[10px] text-[var(--brand-text-mid)]] mb-2">
+          <div className="flex items-center gap-4 text-[10px] text-[var(--brand-text-mid)] mb-2">
             <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#a78bfa] inline-block" /> Pages</span>
             <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#ef4444] inline-block" /> Issues</span>
             <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#22c55e] inline-block" /> Score</span>
@@ -97,7 +97,7 @@ export default function FullAuditChartsView() {
                     <div className="w-1/3 bg-[#ef4444] rounded-t" style={{ height: `${issueH}px` }} />
                     <div className="w-1/3 bg-[#22c55e] rounded-t" style={{ height: `${scoreH}px` }} />
                   </div>
-                  <span className="text-[9px] text-[var(--brand-text-faint)]]">{i + 1}</span>
+                  <span className="text-[9px] text-[var(--brand-text-faint)]">{i + 1}</span>
                 </div>
               );
             })}
@@ -183,16 +183,16 @@ function PerfHeatmap({ data }: { data: { template: string; metrics: { name: stri
       <table className="w-full text-[11px]">
         <thead>
           <tr>
-            <th className="text-left text-[var(--brand-text-faint)]] pr-3 py-1">Template</th>
+            <th className="text-left text-[var(--brand-text-faint)] pr-3 py-1">Template</th>
             {data[0]?.metrics.map((m, i, arr) => (
-              <th key={m.name} className={`text-center text-[var(--brand-text-faint)]] py-1 ${i === arr.length - 1 ? 'pl-3' : 'px-3'}`}>{m.name}</th>
+              <th key={m.name} className={`text-center text-[var(--brand-text-faint)] py-1 ${i === arr.length - 1 ? 'pl-3' : 'px-3'}`}>{m.name}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {data.map(row => (
             <tr key={row.template}>
-              <td className="text-[var(--brand-text-mid)]] pr-3 py-1 font-mono">{row.template}</td>
+              <td className="text-[var(--brand-text-mid)] pr-3 py-1 font-mono">{row.template}</td>
               {row.metrics.map((m, i, arr) => {
                 const intensity = m.value / maxVal;
                 return (
@@ -217,7 +217,7 @@ function PerfHeatmap({ data }: { data: { template: string; metrics: { name: stri
 
 function EmptyChart({ text }: { text: string }) {
   return (
-    <div className="flex items-center justify-center h-[180px] text-[11px] text-[var(--brand-text-faint)]]">
+    <div className="flex items-center justify-center h-[180px] text-[11px] text-[var(--brand-text-faint)]">
       {text}
     </div>
   );

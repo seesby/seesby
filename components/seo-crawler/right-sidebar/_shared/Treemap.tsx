@@ -25,17 +25,17 @@ export function Treemap({
   const styleContainer = { height }
 
   if (!total) {
-    return <div className="text-[11px] text-[var(--brand-text-faint)]] italic">No data</div>
+    return <div className="text-[11px] text-[var(--brand-text-faint)] italic">No data</div>
   }
   return (
-    <div className="relative w-full overflow-hidden rounded-md border border-[var(--brand-surface-3)]]" style={styleContainer}>
+    <div className="relative w-full overflow-hidden rounded-md border border-[var(--brand-surface-3)]" style={styleContainer}>
       {layout.map(n => {
         const styleNode = { left: `${n.left}%`, width: `${n.width}%`, background: TONE_BG[n.tone || 'info'] }
         return (
           <button
             key={n.id}
             onClick={onClick ? () => onClick(n) : undefined}
-            className="absolute top-0 bottom-0 border-r border-[var(--brand-surface-0)]] hover:brightness-125 transition-all text-left p-2"
+            className="absolute top-0 bottom-0 border-r border-[var(--brand-surface-0)] hover:brightness-125 transition-all text-left p-2"
             style={styleNode}
             title={`${n.label}: ${n.value}`}
           >

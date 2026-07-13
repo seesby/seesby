@@ -201,15 +201,15 @@ export function ClusterGraph({ clusters, spokeNodes, links, onNodeClick, onHubCl
       />
 
       {/* Zoom controls - positioned above ClusterQualityBar */}
-      <div className="absolute bottom-24 right-3 z-20 flex flex-col gap-1 bg-[var(--brand-surface-0)]cc] backdrop-blur rounded border border-[var(--brand-surface-3)]]">
-        <button onClick={zoomIn} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] transition-colors" title="Zoom in">
+      <div className="absolute bottom-24 right-3 z-20 flex flex-col gap-1 bg-[var(--brand-surface-0)]cc] backdrop-blur rounded border border-[var(--brand-surface-3)]">
+        <button onClick={zoomIn} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] transition-colors" title="Zoom in">
           <ZoomIn className="w-3.5 h-3.5" />
         </button>
-        <button onClick={zoomOut} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] transition-colors" title="Zoom out">
+        <button onClick={zoomOut} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] transition-colors" title="Zoom out">
           <ZoomOut className="w-3.5 h-3.5" />
         </button>
-        <div className="w-full h-px bg-[var(--brand-surface-3)]]" />
-        <button onClick={fitToScreen} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] transition-colors" title="Fit to screen">
+        <div className="w-full h-px bg-[var(--brand-surface-3)]" />
+        <button onClick={fitToScreen} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] transition-colors" title="Fit to screen">
           <Maximize2 className="w-3.5 h-3.5" />
         </button>
       </div>
@@ -217,13 +217,13 @@ export function ClusterGraph({ clusters, spokeNodes, links, onNodeClick, onHubCl
       {/* Tooltip */}
       {tooltip && (
         <div
-          className="fixed z-50 pointer-events-none bg-[var(--brand-surface-0)]ee] backdrop-blur border border-[var(--brand-surface-3)]] rounded px-3 py-2 text-[11px] shadow-lg max-w-56"
+          className="fixed z-50 pointer-events-none bg-[var(--brand-surface-0)]ee] backdrop-blur border border-[var(--brand-surface-3)] rounded px-3 py-2 text-[11px] shadow-lg max-w-56"
           style={{ left: tooltip.x + 12, top: tooltip.y - 8 }}
         >
           {'isHub' in tooltip.node && tooltip.node.isHub ? (
             <>
               <div className="font-semibold text-[var(--brand-text-strong)] mb-1">{tooltip.node.clusterName}</div>
-              <div className="text-[var(--brand-text-mid)]]">
+              <div className="text-[var(--brand-text-mid)]">
                 Quality avg <span className="text-[var(--brand-text-strong)] font-mono">{tooltip.node.avgQuality}</span>
               </div>
               {tooltip.node.avgQuality < 60 && (
@@ -233,7 +233,7 @@ export function ClusterGraph({ clusters, spokeNodes, links, onNodeClick, onHubCl
           ) : (
             <>
               <div className="font-mono text-[10px] text-[var(--brand-text-strong)] truncate">{(tooltip.node as any).id}</div>
-              <div className="text-[var(--brand-text-mid)]] mt-0.5">
+              <div className="text-[var(--brand-text-mid)] mt-0.5">
                 Q <span className="text-[var(--brand-text-strong)]">{(tooltip.node as any).quality ?? '--'}</span>
                 {'  '}D <span className="text-[var(--brand-text-strong)]">{(tooltip.node as any).depth ?? '--'}</span>
               </div>

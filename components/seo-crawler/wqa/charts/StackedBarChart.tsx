@@ -66,7 +66,7 @@ export default function StackedBarChart({ data, legend }: Props) {
           {(legend || keyMeta.map((m) => ({ label: m.label, color: m.color }))).map((l) => (
             <div key={l.label} className="flex items-center gap-1">
               <div className="w-2 h-2 rounded-sm" style={{ backgroundColor: l.color }} />
-              <span className="text-[9px] text-[var(--brand-text-faint)]]">{l.label}</span>
+              <span className="text-[9px] text-[var(--brand-text-faint)]">{l.label}</span>
             </div>
           ))}
         </div>

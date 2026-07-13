@@ -84,13 +84,13 @@ export default function GeneralTab({ page }: { page: any }) {
             {responseHeaders.length > 0 && (
                 <div className="mt-6">
                     <SectionHeader title="Response Headers" />
-                    <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded overflow-hidden max-h-[240px] overflow-y-auto custom-scrollbar">
+                    <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded overflow-hidden max-h-[240px] overflow-y-auto custom-scrollbar">
                         <table className="w-full text-[11px] font-mono">
                             <tbody>
                                 {responseHeaders.map(([key, value]) => (
-                                    <tr key={key} className="border-b border-[var(--brand-surface-3)]] hover:bg-[var(--brand-surface-2)]]">
+                                    <tr key={key} className="border-b border-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-2)]">
                                         <td className="px-3 py-1 text-[#F59E0B] w-[210px]">{key}</td>
-                                        <td className="px-3 py-1 text-[var(--brand-text-mid)]] break-all">{String(value)}</td>
+                                        <td className="px-3 py-1 text-[var(--brand-text-mid)] break-all">{String(value)}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -107,8 +107,8 @@ export default function GeneralTab({ page }: { page: any }) {
                     </div>
                     <div className="space-y-2">
                         {redirectChain.map((url: string, index: number) => (
-                            <div key={`${url}-${index}`} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2 text-[11px] font-mono text-[var(--brand-text-mid)]] break-all">
-                                <span className="text-[var(--brand-text-faint)]] mr-2">#{index + 1}</span>{url}
+                            <div key={`${url}-${index}`} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-3 py-2 text-[11px] font-mono text-[var(--brand-text-mid)] break-all">
+                                <span className="text-[var(--brand-text-faint)] mr-2">#{index + 1}</span>{url}
                             </div>
                         ))}
                     </div>

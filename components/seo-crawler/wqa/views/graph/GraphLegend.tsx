@@ -19,7 +19,7 @@ type Props = {
 
 export function GraphLegend({ colorBy }: Props) {
   return (
-    <div className="absolute bottom-14 left-3 z-10 flex items-center gap-3 bg-[var(--brand-surface-0)]cc] backdrop-blur p-2 rounded border border-[var(--brand-surface-3)]] text-[10px]">
+    <div className="absolute bottom-14 left-3 z-10 flex items-center gap-3 bg-[var(--brand-surface-0)]cc] backdrop-blur p-2 rounded border border-[var(--brand-surface-3)] text-[10px]">
       {/* Color legend */}
       {colorBy === 'quality' && QUALITY_LEGEND.map(item => (
         <span key={item.label} className="flex items-center gap-1">
@@ -34,19 +34,19 @@ export function GraphLegend({ colorBy }: Props) {
         </span>
       ))}
       {colorBy === 'cluster' && (
-        <span className="text-[var(--brand-text-mid)]]">Colors = page categories</span>
+        <span className="text-[var(--brand-text-mid)]">Colors = page categories</span>
       )}
 
-      <div className="w-px h-3 bg-[var(--brand-surface-3)]]" />
+      <div className="w-px h-3 bg-[var(--brand-surface-3)]" />
 
       {/* Size legend */}
       <span className="flex items-center gap-1">
-        <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-text-mid)]]" /> Small
+        <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-text-mid)]" /> Small
       </span>
       <span className="flex items-center gap-1">
-        <span className="w-3 h-3 rounded-full bg-[var(--brand-text-mid)]]" /> Large
+        <span className="w-3 h-3 rounded-full bg-[var(--brand-text-mid)]" /> Large
       </span>
-      <span className="text-[var(--brand-text-faint)]]">= in-link count</span>
+      <span className="text-[var(--brand-text-faint)]">= in-link count</span>
     </div>
   );
 }

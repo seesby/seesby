@@ -23,17 +23,17 @@ export default function LpsTab({ page, hasTrend }: { page: any; hasTrend?: boole
           <div className="overflow-x-auto">
             <table className="w-full text-[10px]">
               <thead>
-                <tr className="border-b border-[var(--brand-border-2)]]">
-                  <th className="px-2 py-1.5 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">LP URL</th>
-                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Camps</th>
-                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Sessions</th>
-                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Bounce</th>
-                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">CvR</th>
-                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">QS-LP</th>
-                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Intent</th>
-                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">CWV</th>
-                  <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Issues</th>
-                  <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Actions</th>
+                <tr className="border-b border-[var(--brand-border-2)]">
+                  <th className="px-2 py-1.5 text-left text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">LP URL</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Camps</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Sessions</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Bounce</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">CvR</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">QS-LP</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Intent</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">CWV</th>
+                  <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Issues</th>
+                  <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -49,19 +49,19 @@ export default function LpsTab({ page, hasTrend }: { page: any; hasTrend?: boole
                   const actions = lp.actions || [];
                   const hasIssues = issues.length > 0;
                   return (
-                    <tr key={i} className="border-b border-[var(--brand-surface-3)]] hover:bg-[var(--brand-surface-2)]]">
+                    <tr key={i} className="border-b border-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-2)]">
                       <td className="px-2 py-1.5 max-w-[200px]">
                         <TruncatedUrl url={url} />
                       </td>
-                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]]">{lp.campaignCount || '—'}</td>
-                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]]">{formatNumber(lp.sessions || lp.paidSessions)}</td>
+                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]">{lp.campaignCount || '—'}</td>
+                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]">{formatNumber(lp.sessions || lp.paidSessions)}</td>
                       <td className="px-2 py-1.5 text-right">
-                        <span className={bounce > 0.6 ? 'text-[#ef4444]' : bounce > 0.4 ? 'text-[#f59e0b]' : 'text-[var(--brand-text-mid)]]'}>
+                        <span className={bounce > 0.6 ? 'text-[#ef4444]' : bounce > 0.4 ? 'text-[#f59e0b]' : 'text-[var(--brand-text-mid)]'}>
                           {formatPercent(bounce)}
                         </span>
                       </td>
                       <td className="px-2 py-1.5 text-right">
-                        <span className={cvr >= 0.05 ? 'text-green-400' : cvr >= 0.02 ? 'text-[var(--brand-text-mid)]]' : 'text-[#f59e0b]'}>
+                        <span className={cvr >= 0.05 ? 'text-green-400' : cvr >= 0.02 ? 'text-[var(--brand-text-mid)]' : 'text-[#f59e0b]'}>
                           {formatPercent(cvr, 100)}
                         </span>
                       </td>
@@ -77,7 +77,7 @@ export default function LpsTab({ page, hasTrend }: { page: any; hasTrend?: boole
                           label={intent}
                         />
                       </td>
-                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]]">
+                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]">
                         {lcp > 0 && <span className={lcp <= 2500 ? 'text-green-400' : lcp <= 4000 ? 'text-[#f59e0b]' : 'text-[#ef4444]'}>LCP {formatDuration(lcp)}</span>}
                         {inp > 0 && <span className="ml-1">INP {inp}</span>}
                       </td>
@@ -85,14 +85,14 @@ export default function LpsTab({ page, hasTrend }: { page: any; hasTrend?: boole
                         {hasIssues ? (
                           <StatusBadge status="warn" label={`${issues.length}`} />
                         ) : (
-                          <span className="text-[var(--brand-text-faint)]]">—</span>
+                          <span className="text-[var(--brand-text-faint)]">—</span>
                         )}
                       </td>
                       <td className="px-2 py-1.5 text-center">
                         {actions.length > 0 ? (
-                          <span className="text-[9px] text-[var(--brand-text-mid)]]">{actions[0]}</span>
+                          <span className="text-[9px] text-[var(--brand-text-mid)]">{actions[0]}</span>
                         ) : (
-                          <span className="text-[var(--brand-text-faint)]]">—</span>
+                          <span className="text-[var(--brand-text-faint)]">—</span>
                         )}
                       </td>
                     </tr>
@@ -103,7 +103,7 @@ export default function LpsTab({ page, hasTrend }: { page: any; hasTrend?: boole
           </div>
         </Card>
       ) : (
-        <div className="text-center py-12 text-[12px] text-[var(--brand-text-faint)]]">
+        <div className="text-center py-12 text-[12px] text-[var(--brand-text-faint)]">
           No landing page data available.
         </div>
       )}
@@ -113,15 +113,15 @@ export default function LpsTab({ page, hasTrend }: { page: any; hasTrend?: boole
         <Card title="LP-to-ad message match">
           <div className="space-y-0">
             {landingPages.filter((lp: any) => lp.matchScore !== undefined).slice(0, 5).map((lp: any, i: number) => (
-              <div key={i} className="py-2.5 border-b border-[var(--brand-surface-2)]] last:border-b-0">
+              <div key={i} className="py-2.5 border-b border-[var(--brand-surface-2)] last:border-b-0">
                 <div className="flex items-center gap-3">
                   <div className="flex-1 min-w-0">
-                    <div className="text-[9px] text-[var(--brand-text-faint)]] uppercase tracking-wider">Ad</div>
-                    <div className="text-[10px] text-[var(--brand-text-mid)]] truncate">{lp.adHeadline || '—'}</div>
+                    <div className="text-[9px] text-[var(--brand-text-faint)] uppercase tracking-wider">Ad</div>
+                    <div className="text-[10px] text-[var(--brand-text-mid)] truncate">{lp.adHeadline || '—'}</div>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[9px] text-[var(--brand-text-faint)]] uppercase tracking-wider">LP</div>
-                    <div className="text-[10px] text-[var(--brand-text-mid)]] truncate">{lp.lpH1 || lp.url || '—'}</div>
+                    <div className="text-[9px] text-[var(--brand-text-faint)] uppercase tracking-wider">LP</div>
+                    <div className="text-[10px] text-[var(--brand-text-mid)] truncate">{lp.lpH1 || lp.url || '—'}</div>
                   </div>
                   <div className="shrink-0">
                     <StatusBadge
@@ -138,7 +138,7 @@ export default function LpsTab({ page, hasTrend }: { page: any; hasTrend?: boole
 
       {hasTrend && landingPages.length > 0 && (
         <Card title="LP performance trend">
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]] rounded p-3">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-surface-2)] rounded p-3">
             <Sparkline values={page?.landingPageTrend || []} tone="info" />
           </div>
         </Card>

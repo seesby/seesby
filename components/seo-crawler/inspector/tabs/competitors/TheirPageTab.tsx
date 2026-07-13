@@ -57,10 +57,10 @@ export default function TheirPageTab({ page }: { page: any; hasTrend?: boolean }
   return (
     <div className="space-y-3">
       {/* Hero strip */}
-      <div className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)]] to-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]">
+      <div className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)] to-[var(--brand-surface-0)] border border-[var(--brand-surface-3)]">
         <div className="flex-1 min-w-0">
           <div className="text-[13px] text-[var(--brand-text-strong)] font-semibold truncate">{compDomain}</div>
-          {url && <div className="text-[11px] text-[var(--brand-text-faint)]] font-mono truncate mt-0.5">{url}</div>}
+          {url && <div className="text-[11px] text-[var(--brand-text-faint)] font-mono truncate mt-0.5">{url}</div>}
         </div>
         <div className="shrink-0">
           <div className="relative w-10 h-10">
@@ -91,20 +91,20 @@ export default function TheirPageTab({ page }: { page: any; hasTrend?: boolean }
       {/* 2-column grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         {/* URL block */}
-        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
-          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
-            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">Title</div>
+        <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded-lg p-3">
+          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]">
+            <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-wider mb-0.5">Title</div>
             <div className="text-[11px] text-[var(--brand-text-strong)] leading-snug break-words">{title}</div>
           </div>
-          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
-            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">Meta</div>
-            <div className="text-[11px] text-[var(--brand-text-mid)]] leading-snug break-words">
+          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]">
+            <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-wider mb-0.5">Meta</div>
+            <div className="text-[11px] text-[var(--brand-text-mid)] leading-snug break-words">
               {metaDescLen > 0 ? `${metaDescLen} ch` : '\u2014'}
-              {metaHasYear && <span className="text-[10px] text-[var(--brand-text-faint)]]"> \u00b7 includes year</span>}
+              {metaHasYear && <span className="text-[10px] text-[var(--brand-text-faint)]"> \u00b7 includes year</span>}
             </div>
           </div>
           <div>
-            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">H1</div>
+            <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-wider mb-0.5">H1</div>
             <div className="text-[11px] text-[var(--brand-text-strong)] leading-snug break-words">{h1}</div>
           </div>
         </div>
@@ -116,12 +116,12 @@ export default function TheirPageTab({ page }: { page: any; hasTrend?: boolean }
               {whySignals.map((signal, i) => (
                 <div key={i} className="flex items-start gap-2 py-1">
                   <span className="text-green-400 text-[11px] shrink-0">+</span>
-                  <span className="text-[11px] text-[var(--brand-text-mid)]] leading-snug">{signal}</span>
+                  <span className="text-[11px] text-[var(--brand-text-mid)] leading-snug">{signal}</span>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-[12px] text-[var(--brand-text-faint)]]">No ranking signals detected.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]">No ranking signals detected.</div>
           )}
         </Card>
       </div>
@@ -131,18 +131,18 @@ export default function TheirPageTab({ page }: { page: any; hasTrend?: boolean }
         <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
           {schemaChecks.map((check, i) => (
             <div key={i} className="flex items-center gap-2 py-0.5">
-              <span className={`text-[11px] font-medium ${check.present ? 'text-green-400' : 'text-[var(--brand-border-2)]]'}`}>
+              <span className={`text-[11px] font-medium ${check.present ? 'text-green-400' : 'text-[var(--brand-border-2)]'}`}>
                 {check.present ? '\u2713' : '\u2717'}
               </span>
-              <span className={`text-[11px] ${check.present ? 'text-[var(--brand-text-mid)]]' : 'text-[var(--brand-text-faint)]]'}`}>
+              <span className={`text-[11px] ${check.present ? 'text-[var(--brand-text-mid)]' : 'text-[var(--brand-text-faint)]'}`}>
                 {check.label}
               </span>
             </div>
           ))}
         </div>
         {schemaList.length > 0 && (
-          <div className="mt-3 pt-2 border-t border-[var(--brand-surface-2)]]">
-            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-1">All types</div>
+          <div className="mt-3 pt-2 border-t border-[var(--brand-surface-2)]">
+            <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-wider mb-1">All types</div>
             <div className="flex flex-wrap gap-1">
               {schemaList.map((s: string, i: number) => (
                 <StatusBadge key={i} status="info" label={s} />

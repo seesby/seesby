@@ -21,7 +21,7 @@ export function ProgressRing({
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <span className="text-[12px] font-mono font-bold text-[var(--brand-text-strong)]">{Math.round(v)}</span>
         {label && (
-          <span className="text-[9px] text-[var(--brand-text-mid)]] flex items-center gap-1">
+          <span className="text-[9px] text-[var(--brand-text-mid)] flex items-center gap-1">
             {label}
             {hint && <HelpHint text={hint} />}
           </span>

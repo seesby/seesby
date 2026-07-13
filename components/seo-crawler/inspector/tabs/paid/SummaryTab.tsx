@@ -47,10 +47,10 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
   return (
     <div className="space-y-4">
       {/* Hero strip */}
-      <div className="flex items-center gap-4 p-3 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)]] to-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]">
+      <div className="flex items-center gap-4 p-3 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)] to-[var(--brand-surface-0)] border border-[var(--brand-surface-3)]">
         <div className="flex-1 min-w-0">
           <div className="text-[13px] text-[var(--brand-text-strong)] font-semibold truncate">{campaignName}</div>
-          <div className="text-[11px] text-[var(--brand-text-faint)]] font-mono truncate mt-0.5">{network} · {geo} · {device}</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)] font-mono truncate mt-0.5">{network} · {geo} · {device}</div>
         </div>
         {qs > 0 && (
           <div className="shrink-0 flex items-center gap-2">
@@ -85,8 +85,8 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* 2-column grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         {/* Identity */}
-        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">Identity</div>
+        <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)] mb-2.5">Identity</div>
           <div className="space-y-0">
             <DataRow label="Campaign" value={campaignName} />
             <DataRow label="Network" value={network} />
@@ -97,8 +97,8 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
         </div>
 
         {/* Delivery */}
-        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">Delivery</div>
+        <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)] mb-2.5">Delivery</div>
           <div className="space-y-0">
             <DataRow label="Status" value={
               <StatusBadge
@@ -114,8 +114,8 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
         </div>
 
         {/* Performance */}
-        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">Performance 30d</div>
+        <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)] mb-2.5">Performance 30d</div>
           <div className="space-y-0">
             <DataRow label="Spend" value={spend ? `$${formatNumber(spend, { maximumFractionDigits: 0 })}` : '—'} />
             <DataRow label="Impressions" value={formatNumber(impressions)} />
@@ -128,8 +128,8 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
         </div>
 
         {/* Quality Score */}
-        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">Quality Score</div>
+        <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)] mb-2.5">Quality Score</div>
           <div className="space-y-0">
             <DataRow label="Score" value={qs ? String(qs) : '—'} status={qs >= 7 ? 'pass' : qs >= 5 ? 'warn' : 'fail'} />
             <DataRow label="Expected CTR" value={expCtr ? qsLabel(Number(expCtr)) : '—'} status={expCtr ? qsStatus(Number(expCtr)) : undefined} />
@@ -142,7 +142,7 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* Trend */}
       {hasTrend && (
         <Card title="Spend trend">
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]] rounded p-3">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-surface-2)] rounded p-3">
             <Sparkline values={page?.spendTrend || page?.spendSeries || []} tone="info" />
           </div>
         </Card>
@@ -153,7 +153,7 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
         <Card title={`Issues (${paidIssues.length})`}>
           <div className="space-y-0">
             {paidIssues.map((issue: any, i: number) => (
-              <div key={`${issue.id}-${i}`} className="flex items-start gap-2.5 py-2 border-b border-[var(--brand-surface-2)]] last:border-b-0">
+              <div key={`${issue.id}-${i}`} className="flex items-start gap-2.5 py-2 border-b border-[var(--brand-surface-2)] last:border-b-0">
                 <div className="mt-0.5">
                   {issue.type === 'error' || issue.severity === 'CRITICAL' || issue.severity === 'HIGH' ? (
                     <span className="block w-1.5 h-1.5 rounded-full bg-[#ef4444]" />
@@ -164,9 +164,9 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[11px] text-[var(--brand-text-mid)]] font-medium">{issue.label || issue.title}</div>
+                  <div className="text-[11px] text-[var(--brand-text-mid)] font-medium">{issue.label || issue.title}</div>
                   {(issue.description || issue.reason) && (
-                    <div className="text-[10px] text-[var(--brand-border-2)]] mt-0.5 line-clamp-1">{issue.description || issue.reason}</div>
+                    <div className="text-[10px] text-[var(--brand-border-2)] mt-0.5 line-clamp-1">{issue.description || issue.reason}</div>
                   )}
                 </div>
               </div>

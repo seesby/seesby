@@ -12,7 +12,7 @@ function CellCheck({ val }: { val: boolean | string | undefined }) {
   if (val === true || val === 'pass' || val === '200') return <StatusBadge status="pass" label="Yes" />;
   if (val === false || val === 'fail' || val === '403') return <StatusBadge status="fail" label="No" />;
   if (val === 'warn') return <StatusBadge status="warn" label="No" />;
-  return <span className="text-[var(--brand-text-faint)]] text-[11px]">&mdash;</span>;
+  return <span className="text-[var(--brand-text-faint)] text-[11px]">&mdash;</span>;
 }
 
 export default function BotsTab({ page, hasTrend }: { page: any; hasTrend?: boolean }) {
@@ -54,32 +54,32 @@ export default function BotsTab({ page, hasTrend }: { page: any; hasTrend?: bool
             <div className="overflow-x-auto">
               <table className="w-full text-[11px]">
                 <thead>
-                  <tr className="border-b border-[var(--brand-surface-3)]]">
-                    <th className="px-2 py-1.5 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Bot</th>
-                    <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">robots.txt</th>
-                    <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">meta</th>
-                    <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">x-robots</th>
-                    <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">UA tested</th>
-                    <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">last hit</th>
+                  <tr className="border-b border-[var(--brand-surface-3)]">
+                    <th className="px-2 py-1.5 text-left text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Bot</th>
+                    <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">robots.txt</th>
+                    <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">meta</th>
+                    <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">x-robots</th>
+                    <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">UA tested</th>
+                    <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">last hit</th>
                   </tr>
                 </thead>
                 <tbody>
                   {botEntries.map(bot => (
-                    <tr key={bot.name} className="border-b border-[var(--brand-surface-2)]] hover:bg-[var(--brand-surface-2)]]">
-                      <td className="px-2 py-1.5 text-[var(--brand-text-mid)]] font-mono whitespace-nowrap">{bot.name}</td>
+                    <tr key={bot.name} className="border-b border-[var(--brand-surface-2)] hover:bg-[var(--brand-surface-2)]">
+                      <td className="px-2 py-1.5 text-[var(--brand-text-mid)] font-mono whitespace-nowrap">{bot.name}</td>
                       <td className="px-2 py-1.5 text-center"><CellCheck val={bot.robotsTxt} /></td>
                       <td className="px-2 py-1.5 text-center"><CellCheck val={bot.meta} /></td>
                       <td className="px-2 py-1.5 text-center">
-                        {bot.xRobots !== undefined ? <CellCheck val={bot.xRobots} /> : <span className="text-[var(--brand-text-faint)]]">&mdash;</span>}
+                        {bot.xRobots !== undefined ? <CellCheck val={bot.xRobots} /> : <span className="text-[var(--brand-text-faint)]">&mdash;</span>}
                       </td>
                       <td className="px-2 py-1.5 text-center">
                         {bot.uaTested !== undefined ? (
-                          <span className={bot.statusCode === '200' ? 'text-[#22c55e]' : bot.statusCode ? 'text-[#ef4444]' : 'text-[var(--brand-text-mid)]]'}>
+                          <span className={bot.statusCode === '200' ? 'text-[#22c55e]' : bot.statusCode ? 'text-[#ef4444]' : 'text-[var(--brand-text-mid)]'}>
                             {bot.statusCode || '\u2014'}
                           </span>
-                        ) : <span className="text-[var(--brand-text-faint)]]">&mdash;</span>}
+                        ) : <span className="text-[var(--brand-text-faint)]">&mdash;</span>}
                       </td>
-                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]] whitespace-nowrap">{bot.lastHit || '\u2014'}</td>
+                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)] whitespace-nowrap">{bot.lastHit || '\u2014'}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -103,11 +103,11 @@ export default function BotsTab({ page, hasTrend }: { page: any; hasTrend?: bool
           <Card title="Rate limits">
             <div className="space-y-1">
               <div className="flex items-center justify-between text-[11px]">
-                <span className="text-[var(--brand-text-faint)]]">Crawl-delay</span>
+                <span className="text-[var(--brand-text-faint)]">Crawl-delay</span>
                 <span className="text-[var(--brand-text-strong)]">{crawlDelay || '\u2014'}</span>
               </div>
               <div className="flex items-center justify-between text-[11px]">
-                <span className="text-[var(--brand-text-faint)]]">429 last 30d</span>
+                <span className="text-[var(--brand-text-faint)]">429 last 30d</span>
                 <span className={count429 > 0 ? 'text-[#f59e0b]' : 'text-[var(--brand-text-strong)]'}>{count429}</span>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function BotsTab({ page, hasTrend }: { page: any; hasTrend?: bool
           {/* Bot access trend */}
           {hasTrend && (
             <Card title="Bot access trend">
-              <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+              <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
                 <Sparkline values={page?.botAccessTrend || []} tone="good" />
               </div>
             </Card>
@@ -130,13 +130,13 @@ export default function BotsTab({ page, hasTrend }: { page: any; hasTrend?: bool
 function SignalRow({ label, present }: { label: string; present: boolean | undefined }) {
   return (
     <div className="flex items-center justify-between text-[11px]">
-      <span className="text-[var(--brand-text-faint)]]">{label}</span>
+      <span className="text-[var(--brand-text-faint)]">{label}</span>
       {present === true ? (
         <StatusBadge status="pass" label="Yes" />
       ) : present === false ? (
         <StatusBadge status="fail" label="No" />
       ) : (
-        <span className="text-[var(--brand-text-faint)]]">&mdash;</span>
+        <span className="text-[var(--brand-text-faint)]">&mdash;</span>
       )}
     </div>
   );

@@ -7,7 +7,7 @@ export function BotMatrixBlock({ title = 'Bot allow / block', bots = [], onBotCl
 }) {
   if (!bots?.length) return null
   return (
-    <div className="rounded-md border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3">
+    <div className="rounded-md border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3">
       <div className="text-[11px] uppercase tracking-wider text-neutral-500 mb-2">{title}</div>
       <div className="grid grid-cols-2 gap-1.5">
         {bots.map(b => {

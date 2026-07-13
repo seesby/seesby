@@ -89,7 +89,7 @@ export function TechnicalCrawlability() {
 
       {hreflangErrors > 0 && (
         <Card title="Hreflang errors">
-          <div className="text-[11px] text-[var(--brand-text-mid)]]">{fmtNum(hreflangErrors)} pages with hreflang issues</div>
+          <div className="text-[11px] text-[var(--brand-text-mid)]">{fmtNum(hreflangErrors)} pages with hreflang issues</div>
         </Card>
       )}
 

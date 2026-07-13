@@ -23,7 +23,7 @@ export function PanelCard({
       style={{
         borderRadius: R.md,
         border: `1px solid ${SURFACE.br1}`,
-        background: SURFACE.bg0,
+        background: SURFACE.bg1,
         padding: S[3],
         minHeight: 0,
       }}

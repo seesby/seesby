@@ -10,7 +10,7 @@ export default function VariantsTab({ page, hasTrend }: { page: any; hasTrend?: 
   if (variantCount === 0 && variants.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
-        <div className="text-[13px] text-[var(--brand-text-faint)]] max-w-[280px]">
+        <div className="text-[13px] text-[var(--brand-text-faint)] max-w-[280px]">
           No variants found. Variant data appears when products have size, color, or other options.
         </div>
       </div>
@@ -45,16 +45,16 @@ export default function VariantsTab({ page, hasTrend }: { page: any; hasTrend?: 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_160px] gap-3">
         {/* Variant table */}
         <div>
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">Variants ({variantCount})</div>
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-lg overflow-hidden">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)] mb-2.5">Variants ({variantCount})</div>
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-surface-3)] rounded-lg overflow-hidden">
             <table className="w-full text-[11px]">
               <thead>
-                <tr className="border-b border-[var(--brand-surface-3)]]">
-                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">Size</th>
-                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">Stock</th>
-                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">Price</th>
-                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">GTIN</th>
-                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">Status</th>
+                <tr className="border-b border-[var(--brand-surface-3)]">
+                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold">Size</th>
+                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold">Stock</th>
+                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold">Price</th>
+                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold">GTIN</th>
+                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -67,11 +67,11 @@ export default function VariantsTab({ page, hasTrend }: { page: any; hasTrend?: 
                   const onSale = v.onSale ?? v.isOnSale ?? false;
 
                   return (
-                    <tr key={i} className="border-b border-[var(--brand-surface-2)]] bg-[var(--brand-surface-0)]] hover:bg-[var(--brand-surface-2)]]">
-                      <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{label}</td>
-                      <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{stockQty}</td>
-                      <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{price ? `$${Number(price).toFixed(2)}` : '—'}</td>
-                      <td className="px-3 py-1.5 text-[var(--brand-text-faint)]] font-mono">{v.gtin || '—'}</td>
+                    <tr key={i} className="border-b border-[var(--brand-surface-2)] bg-[var(--brand-surface-0)] hover:bg-[var(--brand-surface-2)]">
+                      <td className="px-3 py-1.5 text-[var(--brand-text-mid)]">{label}</td>
+                      <td className="px-3 py-1.5 text-[var(--brand-text-mid)]">{stockQty}</td>
+                      <td className="px-3 py-1.5 text-[var(--brand-text-mid)]">{price ? `$${Number(price).toFixed(2)}` : '—'}</td>
+                      <td className="px-3 py-1.5 text-[var(--brand-text-faint)] font-mono">{v.gtin || '—'}</td>
                       <td className="px-3 py-1.5">
                         <StatusBadge
                           status={stock === 'in_stock' ? 'pass' : stock === 'out_of_stock' ? 'fail' : onSale ? 'warn' : 'warn'}
@@ -91,7 +91,7 @@ export default function VariantsTab({ page, hasTrend }: { page: any; hasTrend?: 
           <Card title="Options">
             {Object.entries(optionGroups).map(([key, values]) => (
               <div key={key} className="py-1">
-                <div className="text-[11px] text-[var(--brand-text-mid)]]">{key} <span className="text-[var(--brand-text-faint)]]">{values.size} val{values.size !== 1 ? 's' : ''}</span></div>
+                <div className="text-[11px] text-[var(--brand-text-mid)]">{key} <span className="text-[var(--brand-text-faint)]">{values.size} val{values.size !== 1 ? 's' : ''}</span></div>
               </div>
             ))}
           </Card>

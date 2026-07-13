@@ -6,8 +6,8 @@ import { fmtPct, fmtCompact, fmtMs, fmtUrl } from '../../_shared/formatters';
 import { useSeoCrawler } from '@/contexts/SeoCrawlerContext';
 import { STATUS_HEX } from '../../_shared/shared-columns';
 
-const PANEL = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3';
-const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2';
+const PANEL = 'rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3';
+const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-2';
 
 export default function UxOverviewView() {
   const ux = useUxInsights();
@@ -17,7 +17,7 @@ export default function UxOverviewView() {
 
   if (!ux.total) {
     return (
-      <div className="flex-1 grid place-items-center text-[12px] text-[var(--brand-text-faint)]]">
+      <div className="flex-1 grid place-items-center text-[12px] text-[var(--brand-text-faint)]">
         No UX data available. Connect analytics or behavior sources from the left sidebar.
       </div>
     );
@@ -60,8 +60,8 @@ export default function UxOverviewView() {
               const isWarning = dropPct > 0.3;
               return (
                 <div key={i} className="flex items-center gap-2">
-                  <div className="w-20 truncate text-[11px] text-[var(--brand-text-mid)]]">{step.label}</div>
-                  <div className="flex-1 h-4 rounded bg-[var(--brand-surface-3)]] overflow-hidden">
+                  <div className="w-20 truncate text-[11px] text-[var(--brand-text-mid)]">{step.label}</div>
+                  <div className="flex-1 h-4 rounded bg-[var(--brand-surface-3)] overflow-hidden">
                     <div
                       className="h-full rounded"
                       style={{
@@ -71,9 +71,9 @@ export default function UxOverviewView() {
                       }}
                     />
                   </div>
-                  <div className="w-14 text-right text-[10px] font-mono text-[var(--brand-text-mid)]] tabular-nums">{fmtCompact(step.value)}</div>
+                  <div className="w-14 text-right text-[10px] font-mono text-[var(--brand-text-mid)] tabular-nums">{fmtCompact(step.value)}</div>
                   {i > 0 && (
-                    <div className={`w-12 text-right text-[9px] font-mono tabular-nums ${isWarning ? 'text-[#f59e0b]' : 'text-[var(--brand-text-faint)]]'}`}>
+                    <div className={`w-12 text-right text-[9px] font-mono tabular-nums ${isWarning ? 'text-[#f59e0b]' : 'text-[var(--brand-text-faint)]'}`}>
                       {dropPct > 0 ? `(${fmtPct(dropPct)})` : ''}
                     </div>
                   )}
@@ -82,7 +82,7 @@ export default function UxOverviewView() {
             })}
           </div>
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]] py-4 text-center">No funnel data</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)] py-4 text-center">No funnel data</div>
         )}
       </div>
 
@@ -103,10 +103,10 @@ export default function UxOverviewView() {
             const color = band === 'high' ? STATUS_HEX.bad : band === 'medium' ? STATUS_HEX.warn : STATUS_HEX.good;
             return (
               <div key={band} className="flex-1">
-                <div className="h-1.5 rounded-full bg-[var(--brand-surface-3)]] overflow-hidden">
+                <div className="h-1.5 rounded-full bg-[var(--brand-surface-3)] overflow-hidden">
                   <div className="h-full rounded-full" style={{ width: `${pct}%`, background: color }} />
                 </div>
-                <div className="text-[9px] text-[var(--brand-text-faint)]] mt-1 text-center">{band} {count}</div>
+                <div className="text-[9px] text-[var(--brand-text-faint)] mt-1 text-center">{band} {count}</div>
               </div>
             );
           })}
@@ -122,16 +122,16 @@ export default function UxOverviewView() {
               <button
                 key={i}
                 onClick={() => { setSelectedPageUrl?.(h.pageUrl); setInspectorOpen?.(true); }}
-                className="w-full text-left flex items-center gap-2 py-1 hover:bg-[var(--brand-surface-2)]] rounded px-1 transition-colors"
+                className="w-full text-left flex items-center gap-2 py-1 hover:bg-[var(--brand-surface-2)] rounded px-1 transition-colors"
               >
                 {h.thumbUrl ? (
-                  <img src={h.thumbUrl} alt="" className="w-10 h-7 object-cover rounded bg-[var(--brand-surface-2)]]" />
+                  <img src={h.thumbUrl} alt="" className="w-10 h-7 object-cover rounded bg-[var(--brand-surface-2)]" />
                 ) : (
-                  <div className="w-10 h-7 rounded bg-[var(--brand-surface-2)]] grid place-items-center text-[8px] text-[var(--brand-text-faint)]]">n/a</div>
+                  <div className="w-10 h-7 rounded bg-[var(--brand-surface-2)] grid place-items-center text-[8px] text-[var(--brand-text-faint)]">n/a</div>
                 )}
                 <div className="flex-1 min-w-0">
-                  <div className="text-[11px] text-[var(--brand-text-mid)]] truncate">{fmtUrl(h.pageUrl, 40)}</div>
-                  <div className="text-[9px] text-[var(--brand-text-faint)]]">
+                  <div className="text-[11px] text-[var(--brand-text-mid)] truncate">{fmtUrl(h.pageUrl, 40)}</div>
+                  <div className="text-[9px] text-[var(--brand-text-faint)]">
                     {h.type} · {h.device} · {fmtCompact(h.sampleSize)} sessions
                   </div>
                 </div>
@@ -139,7 +139,7 @@ export default function UxOverviewView() {
             ))}
           </div>
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]] py-4 text-center">No heatmaps captured</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)] py-4 text-center">No heatmaps captured</div>
         )}
       </div>
 
@@ -147,7 +147,7 @@ export default function UxOverviewView() {
         <div className={LABEL}>Active experiments</div>
         {experiments.length > 0 ? (
           <table className="w-full text-[11px]">
-            <thead className="text-[9px] uppercase text-[var(--brand-text-faint)]]">
+            <thead className="text-[9px] uppercase text-[var(--brand-text-faint)]">
               <tr>
                 <th className="text-left py-1 font-normal">Test</th>
                 <th className="text-center font-normal">Status</th>
@@ -156,17 +156,17 @@ export default function UxOverviewView() {
             </thead>
             <tbody>
               {experiments.slice(0, 5).map((exp: any) => (
-                <tr key={exp.id} className="border-t border-[var(--brand-surface-3)]]">
-                  <td className="py-1.5 text-[var(--brand-text-mid)]] truncate max-w-[140px]">{exp.name}</td>
+                <tr key={exp.id} className="border-t border-[var(--brand-surface-3)]">
+                  <td className="py-1.5 text-[var(--brand-text-mid)] truncate max-w-[140px]">{exp.name}</td>
                   <td className="text-center">
                     <span className={`inline-block w-1.5 h-1.5 rounded-full ${
                       exp.status === 'running' ? 'bg-[#22c55e]' :
                       exp.status === 'won' ? 'bg-[#a78bfa]' :
-                      exp.status === 'lost' ? 'bg-[#ef4444]' : 'bg-[var(--brand-text-faint)]]'
+                      exp.status === 'lost' ? 'bg-[#ef4444]' : 'bg-[var(--brand-text-faint)]'
                     }`} />
                   </td>
                   <td className={`text-right font-mono tabular-nums ${
-                    exp.uplift > 0 ? 'text-[#22c55e]' : exp.uplift < 0 ? 'text-[#ef4444]' : 'text-[var(--brand-text-faint)]]'
+                    exp.uplift > 0 ? 'text-[#22c55e]' : exp.uplift < 0 ? 'text-[#ef4444]' : 'text-[var(--brand-text-faint)]'
                   }`}>
                     {exp.uplift != null ? `${exp.uplift > 0 ? '+' : ''}${fmtPct(exp.uplift)}` : '—'}
                   </td>
@@ -175,7 +175,7 @@ export default function UxOverviewView() {
             </tbody>
           </table>
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]] py-4 text-center">No experiments</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)] py-4 text-center">No experiments</div>
         )}
       </div>
 
@@ -186,7 +186,7 @@ export default function UxOverviewView() {
           <CwvBar label="LCP" good={ux.cwv.lcpGood} mid={ux.cwv.lcpMid} poor={ux.cwv.lcpPoor} />
           <CwvBar label="INP" good={Math.round(ux.cwv.passPct * 0.9)} mid={5} poor={3} />
           <CwvBar label="CLS" good={Math.round(ux.cwv.passPct * 1.05)} mid={3} poor={ux.cwv.clsBad} />
-          <div className="text-[10px] text-[var(--brand-text-mid)]] ml-auto">
+          <div className="text-[10px] text-[var(--brand-text-mid)] ml-auto">
             — paid LPs drag down LCP
           </div>
         </div>
@@ -208,7 +208,7 @@ function KpiTile({ label, value, sub, delta, good, bad, warn, className = '' }: 
   const valueColor = good ? 'text-[#22c55e]' : bad ? 'text-[#ef4444]' : warn ? 'text-[#f59e0b]' : 'text-[var(--brand-text-strong)]';
   return (
     <div className={`${PANEL} ${className}`}>
-      <div className="text-[9px] uppercase tracking-wider text-[var(--brand-text-faint)]]">{label}</div>
+      <div className="text-[9px] uppercase tracking-wider text-[var(--brand-text-faint)]">{label}</div>
       <div className={`text-[20px] font-mono font-semibold tabular-nums ${valueColor}`}>{value}</div>
       <div className="flex items-center gap-2 text-[9px] mt-0.5">
         {delta != null && Number.isFinite(delta) && delta !== 0 && (
@@ -216,7 +216,7 @@ function KpiTile({ label, value, sub, delta, good, bad, warn, className = '' }: 
             {delta > 0 ? '▲' : '▼'} {fmtPct(Math.abs(delta))}
           </span>
         )}
-        {sub && <span className="text-[var(--brand-text-faint)]]">{sub}</span>}
+        {sub && <span className="text-[var(--brand-text-faint)]">{sub}</span>}
       </div>
     </div>
   );
@@ -225,8 +225,8 @@ function KpiTile({ label, value, sub, delta, good, bad, warn, className = '' }: 
 function FrictionRow({ label, value, bad }: { label: string; value: number; bad?: boolean }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-[11px] text-[var(--brand-text-mid)]]">{label}</span>
-      <span className={`text-[11px] font-mono tabular-nums ${bad ? 'text-[#ef4444]' : 'text-[var(--brand-text-mid)]]'}`}>{value}</span>
+      <span className="text-[11px] text-[var(--brand-text-mid)]">{label}</span>
+      <span className={`text-[11px] font-mono tabular-nums ${bad ? 'text-[#ef4444]' : 'text-[var(--brand-text-mid)]'}`}>{value}</span>
     </div>
   );
 }
@@ -235,7 +235,7 @@ function CwvBar({ label, good, mid, poor }: { label: string; good: number; mid: 
   const total = good + mid + poor || 1;
   return (
     <div className="flex items-center gap-2">
-      <span className="text-[10px] text-[var(--brand-text-mid)]] w-8">{label}</span>
+      <span className="text-[10px] text-[var(--brand-text-mid)] w-8">{label}</span>
       <div className="flex h-3 rounded overflow-hidden" style={{ width: 120 }}>
         <div className="bg-[#22c55e]" style={{ width: `${(good / total) * 100}%` }} />
         <div className="bg-[#f59e0b]" style={{ width: `${(mid / total) * 100}%` }} />

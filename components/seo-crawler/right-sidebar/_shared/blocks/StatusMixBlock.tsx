@@ -14,9 +14,9 @@ export function StatusMixBlock({ title = 'Status mix', mix, onSegmentClick }: {
     { id: 'Blocked',          v: mix?.blocked || 0,  cls: 'bg-zinc-500' },
   ]
   return (
-    <div className="rounded-md border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3">
+    <div className="rounded-md border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3">
       <div className="text-[11px] uppercase tracking-wider text-neutral-500 mb-2">{title}</div>
-      <div className="flex h-3 rounded overflow-hidden bg-[var(--brand-surface-2)]]">
+      <div className="flex h-3 rounded overflow-hidden bg-[var(--brand-surface-2)]">
         {segs.map(s => s.v > 0 && (
           <button
             key={s.id}
@@ -27,10 +27,10 @@ export function StatusMixBlock({ title = 'Status mix', mix, onSegmentClick }: {
           />
         ))}
       </div>
-      <div className="mt-2 grid grid-cols-5 gap-1 text-[10px] font-mono text-[var(--brand-text-mid)]]">
+      <div className="mt-2 grid grid-cols-5 gap-1 text-[10px] font-mono text-[var(--brand-text-mid)]">
         {segs.map(s => (
           <div key={s.id} className="text-center">
-            <div className="text-[var(--brand-text-mid)]] truncate">{s.id.split(' ')[0]}</div>
+            <div className="text-[var(--brand-text-mid)] truncate">{s.id.split(' ')[0]}</div>
             {s.v.toLocaleString()}
           </div>
         ))}

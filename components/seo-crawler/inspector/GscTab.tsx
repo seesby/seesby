@@ -9,9 +9,9 @@ export default function GscTab({ page }: { page: any }) {
 
     if (!hasGsc) {
         return (
-            <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-5 text-center">
+            <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-5 text-center">
                 <div className="text-[14px] text-[var(--brand-text-strong)] font-semibold mb-2">Google Search Console not connected</div>
-                <div className="text-[12px] text-[var(--brand-text-faint)]]">Connect GSC in Integrations to populate clicks, impressions, CTR, and query data.</div>
+                <div className="text-[12px] text-[var(--brand-text-faint)]">Connect GSC in Integrations to populate clicks, impressions, CTR, and query data.</div>
             </div>
         );
     }
@@ -49,29 +49,29 @@ export default function GscTab({ page }: { page: any }) {
             <div className="mt-6">
                 <SectionHeader title="Top Queries" />
                 {topQueries.length === 0 ? (
-                    <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3 text-[12px] text-[var(--brand-text-faint)]]">
+                    <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3 text-[12px] text-[var(--brand-text-faint)]">
                         No query-level rows captured for this page.
                     </div>
                 ) : (
-                    <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded overflow-hidden max-h-[320px] overflow-y-auto custom-scrollbar">
+                    <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded overflow-hidden max-h-[320px] overflow-y-auto custom-scrollbar">
                         <table className="w-full text-[11px] font-mono">
-                            <thead className="sticky top-0 bg-[var(--brand-surface-2)]] border-b border-[var(--brand-border-2)]]">
+                            <thead className="sticky top-0 bg-[var(--brand-surface-2)] border-b border-[var(--brand-border-2)]">
                                 <tr>
-                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]]">Query</th>
-                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]]">Clicks</th>
-                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]]">Impr.</th>
-                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]]">CTR</th>
-                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]]">Pos.</th>
+                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]">Query</th>
+                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]">Clicks</th>
+                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]">Impr.</th>
+                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]">CTR</th>
+                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]">Pos.</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {topQueries.map((query: any, index: number) => (
-                                    <tr key={`query-${index}`} className="border-b border-[var(--brand-surface-3)]] hover:bg-[var(--brand-surface-2)]]">
-                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{query?.query || query?.keyword || '—'}</td>
-                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{formatNumber(query?.clicks)}</td>
-                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{formatNumber(query?.impressions)}</td>
-                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{formatPercent(query?.ctr, 100)}</td>
-                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{formatNumber(query?.position, { maximumFractionDigits: 1 })}</td>
+                                    <tr key={`query-${index}`} className="border-b border-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-2)]">
+                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]">{query?.query || query?.keyword || '—'}</td>
+                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]">{formatNumber(query?.clicks)}</td>
+                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]">{formatNumber(query?.impressions)}</td>
+                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]">{formatPercent(query?.ctr, 100)}</td>
+                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]">{formatNumber(query?.position, { maximumFractionDigits: 1 })}</td>
                                     </tr>
                                 ))}
                             </tbody>

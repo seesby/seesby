@@ -94,11 +94,11 @@ export default function IssuesTab({ page }: { page: any; hasTrend?: boolean }) {
               className={`p-2 rounded-md text-center transition-all ${
                 categoryFilter === cat
                   ? 'bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)]'
-                  : 'bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]] hover:border-[var(--brand-border-2)]]'
+                  : 'bg-[var(--brand-surface-0)] border border-[var(--brand-surface-2)] hover:border-[var(--brand-border-2)]'
               }`}
             >
               <div className="text-[13px] font-bold text-[var(--brand-text-strong)]">{categoryCounts[cat]}</div>
-              <div className="text-[8px] text-[var(--brand-border-2)]] uppercase tracking-widest mt-0.5">{cat}</div>
+              <div className="text-[8px] text-[var(--brand-border-2)] uppercase tracking-widest mt-0.5">{cat}</div>
             </button>
           ))}
         </div>
@@ -112,7 +112,7 @@ export default function IssuesTab({ page }: { page: any; hasTrend?: boolean }) {
               <span className="text-[#22c55e] text-lg">{'\u2713'}</span>
             </div>
             <div className="text-[12px] text-[var(--brand-text-strong)] font-medium">No issues found</div>
-            <div className="text-[10px] text-[var(--brand-text-faint)]] mt-1">This page looks clean</div>
+            <div className="text-[10px] text-[var(--brand-text-faint)] mt-1">This page looks clean</div>
           </div>
         </Card>
       ) : (
@@ -122,7 +122,7 @@ export default function IssuesTab({ page }: { page: any; hasTrend?: boolean }) {
             <button
               onClick={() => setSeverityFilter('all')}
               className={`px-2 py-0.5 rounded text-[10px] font-medium transition-all ${
-                severityFilter === 'all' ? 'bg-[var(--brand-surface-4)] text-[var(--brand-text-strong)]' : 'text-[var(--brand-border-2)]] hover:text-[var(--brand-text-mid)]]'
+                severityFilter === 'all' ? 'bg-[var(--brand-surface-4)] text-[var(--brand-text-strong)]' : 'text-[var(--brand-border-2)] hover:text-[var(--brand-text-mid)]'
               }`}
             >All</button>
             {SEVERITY_ORDER.map(sev => (
@@ -130,7 +130,7 @@ export default function IssuesTab({ page }: { page: any; hasTrend?: boolean }) {
                 key={sev}
                 onClick={() => setSeverityFilter(prev => prev === sev ? 'all' : sev)}
                 className={`flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium transition-all ${
-                  severityFilter === sev ? 'bg-[var(--brand-surface-4)] text-[var(--brand-text-strong)]' : 'text-[var(--brand-border-2)]] hover:text-[var(--brand-text-mid)]]'
+                  severityFilter === sev ? 'bg-[var(--brand-surface-4)] text-[var(--brand-text-strong)]' : 'text-[var(--brand-border-2)] hover:text-[var(--brand-text-mid)]'
                 }`}
               >
                 <span className="w-1.5 h-1.5 rounded-full" style={{ background: SEVERITY_COLOR[sev] }} />
@@ -144,25 +144,25 @@ export default function IssuesTab({ page }: { page: any; hasTrend?: boolean }) {
             {filtered.length > 0 ? filtered.map((issue: any, i: number) => (
               <div
                 key={`${issue.id}-${i}`}
-                className="group flex items-start gap-3 py-2.5 border-b border-[var(--brand-surface-2)]] last:border-b-0 hover:bg-[var(--brand-surface-0)]] -mx-3 px-3 transition-colors"
+                className="group flex items-start gap-3 py-2.5 border-b border-[var(--brand-surface-2)] last:border-b-0 hover:bg-[var(--brand-surface-0)] -mx-3 px-3 transition-colors"
               >
                 <div className="mt-0.5 shrink-0">
                   <span className="block w-2 h-2 rounded-full" style={{ background: SEVERITY_COLOR[issue.severity] }} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[11px] text-[var(--brand-text-mid)]] font-medium">{issue.label}</div>
+                  <div className="text-[11px] text-[var(--brand-text-mid)] font-medium">{issue.label}</div>
                   {(issue.description || issue.reason) && (
-                    <div className="text-[10px] text-[var(--brand-border-2)]] mt-0.5 line-clamp-2">{issue.description || issue.reason}</div>
+                    <div className="text-[10px] text-[var(--brand-border-2)] mt-0.5 line-clamp-2">{issue.description || issue.reason}</div>
                   )}
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
                   <span className="text-[9px] font-medium" style={{ color: SEVERITY_COLOR[issue.severity] }}>
                     {issue.severity}
                   </span>
-                  <span className="text-[9px] text-[var(--brand-surface-4)]]">{issue.category}</span>
+                  <span className="text-[9px] text-[var(--brand-surface-4)]">{issue.category}</span>
                   <button
                     onClick={() => createTask(issue)}
-                    className="opacity-0 group-hover:opacity-100 p-1 text-[var(--brand-border-2)]] hover:text-[var(--brand-text-mid)]] hover:bg-[var(--brand-surface-3)]] rounded transition-all"
+                    className="opacity-0 group-hover:opacity-100 p-1 text-[var(--brand-border-2)] hover:text-[var(--brand-text-mid)] hover:bg-[var(--brand-surface-3)] rounded transition-all"
                     title="Create task"
                   >
                     <ArrowRight size={11} />
@@ -170,7 +170,7 @@ export default function IssuesTab({ page }: { page: any; hasTrend?: boolean }) {
                 </div>
               </div>
             )) : (
-              <div className="text-[11px] text-[var(--brand-border-2)]] py-4 text-center">
+              <div className="text-[11px] text-[var(--brand-border-2)] py-4 text-center">
                 No issues match filters
               </div>
             )}
@@ -182,9 +182,9 @@ export default function IssuesTab({ page }: { page: any; hasTrend?: boolean }) {
 }
 function MetricPill({ label, value, bad }: { label: string; value: string; bad?: boolean }) {
   return (
-    <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-2 text-center">
+    <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded-lg p-2 text-center">
       <div className={`text-[12px] font-bold ${bad ? 'text-[#F59E0B]' : 'text-[var(--brand-text-strong)]'}`}>{value}</div>
-      <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest">{label}</div>
+      <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest">{label}</div>
     </div>
   );
 }

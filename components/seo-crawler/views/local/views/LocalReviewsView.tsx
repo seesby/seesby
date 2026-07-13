@@ -6,8 +6,8 @@ import { useSeoCrawler } from '@/contexts/SeoCrawlerContext';
 import { CHART_PALETTE } from '../../_shared/tokens';
 import clsx from 'clsx';
 
-const CARD = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3 min-h-0';
-const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2';
+const CARD = 'rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3 min-h-0';
+const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-2';
 
 type SourceId = 'all' | 'google' | 'yelp' | 'trustpilot';
 type SentimentId = 'all' | 'positive' | 'neutral' | 'negative';
@@ -89,7 +89,7 @@ export default function LocalReviewsView() {
   return (
     <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
       {/* Filter chips */}
-      <div className="shrink-0 border-b border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] px-3 py-1.5 flex items-center gap-2 text-[10px]">
+      <div className="shrink-0 border-b border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] px-3 py-1.5 flex items-center gap-2 text-[10px]">
         <div className="flex items-center gap-1">
           {SOURCES.map(s => (
             <button
@@ -99,14 +99,14 @@ export default function LocalReviewsView() {
                 'h-[22px] px-2 rounded border transition-colors',
                 sourceFilter === s.id
                   ? 'bg-[#f97316]/15 text-[#f97316] border-[#f97316]/30'
-                  : 'bg-[var(--brand-surface-1)]] text-[var(--brand-text-mid)]] border-[var(--brand-surface-3)]] hover:text-[var(--brand-text-mid)]] hover:border-[var(--brand-surface-4)]]',
+                  : 'bg-[var(--brand-surface-1)] text-[var(--brand-text-mid)] border-[var(--brand-surface-3)] hover:text-[var(--brand-text-mid)] hover:border-[var(--brand-surface-4)]',
               )}
             >
               {s.label}
             </button>
           ))}
         </div>
-        <span className="text-[var(--brand-surface-4)]]">|</span>
+        <span className="text-[var(--brand-surface-4)]">|</span>
         <div className="flex items-center gap-1">
           {SENTIMENTS.map(s => (
             <button
@@ -116,14 +116,14 @@ export default function LocalReviewsView() {
                 'h-[22px] px-2 rounded border transition-colors',
                 sentimentFilter === s.id
                   ? 'bg-[#f97316]/15 text-[#f97316] border-[#f97316]/30'
-                  : 'bg-[var(--brand-surface-1)]] text-[var(--brand-text-mid)]] border-[var(--brand-surface-3)]] hover:text-[var(--brand-text-mid)]] hover:border-[var(--brand-surface-4)]]',
+                  : 'bg-[var(--brand-surface-1)] text-[var(--brand-text-mid)] border-[var(--brand-surface-3)] hover:text-[var(--brand-text-mid)] hover:border-[var(--brand-surface-4)]',
               )}
             >
               {s.label}
             </button>
           ))}
         </div>
-        <span className="ml-auto text-[var(--brand-text-faint)]]">
+        <span className="ml-auto text-[var(--brand-text-faint)]">
           {filtered.length === reviews.length ? reviews.length : `${filtered.length} of ${reviews.length}`}
         </span>
       </div>
@@ -131,21 +131,21 @@ export default function LocalReviewsView() {
       {/* Content */}
       <div className="flex-1 grid grid-cols-12 gap-3 p-3 min-h-0 overflow-hidden">
         {/* Left: Review stream */}
-        <ul className="col-span-5 rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] divide-y divide-[var(--brand-surface-3)]] overflow-auto custom-scrollbar">
+        <ul className="col-span-5 rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] divide-y divide-[var(--brand-surface-3)] overflow-auto custom-scrollbar">
           {filtered.map((r: any) => (
             <li key={r.id} onClick={() => { setSelectedId(r.id); setDraft(r.reply ?? ''); }}
-                className={clsx('px-3 py-2 cursor-pointer hover:bg-[#101010] transition-colors', selectedId === r.id && 'bg-[var(--brand-surface-1)]]')}>
+                className={clsx('px-3 py-2 cursor-pointer hover:bg-[#101010] transition-colors', selectedId === r.id && 'bg-[var(--brand-surface-1)]')}>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] text-[var(--brand-text-mid)]] shrink-0">{fmtDate(r.createdAt)}</span>
+                <span className="text-[10px] text-[var(--brand-text-mid)] shrink-0">{fmtDate(r.createdAt)}</span>
                 <span className="text-[11px] shrink-0">
                   {'\u2605'.repeat(Math.round(r.rating))}
                 </span>
                 <span className="text-[10px] text-[var(--brand-text-strong)] truncate">{r.author}</span>
-                <span className="text-[9px] uppercase tracking-wider px-1 rounded bg-[var(--brand-surface-3)]] text-[var(--brand-text-mid)]] shrink-0">{r.source}</span>
+                <span className="text-[9px] uppercase tracking-wider px-1 rounded bg-[var(--brand-surface-3)] text-[var(--brand-text-mid)] shrink-0">{r.source}</span>
               </div>
-              <div className="text-[11px] text-[var(--brand-text-mid)]] mt-1 line-clamp-2">{r.text}</div>
+              <div className="text-[11px] text-[var(--brand-text-mid)] mt-1 line-clamp-2">{r.text}</div>
               <div className="flex items-center gap-2 mt-0.5 text-[10px]">
-                <span className="text-[var(--brand-text-faint)]]">{r.locationId}</span>
+                <span className="text-[var(--brand-text-faint)]">{r.locationId}</span>
                 <span className={clsx('ml-auto', r.reply ? 'text-[#22c55e]' : 'text-[#ef4444]')}>
                   {r.reply ? 'replied' : 'not responded'}
                 </span>
@@ -153,7 +153,7 @@ export default function LocalReviewsView() {
             </li>
           ))}
           {filtered.length === 0 && (
-            <div className="p-4 text-[12px] text-[var(--brand-text-faint)]]">No reviews match filters.</div>
+            <div className="p-4 text-[12px] text-[var(--brand-text-faint)]">No reviews match filters.</div>
           )}
         </ul>
 
@@ -174,7 +174,7 @@ export default function LocalReviewsView() {
                 height={160}
               />
             ) : (
-              <div className="text-[12px] text-[var(--brand-text-faint)]] h-[160px] grid place-items-center">Need 2+ months of data.</div>
+              <div className="text-[12px] text-[var(--brand-text-faint)] h-[160px] grid place-items-center">Need 2+ months of data.</div>
             )}
           </div>
 
@@ -188,16 +188,16 @@ export default function LocalReviewsView() {
                   <div className="flex flex-col gap-1">
                     {topics.positive.map(t => (
                       <div key={t.topic} className="flex items-center gap-2 text-[11px]">
-                        <span className="text-[var(--brand-text-mid)]] flex-1 truncate">{t.topic}</span>
-                        <div className="w-16 h-1.5 rounded bg-[var(--brand-surface-3)]] overflow-hidden">
+                        <span className="text-[var(--brand-text-mid)] flex-1 truncate">{t.topic}</span>
+                        <div className="w-16 h-1.5 rounded bg-[var(--brand-surface-3)] overflow-hidden">
                           <div className="h-full rounded bg-[#22c55e]" style={{ width: `${(t.count / topics.positive[0].count) * 100}%` }} />
                         </div>
-                        <span className="text-[var(--brand-text-mid)]] tabular-nums w-5 text-right">{t.count}</span>
+                        <span className="text-[var(--brand-text-mid)] tabular-nums w-5 text-right">{t.count}</span>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <div className="text-[11px] text-[var(--brand-text-faint)]]">No positive topics.</div>
+                  <div className="text-[11px] text-[var(--brand-text-faint)]">No positive topics.</div>
                 )}
               </div>
               <div>
@@ -206,16 +206,16 @@ export default function LocalReviewsView() {
                   <div className="flex flex-col gap-1">
                     {topics.negative.map(t => (
                       <div key={t.topic} className="flex items-center gap-2 text-[11px]">
-                        <span className="text-[var(--brand-text-mid)]] flex-1 truncate">{t.topic}</span>
-                        <div className="w-16 h-1.5 rounded bg-[var(--brand-surface-3)]] overflow-hidden">
+                        <span className="text-[var(--brand-text-mid)] flex-1 truncate">{t.topic}</span>
+                        <div className="w-16 h-1.5 rounded bg-[var(--brand-surface-3)] overflow-hidden">
                           <div className="h-full rounded bg-[#ef4444]" style={{ width: `${(t.count / topics.negative[0].count) * 100}%` }} />
                         </div>
-                        <span className="text-[var(--brand-text-mid)]] tabular-nums w-5 text-right">{t.count}</span>
+                        <span className="text-[var(--brand-text-mid)] tabular-nums w-5 text-right">{t.count}</span>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <div className="text-[11px] text-[var(--brand-text-faint)]]">No negative topics.</div>
+                  <div className="text-[11px] text-[var(--brand-text-faint)]">No negative topics.</div>
                 )}
               </div>
             </div>
@@ -226,21 +226,21 @@ export default function LocalReviewsView() {
             <div className={CARD}>
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-[11px] text-[var(--brand-text-strong)]">{selected.author}</span>
-                <span className="text-[11px] text-[var(--brand-text-mid)]]">{selected.rating}\u2605</span>
-                <span className="text-[9px] uppercase tracking-wider px-1 rounded bg-[var(--brand-surface-3)]] text-[var(--brand-text-mid)]]">{selected.source}</span>
-                <span className="text-[10px] text-[var(--brand-text-faint)]] ml-auto">{fmtDate(selected.createdAt)}</span>
+                <span className="text-[11px] text-[var(--brand-text-mid)]">{selected.rating}\u2605</span>
+                <span className="text-[9px] uppercase tracking-wider px-1 rounded bg-[var(--brand-surface-3)] text-[var(--brand-text-mid)]">{selected.source}</span>
+                <span className="text-[10px] text-[var(--brand-text-faint)] ml-auto">{fmtDate(selected.createdAt)}</span>
               </div>
-              <p className="text-[12px] text-[var(--brand-text-mid)]] whitespace-pre-wrap mb-3">{selected.text}</p>
-              <div className="text-[10px] uppercase text-[var(--brand-text-faint)]] mb-1">Reply</div>
+              <p className="text-[12px] text-[var(--brand-text-mid)] whitespace-pre-wrap mb-3">{selected.text}</p>
+              <div className="text-[10px] uppercase text-[var(--brand-text-faint)] mb-1">Reply</div>
               <textarea value={draft} onChange={e => setDraft(e.target.value)} rows={3}
-                        className="w-full bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded p-2 text-[11px] text-[var(--brand-text-strong)] outline-none focus:border-[#f97316] custom-scrollbar" />
+                        className="w-full bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded p-2 text-[11px] text-[var(--brand-text-strong)] outline-none focus:border-[#f97316] custom-scrollbar" />
               <div className="flex gap-2 mt-2">
                 <button onClick={() => replyToReview?.(selected.id, draft)}
                         className="h-6 px-3 text-[10px] bg-[#f97316] text-[var(--brand-text-strong)] rounded hover:bg-[#ea580c] transition-colors">
                   {selected.reply ? 'Update' : 'Send'}
                 </button>
                 <button onClick={() => setDraft('')}
-                        className="h-6 px-3 text-[10px] text-[var(--brand-text-mid)]] border border-[var(--brand-border-2)]] rounded hover:text-[var(--brand-text-strong)] transition-colors">
+                        className="h-6 px-3 text-[10px] text-[var(--brand-text-mid)] border border-[var(--brand-border-2)] rounded hover:text-[var(--brand-text-strong)] transition-colors">
                   Clear
                 </button>
               </div>

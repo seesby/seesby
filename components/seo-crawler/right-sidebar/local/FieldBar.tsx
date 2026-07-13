@@ -6,8 +6,8 @@ export function FieldBar({ label, value }: { label: string; value: number }) {
 
   return (
     <div className="flex items-center gap-3">
-      <span className="w-16 text-[11px] text-[var(--brand-text-mid)]] shrink-0">{label}</span>
-      <div className="flex-1 h-2 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
+      <span className="w-16 text-[11px] text-[var(--brand-text-mid)] shrink-0">{label}</span>
+      <div className="flex-1 h-2 bg-[var(--brand-surface-3)] rounded-full overflow-hidden">
         <div
           className="h-full rounded-full transition-all duration-300"
           style={{ width: `${pct}%`, background: color }}

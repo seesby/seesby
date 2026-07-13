@@ -36,9 +36,9 @@ function ScatterTooltip({ active, payload }: any) {
   if (!active || !payload?.[0]?.payload) return null;
   const d = payload[0].payload;
   return (
-    <div className="rounded-lg border border-[var(--brand-surface-4)]] bg-[var(--brand-surface-2)]] px-3 py-2 shadow-xl">
+    <div className="rounded-lg border border-[var(--brand-surface-4)] bg-[var(--brand-surface-2)] px-3 py-2 shadow-xl">
       <div className="mb-1 max-w-[280px] truncate text-[11px] font-bold text-[var(--brand-text-strong)]">{d.keyword}</div>
-      <div className="space-y-0.5 text-[10px] text-[var(--brand-text-mid)]]">
+      <div className="space-y-0.5 text-[10px] text-[var(--brand-text-mid)]">
         <div className="flex justify-between gap-4">
           <span>Position</span>
           <span className="font-mono text-[var(--brand-text-strong)]">#{d.position}</span>
@@ -58,7 +58,7 @@ function ScatterTooltip({ active, payload }: any) {
           </span>
         </div>
       </div>
-      <div className="mt-1 max-w-[280px] truncate text-[9px] text-[var(--brand-text-faint)]]">{d.url}</div>
+      <div className="mt-1 max-w-[280px] truncate text-[9px] text-[var(--brand-text-faint)]">{d.url}</div>
     </div>
   );
 }
@@ -142,8 +142,8 @@ export default function KeywordLandscapeView() {
   };
 
   return (
-    <div className="custom-scrollbar flex h-full flex-col overflow-y-auto bg-[var(--brand-surface-0)]]">
-      <div className="grid grid-cols-5 gap-3 border-b border-[var(--brand-surface-3)]] px-5 py-4">
+    <div className="custom-scrollbar flex h-full flex-col overflow-y-auto bg-[var(--brand-surface-0)]">
+      <div className="grid grid-cols-5 gap-3 border-b border-[var(--brand-surface-3)] px-5 py-4">
         {[
           { label: 'Ranking Keywords', value: stats.total, color: 'text-[var(--brand-text-strong)]' },
           { label: 'Top 3 Positions', value: stats.top3Count, color: 'text-emerald-400' },
@@ -151,29 +151,29 @@ export default function KeywordLandscapeView() {
           { label: 'High Opportunity', value: stats.highOpp, color: 'text-[#F59E0B]' },
           { label: 'Keyword Gaps', value: stats.gapCount, color: 'text-purple-400' },
         ].map((s) => (
-          <div key={s.label} className="rounded-xl border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-2)]] px-4 py-3">
+          <div key={s.label} className="rounded-xl border border-[var(--brand-surface-3)] bg-[var(--brand-surface-2)] px-4 py-3">
             <div className={`font-mono text-[18px] font-black ${s.color}`}>{s.value.toLocaleString()}</div>
-            <div className="mt-0.5 text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]]">{s.label}</div>
+            <div className="mt-0.5 text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]">{s.label}</div>
           </div>
         ))}
       </div>
 
-      <div className="border-b border-[var(--brand-surface-3)]] px-5 py-4">
+      <div className="border-b border-[var(--brand-surface-3)] px-5 py-4">
         <div className="mb-3 flex items-center justify-between">
           <div>
             <h3 className="text-[13px] font-bold text-[var(--brand-text-strong)]">Keyword Positions</h3>
-            <p className="mt-0.5 text-[10px] text-[var(--brand-text-faint)]]">
+            <p className="mt-0.5 text-[10px] text-[var(--brand-text-faint)]">
               Each dot is a ranking keyword. Size = clicks. Color = opportunity score.
             </p>
           </div>
-          <div className="flex items-center gap-4 text-[9px] text-[var(--brand-text-faint)]]">
+          <div className="flex items-center gap-4 text-[9px] text-[var(--brand-text-faint)]">
             <span className="flex items-center gap-1"><span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: BRAND_RED }} /> High opportunity</span>
             <span className="flex items-center gap-1"><span className="inline-block h-2 w-2 rounded-full bg-[#F59E0B]" /> Medium</span>
             <span className="flex items-center gap-1"><span className="inline-block h-2 w-2 rounded-full bg-[#3B82F6]" /> Stable</span>
           </div>
         </div>
 
-        <div className="rounded-xl border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-2">
+        <div className="rounded-xl border border-[var(--brand-surface-3)] bg-[var(--brand-surface-1)] p-2">
           {scatterData.length === 0 ? (
             <div className="flex h-[320px] items-center justify-center p-4">
               <div className={EMPTY_STATE_BOX}>
@@ -229,7 +229,7 @@ export default function KeywordLandscapeView() {
           )}
         </div>
 
-        <div className="mt-2 flex items-center gap-6 text-[9px] text-[var(--brand-text-faint)]]">
+        <div className="mt-2 flex items-center gap-6 text-[9px] text-[var(--brand-text-faint)]">
           <span><span className="text-emerald-500">|</span> Position 3 — Top results</span>
           <span><span className="text-yellow-500">|</span> Position 10 — First page</span>
           <span><span className="text-red-500">|</span> Position 20 — Second page</span>
@@ -241,20 +241,20 @@ export default function KeywordLandscapeView() {
           <div>
             <h3 className="text-[13px] font-bold text-[var(--brand-text-strong)]">
               Keyword Gaps
-              <span className="ml-2 font-mono text-[11px] font-normal text-[var(--brand-text-faint)]]">
+              <span className="ml-2 font-mono text-[11px] font-normal text-[var(--brand-text-faint)]">
                 {filteredGaps.length} keywords
               </span>
             </h3>
-            <p className="mt-0.5 text-[10px] text-[var(--brand-text-faint)]]">
+            <p className="mt-0.5 text-[10px] text-[var(--brand-text-faint)]">
               Keywords your competitors rank for that you don't.
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <Filter size={11} className="text-[var(--brand-text-faint)]]" />
+            <Filter size={11} className="text-[var(--brand-text-faint)]" />
             <select
               value={intentFilter}
               onChange={(e) => setIntentFilter(e.target.value)}
-              className="rounded-lg border border-[var(--brand-border-2)]] bg-[var(--brand-surface-2)]] px-2 py-1 text-[10px] text-[var(--brand-text-mid)]] outline-none focus:border-[#F59E0B]/30"
+              className="rounded-lg border border-[var(--brand-border-2)] bg-[var(--brand-surface-2)] px-2 py-1 text-[10px] text-[var(--brand-text-mid)] outline-none focus:border-[#F59E0B]/30"
             >
               <option value="all">All Intents</option>
               <option value="informational">Informational</option>
@@ -266,20 +266,20 @@ export default function KeywordLandscapeView() {
         </div>
 
         {filteredGaps.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-[var(--brand-border-2)]] bg-[var(--brand-surface-2)]] py-12 text-center">
-            <Search size={28} className="mx-auto mb-2 text-[var(--brand-border-2)]]" />
-            <p className="text-[12px] text-[var(--brand-text-faint)]]">
+          <div className="rounded-xl border border-dashed border-[var(--brand-border-2)] bg-[var(--brand-surface-2)] py-12 text-center">
+            <Search size={28} className="mx-auto mb-2 text-[var(--brand-border-2)]" />
+            <p className="text-[12px] text-[var(--brand-text-faint)]">
               {allKeywordGaps.length === 0
                 ? 'No keyword gaps detected. Add more competitors or connect GSC for richer data.'
                 : 'No keywords match this filter.'}
             </p>
           </div>
         ) : (
-          <div className="overflow-hidden rounded-xl border border-[var(--brand-surface-3)]]">
+          <div className="overflow-hidden rounded-xl border border-[var(--brand-surface-3)]">
             <div className="custom-scrollbar max-h-[420px] overflow-y-auto">
               <table className="w-full">
-                <thead className="sticky top-0 z-10 bg-[var(--brand-surface-2)]]">
-                  <tr className="border-b border-[var(--brand-surface-3)]]">
+                <thead className="sticky top-0 z-10 bg-[var(--brand-surface-2)]">
+                  <tr className="border-b border-[var(--brand-surface-3)]">
                     {[
                       { key: 'keyword' as GapSortKey, label: 'Keyword', align: 'text-left', width: '' },
                       { key: 'intent' as GapSortKey, label: 'Intent', align: 'text-left', width: 'w-[100px]' },
@@ -290,7 +290,7 @@ export default function KeywordLandscapeView() {
                       <th
                         key={col.key}
                         onClick={() => toggleSort(col.key)}
-                        className={`cursor-pointer px-3 py-2.5 text-[9px] font-bold uppercase tracking-widest text-[var(--brand-text-faint)]] transition-colors hover:text-[var(--brand-text-mid)]] ${col.align} ${col.width}`}
+                        className={`cursor-pointer px-3 py-2.5 text-[9px] font-bold uppercase tracking-widest text-[var(--brand-text-faint)] transition-colors hover:text-[var(--brand-text-mid)] ${col.align} ${col.width}`}
                       >
                         {col.label}
                         <SortArrow col={col.key} />
@@ -305,15 +305,15 @@ export default function KeywordLandscapeView() {
                     return (
                       <tr
                         key={`${gap.keyword}-${i}`}
-                        className="border-b border-[var(--brand-surface-2)]] transition-colors hover:bg-[#F59E0B]/[0.02]"
+                        className="border-b border-[var(--brand-surface-2)] transition-colors hover:bg-[#F59E0B]/[0.02]"
                       >
                         <td className="px-3 py-2">
                           <div className="flex items-center gap-2">
-                            <span className="text-[11px] font-medium text-[var(--brand-text-mid)]]">{gap.keyword}</span>
+                            <span className="text-[11px] font-medium text-[var(--brand-text-mid)]">{gap.keyword}</span>
                             {gap.volume > 500 && <ArrowUpRight size={10} className="shrink-0 text-[#F59E0B]" />}
                           </div>
                           {gap.source && (
-                            <div className="mt-0.5 text-[9px] text-[var(--brand-border-2)]]">from {gap.source}</div>
+                            <div className="mt-0.5 text-[9px] text-[var(--brand-border-2)]">from {gap.source}</div>
                           )}
                         </td>
                         <td className="px-3 py-2">
@@ -321,14 +321,14 @@ export default function KeywordLandscapeView() {
                             {intent}
                           </span>
                         </td>
-                        <td className="px-3 py-2 text-right font-mono text-[11px] text-[var(--brand-text-mid)]]">
+                        <td className="px-3 py-2 text-right font-mono text-[11px] text-[var(--brand-text-mid)]">
                           {gap.volume != null ? Number(gap.volume).toLocaleString() : '—'}
                         </td>
-                        <td className="px-3 py-2 text-right font-mono text-[11px] text-[var(--brand-text-mid)]]">
+                        <td className="px-3 py-2 text-right font-mono text-[11px] text-[var(--brand-text-mid)]">
                           {gap.position != null ? `#${gap.position}` : '—'}
                         </td>
                         <td className="px-3 py-2 text-center">
-                          <span className={`text-[10px] font-bold ${DIFFICULTY_STYLES[difficulty] || 'text-[var(--brand-text-mid)]]'}`}>
+                          <span className={`text-[10px] font-bold ${DIFFICULTY_STYLES[difficulty] || 'text-[var(--brand-text-mid)]'}`}>
                             {difficulty}
                           </span>
                         </td>

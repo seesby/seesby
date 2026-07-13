@@ -83,16 +83,16 @@ export function UxFunnels() {
                 : 0
               return (
                 <div key={i} className="flex items-center gap-2">
-                  <span className="w-[70px] truncate text-[10px] text-[var(--brand-text-mid)]]">{step.label}</span>
-                  <div className="flex-1 h-2.5 rounded-full bg-[var(--brand-surface-2)]] overflow-hidden">
+                  <span className="w-[70px] truncate text-[10px] text-[var(--brand-text-mid)]">{step.label}</span>
+                  <div className="flex-1 h-2.5 rounded-full bg-[var(--brand-surface-2)] overflow-hidden">
                     <div
                       className={`h-full rounded-full ${dropFromPrev > 50 ? 'bg-red-500/60' : dropFromPrev > 20 ? 'bg-amber-500/60' : 'bg-[#f43f5e]/60'}`}
                       style={{ width: `${pct}%` }}
                     />
                   </div>
-                  <span className="w-[50px] text-right text-[10px] font-mono text-[var(--brand-text-mid)]]">{compactNum(step.value)}</span>
+                  <span className="w-[50px] text-right text-[10px] font-mono text-[var(--brand-text-mid)]">{compactNum(step.value)}</span>
                   {dropFromPrev > 0 && (
-                    <span className={`w-[36px] text-right text-[9px] font-mono ${dropFromPrev > 50 ? 'text-red-400' : dropFromPrev > 20 ? 'text-amber-400' : 'text-[var(--brand-text-mid)]]'}`}>
+                    <span className={`w-[36px] text-right text-[9px] font-mono ${dropFromPrev > 50 ? 'text-red-400' : dropFromPrev > 20 ? 'text-amber-400' : 'text-[var(--brand-text-mid)]'}`}>
                       -{dropFromPrev}%
                     </span>
                   )}
@@ -101,14 +101,14 @@ export function UxFunnels() {
             })}
           </div>
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No funnel data. Set up funnels in the Funnels view.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No funnel data. Set up funnels in the Funnels view.</div>
         )}
       </Card>
 
       {/* Step drops analysis */}
       <Card title="Biggest drops">
         {stepDrops.length > 0 ? (
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {stepDrops.slice(0, 4).map((d, i) => (
               <RowItem
                 key={i}
@@ -119,7 +119,7 @@ export function UxFunnels() {
             ))}
           </div>
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No step drops detected.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No step drops detected.</div>
         )}
       </Card>
 
@@ -135,11 +135,11 @@ export function UxFunnels() {
                 : 0
               return (
                 <div key={i} className="flex items-center gap-2">
-                  <span className="w-[70px] truncate text-[10px] text-[var(--brand-text-mid)]]">{step.label}</span>
-                  <div className="flex-1 h-2.5 rounded-full bg-[var(--brand-surface-2)]] overflow-hidden">
+                  <span className="w-[70px] truncate text-[10px] text-[var(--brand-text-mid)]">{step.label}</span>
+                  <div className="flex-1 h-2.5 rounded-full bg-[var(--brand-surface-2)] overflow-hidden">
                     <div className="h-full rounded-full bg-[#60a5fa]/50" style={{ width: `${pct}%` }} />
                   </div>
-                  <span className="w-[50px] text-right text-[10px] font-mono text-[var(--brand-text-mid)]]">{compactNum(step.value)}</span>
+                  <span className="w-[50px] text-right text-[10px] font-mono text-[var(--brand-text-mid)]">{compactNum(step.value)}</span>
                   {dropFromPrev > 0 && (
                     <span className="w-[36px] text-right text-[9px] font-mono text-amber-400">-{dropFromPrev}%</span>
                   )}
@@ -148,7 +148,7 @@ export function UxFunnels() {
             })}
           </div>
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No secondary funnel data.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No secondary funnel data.</div>
         )}
       </Card>
 
@@ -163,7 +163,7 @@ export function UxFunnels() {
             }))}
           />
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No funnels configured.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No funnels configured.</div>
         )}
       </Card>
 
@@ -171,12 +171,12 @@ export function UxFunnels() {
       {bestFunnel && worstFunnel && (
         <div className="grid grid-cols-2 gap-2">
           <Card>
-            <div className="text-[10px] uppercase tracking-wide text-[var(--brand-text-faint)]] mb-1">Best</div>
+            <div className="text-[10px] uppercase tracking-wide text-[var(--brand-text-faint)] mb-1">Best</div>
             <div className="text-[11px] text-[var(--brand-text-strong)] font-medium truncate">{bestFunnel.name}</div>
             <div className="text-[10px] text-emerald-400">{fmtPct(bestFunnel.completion * 100)}</div>
           </Card>
           <Card>
-            <div className="text-[10px] uppercase tracking-wide text-[var(--brand-text-faint)]] mb-1">Worst</div>
+            <div className="text-[10px] uppercase tracking-wide text-[var(--brand-text-faint)] mb-1">Worst</div>
             <div className="text-[11px] text-[var(--brand-text-strong)] font-medium truncate">{worstFunnel.name}</div>
             <div className="text-[10px] text-red-400">{fmtPct(worstFunnel.completion * 100)}</div>
           </Card>
@@ -187,7 +187,7 @@ export function UxFunnels() {
       {worstStep && (
         <Card tone="accent">
           <div className="flex items-center gap-2">
-            <div className="text-[11px] text-[var(--brand-text-mid)]]">
+            <div className="text-[11px] text-[var(--brand-text-mid)]">
               <span className="font-medium text-[var(--brand-text-strong)]">{worstStep.name}</span> has the biggest drop
             </div>
             <span className="ml-auto text-[11px] font-mono text-red-400">-{Math.round(worstStep.dropPct * 100)}%</span>
@@ -200,7 +200,7 @@ export function UxFunnels() {
         {hasTrend && s.funnels.completionSeries.length > 1 ? (
           <Sparkline values={s.funnels.completionSeries} tone="info" />
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">Trend data will appear after the next crawl.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">Trend data will appear after the next crawl.</div>
         )}
       </Card>
     </div>

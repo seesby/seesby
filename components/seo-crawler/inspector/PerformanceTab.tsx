@@ -10,10 +10,10 @@ const MetricGauge = ({ label, value, unit, goodThreshold, warnThreshold }: {
 }) => {
     if (value === null || Number.isNaN(value)) {
         return (
-            <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
-                <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest">{label}</div>
-                <div className="text-[22px] font-black mt-1 text-[var(--brand-text-faint)]]">—</div>
-                <div className="text-[10px] text-[var(--brand-text-faint)]] mt-1">Not available</div>
+            <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
+                <div className="text-[10px] text-[var(--brand-text-faint)] uppercase tracking-widest">{label}</div>
+                <div className="text-[22px] font-black mt-1 text-[var(--brand-text-faint)]">—</div>
+                <div className="text-[10px] text-[var(--brand-text-faint)] mt-1">Not available</div>
             </div>
         );
     }
@@ -23,10 +23,10 @@ const MetricGauge = ({ label, value, unit, goodThreshold, warnThreshold }: {
     const ratio = Math.min(100, Math.round((value / warnThreshold) * 100));
 
     return (
-        <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
-            <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest">{label}</div>
+        <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
+            <div className="text-[10px] text-[var(--brand-text-faint)] uppercase tracking-widest">{label}</div>
             <div className={`text-[22px] font-black mt-1 ${color}`}>{value}{unit}</div>
-            <div className="mt-2 h-1.5 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
+            <div className="mt-2 h-1.5 bg-[var(--brand-surface-3)] rounded-full overflow-hidden">
                 <div className={`h-full ${status === 'pass' ? 'bg-green-500' : status === 'warn' ? 'bg-orange-500' : 'bg-red-500'}`} style={{ width: `${ratio}%` }} />
             </div>
         </div>

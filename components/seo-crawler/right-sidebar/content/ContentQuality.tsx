@@ -110,10 +110,10 @@ export function ContentQuality() {
       {/* Content issues */}
       {issues.length > 0 && (
         <Card title={`Issues to fix ${totalIssues}`} padded={false}>
-          <div className="px-2 pt-2 pb-1 text-[10px] text-[var(--brand-text-faint)]]">
+          <div className="px-2 pt-2 pb-1 text-[10px] text-[var(--brand-text-faint)]">
             {issues.length} issue types affecting {totalIssues} pages
           </div>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {issues.map((issue, i) => (
               <RowItem
                 key={i}

@@ -3,7 +3,7 @@ import { DataRow, formatNumber, IssuesList, SectionHeader, StatusBadge, Truncate
 import { getPageIssues } from '../IssueTaxonomy';
 
 const renderSnippet = (page: any) => (
-    <div className="border border-[var(--brand-border-3)]] rounded-lg bg-[var(--brand-surface-0)]] p-4">
+    <div className="border border-[var(--brand-border-3)] rounded-lg bg-[var(--brand-surface-0)] p-4">
         <div className="text-[#8ab4f8] text-[20px] leading-tight truncate">{page?.title || 'Untitled Page'}</div>
         <div className="text-[#5f6368] text-[12px] mt-1 truncate">{page?.url}</div>
         <div className="text-[#bdc1c6] text-[13px] mt-2 line-clamp-3">
@@ -27,39 +27,39 @@ export default function SeoTab({ page }: { page: any }) {
                     <div className="space-y-4">
                         <div>
                             <div className="flex items-center gap-2 mb-1">
-                                <span className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest">Title</span>
+                                <span className="text-[10px] text-[var(--brand-text-faint)] uppercase tracking-widest">Title</span>
                                 <StatusBadge
                                     status={!page?.title ? 'fail' : Number(page?.titleLength || 0) > 60 ? 'warn' : 'pass'}
                                     label={!page?.title ? 'Missing' : `${formatNumber(page?.titleLength)}ch / ${formatNumber(page?.titlePixelWidth)}px`}
                                 />
                             </div>
-                            <div className="text-[12px] text-[var(--brand-text-strong)] bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-2 break-all">
+                            <div className="text-[12px] text-[var(--brand-text-strong)] bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-2 break-all">
                                 {page?.title || <span className="text-red-400 italic">No title tag found</span>}
                             </div>
                         </div>
 
                         <div>
                             <div className="flex items-center gap-2 mb-1">
-                                <span className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest">Meta Description</span>
+                                <span className="text-[10px] text-[var(--brand-text-faint)] uppercase tracking-widest">Meta Description</span>
                                 <StatusBadge
                                     status={!page?.metaDesc ? 'fail' : Number(page?.metaDescLength || 0) > 155 ? 'warn' : 'pass'}
                                     label={!page?.metaDesc ? 'Missing' : `${formatNumber(page?.metaDescLength)}ch`}
                                 />
                             </div>
-                            <div className="text-[12px] text-[var(--brand-text-mid)]] bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-2 break-all">
+                            <div className="text-[12px] text-[var(--brand-text-mid)] bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-2 break-all">
                                 {page?.metaDesc || <span className="text-red-400 italic">No meta description found</span>}
                             </div>
                         </div>
 
                         <div>
                             <div className="flex items-center gap-2 mb-1">
-                                <span className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest">H1</span>
+                                <span className="text-[10px] text-[var(--brand-text-faint)] uppercase tracking-widest">H1</span>
                                 <StatusBadge
                                     status={!page?.h1_1 ? 'fail' : page?.multipleH1s ? 'warn' : 'pass'}
                                     label={!page?.h1_1 ? 'Missing' : page?.multipleH1s ? 'Multiple' : `${formatNumber(page?.h1_1Length)}ch`}
                                 />
                             </div>
-                            <div className="text-[12px] text-[var(--brand-text-strong)] bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-2 break-all">
+                            <div className="text-[12px] text-[var(--brand-text-strong)] bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-2 break-all">
                                 {page?.h1_1 || <span className="text-red-400 italic">No H1 tag found</span>}
                             </div>
                         </div>
@@ -88,7 +88,7 @@ export default function SeoTab({ page }: { page: any }) {
                     <div className="mt-5">
                         <SectionHeader title="Hreflang" />
                         {hreflang.length === 0 ? (
-                            <div className="text-[12px] text-[var(--brand-text-faint)]] bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+                            <div className="text-[12px] text-[var(--brand-text-faint)] bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
                                 No hreflang annotations found.
                             </div>
                         ) : (

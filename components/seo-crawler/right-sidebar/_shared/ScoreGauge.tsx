@@ -29,12 +29,12 @@ export function ScoreGauge({
                 </text>
             </svg>
             <div>
-                <div className="text-[10px] uppercase tracking-widest text-[var(--brand-text-faint)]]">{label}</div>
-                <div className="text-[12px] text-[var(--brand-text-mid)]] mt-0.5">
+                <div className="text-[10px] uppercase tracking-widest text-[var(--brand-text-faint)]">{label}</div>
+                <div className="text-[12px] text-[var(--brand-text-mid)] mt-0.5">
                     {delta === null || delta === undefined ? '' :
                         delta > 0 ? <span className="text-emerald-400">▲ {delta} vs prev</span> :
                         delta < 0 ? <span className="text-red-400">▼ {Math.abs(delta)} vs prev</span> :
-                        <span className="text-[var(--brand-text-faint)]]">no change</span>}
+                        <span className="text-[var(--brand-text-faint)]">no change</span>}
                 </div>
             </div>
         </div>

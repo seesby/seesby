@@ -51,18 +51,18 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
 
         <Card title="Changes detected">
           {!hasChanges && anchorChanges.length === 0 && relChanges.length === 0 && targetUrlChanges.length === 0 ? (
-            <div className="text-[12px] text-[var(--brand-text-faint)]] italic">No changes detected.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)] italic">No changes detected.</div>
           ) : (
             <>
               {anchorChanged && (
-                <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
-                  <div className="text-[11px] text-[var(--brand-text-mid)]] font-medium mb-1">Anchor changed {anchorChanges.length} time{anchorChanges.length > 1 ? 's' : ''}</div>
+                <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]">
+                  <div className="text-[11px] text-[var(--brand-text-mid)] font-medium mb-1">Anchor changed {anchorChanges.length} time{anchorChanges.length > 1 ? 's' : ''}</div>
                   {anchorChanges.slice(0, 3).map((change: any, i: number) => {
                     const from = typeof change === 'string' ? change : change?.from || '—';
                     const to = typeof change === 'object' ? change?.to || '—' : '—';
                     const date = typeof change === 'object' ? change?.date || change?.changedAt : '—';
                     return (
-                      <div key={i} className="text-[10px] text-[var(--brand-text-mid)]] font-mono">
+                      <div key={i} className="text-[10px] text-[var(--brand-text-mid)] font-mono">
                         "{from}" → "{to}" {date ? formatDate(date) : ''}
                       </div>
                     );
@@ -79,13 +79,13 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* Source publishing cadence */}
       <Card title="Source publishing cadence">
         {mentionsCount === 0 ? (
-          <div className="text-[12px] text-[var(--brand-text-faint)]] italic">No publishing cadence data available.</div>
+          <div className="text-[12px] text-[var(--brand-text-faint)] italic">No publishing cadence data available.</div>
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-mid)]]">
+          <div className="text-[11px] text-[var(--brand-text-mid)]">
             {formatNumber(mentionsCount)} mentions of us in {mentionsPeriod}
             {cadenceTrend === 'growing' && <span className="text-green-400 ml-2">— growing relationship</span>}
             {cadenceTrend === 'declining' && <span className="text-red-400 ml-2">— declining</span>}
-            {cadenceTrend === 'stable' && <span className="text-[var(--brand-text-mid)]] ml-2">— stable</span>}
+            {cadenceTrend === 'stable' && <span className="text-[var(--brand-text-mid)] ml-2">— stable</span>}
           </div>
         )}
       </Card>
@@ -95,12 +95,12 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
         <Card title="Crawl history">
           <div className="space-y-2">
             {history.map((s: any, i: number) => (
-              <div key={i} className="flex items-center justify-between py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0 text-[11px]">
-                <span className="text-[var(--brand-text-mid)]]">{formatDate(s.date)}</span>
+              <div key={i} className="flex items-center justify-between py-1 border-b border-[var(--brand-surface-2)] last:border-b-0 text-[11px]">
+                <span className="text-[var(--brand-text-mid)]">{formatDate(s.date)}</span>
                 <div className="flex items-center gap-4">
                   {s.inlinks != null && <span className="font-mono">{formatNumber(s.inlinks)} inlinks</span>}
-                  {s.referringDomains != null && <span className="font-mono text-[var(--brand-text-faint)]]">{formatNumber(s.referringDomains)} ref domains</span>}
-                  {s.backlinks != null && <span className="font-mono text-[var(--brand-text-faint)]]">{formatNumber(s.backlinks)} backlinks</span>}
+                  {s.referringDomains != null && <span className="font-mono text-[var(--brand-text-faint)]">{formatNumber(s.referringDomains)} ref domains</span>}
+                  {s.backlinks != null && <span className="font-mono text-[var(--brand-text-faint)]">{formatNumber(s.backlinks)} backlinks</span>}
                 </div>
               </div>
             ))}

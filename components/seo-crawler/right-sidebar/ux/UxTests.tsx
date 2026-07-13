@@ -82,7 +82,7 @@ export function UxTests() {
       {s.tests.readyToShip > 0 && (
         <Card tone="accent">
           <div className="flex items-center gap-2">
-            <div className="text-[11px] text-[var(--brand-text-mid)]]">
+            <div className="text-[11px] text-[var(--brand-text-mid)]">
               <span className="font-medium text-emerald-400">{s.tests.readyToShip}</span> test{s.tests.readyToShip > 1 ? 's' : ''} ready to ship (95%+ confidence)
             </div>
           </div>
@@ -103,14 +103,14 @@ export function UxTests() {
             tail: `+${fmtPct(t.lift * 100)}`,
           }))} max={6} />
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No winning tests yet.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No winning tests yet.</div>
         )}
       </Card>
 
       {/* Active tests with confidence */}
       <Card title="Active tests">
         {s.tests.activeList.length > 0 ? (
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.tests.activeList.map((t: any) => (
               <RowItem
                 key={t.id}
@@ -119,7 +119,7 @@ export function UxTests() {
                 badge={
                   <span className={`text-[10px] font-mono ${
                     t.confidence >= 0.95 ? 'text-emerald-400' :
-                    t.confidence >= 0.8 ? 'text-amber-400' : 'text-[var(--brand-text-mid)]]'
+                    t.confidence >= 0.8 ? 'text-amber-400' : 'text-[var(--brand-text-mid)]'
                   }`}>
                     {fmtPct(t.confidence * 100)}
                   </span>
@@ -129,14 +129,14 @@ export function UxTests() {
             ))}
           </div>
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No active tests.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No active tests.</div>
         )}
       </Card>
 
       {/* Stale tests needing attention */}
       <Card title={`Needs attention ${staleTests.length}`}>
         {staleTests.length > 0 ? (
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {staleTests.map((t: any) => (
               <RowItem
                 key={t.id}
@@ -148,7 +148,7 @@ export function UxTests() {
             ))}
           </div>
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No stale tests.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No stale tests.</div>
         )}
       </Card>
 
@@ -163,7 +163,7 @@ export function UxTests() {
             }))}
           />
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No page-level test data.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No page-level test data.</div>
         )}
       </Card>
     </div>

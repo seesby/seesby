@@ -16,16 +16,16 @@ export function KeyValueGrid({ items, cols = 2 }: { items: ReadonlyArray<KvItem>
   return (
     <div className={`grid ${grid} gap-2`}>
       {items.map(it => (
-        <div key={it.label} className="rounded-md border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-2">
+        <div key={it.label} className="rounded-md border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-2">
           <div className="flex items-center justify-between">
-            <div className="text-[10px] uppercase tracking-wide text-[var(--brand-text-faint)]]">{it.label}</div>
+            <div className="text-[10px] uppercase tracking-wide text-[var(--brand-text-faint)]">{it.label}</div>
             <div className="flex gap-0.5">
               <SourceChip tier={it.source} />
               <FreshnessChip value={it.freshness} />
             </div>
           </div>
           <div className={`text-[14px] font-mono font-bold ${TONE_FG[it.tone || 'neutral']}`}>{it.value}</div>
-          {it.hint && <div className="text-[10px] text-[var(--brand-text-faint)]] mt-0.5">{it.hint}</div>}
+          {it.hint && <div className="text-[10px] text-[var(--brand-text-faint)] mt-0.5">{it.hint}</div>}
         </div>
       ))}
     </div>

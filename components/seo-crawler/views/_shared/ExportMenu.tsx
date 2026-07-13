@@ -9,12 +9,12 @@ export function ExportMenu() {
     <div className="relative">
       <button
         onClick={() => setOpen(o => !o)}
-        className="h-7 px-2 text-[11px] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] border border-[var(--brand-surface-3)]] rounded bg-[var(--brand-surface-1)]]"
+        className="h-7 px-2 text-[11px] text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] border border-[var(--brand-surface-3)] rounded bg-[var(--brand-surface-1)]"
       >
         ⬇ Export
       </button>
       {open && (
-        <div className="absolute right-0 top-full mt-1 w-44 bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded shadow-2xl z-50">
+        <div className="absolute right-0 top-full mt-1 w-44 bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded shadow-2xl z-50">
           <Item onClick={() => { exportCsv(); setOpen(false); }}>Export CSV</Item>
           <Item onClick={() => { exportJson(); setOpen(false); }}>Export JSON</Item>
           <Item onClick={() => { copyAsTable(); setOpen(false); }}>Copy as table</Item>
@@ -26,7 +26,7 @@ export function ExportMenu() {
 
 function Item({ children, onClick }: { children: React.ReactNode; onClick: () => void }) {
   return (
-    <button onClick={onClick} className="w-full text-left px-3 py-1.5 text-[12px] text-[var(--brand-text-strong)] hover:bg-[var(--brand-surface-3)]]">
+    <button onClick={onClick} className="w-full text-left px-3 py-1.5 text-[12px] text-[var(--brand-text-strong)] hover:bg-[var(--brand-surface-3)]">
       {children}
     </button>
   );

@@ -30,7 +30,7 @@ export default function UgcsTab({ page, hasTrend }: { page: any; hasTrend?: bool
       {/* UGC trend */}
       {hasTrend && (
         <Card title="UGC Trend">
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
             <Sparkline values={page?.ugcTrend || []} tone="info" />
           </div>
         </Card>
@@ -56,15 +56,15 @@ export default function UgcsTab({ page, hasTrend }: { page: any; hasTrend?: bool
                 const name = typeof tag === 'string' ? tag : tag.hashtag || tag.name;
                 const count = typeof tag === 'object' ? (tag.count || tag.posts || 0) : 0;
                 return (
-                  <div key={i} className="flex items-center gap-1 bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-2 py-1">
+                  <div key={i} className="flex items-center gap-1 bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-2 py-1">
                     <span className="text-[11px] text-blue-400">#{name}</span>
-                    {count > 0 && <span className="text-[9px] text-[var(--brand-text-faint)]]">{formatNumber(count)}</span>}
+                    {count > 0 && <span className="text-[9px] text-[var(--brand-text-faint)]">{formatNumber(count)}</span>}
                   </div>
                 );
               })}
             </div>
           ) : (
-            <div className="text-[11px] text-[var(--brand-text-faint)]]">No UGC hashtags found</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]">No UGC hashtags found</div>
           )}
         </Card>
       </div>
@@ -73,9 +73,9 @@ export default function UgcsTab({ page, hasTrend }: { page: any; hasTrend?: bool
       {topUgc.length > 0 && (
         <Card title="Top UGC Content">
           {topUgc.slice(0, 6).map((item: any, i: number) => (
-            <div key={i} className="py-2 border-b border-[var(--brand-surface-2)]] last:border-0">
+            <div key={i} className="py-2 border-b border-[var(--brand-surface-2)] last:border-0">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-[11px] text-[var(--brand-text-mid)]] truncate max-w-[350px]">
+                <span className="text-[11px] text-[var(--brand-text-mid)] truncate max-w-[350px]">
                   {typeof item === 'string' ? item : item.text || item.content || item.caption}
                 </span>
                 {typeof item === 'object' && item.platform && (
@@ -83,7 +83,7 @@ export default function UgcsTab({ page, hasTrend }: { page: any; hasTrend?: bool
                 )}
               </div>
               {typeof item === 'object' && (
-                <div className="flex items-center gap-3 text-[10px] text-[var(--brand-text-mid)]]">
+                <div className="flex items-center gap-3 text-[10px] text-[var(--brand-text-mid)]">
                   {item.author && <span>by {item.author}</span>}
                   {item.likes !== undefined && <span>{formatNumber(item.likes)} likes</span>}
                   {item.shares !== undefined && <span>{formatNumber(item.shares)} shares</span>}
@@ -99,23 +99,23 @@ export default function UgcsTab({ page, hasTrend }: { page: any; hasTrend?: bool
       {reviews.length > 0 && (
         <Card title="Recent Reviews">
           {reviews.slice(0, 6).map((review: any, i: number) => (
-            <div key={i} className="py-2 border-b border-[var(--brand-surface-2)]] last:border-0">
+            <div key={i} className="py-2 border-b border-[var(--brand-surface-2)] last:border-0">
               <div className="flex items-center justify-between mb-1">
                 <div className="flex items-center gap-2">
                   <span className="text-[12px] text-[#f59e0b]">
                     {'★'.repeat(Math.min(Math.round(review.rating || review.stars || 0), 5))}
                     {'☆'.repeat(5 - Math.min(Math.round(review.rating || review.stars || 0), 5))}
                   </span>
-                  <span className="text-[11px] text-[var(--brand-text-mid)]] truncate max-w-[250px]">
+                  <span className="text-[11px] text-[var(--brand-text-mid)] truncate max-w-[250px]">
                     {review.title || review.headline || ''}
                   </span>
                 </div>
                 {review.source && <StatusBadge status="info" label={review.source} />}
               </div>
               {review.text && (
-                <div className="text-[10px] text-[var(--brand-text-mid)]] line-clamp-2 mt-1">{review.text}</div>
+                <div className="text-[10px] text-[var(--brand-text-mid)] line-clamp-2 mt-1">{review.text}</div>
               )}
-              <div className="flex items-center gap-3 text-[10px] text-[var(--brand-text-faint)]] mt-1">
+              <div className="flex items-center gap-3 text-[10px] text-[var(--brand-text-faint)] mt-1">
                 {review.author && <span>{review.author}</span>}
                 {review.date && <span>{review.date}</span>}
               </div>
@@ -129,7 +129,7 @@ export default function UgcsTab({ page, hasTrend }: { page: any; hasTrend?: bool
         <Card title="Curator Mentions">
           {curatorMentions.slice(0, 5).map((mention: any, i: number) => (
             <div key={i} className="flex items-center justify-between py-[3px]">
-              <span className="text-[11px] text-[var(--brand-text-mid)]] truncate max-w-[250px]">
+              <span className="text-[11px] text-[var(--brand-text-mid)] truncate max-w-[250px]">
                 {typeof mention === 'string' ? mention : mention.name || mention.handle || mention.url}
               </span>
               {typeof mention === 'object' && mention.followers && (

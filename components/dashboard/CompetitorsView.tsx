@@ -67,7 +67,7 @@ export const CompetitorsView = ({ radarData }: any) => {
 
             {/* Competitor List */}
             {competitors.length > 0 && (
-                <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] overflow-hidden">
+                <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] overflow-hidden">
                     <div className="overflow-x-auto">
                         <table className="w-full">
                             <thead className="bg-[var(--brand-surface-3)]/[0.05] text-xs font-bold text-[var(--brand-text-faint)] uppercase tracking-wider">
@@ -119,7 +119,7 @@ export const CompetitorsView = ({ radarData }: any) => {
 
             {/* Empty state */}
             {!loading && competitors.length === 0 && (
-                <div className="p-12 text-center bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] border-dashed">
+                <div className="p-12 text-center bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] border-dashed">
                     <div className="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-500">
                         <Globe size={32} />
                     </div>
@@ -139,7 +139,7 @@ export const CompetitorsView = ({ radarData }: any) => {
 
             {/* Radar chart section */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-8 flex flex-col relative">
+                <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-8 flex flex-col relative">
                     <h3 className="text-lg font-bold text-white mb-6">Head-to-Head Comparison</h3>
                     <div className="flex-1 w-full min-h-[300px]">
                         <ResponsiveContainer width="100%" height="100%">
@@ -159,7 +159,7 @@ export const CompetitorsView = ({ radarData }: any) => {
                 </div>
 
                 <div className="space-y-6">
-                    <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
+                    <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6">
                         <h3 className="font-bold text-white mb-4">Market Share Gap</h3>
                         <p className="text-sm text-[var(--brand-text-faint)] mb-6">Compare your performance across key areas.</p>
                         <div className="space-y-4">
@@ -168,7 +168,7 @@ export const CompetitorsView = ({ radarData }: any) => {
                                     <span>Technical SEO</span>
                                     <span className="text-brand-green font-bold">Leader (45%)</span>
                                 </div>
-                                <div className="h-2 w-full bg-[var(--brand-surface-2)]] rounded-full overflow-hidden">
+                                <div className="h-2 w-full bg-[var(--brand-surface-2)] rounded-full overflow-hidden">
                                     <div className="h-full bg-brand-green w-[45%]"></div>
                                 </div>
                             </div>
@@ -177,14 +177,14 @@ export const CompetitorsView = ({ radarData }: any) => {
                                     <span>Content Strategy</span>
                                     <span className="text-red-500 font-bold">Lagging (12%)</span>
                                 </div>
-                                <div className="h-2 w-full bg-[var(--brand-surface-2)]] rounded-full overflow-hidden">
+                                <div className="h-2 w-full bg-[var(--brand-surface-2)] rounded-full overflow-hidden">
                                     <div className="h-full bg-red-500 w-[12%]"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="bg-gradient-to-br from-[var(--brand-surface-1)]] to-[var(--brand-surface-3)]] rounded-3xl border border-[var(--brand-border-1)] p-6 flex items-center justify-between">
+                    <div className="bg-gradient-to-br from-[var(--brand-surface-1)] to-[var(--brand-surface-3)] rounded-3xl border border-[var(--brand-border-1)] p-6 flex items-center justify-between">
                         <div>
                             <h3 className="font-bold text-white text-lg">Steal Strategy</h3>
                             <p className="text-xs text-[var(--brand-text-mid)] mt-1 max-w-xs">AI analysis suggests content topics your competitors are ranking for that you are missing.</p>
@@ -199,8 +199,8 @@ export const CompetitorsView = ({ radarData }: any) => {
             {/* Add Competitor Modal */}
             {isAddOpen && (
                 <div className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center backdrop-blur-sm p-4">
-                    <div className="bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
-                        <div className="p-5 border-b border-[var(--brand-border-1)] flex justify-between items-center bg-[var(--brand-surface-2)]]">
+                    <div className="bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
+                        <div className="p-5 border-b border-[var(--brand-border-1)] flex justify-between items-center bg-[var(--brand-surface-2)]">
                             <h3 className="text-lg font-bold text-white">Add Competitor</h3>
                             <button onClick={() => setIsAddOpen(false)} className="text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)]">
                                 <X size={20} />
@@ -214,7 +214,7 @@ export const CompetitorsView = ({ radarData }: any) => {
                                     value={newName}
                                     onChange={e => setNewName(e.target.value)}
                                     placeholder="e.g. Semrush"
-                                    className="w-full bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors"
+                                    className="w-full bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors"
                                 />
                             </div>
                             <div>
@@ -224,7 +224,7 @@ export const CompetitorsView = ({ radarData }: any) => {
                                     value={newUrl}
                                     onChange={e => setNewUrl(e.target.value)}
                                     placeholder="https://semrush.com"
-                                    className="w-full bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors"
+                                    className="w-full bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors"
                                 />
                             </div>
                             <button

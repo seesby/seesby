@@ -3,8 +3,8 @@ import { useAnchors } from '../selectors/useAnchors';
 import type { AnchorPhraseWithClass } from '../selectors/useAnchors';
 import clsx from 'clsx';
 
-const PANEL = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]]';
-const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2';
+const PANEL = 'rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)]';
+const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-2';
 
 const BUCKET_COLORS: Record<string, string> = {
   branded: '#22c55e',
@@ -40,14 +40,14 @@ export default function LinksAnchorsView() {
       {/* Controls */}
       <div className="flex items-center gap-4 p-3 pb-0">
         <div className="flex items-center gap-1">
-          <span className="text-[10px] text-[var(--brand-text-faint)]] mr-1">Scope:</span>
+          <span className="text-[10px] text-[var(--brand-text-faint)] mr-1">Scope:</span>
           {(['internal', 'external'] as const).map(s => (
             <button
               key={s}
               onClick={() => setScope(s)}
               className={clsx(
                 'h-[22px] px-2 text-[10px] rounded transition-colors',
-                scope === s ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]'
+                scope === s ? 'bg-[var(--brand-surface-3)] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)] hover:text-[var(--brand-text-mid)]'
               )}
             >
               {s}
@@ -55,14 +55,14 @@ export default function LinksAnchorsView() {
           ))}
         </div>
         <div className="flex items-center gap-1">
-          <span className="text-[10px] text-[var(--brand-text-faint)]] mr-1">Group:</span>
+          <span className="text-[10px] text-[var(--brand-text-faint)] mr-1">Group:</span>
           {GROUP_FILTERS.map(f => (
             <button
               key={f.id}
               onClick={() => setGroup(f.id)}
               className={clsx(
                 'h-[22px] px-2 text-[10px] rounded transition-colors',
-                group === f.id ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]'
+                group === f.id ? 'bg-[var(--brand-surface-3)] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)] hover:text-[var(--brand-text-mid)]'
               )}
             >
               {f.label}
@@ -86,7 +86,7 @@ export default function LinksAnchorsView() {
                 ))}
               </div>
             ) : (
-              <div className="text-[11px] text-[var(--brand-text-faint)]] py-6 text-center">No anchor data</div>
+              <div className="text-[11px] text-[var(--brand-text-faint)] py-6 text-center">No anchor data</div>
             )}
           </div>
         </div>
@@ -99,7 +99,7 @@ export default function LinksAnchorsView() {
           <div className="px-3 pb-3 overflow-x-auto">
             <table className="w-full text-[10px]">
               <thead>
-                <tr className="text-[var(--brand-text-faint)]] border-b border-[var(--brand-surface-3)]]">
+                <tr className="text-[var(--brand-text-faint)] border-b border-[var(--brand-surface-3)]">
                   <th className="text-left py-1 pr-4 font-normal">Target</th>
                   <th className="text-right py-1 px-2 font-normal">Brand</th>
                   <th className="text-right py-1 px-2 font-normal">Exact</th>
@@ -111,18 +111,18 @@ export default function LinksAnchorsView() {
               </thead>
               <tbody>
                 {targetMix.length > 0 ? targetMix.map((t, i) => (
-                  <tr key={i} className="border-b border-[var(--brand-surface-2)]]">
-                    <td className="py-1 pr-4 text-[var(--brand-text-mid)]] truncate max-w-[200px]">{shortUrl(t.target)}</td>
+                  <tr key={i} className="border-b border-[var(--brand-surface-2)]">
+                    <td className="py-1 pr-4 text-[var(--brand-text-mid)] truncate max-w-[200px]">{shortUrl(t.target)}</td>
                     <td className="py-1 px-2 text-right font-mono">{t.branded}%</td>
                     <td className={clsx('py-1 px-2 text-right font-mono', t.exact > 30 ? 'text-[#ef4444]' : '')}>{t.exact}%</td>
                     <td className="py-1 px-2 text-right font-mono">{t.partial}%</td>
-                    <td className="py-1 px-2 text-right font-mono text-[var(--brand-text-faint)]]">{t.generic}%</td>
-                    <td className="py-1 px-2 text-right font-mono text-[var(--brand-text-faint)]]">{t.naked}%</td>
-                    <td className="py-1 pl-2 text-right font-mono text-[var(--brand-text-faint)]]">{t.image}%</td>
+                    <td className="py-1 px-2 text-right font-mono text-[var(--brand-text-faint)]">{t.generic}%</td>
+                    <td className="py-1 px-2 text-right font-mono text-[var(--brand-text-faint)]">{t.naked}%</td>
+                    <td className="py-1 pl-2 text-right font-mono text-[var(--brand-text-faint)]">{t.image}%</td>
                   </tr>
                 )) : (
                   <tr>
-                    <td colSpan={7} className="py-4 text-center text-[var(--brand-text-faint)]]">No anchor data available</td>
+                    <td colSpan={7} className="py-4 text-center text-[var(--brand-text-faint)]">No anchor data available</td>
                   </tr>
                 )}
               </tbody>
@@ -139,8 +139,8 @@ export default function LinksAnchorsView() {
             <div className="px-3 pb-3 space-y-1">
               {overOptimized.map((o, i) => (
                 <div key={i} className="flex items-center gap-2 text-[10px]">
-                  <span className="text-[var(--brand-text-mid)]]">{shortUrl(o.target)}</span>
-                  <span className="text-[var(--brand-text-faint)]]">—</span>
+                  <span className="text-[var(--brand-text-mid)]">{shortUrl(o.target)}</span>
+                  <span className="text-[var(--brand-text-faint)]">—</span>
                   <span className={o.severity === 'bad' ? 'text-[#ef4444]' : 'text-[#f59e0b]'}>
                     exact-match ratio {o.exactRatio}% (threshold 30%)
                   </span>
@@ -162,16 +162,16 @@ function AnchorBar({ item, max }: { item: AnchorPhraseWithClass; max: number }) 
   const color = BUCKET_COLORS[item.cls] ?? '#64748b';
   return (
     <div className="flex items-center gap-2 group">
-      <span className="text-[10px] text-[var(--brand-text-mid)]] w-[140px] truncate shrink-0" title={item.name}>
+      <span className="text-[10px] text-[var(--brand-text-mid)] w-[140px] truncate shrink-0" title={item.name}>
         {item.name || '(empty)'}
       </span>
-      <div className="flex-1 h-[7px] bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
+      <div className="flex-1 h-[7px] bg-[var(--brand-surface-3)] rounded-full overflow-hidden">
         <div
           className="h-full rounded-full transition-all"
           style={{ width: `${pct}%`, background: color }}
         />
       </div>
-      <span className="text-[10px] font-mono text-[var(--brand-text-mid)]] w-[40px] text-right shrink-0 tabular-nums">
+      <span className="text-[10px] font-mono text-[var(--brand-text-mid)] w-[40px] text-right shrink-0 tabular-nums">
         {item.value}
       </span>
       {item.warning && (
@@ -179,7 +179,7 @@ function AnchorBar({ item, max }: { item: AnchorPhraseWithClass; max: number }) 
           'text-[9px] shrink-0',
           item.warning.includes('high') ? 'text-[#ef4444]' :
           item.warning === 'generic' ? 'text-[#f59e0b]' :
-          'text-[var(--brand-text-faint)]]'
+          'text-[var(--brand-text-faint)]'
         )}>
           {item.warning === 'generic' && '\u26A0 '}
           {item.warning === 'url' && 'url'}

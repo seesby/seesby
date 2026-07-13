@@ -93,6 +93,8 @@ export const SURFACE = {
   br1:  'var(--brand-border-1)',
   br2:  'var(--brand-border-2)',
   br3:  'var(--brand-border-3)',
+  // Raised chrome (sidebars/status) — floats above the sunken workbench canvas.
+  sidebar: 'var(--brand-sidebar)',
 } as const;
 
 // ── Text ──────────────────────────────────────────────────────────────

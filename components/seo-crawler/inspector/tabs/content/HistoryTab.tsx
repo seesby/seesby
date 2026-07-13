@@ -17,9 +17,9 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
 
   if (!hasTrend && history.length === 0) {
     return (
-      <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-8 text-center">
+      <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-8 text-center">
         <div className="text-[14px] text-[var(--brand-text-strong)] font-semibold mb-2">Trend data available after 2+ crawls</div>
-        <div className="text-[12px] text-[var(--brand-text-faint)]]">Run additional crawls to see content trends and historical changes.</div>
+        <div className="text-[12px] text-[var(--brand-text-faint)]">Run additional crawls to see content trends and historical changes.</div>
       </div>
     );
   }
@@ -39,7 +39,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
         {/* Edits timeline */}
         <Card title="Edits timeline">
           {history.length === 0 ? (
-            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No edit history available.</div>
+            <div className="text-[11px] text-[var(--brand-border-2)] py-2">No edit history available.</div>
           ) : (
             <div className="space-y-0">
               {history.slice(0, 8).map((session: any, i: number) => {
@@ -48,10 +48,10 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
                 const prevWc = i < history.length - 1 ? Number(history[i + 1]?.wordCount || 0) : 0;
                 const wcDelta = wc - prevWc;
                 return (
-                  <div key={i} className="flex items-center gap-3 py-1.5 border-b border-[var(--brand-surface-2)]] last:border-b-0">
-                    <span className="text-[10px] text-[var(--brand-text-faint)]] w-[70px] shrink-0">{formatDate(date)}</span>
+                  <div key={i} className="flex items-center gap-3 py-1.5 border-b border-[var(--brand-surface-2)] last:border-b-0">
+                    <span className="text-[10px] text-[var(--brand-text-faint)] w-[70px] shrink-0">{formatDate(date)}</span>
                     <span className="block w-1.5 h-1.5 rounded-full bg-[#F59E0B] shrink-0" />
-                    <span className="text-[11px] text-[var(--brand-text-mid)]] flex-1">
+                    <span className="text-[11px] text-[var(--brand-text-mid)] flex-1">
                       Crawl {history.length - i}
                       {wcDelta !== 0 && (
                         <span className={`ml-1 text-[10px] font-mono ${wcDelta > 0 ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>
@@ -71,7 +71,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
           {hasTrend ? (
             <Sparkline values={seriesOf(page, 'wordCount')} tone="info" />
           ) : (
-            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No trend data available.</div>
+            <div className="text-[11px] text-[var(--brand-border-2)] py-2">No trend data available.</div>
           )}
         </Card>
 
@@ -80,7 +80,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
           {hasTrend ? (
             <Sparkline values={seriesOf(page, 'fleschScore')} tone="info" />
           ) : (
-            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No trend data available.</div>
+            <div className="text-[11px] text-[var(--brand-border-2)] py-2">No trend data available.</div>
           )}
         </Card>
 
@@ -89,7 +89,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
           {hasTrend ? (
             <Sparkline values={seriesOf(page, 'contentQualityScore')} tone="info" />
           ) : (
-            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No trend data available.</div>
+            <div className="text-[11px] text-[var(--brand-border-2)] py-2">No trend data available.</div>
           )}
         </Card>
       </div>
@@ -100,20 +100,20 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
           <div className="overflow-x-auto">
             <table className="w-full text-[11px]">
               <thead>
-                <tr className="border-b border-[var(--brand-surface-3)]]">
-                  <th className="text-left text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Date</th>
-                  <th className="text-right text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Words</th>
-                  <th className="text-right text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Flesch</th>
-                  <th className="text-right text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Quality</th>
+                <tr className="border-b border-[var(--brand-surface-3)]">
+                  <th className="text-left text-[10px] text-[var(--brand-text-faint)] uppercase tracking-wider font-medium pb-1.5">Date</th>
+                  <th className="text-right text-[10px] text-[var(--brand-text-faint)] uppercase tracking-wider font-medium pb-1.5">Words</th>
+                  <th className="text-right text-[10px] text-[var(--brand-text-faint)] uppercase tracking-wider font-medium pb-1.5">Flesch</th>
+                  <th className="text-right text-[10px] text-[var(--brand-text-faint)] uppercase tracking-wider font-medium pb-1.5">Quality</th>
                 </tr>
               </thead>
               <tbody>
                 {history.map((session: any, i: number) => (
-                  <tr key={i} className="border-b border-[var(--brand-surface-2)]] last:border-b-0">
-                    <td className="py-1.5 text-[var(--brand-text-mid)]]">{formatDate(session?.date || session?.crawlDate)}</td>
-                    <td className="py-1.5 text-[var(--brand-text-faint)]] text-right font-mono">{formatNumber(session?.wordCount)}</td>
-                    <td className="py-1.5 text-[var(--brand-text-faint)]] text-right font-mono">{session?.fleschScore || '—'}</td>
-                    <td className="py-1.5 text-[var(--brand-text-faint)]] text-right font-mono">{session?.contentQualityScore || '—'}</td>
+                  <tr key={i} className="border-b border-[var(--brand-surface-2)] last:border-b-0">
+                    <td className="py-1.5 text-[var(--brand-text-mid)]">{formatDate(session?.date || session?.crawlDate)}</td>
+                    <td className="py-1.5 text-[var(--brand-text-faint)] text-right font-mono">{formatNumber(session?.wordCount)}</td>
+                    <td className="py-1.5 text-[var(--brand-text-faint)] text-right font-mono">{session?.fleschScore || '—'}</td>
+                    <td className="py-1.5 text-[var(--brand-text-faint)] text-right font-mono">{session?.contentQualityScore || '—'}</td>
                   </tr>
                 ))}
               </tbody>

@@ -38,7 +38,7 @@ export const STATUS = {
   warn:    'text-amber-400',
   bad:     'text-red-400',
   info:    'text-blue-400',
-  muted:   'text-[var(--brand-text-mid)]]',
+  muted:   'text-[var(--brand-text-mid)]',
   link:    'text-[#bdb6ff]',
 } as const
 
@@ -169,7 +169,7 @@ function scoreBarCell(value: unknown) {
   const barStyle: React.CSSProperties = { width: `${Math.max(0, Math.min(100, score))}%`, background: tone }
   return (
     <div className="flex items-center gap-2">
-      <div className="flex-1 h-1 rounded bg-[var(--brand-surface-3)]] overflow-hidden">
+      <div className="flex-1 h-1 rounded bg-[var(--brand-surface-3)] overflow-hidden">
         <div className="h-full" style={barStyle} />
       </div>
       <span className="w-6 text-right font-mono tabular-nums text-[11px]">{Math.round(score)}</span>
@@ -318,7 +318,7 @@ export function entityColumn<T extends Record<string, unknown>>(
       const v = ctx.getValue() as string
       return v
         ? <span className="text-[11px] truncate block">{v}</span>
-        : <span className="text-[10px] text-[var(--brand-border-2)]]">&#8212;</span>
+        : <span className="text-[10px] text-[var(--brand-border-2)]">&#8212;</span>
     },
   }
 }
@@ -342,7 +342,7 @@ export function intentColumn<T extends Record<string, unknown>>(
     size: opts?.size ?? 100,
     cell: (ctx) => {
       const v = (ctx.getValue() as string) || 'unknown'
-      return <span className={`text-[10px] ${INTENT_COLORS[v] || 'text-[var(--brand-text-faint)]]'}`}>{v}</span>
+      return <span className={`text-[10px] ${INTENT_COLORS[v] || 'text-[var(--brand-text-faint)]'}`}>{v}</span>
     },
   }
 }
@@ -358,7 +358,7 @@ export function positionColumn<T extends Record<string, unknown>>(
     size: opts?.size ?? 60,
     cell: (ctx) => {
       const v = ctx.getValue() as number
-      if (!v) return <span className="text-[10px] text-[var(--brand-border-2)]]">&#8212;</span>
+      if (!v) return <span className="text-[10px] text-[var(--brand-border-2)]">&#8212;</span>
       const tone = v <= 3 ? 'text-emerald-400' : v <= 10 ? 'text-blue-400' : v <= 20 ? 'text-amber-400' : 'text-red-400'
       return <span className={`text-[11px] tabular-nums ${tone}`}>{v.toFixed(1)}</span>
     },
@@ -377,8 +377,8 @@ export function topKeywordColumn<T extends Record<string, unknown>>(
     cell: (ctx) => {
       const v = ctx.getValue() as string
       return v
-        ? <span className="text-[10px] text-[var(--brand-text-mid)]] truncate block">{v}</span>
-        : <span className="text-[10px] text-[var(--brand-border-2)]]">&#8212;</span>
+        ? <span className="text-[10px] text-[var(--brand-text-mid)] truncate block">{v}</span>
+        : <span className="text-[10px] text-[var(--brand-border-2)]">&#8212;</span>
     },
   }
 }
@@ -470,7 +470,7 @@ export function canonicalColumn<T extends Record<string, unknown>>(
       const v = ctx.getValue() as string
       const isSelf = v === 'self'
       return (
-        <span className={`text-[11px] truncate block ${isSelf ? 'text-[var(--brand-text-mid)]]' : STATUS.link}`}>
+        <span className={`text-[11px] truncate block ${isSelf ? 'text-[var(--brand-text-mid)]' : STATUS.link}`}>
           {isSelf ? 'self' : v}
         </span>
       )
@@ -511,7 +511,7 @@ export function redirectsColumn<T extends Record<string, unknown>>(
     size: opts?.size ?? 70,
     cell: (ctx) => {
       const v = ctx.getValue() as number
-      return <span className={`font-mono text-[11px] ${v >= 2 ? STATUS.warn : 'text-[var(--brand-text-mid)]]'}`}>{v}</span>
+      return <span className={`font-mono text-[11px] ${v >= 2 ? STATUS.warn : 'text-[var(--brand-text-mid)]'}`}>{v}</span>
     },
   }
 }
@@ -538,8 +538,8 @@ export function certColumn<T extends Record<string, unknown>>(
     size: opts?.size ?? 95,
     cell: (ctx) => {
       const v = ctx.getValue() as number | null
-      if (v == null) return <span className="text-[var(--brand-border-2)]]">&#8212;</span>
-      return <span className={`font-mono text-[11px] ${v < 30 ? STATUS.bad : 'text-[var(--brand-text-mid)]]'}`}>{v}d</span>
+      if (v == null) return <span className="text-[var(--brand-border-2)]">&#8212;</span>
+      return <span className={`font-mono text-[11px] ${v < 30 ? STATUS.bad : 'text-[var(--brand-text-mid)]'}`}>{v}d</span>
     },
   }
 }
@@ -573,7 +573,7 @@ export function a11yColumn<T extends Record<string, unknown>>(
     size: opts?.size ?? 70,
     cell: (ctx) => {
       const v = ctx.getValue() as number
-      if (v < 0) return <span className="text-[10px] text-[var(--brand-text-faint)]]">&#8212;</span>
+      if (v < 0) return <span className="text-[10px] text-[var(--brand-text-faint)]">&#8212;</span>
       const color = v === 0 ? STATUS.good : v <= 3 ? STATUS.warn : STATUS.bad
       return <span className={`font-mono text-[11px] ${color}`}>{v === 0 ? 'pass' : `${v}`}</span>
     },

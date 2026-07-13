@@ -40,7 +40,7 @@ export function AiCrawlability() {
       {/* AI bot status */}
       {botList.length > 0 && (
         <Card title="AI bot status">
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {botList.map((b: any) => (
               <RowItem
                 key={b.name}

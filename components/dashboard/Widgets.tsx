@@ -3,7 +3,7 @@ import { AreaChart, Area, ResponsiveContainer } from 'recharts';
 import { ArrowUp, ArrowDown, HelpCircle, Check, CheckCircle2, Lock, AlertTriangle, X, Link as LinkIcon, ArrowRight } from 'lucide-react';
 
 export const KPICard: React.FC<any> = ({ title, value, trend, trendGood = true, icon, chartData, strokeColor, isScore, helpText, onHelp }) => (
-    <div className="bg-[var(--brand-surface-1)]] p-5 rounded-2xl border border-[var(--brand-border-1)] hover:border-[var(--brand-border-2)] hover:bg-[var(--brand-surface-3)]/[0.04] transition-all group relative overflow-hidden h-[140px] flex flex-col justify-between shadow-lg">
+    <div className="bg-[var(--brand-surface-1)] p-5 rounded-2xl border border-[var(--brand-border-1)] hover:border-[var(--brand-border-2)] hover:bg-[var(--brand-surface-3)]/[0.04] transition-all group relative overflow-hidden h-[140px] flex flex-col justify-between shadow-lg">
         
         {/* Top Row */}
         <div className="flex justify-between items-start relative z-10">
@@ -60,7 +60,7 @@ export const KPICard: React.FC<any> = ({ title, value, trend, trendGood = true, 
 );
 
 export const StrategicCard: React.FC<any> = ({ title, value, sub, desc, trend, severity, icon }) => (
-    <div className={`p-6 rounded-3xl border backdrop-blur-md bg-[var(--brand-surface-1)]] transition-all hover:bg-[var(--brand-surface-3)]/[0.04] group hover:-translate-y-1 duration-300 ${
+    <div className={`p-6 rounded-3xl border backdrop-blur-md bg-[var(--brand-surface-1)] transition-all hover:bg-[var(--brand-surface-3)]/[0.04] group hover:-translate-y-1 duration-300 ${
         severity === 'critical' ? 'border-red-500/20 hover:border-red-500/40 hover:shadow-[0_0_20px_rgba(239,68,68,0.1)]' : 
         severity === 'warning' ? 'border-orange-500/20 hover:border-orange-500/40 hover:shadow-[0_0_20px_rgba(249,115,22,0.1)]' : 
         'border-[var(--brand-border-2)] hover:border-[var(--brand-border-3)] hover:shadow-lg'
@@ -85,7 +85,7 @@ export const StrategicCard: React.FC<any> = ({ title, value, sub, desc, trend, s
 );
 
 export const DataCard = ({ title, value, status, icon }: any) => (
-    <div className="bg-[var(--brand-surface-1)]] rounded-2xl border border-[var(--brand-border-1)] p-5 flex flex-col justify-between hover:border-[var(--brand-border-3)] transition-all group">
+    <div className="bg-[var(--brand-surface-1)] rounded-2xl border border-[var(--brand-border-1)] p-5 flex flex-col justify-between hover:border-[var(--brand-border-3)] transition-all group">
         <div className="flex justify-between items-start mb-2">
             <span className="text-xs font-bold text-[var(--brand-text-faint)] uppercase tracking-wide group-hover:text-[var(--brand-text-mid)] transition-colors">{title}</span>
             <div className={`p-2 rounded-lg ${status === 'good' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}`}>
@@ -97,7 +97,7 @@ export const DataCard = ({ title, value, status, icon }: any) => (
 );
 
 export const TechCard: React.FC<any> = ({ title, metric, status, desc, color, icon }) => (
-    <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 relative overflow-hidden group hover:border-[var(--brand-border-3)] transition-all">
+    <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6 relative overflow-hidden group hover:border-[var(--brand-border-3)] transition-all">
         <div className={`absolute top-0 right-0 w-32 h-32 opacity-10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 transition-opacity duration-500 ${color === 'red' ? 'bg-red-500 group-hover:opacity-20' : 'bg-brand-green group-hover:opacity-20'}`}></div>
         <div className="flex items-center gap-3 mb-4 relative z-10">
             <div className={`p-2 rounded-lg ${color === 'red' ? 'bg-red-500/10 text-red-500' : 'bg-brand-green/10 text-brand-green'}`}>
@@ -114,7 +114,7 @@ export const TechCard: React.FC<any> = ({ title, metric, status, desc, color, ic
                 color === 'red' ? 'bg-red-500/10 text-red-500 border-red-500/20' : 'bg-brand-green/10 text-brand-green border-brand-green/20'
             }`}>{status}</span>
         </div>
-        <div className="w-full h-1.5 bg-[var(--brand-surface-2)]] rounded-full overflow-hidden mt-4 relative z-10">
+        <div className="w-full h-1.5 bg-[var(--brand-surface-2)] rounded-full overflow-hidden mt-4 relative z-10">
             <div className={`h-full rounded-full ${color === 'red' ? 'bg-red-500 w-[80%]' : 'bg-brand-green w-[20%]'}`}></div>
         </div>
     </div>
@@ -174,7 +174,7 @@ export const LinkOpportunity: React.FC<any> = ({ source, target, anchor, impact 
                 <span className="text-[var(--brand-text-muted)] block text-[9px] uppercase font-bold mb-1">Source Page</span>
                 <div className="truncate font-medium">{source}</div>
             </div>
-            <div className="z-10 bg-[var(--brand-surface-2)]] p-1 rounded-full border border-[var(--brand-border-2)] text-[var(--brand-text-faint)]"><ArrowRight size={12}/></div>
+            <div className="z-10 bg-[var(--brand-surface-2)] p-1 rounded-full border border-[var(--brand-border-2)] text-[var(--brand-text-faint)]"><ArrowRight size={12}/></div>
              <div className="flex-1 p-3 bg-black/40 rounded-xl border border-[var(--brand-border-1)] text-white group-hover:border-[var(--brand-border-2)] transition-colors">
                 <span className="text-brand-green block text-[9px] uppercase font-bold mb-1">Target Page</span>
                 <div className="truncate font-medium">{target}</div>

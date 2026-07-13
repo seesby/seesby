@@ -43,13 +43,13 @@ export default function HeadersTab({ page }: { page: any; hasTrend?: boolean }) 
       {/* Headers */}
       {headers.length > 0 && (
         <Card title={`Response headers (${headers.length})`}>
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-lg overflow-hidden max-h-[240px] overflow-y-auto custom-scrollbar">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-surface-3)] rounded-lg overflow-hidden max-h-[240px] overflow-y-auto custom-scrollbar">
             <table className="w-full text-[11px] font-mono">
               <tbody>
                 {headers.map(([k, v], i) => (
-                  <tr key={k} className={`border-b border-[var(--brand-surface-2)]] ${i % 2 === 0 ? '' : 'bg-[var(--brand-surface-0)]]'} hover:bg-[var(--brand-surface-2)]]`}>
+                  <tr key={k} className={`border-b border-[var(--brand-surface-2)] ${i % 2 === 0 ? '' : 'bg-[var(--brand-surface-0)]'} hover:bg-[var(--brand-surface-2)]`}>
                     <td className="px-3 py-1.5 text-[#F59E0B]/80 w-[180px]">{k}</td>
-                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]] break-all">{String(v)}</td>
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)] break-all">{String(v)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -90,14 +90,14 @@ export default function HeadersTab({ page }: { page: any; hasTrend?: boolean }) 
               const codeColor = code >= 300 && code < 400 ? 'text-[#f59e0b]' : code >= 400 ? 'text-[#ef4444]' : 'text-[#22c55e]';
               return (
                 <div key={`${u}-${i}`} className="flex items-center gap-2 text-[11px] font-mono">
-                  <span className="text-[var(--brand-surface-4)]] w-[20px] shrink-0">#{i + 1}</span>
-                  <span className="text-[var(--brand-text-mid)]] truncate flex-1">{u}</span>
+                  <span className="text-[var(--brand-surface-4)] w-[20px] shrink-0">#{i + 1}</span>
+                  <span className="text-[var(--brand-text-mid)] truncate flex-1">{u}</span>
                   <span className={`text-[10px] shrink-0 ${codeColor}`}>{code}</span>
                 </div>
               );
             })}
-            <div className="text-[10px] text-[var(--brand-border-2)]] mt-2 pt-2 border-t border-[var(--brand-surface-3)]]">
-              Final: <span className="text-[var(--brand-text-mid)]]">{redirects[redirects.length - 1]}</span>
+            <div className="text-[10px] text-[var(--brand-border-2)] mt-2 pt-2 border-t border-[var(--brand-surface-3)]">
+              Final: <span className="text-[var(--brand-text-mid)]">{redirects[redirects.length - 1]}</span>
             </div>
           </div>
         </Card>

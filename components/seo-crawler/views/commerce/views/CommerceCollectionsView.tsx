@@ -5,7 +5,7 @@ import { useDensity } from '../../_hooks/useDensity';
 import { useCollections } from '../selectors/useCollections.tsx';
 import { useExportRegistration } from '../../_hooks/useExportRegistration';
 
-const CARD = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3 min-h-0';
+const CARD = 'rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3 min-h-0';
 
 export default function CommerceCollectionsView() {
   const { rows, columns, heatmapData } = useCollections();
@@ -25,7 +25,7 @@ export default function CommerceCollectionsView() {
 
         {heatmapData.rows.length > 0 && (
           <div className={`${CARD} mx-3 mb-3`}>
-            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-3">Collection coverage</div>
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-3">Collection coverage</div>
             <div className="overflow-x-auto">
               <Heatmap
                 rows={heatmapData.rows}

@@ -37,12 +37,12 @@ export default function PerformanceTab({ page, hasTrend }: { page: any; hasTrend
       {hasTrend && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
           <Card title="Engagement Trend">
-            <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+            <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
               <Sparkline values={page?.engagementTrend || []} tone="good" />
             </div>
           </Card>
           <Card title="Reach Trend">
-            <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+            <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
               <Sparkline values={page?.reachTrend || page?.socialReachTrend || []} tone="info" />
             </div>
           </Card>
@@ -78,9 +78,9 @@ export default function PerformanceTab({ page, hasTrend }: { page: any; hasTrend
           const growth = ps.growthRate ?? ps.growth ?? 0;
           const impressions = ps.impressions ?? 0;
           return (
-            <div key={i} className="py-2 border-b border-[var(--brand-surface-2)]] last:border-0">
+            <div key={i} className="py-2 border-b border-[var(--brand-surface-2)] last:border-0">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-[12px] text-[var(--brand-text-mid)]] font-medium">{platform}</span>
+                <span className="text-[12px] text-[var(--brand-text-mid)] font-medium">{platform}</span>
                 <StatusBadge
                   status={Number(eng) >= 0.03 ? 'pass' : Number(eng) >= 0.01 ? 'warn' : 'fail'}
                   label={formatPercent(eng)}
@@ -88,16 +88,16 @@ export default function PerformanceTab({ page, hasTrend }: { page: any; hasTrend
               </div>
               <div className="grid grid-cols-3 gap-3 text-[10px]">
                 <div>
-                  <span className="text-[var(--brand-text-faint)]]">Followers: </span>
-                  <span className="text-[var(--brand-text-mid)]]">{formatNumber(followers)}</span>
+                  <span className="text-[var(--brand-text-faint)]">Followers: </span>
+                  <span className="text-[var(--brand-text-mid)]">{formatNumber(followers)}</span>
                 </div>
                 <div>
-                  <span className="text-[var(--brand-text-faint)]]">Growth: </span>
+                  <span className="text-[var(--brand-text-faint)]">Growth: </span>
                   <span className={Number(growth) >= 0 ? 'text-green-400' : 'text-red-400'}>{formatPercent(growth)}</span>
                 </div>
                 <div>
-                  <span className="text-[var(--brand-text-faint)]]">Impressions: </span>
-                  <span className="text-[var(--brand-text-mid)]]">{formatNumber(impressions)}</span>
+                  <span className="text-[var(--brand-text-faint)]">Impressions: </span>
+                  <span className="text-[var(--brand-text-mid)]">{formatNumber(impressions)}</span>
                 </div>
               </div>
             </div>
@@ -106,8 +106,8 @@ export default function PerformanceTab({ page, hasTrend }: { page: any; hasTrend
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
             {['Twitter', 'Facebook', 'LinkedIn', 'Instagram', 'YouTube', 'TikTok'].map((platform) => (
               <div key={platform} className="py-2">
-                <div className="text-[11px] text-[var(--brand-text-mid)]] font-medium mb-1">{platform}</div>
-                <div className="text-[10px] text-[var(--brand-text-faint)]]">No data</div>
+                <div className="text-[11px] text-[var(--brand-text-mid)] font-medium mb-1">{platform}</div>
+                <div className="text-[10px] text-[var(--brand-text-faint)]">No data</div>
               </div>
             ))}
           </div>

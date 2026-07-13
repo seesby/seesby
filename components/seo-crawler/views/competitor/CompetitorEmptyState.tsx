@@ -6,13 +6,13 @@ export default function CompetitorEmptyState() {
   const hasCrawlData = (analysisPages?.length || 0) > 0;
 
   return (
-    <div className="flex-1 flex items-center justify-center bg-[var(--brand-surface-0)]]">
+    <div className="flex-1 flex items-center justify-center bg-[var(--brand-surface-0)]">
       <div className="text-center max-w-lg">
         <div className="mx-auto w-16 h-16 rounded-2xl bg-[#F59E0B]/10 flex items-center justify-center mb-5">
           <Crosshair size={28} className="text-[#F59E0B]" />
         </div>
         <h2 className="text-xl font-bold text-[var(--brand-text-strong)] mb-2">Competitive Analysis</h2>
-        <p className="text-[13px] text-[var(--brand-text-mid)]] leading-6 mb-6">
+        <p className="text-[13px] text-[var(--brand-text-mid)] leading-6 mb-6">
           {hasCrawlData
             ? 'Add competitor domains to start comparing. Seesby will micro-crawl each one and build a full competitive profile with AI analysis.'
             : 'Run a crawl first, then add competitors to compare against your site.'}
@@ -26,7 +26,7 @@ export default function CompetitorEmptyState() {
               <Plus size={14} /> Add Competitor
             </button>
             <button
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-[12px] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:bg-[var(--brand-surface-3)]] border border-[var(--brand-border-2)]] transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-[12px] text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:bg-[var(--brand-surface-3)] border border-[var(--brand-border-2)] transition-all"
             >
               <Sparkles size={12} /> Auto-Discover Competitors
             </button>

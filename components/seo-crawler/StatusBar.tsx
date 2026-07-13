@@ -68,7 +68,7 @@ export default function StatusBar() {
         const progressDots = '●'.repeat(progress) + '○'.repeat(10 - progress);
 
         return (
-            <div className="flex items-center justify-between shrink-0" style={{ height: 28, background: SURFACE.bg0, borderTop: `1px solid ${SURFACE.br1}`, padding: `0 ${S[3]}px`, fontSize: 11, color: TEXT.tertiary, userSelect: 'none' }}>
+            <div className="flex items-center justify-between shrink-0" style={{ height: 28, background: SURFACE.sidebar, borderTop: `1px solid ${SURFACE.br1}`, padding: `0 ${S[3]}px`, fontSize: 11, color: TEXT.tertiary, userSelect: 'none' }}>
                 {/* Left: selection info + actions */}
                 <div className="flex items-center" style={{ gap: S[3] }}>
                     <span style={{ color: TEXT.secondary, fontWeight: 500 }}>{selCount} selected</span>
@@ -97,7 +97,7 @@ export default function StatusBar() {
 
     // Normal status bar
     return (
-        <div className="flex items-center justify-between shrink-0" style={{ height: 28, background: SURFACE.bg0, borderTop: `1px solid ${SURFACE.br1}`, padding: `0 ${S[3]}px`, fontSize: 11, color: TEXT.tertiary, userSelect: 'none' }}>
+        <div className="flex items-center justify-between shrink-0" style={{ height: 28, background: SURFACE.sidebar, borderTop: `1px solid ${SURFACE.br1}`, padding: `0 ${S[3]}px`, fontSize: 11, color: TEXT.tertiary, userSelect: 'none' }}>
             {/* Left side: Status */}
             <div className="flex items-center" style={{ gap: S[4] }}>
                 <span className="flex items-center" style={{ gap: S[2] }}>

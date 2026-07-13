@@ -59,7 +59,7 @@ export function useWqaPages() {
         accessorKey: 'clicksDelta', header: 'Clicks Δ', size: 80,
         cell: c => {
           const v = c.getValue() as number;
-          if (!v) return <span className="text-[11px] text-[var(--brand-text-faint)]]">--</span>;
+          if (!v) return <span className="text-[11px] text-[var(--brand-text-faint)]">--</span>;
           const color = v > 0 ? '#22c55e' : '#ef4444';
           const arrow = v > 0 ? '+' : '';
           const formatted = Math.abs(v) >= 1000 ? fmtCompact(v) : String(Math.round(v));
@@ -70,7 +70,7 @@ export function useWqaPages() {
         accessorKey: 'impressionsDelta', header: 'Impr Δ', size: 80,
         cell: c => {
           const v = c.getValue() as number;
-          if (!v) return <span className="text-[11px] text-[var(--brand-text-faint)]]">--</span>;
+          if (!v) return <span className="text-[11px] text-[var(--brand-text-faint)]">--</span>;
           const color = v > 0 ? '#22c55e' : '#ef4444';
           const arrow = v > 0 ? '+' : '';
           const formatted = Math.abs(v) >= 1000 ? fmtCompact(v) : String(Math.round(v));
@@ -82,7 +82,7 @@ export function useWqaPages() {
         accessorFn: (row: WqaPageRow) => row.position,
         cell: c => {
           const v = c.getValue() as number;
-          if (!v) return <span className="text-[11px] text-[var(--brand-text-faint)]]">--</span>;
+          if (!v) return <span className="text-[11px] text-[var(--brand-text-faint)]">--</span>;
           return <span className="font-mono text-[11px]">{v.toFixed(1)}</span>;
         },
       },
@@ -91,8 +91,8 @@ export function useWqaPages() {
         accessorFn: (row: WqaPageRow) => row.topKeyword,
         cell: c => {
           const v = c.getValue() as string;
-          if (!v) return <span className="text-[11px] text-[var(--brand-text-faint)]]">-- no kw</span>;
-          return <span className="text-[11px] text-[var(--brand-text-mid)]] truncate block">{v}</span>;
+          if (!v) return <span className="text-[11px] text-[var(--brand-text-faint)]">-- no kw</span>;
+          return <span className="text-[11px] text-[var(--brand-text-mid)] truncate block">{v}</span>;
         },
       },
       {

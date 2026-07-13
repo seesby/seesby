@@ -87,8 +87,8 @@ function compareCells(
 const CELL_TEXT: Record<CellComparison, string> = {
   winning: 'text-emerald-400',
   losing: 'text-red-400',
-  tie: 'text-[var(--brand-text-mid)]]',
-  neutral: 'text-[var(--brand-text-mid)]]',
+  tie: 'text-[var(--brand-text-mid)]',
+  neutral: 'text-[var(--brand-text-mid)]',
 };
 
 const CELL_BG: Record<CellComparison, string> = {
@@ -357,17 +357,17 @@ export default function CompetitorMatrixGrid() {
   const allCollapsed = collapsedCategories.size === groupedRows.length;
 
   return (
-    <div className="h-full overflow-auto custom-scrollbar bg-[var(--brand-surface-0)]]">
+    <div className="h-full overflow-auto custom-scrollbar bg-[var(--brand-surface-0)]">
       <table className="w-full border-collapse text-[11px]">
         {/* ─── Sticky Header ─── */}
         <thead className="sticky top-0 z-20">
-          <tr className="bg-[var(--brand-surface-1)]] border-b border-[var(--brand-border-2)]]">
-            <th className="text-left py-2.5 px-3 text-[10px] font-bold uppercase tracking-widest text-[var(--brand-text-faint)]] min-w-[200px] bg-[var(--brand-surface-1)]]">
+          <tr className="bg-[var(--brand-surface-1)] border-b border-[var(--brand-border-2)]">
+            <th className="text-left py-2.5 px-3 text-[10px] font-bold uppercase tracking-widest text-[var(--brand-text-faint)] min-w-[200px] bg-[var(--brand-surface-1)]">
               <div className="flex items-center gap-2">
                 <span>Metric</span>
                 <button
                   onClick={toggleAll}
-                  className="p-0.5 rounded hover:bg-[var(--brand-border-2)]] text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]] transition-colors"
+                  className="p-0.5 rounded hover:bg-[var(--brand-border-2)] text-[var(--brand-text-faint)] hover:text-[var(--brand-text-mid)] transition-colors"
                   title={allCollapsed ? 'Expand all' : 'Collapse all'}
                 >
                   <ChevronsUpDown size={12} />
@@ -378,7 +378,7 @@ export default function CompetitorMatrixGrid() {
               <th
                 key={profile.domain}
                 className={`py-2.5 px-3 text-center min-w-[140px] ${
-                  i === 0 ? 'bg-[#F59E0B]/[0.03]' : 'bg-[var(--brand-surface-1)]]'
+                  i === 0 ? 'bg-[#F59E0B]/[0.03]' : 'bg-[var(--brand-surface-1)]'
                 }`}
               >
                 <div className="text-[11px] font-bold text-[var(--brand-text-strong)] truncate max-w-[130px] mx-auto">
@@ -394,7 +394,7 @@ export default function CompetitorMatrixGrid() {
                     <span className="text-emerald-400 font-bold">
                       {winLossCounts[i - 1].wins}W
                     </span>
-                    <span className="text-[var(--brand-surface-4)]] mx-0.5">/</span>
+                    <span className="text-[var(--brand-surface-4)] mx-0.5">/</span>
                     <span className="text-red-400 font-bold">
                       {winLossCounts[i - 1].losses}L
                     </span>
@@ -424,17 +424,17 @@ export default function CompetitorMatrixGrid() {
                 {/* Category header row */}
                 <tr
                   onClick={() => toggleCategory(group.category)}
-                  className="cursor-pointer bg-[var(--brand-surface-2)]] border-y border-[var(--brand-surface-3)]] hover:bg-[var(--brand-surface-3)]] transition-colors"
+                  className="cursor-pointer bg-[var(--brand-surface-2)] border-y border-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-3)] transition-colors"
                 >
                   <td colSpan={compCount + 1} className="py-2 px-3">
-                    <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-[var(--brand-text-faint)]]">
+                    <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-[var(--brand-text-faint)]">
                       {isCollapsed ? (
                         <ChevronRight size={12} />
                       ) : (
                         <ChevronDown size={12} />
                       )}
                       {group.category}
-                      <span className="text-[9px] font-normal text-[var(--brand-border-2)]] ml-1">
+                      <span className="text-[9px] font-normal text-[var(--brand-border-2)] ml-1">
                         ({group.rows.length})
                       </span>
                     </div>
@@ -451,15 +451,15 @@ export default function CompetitorMatrixGrid() {
                     return (
                       <tr
                         key={row.id}
-                        className="border-b border-[var(--brand-surface-2)]] hover:bg-[var(--brand-surface-1)]] transition-colors"
+                        className="border-b border-[var(--brand-surface-2)] hover:bg-[var(--brand-surface-1)] transition-colors"
                       >
-                        <td className="py-1.5 px-3 text-[11px] text-[var(--brand-text-mid)]]">
+                        <td className="py-1.5 px-3 text-[11px] text-[var(--brand-text-mid)]">
                           <div className="flex items-center gap-1">
                             {row.label}
                             {row.tooltip && (
                               <span
                                 title={row.tooltip}
-                                className="text-[var(--brand-surface-4)]] cursor-help"
+                                className="text-[var(--brand-surface-4)] cursor-help"
                               >
                                 ⓘ
                               </span>

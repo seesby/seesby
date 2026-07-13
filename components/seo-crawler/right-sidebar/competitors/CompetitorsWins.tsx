@@ -30,9 +30,9 @@ export function CompetitorsWins() {
       <Card>
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Win Velocity</div>
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Win Velocity</div>
             <div className="mt-1 text-2xl font-bold tabular-nums text-emerald-400">
-              +{wins.velocity} <span className="text-sm text-[var(--brand-text-mid)]]">per week</span>
+              +{wins.velocity} <span className="text-sm text-[var(--brand-text-mid)]">per week</span>
             </div>
           </div>
           <Sparkline values={wins.series} tone="good" width={100} height={32} />
@@ -41,8 +41,8 @@ export function CompetitorsWins() {
 
       {/* Win types */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Win Types</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Win Types</span>
         </div>
         <div className="px-3 py-3">
           <BarStack segments={[
@@ -56,8 +56,8 @@ export function CompetitorsWins() {
 
       {/* Win rate benchmark */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Win Rate vs Benchmark</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Win Rate vs Benchmark</span>
         </div>
         <div className="px-3 py-3">
           <BenchmarkBar site={wins.rate} benchmark={s.bench.winRate} />
@@ -66,8 +66,8 @@ export function CompetitorsWins() {
 
       {/* Recent wins */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Recent Wins</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Recent Wins</span>
         </div>
         <div className="px-3 py-2">
           <TopList items={wins.recent.map((w: any) => ({
@@ -81,8 +81,8 @@ export function CompetitorsWins() {
 
       {/* Win by competitor */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Wins by Competitor</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Wins by Competitor</span>
         </div>
         <div className="px-3 py-2">
           <TopList items={wins.byCompetitor.map((c: any) => ({
@@ -96,8 +96,8 @@ export function CompetitorsWins() {
 
       {/* Win by topic */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Wins by Topic</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Wins by Topic</span>
         </div>
         <div className="px-3 py-2">
           <TopList items={wins.byTopic.map((t: any) => ({
@@ -112,8 +112,8 @@ export function CompetitorsWins() {
       {/* Defend these rankings */}
       <Trendable hasPrior={s.hasPrior}>
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Defend These</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Defend These</span>
           </div>
           <div className="px-3 py-2">
             <TopList items={wins.defendThese.map((d: any) => ({

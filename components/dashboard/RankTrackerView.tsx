@@ -154,7 +154,7 @@ export const RankTrackerView = () => {
                     <Loader2 className="animate-spin text-brand-amber" size={32} />
                 </div>
             ) : keywords.length === 0 ? (
-                <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-12 text-center text-[var(--brand-text-faint)]">
+                <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-12 text-center text-[var(--brand-text-faint)]">
                     <Search size={48} className="mx-auto mb-4 opacity-20" />
                     <h3 className="text-lg font-bold text-white mb-2">No Keywords Tracked</h3>
                     <p className="text-sm mb-6">Add your first keyword to start tracking rankings.</p>
@@ -166,7 +166,7 @@ export const RankTrackerView = () => {
                     </button>
                 </div>
             ) : (
-                <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] overflow-hidden">
+                <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] overflow-hidden">
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse">
                             <thead>
@@ -197,7 +197,7 @@ export const RankTrackerView = () => {
                                         <td className="p-4 text-center text-sm text-[var(--brand-text-mid)] font-mono">{kw.volume}</td>
                                         <td className="p-4 text-center">
                                             <div className="flex items-center justify-center gap-2">
-                                                <div className="w-16 h-1.5 bg-[var(--brand-border-2)]] rounded-full overflow-hidden">
+                                                <div className="w-16 h-1.5 bg-[var(--brand-border-2)] rounded-full overflow-hidden">
                                                     <div className={`h-full rounded-full ${kw.kd > 60 ? 'bg-red-500' : kw.kd > 40 ? 'bg-orange-500' : 'bg-brand-green'}`} style={{ width: `${kw.kd}%` }}></div>
                                                 </div>
                                                 <span className="text-xs text-[var(--brand-text-faint)] w-6">{kw.kd}</span>

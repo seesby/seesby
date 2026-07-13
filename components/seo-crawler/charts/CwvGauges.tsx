@@ -51,7 +51,7 @@ function GaugeRing({ value, max, color, label, unit }: {
           </span>
         </div>
       </div>
-      <div className="text-[11px] text-[var(--brand-text-mid)]] font-semibold mt-1">{label}</div>
+      <div className="text-[11px] text-[var(--brand-text-mid)] font-semibold mt-1">{label}</div>
       <div className="text-[10px] mt-0.5" style={{ color }}>
         {unit}
       </div>

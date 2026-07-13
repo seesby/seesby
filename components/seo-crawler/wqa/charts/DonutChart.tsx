@@ -59,7 +59,7 @@ export default function DonutChart({ data, size = 160 }: Props) {
       </div>
       <div className="min-w-0">
         <div className="text-[18px] leading-none font-black text-[var(--brand-text-strong)]">{total.toLocaleString()}</div>
-        <div className="text-[10px] text-[var(--brand-text-faint)]] mt-0.5">pages</div>
+        <div className="text-[10px] text-[var(--brand-text-faint)] mt-0.5">pages</div>
       </div>
     </div>
   );

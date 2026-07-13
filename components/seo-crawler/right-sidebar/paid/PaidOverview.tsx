@@ -44,10 +44,10 @@ export function PaidOverview() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Paid score</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]">Paid score</div>
             <div className="mt-1 flex items-baseline gap-2">
               <span className="text-3xl font-bold tabular-nums text-[var(--brand-text-strong)]">{s.score}</span>
-              <span className="text-sm font-medium text-[var(--brand-text-faint)]]">{scoreGrade}</span>
+              <span className="text-sm font-medium text-[var(--brand-text-faint)]">{scoreGrade}</span>
             </div>
             <div className="mt-1 flex items-center gap-2">
               <Trendable hasPrior={s.hasPrior}>
@@ -90,13 +90,13 @@ export function PaidOverview() {
       {/* Performance breakdown */}
       {perfRows.length > 0 && (
         <Card title="Campaign performance" padded={false}>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {perfRows.map((r) => (
-              <div key={r.label} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
+              <div key={r.label} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)] last:border-b-0">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full" style={{ background: r.color }} />
-                  <span className="text-[11px] text-[var(--brand-text-mid)]]">{r.label}</span>
-                  <span className="text-[10px] text-[var(--brand-text-faint)]]">{r.desc}</span>
+                  <span className="text-[11px] text-[var(--brand-text-mid)]">{r.label}</span>
+                  <span className="text-[10px] text-[var(--brand-text-faint)]">{r.desc}</span>
                 </div>
                 <span className="text-[11px] font-mono font-medium text-[var(--brand-text-strong)]">{r.value}</span>
               </div>
@@ -108,7 +108,7 @@ export function PaidOverview() {
       {/* Top gaps */}
       {gaps.length > 0 && (
         <Card title="Needs attention" padded={false}>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {gaps.map((g, i) => (
               <RowItem
                 key={i}
@@ -126,19 +126,19 @@ export function PaidOverview() {
 
       {/* QS summary */}
       <Card padded={false}>
-        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Avg Quality Score</span>
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Avg Quality Score</span>
             <span className="text-[11px] font-mono font-medium text-[var(--brand-text-strong)]">
               {s.avgQs > 0 ? s.avgQs.toFixed(1) : '—'} /10
             </span>
           </div>
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">QS &ge; 8 (excellent)</span>
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">QS &ge; 8 (excellent)</span>
             <span className="text-[11px] font-mono font-medium text-[#22c55e]">{s.above8}</span>
           </div>
           <div className="flex items-center justify-between px-3 py-2">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Total campaigns</span>
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Total campaigns</span>
             <span className="text-[11px] font-mono font-medium text-[var(--brand-text-strong)]">{s.total}</span>
           </div>
         </div>

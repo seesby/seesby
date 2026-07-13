@@ -79,16 +79,16 @@ export default function ReqRespTab({ page }: { page: any }) {
               const codeColor = code >= 300 && code < 400 ? 'text-[#f59e0b]' : code >= 400 ? 'text-[#ef4444]' : 'text-[#22c55e]';
               return (
                 <div key={`${url}-${i}`} className="flex items-center gap-2 text-[11px] font-mono">
-                  <span className="text-[var(--brand-surface-4)]] w-[20px] shrink-0">#{i + 1}</span>
-                  <span className="text-[var(--brand-text-mid)]] truncate flex-1">{url}</span>
+                  <span className="text-[var(--brand-surface-4)] w-[20px] shrink-0">#{i + 1}</span>
+                  <span className="text-[var(--brand-text-mid)] truncate flex-1">{url}</span>
                   <span className={`text-[10px] shrink-0 ${codeColor}`}>{code}</span>
                 </div>
               );
             })}
             {redirectChain.length === 0 && page?.redirectUrl && (
               <div className="flex items-center gap-2 text-[11px] font-mono">
-                <span className="text-[var(--brand-surface-4)]] w-[20px] shrink-0">#1</span>
-                <span className="text-[var(--brand-text-mid)]] truncate flex-1">{page.redirectUrl}</span>
+                <span className="text-[var(--brand-surface-4)] w-[20px] shrink-0">#1</span>
+                <span className="text-[var(--brand-text-mid)] truncate flex-1">{page.redirectUrl}</span>
                 <span className="text-[10px] shrink-0 text-[#f59e0b]">{page?.redirectStatusCode || 301}</span>
               </div>
             )}
@@ -99,21 +99,21 @@ export default function ReqRespTab({ page }: { page: any }) {
       {/* Cookies */}
       {cookies.length > 0 && (
         <Card title={`Cookies (${cookies.length})`}>
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-lg overflow-hidden max-h-[180px] overflow-y-auto custom-scrollbar">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-surface-3)] rounded-lg overflow-hidden max-h-[180px] overflow-y-auto custom-scrollbar">
             <table className="w-full text-[11px]">
               <thead>
-                <tr className="border-b border-[var(--brand-surface-3)]]">
-                  <th className="px-3 py-2 text-left text-[var(--brand-border-2)]] uppercase tracking-widest text-[9px] font-bold">Name</th>
-                  <th className="px-3 py-2 text-left text-[var(--brand-border-2)]] uppercase tracking-widest text-[9px] font-bold">Domain</th>
-                  <th className="px-3 py-2 text-left text-[var(--brand-border-2)]] uppercase tracking-widest text-[9px] font-bold">Secure</th>
-                  <th className="px-3 py-2 text-left text-[var(--brand-border-2)]] uppercase tracking-widest text-[9px] font-bold">HttpOnly</th>
+                <tr className="border-b border-[var(--brand-surface-3)]">
+                  <th className="px-3 py-2 text-left text-[var(--brand-border-2)] uppercase tracking-widest text-[9px] font-bold">Name</th>
+                  <th className="px-3 py-2 text-left text-[var(--brand-border-2)] uppercase tracking-widest text-[9px] font-bold">Domain</th>
+                  <th className="px-3 py-2 text-left text-[var(--brand-border-2)] uppercase tracking-widest text-[9px] font-bold">Secure</th>
+                  <th className="px-3 py-2 text-left text-[var(--brand-border-2)] uppercase tracking-widest text-[9px] font-bold">HttpOnly</th>
                 </tr>
               </thead>
               <tbody>
                 {cookies.map((c: any, i: number) => (
-                  <tr key={i} className={`border-b border-[var(--brand-surface-2)]] ${i % 2 === 0 ? '' : 'bg-[var(--brand-surface-0)]]'} hover:bg-[var(--brand-surface-2)]]`}>
-                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]] font-mono">{c?.name || '—'}</td>
-                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{c?.domain || '—'}</td>
+                  <tr key={i} className={`border-b border-[var(--brand-surface-2)] ${i % 2 === 0 ? '' : 'bg-[var(--brand-surface-0)]'} hover:bg-[var(--brand-surface-2)]`}>
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)] font-mono">{c?.name || '—'}</td>
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]">{c?.domain || '—'}</td>
                     <td className="px-3 py-1.5">
                       <StatusBadge status={c?.secure ? 'pass' : 'warn'} label={c?.secure ? 'Yes' : 'No'} />
                     </td>

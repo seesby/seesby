@@ -5,8 +5,8 @@ import { MODE_ACCENT, STATUS } from '../../_shared/tokens';
 
 type ViewMode = 'month' | 'week' | 'day';
 
-const PANEL = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]]';
-const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2 px-3 pt-2.5';
+const PANEL = 'rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)]';
+const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-2 px-3 pt-2.5';
 const ACCENT = MODE_ACCENT.content; // amber for content mode
 
 const STATUS_DOT: Record<string, string> = {
@@ -165,13 +165,13 @@ export default function ContentCalendarView() {
       {/* Controls — full width */}
       <div className={`${PANEL} col-span-12`}>
         <div className="flex items-center justify-between px-3 py-2">
-          <div className="flex items-center gap-0.5 bg-[var(--brand-surface-2)]] rounded p-0.5">
+          <div className="flex items-center gap-0.5 bg-[var(--brand-surface-2)] rounded p-0.5">
             {(['month', 'week', 'day'] as ViewMode[]).map(v => (
               <button
                 key={v}
                 onClick={() => setViewMode(v)}
                 className={`h-[26px] px-3.5 text-[11px] rounded transition-colors ${
-                  viewMode === v ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-mid)]]'
+                  viewMode === v ? 'bg-[var(--brand-surface-3)] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)] hover:text-[var(--brand-text-mid)]'
                 }`}
               >
                 {v.charAt(0).toUpperCase() + v.slice(1)}
@@ -187,7 +187,7 @@ export default function ContentCalendarView() {
                     d.setMonth(d.getMonth() - 1);
                     setMonth(d.toISOString().slice(0, 7));
                   }}
-                  className="text-[11px] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] px-2 py-0.5 rounded hover:bg-[var(--brand-surface-3)]]"
+                  className="text-[11px] text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] px-2 py-0.5 rounded hover:bg-[var(--brand-surface-3)]"
                 >
                   &larr;
                 </button>
@@ -200,7 +200,7 @@ export default function ContentCalendarView() {
                     d.setMonth(d.getMonth() + 1);
                     setMonth(d.toISOString().slice(0, 7));
                   }}
-                  className="text-[11px] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] px-2 py-0.5 rounded hover:bg-[var(--brand-surface-3)]]"
+                  className="text-[11px] text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] px-2 py-0.5 rounded hover:bg-[var(--brand-surface-3)]"
                 >
                   &rarr;
                 </button>
@@ -209,7 +209,7 @@ export default function ContentCalendarView() {
             <select
               value={sectionFilter}
               onChange={e => setSectionFilter(e.target.value)}
-              className="h-[26px] px-2.5 text-[11px] bg-[var(--brand-surface-2)]] text-[var(--brand-text-mid)]] border border-[var(--brand-surface-3)]] rounded outline-none cursor-pointer"
+              className="h-[26px] px-2.5 text-[11px] bg-[var(--brand-surface-2)] text-[var(--brand-text-mid)] border border-[var(--brand-surface-3)] rounded outline-none cursor-pointer"
             >
               {sections.map(s => (
                 <option key={s} value={s}>{s === 'all' ? 'All sections' : s}</option>
@@ -251,16 +251,16 @@ export default function ContentCalendarView() {
           {Object.entries(STATUS_DOT).map(([key, color]) => (
             <div key={key} className="flex items-center gap-1">
               <span className={`w-1.5 h-1.5 rounded-full ${color}`} />
-              <span className="text-[9px] text-[var(--brand-text-faint)]] capitalize">{key}</span>
+              <span className="text-[9px] text-[var(--brand-text-faint)] capitalize">{key}</span>
             </div>
           ))}
           <div className="flex items-center gap-1.5 ml-2">
             <span className="w-1.5 h-1.5 rounded-full" style={{ background: STATUS.good }} />
-            <span className="text-[9px] text-[var(--brand-text-faint)]]">75+</span>
+            <span className="text-[9px] text-[var(--brand-text-faint)]">75+</span>
             <span className="w-1.5 h-1.5 rounded-full ml-1" style={{ background: STATUS.warn }} />
-            <span className="text-[9px] text-[var(--brand-text-faint)]]">50-74</span>
+            <span className="text-[9px] text-[var(--brand-text-faint)]">50-74</span>
             <span className="w-1.5 h-1.5 rounded-full ml-1" style={{ background: STATUS.bad }} />
-            <span className="text-[9px] text-[var(--brand-text-faint)]]">&lt;50</span>
+            <span className="text-[9px] text-[var(--brand-text-faint)]">&lt;50</span>
           </div>
         </div>
       </div>
@@ -271,8 +271,8 @@ export default function ContentCalendarView() {
         <div className="space-y-2 px-3 pb-3">
           {cadence.map(s => (
             <div key={s.name} className="flex items-center gap-2">
-              <span className="text-[10px] text-[var(--brand-text-mid)]] w-[90px] truncate shrink-0">{s.name}</span>
-              <div className="flex-1 h-[7px] bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
+              <span className="text-[10px] text-[var(--brand-text-mid)] w-[90px] truncate shrink-0">{s.name}</span>
+              <div className="flex-1 h-[7px] bg-[var(--brand-surface-3)] rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all"
                   style={{
@@ -281,7 +281,7 @@ export default function ContentCalendarView() {
                   }}
                 />
               </div>
-              <span className="text-[9px] text-[var(--brand-text-faint)]] w-[48px] text-right shrink-0 tabular-nums">
+              <span className="text-[9px] text-[var(--brand-text-faint)] w-[48px] text-right shrink-0 tabular-nums">
                 {s.perDay.toFixed(1)}/d
               </span>
               {s.underPublished && (
@@ -291,8 +291,8 @@ export default function ContentCalendarView() {
           ))}
           {cadence.length === 0 && (
             <div className="flex flex-col items-center justify-center py-6 gap-1">
-              <div className="text-[11px] text-[var(--brand-text-faint)]]">No sections found</div>
-              <div className="text-[9px] text-[var(--brand-border-2)]]">Assign topic clusters to pages to see cadence data</div>
+              <div className="text-[11px] text-[var(--brand-text-faint)]">No sections found</div>
+              <div className="text-[9px] text-[var(--brand-border-2)]">Assign topic clusters to pages to see cadence data</div>
             </div>
           )}
         </div>
@@ -345,14 +345,14 @@ function MonthGrid({
 }) {
   return (
     <div>
-      <div className="grid grid-cols-7 border-b border-[var(--brand-surface-3)]]">
+      <div className="grid grid-cols-7 border-b border-[var(--brand-surface-3)]">
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
-          <div key={d} className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] text-center py-2 font-medium">{d}</div>
+          <div key={d} className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] text-center py-2 font-medium">{d}</div>
         ))}
       </div>
-      <div className="grid grid-cols-7 bg-[var(--brand-surface-0)]]">
+      <div className="grid grid-cols-7 bg-[var(--brand-surface-0)]">
         {Array.from({ length: data.weekdayOffset }).map((_, i) => (
-          <div key={`pad-${i}`} className="min-h-[72px] bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-2)]] border-l-0 border-t-0 first:border-l first:border-t" />
+          <div key={`pad-${i}`} className="min-h-[72px] bg-[var(--brand-surface-1)] border border-[var(--brand-surface-2)] border-l-0 border-t-0 first:border-l first:border-t" />
         ))}
         {Array.from({ length: data.daysInMonth }).map((_, i) => {
           const day = i + 1;
@@ -364,21 +364,21 @@ function MonthGrid({
             <button
               key={day}
               onClick={() => onSelectDay(day)}
-              className={`relative min-h-[72px] p-2 text-left transition-colors border border-[var(--brand-surface-2)]] border-l-0 border-t-0 ${
-                isSelected ? 'bg-[var(--brand-surface-3)]]' :
-                isToday ? 'bg-[var(--brand-surface-2)]]' :
-                'hover:bg-[var(--brand-surface-1)]]'
+              className={`relative min-h-[72px] p-2 text-left transition-colors border border-[var(--brand-surface-2)] border-l-0 border-t-0 ${
+                isSelected ? 'bg-[var(--brand-surface-3)]' :
+                isToday ? 'bg-[var(--brand-surface-2)]' :
+                'hover:bg-[var(--brand-surface-1)]'
               }`}
             >
               <span className={`text-[11px] tabular-nums ${
-                isToday ? 'text-[var(--brand-text-strong)] font-semibold' : 'text-[var(--brand-text-faint)]]'
+                isToday ? 'text-[var(--brand-text-strong)] font-semibold' : 'text-[var(--brand-text-faint)]'
               }`}>{day}</span>
               {isToday && (
                 <span className="absolute top-1.5 right-2 w-1.5 h-1.5 rounded-full" style={{ background: ACCENT }} />
               )}
               {posts.length > 0 && (
                 <>
-                  <div className="text-[9px] text-[var(--brand-text-mid)]] mt-1">{posts.length} post{posts.length > 1 ? 's' : ''}</div>
+                  <div className="text-[9px] text-[var(--brand-text-mid)] mt-1">{posts.length} post{posts.length > 1 ? 's' : ''}</div>
                   <div className="flex gap-1 mt-1 flex-wrap">
                     {posts.slice(0, 6).map((p: any) => (
                       <span
@@ -389,7 +389,7 @@ function MonthGrid({
                         title={p.title || p.url}
                       />
                     ))}
-                    {posts.length > 6 && <span className="text-[8px] text-[var(--brand-text-faint)]] leading-none pt-0.5">+{posts.length - 6}</span>}
+                    {posts.length > 6 && <span className="text-[8px] text-[var(--brand-text-faint)] leading-none pt-0.5">+{posts.length - 6}</span>}
                   </div>
                 </>
               )}
@@ -419,14 +419,14 @@ function WeekGrid({
           <div
             key={date.toDateString()}
             className={`rounded border min-h-[140px] p-2 ${
-              isToday ? 'border-[#f59e0b]/30 bg-[var(--brand-surface-2)]]' : 'border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]]'
+              isToday ? 'border-[#f59e0b]/30 bg-[var(--brand-surface-2)]' : 'border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)]'
             }`}
           >
             <div className="flex items-center justify-between mb-2">
-              <span className={`text-[10px] ${isToday ? 'text-[#f59e0b] font-semibold' : 'text-[var(--brand-text-faint)]]'}`}>
+              <span className={`text-[10px] ${isToday ? 'text-[#f59e0b] font-semibold' : 'text-[var(--brand-text-faint)]'}`}>
                 {date.toLocaleDateString('en-US', { weekday: 'short' })}
               </span>
-              <span className={`text-[11px] tabular-nums ${isToday ? 'text-[var(--brand-text-strong)] font-medium' : 'text-[var(--brand-text-faint)]]'}`}>
+              <span className={`text-[11px] tabular-nums ${isToday ? 'text-[var(--brand-text-strong)] font-medium' : 'text-[var(--brand-text-faint)]'}`}>
                 {date.getDate()}
               </span>
             </div>
@@ -435,19 +435,19 @@ function WeekGrid({
                 <button
                   key={p.id}
                   onClick={() => { onSelectPage(p.url); onOpenInspector(true); }}
-                  className="w-full text-left px-1.5 py-1 rounded hover:bg-[var(--brand-surface-3)]] transition-colors"
+                  className="w-full text-left px-1.5 py-1 rounded hover:bg-[var(--brand-surface-3)] transition-colors"
                 >
                   <div className="flex items-center gap-1.5">
                     <span
                       className="w-1.5 h-1.5 rounded-full shrink-0"
                       style={{ background: qualityColor(p.qualityScore ?? 50) }}
                     />
-                    <span className="text-[9px] text-[var(--brand-text-mid)]] truncate">{p.title || p.url.split('/').pop()}</span>
+                    <span className="text-[9px] text-[var(--brand-text-mid)] truncate">{p.title || p.url.split('/').pop()}</span>
                   </div>
                 </button>
               ))}
               {entries.length > 6 && (
-                <span className="text-[8px] text-[var(--brand-text-faint)]] pl-3">+{entries.length - 6} more</span>
+                <span className="text-[8px] text-[var(--brand-text-faint)] pl-3">+{entries.length - 6} more</span>
               )}
             </div>
           </div>
@@ -469,9 +469,9 @@ function DayView({
 }) {
   return (
     <div className="p-3">
-      <div className="text-[12px] text-[var(--brand-text-mid)]] mb-3 pb-2 border-b border-[var(--brand-surface-3)]]">
+      <div className="text-[12px] text-[var(--brand-text-mid)] mb-3 pb-2 border-b border-[var(--brand-surface-3)]">
         {date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
-        <span className="ml-2 text-[10px] text-[var(--brand-text-faint)]]">{entries.length} post{entries.length !== 1 ? 's' : ''}</span>
+        <span className="ml-2 text-[10px] text-[var(--brand-text-faint)]">{entries.length} post{entries.length !== 1 ? 's' : ''}</span>
       </div>
       {entries.length > 0 ? (
         <div className="space-y-1">
@@ -479,15 +479,15 @@ function DayView({
             <button
               key={p.id}
               onClick={() => { onSelectPage(p.url); onOpenInspector(true); }}
-              className="w-full flex items-center gap-2.5 px-2.5 py-2 rounded hover:bg-[var(--brand-surface-2)]] transition-colors text-left"
+              className="w-full flex items-center gap-2.5 px-2.5 py-2 rounded hover:bg-[var(--brand-surface-2)] transition-colors text-left"
             >
               <span
                 className="w-2 h-2 rounded-full shrink-0"
                 style={{ background: qualityColor(p.qualityScore ?? 50) }}
               />
               <div className="flex-1 min-w-0">
-                <div className="text-[11px] text-[var(--brand-text-mid)]] truncate">{p.title || p.url}</div>
-                <div className="text-[9px] text-[var(--brand-text-faint)]]">{p.cluster} · {p.author ?? '—'}</div>
+                <div className="text-[11px] text-[var(--brand-text-mid)] truncate">{p.title || p.url}</div>
+                <div className="text-[9px] text-[var(--brand-text-faint)]">{p.cluster} · {p.author ?? '—'}</div>
               </div>
               <span className={`text-[10px] tabular-nums shrink-0 ${
                 (p.qualityScore ?? 50) >= 75 ? 'text-[#22c55e]' : (p.qualityScore ?? 50) >= 50 ? 'text-[#f59e0b]' : 'text-[#ef4444]'
@@ -497,8 +497,8 @@ function DayView({
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center h-[120px] gap-1">
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No posts on this day</div>
-          <div className="text-[9px] text-[var(--brand-border-2)]]">Select a day with published content</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No posts on this day</div>
+          <div className="text-[9px] text-[var(--brand-border-2)]">Select a day with published content</div>
         </div>
       )}
     </div>
@@ -509,15 +509,15 @@ function DayView({
 
 function CheckRow({ label, value, detail, ok }: { label: string; value: string; detail?: string; ok: boolean }) {
   return (
-    <div className="flex flex-col gap-1 p-2 rounded bg-[var(--brand-surface-1)]]">
-      <span className="text-[10px] text-[var(--brand-text-faint)]]">{label}</span>
+    <div className="flex flex-col gap-1 p-2 rounded bg-[var(--brand-surface-1)]">
+      <span className="text-[10px] text-[var(--brand-text-faint)]">{label}</span>
       <div className="flex items-center gap-1.5">
-        <span className="text-[14px] text-[var(--brand-text-mid)]] font-mono tabular-nums font-medium">{value}</span>
+        <span className="text-[14px] text-[var(--brand-text-mid)] font-mono tabular-nums font-medium">{value}</span>
         <span className={`text-[11px] ${ok ? 'text-[#22c55e]' : 'text-[#f59e0b]'}`}>
           {ok ? '\u2713' : '\u26A0'}
         </span>
       </div>
-      {detail && <span className="text-[9px] text-[var(--brand-text-faint)]]">{detail}</span>}
+      {detail && <span className="text-[9px] text-[var(--brand-text-faint)]">{detail}</span>}
     </div>
   );
 }

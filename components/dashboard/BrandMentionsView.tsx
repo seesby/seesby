@@ -32,7 +32,7 @@ export const BrandMentionsView = () => {
         return (
             <div className="space-y-6 animate-in fade-in duration-500">
                 <h2 className="text-2xl font-bold font-heading text-white">Brand Mentions</h2>
-                <div className="p-12 text-center bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] border-dashed">
+                <div className="p-12 text-center bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] border-dashed">
                     <div className="w-16 h-16 bg-purple-500/10 rounded-full flex items-center justify-center mx-auto mb-4 text-purple-500">
                         <Bell size={32} />
                     </div>
@@ -48,7 +48,7 @@ export const BrandMentionsView = () => {
             <h2 className="text-2xl font-bold font-heading text-white">Brand Mentions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {mentions.map((m: any) => (
-                    <div key={m.id} className="bg-[var(--brand-surface-1)]] rounded-2xl border border-[var(--brand-border-1)] p-5 flex flex-col hover:border-[var(--brand-border-2)] transition-all">
+                    <div key={m.id} className="bg-[var(--brand-surface-1)] rounded-2xl border border-[var(--brand-border-1)] p-5 flex flex-col hover:border-[var(--brand-border-2)] transition-all">
                         <div className="flex justify-between items-start mb-3">
                             <span className="text-xs font-bold text-[var(--brand-text-faint)] uppercase tracking-wide">{m.type}</span>
                             <span className={`text-[10px] font-bold px-2 py-0.5 rounded border uppercase ${m.sentiment === 'positive' ? 'bg-green-500/10 text-green-500 border-green-500/20' :

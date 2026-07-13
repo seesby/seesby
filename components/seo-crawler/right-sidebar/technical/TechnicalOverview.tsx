@@ -31,7 +31,7 @@ export function TechnicalOverview() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Tech score</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]">Tech score</div>
             <div className="mt-1 text-2xl font-semibold text-[var(--brand-text-strong)]">{Math.round(s.score)}</div>
             {hasTrend && s.history.scoreSeries.length > 1 ? (
               <div className="mt-1 w-24"><RsSparkline values={s.history.scoreSeries} /></div>

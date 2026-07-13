@@ -21,7 +21,7 @@ interface RadarComparisonChartProps {
 
 export default function RadarComparisonChart({ data, domains }: RadarComparisonChartProps) {
     if (data.length === 0) {
-        return <div className="py-8 text-center text-[11px] text-[var(--brand-text-faint)]]">No data yet. Crawl competitors to compare.</div>;
+        return <div className="py-8 text-center text-[11px] text-[var(--brand-text-faint)]">No data yet. Crawl competitors to compare.</div>;
     }
 
     return (

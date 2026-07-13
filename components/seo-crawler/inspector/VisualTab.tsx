@@ -3,7 +3,7 @@ import React from 'react';
 export default function VisualTab({ page }: { page: any }) {
     if (!page.screenshotUrl) {
         return (
-            <div className="p-4 text-[12px] text-[var(--brand-text-mid)]] text-center">
+            <div className="p-4 text-[12px] text-[var(--brand-text-mid)] text-center">
                 No screenshot captured for this page. Ensure Visual Regression is enabled in settings.
             </div>
         );
@@ -20,7 +20,7 @@ export default function VisualTab({ page }: { page: any }) {
                 )}
             </div>
             
-            <div className="border border-[var(--brand-surface-4)]] rounded-lg overflow-hidden bg-[var(--brand-surface-2)]]">
+            <div className="border border-[var(--brand-surface-4)] rounded-lg overflow-hidden bg-[var(--brand-surface-2)]">
                 <img 
                     src={page.screenshotUrl} 
                     alt={`Screenshot of ${page.url}`} 

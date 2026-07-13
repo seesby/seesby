@@ -30,7 +30,7 @@ export default function TrafficTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* Traffic trend */}
       {hasTrend && (
         <Card title="Social Traffic Trend">
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
             <Sparkline values={page?.socialTrafficTrend || []} tone="info" />
           </div>
         </Card>
@@ -58,13 +58,13 @@ export default function TrafficTab({ page, hasTrend }: { page: any; hasTrend?: b
             return (
               <div key={i} className="mb-3">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[12px] text-[var(--brand-text-mid)]]">{channel}</span>
+                  <span className="text-[12px] text-[var(--brand-text-mid)]">{channel}</span>
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] text-[var(--brand-text-mid)]]">{formatNumber(sessions)}</span>
-                    <span className="text-[10px] text-[var(--brand-text-faint)]]">{pct.toFixed(0)}%</span>
+                    <span className="text-[10px] text-[var(--brand-text-mid)]">{formatNumber(sessions)}</span>
+                    <span className="text-[10px] text-[var(--brand-text-faint)]">{pct.toFixed(0)}%</span>
                   </div>
                 </div>
-                <div className="w-full bg-[var(--brand-surface-3)]] rounded h-1.5">
+                <div className="w-full bg-[var(--brand-surface-3)] rounded h-1.5">
                   <div
                     className="bg-blue-500 rounded h-1.5 transition-all"
                     style={{ width: `${Math.min(pct, 100)}%` }}
@@ -73,7 +73,7 @@ export default function TrafficTab({ page, hasTrend }: { page: any; hasTrend?: b
               </div>
             );
           }) : (
-            <div className="text-[11px] text-[var(--brand-text-faint)]]">No channel data available</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]">No channel data available</div>
           )}
         </Card>
       </div>
@@ -88,9 +88,9 @@ export default function TrafficTab({ page, hasTrend }: { page: any; hasTrend?: b
               const conversions = typeof lp === 'object' ? (lp.conversions || lp.goals || 0) : 0;
               const bounce = typeof lp === 'object' ? (lp.bounceRate ?? 0) : 0;
               return (
-                <div key={i} className="py-2 border-b border-[var(--brand-surface-2)]] last:border-0">
+                <div key={i} className="py-2 border-b border-[var(--brand-surface-2)] last:border-0">
                   <TruncatedUrl url={url} />
-                  <div className="flex items-center gap-3 mt-1 text-[10px] text-[var(--brand-text-mid)]]">
+                  <div className="flex items-center gap-3 mt-1 text-[10px] text-[var(--brand-text-mid)]">
                     {sessions > 0 && <span>{formatNumber(sessions)} sessions</span>}
                     {conversions > 0 && <span>{conversions} conv</span>}
                     {bounce > 0 && <span>{formatPercent(bounce)} bounce</span>}
@@ -100,7 +100,7 @@ export default function TrafficTab({ page, hasTrend }: { page: any; hasTrend?: b
             })}
           </div>
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No landing page data available</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No landing page data available</div>
         )}
       </Card>
     </div>

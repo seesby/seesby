@@ -83,7 +83,7 @@ export function LinksToxic() {
 
       {/* Top toxic domains */}
       <Card title="Top toxic domains" padded={false}>
-        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
           {s.toxicLinks.length > 0 ? (
             s.toxicLinks.slice(0, 6).map((r: any) => (
               <RowItem
@@ -93,7 +93,7 @@ export function LinksToxic() {
               />
             ))
           ) : (
-            <div className="px-2 py-3 text-[11px] text-[var(--brand-text-faint)]] italic">No toxic links found</div>
+            <div className="px-2 py-3 text-[11px] text-[var(--brand-text-faint)] italic">No toxic links found</div>
           )}
         </div>
       </Card>

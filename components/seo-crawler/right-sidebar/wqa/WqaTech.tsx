@@ -71,26 +71,26 @@ export function WqaTech() {
 
 			{cwv.length > 0 && (
 				<>
-					<div className="px-1 text-[10px] font-semibold uppercase tracking-widest text-[var(--brand-text-faint)]]">Core signals (template sample)</div>
+					<div className="px-1 text-[10px] font-semibold uppercase tracking-widest text-[var(--brand-text-faint)]">Core signals (template sample)</div>
 					<div className="flex flex-col gap-2">
 						{cwv.map(t => (
 							<Card key={t.id}>
 								<div className="flex flex-col gap-1.5">
-									<div className="flex items-center justify-between text-[11px] text-[var(--brand-text-mid)]]">
+									<div className="flex items-center justify-between text-[11px] text-[var(--brand-text-mid)]">
 										<span className="font-medium text-[var(--brand-text-strong)]">{t.label}</span>
-										<span className="text-[var(--brand-text-faint)]]">{t.pages} pages</span>
+										<span className="text-[var(--brand-text-faint)]">{t.pages} pages</span>
 									</div>
 									<div className="grid grid-cols-3 gap-2 text-[10px]">
 										<div className="flex flex-col">
-											<span className="text-[var(--brand-text-faint)]] uppercase text-[9px]">LCP</span>
+											<span className="text-[var(--brand-text-faint)] uppercase text-[9px]">LCP</span>
 											<span className={tone(t.lcp, 2500, 4000)}>{(t.lcp / 1000).toFixed(1)}s</span>
 										</div>
 										<div className="flex flex-col">
-											<span className="text-[var(--brand-text-faint)]] uppercase text-[9px]">INP</span>
+											<span className="text-[var(--brand-text-faint)] uppercase text-[9px]">INP</span>
 											<span className={tone(t.inp, 200, 500)}>{t.inp}ms</span>
 										</div>
 										<div className="flex flex-col">
-											<span className="text-[var(--brand-text-faint)]] uppercase text-[9px]">CLS</span>
+											<span className="text-[var(--brand-text-faint)] uppercase text-[9px]">CLS</span>
 											<span className={tone(t.cls * 1000, 100, 250)}>{t.cls.toFixed(2)}</span>
 										</div>
 									</div>
@@ -102,7 +102,7 @@ export function WqaTech() {
 			)}
 
 			<Card padded={false} title="Structural health">
-				<div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+				<div className="flex flex-col border-t border-[var(--brand-surface-3)]">
 					<RowItem 
 						label="Orphan pages" 
 						value={String(struct.orphans)}

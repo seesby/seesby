@@ -66,14 +66,14 @@ export function useLocations() {
       accessorKey: 'address',
       header: 'Address',
       cell: ({ row }) => (
-        <span className="text-[var(--brand-text-mid)]] truncate max-w-[180px] block">{row.original.address}</span>
+        <span className="text-[var(--brand-text-mid)] truncate max-w-[180px] block">{row.original.address}</span>
       ),
     },
     {
       accessorKey: 'phone',
       header: 'Phone',
       cell: ({ row }) => (
-        <span className="text-[var(--brand-text-mid)]]">{row.original.phone}</span>
+        <span className="text-[var(--brand-text-mid)]">{row.original.phone}</span>
       ),
     },
     {
@@ -94,7 +94,7 @@ export function useLocations() {
       accessorKey: 'reviewCount',
       header: 'Reviews',
       cell: ({ row }) => (
-        <span className="text-[var(--brand-text-mid)]] tabular-nums">{row.original.reviewCount.toLocaleString()}</span>
+        <span className="text-[var(--brand-text-mid)] tabular-nums">{row.original.reviewCount.toLocaleString()}</span>
       ),
     },
     {
@@ -118,7 +118,7 @@ export function useLocations() {
       accessorKey: 'clicks',
       header: 'Clicks',
       cell: ({ row }) => (
-        <span className="text-[var(--brand-text-mid)]] tabular-nums">{row.original.clicks.toLocaleString()}</span>
+        <span className="text-[var(--brand-text-mid)] tabular-nums">{row.original.clicks.toLocaleString()}</span>
       ),
     },
   ], []);

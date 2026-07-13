@@ -23,10 +23,10 @@ export function WhatBlocksScoreCard({
 						<button
 							key={d.id}
 							onClick={d.onClick}
-							className="grid grid-cols-[1fr_60px_36px] items-center gap-2 px-2 py-1.5 rounded hover:bg-[var(--brand-surface-1)]] transition-colors"
+							className="grid grid-cols-[1fr_60px_36px] items-center gap-2 px-2 py-1.5 rounded hover:bg-[var(--brand-surface-1)] transition-colors"
 						>
-							<span className="text-[11px] text-[var(--brand-text-mid)]] truncate text-left">{d.label}</span>
-							<div className="h-1 rounded-full bg-[var(--brand-surface-3)]] overflow-hidden">
+							<span className="text-[11px] text-[var(--brand-text-mid)] truncate text-left">{d.label}</span>
+							<div className="h-1 rounded-full bg-[var(--brand-surface-3)] overflow-hidden">
 								<div className="h-full rounded-full bg-[#ef4444]" style={{ width: `${(d.points / max) * 100}%` }} />
 							</div>
 							<span className="text-[11px] font-mono tabular-nums text-right text-[#ef4444]">−{Math.round(d.points)}</span>

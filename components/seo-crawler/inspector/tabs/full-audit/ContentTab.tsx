@@ -80,12 +80,12 @@ export default function ContentTab({ page }: { page: any; hasTrend?: boolean }) 
       <Card title="Freshness">
         <div className="mb-3">
           <div className="flex items-center justify-between text-[11px] mb-1.5">
-            <span className="text-[var(--brand-text-faint)]]">Content age</span>
+            <span className="text-[var(--brand-text-faint)]">Content age</span>
             <span className={`font-bold ${freshTone === 'good' ? 'text-[#22c55e]' : freshTone === 'mid' ? 'text-[#3b82f6]' : freshTone === 'warn' ? 'text-[#f59e0b]' : 'text-[#ef4444]'}`}>
               {formatNumber(contentAge)}d
             </span>
           </div>
-          <div className="h-1.5 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
+          <div className="h-1.5 bg-[var(--brand-surface-3)] rounded-full overflow-hidden">
             <div
               className="h-full rounded-full transition-all"
               style={{
@@ -94,7 +94,7 @@ export default function ContentTab({ page }: { page: any; hasTrend?: boolean }) 
               }}
             />
           </div>
-          <div className="flex justify-between text-[9px] text-[var(--brand-surface-4)]] mt-1">
+          <div className="flex justify-between text-[9px] text-[var(--brand-surface-4)] mt-1">
             <span>Fresh</span>
             <span>Decaying</span>
           </div>

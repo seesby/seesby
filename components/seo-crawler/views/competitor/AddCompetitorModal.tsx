@@ -129,11 +129,11 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
 
   return (
     <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/60 backdrop-blur-[2px]">
-      <div className="w-full max-w-lg rounded-2xl border border-[var(--brand-border-2)]] bg-[var(--brand-surface-1)]] shadow-2xl">
+      <div className="w-full max-w-lg rounded-2xl border border-[var(--brand-border-2)] bg-[var(--brand-surface-1)] shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-[var(--brand-surface-3)]] px-5 py-4">
+        <div className="flex items-center justify-between border-b border-[var(--brand-surface-3)] px-5 py-4">
           <h2 className="text-[15px] font-bold text-[var(--brand-text-strong)]">Add Competitor</h2>
-          <button onClick={onClose} className="p-1 rounded hover:bg-[var(--brand-border-2)]] text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)] transition">
+          <button onClick={onClose} className="p-1 rounded hover:bg-[var(--brand-border-2)] text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)] transition">
             <X size={16} />
           </button>
         </div>
@@ -143,15 +143,15 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
           {/* Single URL input */}
           {!bulkMode && (
             <div className="flex gap-2">
-              <div className="flex-1 flex items-center gap-2 rounded-xl border border-[var(--brand-border-3)]] bg-[var(--brand-surface-0)]] px-3 py-2.5">
-                <Globe size={14} className="text-[var(--brand-text-faint)]]" />
+              <div className="flex-1 flex items-center gap-2 rounded-xl border border-[var(--brand-border-3)] bg-[var(--brand-surface-0)] px-3 py-2.5">
+                <Globe size={14} className="text-[var(--brand-text-faint)]" />
                 <input
                   ref={inputRef}
                   value={urlInput}
                   onChange={e => setUrlInput(e.target.value)}
                   onKeyDown={e => e.key === 'Enter' && handleAddSingle()}
                   placeholder="competitor.com"
-                  className="flex-1 bg-transparent text-[13px] text-[var(--brand-text-strong)] placeholder:text-[var(--brand-text-faint)]] focus:outline-none"
+                  className="flex-1 bg-transparent text-[13px] text-[var(--brand-text-strong)] placeholder:text-[var(--brand-text-faint)] focus:outline-none"
                   disabled={isCrawling}
                 />
               </div>
@@ -174,7 +174,7 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
                 onChange={e => setBulkUrls(e.target.value)}
                 placeholder="competitor-a.com&#10;competitor-b.com&#10;competitor-c.com"
                 rows={5}
-                className="w-full rounded-xl border border-[var(--brand-border-3)]] bg-[var(--brand-surface-0)]] px-3 py-2.5 text-[13px] text-[var(--brand-text-strong)] placeholder:text-[var(--brand-text-faint)]] focus:outline-none focus:border-[#F59E0B] resize-none"
+                className="w-full rounded-xl border border-[var(--brand-border-3)] bg-[var(--brand-surface-0)] px-3 py-2.5 text-[13px] text-[var(--brand-text-strong)] placeholder:text-[var(--brand-text-faint)] focus:outline-none focus:border-[#F59E0B] resize-none"
               />
               <button
                 onClick={handleAddBulk}
@@ -190,23 +190,23 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
           {/* Toggle bulk */}
           <button
             onClick={() => setBulkMode(!bulkMode)}
-            className="text-[11px] text-[var(--brand-text-faint)]] hover:text-[#F59E0B] transition"
+            className="text-[11px] text-[var(--brand-text-faint)] hover:text-[#F59E0B] transition"
           >
             {bulkMode ? '← Single URL' : 'Add multiple competitors at once →'}
           </button>
 
           {/* Divider */}
           <div className="flex items-center gap-3">
-            <div className="flex-1 h-px bg-[var(--brand-surface-3)]]" />
-            <span className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider">or</span>
-            <div className="flex-1 h-px bg-[var(--brand-surface-3)]]" />
+            <div className="flex-1 h-px bg-[var(--brand-surface-3)]" />
+            <span className="text-[10px] text-[var(--brand-text-faint)] uppercase tracking-wider">or</span>
+            <div className="flex-1 h-px bg-[var(--brand-surface-3)]" />
           </div>
 
           {/* Auto-discover */}
           <button
             onClick={handleAutoDiscover}
             disabled={discovering || !pages?.length}
-            className="w-full flex items-center justify-center gap-2 rounded-xl border border-[var(--brand-border-3)]] bg-[var(--brand-surface-0)]] py-3 text-[12px] font-medium text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[#F59E0B]/40 transition disabled:opacity-40"
+            className="w-full flex items-center justify-center gap-2 rounded-xl border border-[var(--brand-border-3)] bg-[var(--brand-surface-0)] py-3 text-[12px] font-medium text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:border-[#F59E0B]/40 transition disabled:opacity-40"
           >
             {discovering ? <Loader2 size={13} className="animate-spin" /> : <Sparkles size={13} />}
             {discovering ? 'Analyzing your link neighborhood...' : 'Auto-Discover from Crawl Data'}
@@ -215,7 +215,7 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
           {/* Discovered list */}
           {discovered.length > 0 && (
             <div className="space-y-2">
-              <div className="text-[11px] font-bold text-[var(--brand-text-mid)]] uppercase tracking-wider">
+              <div className="text-[11px] font-bold text-[var(--brand-text-mid)] uppercase tracking-wider">
                 Discovered Competitors
               </div>
               <div className="max-h-[200px] overflow-y-auto space-y-1">
@@ -225,7 +225,7 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
                       ? 'text-emerald-400 bg-emerald-400/10'
                       : comp.confidence === 'medium'
                       ? 'text-yellow-400 bg-yellow-400/10'
-                      : 'text-[var(--brand-text-mid)]] bg-[var(--brand-border-2)]]';
+                      : 'text-[var(--brand-text-mid)] bg-[var(--brand-border-2)]';
 
                   return (
                     <label
@@ -233,7 +233,7 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
                       className={`flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2 transition ${
                         selectedDiscovered.has(comp.domain)
                           ? 'border border-[#F59E0B]/30 bg-[#F59E0B]/10'
-                          : 'border border-transparent bg-[var(--brand-surface-2)]] hover:border-[var(--brand-surface-4)]]'
+                          : 'border border-transparent bg-[var(--brand-surface-2)] hover:border-[var(--brand-surface-4)]'
                       }`}
                     >
                       <input
@@ -245,7 +245,7 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
                       <div className="min-w-0 flex-1">
                         <div className="truncate text-[12px] font-medium text-[var(--brand-text-strong)]">{comp.domain}</div>
                         <div className="mt-0.5 flex items-center gap-2">
-                          <span className="text-[9px] text-[var(--brand-text-faint)]]">via {comp.source}</span>
+                          <span className="text-[9px] text-[var(--brand-text-faint)]">via {comp.source}</span>
                           <span className={`rounded px-1.5 py-0.5 text-[8px] font-bold uppercase ${confidenceColor}`}>
                             {comp.confidence}
                           </span>
@@ -269,9 +269,9 @@ export default function AddCompetitorModal({ isOpen, onClose }: Props) {
 
         {/* Crawling indicator */}
         {isCrawling && (
-          <div className="border-t border-[var(--brand-surface-3)]] px-5 py-3 flex items-center gap-2">
+          <div className="border-t border-[var(--brand-surface-3)] px-5 py-3 flex items-center gap-2">
             <Loader2 size={12} className="animate-spin text-[#F59E0B]" />
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">
               Micro-crawling <span className="text-[var(--brand-text-strong)] font-medium">{crawlingCompetitorDomain}</span>...
             </span>
           </div>

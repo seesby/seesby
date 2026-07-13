@@ -42,12 +42,12 @@ export default function SchemaTab({ page }: { page: any }) {
         {/* Present */}
         <Card title="Present">
           {schemaCount === 0 ? (
-            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No structured data (JSON-LD) detected.</div>
+            <div className="text-[11px] text-[var(--brand-border-2)] py-2">No structured data (JSON-LD) detected.</div>
           ) : (
             <div className="space-y-1">
               {schemaTypes.map((type: string, i: number) => (
-                <div key={i} className="flex items-center justify-between py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0">
-                  <span className="text-[11px] text-[var(--brand-text-mid)]]">{type}</span>
+                <div key={i} className="flex items-center justify-between py-1 border-b border-[var(--brand-surface-2)] last:border-b-0">
+                  <span className="text-[11px] text-[var(--brand-text-mid)]">{type}</span>
                   <StatusBadge status="pass" label="Present" />
                 </div>
               ))}
@@ -58,13 +58,13 @@ export default function SchemaTab({ page }: { page: any }) {
         {/* JSON-LD */}
         <Card title="JSON-LD">
           {jsonLd ? (
-            <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded p-2 max-h-[200px] overflow-auto">
-              <pre className="text-[10px] text-[var(--brand-text-mid)]] font-mono whitespace-pre-wrap break-words">
+            <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-surface-3)] rounded p-2 max-h-[200px] overflow-auto">
+              <pre className="text-[10px] text-[var(--brand-text-mid)] font-mono whitespace-pre-wrap break-words">
                 {typeof jsonLd === 'string' ? jsonLd : JSON.stringify(jsonLd, null, 2)}
               </pre>
             </div>
           ) : (
-            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No JSON-LD source available.</div>
+            <div className="text-[11px] text-[var(--brand-border-2)] py-2">No JSON-LD source available.</div>
           )}
         </Card>
       </div>
@@ -91,8 +91,8 @@ export default function SchemaTab({ page }: { page: any }) {
             { name: 'Event', present: hasEvent },
             { name: 'FAQPage', present: hasFaq },
           ].map((s, i) => (
-            <div key={i} className="flex items-center justify-between py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0">
-              <span className="text-[11px] text-[var(--brand-text-mid)]]">{s.name}</span>
+            <div key={i} className="flex items-center justify-between py-1 border-b border-[var(--brand-surface-2)] last:border-b-0">
+              <span className="text-[11px] text-[var(--brand-text-mid)]">{s.name}</span>
               <StatusBadge status={s.present ? 'pass' : 'info'} label={s.present ? 'Present' : 'N/A'} />
             </div>
           ))}

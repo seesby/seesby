@@ -31,34 +31,34 @@ export function SidebarFacetRow({ section, bucket, count }: { section: SidebarFa
 		>
 			<div className="w-4 shrink-0 flex items-center justify-start">
 				{bullet === 'check' || bullet === 'square-check' ? (
-					<div className={`w-3 h-3 border rounded-sm flex items-center justify-center transition-colors ${selected ? 'bg-[#F59E0B] border-[#F59E0B]' : 'border-[var(--brand-border-3)]] group-hover:border-[#44444A]'}`}>
+					<div className={`w-3 h-3 border rounded-sm flex items-center justify-center transition-colors ${selected ? 'bg-[#F59E0B] border-[#F59E0B]' : 'border-[var(--brand-border-3)] group-hover:border-[#44444A]'}`}>
 						{selected && <Check size={10} strokeWidth={3} className="text-[var(--brand-text-strong)]" />}
 					</div>
 				) : bullet === 'arrow' ? (
-					<span className={`relative left-[2px] text-[14px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>▸</span>
+					<span className={`relative left-[2px] text-[14px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]'}`}>▸</span>
 				) : bullet === 'dot' ? (
-					<span className={`relative left-[2px] text-[10px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>●</span>
+					<span className={`relative left-[2px] text-[10px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]'}`}>●</span>
 				) : bullet === 'dot-filled' ? (
-					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>⬤</span>
+					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]'}`}>⬤</span>
 				) : bullet === 'dot-outline' ? (
-					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>◉</span>
+					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]'}`}>◉</span>
 				) : bullet === 'diamond' ? (
-					<span className={`relative left-[2px] text-[10px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>◆</span>
+					<span className={`relative left-[2px] text-[10px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]'}`}>◆</span>
 				) : bullet === 'win-loss' ? (
-					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>
+					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]'}`}>
 						{bucket.value === 'win' ? '▲' : bucket.value === 'loss' ? '▼' : '●'}
 					</span>
 				) : bullet === 'bucket' ? (
-					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>
+					<span className={`relative left-[2px] text-[12px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-text-faint)]'}`}>
 						{bucket.bullet}
 					</span>
 				) : bullet === 'branch' ? (
-					<span className={`text-[14px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-surface-4)]]'}`}>┣</span>
+					<span className={`text-[14px] ${selected ? 'text-[var(--brand-text-strong)]' : tone ? tone.text : 'text-[var(--brand-surface-4)]'}`}>┣</span>
 				) : null}
 			</div>
 			<span className="flex-1 truncate text-left">{bucket.label}</span>
 			<div className="flex items-center gap-1.5">
-				<span className={`text-[11px] font-mono tabular-nums ${(count > 0 && tone) ? tone.text : 'text-[var(--brand-text-faint)]]'}`}>{formatCount(count)}</span>
+				<span className={`text-[11px] font-mono tabular-nums ${(count > 0 && tone) ? tone.text : 'text-[var(--brand-text-faint)]'}`}>{formatCount(count)}</span>
 			</div>
 		</button>
 	);

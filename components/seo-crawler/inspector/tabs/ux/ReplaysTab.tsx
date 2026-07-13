@@ -64,16 +64,16 @@ export default function ReplaysTab({ page, hasTrend }: { page: any; hasTrend?: b
               { label: 'Active', count: activeTests.length, color: 'bg-blue-500', textColor: 'text-blue-400' },
               { label: 'Won', count: wonTests.length, color: 'bg-green-500', textColor: 'text-green-400' },
               { label: 'Lost', count: lostTests.length, color: 'bg-red-500', textColor: 'text-red-400' },
-              { label: 'Inconclusive', count: inconclusiveTests.length, color: 'bg-[#64748b]', textColor: 'text-[var(--brand-text-mid)]]' },
+              { label: 'Inconclusive', count: inconclusiveTests.length, color: 'bg-[#64748b]', textColor: 'text-[var(--brand-text-mid)]' },
             ].map((item) => {
               const pct = totalTests > 0 ? (item.count / totalTests) * 100 : 0;
               return (
-                <div key={item.label} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2">
+                <div key={item.label} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-3 py-2">
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-[12px] text-[var(--brand-text-mid)]]">{item.label}</span>
+                    <span className="text-[12px] text-[var(--brand-text-mid)]">{item.label}</span>
                     <span className={`text-[11px] ${item.textColor}`}>{item.count} ({pct.toFixed(0)}%)</span>
                   </div>
-                  <div className="w-full bg-[var(--brand-surface-3)]] rounded h-2">
+                  <div className="w-full bg-[var(--brand-surface-3)] rounded h-2">
                     <div className={`rounded h-2 transition-all ${item.color}`} style={{ width: `${pct}%` }} />
                   </div>
                 </div>
@@ -87,7 +87,7 @@ export default function ReplaysTab({ page, hasTrend }: { page: any; hasTrend?: b
           <DataRow label="A/B Tests" value={formatNumber(byType.ab)} />
           <DataRow label="Multivariate" value={formatNumber(byType.mvt)} />
           <DataRow label="Personalization" value={formatNumber(byType.personalize)} />
-          <div className="mt-3 pt-3 border-t border-[var(--brand-surface-2)]]">
+          <div className="mt-3 pt-3 border-t border-[var(--brand-surface-2)]">
             <DataRow label="Avg Lift" value={formatPercent(avgLift)} status={avgLift > 0 ? 'pass' : 'warn'} />
             <DataRow label="Ready to Ship" value={formatNumber(readyToShip)} status={readyToShip > 0 ? 'pass' : 'info'} />
             <DataRow label="Needs Data" value={formatNumber(activeTests.filter((t: any) => (t.confidence || 0) < 0.8).length)} />
@@ -100,15 +100,15 @@ export default function ReplaysTab({ page, hasTrend }: { page: any; hasTrend?: b
         <Card title={`Active Tests (${activeTests.length})`}>
           <div className="space-y-2">
             {activeTests.sort((a: any, b: any) => (b.confidence || 0) - (a.confidence || 0)).slice(0, 8).map((t: any, i: number) => (
-              <div key={i} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2 flex items-center justify-between">
+              <div key={i} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-3 py-2 flex items-center justify-between">
                 <div className="flex-1 min-w-0">
-                  <span className="text-[12px] text-[var(--brand-text-mid)]] block truncate">{t.name || t.id || `Test ${i + 1}`}</span>
-                  <span className="text-[10px] text-[var(--brand-text-faint)]] block">{t.daysRunning || 0}d running{t.targetUrl ? ` \u00B7 ${t.targetUrl}` : ''}</span>
+                  <span className="text-[12px] text-[var(--brand-text-mid)] block truncate">{t.name || t.id || `Test ${i + 1}`}</span>
+                  <span className="text-[10px] text-[var(--brand-text-faint)] block">{t.daysRunning || 0}d running{t.targetUrl ? ` \u00B7 ${t.targetUrl}` : ''}</span>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
                   <span className={`text-[11px] font-mono ${
                     (t.confidence || 0) >= 0.95 ? 'text-green-400' :
-                    (t.confidence || 0) >= 0.8 ? 'text-orange-400' : 'text-[var(--brand-text-mid)]]'
+                    (t.confidence || 0) >= 0.8 ? 'text-orange-400' : 'text-[var(--brand-text-mid)]'
                   }`}>
                     {formatPercent((t.confidence || 0) * 100)}
                   </span>
@@ -127,8 +127,8 @@ export default function ReplaysTab({ page, hasTrend }: { page: any; hasTrend?: b
         <Card title="Winners">
           <div className="space-y-2">
             {wonTests.sort((a: any, b: any) => (b.uplift || 0) - (a.uplift || 0)).slice(0, 6).map((t: any, i: number) => (
-              <div key={i} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2 flex items-center justify-between">
-                <span className="text-[12px] text-[var(--brand-text-mid)]] truncate">{t.name || t.id || `Test ${i + 1}`}</span>
+              <div key={i} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-3 py-2 flex items-center justify-between">
+                <span className="text-[12px] text-[var(--brand-text-mid)] truncate">{t.name || t.id || `Test ${i + 1}`}</span>
                 <StatusBadge status="pass" label={`+${formatPercent((t.uplift || 0) * 100)}`} />
               </div>
             ))}
@@ -141,10 +141,10 @@ export default function ReplaysTab({ page, hasTrend }: { page: any; hasTrend?: b
         <Card title="Session Replays">
           <div className="space-y-2">
             {replayData.slice(0, 6).map((r: any, i: number) => (
-              <div key={i} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2 flex items-center justify-between">
+              <div key={i} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-3 py-2 flex items-center justify-between">
                 <div className="flex-1 min-w-0">
-                  <span className="text-[12px] text-[var(--brand-text-mid)]] block truncate">{r.url || r.page || `Session ${i + 1}`}</span>
-                  <span className="text-[10px] text-[var(--brand-text-faint)]] block">{r.duration ? `${Math.round(r.duration)}s` : ''}{r.events ? ` \u00B7 ${r.events} events` : ''}</span>
+                  <span className="text-[12px] text-[var(--brand-text-mid)] block truncate">{r.url || r.page || `Session ${i + 1}`}</span>
+                  <span className="text-[10px] text-[var(--brand-text-faint)] block">{r.duration ? `${Math.round(r.duration)}s` : ''}{r.events ? ` \u00B7 ${r.events} events` : ''}</span>
                 </div>
                 <StatusBadge status={r.hadFriction ? 'fail' : 'pass'} label={r.hadFriction ? 'Friction' : 'Clean'} />
               </div>
@@ -156,7 +156,7 @@ export default function ReplaysTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* Empty state */}
       {totalTests === 0 && replayData.length === 0 && (
         <Card title="Tests & Replays">
-          <div className="text-[12px] text-[var(--brand-text-faint)]] py-4 text-center">
+          <div className="text-[12px] text-[var(--brand-text-faint)] py-4 text-center">
             No A/B tests or session replays recorded yet. Tests will appear when experiments are running.
           </div>
         </Card>

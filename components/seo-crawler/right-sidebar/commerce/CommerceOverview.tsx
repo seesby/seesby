@@ -25,10 +25,10 @@ export function CommerceOverview() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Commerce score</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]">Commerce score</div>
             <div className="mt-1 flex items-baseline gap-2">
               <span className="text-3xl font-bold tabular-nums text-[var(--brand-text-strong)]">{s.score}</span>
-              <span className="text-sm font-medium text-[var(--brand-text-faint)]]">{scoreGrade}</span>
+              <span className="text-sm font-medium text-[var(--brand-text-faint)]">{scoreGrade}</span>
             </div>
           </div>
           <ProgressRing value={s.score} size={72} />
@@ -64,23 +64,23 @@ export function CommerceOverview() {
 
       {/* Schema coverage */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[11px] text-[var(--brand-text-mid)]]">Schema coverage</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[11px] text-[var(--brand-text-mid)]">Schema coverage</span>
         </div>
-        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
           {[
             { label: 'Product', pct: s.schema.product },
             { label: 'Offer / price', pct: s.schema.offer },
             { label: 'Aggregate rating', pct: s.schema.rating },
             { label: 'Availability', pct: s.schema.availability },
           ].map(r => (
-            <div key={r.label} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
-              <span className="text-[11px] text-[var(--brand-text-mid)]]">{r.label}</span>
+            <div key={r.label} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)] last:border-b-0">
+              <span className="text-[11px] text-[var(--brand-text-mid)]">{r.label}</span>
               <div className="flex items-center gap-2">
-                <div className="w-16 h-1.5 rounded-full bg-[var(--brand-surface-3)]] overflow-hidden">
+                <div className="w-16 h-1.5 rounded-full bg-[var(--brand-surface-3)] overflow-hidden">
                   <div className="h-full rounded-full" style={{ width: `${r.pct}%`, background: r.pct >= 90 ? '#22c55e' : r.pct >= 70 ? '#f59e0b' : '#ef4444' }} />
                 </div>
-                <span className="text-[10px] font-mono text-[var(--brand-text-mid)]] w-8 text-right">{r.pct}%</span>
+                <span className="text-[10px] font-mono text-[var(--brand-text-mid)] w-8 text-right">{r.pct}%</span>
               </div>
             </div>
           ))}
@@ -89,19 +89,19 @@ export function CommerceOverview() {
 
       {/* Checkout funnel */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[11px] text-[var(--brand-text-mid)]]">Checkout funnel</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[11px] text-[var(--brand-text-mid)]">Checkout funnel</span>
         </div>
-        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
           {s.drops.map((step, i) => (
-            <div key={step.label} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
+            <div key={step.label} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)] last:border-b-0">
               <div className="flex items-center gap-2">
-                <span className="text-[11px] text-[var(--brand-text-mid)]]">{step.label}</span>
+                <span className="text-[11px] text-[var(--brand-text-mid)]">{step.label}</span>
                 {i > 0 && step.dropPct > 0.2 && (
                   <span className="text-[9px] font-mono text-[#ef4444]">-{(step.dropPct * 100).toFixed(0)}%</span>
                 )}
               </div>
-              <span className="text-[10px] font-mono text-[var(--brand-text-mid)]]">{compactNum(step.value)}</span>
+              <span className="text-[10px] font-mono text-[var(--brand-text-mid)]">{compactNum(step.value)}</span>
             </div>
           ))}
         </div>
@@ -109,27 +109,27 @@ export function CommerceOverview() {
 
       {/* Reviews summary */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[11px] text-[var(--brand-text-mid)]]">Reviews</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[11px] text-[var(--brand-text-mid)]">Reviews</span>
         </div>
-        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Avg rating</span>
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Avg rating</span>
             <span className="text-[11px] font-mono font-medium text-[var(--brand-text-strong)]">
               {s.reviews.avgRating > 0 ? `${s.reviews.avgRating.toFixed(1)} / 5` : '—'}
             </span>
           </div>
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Total reviews</span>
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Total reviews</span>
             <span className="text-[11px] font-mono font-medium text-[var(--brand-text-strong)]">{compactNum(s.reviews.total)}</span>
           </div>
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Products with reviews</span>
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Products with reviews</span>
             <span className="text-[11px] font-mono font-medium text-[var(--brand-text-strong)]">{s.reviews.withReviews} / {s.total}</span>
           </div>
           {s.reviews.lowStarReviews > 0 && (
             <div className="flex items-center justify-between px-3 py-2">
-              <span className="text-[11px] text-[var(--brand-text-mid)]]">Low-rated (&lt; 3.5 stars)</span>
+              <span className="text-[11px] text-[var(--brand-text-mid)]">Low-rated (&lt; 3.5 stars)</span>
               <span className="text-[11px] font-mono font-medium text-[#ef4444]">{s.reviews.lowStarReviews}</span>
             </div>
           )}
@@ -138,29 +138,29 @@ export function CommerceOverview() {
 
       {/* Feed status */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[11px] text-[var(--brand-text-mid)]]">Feed status</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[11px] text-[var(--brand-text-mid)]">Feed status</span>
         </div>
-        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Products in feed</span>
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Products in feed</span>
             <span className="text-[11px] font-mono font-medium text-[var(--brand-text-strong)]">{s.feed.feedPresent} / {s.total}</span>
           </div>
           {s.feed.feedDisapproved > 0 && (
-            <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-              <span className="text-[11px] text-[var(--brand-text-mid)]]">Disapproved</span>
+            <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]">
+              <span className="text-[11px] text-[var(--brand-text-mid)]">Disapproved</span>
               <span className="text-[11px] font-mono font-medium text-[#ef4444]">{s.feed.feedDisapproved}</span>
             </div>
           )}
           {s.feed.feedPending > 0 && (
-            <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-              <span className="text-[11px] text-[var(--brand-text-mid)]]">Pending</span>
+            <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]">
+              <span className="text-[11px] text-[var(--brand-text-mid)]">Pending</span>
               <span className="text-[11px] font-mono font-medium text-[#f59e0b]">{s.feed.feedPending}</span>
             </div>
           )}
           {s.feed.feedPriceMismatch > 0 && (
             <div className="flex items-center justify-between px-3 py-2">
-              <span className="text-[11px] text-[var(--brand-text-mid)]]">Price mismatches</span>
+              <span className="text-[11px] text-[var(--brand-text-mid)]">Price mismatches</span>
               <span className="text-[11px] font-mono font-medium text-[#f59e0b]">{s.feed.feedPriceMismatch}</span>
             </div>
           )}
@@ -170,10 +170,10 @@ export function CommerceOverview() {
       {/* Alerts */}
       {s.alerts.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Alerts</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Alerts</span>
           </div>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.alerts.map(a => (
               <RowItem
                 key={a.id}

@@ -64,12 +64,12 @@ export default function AIChatDrawer({ isOpen, onClose }: { isOpen: boolean; onC
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-y-0 right-0 w-[450px] bg-[var(--brand-surface-2)]] border-l border-[var(--brand-border-2)]] shadow-2xl flex flex-col z-[100] transform transition-transform duration-300">
-            <div className="flex items-center justify-between p-4 border-b border-[var(--brand-border-2)]] bg-[var(--brand-surface-3)]]">
+        <div className="fixed inset-y-0 right-0 w-[450px] bg-[var(--brand-surface-2)] border-l border-[var(--brand-border-2)] shadow-2xl flex flex-col z-[100] transform transition-transform duration-300">
+            <div className="flex items-center justify-between p-4 border-b border-[var(--brand-border-2)] bg-[var(--brand-surface-3)]">
                 <h2 className="text-[12px] font-bold text-[var(--brand-text-strong)] uppercase tracking-widest flex items-center gap-2">
                     <Sparkles size={14} className="text-emerald-400" /> AI Assistant
                 </h2>
-                <button onClick={onClose} className="text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)] p-1 rounded hover:bg-[var(--brand-border-2)]] transition-colors">
+                <button onClick={onClose} className="text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)] p-1 rounded hover:bg-[var(--brand-border-2)] transition-colors">
                     <X size={16} />
                 </button>
             </div>
@@ -81,15 +81,15 @@ export default function AIChatDrawer({ isOpen, onClose }: { isOpen: boolean; onC
                             <Sparkles size={24} className="text-emerald-500" />
                         </div>
                         <div>
-                            <p className="text-[var(--brand-text-mid)]] text-[13px] font-medium mb-1">How can I help with your SEO?</p>
-                            <p className="text-[var(--brand-text-faint)]] text-[11px]">Ask questions about your crawl data, request analyses, or find specific issues.</p>
+                            <p className="text-[var(--brand-text-mid)] text-[13px] font-medium mb-1">How can I help with your SEO?</p>
+                            <p className="text-[var(--brand-text-faint)] text-[11px]">Ask questions about your crawl data, request analyses, or find specific issues.</p>
                         </div>
                         <div className="flex flex-col w-full gap-2">
                             {suggestedPrompts.map((prompt, i) => (
                                 <button
                                     key={i}
                                     onClick={() => handleSubmit(prompt)}
-                                    className="text-[11px] text-left p-3 rounded-lg border border-[var(--brand-border-2)]] bg-[var(--brand-surface-3)]] hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-mid)]]"
+                                    className="text-[11px] text-left p-3 rounded-lg border border-[var(--brand-border-2)] bg-[var(--brand-surface-3)] hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all text-[var(--brand-text-mid)] hover:text-[var(--brand-text-mid)]"
                                 >
                                     {prompt}
                                 </button>
@@ -100,7 +100,7 @@ export default function AIChatDrawer({ isOpen, onClose }: { isOpen: boolean; onC
                     messages.map((msg, i) => (
                         <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                             <div className={`max-w-[85%] rounded-lg p-3 text-[12px] leading-relaxed ${
-                                msg.role === 'user' ? 'bg-[var(--brand-border-2)]] text-[var(--brand-text-strong)] border border-[var(--brand-surface-4)]]' : 'bg-emerald-500/10 text-emerald-100 border border-emerald-500/20'
+                                msg.role === 'user' ? 'bg-[var(--brand-border-2)] text-[var(--brand-text-strong)] border border-[var(--brand-surface-4)]' : 'bg-emerald-500/10 text-emerald-100 border border-emerald-500/20'
                             }`}>
                                 {msg.content}
                             </div>
@@ -119,20 +119,20 @@ export default function AIChatDrawer({ isOpen, onClose }: { isOpen: boolean; onC
                 <div ref={messagesEndRef} />
             </div>
 
-            <div className="p-4 bg-[var(--brand-surface-3)]] border-t border-[var(--brand-border-2)]]">
+            <div className="p-4 bg-[var(--brand-surface-3)] border-t border-[var(--brand-border-2)]">
                 <form onSubmit={handleSubmit} className="relative">
                     <input
                         type="text"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Ask anything about your site..."
-                        className="w-full bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-4)]] rounded-lg pl-4 pr-10 py-3 text-[12px] text-[var(--brand-text-strong)] placeholder-[var(--brand-text-faint)]] focus:outline-none focus:border-emerald-500/50 transition-colors"
+                        className="w-full bg-[var(--brand-surface-0)] border border-[var(--brand-surface-4)] rounded-lg pl-4 pr-10 py-3 text-[12px] text-[var(--brand-text-strong)] placeholder-[var(--brand-text-faint)] focus:outline-none focus:border-emerald-500/50 transition-colors"
                         disabled={isTyping}
                     />
                     <button
                         type="submit"
                         disabled={!input.trim() || isTyping}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-[var(--brand-text-faint)]] hover:text-emerald-400 disabled:opacity-50 disabled:hover:text-[var(--brand-text-faint)]] transition-colors"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-[var(--brand-text-faint)] hover:text-emerald-400 disabled:opacity-50 disabled:hover:text-[var(--brand-text-faint)] transition-colors"
                     >
                         <Send size={14} />
                     </button>

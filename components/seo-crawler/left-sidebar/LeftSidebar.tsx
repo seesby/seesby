@@ -14,7 +14,7 @@ export function LeftSidebar({ embedded = false }: { embedded?: boolean }) {
 		desc = getMode(pageFilter.mode);
 	} catch (e) {
 		console.warn('LeftSidebar: Mode not found, falling back to empty state', pageFilter.mode);
-		return <aside className={`flex flex-col shrink-0 ${embedded ? 'w-full h-full' : 'h-full border-r border-[var(--brand-border-2)]]'}`} style={{ width: leftSidebarWidth }} />;
+		return <aside className={`flex flex-col shrink-0 ${embedded ? 'w-full h-full' : 'h-full border-r border-[var(--brand-border-2)]'}`} style={{ width: leftSidebarWidth }} />;
 	}
 
 	console.log(`LeftSidebar: Rendering mode "${pageFilter.mode}" with ${desc.lsSections.length} sections`);
@@ -31,7 +31,7 @@ export function LeftSidebar({ embedded = false }: { embedded?: boolean }) {
 		<aside
 			style={embedded ? undefined : { width: leftSidebarWidth }}
 			aria-label={`${desc.label} sidebar`}
-			className={`flex flex-col relative shrink-0 ${embedded ? 'w-full h-full overflow-hidden rounded-2xl border border-[var(--brand-border-2)]] bg-[var(--brand-surface-0)]]' : 'h-full overflow-hidden bg-[var(--brand-surface-0)]] border-r border-[var(--brand-border-2)]]'}`}
+			className={`flex flex-col relative shrink-0 ${embedded ? 'w-full h-full overflow-hidden rounded-2xl border border-[var(--brand-border-2)] bg-[var(--brand-sidebar)]' : 'h-full overflow-hidden bg-[var(--brand-sidebar)] border-r border-[var(--brand-border-2)]'}`}
 		>
 			{!embedded && (
 				<div

@@ -68,21 +68,21 @@ export default function CompetitiveScoreWidget({ projectId }: Props) {
 
   if (!data) {
     return (
-      <div className="rounded-2xl border border-[var(--brand-border-1)] bg-[var(--brand-surface-1)]] p-5">
+      <div className="rounded-2xl border border-[var(--brand-border-1)] bg-[var(--brand-surface-1)] p-5">
         <div className="flex items-center gap-2 mb-3">
           <Target size={16} className="text-[#F59E0B]" />
           <span className="text-[13px] font-bold text-white">Competitive Position</span>
         </div>
-        <p className="text-[12px] text-[var(--brand-text-faint)]]">Add competitors in the crawler to see your competitive score.</p>
+        <p className="text-[12px] text-[var(--brand-text-faint)]">Add competitors in the crawler to see your competitive score.</p>
       </div>
     );
   }
 
   const TrendIcon = data.trend === 'up' ? TrendingUp : data.trend === 'down' ? TrendingDown : Minus;
-  const trendColor = data.trend === 'up' ? 'text-green-400' : data.trend === 'down' ? 'text-red-400' : 'text-[var(--brand-text-faint)]]';
+  const trendColor = data.trend === 'up' ? 'text-green-400' : data.trend === 'down' ? 'text-red-400' : 'text-[var(--brand-text-faint)]';
 
   return (
-    <div className="rounded-2xl border border-[var(--brand-border-1)] bg-[var(--brand-surface-1)]] p-5">
+    <div className="rounded-2xl border border-[var(--brand-border-1)] bg-[var(--brand-surface-1)] p-5">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <Target size={16} className="text-[#F59E0B]" />
@@ -100,13 +100,13 @@ export default function CompetitiveScoreWidget({ projectId }: Props) {
       <div className="flex items-end gap-4 mb-4">
         <div>
           <div className="text-[36px] font-black text-white leading-none">{data.score}</div>
-          <div className="text-[11px] text-[var(--brand-text-faint)]] mt-1">SEO Score</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)] mt-1">SEO Score</div>
         </div>
         <div className="mb-1">
-          <div className="text-[18px] font-bold text-[var(--brand-text-mid)]]">
-            #{data.rank}<span className="text-[12px] text-[var(--brand-text-faint)]]">/{data.total}</span>
+          <div className="text-[18px] font-bold text-[var(--brand-text-mid)]">
+            #{data.rank}<span className="text-[12px] text-[var(--brand-text-faint)]">/{data.total}</span>
           </div>
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">Rank</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">Rank</div>
         </div>
       </div>
 

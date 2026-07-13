@@ -37,7 +37,7 @@ export default function LinksTab({ page }: { page: any }) {
 
                 <div className="xl:col-span-2">
                     <SectionHeader title="Link Explorer" />
-                    <div className="flex items-center gap-1 mb-3 bg-[var(--brand-surface-0)]] rounded-lg p-0.5 border border-[var(--brand-border-2)]] w-fit">
+                    <div className="flex items-center gap-1 mb-3 bg-[var(--brand-surface-0)] rounded-lg p-0.5 border border-[var(--brand-border-2)] w-fit">
                         {[
                             { id: 'inlinks' as const, label: 'Inlinks', count: Number(page?.inlinks || 0), icon: <ArrowDownRight size={10} /> },
                             { id: 'outlinks' as const, label: 'Outlinks', count: Number(page?.outlinks || 0), icon: <ArrowUpRight size={10} /> },
@@ -47,31 +47,31 @@ export default function LinksTab({ page }: { page: any }) {
                             <button
                                 key={tab.id}
                                 onClick={() => setLinksSubTab(tab.id)}
-                                className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-[11px] font-medium transition-colors ${linksSubTab === tab.id ? 'bg-[var(--brand-border-2)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-mid)]]'}`}
+                                className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-[11px] font-medium transition-colors ${linksSubTab === tab.id ? 'bg-[var(--brand-border-2)] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-mid)] hover:text-[var(--brand-text-mid)]'}`}
                             >
                                 {tab.icon}
                                 {tab.label}
-                                <span className="text-[var(--brand-text-faint)]] font-mono text-[10px]">{tab.count}</span>
+                                <span className="text-[var(--brand-text-faint)] font-mono text-[10px]">{tab.count}</span>
                             </button>
                         ))}
                     </div>
 
                     {activeItems.length === 0 ? (
-                        <div className="h-[220px] flex items-center justify-center text-[var(--brand-text-faint)]] border border-[var(--brand-border-2)]] rounded bg-[var(--brand-surface-0)]] text-[12px]">
+                        <div className="h-[220px] flex items-center justify-center text-[var(--brand-text-faint)] border border-[var(--brand-border-2)] rounded bg-[var(--brand-surface-0)] text-[12px]">
                             No items found for {linksSubTab}.
                         </div>
                     ) : (
-                        <div className="max-h-[320px] overflow-y-auto custom-scrollbar bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded">
+                        <div className="max-h-[320px] overflow-y-auto custom-scrollbar bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded">
                             <table className="w-full text-[11px] font-mono">
                                 <tbody>
                                     {activeItems.map((item: any, index: number) => {
                                         const value = typeof item === 'string' ? item : (item?.url || item?.src || JSON.stringify(item));
                                         return (
-                                            <tr key={`${linksSubTab}-${index}`} className="border-b border-[var(--brand-surface-3)]] hover:bg-[var(--brand-surface-2)]]">
-                                                <td className="px-3 py-1 text-[var(--brand-text-faint)]] w-[60px]">#{index + 1}</td>
+                                            <tr key={`${linksSubTab}-${index}`} className="border-b border-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-2)]">
+                                                <td className="px-3 py-1 text-[var(--brand-text-faint)] w-[60px]">#{index + 1}</td>
                                                 <td className="px-3 py-1 text-blue-400 break-all">{value}</td>
                                                 {typeof item === 'object' && item?.anchorText && (
-                                                    <td className="px-3 py-1 text-[var(--brand-text-mid)]]">{item.anchorText}</td>
+                                                    <td className="px-3 py-1 text-[var(--brand-text-mid)]">{item.anchorText}</td>
                                                 )}
                                             </tr>
                                         );

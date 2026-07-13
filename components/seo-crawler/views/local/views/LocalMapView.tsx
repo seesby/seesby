@@ -81,23 +81,23 @@ export default function LocalMapView() {
       {/* Map area - takes remaining space */}
       <div className="flex-1 min-h-0 relative">
         {/* Floating controls */}
-        <div className="absolute top-2 left-2 z-10 flex items-center gap-2 bg-[var(--brand-surface-0)]cc] backdrop-blur p-1.5 rounded border border-[var(--brand-surface-3)]]">
-          <span className="text-[10px] text-[var(--brand-text-mid)]] mr-1">Territory</span>
+        <div className="absolute top-2 left-2 z-10 flex items-center gap-2 bg-[var(--brand-surface-0)]cc] backdrop-blur p-1.5 rounded border border-[var(--brand-surface-3)]">
+          <span className="text-[10px] text-[var(--brand-text-mid)] mr-1">Territory</span>
           <select
             value={territory}
             onChange={e => setTerritory(e.target.value)}
-            className="h-6 px-1.5 text-[10px] bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] text-[var(--brand-text-mid)]] rounded outline-none cursor-pointer"
+            className="h-6 px-1.5 text-[10px] bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] text-[var(--brand-text-mid)] rounded outline-none cursor-pointer"
           >
             {TERRITORY_OPTIONS.map(o => (
               <option key={o.value} value={o.value}>{o.label}</option>
             ))}
           </select>
-          <span className="text-[var(--brand-surface-4)]]">|</span>
-          <span className="text-[10px] text-[var(--brand-text-mid)]] mr-1">Review age</span>
+          <span className="text-[var(--brand-surface-4)]">|</span>
+          <span className="text-[10px] text-[var(--brand-text-mid)] mr-1">Review age</span>
           <select
             value={reviewAge}
             onChange={e => setReviewAge(e.target.value)}
-            className="h-6 px-1.5 text-[10px] bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] text-[var(--brand-text-mid)]] rounded outline-none cursor-pointer"
+            className="h-6 px-1.5 text-[10px] bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] text-[var(--brand-text-mid)] rounded outline-none cursor-pointer"
           >
             {REVIEW_AGE_OPTIONS.map(o => (
               <option key={o.value} value={o.value}>{o.label}</option>
@@ -106,16 +106,16 @@ export default function LocalMapView() {
         </div>
 
         {/* Floating stats */}
-        <div className="absolute top-2 right-2 z-10 flex items-center gap-3 bg-[var(--brand-surface-0)]cc] backdrop-blur rounded border border-[var(--brand-surface-3)]] px-3 py-1.5 text-[10px]">
-          <span className="text-[var(--brand-text-mid)]]">{filteredMarkers.length} locations</span>
-          <span className="text-[var(--brand-surface-4)]]">|</span>
+        <div className="absolute top-2 right-2 z-10 flex items-center gap-3 bg-[var(--brand-surface-0)]cc] backdrop-blur rounded border border-[var(--brand-surface-3)] px-3 py-1.5 text-[10px]">
+          <span className="text-[var(--brand-text-mid)]">{filteredMarkers.length} locations</span>
+          <span className="text-[var(--brand-surface-4)]">|</span>
           <span className="flex items-center gap-1">
             <span className="w-2 h-2 rounded-full" style={{ background: STATUS_HEX.good }} />
-            <span className="text-[var(--brand-text-mid)]]">Verified</span>
+            <span className="text-[var(--brand-text-mid)]">Verified</span>
           </span>
           <span className="flex items-center gap-1">
             <span className="w-2 h-2 rounded-full" style={{ background: STATUS_HEX.warn }} />
-            <span className="text-[var(--brand-text-mid)]]">Unverified</span>
+            <span className="text-[var(--brand-text-mid)]">Unverified</span>
           </span>
         </div>
 
@@ -133,11 +133,11 @@ export default function LocalMapView() {
       </div>
 
       {/* Bottom panel */}
-      <div className="shrink-0 h-[140px] border-t border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3">
+      <div className="shrink-0 h-[140px] border-t border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3">
         <div className="grid grid-cols-2 gap-4 h-full">
           {/* Rating distribution */}
           <div className="flex flex-col min-h-0">
-            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-1 shrink-0">Rating distribution</div>
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-1 shrink-0">Rating distribution</div>
             <div className="flex-1 min-h-0">
               <BarChart
                 data={ratingDist}
@@ -151,12 +151,12 @@ export default function LocalMapView() {
 
           {/* Pack presence by territory */}
           <div className="flex flex-col min-h-0">
-            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-1 shrink-0">Pack presence by territory</div>
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-1 shrink-0">Pack presence by territory</div>
             <div className="flex-1 min-h-0 overflow-auto custom-scrollbar space-y-1.5">
               {packByTerritory.map(t => (
                 <div key={t.territory} className="flex items-center gap-2 text-[11px]">
-                  <span className="w-8 text-[var(--brand-text-mid)]] tabular-nums">{t.territory}</span>
-                  <div className="flex-1 h-3 rounded bg-[var(--brand-surface-3)]] overflow-hidden">
+                  <span className="w-8 text-[var(--brand-text-mid)] tabular-nums">{t.territory}</span>
+                  <div className="flex-1 h-3 rounded bg-[var(--brand-surface-3)] overflow-hidden">
                     <div
                       className="h-full rounded"
                       style={{
@@ -165,8 +165,8 @@ export default function LocalMapView() {
                       }}
                     />
                   </div>
-                  <span className="w-10 text-right text-[var(--brand-text-mid)]] tabular-nums">{t.pct}%</span>
-                  <span className="w-10 text-right text-[var(--brand-text-faint)]] tabular-nums text-[10px]">{t.inPack}/{t.total}</span>
+                  <span className="w-10 text-right text-[var(--brand-text-mid)] tabular-nums">{t.pct}%</span>
+                  <span className="w-10 text-right text-[var(--brand-text-faint)] tabular-nums text-[10px]">{t.inPack}/{t.total}</span>
                 </div>
               ))}
             </div>

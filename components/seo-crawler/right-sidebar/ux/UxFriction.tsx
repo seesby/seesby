@@ -129,7 +129,7 @@ export function UxFriction() {
             }))}
           />
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No template data available.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No template data available.</div>
         )}
       </Card>
 
@@ -149,7 +149,7 @@ export function UxFriction() {
         </div>
         {s.forms.worstFields.length > 0 ? (
           <>
-            <div className="text-[10px] uppercase tracking-wide text-[var(--brand-text-faint)]] mb-1">Worst fields</div>
+            <div className="text-[10px] uppercase tracking-wide text-[var(--brand-text-faint)] mb-1">Worst fields</div>
             <TopList items={s.forms.worstFields.map((f: any) => ({
               id: f.id,
               primary: f.label,
@@ -158,14 +158,14 @@ export function UxFriction() {
             }))} max={5} />
           </>
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No form field data available.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No form field data available.</div>
         )}
       </Card>
 
       {/* Multi-friction pages */}
       <Card title={`Multiple signals ${multiFriction.length}`}>
         {multiFriction.length > 0 ? (
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {multiFriction.map((p: any, i: number) => {
               const ux = p.ux || {}
               const signals = [
@@ -185,7 +185,7 @@ export function UxFriction() {
             })}
           </div>
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No pages with multiple friction types.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No pages with multiple friction types.</div>
         )}
       </Card>
 
@@ -200,7 +200,7 @@ export function UxFriction() {
             onClick: () => drill.toPage(p),
           }))} max={8} />
         ) : (
-          <div className="text-[11px] text-[var(--brand-text-faint)]]">No friction data available.</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)]">No friction data available.</div>
         )}
       </Card>
     </div>

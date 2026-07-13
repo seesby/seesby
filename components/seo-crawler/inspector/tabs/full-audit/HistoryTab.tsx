@@ -11,9 +11,9 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
   if (!hasTrend && sessions.length <= 1) {
     return (
       <div className="flex flex-col items-center justify-center h-[200px] text-center">
-        <History size={24} className="text-[var(--brand-border-2)]] mb-3" />
-        <div className="text-[12px] text-[var(--brand-text-faint)]] font-medium">No trend data yet</div>
-        <div className="text-[10px] text-[var(--brand-surface-4)]] mt-1">Run another crawl to see trends</div>
+        <History size={24} className="text-[var(--brand-border-2)] mb-3" />
+        <div className="text-[12px] text-[var(--brand-text-faint)] font-medium">No trend data yet</div>
+        <div className="text-[10px] text-[var(--brand-surface-4)] mt-1">Run another crawl to see trends</div>
       </div>
     );
   }
@@ -52,32 +52,32 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
             {sessions.map((s: any, i: number) => {
               const healthColor = (s.healthScore || 0) >= 80 ? '#22c55e' : (s.healthScore || 0) >= 50 ? '#f59e0b' : '#ef4444';
               return (
-                <div key={i} className="flex items-center justify-between py-2 px-3 rounded-md bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]] hover:border-[var(--brand-border-2)]] transition-colors">
+                <div key={i} className="flex items-center justify-between py-2 px-3 rounded-md bg-[var(--brand-surface-0)] border border-[var(--brand-surface-2)] hover:border-[var(--brand-border-2)] transition-colors">
                   <div className="flex items-center gap-2.5">
-                    <div className="p-1.5 rounded-md bg-[var(--brand-surface-2)]]">
-                      <History size={11} className="text-[var(--brand-text-faint)]]" />
+                    <div className="p-1.5 rounded-md bg-[var(--brand-surface-2)]">
+                      <History size={11} className="text-[var(--brand-text-faint)]" />
                     </div>
                     <div>
                       <div className="text-[11px] text-[var(--brand-text-strong)] font-medium">{formatDate(s.date)}</div>
-                      <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider">{s.status || 'OK'}</div>
+                      <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-wider">{s.status || 'OK'}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-5">
                     {s.healthScore !== undefined && (
                       <div className="text-right min-w-[50px]">
-                        <div className="text-[9px] text-[var(--brand-border-2)]] uppercase">Health</div>
+                        <div className="text-[9px] text-[var(--brand-border-2)] uppercase">Health</div>
                         <div className="flex items-center gap-1 justify-end">
                           <span className="text-[11px] font-mono font-bold text-[var(--brand-text-strong)]">{s.healthScore}</span>
                           <DeltaIcon current={s.healthScore} prev={sessions[i + 1]?.healthScore} />
                         </div>
-                        <div className="h-1 bg-[var(--brand-surface-3)]] rounded-full mt-1 overflow-hidden">
+                        <div className="h-1 bg-[var(--brand-surface-3)] rounded-full mt-1 overflow-hidden">
                           <div className="h-full rounded-full" style={{ width: `${Math.min(100, s.healthScore)}%`, background: healthColor }} />
                         </div>
                       </div>
                     )}
                     {s.clicks !== undefined && (
                       <div className="text-right">
-                        <div className="text-[9px] text-[var(--brand-border-2)]] uppercase">Clicks</div>
+                        <div className="text-[9px] text-[var(--brand-border-2)] uppercase">Clicks</div>
                         <div className="flex items-center gap-1 justify-end">
                           <span className="text-[11px] font-mono font-bold text-[var(--brand-text-strong)]">{formatNumber(s.clicks)}</span>
                           <DeltaIcon current={s.clicks} prev={sessions[i + 1]?.clicks} />
@@ -106,8 +106,8 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
 }
 function SparklineCard({ label, values }: { label: string; values: number[] }) {
   return (
-    <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-2.5">
-      <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest mb-1.5">{label}</div>
+    <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded-lg p-2.5">
+      <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest mb-1.5">{label}</div>
       <Sparkline values={values} width={200} height={32} />
     </div>
   );
@@ -116,10 +116,10 @@ function SparklineCard({ label, values }: { label: string; values: number[] }) {
 function DeltaCard({ label, delta, invert }: { label: string; delta: number; invert?: boolean }) {
   const isGood = invert ? delta < 0 : delta > 0;
   return (
-    <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-2.5">
-      <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest">{label}</div>
+    <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded-lg p-2.5">
+      <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest">{label}</div>
       <div className="flex items-center gap-1.5 mt-1">
-        <span className={`text-[14px] font-bold ${delta === 0 ? 'text-[var(--brand-surface-4)]]' : isGood ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>
+        <span className={`text-[14px] font-bold ${delta === 0 ? 'text-[var(--brand-surface-4)]' : isGood ? 'text-[#22c55e]' : 'text-[#ef4444]'}`}>
           {delta === 0 ? '\u2014' : `${delta > 0 ? '+' : ''}${formatNumber(delta)}`}
         </span>
         <DeltaChip value={delta} />
@@ -129,11 +129,11 @@ function DeltaCard({ label, delta, invert }: { label: string; delta: number; inv
 }
 
 function DeltaIcon({ current, prev }: { current: number; prev?: number }) {
-  if (prev === undefined) return <Minus size={9} className="text-[var(--brand-border-2)]]" />;
+  if (prev === undefined) return <Minus size={9} className="text-[var(--brand-border-2)]" />;
   const delta = current - prev;
   if (delta > 0) return <ArrowUpRight size={10} className="text-[#22c55e]" />;
   if (delta < 0) return <ArrowDownRight size={10} className="text-[#ef4444]" />;
-  return <Minus size={9} className="text-[var(--brand-surface-4)]]" />;
+  return <Minus size={9} className="text-[var(--brand-surface-4)]" />;
 }
 
 function trend28d(page: any, key: string): number[] {

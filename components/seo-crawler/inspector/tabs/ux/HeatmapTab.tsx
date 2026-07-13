@@ -41,12 +41,12 @@ export default function HeatmapTab({ page, hasTrend }: { page: any; hasTrend?: b
               { label: 'Dead Clicks', count: deadClicks, pct: deadPct, color: 'bg-orange-500', textColor: 'text-orange-400' },
               { label: 'Error Clicks', count: errorClicks, pct: errorPct, color: 'bg-red-400', textColor: 'text-red-400' },
             ].map((item) => (
-              <div key={item.label} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2">
+              <div key={item.label} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-3 py-2">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[12px] text-[var(--brand-text-mid)]]">{item.label}</span>
+                  <span className="text-[12px] text-[var(--brand-text-mid)]">{item.label}</span>
                   <span className={`text-[11px] ${item.textColor}`}>{formatNumber(item.count)} ({item.pct.toFixed(1)}%)</span>
                 </div>
-                <div className="w-full bg-[var(--brand-surface-3)]] rounded h-2">
+                <div className="w-full bg-[var(--brand-surface-3)] rounded h-2">
                   <div className={`rounded h-2 transition-all ${item.color}`} style={{ width: `${item.pct}%` }} />
                 </div>
               </div>
@@ -69,13 +69,13 @@ export default function HeatmapTab({ page, hasTrend }: { page: any; hasTrend?: b
         <Card title="Click Hotspots">
           <div className="space-y-2">
             {hotspots.slice(0, 10).map((h: any, i: number) => (
-              <div key={i} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2 flex items-center justify-between">
+              <div key={i} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-3 py-2 flex items-center justify-between">
                 <div className="flex-1 min-w-0">
-                  <span className="text-[12px] text-[var(--brand-text-mid)]] block truncate">{h.element || h.selector || `Zone ${i + 1}`}</span>
-                  {h.text && <span className="text-[10px] text-[var(--brand-text-faint)]] block truncate">{h.text}</span>}
+                  <span className="text-[12px] text-[var(--brand-text-mid)] block truncate">{h.element || h.selector || `Zone ${i + 1}`}</span>
+                  {h.text && <span className="text-[10px] text-[var(--brand-text-faint)] block truncate">{h.text}</span>}
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
-                  <span className="text-[11px] text-[var(--brand-text-mid)]]">{formatNumber(h.count || h.clicks || 0)} clicks</span>
+                  <span className="text-[11px] text-[var(--brand-text-mid)]">{formatNumber(h.count || h.clicks || 0)} clicks</span>
                   {h.rage && <StatusBadge status="fail" label="Rage" />}
                 </div>
               </div>
@@ -89,8 +89,8 @@ export default function HeatmapTab({ page, hasTrend }: { page: any; hasTrend?: b
         <Card title="Dead Zones">
           <div className="space-y-2">
             {deadZones.slice(0, 8).map((z: any, i: number) => (
-              <div key={i} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2 flex items-center justify-between">
-                <span className="text-[12px] text-[var(--brand-text-mid)]]">{z.element || z.selector || `Zone ${i + 1}`}</span>
+              <div key={i} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-3 py-2 flex items-center justify-between">
+                <span className="text-[12px] text-[var(--brand-text-mid)]">{z.element || z.selector || `Zone ${i + 1}`}</span>
                 <StatusBadge status="warn" label={`${z.attempts || 0} clicks, 0 action`} />
               </div>
             ))}
@@ -103,8 +103,8 @@ export default function HeatmapTab({ page, hasTrend }: { page: any; hasTrend?: b
         <Card title="Rage Zones">
           <div className="space-y-2">
             {rageZones.slice(0, 8).map((z: any, i: number) => (
-              <div key={i} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2 flex items-center justify-between">
-                <span className="text-[12px] text-[var(--brand-text-mid)]]">{z.element || z.selector || `Zone ${i + 1}`}</span>
+              <div key={i} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-3 py-2 flex items-center justify-between">
+                <span className="text-[12px] text-[var(--brand-text-mid)]">{z.element || z.selector || `Zone ${i + 1}`}</span>
                 <StatusBadge status="fail" label={`${z.count || z.rageCount || 0} rapid clicks`} />
               </div>
             ))}
@@ -115,7 +115,7 @@ export default function HeatmapTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* Empty state */}
       {hotspots.length === 0 && deadZones.length === 0 && rageZones.length === 0 && (
         <Card title="Heatmap Data">
-          <div className="text-[12px] text-[var(--brand-text-faint)]] py-4 text-center">
+          <div className="text-[12px] text-[var(--brand-text-faint)] py-4 text-center">
             Click heatmap data will appear after tracking events are collected. Current data: {formatNumber(rageClicks)} rage, {formatNumber(deadClicks)} dead, {formatNumber(errorClicks)} error clicks.
           </div>
         </Card>

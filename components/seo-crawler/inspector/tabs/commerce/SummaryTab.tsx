@@ -40,10 +40,10 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
   return (
     <div className="space-y-4">
       {/* Hero strip */}
-      <div className="flex items-center gap-3 p-2.5 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)]] to-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]">
+      <div className="flex items-center gap-3 p-2.5 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)] to-[var(--brand-surface-0)] border border-[var(--brand-surface-3)]">
         <div className="flex-1 min-w-0">
           <div className="text-[13px] text-[var(--brand-text-strong)] font-semibold truncate">{page?.title || page?.url || 'Commerce Page'}</div>
-          <div className="text-[11px] text-[var(--brand-text-faint)]] font-mono truncate mt-0.5">{page?.url}</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)] font-mono truncate mt-0.5">{page?.url}</div>
         </div>
         {healthScore > 0 && (
           <div className="shrink-0 flex items-center gap-2">
@@ -76,10 +76,10 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* 2-column grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         {/* Product (Identity-style card) */}
-        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">Product</div>
-          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
-            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">Name</div>
+        <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)] mb-2.5">Product</div>
+          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]">
+            <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-wider mb-0.5">Name</div>
             <div className="text-[11px] text-[var(--brand-text-strong)] leading-snug break-words">{page?.title || page?.productName || '\u2014'}</div>
           </div>
           <div className="space-y-0">
@@ -135,11 +135,11 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
                 <span className={`block w-1.5 h-1.5 rounded-full mt-0.5 shrink-0 ${
                   issue.type === 'error' ? 'bg-[#ef4444]' : issue.type === 'warning' ? 'bg-[#f59e0b]' : 'bg-[#6b7280]'
                 }`} />
-                <span className="text-[11px] text-[var(--brand-text-mid)]]">{issue.label || issue.title}</span>
+                <span className="text-[11px] text-[var(--brand-text-mid)]">{issue.label || issue.title}</span>
               </div>
             ))
           ) : (
-            <div className="text-[11px] text-[var(--brand-text-faint)]]">None critical</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]">None critical</div>
           )}
         </Card>
       </div>

@@ -36,11 +36,11 @@ export default function CategoryTreeContextMenu({
 
   return (
     <div ref={ref} style={{ position: 'fixed', top: y, left: x, zIndex: 9999 }}
-      className="bg-[var(--brand-surface-3)]] border border-[var(--brand-surface-4)]] rounded-lg shadow-2xl py-1 min-w-[220px]">
+      className="bg-[var(--brand-surface-3)] border border-[var(--brand-surface-4)] rounded-lg shadow-2xl py-1 min-w-[220px]">
       {items.map((item, i) => (
         <button key={i} onClick={item.action}
-          className="w-full flex items-center gap-2.5 px-3 py-2 text-[12px] text-[var(--brand-text-mid)]] hover:bg-[var(--brand-border-2)]] hover:text-[var(--brand-text-strong)] transition-colors">
-          <span className="text-[var(--brand-text-mid)]]">{item.icon}</span>
+          className="w-full flex items-center gap-2.5 px-3 py-2 text-[12px] text-[var(--brand-text-mid)] hover:bg-[var(--brand-border-2)] hover:text-[var(--brand-text-strong)] transition-colors">
+          <span className="text-[var(--brand-text-mid)]">{item.icon}</span>
           {item.label}
         </button>
       ))}

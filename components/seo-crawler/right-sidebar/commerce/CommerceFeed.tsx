@@ -38,26 +38,26 @@ export function CommerceFeed() {
 
       {/* Feed status breakdown */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[11px] text-[var(--brand-text-mid)]]">Feed status</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[11px] text-[var(--brand-text-mid)]">Feed status</span>
         </div>
-        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Approved</span>
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Approved</span>
             <span className="text-[11px] font-mono font-medium text-[#22c55e]">{s.feed.feedApproved}</span>
           </div>
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Pending review</span>
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Pending review</span>
             <span className="text-[11px] font-mono font-medium text-[#f59e0b]">{s.feed.feedPending}</span>
           </div>
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Disapproved</span>
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Disapproved</span>
             <span className="text-[11px] font-mono font-medium text-[#ef4444]">{s.feed.feedDisapproved}</span>
           </div>
           {s.feed.feedExpired > 0 && (
             <div className="flex items-center justify-between px-3 py-2">
-              <span className="text-[11px] text-[var(--brand-text-mid)]]">Expired</span>
-              <span className="text-[11px] font-mono font-medium text-[var(--brand-text-faint)]]">{s.feed.feedExpired}</span>
+              <span className="text-[11px] text-[var(--brand-text-mid)]">Expired</span>
+              <span className="text-[11px] font-mono font-medium text-[var(--brand-text-faint)]">{s.feed.feedExpired}</span>
             </div>
           )}
         </div>
@@ -65,15 +65,15 @@ export function CommerceFeed() {
 
       {/* Feed coverage bar */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[11px] text-[var(--brand-text-mid)]]">Coverage</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[11px] text-[var(--brand-text-mid)]">Coverage</span>
         </div>
-        <div className="px-3 py-3 border-t border-[var(--brand-surface-3)]]">
+        <div className="px-3 py-3 border-t border-[var(--brand-surface-3)]">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">{s.feed.feedPresent} of {s.total} products in feed</span>
-            <span className="text-[10px] font-mono text-[var(--brand-text-mid)]]">{feedCoverage}%</span>
+            <span className="text-[11px] text-[var(--brand-text-mid)]">{s.feed.feedPresent} of {s.total} products in feed</span>
+            <span className="text-[10px] font-mono text-[var(--brand-text-mid)]">{feedCoverage}%</span>
           </div>
-          <div className="w-full h-2 rounded-full bg-[var(--brand-surface-3)]] overflow-hidden">
+          <div className="w-full h-2 rounded-full bg-[var(--brand-surface-3)] overflow-hidden">
             <div className="h-full rounded-full flex">
               <div className="h-full bg-[#22c55e]" style={{ width: `${s.total > 0 ? (s.feed.feedApproved / s.total) * 100 : 0}%` }} />
               <div className="h-full bg-[#f59e0b]" style={{ width: `${s.total > 0 ? (s.feed.feedPending / s.total) * 100 : 0}%` }} />
@@ -81,9 +81,9 @@ export function CommerceFeed() {
             </div>
           </div>
           <div className="flex items-center gap-3 mt-2">
-            <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#22c55e]" /><span className="text-[9px] text-[var(--brand-text-faint)]]">Approved</span></div>
-            <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#f59e0b]" /><span className="text-[9px] text-[var(--brand-text-faint)]]">Pending</span></div>
-            <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#ef4444]" /><span className="text-[9px] text-[var(--brand-text-faint)]]">Disapproved</span></div>
+            <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#22c55e]" /><span className="text-[9px] text-[var(--brand-text-faint)]">Approved</span></div>
+            <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#f59e0b]" /><span className="text-[9px] text-[var(--brand-text-faint)]">Pending</span></div>
+            <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#ef4444]" /><span className="text-[9px] text-[var(--brand-text-faint)]">Disapproved</span></div>
           </div>
         </div>
       </Card>
@@ -91,15 +91,15 @@ export function CommerceFeed() {
       {/* Disapproval reasons */}
       {reasons.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Disapproval reasons</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Disapproval reasons</span>
           </div>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {reasons.map(r => (
-              <div key={r.label} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
-                <span className="text-[11px] text-[var(--brand-text-mid)]]">{r.label}</span>
+              <div key={r.label} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)] last:border-b-0">
+                <span className="text-[11px] text-[var(--brand-text-mid)]">{r.label}</span>
                 <div className="flex items-center gap-2">
-                  <div className="w-12 h-1.5 rounded-full bg-[var(--brand-surface-3)]] overflow-hidden">
+                  <div className="w-12 h-1.5 rounded-full bg-[var(--brand-surface-3)] overflow-hidden">
                     <div className="h-full rounded-full" style={{ width: `${s.feed.feedErrors > 0 ? (r.count / s.feed.feedErrors) * 100 : 0}%`, background: r.severity === 'bad' ? '#ef4444' : '#f59e0b' }} />
                   </div>
                   <span className={`text-[10px] font-mono ${r.severity === 'bad' ? 'text-[#ef4444]' : 'text-[#f59e0b]'}`}>{r.count}</span>
@@ -112,27 +112,27 @@ export function CommerceFeed() {
 
       {/* Feed health */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[11px] text-[var(--brand-text-mid)]]">Feed health</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[11px] text-[var(--brand-text-mid)]">Feed health</span>
         </div>
-        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Products without errors</span>
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Products without errors</span>
             <span className="text-[11px] font-mono font-medium text-[#22c55e]">{feedHealthy}</span>
           </div>
-          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Total disapprovals</span>
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Total disapprovals</span>
             <span className={`text-[11px] font-mono font-medium ${s.feed.feedErrors > 0 ? 'text-[#ef4444]' : 'text-[#22c55e]'}`}>{s.feed.feedErrors}</span>
           </div>
           <div className="flex items-center justify-between px-3 py-2">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Products not in feed</span>
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Products not in feed</span>
             <span className="text-[11px] font-mono font-medium text-[#f59e0b]">{s.total - s.feed.feedPresent}</span>
           </div>
         </div>
       </Card>
 
       {s.feed.feedErrors === 0 && s.feed.feedPresent > 0 && (
-        <div className="rounded-md border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3 text-[11px] text-[var(--brand-text-mid)]]">
+        <div className="rounded-md border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3 text-[11px] text-[var(--brand-text-mid)]">
           Feed looks healthy. All {s.feed.feedPresent} products are approved.
         </div>
       )}

@@ -35,10 +35,10 @@ export function LinksOverview() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Authority score</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]">Authority score</div>
             <div className="mt-1 flex items-baseline gap-2">
               <span className="text-3xl font-bold tabular-nums text-[var(--brand-text-strong)]">{s.score}</span>
-              <span className="text-sm font-medium text-[var(--brand-text-faint)]]">{scoreGrade}</span>
+              <span className="text-sm font-medium text-[var(--brand-text-faint)]">{scoreGrade}</span>
             </div>
             <div className="mt-1 flex items-center gap-2">
               {typeof refDomainsDelta === 'number' && <DeltaChip value={refDomainsDelta} />}
@@ -46,7 +46,7 @@ export function LinksOverview() {
                 <Sparkline values={s.scoreSeries} width={80} height={20} />
               )}
             </div>
-            <div className="mt-1.5 text-[10px] text-[var(--brand-text-faint)]]">Internal health + backlink quality + toxic risk</div>
+            <div className="mt-1.5 text-[10px] text-[var(--brand-text-faint)]">Internal health + backlink quality + toxic risk</div>
           </div>
           <ProgressRing value={s.score} size={72} />
         </div>
@@ -76,12 +76,12 @@ export function LinksOverview() {
             { label: 'Toxic safety', value: s.toxicHealth, weight: '20%', color: '#a78bfa' },
           ].map(item => (
             <div key={item.label} className="flex items-center gap-2">
-              <span className="w-[100px] text-[10px] text-[var(--brand-text-mid)]] truncate">{item.label}</span>
-              <div className="flex-1 h-1.5 bg-[var(--brand-surface-2)]] rounded-full overflow-hidden">
+              <span className="w-[100px] text-[10px] text-[var(--brand-text-mid)] truncate">{item.label}</span>
+              <div className="flex-1 h-1.5 bg-[var(--brand-surface-2)] rounded-full overflow-hidden">
                 <div className="h-full rounded-full" style={{ width: `${item.value}%`, background: item.color }} />
               </div>
-              <span className="text-[10px] font-mono text-[var(--brand-text-mid)]] w-8 text-right">{item.value}</span>
-              <span className="text-[9px] text-[var(--brand-text-faint)]] w-6 text-right">{item.weight}</span>
+              <span className="text-[10px] font-mono text-[var(--brand-text-mid)] w-8 text-right">{item.value}</span>
+              <span className="text-[9px] text-[var(--brand-text-faint)] w-6 text-right">{item.weight}</span>
             </div>
           ))}
         </div>
@@ -117,7 +117,7 @@ export function LinksOverview() {
       {/* Top linked pages */}
       {s.topLinked.length > 0 && (
         <Card title="Top linked pages" padded={false}>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.topLinked.slice(0, 5).map((p: any) => (
               <RowItem
                 key={p.url}

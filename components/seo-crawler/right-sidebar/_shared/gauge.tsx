@@ -20,7 +20,7 @@ export function RingGauge({ value, size = 88, label, hint }: { value: number; si
           className="fill-white text-[20px] font-bold tabular-nums">{Math.round(v)}</text>
       </svg>
       {label && (
-        <div className="text-[10px] uppercase tracking-widest text-[var(--brand-text-faint)]] flex items-center gap-1">
+        <div className="text-[10px] uppercase tracking-widest text-[var(--brand-text-faint)] flex items-center gap-1">
           {label}
           {hint && <HelpHint text={hint} />}
         </div>
@@ -58,7 +58,7 @@ export function HalfArcGauge({ value, size = 120, label }: { value: number; size
           {Math.round(v)}
         </text>
       </svg>
-      {label && <div className="text-[10px] uppercase tracking-widest text-[var(--brand-text-faint)]] mt-1">{label}</div>}
+      {label && <div className="text-[10px] uppercase tracking-widest text-[var(--brand-text-faint)] mt-1">{label}</div>}
     </div>
   )
 }

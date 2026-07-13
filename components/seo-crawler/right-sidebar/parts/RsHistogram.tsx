@@ -27,7 +27,7 @@ export function RsHistogram({
             </div>
             <div className="flex gap-[3px]">
                 {bins.map((b, i) => (
-                    <div key={i} className="flex-1 text-center text-[9px] text-[var(--brand-text-faint)]] truncate">{b.label}</div>
+                    <div key={i} className="flex-1 text-center text-[9px] text-[var(--brand-text-faint)] truncate">{b.label}</div>
                 ))}
             </div>
         </div>

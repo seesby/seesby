@@ -48,40 +48,40 @@ export default function EntitiesTab({ page }: { page: any }) {
         <Card title="Primary">
           {primaryEntity ? (
             <>
-              <div className="flex items-center justify-between mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
+              <div className="flex items-center justify-between mb-2 pb-2 border-b border-[var(--brand-surface-2)]">
                 <div className="text-[13px] text-[var(--brand-text-strong)] font-semibold">{primaryEntity}</div>
-                <span className="text-[11px] text-[var(--brand-text-mid)]]">conf {entityConfidence > 0 ? `${entityConfidence.toFixed(0)}%` : '—'}</span>
+                <span className="text-[11px] text-[var(--brand-text-mid)]">conf {entityConfidence > 0 ? `${entityConfidence.toFixed(0)}%` : '—'}</span>
               </div>
               <div className="space-y-1">
                 <div className="flex items-center justify-between py-0.5">
-                  <span className="text-[11px] text-[var(--brand-text-mid)]]">{primaryEntityType}</span>
+                  <span className="text-[11px] text-[var(--brand-text-mid)]">{primaryEntityType}</span>
                   <StatusBadge status="pass" label="✓" />
                 </div>
                 <div className="flex items-center justify-between py-0.5">
-                  <span className="text-[11px] text-[var(--brand-text-mid)]]">sameAs</span>
+                  <span className="text-[11px] text-[var(--brand-text-mid)]">sameAs</span>
                   <StatusBadge status={primaryEntitySameAs ? 'pass' : 'info'} label={primaryEntitySameAs ? '✓' : '✗'} />
                 </div>
               </div>
             </>
           ) : (
-            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No primary entity detected.</div>
+            <div className="text-[11px] text-[var(--brand-border-2)] py-2">No primary entity detected.</div>
           )}
         </Card>
 
         {/* Related entities table */}
         <Card title="Related entities">
           {relatedEntities.length === 0 ? (
-            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No related entities found.</div>
+            <div className="text-[11px] text-[var(--brand-border-2)] py-2">No related entities found.</div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-[11px]">
                 <thead>
-                  <tr className="border-b border-[var(--brand-surface-3)]]">
-                    <th className="text-left text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Entity</th>
-                    <th className="text-left text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Type</th>
-                    <th className="text-right text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Mentions</th>
-                    <th className="text-center text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">Schema</th>
-                    <th className="text-center text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium pb-1.5">sameAs</th>
+                  <tr className="border-b border-[var(--brand-surface-3)]">
+                    <th className="text-left text-[10px] text-[var(--brand-text-faint)] uppercase tracking-wider font-medium pb-1.5">Entity</th>
+                    <th className="text-left text-[10px] text-[var(--brand-text-faint)] uppercase tracking-wider font-medium pb-1.5">Type</th>
+                    <th className="text-right text-[10px] text-[var(--brand-text-faint)] uppercase tracking-wider font-medium pb-1.5">Mentions</th>
+                    <th className="text-center text-[10px] text-[var(--brand-text-faint)] uppercase tracking-wider font-medium pb-1.5">Schema</th>
+                    <th className="text-center text-[10px] text-[var(--brand-text-faint)] uppercase tracking-wider font-medium pb-1.5">sameAs</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -93,10 +93,10 @@ export default function EntitiesTab({ page }: { page: any }) {
                     const sameAs = typeof e === 'object' ? (e?.sameAs || e?.sameAsUrl || false) : false;
                     const sameAsLabel = typeof e === 'object' && e?.sameAsSource ? `✓ (${e.sameAsSource})` : sameAs ? '✓' : '✗';
                     return (
-                      <tr key={i} className="border-b border-[var(--brand-surface-2)]] last:border-b-0">
-                        <td className="py-1.5 text-[var(--brand-text-mid)]]">{name}</td>
-                        <td className="py-1.5 text-[var(--brand-text-mid)]]">{type}</td>
-                        <td className="py-1.5 text-[var(--brand-text-mid)]] text-right font-mono">{mentions || '—'}</td>
+                      <tr key={i} className="border-b border-[var(--brand-surface-2)] last:border-b-0">
+                        <td className="py-1.5 text-[var(--brand-text-mid)]">{name}</td>
+                        <td className="py-1.5 text-[var(--brand-text-mid)]">{type}</td>
+                        <td className="py-1.5 text-[var(--brand-text-mid)] text-right font-mono">{mentions || '—'}</td>
                         <td className="py-1.5 text-center">
                           <StatusBadge status={hasSchema ? 'pass' : 'info'} label={hasSchema ? '✓' : '✗'} />
                         </td>
@@ -118,18 +118,18 @@ export default function EntitiesTab({ page }: { page: any }) {
         {/* Mentions */}
         <Card title="Mentions">
           {internalMentions.length === 0 && externalMentions === 0 ? (
-            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No entity mentions found.</div>
+            <div className="text-[11px] text-[var(--brand-border-2)] py-2">No entity mentions found.</div>
           ) : (
             <div className="space-y-2">
               {internalMentions.length > 0 && (
                 <div>
-                  <div className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-wider font-medium mb-1">Internal</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)] uppercase tracking-wider font-medium mb-1">Internal</div>
                   <div className="flex flex-wrap gap-1">
                     {internalMentions.slice(0, 8).map((url: string, i: number) => (
                       <StatusBadge key={i} status="info" label={url} />
                     ))}
                     {internalMentions.length > 8 && (
-                      <span className="text-[10px] text-[var(--brand-text-faint)]] self-center">· {internalMentions.length - 8} more</span>
+                      <span className="text-[10px] text-[var(--brand-text-faint)] self-center">· {internalMentions.length - 8} more</span>
                     )}
                   </div>
                 </div>
@@ -146,9 +146,9 @@ export default function EntitiesTab({ page }: { page: any }) {
         {/* Knowledge graph */}
         <Card title="Knowledge graph">
           {graphNodes.length === 0 ? (
-            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No knowledge graph data available.</div>
+            <div className="text-[11px] text-[var(--brand-border-2)] py-2">No knowledge graph data available.</div>
           ) : (
-            <div className="relative bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded p-3 min-h-[120px]">
+            <div className="relative bg-[var(--brand-surface-0)] border border-[var(--brand-surface-3)] rounded p-3 min-h-[120px]">
               <svg viewBox="0 0 300 140" className="w-full h-auto">
                 {/* Render edges */}
                 {graphEdges.map((edge, i) => {
@@ -184,7 +184,7 @@ export default function EntitiesTab({ page }: { page: any }) {
                   return (
                     <g key={i}>
                       <circle cx={x} cy={y} r={nodeR} fill={color} opacity={isPrimary ? 1 : 0.7} />
-                      <text x={x} y={y + nodeR + 10} textAnchor="middle" className="fill-[var(--brand-text-mid)]]" style={{ fontSize: '8px' }}>
+                      <text x={x} y={y + nodeR + 10} textAnchor="middle" className="fill-[var(--brand-text-mid)]" style={{ fontSize: '8px' }}>
                         {node.name.length > 12 ? node.name.slice(0, 12) + '…' : node.name}
                       </text>
                     </g>
@@ -199,7 +199,7 @@ export default function EntitiesTab({ page }: { page: any }) {
       {/* Coverage vs peers */}
       {peerMissingEntities.length > 0 && (
         <Card title="Coverage vs peers">
-          <div className="text-[11px] text-[var(--brand-text-mid)]] mb-2">
+          <div className="text-[11px] text-[var(--brand-text-mid)] mb-2">
             Peer articles mention {peerMissingEntities.length} more entities we don't:
           </div>
           <div className="flex flex-wrap gap-1.5">

@@ -42,12 +42,12 @@ export function SocialActions() {
 
       {s.alerts.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Priority alerts</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Priority alerts</span>
           </div>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.alerts.map(a => (
-              <div key={a.id} className="flex items-start gap-2 px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
+              <div key={a.id} className="flex items-start gap-2 px-3 py-2 border-b border-[var(--brand-surface-3)] last:border-b-0">
                 <span className={`mt-0.5 w-1.5 h-1.5 rounded-full shrink-0 ${
                   a.severity === 'high' ? 'bg-red-500' :
                   a.severity === 'medium' ? 'bg-amber-500' :
@@ -55,7 +55,7 @@ export function SocialActions() {
                 }`} />
                 <div className="min-w-0">
                   <div className="text-[11px] text-[var(--brand-text-strong)] leading-snug">{a.text}</div>
-                  <div className="text-[10px] text-[var(--brand-text-faint)]]">{a.detail}</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)]">{a.detail}</div>
                 </div>
               </div>
             ))}
@@ -65,12 +65,12 @@ export function SocialActions() {
 
       {s.actions.byReason.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">By reason</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">By reason</span>
           </div>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.actions.byReason.map(r => (
-              <div key={r.id} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
+              <div key={r.id} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)] last:border-b-0">
                 <span className="text-[11px] text-[var(--brand-text-strong)]">{r.label}</span>
                 <div className="flex items-center gap-3">
                   <span className="text-[10px] font-mono text-amber-400">{r.open} open</span>

@@ -24,9 +24,9 @@ export function LocalNap() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">NAP consistency</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]">NAP consistency</div>
             <div className="mt-1 text-2xl font-semibold text-[var(--brand-text-strong)]">{consistencyPct}%</div>
-            <div className="mt-1 text-[10px] text-[var(--brand-text-faint)]]">Name, Address, Phone match across directories</div>
+            <div className="mt-1 text-[10px] text-[var(--brand-text-faint)]">Name, Address, Phone match across directories</div>
           </div>
           <ProgressRing value={consistencyPct} size={72} />
         </div>
@@ -63,7 +63,7 @@ export function LocalNap() {
       {/* Locations with NAP issues */}
       {s.nap.worstDirectories.length > 0 && (
         <Card title="Locations with NAP issues" padded={false}>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.nap.worstDirectories.map(d => (
               <RowItem
                 key={d.id}
@@ -82,7 +82,7 @@ export function LocalNap() {
       {/* Trend */}
       <Trendable hasPrior={s.hasPrior}>
         <Card title="vs last crawl" padded={false}>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             <ComparisonRow
               label="Consistency"
               a={{ v: consistencyPct, tag: 'now' }}

@@ -132,32 +132,32 @@ export default function AreaTrendChart({
       <div className="flex items-center gap-4 mt-1 px-1">
         <div className="flex items-center gap-1">
           <div className="w-3 h-[2px] rounded" style={{ backgroundColor: color1 }} />
-          <span className="text-[9px] text-[var(--brand-text-mid)]]">{label1}</span>
+          <span className="text-[9px] text-[var(--brand-text-mid)]">{label1}</span>
         </div>
         {label2 && (
           <div className="flex items-center gap-1">
             <div className="w-3 h-[2px] rounded" style={{ backgroundColor: color2 }} />
-            <span className="text-[9px] text-[var(--brand-text-mid)]]">{label2}</span>
+            <span className="text-[9px] text-[var(--brand-text-mid)]">{label2}</span>
           </div>
         )}
       </div>
       {hoveredIdx !== null && (
         <div 
-          className="absolute z-50 bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] rounded-lg p-2.5 shadow-xl pointer-events-none"
+          className="absolute z-50 bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-lg p-2.5 shadow-xl pointer-events-none"
           style={{
             left: Math.min(width - 100, Math.max(0, points1[hoveredIdx].x - 60)),
             bottom: height - points1[hoveredIdx].y + 20
           }}
         >
-          <div className="text-[10px] font-bold text-[var(--brand-text-strong)] mb-1 border-b border-[var(--brand-border-2)]] pb-0.5">{data[hoveredIdx].label}</div>
+          <div className="text-[10px] font-bold text-[var(--brand-text-strong)] mb-1 border-b border-[var(--brand-border-2)] pb-0.5">{data[hoveredIdx].label}</div>
           <div className="space-y-0.5">
             <div className="flex justify-between gap-4 text-[9px]">
-              <span className="text-[var(--brand-text-mid)]]">{label1}</span>
+              <span className="text-[var(--brand-text-mid)]">{label1}</span>
               <span className="font-mono font-bold text-[var(--brand-text-strong)]">{formatValue(data[hoveredIdx].value1)}</span>
             </div>
             {label2 && (
               <div className="flex justify-between gap-4 text-[9px]">
-                <span className="text-[var(--brand-text-mid)]]">{label2}</span>
+                <span className="text-[var(--brand-text-mid)]">{label2}</span>
                 <span className="font-mono font-bold text-[#F59E0B]">{formatValue(data[hoveredIdx].value2 || 0)}</span>
               </div>
             )}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const EmptyStateView = ({ title, icon, desc }: {title: string, icon: any, desc: string}) => (
-    <div className="flex flex-col items-center justify-center h-[60vh] text-center p-8 bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] border-dashed">
+    <div className="flex flex-col items-center justify-center h-[60vh] text-center p-8 bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] border-dashed">
         <div className="p-6 rounded-full bg-[var(--brand-surface-3)] text-[var(--brand-text-faint)] mb-6">
             {icon}
         </div>

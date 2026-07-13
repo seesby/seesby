@@ -13,7 +13,7 @@ export default function ContentQualityRadar({
   if (data.length === 0) {
     return (
       <ChartCard title="Content Quality">
-        <div className="flex items-center justify-center h-[240px] text-[var(--brand-text-faint)]] text-xs">
+        <div className="flex items-center justify-center h-[240px] text-[var(--brand-text-faint)] text-xs">
           No HTML pages to analyze.
         </div>
       </ChartCard>

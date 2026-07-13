@@ -12,8 +12,8 @@ export function MetricRow({
   hint?: string
 }) {
   return (
-    <div className="flex items-center justify-between gap-2 px-2 py-1.5 rounded hover:bg-[var(--brand-surface-2)]] transition-colors">
-      <span className="text-[11px] text-[var(--brand-text-mid)]] truncate" title={hint}>{label}</span>
+    <div className="flex items-center justify-between gap-2 px-2 py-1.5 rounded hover:bg-[var(--brand-surface-2)] transition-colors">
+      <span className="text-[11px] text-[var(--brand-text-mid)] truncate" title={hint}>{label}</span>
       <span className={cls('text-[11px] font-mono tabular-nums', tone ? TONE_TEXT[tone] : 'text-[var(--brand-text-strong)]')}>
         {value}
       </span>
@@ -31,15 +31,15 @@ export function KpiTile({
   icon?: React.ReactNode
 }) {
   return (
-    <div className="bg-[var(--brand-surface-1)]] border border-[#1c1c1c] rounded-lg px-3 py-2.5">
-      <div className="flex items-center justify-between text-[9px] uppercase tracking-widest text-[var(--brand-text-faint)]]">
+    <div className="bg-[var(--brand-surface-1)] border border-[#1c1c1c] rounded-lg px-3 py-2.5">
+      <div className="flex items-center justify-between text-[9px] uppercase tracking-widest text-[var(--brand-text-faint)]">
         <span>{label}</span>
-        {icon && <span className="text-[var(--brand-border-2)]]">{icon}</span>}
+        {icon && <span className="text-[var(--brand-border-2)]">{icon}</span>}
       </div>
       <div className={cls('text-[18px] font-mono tabular-nums mt-0.5', tone ? TONE_TEXT[tone] : 'text-[var(--brand-text-strong)]')}>
         {value}
       </div>
-      {sub && <div className="text-[10px] text-[var(--brand-text-faint)]] mt-0.5">{sub}</div>}
+      {sub && <div className="text-[10px] text-[var(--brand-text-faint)] mt-0.5">{sub}</div>}
     </div>
   )
 }

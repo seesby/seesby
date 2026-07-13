@@ -32,7 +32,7 @@ export default function PagePreviewRow({
     return (
         <button
             onClick={() => setSelectedPage(page)}
-            className="w-full text-left px-3 py-2 rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] hover:bg-[var(--brand-surface-2)]] hover:border-[#2f2f2f] transition-colors grid grid-cols-[18px_1fr_auto_auto_auto] items-center gap-3"
+            className="w-full text-left px-3 py-2 rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] hover:bg-[var(--brand-surface-2)] hover:border-[#2f2f2f] transition-colors grid grid-cols-[18px_1fr_auto_auto_auto] items-center gap-3"
         >
             <TierBadge tier={pageValueTier} compact />
             <div className="min-w-0">
@@ -53,7 +53,7 @@ export default function PagePreviewRow({
                 <div className="text-[11px] text-[var(--brand-text-strong)] font-mono">
                     {Number(gscClicks || 0).toLocaleString()}
                 </div>
-                <div className="text-[9px] text-[var(--brand-text-faint)]]">clicks/30d</div>
+                <div className="text-[9px] text-[var(--brand-text-faint)]">clicks/30d</div>
             </div>
 
             <div className="min-w-[52px] text-right">

@@ -176,11 +176,11 @@ export default function CrawlerSettingsDrawer({ isOpen, onClose }: CrawlerSettin
 
     return (
         <div className="fixed inset-0 z-[100] flex justify-end bg-black/60 backdrop-blur-[2px] animate-in fade-in duration-300">
-            <div className="w-full max-w-6xl h-full bg-[var(--brand-surface-0)]] border-l border-[var(--brand-border-2)]] shadow-2xl flex animate-in slide-in-from-right duration-500 ease-out">
+            <div className="w-full max-w-6xl h-full bg-[var(--brand-surface-0)] border-l border-[var(--brand-border-2)] shadow-2xl flex animate-in slide-in-from-right duration-500 ease-out">
                 
                 {/* Parity Sidebar */}
-                <div className="w-[220px] bg-[var(--brand-surface-2)]] border-r border-[var(--brand-border-2)]] flex flex-col">
-                    <div className="h-[60px] flex items-center px-5 border-b border-[var(--brand-border-2)]]">
+                <div className="w-[220px] bg-[var(--brand-surface-2)] border-r border-[var(--brand-border-2)] flex flex-col">
+                    <div className="h-[60px] flex items-center px-5 border-b border-[var(--brand-border-2)]">
                         <h3 className="text-[14px] font-bold text-[var(--brand-text-strong)] flex items-center gap-2">
                             <SettingsIcon size={16} className="text-[#F59E0B]" /> Configuration
                         </h3>
@@ -194,9 +194,9 @@ export default function CrawlerSettingsDrawer({ isOpen, onClose }: CrawlerSettin
                                 className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12px] font-medium transition-all
                                     ${activeTab === tab.id 
                                         ? 'bg-[#F59E0B]/10 text-[#F59E0B] shadow-[inset_0_0_0_1px_rgba(245,158,11,0.2)]' 
-                                        : 'text-[var(--brand-text-mid)]] hover:bg-[var(--brand-border-2)]] hover:text-[var(--brand-text-mid)]]'}`}
+                                        : 'text-[var(--brand-text-mid)] hover:bg-[var(--brand-border-2)] hover:text-[var(--brand-text-mid)]'}`}
                             >
-                                <span className={activeTab === tab.id ? 'text-[#F59E0B]' : 'text-[var(--brand-text-faint)]]'}>{tab.icon}</span>
+                                <span className={activeTab === tab.id ? 'text-[#F59E0B]' : 'text-[var(--brand-text-faint)]'}>{tab.icon}</span>
                                 {tab.label}
                             </button>
                         ))}
@@ -205,20 +205,20 @@ export default function CrawlerSettingsDrawer({ isOpen, onClose }: CrawlerSettin
 
 
                 {/* 1:1 Parity Workspace */}
-                <div className="flex-1 flex flex-col bg-[var(--brand-surface-0)]]">
+                <div className="flex-1 flex flex-col bg-[var(--brand-surface-0)]">
                     {/* Content Header (Breadcrumb Style) */}
-                    <div className="h-[60px] flex items-center justify-between px-6 border-b border-[var(--brand-border-2)]]">
+                    <div className="h-[60px] flex items-center justify-between px-6 border-b border-[var(--brand-border-2)]">
                         <div className="flex items-center gap-2">
-                            <span className="text-[var(--brand-text-faint)]] text-[12px]">Configuration</span>
-                            <span className="text-[var(--brand-border-2)]] text-[12px]">/</span>
+                            <span className="text-[var(--brand-text-faint)] text-[12px]">Configuration</span>
+                            <span className="text-[var(--brand-border-2)] text-[12px]">/</span>
                             <span className="text-[var(--brand-text-strong)] text-[12px] font-bold">{activeTabLabel}</span>
                         </div>
                         <div className="flex items-center gap-3">
                             <div className="hidden sm:flex items-center gap-2">
-                                <span className="text-[var(--brand-text-faint)]] text-[11px] uppercase tracking-wide">Theme</span>
+                                <span className="text-[var(--brand-text-faint)] text-[11px] uppercase tracking-wide">Theme</span>
                                 <ThemeToggle theme={theme} setTheme={setTheme} size="sm" dark />
                             </div>
-                            <button onClick={handleClose} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[var(--brand-border-2)]] text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)] transition-all">
+                            <button onClick={handleClose} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[var(--brand-border-2)] text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)] transition-all">
                                 <X size={16} />
                             </button>
                         </div>
@@ -234,8 +234,8 @@ export default function CrawlerSettingsDrawer({ isOpen, onClose }: CrawlerSettin
 
 
                     {/* Fixed Action Footer (Parity with Settings Apply) */}
-                    <div className="px-8 py-4 border-t border-[var(--brand-border-2)]] bg-[var(--brand-surface-0)]]/50 flex justify-between items-center">
-                        <button onClick={handleClose} className="text-[12px] font-bold text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)] transition-colors">Discard Setup</button>
+                    <div className="px-8 py-4 border-t border-[var(--brand-border-2)] bg-[var(--brand-surface-0)]/50 flex justify-between items-center">
+                        <button onClick={handleClose} className="text-[12px] font-bold text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)] transition-colors">Discard Setup</button>
 
                         <button 
                             onClick={onStart}

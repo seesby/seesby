@@ -59,7 +59,7 @@ export function RsShell() {
             className="relative flex shrink-0 h-full flex-col"
             style={{
                 borderLeft: `1px solid ${SURFACE.br1}`,
-                background: SURFACE.bg0,
+                background: SURFACE.sidebar,
                 transition: 'width 0.3s ease-in-out',
                 ...styleShell,
             }}
@@ -88,7 +88,7 @@ export function RsShell() {
                     borderRight: 'none',
                     border: `1px solid ${SURFACE.br2}`,
                     borderRightWidth: 0,
-                    background: SURFACE.bg0,
+                    background: SURFACE.sidebar,
                     color: TEXT.secondary,
                     boxShadow: '0 10px 15px -3px rgba(0,0,0,0.5)',
                     transition: 'all 0.15s',

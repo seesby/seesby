@@ -64,7 +64,7 @@ export const AutomationView = () => {
             </div>
 
             {rules.length === 0 ? (
-                <div className="p-12 text-center bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] border-dashed">
+                <div className="p-12 text-center bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] border-dashed">
                     <div className="w-16 h-16 bg-yellow-500/10 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-500">
                         <Workflow size={32} />
                     </div>
@@ -77,7 +77,7 @@ export const AutomationView = () => {
             ) : (
                 <div className="grid grid-cols-1 gap-4">
                     {rules.map((rule) => (
-                        <div key={rule.id} className="bg-[var(--brand-surface-1)]] rounded-2xl border border-[var(--brand-border-1)] p-6 flex items-center justify-between group hover:border-[var(--brand-border-2)] transition-all">
+                        <div key={rule.id} className="bg-[var(--brand-surface-1)] rounded-2xl border border-[var(--brand-border-1)] p-6 flex items-center justify-between group hover:border-[var(--brand-border-2)] transition-all">
                             <div className="flex items-center gap-4">
                                 <div className={`w-10 h-10 rounded-full flex items-center justify-center ${rule.is_active ? 'bg-brand-green/10 text-brand-green' : 'bg-gray-800 text-[var(--brand-text-faint)]'}`}>
                                     <Zap size={20} />
@@ -113,8 +113,8 @@ export const AutomationView = () => {
             {/* Add Rule Modal */}
             {isAddOpen && (
                 <div className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center backdrop-blur-sm p-4">
-                    <div className="bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
-                        <div className="p-5 border-b border-[var(--brand-border-1)] flex justify-between items-center bg-[var(--brand-surface-2)]]">
+                    <div className="bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
+                        <div className="p-5 border-b border-[var(--brand-border-1)] flex justify-between items-center bg-[var(--brand-surface-2)]">
                             <h3 className="text-lg font-bold text-white">New Automation Rule</h3>
                             <button onClick={() => setIsAddOpen(false)} className="text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)]"><X size={20} /></button>
                         </div>
@@ -122,17 +122,17 @@ export const AutomationView = () => {
                             <div>
                                 <label className="block text-xs font-bold text-[var(--brand-text-mid)] mb-1">Rule Name</label>
                                 <input type="text" value={newName} onChange={e => setNewName(e.target.value)} placeholder="e.g. Rank Drop Alert"
-                                    className="w-full bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors" />
+                                    className="w-full bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors" />
                             </div>
                             <div>
                                 <label className="block text-xs font-bold text-[var(--brand-text-mid)] mb-1">Trigger (If...)</label>
                                 <input type="text" value={newTrigger} onChange={e => setNewTrigger(e.target.value)} placeholder="e.g. Keyword drops below position 10"
-                                    className="w-full bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors" />
+                                    className="w-full bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors" />
                             </div>
                             <div>
                                 <label className="block text-xs font-bold text-[var(--brand-text-mid)] mb-1">Action (Then...)</label>
                                 <input type="text" value={newAction} onChange={e => setNewAction(e.target.value)} placeholder="e.g. Send email notification"
-                                    className="w-full bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors" />
+                                    className="w-full bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:outline-none focus:border-brand-amber transition-colors" />
                             </div>
                             <button disabled={!newName || !newTrigger || !newAction || saving} onClick={addRule}
                                 className="w-full mt-4 bg-brand-amber text-white font-bold py-3 rounded-xl hover:bg-brand-amber/90 transition-colors disabled:opacity-50">

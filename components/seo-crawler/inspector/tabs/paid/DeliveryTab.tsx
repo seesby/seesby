@@ -63,7 +63,7 @@ export default function DeliveryTab({ page, hasTrend }: { page: any; hasTrend?: 
             status={pacing >= 0.9 ? 'pass' : pacing >= 0.7 ? 'warn' : 'fail'} />
         </div>
         {hasTrend && (
-          <div className="mt-3 bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]] rounded p-3">
+          <div className="mt-3 bg-[var(--brand-surface-0)] border border-[var(--brand-surface-2)] rounded p-3">
             <Sparkline values={page?.spendTrend || []} tone="info" />
           </div>
         )}
@@ -84,13 +84,13 @@ export default function DeliveryTab({ page, hasTrend }: { page: any; hasTrend?: 
       <Card title="Targeting">
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-1">Geo</div>
+            <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-wider mb-1">Geo</div>
             <DataRow label="Primary" value={page?.geo || page?.targetGeo || page?.country || '—'} />
             <DataRow label="Secondary" value={page?.secondaryGeo || '—'} />
             <DataRow label="Excluded" value={page?.excludedGeo || '—'} />
           </div>
           <div>
-            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-1">Device</div>
+            <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-wider mb-1">Device</div>
             <DataRow label="Mobile" value={formatPercent(page?.mobileBidAdjustment || 0, 100)} />
             <DataRow label="Desktop" value={formatPercent(page?.desktopBidAdjustment || 0, 100)} />
             <DataRow label="Tablet" value={formatPercent(page?.tabletBidAdjustment || 0, 100)} />
@@ -98,12 +98,12 @@ export default function DeliveryTab({ page, hasTrend }: { page: any; hasTrend?: 
         </div>
         <div className="mt-3 grid grid-cols-2 gap-4">
           <div>
-            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-1">Audience</div>
+            <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-wider mb-1">Audience</div>
             <DataRow label="Remarketing" value={page?.remarketingList || '—'} />
             <DataRow label="Similar" value={page?.similarAudience || '—'} />
           </div>
           <div>
-            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-1">Ad schedule</div>
+            <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-wider mb-1">Ad schedule</div>
             <DataRow label="Hours" value={page?.adSchedule || 'All hours'} />
             <DataRow label="Days" value={page?.adScheduleDays || 'All days'} />
           </div>

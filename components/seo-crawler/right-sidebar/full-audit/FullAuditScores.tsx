@@ -71,7 +71,7 @@ export default function FullAuditScores() {
       <Card>
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Overall score</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]">Overall score</div>
             <div className="mt-1 flex items-baseline gap-2">
               <span className="text-2xl font-semibold text-[var(--brand-text-strong)]">{overall}</span>
               {hasTrend && scoreDelta !== 0 && <DeltaChip value={scoreDelta} />}
@@ -89,14 +89,14 @@ export default function FullAuditScores() {
         <ul className="flex flex-col gap-2.5">
           {PILLARS.map((p) => (
             <li key={p.key} className="flex items-center gap-2">
-              <span className="w-20 shrink-0 text-[11px] text-[var(--brand-text-mid)]]">{p.label}</span>
-              <div className="relative h-2 flex-1 overflow-hidden rounded-full bg-[var(--brand-surface-2)]]">
+              <span className="w-20 shrink-0 text-[11px] text-[var(--brand-text-mid)]">{p.label}</span>
+              <div className="relative h-2 flex-1 overflow-hidden rounded-full bg-[var(--brand-surface-2)]">
                 <div
                   className="absolute inset-y-0 left-0 rounded-full transition-all duration-500"
                   style={{ width: `${pillars[p.key]}%`, background: p.color }}
                 />
               </div>
-              <span className="w-8 text-right text-[11px] tabular-nums text-[var(--brand-text-mid)]]">{pillars[p.key]}</span>
+              <span className="w-8 text-right text-[11px] tabular-nums text-[var(--brand-text-mid)]">{pillars[p.key]}</span>
             </li>
           ))}
         </ul>
@@ -127,8 +127,8 @@ export default function FullAuditScores() {
       {cohort && (
         <Card title={`Cohort: ${cohort.label}`}>
           <BenchmarkBar site={overall} benchmark={cohort.p50} unit=" pts" />
-          <div className="mt-1.5 flex items-center justify-between text-[11px] text-[var(--brand-text-mid)]]">
-            <span>Percentile <span className="text-[var(--brand-text-mid)]] tabular-nums">{cohort.percentile}</span></span>
+          <div className="mt-1.5 flex items-center justify-between text-[11px] text-[var(--brand-text-mid)]">
+            <span>Percentile <span className="text-[var(--brand-text-mid)] tabular-nums">{cohort.percentile}</span></span>
             <span>Top {100 - cohort.percentile}%</span>
           </div>
         </Card>

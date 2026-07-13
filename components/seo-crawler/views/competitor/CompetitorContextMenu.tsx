@@ -59,12 +59,12 @@ export default function CompetitorContextMenu({ domain, onClose }: Props) {
   return (
     <div
       ref={menuRef}
-      className="absolute z-50 w-[200px] rounded-xl border border-[var(--brand-border-2)]] bg-[#111113] shadow-2xl py-1 animate-in fade-in slide-in-from-top-1 duration-150"
+      className="absolute z-50 w-[200px] rounded-xl border border-[var(--brand-border-2)] bg-[#111113] shadow-2xl py-1 animate-in fade-in slide-in-from-top-1 duration-150"
     >
       {/* Header */}
       <div className="px-3 py-2 border-b border-[#1e1e22]">
         <div className="text-[11px] font-bold text-[var(--brand-text-strong)] truncate">{domain}</div>
-        <div className="text-[10px] text-[var(--brand-text-faint)]]">{profile?.businessName || 'Unknown business'}</div>
+        <div className="text-[10px] text-[var(--brand-text-faint)]">{profile?.businessName || 'Unknown business'}</div>
       </div>
 
       {/* Actions */}
@@ -78,12 +78,12 @@ export default function CompetitorContextMenu({ domain, onClose }: Props) {
             className={`w-full flex items-center gap-2.5 px-3 py-2 text-[12px] transition ${
               item.danger
                 ? 'text-red-400 hover:bg-red-500/10'
-                : 'text-[var(--brand-text-mid)]] hover:bg-[var(--brand-surface-3)]] hover:text-[var(--brand-text-strong)]'
+                : 'text-[var(--brand-text-mid)] hover:bg-[var(--brand-surface-3)] hover:text-[var(--brand-text-strong)]'
             }`}
           >
-            <span className={item.danger ? 'text-red-400' : 'text-[var(--brand-text-faint)]]'}>{item.icon}</span>
+            <span className={item.danger ? 'text-red-400' : 'text-[var(--brand-text-faint)]'}>{item.icon}</span>
             <span className="flex-1 text-left">{item.label}</span>
-            {item.hint && <span className="text-[10px] text-[var(--brand-text-faint)]]">{item.hint}</span>}
+            {item.hint && <span className="text-[10px] text-[var(--brand-text-faint)]">{item.hint}</span>}
           </button>
         )
       )}

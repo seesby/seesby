@@ -38,7 +38,7 @@ export const ContentPredictorView = () => {
                         Predict the ranking potential of your content before you write it. Our model analyzes top 10 results, keyword usage, and site authority gaps.
                     </p>
 
-                    <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-border-2)] rounded-2xl p-2 flex items-center shadow-2xl max-w-3xl mx-auto">
+                    <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-border-2)] rounded-2xl p-2 flex items-center shadow-2xl max-w-3xl mx-auto">
                         <input
                             type="text"
                             value={topic}
@@ -73,7 +73,7 @@ export const ContentPredictorView = () => {
                 {result && (
                     <div className="animate-in slide-in-from-bottom-4 duration-500 space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                            <div className="col-span-1 bg-[var(--brand-surface-2)]] p-6 rounded-2xl border border-[var(--brand-border-1)] text-center flex flex-col justify-center relative overflow-hidden">
+                            <div className="col-span-1 bg-[var(--brand-surface-2)] p-6 rounded-2xl border border-[var(--brand-border-1)] text-center flex flex-col justify-center relative overflow-hidden">
                                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-purple via-pink-500 to-brand-amber"></div>
                                 <span className="text-xs font-bold text-[var(--brand-text-faint)] uppercase tracking-widest mb-2">Predictive Score</span>
                                 <div className="text-6xl font-black text-white font-heading">{result.score}</div>
@@ -81,17 +81,17 @@ export const ContentPredictorView = () => {
                             </div>
 
                             <div className="col-span-3 grid grid-cols-3 gap-4">
-                                <div className="bg-[var(--brand-surface-2)]] p-5 rounded-2xl border border-[var(--brand-border-1)]">
+                                <div className="bg-[var(--brand-surface-2)] p-5 rounded-2xl border border-[var(--brand-border-1)]">
                                     <Target size={18} className="text-[var(--brand-text-mid)] mb-3" />
                                     <span className="block text-xs font-bold text-[var(--brand-text-faint)] uppercase">Search Intent</span>
                                     <span className="block text-lg font-bold text-white mt-1">{result.intent}</span>
                                 </div>
-                                <div className="bg-[var(--brand-surface-2)]] p-5 rounded-2xl border border-[var(--brand-border-1)]">
+                                <div className="bg-[var(--brand-surface-2)] p-5 rounded-2xl border border-[var(--brand-border-1)]">
                                     <BarChart2 size={18} className="text-[var(--brand-text-mid)] mb-3" />
                                     <span className="block text-xs font-bold text-[var(--brand-text-faint)] uppercase">Search Volume</span>
                                     <span className="block text-lg font-bold text-white mt-1">{result.volume.toLocaleString()} /mo</span>
                                 </div>
-                                <div className="bg-[var(--brand-surface-2)]] p-5 rounded-2xl border border-[var(--brand-border-1)]">
+                                <div className="bg-[var(--brand-surface-2)] p-5 rounded-2xl border border-[var(--brand-border-1)]">
                                     <AlertCircle size={18} className="text-[var(--brand-text-mid)] mb-3" />
                                     <span className="block text-xs font-bold text-[var(--brand-text-faint)] uppercase">Difficulty</span>
                                     <span className="block text-lg font-bold text-white mt-1">{result.difficulty} / 100</span>
@@ -100,11 +100,11 @@ export const ContentPredictorView = () => {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-[var(--brand-surface-1)]] rounded-2xl border border-[var(--brand-border-1)] p-6 space-y-4">
+                            <div className="bg-[var(--brand-surface-1)] rounded-2xl border border-[var(--brand-border-1)] p-6 space-y-4">
                                 <h3 className="text-lg font-bold text-white font-heading">AI Content Outline</h3>
                                 <div className="space-y-4">
                                     {result.outline?.map((section: any, idx: number) => (
-                                        <div key={idx} className="bg-[var(--brand-surface-2)]] p-4 rounded-xl border border-[var(--brand-border-1)]">
+                                        <div key={idx} className="bg-[var(--brand-surface-2)] p-4 rounded-xl border border-[var(--brand-border-1)]">
                                             <h4 className="text-sm font-bold text-brand-purple mb-2">H2: {section.h2}</h4>
                                             <ul className="space-y-1">
                                                 {section.subtopics?.map((sub: string, i: number) => (
@@ -118,7 +118,7 @@ export const ContentPredictorView = () => {
                                 </div>
                             </div>
 
-                            <div className="bg-[var(--brand-surface-1)]] rounded-2xl border border-[var(--brand-border-1)] p-6 space-y-4 h-fit">
+                            <div className="bg-[var(--brand-surface-1)] rounded-2xl border border-[var(--brand-border-1)] p-6 space-y-4 h-fit">
                                 <h3 className="text-lg font-bold text-white font-heading">Strategic Recommendations</h3>
                                 <ul className="space-y-3">
                                     {result.recommendations?.map((rec: string, idx: number) => (

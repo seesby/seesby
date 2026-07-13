@@ -6,8 +6,8 @@ import { useSeoCrawler } from '@/contexts/SeoCrawlerContext';
 import { Search } from 'lucide-react';
 import clsx from 'clsx';
 
-const PANEL = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]]/90 backdrop-blur';
-const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-1';
+const PANEL = 'rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)]/90 backdrop-blur';
+const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-1';
 
 const SCOPE_OPTIONS = [
   { id: 'both' as const, label: 'Both' },
@@ -90,41 +90,41 @@ export default function LinksGraphView() {
     <div className="flex-1 flex flex-col min-h-0 relative overflow-hidden">
       {/* Floating controls — top left */}
       <div className="absolute top-2 left-2 z-10 flex flex-col gap-1.5">
-        <div className="flex items-center gap-1 bg-[var(--brand-surface-1)]]/90 backdrop-blur rounded border border-[var(--brand-surface-3)]] p-0.5">
+        <div className="flex items-center gap-1 bg-[var(--brand-surface-1)]/90 backdrop-blur rounded border border-[var(--brand-surface-3)] p-0.5">
           {SCOPE_OPTIONS.map(opt => (
             <button
               key={opt.id}
               onClick={() => setScope(opt.id)}
               className={clsx(
                 'h-[24px] px-2 text-[10px] rounded transition-colors',
-                scope === opt.id ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-mid)]]'
+                scope === opt.id ? 'bg-[var(--brand-surface-3)] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-mid)] hover:text-[var(--brand-text-mid)]'
               )}
             >
               {opt.label}
             </button>
           ))}
         </div>
-        <div className="flex items-center gap-1 bg-[var(--brand-surface-1)]]/90 backdrop-blur rounded border border-[var(--brand-surface-3)]] p-0.5">
+        <div className="flex items-center gap-1 bg-[var(--brand-surface-1)]/90 backdrop-blur rounded border border-[var(--brand-surface-3)] p-0.5">
           {COLOR_OPTIONS.map(opt => (
             <button
               key={opt.value}
               onClick={() => setColorBy(opt.value)}
               className={clsx(
                 'h-[24px] px-2 text-[10px] rounded transition-colors',
-                colorBy === opt.value ? 'bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-mid)]]'
+                colorBy === opt.value ? 'bg-[var(--brand-surface-3)] text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-mid)] hover:text-[var(--brand-text-mid)]'
               )}
             >
               {opt.label}
             </button>
           ))}
         </div>
-        <div className="flex items-center gap-1 bg-[var(--brand-surface-1)]]/90 backdrop-blur rounded border border-[var(--brand-surface-3)]] px-2 h-[24px]">
-          <Search size={10} className="text-[var(--brand-text-faint)]]" />
+        <div className="flex items-center gap-1 bg-[var(--brand-surface-1)]/90 backdrop-blur rounded border border-[var(--brand-surface-3)] px-2 h-[24px]">
+          <Search size={10} className="text-[var(--brand-text-faint)]" />
           <input
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Filter nodes"
-            className="bg-transparent text-[10px] text-[var(--brand-text-strong)] w-24 outline-none placeholder:text-[var(--brand-text-faint)]]"
+            className="bg-transparent text-[10px] text-[var(--brand-text-strong)] w-24 outline-none placeholder:text-[var(--brand-text-faint)]"
           />
         </div>
       </div>
@@ -134,7 +134,7 @@ export default function LinksGraphView() {
         {filteredNodes.length > 0 ? (
           <ForceGraph nodes={filteredNodes} links={filteredLinks} />
         ) : (
-          <div className="flex items-center justify-center h-full text-[11px] text-[var(--brand-text-faint)]]">
+          <div className="flex items-center justify-center h-full text-[11px] text-[var(--brand-text-faint)]">
             {search ? 'No nodes match filter' : 'No link data available'}
           </div>
         )}
@@ -146,7 +146,7 @@ export default function LinksGraphView() {
         <div className={`${PANEL} flex-1 pointer-events-auto`}>
           <div className="px-2.5 pt-1.5 pb-2">
             <div className={LABEL}>Anchor distribution</div>
-            <div className="flex h-[8px] rounded-full overflow-hidden bg-[var(--brand-surface-3)]]">
+            <div className="flex h-[8px] rounded-full overflow-hidden bg-[var(--brand-surface-3)]">
               {buckets.filter(b => b.count > 0).map(b => (
                 <div
                   key={b.type}
@@ -163,8 +163,8 @@ export default function LinksGraphView() {
               {buckets.filter(b => b.count > 0).map(b => (
                 <span key={b.type} className="flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full" style={{ background: BUCKET_COLORS[b.type] }} />
-                  <span className="text-[var(--brand-text-mid)]]">{b.type}</span>
-                  <span className="text-[var(--brand-text-mid)]] font-mono">{b.percentage}%</span>
+                  <span className="text-[var(--brand-text-mid)]">{b.type}</span>
+                  <span className="text-[var(--brand-text-mid)] font-mono">{b.percentage}%</span>
                 </span>
               ))}
             </div>
@@ -219,22 +219,22 @@ export default function LinksGraphView() {
       </div>
 
       {/* Legend — bottom left (above panels) */}
-      <div className="absolute bottom-[90px] left-2 z-10 flex items-center gap-2 bg-[var(--brand-surface-1)]]/90 backdrop-blur rounded border border-[var(--brand-surface-3)]] px-3 py-1.5 text-[10px]">
+      <div className="absolute bottom-[90px] left-2 z-10 flex items-center gap-2 bg-[var(--brand-surface-1)]/90 backdrop-blur rounded border border-[var(--brand-surface-3)] px-3 py-1.5 text-[10px]">
         {LEGENDS[colorBy].map(item => (
           <div key={item.label} className="flex items-center gap-1.5">
             <div className="w-2 h-2 rounded-full" style={{ background: item.color }} />
-            <span className="text-[var(--brand-text-mid)]]">{item.label}</span>
+            <span className="text-[var(--brand-text-mid)]">{item.label}</span>
           </div>
         ))}
       </div>
 
       {/* Bottom stats */}
-      <div className="absolute bottom-[90px] right-2 z-10 flex items-center gap-4 bg-[var(--brand-surface-1)]]/90 backdrop-blur rounded border border-[var(--brand-surface-3)]] px-3 py-1.5 text-[10px]">
-        <span className="text-[var(--brand-text-mid)]]">{filteredNodes.length} nodes</span>
-        <span className="text-[var(--brand-text-mid)]]">{filteredLinks.length} links</span>
-        <span className="text-[var(--brand-text-mid)]]">Internal: <span className="text-[#a78bfa]">{stats.internalCount}</span></span>
-        <span className="text-[var(--brand-text-mid)]]">External: <span className="text-[#14b8a6]">{stats.externalCount}</span></span>
-        <span className="text-[var(--brand-text-mid)]]">Max depth: <span className="text-[#f59e0b]">{stats.maxDepth}</span></span>
+      <div className="absolute bottom-[90px] right-2 z-10 flex items-center gap-4 bg-[var(--brand-surface-1)]/90 backdrop-blur rounded border border-[var(--brand-surface-3)] px-3 py-1.5 text-[10px]">
+        <span className="text-[var(--brand-text-mid)]">{filteredNodes.length} nodes</span>
+        <span className="text-[var(--brand-text-mid)]">{filteredLinks.length} links</span>
+        <span className="text-[var(--brand-text-mid)]">Internal: <span className="text-[#a78bfa]">{stats.internalCount}</span></span>
+        <span className="text-[var(--brand-text-mid)]">External: <span className="text-[#14b8a6]">{stats.externalCount}</span></span>
+        <span className="text-[var(--brand-text-mid)]">Max depth: <span className="text-[#f59e0b]">{stats.maxDepth}</span></span>
       </div>
     </div>
   );

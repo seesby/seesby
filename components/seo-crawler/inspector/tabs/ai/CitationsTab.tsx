@@ -38,22 +38,22 @@ export default function CitationsTab({ page, hasTrend }: { page: any; hasTrend?:
         <Card title="Summary">
           <div className="space-y-1.5">
             <div className="flex items-center justify-between text-[11px]">
-              <span className="text-[var(--brand-text-faint)]]">Cited in</span>
+              <span className="text-[var(--brand-text-faint)]">Cited in</span>
               <span className="text-[var(--brand-text-strong)] font-bold">{formatNumber(totalCitations)} prompts</span>
             </div>
             <div className="flex items-center justify-between text-[11px]">
-              <span className="text-[var(--brand-text-faint)]]">Not cited</span>
+              <span className="text-[var(--brand-text-faint)]">Not cited</span>
               <span className={notCitedCount > 0 ? 'text-[#f59e0b]' : 'text-[var(--brand-text-strong)]'}>
                 {formatNumber(notCitedCount)}
                 {notCitedCount > 0 && ' \u26a0'}
               </span>
             </div>
             <div className="flex items-center justify-between text-[11px]">
-              <span className="text-[var(--brand-text-faint)]]">Cited by &ge;1</span>
+              <span className="text-[var(--brand-text-faint)]">Cited by &ge;1</span>
               <span className="text-[var(--brand-text-strong)]">{citedByGeo ? '100% geos' : '\u2014'}</span>
             </div>
             <div className="flex items-center justify-between text-[11px]">
-              <span className="text-[var(--brand-text-faint)]]">Citation rank avg</span>
+              <span className="text-[var(--brand-text-faint)]">Citation rank avg</span>
               <span className="text-[var(--brand-text-strong)]">{citationRankAvg != null ? Number(citationRankAvg).toFixed(1) : '\u2014'}</span>
             </div>
           </div>
@@ -65,17 +65,17 @@ export default function CitationsTab({ page, hasTrend }: { page: any; hasTrend?:
             <div className="overflow-x-auto">
               <table className="w-full text-[11px]">
                 <thead>
-                  <tr className="border-b border-[var(--brand-surface-3)]]">
-                    <th className="px-2 py-1.5 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Model</th>
-                    <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Cited</th>
-                    <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Position avg</th>
-                    <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Answer</th>
+                  <tr className="border-b border-[var(--brand-surface-3)]">
+                    <th className="px-2 py-1.5 text-left text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Model</th>
+                    <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Cited</th>
+                    <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Position avg</th>
+                    <th className="px-2 py-1.5 text-center text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Answer</th>
                   </tr>
                 </thead>
                 <tbody>
                   {modelData.map((model: any) => (
-                    <tr key={model.name} className="border-b border-[var(--brand-surface-2)]] hover:bg-[var(--brand-surface-2)]]">
-                      <td className="px-2 py-1.5 text-[var(--brand-text-mid)]]">{model.label}</td>
+                    <tr key={model.name} className="border-b border-[var(--brand-surface-2)] hover:bg-[var(--brand-surface-2)]">
+                      <td className="px-2 py-1.5 text-[var(--brand-text-mid)]">{model.label}</td>
                       <td className="px-2 py-1.5 text-right text-[var(--brand-text-strong)]">{model.cited}</td>
                       <td className="px-2 py-1.5 text-right text-[var(--brand-text-strong)]">{model.positionAvg != null ? model.positionAvg.toFixed(1) : '\u2014'}</td>
                       <td className="px-2 py-1.5 text-center">
@@ -84,10 +84,10 @@ export default function CitationsTab({ page, hasTrend }: { page: any; hasTrend?:
                             {model.answerAvailable ? '\u2713' : '\u2717'}
                           </span>
                         ) : (
-                          <span className="text-[var(--brand-text-faint)]]">&mdash;</span>
+                          <span className="text-[var(--brand-text-faint)]">&mdash;</span>
                         )}
                         {model.answerLength != null && (
-                          <span className="text-[var(--brand-text-mid)]] ml-1">/ {model.answerLength} words</span>
+                          <span className="text-[var(--brand-text-mid)] ml-1">/ {model.answerLength} words</span>
                         )}
                       </td>
                     </tr>
@@ -108,31 +108,31 @@ export default function CitationsTab({ page, hasTrend }: { page: any; hasTrend?:
               {Object.entries(geoVariation).map(([geo, pct]) => (
                 <div key={geo} className="flex items-center gap-1.5 text-[11px]">
                   <span className="text-[var(--brand-text-strong)] font-bold">{geo}</span>
-                  <span className="text-[var(--brand-text-mid)]]">{String(pct)}%</span>
+                  <span className="text-[var(--brand-text-mid)]">{String(pct)}%</span>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-[11px] text-[var(--brand-text-faint)]]">No geo data</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]">No geo data</div>
           )}
         </Card>
 
         {/* Shared citations with */}
         <Card title="Shared citations with">
           {sharedCitations.length > 0 ? (
-            <div className="text-[11px] text-[var(--brand-text-mid)]]">
+            <div className="text-[11px] text-[var(--brand-text-mid)]">
               {sharedCitations.map((item: any, i: number) => (
                 <span key={i}>
                   {i > 0 && ' \u00b7 '}
                   {typeof item === 'string' ? item : item.domain || item.url}
                   {typeof item === 'object' && item.count != null && (
-                    <span className="text-[var(--brand-text-faint)]]"> {item.count} times</span>
+                    <span className="text-[var(--brand-text-faint)]"> {item.count} times</span>
                   )}
                 </span>
               ))}
             </div>
           ) : (
-            <div className="text-[11px] text-[var(--brand-text-faint)]]">No shared citation data</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]">No shared citation data</div>
           )}
         </Card>
       </div>
@@ -140,7 +140,7 @@ export default function CitationsTab({ page, hasTrend }: { page: any; hasTrend?:
       {/* Citation trend */}
       {hasTrend && citationTrend.length > 0 && (
         <Card title="Citation trend">
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
             <Sparkline values={citationTrend} tone="info" />
           </div>
         </Card>

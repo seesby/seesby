@@ -43,7 +43,7 @@ export function AiOverview() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">AI ready score</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]">AI ready score</div>
             <div className="mt-1 flex items-baseline gap-2">
               <span className="text-3xl font-bold tabular-nums text-[var(--brand-text-strong)]">{s.score}</span>
             </div>
@@ -52,7 +52,7 @@ export function AiOverview() {
                 <div className="mt-1 w-24"><RsSparkline values={s.history.score} /></div>
               )}
             </Trendable>
-            <div className="mt-1 text-[10px] text-[var(--brand-text-faint)]]">Crawlability + Schema + Citations + Entities</div>
+            <div className="mt-1 text-[10px] text-[var(--brand-text-faint)]">Crawlability + Schema + Citations + Entities</div>
           </div>
           <ProgressRing value={s.score} size={72} />
         </div>
@@ -81,7 +81,7 @@ export function AiOverview() {
 
       {/* Score breakdown */}
       <Card title="Score breakdown">
-        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
           <RowItem title="Crawlability" badge={<span className="text-[10px] font-mono text-[var(--brand-text-strong)]">{s.crawlability.score}</span>} />
           <RowItem title="Schema" badge={<span className="text-[10px] font-mono text-[var(--brand-text-strong)]">{s.schema.score}</span>} />
           <RowItem title="Citations" badge={<span className="text-[10px] font-mono text-[var(--brand-text-strong)]">{s.citations.total}</span>} />
@@ -102,13 +102,13 @@ export function AiOverview() {
       {/* Top entities preview */}
       {topEntities.length > 0 && (
         <Card title="Top entities">
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {topEntities.map((e: any) => (
               <RowItem
                 key={e.label}
                 title={e.label}
                 meta={e.type}
-                badge={<span className="text-[10px] text-[var(--brand-text-mid)]]">{e.citations} mentions</span>}
+                badge={<span className="text-[10px] text-[var(--brand-text-mid)]">{e.citations} mentions</span>}
               />
             ))}
           </div>
@@ -118,7 +118,7 @@ export function AiOverview() {
       {/* Top issues */}
       {topIssues.length > 0 && (
         <Card title="Needs attention" padded={false}>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {topIssues.map((issue, i) => (
               <RowItem
                 key={i}

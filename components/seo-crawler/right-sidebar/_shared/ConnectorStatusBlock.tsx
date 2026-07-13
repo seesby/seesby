@@ -34,7 +34,7 @@ export function ConnectorStatusBlock({ connectors, onConnect }: Props) {
     { id: 'llmsTxt', label: 'llms.txt',              connected: connectors.llmsTxt.connected,lastSync: undefined },
   ]
   return (
-    <div className="rounded-md border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3">
+    <div className="rounded-md border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3">
       <div className="mb-2 text-[11px] uppercase tracking-wider text-neutral-500">Connectors</div>
       <ul className="space-y-1">
         {rows.map((r) => (

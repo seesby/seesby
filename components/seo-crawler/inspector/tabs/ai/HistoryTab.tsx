@@ -12,7 +12,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
   if (!hasTrend) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
-        <div className="text-[13px] text-[var(--brand-text-faint)]] max-w-[280px]">
+        <div className="text-[13px] text-[var(--brand-text-faint)] max-w-[280px]">
           Trend data available after 2+ crawls. Run another crawl to see historical trends.
         </div>
       </div>
@@ -45,7 +45,7 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
               {citationDelta >= 0 ? '+' : ''}{citationDelta} vs prev
             </span>
           </div>
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
             <Sparkline values={citationTrend} tone="info" />
           </div>
         </div>
@@ -59,8 +59,8 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
             const trend = botHitsTrend[botKey] || [];
             return (
               <div key={botKey} className="space-y-1">
-                <div className="text-[11px] text-[var(--brand-text-mid)]]">{label}</div>
-                <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+                <div className="text-[11px] text-[var(--brand-text-mid)]">{label}</div>
+                <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
                   <Sparkline values={trend} tone="info" />
                 </div>
               </div>
@@ -79,11 +79,11 @@ export default function HistoryTab({ page, hasTrend }: { page: any; hasTrend?: b
                   event.type === 'schema' ? 'bg-[#3b82f6]' :
                   event.type === 'bot' ? 'bg-[#f59e0b]' :
                   event.type === 'citation' ? 'bg-[#22c55e]' :
-                  'bg-[var(--brand-text-faint)]]'
+                  'bg-[var(--brand-text-faint)]'
                 }`} />
                 <div className="min-w-0">
-                  <span className="text-[var(--brand-text-mid)]]">{event.label}</span>
-                  {event.date && <span className="text-[var(--brand-text-faint)]] ml-1">{event.date}</span>}
+                  <span className="text-[var(--brand-text-mid)]">{event.label}</span>
+                  {event.date && <span className="text-[var(--brand-text-faint)] ml-1">{event.date}</span>}
                 </div>
               </div>
             ))}

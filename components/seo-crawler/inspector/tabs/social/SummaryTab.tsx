@@ -28,10 +28,10 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
   return (
     <div className="space-y-4">
       {/* Hero strip */}
-      <div className="flex items-center gap-3 p-2.5 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)]] to-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]">
+      <div className="flex items-center gap-3 p-2.5 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)] to-[var(--brand-surface-0)] border border-[var(--brand-surface-3)]">
         <div className="flex-1 min-w-0">
           <div className="text-[13px] text-[var(--brand-text-strong)] font-semibold truncate">{page?.title || page?.url || 'Social Page'}</div>
-          <div className="text-[11px] text-[var(--brand-text-faint)]] font-mono truncate mt-0.5">{page?.url}</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)] font-mono truncate mt-0.5">{page?.url}</div>
         </div>
         <div className="shrink-0 flex items-center gap-2">
           <div className="relative w-10 h-10">
@@ -88,14 +88,14 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
         <Card title="Profiles">
           {profiles.length > 0 ? profiles.slice(0, 4).map((p: any, i: number) => (
             <div key={i} className="flex items-center justify-between py-[3px]">
-              <span className="text-[11px] text-[var(--brand-text-mid)]]">{p.platform || p.name || `Profile ${i + 1}`}</span>
+              <span className="text-[11px] text-[var(--brand-text-mid)]">{p.platform || p.name || `Profile ${i + 1}`}</span>
               <StatusBadge
                 status={p.active || p.health === 'good' ? 'pass' : p.health === 'warning' ? 'warn' : 'info'}
                 label={formatNumber(p.followers)}
               />
             </div>
           )) : (
-            <div className="text-[11px] text-[var(--brand-text-faint)]]">No profiles connected</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]">No profiles connected</div>
           )}
         </Card>
 
@@ -112,11 +112,11 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
                 <span className={`block w-1.5 h-1.5 rounded-full mt-0.5 shrink-0 ${
                   issue.type === 'error' ? 'bg-[#ef4444]' : issue.type === 'warning' ? 'bg-[#f59e0b]' : 'bg-[#6b7280]'
                 }`} />
-                <span className="text-[11px] text-[var(--brand-text-mid)]]">{issue.label || issue.title}</span>
+                <span className="text-[11px] text-[var(--brand-text-mid)]">{issue.label || issue.title}</span>
               </div>
             ))
           ) : (
-            <div className="text-[11px] text-[var(--brand-text-faint)]]">None critical</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]">None critical</div>
           )}
         </Card>
       </div>

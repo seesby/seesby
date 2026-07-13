@@ -77,7 +77,7 @@ export default function A11yTab({ page }: { page: any }) {
         <div className="flex items-end gap-4 mb-3">
           {headingStructure.map((h) => (
             <div key={h.level} className="text-center">
-              <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest mb-1">{h.level}</div>
+              <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest mb-1">{h.level}</div>
               <div
                 className="text-[18px] font-bold"
                 style={{ color: h.count === 0 ? 'bg-[var(--brand-surface-4)]' : h.level === 'H1' && h.count > 1 ? '#f59e0b' : 'text-[var(--brand-text-mid)]' }}

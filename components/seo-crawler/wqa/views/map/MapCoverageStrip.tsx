@@ -37,18 +37,18 @@ export default function MapCoverageStrip({ pages }: Props) {
     } as const;
 
     return (
-        <div className="h-[44px] shrink-0 border-b border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] flex items-stretch">
-            <div className="px-4 flex items-center gap-1.5 border-r border-[var(--brand-surface-3)]] shrink-0">
-                <span className="text-[10px] uppercase tracking-widest text-[var(--brand-text-faint)]]">Coverage</span>
+        <div className="h-[44px] shrink-0 border-b border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] flex items-stretch">
+            <div className="px-4 flex items-center gap-1.5 border-r border-[var(--brand-surface-3)] shrink-0">
+                <span className="text-[10px] uppercase tracking-widest text-[var(--brand-text-faint)]">Coverage</span>
                 <span className="text-[11px] font-mono text-[var(--brand-text-strong)]">{stats.total.toLocaleString()} pages</span>
             </div>
             <div className="flex flex-1 min-w-0">
                 {cells.map(c => (
-                    <div key={c.label} className="flex-1 min-w-0 px-3 flex flex-col justify-center border-r border-[var(--brand-surface-3)]] last:border-r-0">
-                        <span className="text-[9px] uppercase tracking-widest text-[var(--brand-text-faint)]] truncate">{c.label}</span>
+                    <div key={c.label} className="flex-1 min-w-0 px-3 flex flex-col justify-center border-r border-[var(--brand-surface-3)] last:border-r-0">
+                        <span className="text-[9px] uppercase tracking-widest text-[var(--brand-text-faint)] truncate">{c.label}</span>
                         <div className="flex items-center gap-2">
                             <span className={`text-[12px] font-mono font-bold ${TONE[c.tone]}`}>{c.value}%</span>
-                            <div className="h-1 flex-1 bg-[var(--brand-surface-2)]] rounded-full overflow-hidden">
+                            <div className="h-1 flex-1 bg-[var(--brand-surface-2)] rounded-full overflow-hidden">
                                 <div
                                     className="h-full rounded-full"
                                     style={{

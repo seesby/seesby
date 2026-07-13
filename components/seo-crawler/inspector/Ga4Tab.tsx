@@ -11,9 +11,9 @@ export default function Ga4Tab({ page }: { page: any }) {
 
     if (!hasGa4) {
         return (
-            <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-5 text-center">
+            <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-5 text-center">
                 <div className="text-[14px] text-[var(--brand-text-strong)] font-semibold mb-2">Google Analytics 4 not connected</div>
-                <div className="text-[12px] text-[var(--brand-text-faint)]]">Connect GA4 in Integrations to populate engagement, sessions, and conversions.</div>
+                <div className="text-[12px] text-[var(--brand-text-faint)]">Connect GA4 in Integrations to populate engagement, sessions, and conversions.</div>
             </div>
         );
     }

@@ -39,30 +39,30 @@ export default function ImagesTab({ page }: { page: any }) {
 
             <SectionHeader title="Image Inventory" />
             {imageDetails.length > 0 ? (
-                <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded overflow-hidden">
+                <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded overflow-hidden">
                     <div className="max-h-[340px] overflow-auto custom-scrollbar">
                         <table className="w-full text-[11px] font-mono">
-                            <thead className="sticky top-0 bg-[var(--brand-surface-2)]] border-b border-[var(--brand-border-2)]]">
+                            <thead className="sticky top-0 bg-[var(--brand-surface-2)] border-b border-[var(--brand-border-2)]">
                                 <tr>
-                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]]">Source</th>
-                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]]">Alt Text</th>
-                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]]">Dimensions</th>
-                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]]">Loading</th>
-                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]]">Srcset</th>
+                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]">Source</th>
+                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]">Alt Text</th>
+                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]">Dimensions</th>
+                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]">Loading</th>
+                                    <th className="text-left px-3 py-2 text-[var(--brand-text-faint)]">Srcset</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {imageDetails.map((image, index) => (
-                                    <tr key={`image-${index}`} className="border-b border-[var(--brand-surface-3)]] hover:bg-[var(--brand-surface-2)]]">
+                                    <tr key={`image-${index}`} className="border-b border-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-2)]">
                                         <td className="px-3 py-1.5 text-blue-400 break-all max-w-[320px]">{image?.src || '—'}</td>
-                                        <td className={`px-3 py-1.5 max-w-[260px] break-all ${!image?.alt ? 'text-red-400 italic' : 'text-[var(--brand-text-mid)]]'}`}>
+                                        <td className={`px-3 py-1.5 max-w-[260px] break-all ${!image?.alt ? 'text-red-400 italic' : 'text-[var(--brand-text-mid)]'}`}>
                                             {image?.alt || 'MISSING'}
                                         </td>
-                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">
+                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]">
                                             {image?.width && image?.height ? `${image.width}×${image.height}` : '—'}
                                         </td>
-                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{image?.loading || '—'}</td>
-                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{image?.srcset ? 'Yes' : 'No'}</td>
+                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]">{image?.loading || '—'}</td>
+                                        <td className="px-3 py-1.5 text-[var(--brand-text-mid)]">{image?.srcset ? 'Yes' : 'No'}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -70,7 +70,7 @@ export default function ImagesTab({ page }: { page: any }) {
                     </div>
                 </div>
             ) : (
-                <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-4 text-[12px] text-[var(--brand-text-faint)]] text-center">
+                <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-4 text-[12px] text-[var(--brand-text-faint)] text-center">
                     No image details were captured for this page.
                 </div>
             )}

@@ -16,7 +16,7 @@ const PRIORITY_COLORS = {
   critical: 'text-red-400',
   high: 'text-amber-400',
   med: 'text-sky-400',
-  low: 'text-[var(--brand-text-faint)]]',
+  low: 'text-[var(--brand-text-faint)]',
 } as const
 
 export function LocalOverview() {
@@ -34,9 +34,9 @@ export function LocalOverview() {
       <Card>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]]">Local score</div>
+            <div className="text-[11px] uppercase tracking-wide text-[var(--brand-text-mid)]">Local score</div>
             <div className="mt-1 text-2xl font-semibold text-[var(--brand-text-strong)]">{s.score}</div>
-            <div className="mt-1 text-[10px] text-[var(--brand-text-faint)]]">NAP + GBP + Reviews + Local Pack</div>
+            <div className="mt-1 text-[10px] text-[var(--brand-text-faint)]">NAP + GBP + Reviews + Local Pack</div>
           </div>
           <ProgressRing value={s.score} size={72} />
         </div>
@@ -64,7 +64,7 @@ export function LocalOverview() {
 
       {/* Score breakdown */}
       <Card title="Score breakdown" padded={false}>
-        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
           <RowItem
             title="NAP consistency"
             badge={<span className={`text-[10px] font-mono ${scoreToTone(s.nap.consistency * 100) === 'good' ? 'text-[#22c55e]' : 'text-[#f59e0b]'}`}>{fmtPct(s.nap.consistency * 100)}</span>}
@@ -87,29 +87,29 @@ export function LocalOverview() {
       {/* Per-location leaderboard */}
       {sortedLocations.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Top locations</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Top locations</span>
           </div>
-          <div className="divide-y divide-[var(--brand-surface-3)]]">
+          <div className="divide-y divide-[var(--brand-surface-3)]">
             {sortedLocations.map((loc: any, idx: number) => {
               const barWidth = maxVis > 0 ? ((loc.localVisibility ?? 0) / maxVis) * 100 : 0
               return (
                 <div key={loc.id} className="flex items-center gap-3 px-3 py-2">
                   <div className="w-5 text-center">
-                    <span className="text-[10px] font-mono text-[var(--brand-text-faint)]]">{idx + 1}</span>
+                    <span className="text-[10px] font-mono text-[var(--brand-text-faint)]">{idx + 1}</span>
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-[11px] truncate text-[var(--brand-text-mid)]]">{loc.name}</span>
+                      <span className="text-[11px] truncate text-[var(--brand-text-mid)]">{loc.name}</span>
                     </div>
-                    <div className="h-1 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
+                    <div className="h-1 bg-[var(--brand-surface-3)] rounded-full overflow-hidden">
                       <div
                         className="h-full rounded-full transition-all duration-500"
                         style={{ width: `${barWidth}%`, background: '#f97316' }}
                       />
                     </div>
                   </div>
-                  <div className="text-[11px] font-mono tabular-nums text-[var(--brand-text-mid)]] w-12 text-right">
+                  <div className="text-[11px] font-mono tabular-nums text-[var(--brand-text-mid)] w-12 text-right">
                     {fmtPct((loc.localVisibility ?? 0) * 100)}
                   </div>
                 </div>
@@ -122,13 +122,13 @@ export function LocalOverview() {
       {/* Actions */}
       {s.actions.items.length > 0 && (
         <Card title="Recommended actions" padded={false}>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.actions.items.slice(0, 4).map(action => (
               <RowItem
                 key={action.id}
                 title={action.title}
                 badge={
-                  <span className={`text-[10px] font-medium ${PRIORITY_COLORS[action.priority] ?? 'text-[var(--brand-text-mid)]]'}`}>
+                  <span className={`text-[10px] font-medium ${PRIORITY_COLORS[action.priority] ?? 'text-[var(--brand-text-mid)]'}`}>
                     {action.priority}
                   </span>
                 }
@@ -141,7 +141,7 @@ export function LocalOverview() {
       {/* Trend */}
       <Trendable hasPrior={s.hasPrior}>
         <Card title="vs last crawl" padded={false}>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             <ComparisonRow
               label="NAP issues"
               a={{ v: s.nap.issues, tag: 'now' }}

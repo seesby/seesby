@@ -20,15 +20,15 @@ export function ScoreBar({
   return (
     <div>
       <div className="flex items-center justify-between mb-1">
-        <span className="text-[11px] text-[var(--brand-text-mid)]]">{label || 'Score'}</span>
+        <span className="text-[11px] text-[var(--brand-text-mid)]">{label || 'Score'}</span>
         <span className="text-[11px] font-mono text-[var(--brand-text-strong)]">
-          {v} <span className="text-[var(--brand-text-faint)]]">· {band.name}</span>
+          {v} <span className="text-[var(--brand-text-faint)]">· {band.name}</span>
         </span>
       </div>
-      <div className="h-2 rounded-full bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] overflow-hidden">
+      <div className="h-2 rounded-full bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] overflow-hidden">
         <div className="h-full rounded-full transition-all" style={fillStyle} />
       </div>
-      {hint && <div className="text-[10px] text-[var(--brand-text-faint)]] mt-1">{hint}</div>}
+      {hint && <div className="text-[10px] text-[var(--brand-text-faint)] mt-1">{hint}</div>}
     </div>
   )
 }

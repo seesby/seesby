@@ -27,9 +27,9 @@ export function Distribution({
                     : r.tone === 'bad'  ? '#ef4444' : 'text-[var(--brand-text-faint)]')
                 return (
                     <div key={r.label} className="grid grid-cols-[80px_1fr_50px_auto] items-center gap-2">
-                        <span className="text-[11px] text-[var(--brand-text-mid)]] truncate">{r.label}</span>
+                        <span className="text-[11px] text-[var(--brand-text-mid)] truncate">{r.label}</span>
                         <Bar value={r.value} max={max || 1} color={c} right={<span className="hidden" />} />
-                        <span className="text-[11px] font-mono text-right text-[var(--brand-text-mid)]]">{fmtNum(r.value)}</span>
+                        <span className="text-[11px] font-mono text-right text-[var(--brand-text-mid)]">{fmtNum(r.value)}</span>
                         <div className="flex gap-0.5 items-center">
                             <SourceChip tier={r.source} />
                             <FreshnessChip value={r.freshness} />

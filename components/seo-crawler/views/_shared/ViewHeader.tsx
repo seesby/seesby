@@ -17,7 +17,7 @@ export function ViewHeader({ title, subtitle, badge, actions, className }: ViewH
         height: 36,
         padding: `0 ${S[3]}px`,
         borderBottom: `1px solid ${SURFACE.br0}`,
-        background: SURFACE.bg0,
+        background: SURFACE.bg1,
       }}
     >
       <h2 style={{ fontSize: 12, fontWeight: 600, color: TEXT.primary }}>{title}</h2>

@@ -200,7 +200,7 @@ export function RadialTree({
               <text
                 x={p.x} y={p.y - 8}
                 textAnchor="middle"
-                className="fill-[var(--brand-text-mid)]]"
+                className="fill-[var(--brand-text-mid)]"
                 style={{ fontSize: `${Math.max(8, 10 - p.depth)}px` }}
               >
                 {p.node.label ?? p.node.id.split('/').pop()}
@@ -211,15 +211,15 @@ export function RadialTree({
       </svg>
 
       {/* Zoom controls */}
-      <div className="absolute bottom-12 right-3 z-20 flex flex-col gap-1 bg-[var(--brand-surface-0)]cc] backdrop-blur rounded border border-[var(--brand-surface-3)]]">
-        <button onClick={() => zoomBy(1.5)} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] transition-colors" title="Zoom in">
+      <div className="absolute bottom-12 right-3 z-20 flex flex-col gap-1 bg-[var(--brand-surface-0)]cc] backdrop-blur rounded border border-[var(--brand-surface-3)]">
+        <button onClick={() => zoomBy(1.5)} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] transition-colors" title="Zoom in">
           <ZoomIn className="w-3.5 h-3.5" />
         </button>
-        <button onClick={() => zoomBy(0.67)} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] transition-colors" title="Zoom out">
+        <button onClick={() => zoomBy(0.67)} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] transition-colors" title="Zoom out">
           <ZoomOut className="w-3.5 h-3.5" />
         </button>
-        <div className="w-full h-px bg-[var(--brand-surface-3)]]" />
-        <button onClick={fitToScreen} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] transition-colors" title="Reset view">
+        <div className="w-full h-px bg-[var(--brand-surface-3)]" />
+        <button onClick={fitToScreen} className="w-7 h-7 flex items-center justify-center text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] transition-colors" title="Reset view">
           <Maximize2 className="w-3.5 h-3.5" />
         </button>
       </div>

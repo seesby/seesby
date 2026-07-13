@@ -77,7 +77,7 @@ export function ColumnPickerPopover({ mode }: { mode?: string }) {
       <button
         id="column-picker-btn"
         onClick={() => setOpen(o => !o)}
-        className="h-7 px-2 text-[11px] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] border border-[var(--brand-surface-3)]] rounded bg-[var(--brand-surface-1)]] transition-colors"
+        className="h-7 px-2 text-[11px] text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] border border-[var(--brand-surface-3)] rounded bg-[var(--brand-surface-1)] transition-colors"
         aria-haspopup="dialog"
         aria-expanded={open}
       >
@@ -90,30 +90,30 @@ export function ColumnPickerPopover({ mode }: { mode?: string }) {
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
 
           <div
-            className="absolute right-0 top-full mt-1 w-72 max-h-[480px] flex flex-col bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg shadow-2xl z-50"
+            className="absolute right-0 top-full mt-1 w-72 max-h-[480px] flex flex-col bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded-lg shadow-2xl z-50"
             role="dialog"
             aria-label="Column picker"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] shrink-0">
-              <span className="text-[10px] uppercase tracking-widest text-[var(--brand-text-faint)]]">Columns</span>
+            <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)] shrink-0">
+              <span className="text-[10px] uppercase tracking-widest text-[var(--brand-text-faint)]">Columns</span>
               <button
                 onClick={() => setVisibleColumns(ALL_COLUMNS.map(c => c.key))}
-                className="text-[10px] text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)] transition-colors"
+                className="text-[10px] text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)] transition-colors"
               >
                 Show all
               </button>
             </div>
 
             {/* Search */}
-            <div className="px-2 py-1.5 border-b border-[var(--brand-surface-3)]] shrink-0">
+            <div className="px-2 py-1.5 border-b border-[var(--brand-surface-3)] shrink-0">
               <input
                 autoFocus
                 type="text"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 placeholder="Filter columns…"
-                className="w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-surface-3)]] rounded px-2 py-1 text-[11px] text-[var(--brand-text-mid)]] placeholder:text-[var(--brand-border-2)]] focus:outline-none focus:border-[var(--brand-surface-4)]]"
+                className="w-full bg-[var(--brand-surface-2)] border border-[var(--brand-surface-3)] rounded px-2 py-1 text-[11px] text-[var(--brand-text-mid)] placeholder:text-[var(--brand-border-2)] focus:outline-none focus:border-[var(--brand-surface-4)]"
               />
             </div>
 
@@ -121,7 +121,7 @@ export function ColumnPickerPopover({ mode }: { mode?: string }) {
             <div className="overflow-y-auto custom-scrollbar flex-1">
               {filtered.map(({ group, cols }) => (
                 <div key={group}>
-                  <div className="px-3 pt-2 pb-0.5 text-[9px] uppercase tracking-widest text-[var(--brand-border-2)]] font-bold">
+                  <div className="px-3 pt-2 pb-0.5 text-[9px] uppercase tracking-widest text-[var(--brand-border-2)] font-bold">
                     {group}
                   </div>
                   {cols.map(c => {
@@ -131,7 +131,7 @@ export function ColumnPickerPopover({ mode }: { mode?: string }) {
                     return (
                       <label
                         key={c.key}
-                        className="flex items-center gap-2 px-3 py-[5px] hover:bg-[var(--brand-surface-2)]] cursor-pointer"
+                        className="flex items-center gap-2 px-3 py-[5px] hover:bg-[var(--brand-surface-2)] cursor-pointer"
                       >
                         <input
                           type="checkbox"
@@ -139,11 +139,11 @@ export function ColumnPickerPopover({ mode }: { mode?: string }) {
                           onChange={() => toggle(c.key)}
                           className="w-3 h-3 accent-[#F59E0B] cursor-pointer shrink-0"
                         />
-                        <span className={`text-[11px] leading-tight flex-1 ${on ? 'text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]]'}`}>
+                        <span className={`text-[11px] leading-tight flex-1 ${on ? 'text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-faint)]'}`}>
                           {c.label}
                         </span>
                         {fmt && (
-                          <span className="text-[8px] px-1 py-px rounded bg-[var(--brand-surface-3)]] text-[var(--brand-text-faint)]] uppercase shrink-0 leading-none">
+                          <span className="text-[8px] px-1 py-px rounded bg-[var(--brand-surface-3)] text-[var(--brand-text-faint)] uppercase shrink-0 leading-none">
                             {fmt}
                           </span>
                         )}
@@ -160,11 +160,11 @@ export function ColumnPickerPopover({ mode }: { mode?: string }) {
             </div>
 
             {/* Footer */}
-            <div className="px-3 py-2 border-t border-[var(--brand-surface-3)]] shrink-0 flex items-center justify-between">
-              <span className="text-[10px] text-[var(--brand-text-faint)]]">{visibleColumns.length} visible</span>
+            <div className="px-3 py-2 border-t border-[var(--brand-surface-3)] shrink-0 flex items-center justify-between">
+              <span className="text-[10px] text-[var(--brand-text-faint)]">{visibleColumns.length} visible</span>
               <button
                 onClick={() => setOpen(false)}
-                className="text-[10px] text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)] transition-colors"
+                className="text-[10px] text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)] transition-colors"
               >
                 Done
               </button>

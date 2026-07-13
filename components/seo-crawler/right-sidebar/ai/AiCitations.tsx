@@ -53,7 +53,7 @@ export function AiCitations() {
           <Card title="Citation trend">
             <div className="flex items-center justify-between">
               <RsSparkline values={s.history.citations} />
-              <span className="text-[10px] text-[var(--brand-text-faint)]]">{fmtNum(s.citations.total)} total</span>
+              <span className="text-[10px] text-[var(--brand-text-faint)]">{fmtNum(s.citations.total)} total</span>
             </div>
           </Card>
         )}

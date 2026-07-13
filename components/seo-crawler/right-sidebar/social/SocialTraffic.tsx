@@ -84,17 +84,17 @@ export function SocialTraffic() {
 
       {s.traffic.topLandingPages.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Top landing pages</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Top landing pages</span>
           </div>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.traffic.topLandingPages.slice(0, 5).map((page, i) => (
-              <div key={i} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
+              <div key={i} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)] last:border-b-0">
                 <div className="min-w-0 flex-1">
                   <div className="text-[11px] text-[var(--brand-text-strong)] truncate">{page.title || page.url}</div>
-                  <div className="text-[10px] text-[var(--brand-text-faint)]] truncate">{page.url}</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)] truncate">{page.url}</div>
                 </div>
-                <span className="text-[10px] font-mono text-[var(--brand-text-mid)]] ml-2 shrink-0">{compactNum(page.sessions)}</span>
+                <span className="text-[10px] font-mono text-[var(--brand-text-mid)] ml-2 shrink-0">{compactNum(page.sessions)}</span>
               </div>
             ))}
           </div>
@@ -103,16 +103,16 @@ export function SocialTraffic() {
 
       {s.traffic.topPosts.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Top referring posts</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Top referring posts</span>
           </div>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.traffic.topPosts.slice(0, 4).map(p => (
-              <div key={p.id} className="px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
+              <div key={p.id} className="px-3 py-2 border-b border-[var(--brand-surface-3)] last:border-b-0">
                 <div className="text-[11px] text-[var(--brand-text-strong)] leading-snug line-clamp-2">{p.text}</div>
                 <div className="flex items-center gap-3 mt-1">
-                  <span className="text-[10px] text-[var(--brand-text-faint)]]">{p.channel}</span>
-                  <span className="text-[10px] font-mono text-[var(--brand-text-mid)]]">{compactNum(p.sessions)} sessions</span>
+                  <span className="text-[10px] text-[var(--brand-text-faint)]">{p.channel}</span>
+                  <span className="text-[10px] font-mono text-[var(--brand-text-mid)]">{compactNum(p.sessions)} sessions</span>
                 </div>
               </div>
             ))}
@@ -122,19 +122,19 @@ export function SocialTraffic() {
 
       {s.traffic.byCampaign.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">By campaign</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">By campaign</span>
           </div>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.traffic.byCampaign.map(c => (
-              <div key={c.id} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
+              <div key={c.id} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)] last:border-b-0">
                 <div>
                   <div className="text-[11px] text-[var(--brand-text-strong)]">{c.name}</div>
-                  <div className="text-[10px] text-[var(--brand-text-faint)]]">{compactNum(c.sessions)} sessions</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)]">{compactNum(c.sessions)} sessions</div>
                 </div>
                 <div className="text-right">
                   <div className="text-[11px] font-mono text-[var(--brand-text-strong)]">{fmtPct(c.cvr * 100, 1)}</div>
-                  <div className="text-[10px] text-[var(--brand-text-faint)]]">conv.</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)]">conv.</div>
                 </div>
               </div>
             ))}

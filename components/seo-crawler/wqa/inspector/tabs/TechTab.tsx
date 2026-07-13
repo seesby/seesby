@@ -10,9 +10,9 @@ function CwvGauge({ label, value, unit, good, warn }: {
 }) {
   if (value === null || !Number.isFinite(value)) {
     return (
-      <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
-        <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest">{label}</div>
-        <div className="text-[20px] font-bold mt-1 text-[var(--brand-surface-4)]]">\u2014</div>
+      <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded-lg p-3">
+        <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest">{label}</div>
+        <div className="text-[20px] font-bold mt-1 text-[var(--brand-surface-4)]">\u2014</div>
       </div>
     );
   }
@@ -21,13 +21,13 @@ function CwvGauge({ label, value, unit, good, warn }: {
   const colorBar = tone === 'good' ? '#22c55e' : tone === 'mid' ? '#f59e0b' : '#ef4444';
   const pct = Math.min(100, Math.round((value / (warn * 1.2)) * 100));
   return (
-    <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
-      <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest">{label}</div>
+    <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded-lg p-3">
+      <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest">{label}</div>
       <div className={`text-[20px] font-bold mt-1 ${colorText}`}>{value.toFixed(unit === '' ? 3 : 0)}{unit}</div>
-      <div className="mt-2 h-1.5 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
+      <div className="mt-2 h-1.5 bg-[var(--brand-surface-3)] rounded-full overflow-hidden">
         <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, background: colorBar }} />
       </div>
-      <div className="flex justify-between text-[8px] text-[var(--brand-surface-4)]] mt-1">
+      <div className="flex justify-between text-[8px] text-[var(--brand-surface-4)] mt-1">
         <span>\u2264 {good}{unit}</span>
         <span>&gt; {warn}{unit}</span>
       </div>
@@ -168,10 +168,10 @@ export default function TechTab({ page, hasTrend }: { page: any; hasTrend?: bool
         <Card title="Page weight">
           <div className="mb-3">
             <div className="flex items-center justify-between text-[11px] mb-1.5">
-              <span className="text-[var(--brand-text-faint)]]">Total</span>
+              <span className="text-[var(--brand-text-faint)]">Total</span>
               <span className="text-[var(--brand-text-strong)] font-bold">{formatBytes(sizeBytes)}</span>
             </div>
-            <div className="h-2 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden flex">
+            <div className="h-2 bg-[var(--brand-surface-3)] rounded-full overflow-hidden flex">
               {sizeBreakdown.map(s => (
                 <div
                   key={s.label}
@@ -184,12 +184,12 @@ export default function TechTab({ page, hasTrend }: { page: any; hasTrend?: bool
           </div>
           <div className="space-y-0">
             {sizeBreakdown.map(s => (
-              <div key={s.label} className="flex items-center justify-between text-[11px] py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0">
+              <div key={s.label} className="flex items-center justify-between text-[11px] py-1 border-b border-[var(--brand-surface-2)] last:border-b-0">
                 <span className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full shrink-0" style={{ background: s.color }} />
-                  <span className="text-[var(--brand-text-mid)]]">{s.label}</span>
+                  <span className="text-[var(--brand-text-mid)]">{s.label}</span>
                 </span>
-                <span className="text-[var(--brand-text-mid)]] font-mono">{formatBytes(s.size)}</span>
+                <span className="text-[var(--brand-text-mid)] font-mono">{formatBytes(s.size)}</span>
               </div>
             ))}
           </div>
@@ -201,8 +201,8 @@ export default function TechTab({ page, hasTrend }: { page: any; hasTrend?: bool
         <CollapseGroup title={`Redirect Chain (${redirects.length})`} defaultOpen={false}>
           <div className="space-y-1.5">
             {redirects.map((url: string, i: number) => (
-              <div key={i} className="text-[11px] font-mono text-[var(--brand-text-mid)]] py-1 px-2 rounded bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]] truncate">
-                {i > 0 && <span className="text-[var(--brand-border-2)]] mr-2">\u2192</span>}
+              <div key={i} className="text-[11px] font-mono text-[var(--brand-text-mid)] py-1 px-2 rounded bg-[var(--brand-surface-0)] border border-[var(--brand-surface-2)] truncate">
+                {i > 0 && <span className="text-[var(--brand-border-2)] mr-2">\u2192</span>}
                 {url}
               </div>
             ))}
@@ -215,9 +215,9 @@ export default function TechTab({ page, hasTrend }: { page: any; hasTrend?: bool
         <CollapseGroup title="Response Headers" defaultOpen={false}>
           <div className="space-y-0 max-h-[240px] overflow-y-auto">
             {headers.map(([key, val]) => (
-              <div key={key} className="flex items-start gap-3 py-1.5 border-b border-[var(--brand-surface-2)]] last:border-b-0">
-                <span className="text-[10px] text-[var(--brand-text-faint)]] font-mono shrink-0 min-w-[120px]">{key}</span>
-                <span className="text-[10px] text-[var(--brand-text-mid)]] font-mono break-all">{String(val)}</span>
+              <div key={key} className="flex items-start gap-3 py-1.5 border-b border-[var(--brand-surface-2)] last:border-b-0">
+                <span className="text-[10px] text-[var(--brand-text-faint)] font-mono shrink-0 min-w-[120px]">{key}</span>
+                <span className="text-[10px] text-[var(--brand-text-mid)] font-mono break-all">{String(val)}</span>
               </div>
             ))}
           </div>

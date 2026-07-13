@@ -88,8 +88,8 @@ export function useOrphansDepth() {
       const color = v >= 4 ? STATUS_HEX.bad : v >= 3 ? STATUS_HEX.warn : STATUS_HEX.good;
       return <span style={{ color }}>{v}</span>;
     }},
-    { accessorKey: 'inSitemap', header: 'Sitemap', size: 80, cell: c => c.getValue() ? <span className="text-[#22c55e]">yes</span> : <span className="text-[var(--brand-text-faint)]]">no</span> },
-    { accessorKey: 'template', header: 'Template', size: 120, cell: c => <span className="text-[var(--brand-text-mid)]] truncate max-w-[100px]">{c.getValue() as string}</span> },
+    { accessorKey: 'inSitemap', header: 'Sitemap', size: 80, cell: c => c.getValue() ? <span className="text-[#22c55e]">yes</span> : <span className="text-[var(--brand-text-faint)]">no</span> },
+    { accessorKey: 'template', header: 'Template', size: 120, cell: c => <span className="text-[var(--brand-text-mid)] truncate max-w-[100px]">{c.getValue() as string}</span> },
   ];
   return { rows, columns, metrics };
 }

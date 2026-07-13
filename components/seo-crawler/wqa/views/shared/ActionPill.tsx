@@ -15,7 +15,7 @@ export default function ActionPill({
     size?: 'xs' | 'sm';
     title?: string;
 }) {
-    if (!action) return <span className="text-[var(--brand-border-2)]] text-[11px]">—</span>;
+    if (!action) return <span className="text-[var(--brand-border-2)] text-[11px]">—</span>;
     const s = STYLES[kind] || STYLES.technical;
     const px = size === 'xs' ? 'px-1.5 py-[1px] text-[9px]' : 'px-2 py-[2px] text-[10px]';
     return (

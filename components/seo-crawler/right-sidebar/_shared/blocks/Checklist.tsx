@@ -37,8 +37,8 @@ export function ChecklistBlock({
 			<Section title={title} dense>
 				<div className={`grid gap-1 ${cols === 2 ? 'grid-cols-2' : 'grid-cols-1'}`}>
 					{items.map((it) => (
-						<div key={it.id} title={it.hint} className="flex items-center gap-2 text-[11px] text-[var(--brand-text-mid)]]">
-							<span className={`flex h-4 w-4 items-center justify-center rounded ${stateColor[it.state]} bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]]`}>
+						<div key={it.id} title={it.hint} className="flex items-center gap-2 text-[11px] text-[var(--brand-text-mid)]">
+							<span className={`flex h-4 w-4 items-center justify-center rounded ${stateColor[it.state]} bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)]`}>
 								<Icon state={it.state} />
 							</span>
 							<span className="flex-1 truncate">{it.label}</span>

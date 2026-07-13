@@ -36,7 +36,7 @@ export function Sparkline({
   }, [values, height, width])
 
   if (!values?.length) {
-    return <div className="h-7 w-[120px] rounded bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]]" aria-label="No trend data yet" />
+    return <div className="h-7 w-[120px] rounded bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)]" aria-label="No trend data yet" />
   }
 
   return (

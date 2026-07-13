@@ -13,12 +13,12 @@ export function Funnel({ steps }: { steps: ReadonlyArray<FunnelStep> }) {
         const widthStyle = { width: `${Math.max(3, pct)}%` }
         return (
           <div key={s.id} className="flex items-center gap-2">
-            <span className="text-[10px] text-[var(--brand-text-mid)]] w-20 truncate">{s.label}</span>
-            <div className="flex-1 h-5 rounded-sm bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] overflow-hidden">
+            <span className="text-[10px] text-[var(--brand-text-mid)] w-20 truncate">{s.label}</span>
+            <div className="flex-1 h-5 rounded-sm bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] overflow-hidden">
               <div className="h-full bg-[#F59E0B]/30 border-r border-[#F59E0B]" style={widthStyle} />
             </div>
             <span className="text-[10px] font-mono text-[var(--brand-text-strong)] tabular-nums w-12 text-right">{s.value.toLocaleString()}</span>
-            {i > 0 && <span className="text-[10px] font-mono text-[var(--brand-text-faint)]] w-10 text-right">-{drop.toFixed(0)}%</span>}
+            {i > 0 && <span className="text-[10px] font-mono text-[var(--brand-text-faint)] w-10 text-right">-{drop.toFixed(0)}%</span>}
           </div>
         )
       })}

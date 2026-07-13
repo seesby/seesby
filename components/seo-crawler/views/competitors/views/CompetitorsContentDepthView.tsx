@@ -4,9 +4,9 @@ import { CHART_PALETTE } from '../../_shared/tokens';
 import { fmtCompact } from '../../_shared/formatters';
 import clsx from 'clsx';
 
-const PANEL = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]]';
-const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2';
-const selectClass = 'h-7 px-2 bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded text-[11px] text-[var(--brand-text-mid)]] focus:outline-none focus:border-[var(--brand-surface-4)]] appearance-none cursor-pointer';
+const PANEL = 'rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)]';
+const LABEL = 'text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-2';
+const selectClass = 'h-7 px-2 bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded text-[11px] text-[var(--brand-text-mid)] focus:outline-none focus:border-[var(--brand-surface-4)] appearance-none cursor-pointer';
 
 export default function CompetitorsContentDepthView() {
   const data = useContentDepth();
@@ -21,7 +21,7 @@ export default function CompetitorsContentDepthView() {
   return (
     <div className="flex flex-col h-full min-h-0 overflow-hidden">
       {/* Topic picker */}
-      <div className="flex items-center gap-2 px-3 py-1.5 shrink-0 border-b border-[var(--brand-surface-3)]]">
+      <div className="flex items-center gap-2 px-3 py-1.5 shrink-0 border-b border-[var(--brand-surface-3)]">
         <span className={LABEL} style={{ marginBottom: 0 }}>Topic:</span>
         <select value={topic} onChange={e => setTopic(e.target.value)}
           className={selectClass}>
@@ -29,7 +29,7 @@ export default function CompetitorsContentDepthView() {
           {topics.map(t => <option key={t} value={t}>{t}</option>)}
         </select>
         <div className="flex-1" />
-        <span className="text-[10px] text-[var(--brand-text-mid)]]">{filteredScatter.length} pages</span>
+        <span className="text-[10px] text-[var(--brand-text-mid)]">{filteredScatter.length} pages</span>
       </div>
 
       {/* Stacked panels */}
@@ -102,7 +102,7 @@ function ScatterPanel({ points }: { points: ContentDepthData['scatterPoints'] })
           })}
         </svg>
       </div>
-      <div className="flex items-center gap-4 mt-1 text-[9px] text-[var(--brand-text-faint)]]">
+      <div className="flex items-center gap-4 mt-1 text-[9px] text-[var(--brand-text-faint)]">
         <span>X: backlinks</span>
         <span>Y: words</span>
         <span>Size: clicks</span>
@@ -183,7 +183,7 @@ function RadarPanel({ data }: { data: ContentDepthData }) {
           <div className="mt-2 flex flex-col gap-1">
             {dims.map(d => (
               <div key={d.dimension} className="flex justify-between gap-3 text-[9px]">
-                <span className="text-[var(--brand-text-faint)]]">{d.dimension}</span>
+                <span className="text-[var(--brand-text-faint)]">{d.dimension}</span>
                 <span className="text-[var(--brand-text-strong)] tabular-nums">{d.us}%</span>
               </div>
             ))}
@@ -205,9 +205,9 @@ function FormatGapsPanel({ data }: { data: ContentDepthData }) {
         {gaps.map(f => {
           const whoHas = f.competitors.filter(c => c.present).map(c => c.host.replace(/\..+/, '')).join(', ');
           return (
-            <span key={f.format} className="text-[11px] text-[var(--brand-text-mid)]]">
+            <span key={f.format} className="text-[11px] text-[var(--brand-text-mid)]">
               <span className="text-[var(--brand-text-strong)]">{f.format}</span>
-              <span className="text-[var(--brand-text-faint)]]"> ({whoHas})</span>
+              <span className="text-[var(--brand-text-faint)]"> ({whoHas})</span>
             </span>
           );
         })}
@@ -220,7 +220,7 @@ function LegendItem({ color, label }: { color: string; label: string }) {
   return (
     <div className="flex items-center gap-1.5">
       <span className="w-2 h-2 rounded-full" style={{ background: color }} />
-      <span className="text-[10px] text-[var(--brand-text-mid)]]">{label}</span>
+      <span className="text-[10px] text-[var(--brand-text-mid)]">{label}</span>
     </div>
   );
 }

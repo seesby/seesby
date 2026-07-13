@@ -18,7 +18,7 @@ export function KpiStrip({
         gap: S[2],
         padding: `${S[2]}px ${S[3]}px`,
         borderBottom: `1px solid ${SURFACE.br0}`,
-        background: SURFACE.bg0,
+        background: SURFACE.bg1,
         gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
       }}
     >

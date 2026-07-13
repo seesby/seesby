@@ -58,11 +58,11 @@ export default function ContextTab({ page }: { page: any }) {
 
       {/* Wireframe layout: Surrounding text (full width) */}
       <Card title="Surrounding text">
-        <div className="mb-3 pb-3 border-b border-[var(--brand-surface-2)]]">
-          <div className="text-[11px] text-[var(--brand-text-mid)]] leading-relaxed">
+        <div className="mb-3 pb-3 border-b border-[var(--brand-surface-2)]">
+          <div className="text-[11px] text-[var(--brand-text-mid)] leading-relaxed">
             {surroundingText !== '—'
               ? <span>"…{surroundingText}…"</span>
-              : <span className="italic text-[var(--brand-text-faint)]]">No surrounding text data available.</span>
+              : <span className="italic text-[var(--brand-text-faint)]">No surrounding text data available.</span>
             }
           </div>
         </div>
@@ -111,10 +111,10 @@ function PlacementBar({ label, count, total, color }: {
   return (
     <div className="mb-2">
       <div className="flex items-center justify-between mb-1">
-        <span className="text-[11px] text-[var(--brand-text-mid)]]">{label}</span>
-        <span className="text-[11px] font-mono text-[var(--brand-text-mid)]]">{formatNumber(count)} ({pct.toFixed(1)}%)</span>
+        <span className="text-[11px] text-[var(--brand-text-mid)]">{label}</span>
+        <span className="text-[11px] font-mono text-[var(--brand-text-mid)]">{formatNumber(count)} ({pct.toFixed(1)}%)</span>
       </div>
-      <div className="h-[6px] bg-[var(--brand-surface-2)]] rounded-full overflow-hidden">
+      <div className="h-[6px] bg-[var(--brand-surface-2)] rounded-full overflow-hidden">
         <div
           className={`h-full rounded-full ${color}`}
           style={{ width: `${Math.min(100, pct)}%` }}

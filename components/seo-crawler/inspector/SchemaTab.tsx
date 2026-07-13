@@ -31,7 +31,7 @@ export default function SchemaTab({ page }: { page: any }) {
                 <div>
                     <SectionHeader title="Detected Types" />
                     {schemaTypes.length === 0 ? (
-                        <div className="text-[12px] text-[var(--brand-text-faint)]] bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+                        <div className="text-[12px] text-[var(--brand-text-faint)] bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
                             No schema types found.
                         </div>
                     ) : (
@@ -49,14 +49,14 @@ export default function SchemaTab({ page }: { page: any }) {
             <div className="mt-6">
                 <SectionHeader title="Schema Blocks" />
                 {schemaBlocks.length === 0 ? (
-                    <div className="text-[12px] text-[var(--brand-text-faint)]] bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-4">
+                    <div className="text-[12px] text-[var(--brand-text-faint)] bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-4">
                         No JSON-LD/Microdata blocks captured for this page.
                     </div>
                 ) : (
                     <div className="space-y-3">
                         {schemaBlocks.map((block: any, index: number) => (
-                            <details key={`schema-${index}`} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded overflow-hidden">
-                                <summary className="px-3 py-2 text-[11px] text-[var(--brand-text-mid)]] cursor-pointer hover:text-[var(--brand-text-strong)]">
+                            <details key={`schema-${index}`} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded overflow-hidden">
+                                <summary className="px-3 py-2 text-[11px] text-[var(--brand-text-mid)] cursor-pointer hover:text-[var(--brand-text-strong)]">
                                     Block {index + 1}: {block?.['@type'] || block?.type || 'Unknown type'}
                                 </summary>
                                 <pre className="px-3 pb-3 text-[11px] font-mono text-[#cfcfcf] overflow-x-auto custom-scrollbar">

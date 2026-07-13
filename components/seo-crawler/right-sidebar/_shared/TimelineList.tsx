@@ -4,7 +4,7 @@ export type TimelineEntry = { id: string; ts: string; title: string; detail?: st
 
 export function TimelineList({ entries, max = 6 }: { entries: ReadonlyArray<TimelineEntry>; max?: number }) {
   const items = entries.slice(0, max)
-  if (!items.length) return <div className="text-[11px] text-[var(--brand-text-faint)]] italic">No history yet</div>
+  if (!items.length) return <div className="text-[11px] text-[var(--brand-text-faint)] italic">No history yet</div>
   return (
     <ol className="space-y-2">
       {items.map(e => (
@@ -13,9 +13,9 @@ export function TimelineList({ entries, max = 6 }: { entries: ReadonlyArray<Time
           <div className="flex-1 min-w-0">
             <div className="flex items-baseline justify-between gap-2">
               <div className="text-[12px] text-[var(--brand-text-strong)] truncate">{e.title}</div>
-              <div className="text-[10px] font-mono text-[var(--brand-text-faint)]] shrink-0">{e.ts}</div>
+              <div className="text-[10px] font-mono text-[var(--brand-text-faint)] shrink-0">{e.ts}</div>
             </div>
-            {e.detail && <div className="text-[11px] text-[var(--brand-text-mid)]] truncate">{e.detail}</div>}
+            {e.detail && <div className="text-[11px] text-[var(--brand-text-mid)] truncate">{e.detail}</div>}
           </div>
         </li>
       ))}
@@ -25,5 +25,5 @@ export function TimelineList({ entries, max = 6 }: { entries: ReadonlyArray<Time
 
 const DOT: Record<NonNullable<TimelineEntry['tone']>, string> = {
   good: 'bg-emerald-400', warn: 'bg-amber-400', bad: 'bg-[#F59E0B]',
-  info: 'bg-sky-400', neutral: 'bg-[var(--brand-text-faint)]]',
+  info: 'bg-sky-400', neutral: 'bg-[var(--brand-text-faint)]',
 }

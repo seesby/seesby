@@ -4,7 +4,7 @@ import { useMentions } from '../selectors/useMentions.tsx';
 import { fmtCompact, fmtDate } from '../../_shared/formatters';
 import { STATUS } from '../../_shared/tokens';
 
-const CARD = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3 min-h-0';
+const CARD = 'rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3 min-h-0';
 
 export default function SocialMentionsView() {
   const list = useMentions();
@@ -94,10 +94,10 @@ export default function SocialMentionsView() {
   return (
     <div className="flex-1 flex flex-col min-h-0">
       {/* Toolbar */}
-      <div className="shrink-0 px-3 py-2 flex items-center gap-3 border-b border-[var(--brand-surface-3)]]">
-        <span className="text-[10px] uppercase text-[var(--brand-text-faint)]]">group by:</span>
-        <span className="px-2 py-1 text-[10px] rounded bg-[var(--brand-surface-3)]] text-[var(--brand-text-strong)]">topic ▾</span>
-        <span className="text-[var(--brand-surface-4)]]">|</span>
+      <div className="shrink-0 px-3 py-2 flex items-center gap-3 border-b border-[var(--brand-surface-3)]">
+        <span className="text-[10px] uppercase text-[var(--brand-text-faint)]">group by:</span>
+        <span className="px-2 py-1 text-[10px] rounded bg-[var(--brand-surface-3)] text-[var(--brand-text-strong)]">topic ▾</span>
+        <span className="text-[var(--brand-surface-4)]">|</span>
         {sentFilter && (
           <button onClick={() => setSentFilter(null)} className="px-2 py-1 text-[10px] rounded bg-[#F59E0B]/10 text-[#F59E0B] flex items-center gap-1">
             sent: {sentFilter[0]} ×
@@ -108,9 +108,9 @@ export default function SocialMentionsView() {
             tier:{tierFilter} ×
           </button>
         )}
-        {!sentFilter && !tierFilter && <span className="text-[10px] text-[var(--brand-text-faint)]]">no filters</span>}
+        {!sentFilter && !tierFilter && <span className="text-[10px] text-[var(--brand-text-faint)]">no filters</span>}
         <div className="flex-1" />
-        <span className="text-[10px] text-[var(--brand-text-faint)]]">{topics.length} topics · {filteredList.length} mentions</span>
+        <span className="text-[10px] text-[var(--brand-text-faint)]">{topics.length} topics · {filteredList.length} mentions</span>
       </div>
 
       {/* Content */}
@@ -126,11 +126,11 @@ export default function SocialMentionsView() {
             />
           ))}
 
-          {!topics.length && <div className="text-[12px] text-[var(--brand-text-faint)]] p-4 text-center">No mentions yet.</div>}
+          {!topics.length && <div className="text-[12px] text-[var(--brand-text-faint)] p-4 text-center">No mentions yet.</div>}
 
           {/* Timeline / volume */}
           <div className={`${CARD}`}>
-            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">Timeline / volume</div>
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-2">Timeline / volume</div>
             {timelineData.some(w => w.count > 0) ? (
               <div className="flex items-end gap-1 h-[60px]">
                 {timelineData.map((w, i) => {
@@ -147,13 +147,13 @@ export default function SocialMentionsView() {
                         }}
                         title={`${w.date}: ${w.count} mentions`}
                       />
-                      <span className="text-[9px] text-[var(--brand-text-faint)]]">{w.date}</span>
+                      <span className="text-[9px] text-[var(--brand-text-faint)]">{w.date}</span>
                     </div>
                   );
                 })}
               </div>
             ) : (
-              <div className="py-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No timeline data.</div>
+              <div className="py-4 text-[12px] text-[var(--brand-text-faint)] text-center">No timeline data.</div>
             )}
           </div>
         </div>
@@ -179,31 +179,31 @@ function TopicCard({ topic, expanded, onToggle }: { topic: any; expanded: boolea
             {topic.slaBreachRisk && <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#f59e0b]/10 text-[#f59e0b]">SLA breach risk</span>}
           </div>
           <div className="flex items-center gap-3 text-[10px]">
-            <span className="text-[var(--brand-text-mid)]]">{topic.count} mentions</span>
+            <span className="text-[var(--brand-text-mid)]">{topic.count} mentions</span>
             <span style={{ color: sentColor }}>sent {sentLabel}</span>
-            {topic.totalReach > 0 && <span className="text-[var(--brand-text-faint)]]">reach {fmtCompact(topic.totalReach)}</span>}
+            {topic.totalReach > 0 && <span className="text-[var(--brand-text-faint)]">reach {fmtCompact(topic.totalReach)}</span>}
           </div>
         </div>
       </button>
 
       {/* Expanded content */}
       {expanded && (
-        <div className="mt-2 pt-2 border-t border-[var(--brand-surface-3)]] space-y-2">
+        <div className="mt-2 pt-2 border-t border-[var(--brand-surface-3)] space-y-2">
           {/* Top mentions */}
           {topic.topMentions.map((m: any) => (
             <MentionRow key={m.id} mention={m} />
           ))}
           {topic.count > 3 && (
-            <div className="text-[10px] text-[var(--brand-text-faint)]]">+ {topic.count - 3} more</div>
+            <div className="text-[10px] text-[var(--brand-text-faint)]">+ {topic.count - 3} more</div>
           )}
 
           {/* Paired terms */}
           {topic.topPaired.length > 0 && (
-            <div className="pt-2 border-t border-[var(--brand-surface-2)]]">
-              <div className="text-[10px] text-[var(--brand-text-faint)]] mb-1">often paired:</div>
+            <div className="pt-2 border-t border-[var(--brand-surface-2)]">
+              <div className="text-[10px] text-[var(--brand-text-faint)] mb-1">often paired:</div>
               <div className="flex flex-wrap gap-2">
                 {topic.topPaired.map(([term, count]: [string, number]) => (
-                  <span key={term} className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--brand-surface-3)]] text-[var(--brand-text-mid)]]">
+                  <span key={term} className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--brand-surface-3)] text-[var(--brand-text-mid)]">
                     "{term}" {count}
                   </span>
                 ))}
@@ -213,14 +213,14 @@ function TopicCard({ topic, expanded, onToggle }: { topic: any; expanded: boolea
 
           {/* Feature requests */}
           {topic.topFeatureEntry && (
-            <div className="pt-2 border-t border-[var(--brand-surface-2)]]">
-              <div className="text-[10px] text-[var(--brand-text-faint)]]">top request: <span className="text-[var(--brand-text-mid)]]">"{topic.topFeatureEntry[0]}"</span> ({topic.topFeatureEntry[1]}×)</div>
+            <div className="pt-2 border-t border-[var(--brand-surface-2)]">
+              <div className="text-[10px] text-[var(--brand-text-faint)]">top request: <span className="text-[var(--brand-text-mid)]">"{topic.topFeatureEntry[0]}"</span> ({topic.topFeatureEntry[1]}×)</div>
             </div>
           )}
 
           {/* Crisis actions */}
           {topic.isCrisis && topic.crisisMention && (
-            <div className="pt-2 border-t border-[var(--brand-surface-2)]] space-y-1">
+            <div className="pt-2 border-t border-[var(--brand-surface-2)] space-y-1">
               <div className="text-[10px] text-[#ef4444]">
                 {topic.crisisMention.author} {topic.crisisMention.network} · sentiment −{Math.abs(topic.crisisMention.sentiment === 'negative' ? 0.8 : 0.4).toFixed(1)} · reach {fmtCompact(topic.crisisMention.reach)} in 4h · velocity {(topic.crisisMention.velocity ?? 3).toFixed(1)}× baseline
               </div>
@@ -247,11 +247,11 @@ function MentionRow({ mention: m }: { mention: any }) {
       <div className="w-2 h-2 rounded-full mt-1.5 shrink-0" style={{ background: sentColor }} />
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
-          <span className="text-[11px] text-[var(--brand-text-mid)]]">{m.author ?? 'anonymous'}</span>
-          <span className="text-[10px] text-[var(--brand-text-mid)]]">{m.network}</span>
-          <span className="text-[10px] text-[var(--brand-text-faint)]]">{fmtCompact(followers)} {followers > 1000 ? 'fol' : ''}</span>
+          <span className="text-[11px] text-[var(--brand-text-mid)]">{m.author ?? 'anonymous'}</span>
+          <span className="text-[10px] text-[var(--brand-text-mid)]">{m.network}</span>
+          <span className="text-[10px] text-[var(--brand-text-faint)]">{fmtCompact(followers)} {followers > 1000 ? 'fol' : ''}</span>
         </div>
-        <p className="text-[11px] text-[var(--brand-text-mid)]] mt-0.5 line-clamp-1">"{(m.text ?? '').trim()}"</p>
+        <p className="text-[11px] text-[var(--brand-text-mid)] mt-0.5 line-clamp-1">"{(m.text ?? '').trim()}"</p>
       </div>
     </div>
   );

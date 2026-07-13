@@ -106,14 +106,14 @@ export default function APIWebhooksTab() {
           Generate API Key
         </button>
         {generatedToken && (
-          <div className="p-3 bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] rounded-lg space-y-2">
+          <div className="p-3 bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-lg space-y-2">
             <div className="text-[11px] font-bold text-[var(--brand-text-strong)] flex items-center gap-2">
               <KeyRound size={14} className="text-[#F59E0B]" /> Copy this key now
             </div>
             <div className="text-[11px] font-mono break-all text-emerald-300">{generatedToken}</div>
             <button
               onClick={() => navigator.clipboard.writeText(generatedToken)}
-              className="px-3 py-1.5 rounded border border-[var(--brand-surface-4)]] text-[11px] text-[var(--brand-text-strong)] flex items-center gap-2"
+              className="px-3 py-1.5 rounded border border-[var(--brand-surface-4)] text-[11px] text-[var(--brand-text-strong)] flex items-center gap-2"
             >
               <Copy size={12} /> Copy
             </button>
@@ -121,10 +121,10 @@ export default function APIWebhooksTab() {
         )}
         <div className="space-y-2">
           {apiKeys.map((key) => (
-            <div key={key.id} className="flex items-center justify-between p-3 bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] rounded-lg">
+            <div key={key.id} className="flex items-center justify-between p-3 bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-lg">
               <div>
                 <div className="text-[12px] font-medium text-[var(--brand-text-strong)]">{key.name}</div>
-                <div className="text-[10px] text-[var(--brand-text-mid)]]">
+                <div className="text-[10px] text-[var(--brand-text-mid)]">
                   Scopes: {key.scopes.join(', ')} · Rate: {key.rateLimitPerMinute}/min · Last used: {key.lastUsedAt ? new Date(key.lastUsedAt).toLocaleString() : 'Never'}
                 </div>
               </div>
@@ -137,7 +137,7 @@ export default function APIWebhooksTab() {
             </div>
           ))}
           {!loading && apiKeys.length === 0 && (
-            <div className="text-[11px] text-[var(--brand-text-faint)]]">No API keys generated yet.</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]">No API keys generated yet.</div>
           )}
         </div>
       </SettingsSection>
@@ -173,13 +173,13 @@ export default function APIWebhooksTab() {
         <button
           onClick={() => createWebhook().catch((error) => window.alert(error.message))}
           disabled={!projectId || !webhookUrl.trim()}
-          className="px-4 py-2 rounded-lg bg-[var(--brand-surface-2)]] border border-[var(--brand-surface-4)]] text-[var(--brand-text-strong)] text-[12px] font-bold disabled:opacity-50"
+          className="px-4 py-2 rounded-lg bg-[var(--brand-surface-2)] border border-[var(--brand-surface-4)] text-[var(--brand-text-strong)] text-[12px] font-bold disabled:opacity-50"
         >
           Register Webhook
         </button>
         <div className="space-y-2">
           {webhooks.map((hook) => (
-            <div key={hook.id} className="p-3 bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] rounded-lg space-y-2">
+            <div key={hook.id} className="p-3 bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-lg space-y-2">
               <div className="flex items-center justify-between">
                 <div className="text-[12px] font-medium text-[var(--brand-text-strong)] flex items-center gap-2">
                   <WebhookIcon size={13} className="text-blue-400" /> {hook.name}
@@ -191,15 +191,15 @@ export default function APIWebhooksTab() {
                   <Trash2 size={12} />
                 </button>
               </div>
-              <div className="text-[10px] text-[var(--brand-text-mid)]] break-all">{hook.url}</div>
-              <div className="text-[10px] text-[var(--brand-text-mid)]]">Events: {hook.events.join(', ')}</div>
-              <div className="text-[10px] text-[var(--brand-text-mid)]]">
+              <div className="text-[10px] text-[var(--brand-text-mid)] break-all">{hook.url}</div>
+              <div className="text-[10px] text-[var(--brand-text-mid)]">Events: {hook.events.join(', ')}</div>
+              <div className="text-[10px] text-[var(--brand-text-mid)]">
                 Last delivery: {hook.lastDeliveryAt ? new Date(hook.lastDeliveryAt).toLocaleString() : 'Never'}
               </div>
             </div>
           ))}
           {!loading && webhooks.length === 0 && (
-            <div className="text-[11px] text-[var(--brand-text-faint)]]">No webhooks registered yet.</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]">No webhooks registered yet.</div>
           )}
         </div>
       </SettingsSection>

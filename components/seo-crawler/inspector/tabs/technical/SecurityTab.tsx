@@ -41,13 +41,13 @@ export default function SecurityTab({ page }: { page: any }) {
 
       {/* Security headers table */}
       <Card title="Security headers">
-        <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-lg overflow-hidden">
+        <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-surface-3)] rounded-lg overflow-hidden">
           <table className="w-full text-[11px]">
             <thead>
-              <tr className="border-b border-[var(--brand-surface-3)]]">
-                <th className="px-3 py-2 text-left text-[var(--brand-border-2)]] uppercase tracking-widest text-[9px] font-bold">Header</th>
-                <th className="px-3 py-2 text-left text-[var(--brand-border-2)]] uppercase tracking-widest text-[9px] font-bold">Value</th>
-                <th className="px-3 py-2 text-left text-[var(--brand-border-2)]] uppercase tracking-widest text-[9px] font-bold">Status</th>
+              <tr className="border-b border-[var(--brand-surface-3)]">
+                <th className="px-3 py-2 text-left text-[var(--brand-border-2)] uppercase tracking-widest text-[9px] font-bold">Header</th>
+                <th className="px-3 py-2 text-left text-[var(--brand-border-2)] uppercase tracking-widest text-[9px] font-bold">Value</th>
+                <th className="px-3 py-2 text-left text-[var(--brand-border-2)] uppercase tracking-widest text-[9px] font-bold">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -60,9 +60,9 @@ export default function SecurityTab({ page }: { page: any }) {
                 { name: 'Permissions-Policy', value: page?.permissionsPolicy || null, present: !!page?.permissionsPolicy },
                 { name: 'X-XSS-Protection', value: page?.xXssProtection || null, present: !!page?.xXssProtection },
               ].map((h, i) => (
-                <tr key={h.name} className={`border-b border-[var(--brand-surface-2)]] ${i % 2 === 0 ? '' : 'bg-[var(--brand-surface-0)]]'} hover:bg-[var(--brand-surface-2)]]`}>
+                <tr key={h.name} className={`border-b border-[var(--brand-surface-2)] ${i % 2 === 0 ? '' : 'bg-[var(--brand-surface-0)]'} hover:bg-[var(--brand-surface-2)]`}>
                   <td className="px-3 py-1.5 text-[#F59E0B]/80">{h.name}</td>
-                  <td className="px-3 py-1.5 text-[var(--brand-text-mid)]] break-all">{h.value || '(missing)'}</td>
+                  <td className="px-3 py-1.5 text-[var(--brand-text-mid)] break-all">{h.value || '(missing)'}</td>
                   <td className="px-3 py-1.5">
                     <StatusBadge status={h.present ? 'pass' : 'warn'} label={h.present ? 'OK' : 'Missing'} />
                   </td>

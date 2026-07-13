@@ -19,10 +19,10 @@ export default function HorizontalBar({
 
   return (
     <div className="flex items-center gap-3 py-1">
-      <span className={`w-[100px] truncate text-[11px] ${isOwn ? 'font-bold text-[#F59E0B]' : 'text-[var(--brand-text-mid)]]'}`}>
+      <span className={`w-[100px] truncate text-[11px] ${isOwn ? 'font-bold text-[#F59E0B]' : 'text-[var(--brand-text-mid)]'}`}>
         {isOwn ? 'Your Site' : label}
       </span>
-      <div className="h-[14px] flex-1 overflow-hidden rounded-full bg-[var(--brand-surface-2)]]">
+      <div className="h-[14px] flex-1 overflow-hidden rounded-full bg-[var(--brand-surface-2)]">
         <div
           className="h-full rounded-full transition-all duration-500"
           style={{ width: `${pct}%`, backgroundColor: isOwn ? '#F59E0B' : color }}

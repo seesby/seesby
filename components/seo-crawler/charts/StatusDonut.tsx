@@ -61,7 +61,7 @@ export default function StatusDonut({
       </ResponsiveContainer>
       <div className="text-center -mt-2">
         <span className="text-2xl font-black text-[var(--brand-text-strong)]">{total}</span>
-        <span className="text-[11px] text-[var(--brand-text-faint)]] ml-1">total URLs</span>
+        <span className="text-[11px] text-[var(--brand-text-faint)] ml-1">total URLs</span>
       </div>
     </ChartCard>
   );

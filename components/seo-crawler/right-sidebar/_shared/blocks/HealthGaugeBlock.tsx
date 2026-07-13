@@ -29,7 +29,7 @@ export function HealthGaugeBlock({ value, prev, letter, hasPrior }: {
           <div className="text-[20px] font-bold tabular-nums">{v}</div>
         </div>
       </div>
-      <div className="text-[10px] uppercase tracking-widest text-[var(--brand-text-mid)]] mt-1">Score · {letter}</div>
+      <div className="text-[10px] uppercase tracking-widest text-[var(--brand-text-mid)] mt-1">Score · {letter}</div>
       {hasPrior && prev != null && (
         <div className={`text-[10px] font-mono ${v >= prev ? 'text-emerald-400' : 'text-red-400'}`}>
           {v >= prev ? '▲' : '▼'} {Math.abs(v - prev)}

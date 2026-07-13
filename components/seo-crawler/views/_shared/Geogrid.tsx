@@ -11,7 +11,7 @@ export function Geogrid({
 }) {
   const map = new Map(cells.map(c => [`${c.row}:${c.col}`, c.rank]));
   return (
-    <div className="grid bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded" style={{
+    <div className="grid bg-[var(--brand-surface-0)] border border-[var(--brand-surface-3)] rounded" style={{
       gridTemplateColumns: `repeat(${size}, 1fr)`,
       gridTemplateRows: `repeat(${size}, 1fr)`,
       width: '100%',

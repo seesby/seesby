@@ -76,10 +76,10 @@ export default function QualityTab({ page, hasTrend }: { page: any; hasTrend?: b
         <Card title={`Score ${healthScore} / 100`}>
           <div className="space-y-1.5">
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider">Start 100</span>
+              <span className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-wider">Start 100</span>
             </div>
             {deductions.length === 0 ? (
-              <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No deductions</div>
+              <div className="text-[11px] text-[var(--brand-border-2)] py-2">No deductions</div>
             ) : (
               deductions.map((d: any, i: number) => {
                 const impact = Math.abs(Number(d.scoreImpact));
@@ -87,18 +87,18 @@ export default function QualityTab({ page, hasTrend }: { page: any; hasTrend?: b
                 return (
                   <div key={i} className="flex items-center gap-2">
                     <span className="text-[10px] font-mono text-[#ef4444] w-[24px] text-right shrink-0">{d.scoreImpact}</span>
-                    <span className="text-[10px] text-[var(--brand-text-mid)]] flex-1 min-w-0 truncate">{d.label || d.description}</span>
-                    <div className="shrink-0 w-[60px] h-1.5 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
+                    <span className="text-[10px] text-[var(--brand-text-mid)] flex-1 min-w-0 truncate">{d.label || d.description}</span>
+                    <div className="shrink-0 w-[60px] h-1.5 bg-[var(--brand-surface-3)] rounded-full overflow-hidden">
                       <div className="h-full bg-[#F59E0B]/60 rounded-full" style={{ width: `${barWidth}%` }} />
                     </div>
                   </div>
                 );
               })
             )}
-            <div className="pt-2 border-t border-[var(--brand-surface-2)]]">
+            <div className="pt-2 border-t border-[var(--brand-surface-2)]">
               <div className="text-[11px] font-bold text-[var(--brand-text-strong)]">= {healthScore}</div>
             </div>
-            <div className="text-[10px] text-[var(--brand-border-2)]]">
+            <div className="text-[10px] text-[var(--brand-border-2)]">
               {positiveOffsets > 0
                 ? `Positive offsets applied: +${positiveOffsets}`
                 : `Deductions: -${totalDeductions}`}
@@ -113,7 +113,7 @@ export default function QualityTab({ page, hasTrend }: { page: any; hasTrend?: b
             <Card title="30d Trend">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-[20px] font-bold text-[var(--brand-text-strong)]">{healthScore}</span>
-                <span className={`text-[11px] font-mono ${healthScore - healthSeries[0] > 0 ? 'text-[#22c55e]' : healthScore - healthSeries[0] < 0 ? 'text-[#ef4444]' : 'text-[var(--brand-border-2)]]'}`}>
+                <span className={`text-[11px] font-mono ${healthScore - healthSeries[0] > 0 ? 'text-[#22c55e]' : healthScore - healthSeries[0] < 0 ? 'text-[#ef4444]' : 'text-[var(--brand-border-2)]'}`}>
                   {healthScore - healthSeries[0] > 0 ? '+' : ''}{healthScore - healthSeries[0]} vs 30d ago
                 </span>
               </div>
@@ -126,17 +126,17 @@ export default function QualityTab({ page, hasTrend }: { page: any; hasTrend?: b
             <div className="mb-2">
               <div className="flex items-center gap-2">
                 <span className="text-[16px] font-bold text-[var(--brand-text-strong)]">{peerPercentile}%</span>
-                <span className="text-[10px] text-[var(--brand-text-faint)]]">(p{peerPercentile} — {peerPercentile < 20 ? 'bottom quintile' : peerPercentile < 40 ? 'lower half' : peerPercentile < 60 ? 'middle range' : peerPercentile < 80 ? 'upper half' : 'top quintile'})</span>
+                <span className="text-[10px] text-[var(--brand-text-faint)]">(p{peerPercentile} — {peerPercentile < 20 ? 'bottom quintile' : peerPercentile < 40 ? 'lower half' : peerPercentile < 60 ? 'middle range' : peerPercentile < 80 ? 'upper half' : 'top quintile'})</span>
               </div>
             </div>
-            <div className="relative h-2.5 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
+            <div className="relative h-2.5 bg-[var(--brand-surface-3)] rounded-full overflow-hidden">
               <div className="absolute h-full bg-gradient-to-r from-[#ef4444] via-[#f59e0b] to-[#22c55e] rounded-full" style={{ width: '100%' }} />
               <div
                 className="absolute top-0 h-full w-1 bg-[var(--brand-surface-3)] rounded-full shadow-lg"
                 style={{ left: `${Math.min(98, peerPercentile)}%` }}
               />
             </div>
-            <div className="flex justify-between text-[9px] text-[var(--brand-surface-4)]] mt-1">
+            <div className="flex justify-between text-[9px] text-[var(--brand-surface-4)] mt-1">
               <span>p0</span>
               <span>p50</span>
               <span>p100</span>
@@ -178,7 +178,7 @@ export default function QualityTab({ page, hasTrend }: { page: any; hasTrend?: b
                     const ly = radarCenter + (radarRadius + 16) * Math.sin(angle);
                     return (
                       <text key={i} x={lx} y={ly} textAnchor="middle" dominantBaseline="middle"
-                        className="fill-[var(--brand-text-mid)]]" style={{ fontSize: '10px', fontWeight: 500 }}>
+                        className="fill-[var(--brand-text-mid)]" style={{ fontSize: '10px', fontWeight: 500 }}>
                         {c.label}
                       </text>
                     );
@@ -190,13 +190,13 @@ export default function QualityTab({ page, hasTrend }: { page: any; hasTrend?: b
                 {categories.map((c) => (
                   <div key={c.label} className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full shrink-0" style={{ background: c.color }} />
-                    <span className="text-[10px] text-[var(--brand-text-mid)]] flex-1">{c.label}</span>
-                    <span className="text-[10px] font-mono text-[var(--brand-text-faint)]]">{c.pct}%</span>
+                    <span className="text-[10px] text-[var(--brand-text-mid)] flex-1">{c.label}</span>
+                    <span className="text-[10px] font-mono text-[var(--brand-text-faint)]">{c.pct}%</span>
                   </div>
                 ))}
               </div>
               {!hasRealScores && (
-                <div className="text-[9px] text-[var(--brand-surface-4)]] text-center">Estimated breakdown — real scores unavailable</div>
+                <div className="text-[9px] text-[var(--brand-surface-4)] text-center">Estimated breakdown — real scores unavailable</div>
               )}
             </div>
           </Card>
@@ -207,13 +207,13 @@ export default function QualityTab({ page, hasTrend }: { page: any; hasTrend?: b
       <Card title="What moves this score">
         <div className="space-y-0">
           {upliftItems.length === 0 ? (
-            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No uplift actions available</div>
+            <div className="text-[11px] text-[var(--brand-border-2)] py-2">No uplift actions available</div>
           ) : (
             upliftItems.map((u: any, i: number) => (
-              <div key={i} className="flex items-center gap-3 py-1.5 border-b border-[var(--brand-surface-2)]] last:border-b-0">
-                <span className="text-[10px] text-[var(--brand-text-mid)]] flex-1 min-w-0 truncate">{u.label || u.description}</span>
+              <div key={i} className="flex items-center gap-3 py-1.5 border-b border-[var(--brand-surface-2)] last:border-b-0">
+                <span className="text-[10px] text-[var(--brand-text-mid)] flex-1 min-w-0 truncate">{u.label || u.description}</span>
                 <span className="text-[10px] font-mono text-[#22c55e] shrink-0">+{u.estimatedImpact}</span>
-                <span className="text-[9px] text-[var(--brand-border-2)]] shrink-0">Expected in 60d</span>
+                <span className="text-[9px] text-[var(--brand-border-2)] shrink-0">Expected in 60d</span>
               </div>
             ))
           )}

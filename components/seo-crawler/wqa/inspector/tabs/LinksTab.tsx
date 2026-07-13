@@ -54,14 +54,14 @@ export default function LinksTab({ page, hasTrend }: { page: any; hasTrend?: boo
             <DataRow label="Link types" value={`${formatNumber(dofollowIn)} dofollow \u00B7 ${formatNumber(nofollowIn)} nofollow`} />
           )}
           {inLinksList.length > 0 && (
-            <div className="mt-2 pt-2 border-t border-[var(--brand-surface-2)]]">
-              <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest mb-1.5">Top Sources</div>
+            <div className="mt-2 pt-2 border-t border-[var(--brand-surface-2)]">
+              <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest mb-1.5">Top Sources</div>
               <div className="space-y-1 max-h-[160px] overflow-y-auto">
                 {inLinksList.slice(0, 5).map((link, i) => (
-                  <div key={`${link.url}-${i}`} className="flex items-center gap-2 text-[10px] py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0">
+                  <div key={`${link.url}-${i}`} className="flex items-center gap-2 text-[10px] py-1 border-b border-[var(--brand-surface-2)] last:border-b-0">
                     <TruncatedUrl url={link.url} />
                     {link.anchor && (
-                      <span className="text-[10px] text-[var(--brand-text-faint)]] shrink-0">anchor &ldquo;{String(link.anchor).slice(0, 30)}&rdquo;</span>
+                      <span className="text-[10px] text-[var(--brand-text-faint)] shrink-0">anchor &ldquo;{String(link.anchor).slice(0, 30)}&rdquo;</span>
                     )}
                   </div>
                 ))}
@@ -97,7 +97,7 @@ export default function LinksTab({ page, hasTrend }: { page: any; hasTrend?: boo
               <StatusBadge key={domain} status="info" label={domain} />
             ))}
             {uniqueThirdPartyDomains.length > 20 && (
-              <span className="text-[10px] text-[var(--brand-text-faint)]]">+{uniqueThirdPartyDomains.length - 20} more</span>
+              <span className="text-[10px] text-[var(--brand-text-faint)]">+{uniqueThirdPartyDomains.length - 20} more</span>
             )}
           </div>
         </Card>
@@ -120,18 +120,18 @@ export default function LinksTab({ page, hasTrend }: { page: any; hasTrend?: boo
         </Card>
 
         <Card title="Co-citation (Peer Articles)">
-          <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest mb-1.5">Cited with</div>
+          <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest mb-1.5">Cited with</div>
           {coCitation.length > 0 ? (
             <div className="space-y-1">
               {coCitation.slice(0, 6).map((c: any, i: number) => (
-                <div key={i} className="flex items-center justify-between py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0">
-                  <span className="text-[10px] text-[var(--brand-text-mid)]] truncate max-w-[160px]">{c.url || c}</span>
-                  <span className="text-[10px] font-mono text-[var(--brand-text-mid)]]">{c.count || c.times || ''}x</span>
+                <div key={i} className="flex items-center justify-between py-1 border-b border-[var(--brand-surface-2)] last:border-b-0">
+                  <span className="text-[10px] text-[var(--brand-text-mid)] truncate max-w-[160px]">{c.url || c}</span>
+                  <span className="text-[10px] font-mono text-[var(--brand-text-mid)]">{c.count || c.times || ''}x</span>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-[10px] text-[var(--brand-border-2)]] py-2">No co-citation data</div>
+            <div className="text-[10px] text-[var(--brand-border-2)] py-2">No co-citation data</div>
           )}
         </Card>
       </div>

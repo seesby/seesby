@@ -124,7 +124,7 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
 
     return (
         <div className="flex items-center justify-center min-h-[80vh]">
-            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-10 max-w-xl w-full relative overflow-hidden shadow-2xl">
+            <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-10 max-w-xl w-full relative overflow-hidden shadow-2xl">
                 <div className="absolute top-0 left-0 w-full h-1 bg-[var(--brand-surface-3)]">
                     <div className="h-full bg-brand-amber transition-all duration-500" style={{ width: `${(step / 3) * 100}%` }}></div>
                 </div>
@@ -156,7 +156,7 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
                                 placeholder="e.g. Acme Corp"
                                 value={name}
                                 onChange={e => setName(e.target.value)}
-                                className="w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
+                                className="w-full bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
                             />
                         </div>
                         <div>
@@ -166,7 +166,7 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
                                 placeholder="https://example.com"
                                 value={url}
                                 onChange={e => setUrl(e.target.value)}
-                                className="w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
+                                className="w-full bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
                             />
                         </div>
                         <div>
@@ -174,7 +174,7 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
                             <select
                                 value={industry}
                                 onChange={e => setIndustry(e.target.value as any)}
-                                className="w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 transition-colors appearance-none"
+                                className="w-full bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 transition-colors appearance-none"
                             >
                                 <option value="ecommerce">E-Commerce</option>
                                 <option value="local">Local Service / Home Service</option>
@@ -207,7 +207,7 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
                                         newKw[idx] = e.target.value;
                                         setKeywords(newKw);
                                     }}
-                                    className="w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
+                                    className="w-full bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
                                 />
                             </div>
                         ))}
@@ -233,14 +233,14 @@ export const OnboardingWizard = ({ onComplete }: { onComplete?: () => void }) =>
 
                 {step === 3 && (
                     <div className="space-y-6">
-                        <div className="bg-[var(--brand-surface-2)]] p-5 rounded-xl border border-[var(--brand-border-1)]">
+                        <div className="bg-[var(--brand-surface-2)] p-5 rounded-xl border border-[var(--brand-border-1)]">
                             <label className="text-xs font-bold text-[var(--brand-text-mid)] block mb-2">GSC Property URL (Exact Match)</label>
                             <input
                                 type="text"
                                 placeholder="e.g. sc-domain:example.com or https://example.com/"
                                 value={gscUrl}
                                 onChange={e => setGscUrl(e.target.value)}
-                                className="w-full bg-[var(--brand-surface-1)]] border border-[var(--brand-border-2)] rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-amber font-mono mb-4"
+                                className="w-full bg-[var(--brand-surface-1)] border border-[var(--brand-border-2)] rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-amber font-mono mb-4"
                             />
 
                             {gscConnected ? (

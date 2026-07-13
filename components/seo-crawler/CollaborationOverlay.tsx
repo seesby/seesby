@@ -190,7 +190,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
     };
 
     return (
-        <div className="fixed inset-y-0 right-0 w-[560px] bg-[var(--brand-surface-0)]] border-l border-[var(--brand-border-2)] shadow-2xl z-50 flex flex-col animate-in slide-in-from-right duration-300">
+        <div className="fixed inset-y-0 right-0 w-[560px] bg-[var(--brand-surface-0)] border-l border-[var(--brand-border-2)] shadow-2xl z-50 flex flex-col animate-in slide-in-from-right duration-300">
             {/* Header */}
             <div className="p-6 border-b border-[var(--brand-border-2)] flex justify-between items-start">
                 <div>
@@ -406,7 +406,7 @@ export const CollaborationOverlay: React.FC<CollaborationOverlayProps> = ({ isOp
             </div>
 
             {/* Input Area */}
-            <div className="p-6 border-t border-[var(--brand-border-2)] bg-[var(--brand-surface-0)]]">
+            <div className="p-6 border-t border-[var(--brand-border-2)] bg-[var(--brand-surface-0)]">
                 <div className="relative">
                     <textarea 
                         placeholder="Write a comment..."

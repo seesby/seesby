@@ -22,9 +22,9 @@ export default function SearchTab({ page, hasTrend }: { page: any; hasTrend?: bo
 
   if (!hasGsc) {
     return (
-      <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-5 text-center">
+      <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-5 text-center">
         <div className="text-[14px] text-[var(--brand-text-strong)] font-semibold mb-2">Google Search Console not connected</div>
-        <div className="text-[12px] text-[var(--brand-text-faint)]]">Connect GSC in Integrations to enable search-performance data.</div>
+        <div className="text-[12px] text-[var(--brand-text-faint)]">Connect GSC in Integrations to enable search-performance data.</div>
       </div>
     );
   }
@@ -42,19 +42,19 @@ export default function SearchTab({ page, hasTrend }: { page: any; hasTrend?: bo
               <SparkRow label="CTR" values={series28d(page, 'gscCtr')} />
             </div>
           ) : (
-            <div className="text-[11px] text-[var(--brand-border-2)]] py-2">Single crawl — no trend data</div>
+            <div className="text-[11px] text-[var(--brand-border-2)] py-2">Single crawl — no trend data</div>
           )}
         </Card>
         <Card title="Country Mix">
           <div className="grid grid-cols-2 gap-x-4 gap-y-1">
             {(page?.countryMix || []).slice(0, 6).map((c: any, i: number) => (
               <div key={i} className="flex items-center justify-between">
-                <span className="text-[10px] text-[var(--brand-text-mid)]]">{c.country || c.code}</span>
+                <span className="text-[10px] text-[var(--brand-text-mid)]">{c.country || c.code}</span>
                 <span className="text-[10px] font-mono text-[var(--brand-text-strong)]">{c.pct || c.percentage || 0}%</span>
               </div>
             ))}
             {(!page?.countryMix || page.countryMix.length === 0) && (
-              <div className="text-[10px] text-[var(--brand-border-2)]] col-span-2">No data</div>
+              <div className="text-[10px] text-[var(--brand-border-2)] col-span-2">No data</div>
             )}
           </div>
         </Card>
@@ -66,9 +66,9 @@ export default function SearchTab({ page, hasTrend }: { page: any; hasTrend?: bo
               { label: 'Tablet', value: page?.tabletPct || 0 },
             ].map((d) => (
               <div key={d.label} className="flex items-center justify-between">
-                <span className="text-[10px] text-[var(--brand-text-mid)]]">{d.label}</span>
+                <span className="text-[10px] text-[var(--brand-text-mid)]">{d.label}</span>
                 <div className="flex items-center gap-2">
-                  <div className="w-16 h-1.5 bg-[var(--brand-surface-3)]] rounded-full overflow-hidden">
+                  <div className="w-16 h-1.5 bg-[var(--brand-surface-3)] rounded-full overflow-hidden">
                     <div className="h-full bg-[#60a5fa] rounded-full" style={{ width: `${d.value}%` }} />
                   </div>
                   <span className="text-[10px] font-mono text-[var(--brand-text-strong)]">{d.value}%</span>
@@ -83,30 +83,30 @@ export default function SearchTab({ page, hasTrend }: { page: any; hasTrend?: bo
       <Card title={`Ranking Keywords (GSC+Bing) — ${topQueries.length}`}>
         <div className="overflow-x-auto max-h-[320px] overflow-y-auto">
           <table className="w-full text-left">
-            <thead className="sticky top-0 bg-[var(--brand-surface-0)]]">
-              <tr className="border-b border-[var(--brand-surface-3)]]">
-                <th className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold py-2 px-2">Query</th>
-                <th className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold py-2 px-2 text-right">Pos</th>
-                <th className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold py-2 px-2 text-right">Impr</th>
-                <th className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold py-2 px-2 text-right">Clk</th>
-                <th className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold py-2 px-2 text-right">CTR</th>
-                <th className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold py-2 px-2 text-right">&Delta;pos 30d</th>
-                <th className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold py-2 px-2 text-right">Intent</th>
+            <thead className="sticky top-0 bg-[var(--brand-surface-0)]">
+              <tr className="border-b border-[var(--brand-surface-3)]">
+                <th className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold py-2 px-2">Query</th>
+                <th className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold py-2 px-2 text-right">Pos</th>
+                <th className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold py-2 px-2 text-right">Impr</th>
+                <th className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold py-2 px-2 text-right">Clk</th>
+                <th className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold py-2 px-2 text-right">CTR</th>
+                <th className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold py-2 px-2 text-right">&Delta;pos 30d</th>
+                <th className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold py-2 px-2 text-right">Intent</th>
               </tr>
             </thead>
             <tbody>
               {topQueries.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="text-[11px] text-[var(--brand-border-2)]] py-6 text-center">No ranking keyword data yet</td>
+                  <td colSpan={7} className="text-[11px] text-[var(--brand-border-2)] py-6 text-center">No ranking keyword data yet</td>
                 </tr>
               ) : (
                 topQueries.slice(0, 20).map((q: any, i: number) => (
-                  <tr key={i} className="border-b border-[var(--brand-surface-2)]] last:border-b-0 hover:bg-[var(--brand-surface-0)]]">
-                    <td className="text-[11px] text-[var(--brand-text-mid)]] py-1.5 px-2 max-w-[180px] truncate">{q.query}</td>
+                  <tr key={i} className="border-b border-[var(--brand-surface-2)] last:border-b-0 hover:bg-[var(--brand-surface-0)]">
+                    <td className="text-[11px] text-[var(--brand-text-mid)] py-1.5 px-2 max-w-[180px] truncate">{q.query}</td>
                     <td className="text-[11px] font-mono text-[var(--brand-text-strong)] py-1.5 px-2 text-right">{formatNumber(q.position, { maximumFractionDigits: 1 })}</td>
-                    <td className="text-[11px] font-mono text-[var(--brand-text-mid)]] py-1.5 px-2 text-right">{formatNumber(q.impressions)}</td>
-                    <td className="text-[11px] font-mono text-[var(--brand-text-mid)]] py-1.5 px-2 text-right">{formatNumber(q.clicks)}</td>
-                    <td className="text-[11px] font-mono text-[var(--brand-text-mid)]] py-1.5 px-2 text-right">{formatPercent(q.ctr, 100)}</td>
+                    <td className="text-[11px] font-mono text-[var(--brand-text-mid)] py-1.5 px-2 text-right">{formatNumber(q.impressions)}</td>
+                    <td className="text-[11px] font-mono text-[var(--brand-text-mid)] py-1.5 px-2 text-right">{formatNumber(q.clicks)}</td>
+                    <td className="text-[11px] font-mono text-[var(--brand-text-mid)] py-1.5 px-2 text-right">{formatPercent(q.ctr, 100)}</td>
                     <td className="text-[11px] font-mono py-1.5 px-2 text-right">
                       {q.posDelta ? (
                         <span className={q.posDelta < 0 ? 'text-red-400' : 'text-green-400'}>
@@ -114,7 +114,7 @@ export default function SearchTab({ page, hasTrend }: { page: any; hasTrend?: bo
                         </span>
                       ) : '\u2014'}
                     </td>
-                    <td className="text-[10px] text-[var(--brand-text-mid)]] py-1.5 px-2 text-right">{q.intent || '\u2014'}</td>
+                    <td className="text-[10px] text-[var(--brand-text-mid)] py-1.5 px-2 text-right">{q.intent || '\u2014'}</td>
                   </tr>
                 ))
               )}
@@ -128,14 +128,14 @@ export default function SearchTab({ page, hasTrend }: { page: any; hasTrend?: bo
         <Card title="Missed Queries (rank 51-100, impr>0)">
           <div className="space-y-1">
             {missedQueries.length === 0 ? (
-              <div className="text-[11px] text-[var(--brand-border-2)]] py-2">No missed queries</div>
+              <div className="text-[11px] text-[var(--brand-border-2)] py-2">No missed queries</div>
             ) : (
               missedQueries.slice(0, 10).map((q: any, i: number) => (
-                <div key={i} className="flex items-center justify-between py-1.5 border-b border-[var(--brand-surface-2)]] last:border-b-0">
-                  <span className="text-[10px] text-[var(--brand-text-mid)]] truncate max-w-[160px]">{q.query}</span>
+                <div key={i} className="flex items-center justify-between py-1.5 border-b border-[var(--brand-surface-2)] last:border-b-0">
+                  <span className="text-[10px] text-[var(--brand-text-mid)] truncate max-w-[160px]">{q.query}</span>
                   <div className="flex items-center gap-3">
                     <span className="text-[10px] font-mono text-[var(--brand-text-strong)]">#{formatNumber(q.position, { maximumFractionDigits: 0 })}</span>
-                    <span className="text-[10px] font-mono text-[var(--brand-text-faint)]]">{formatNumber(q.impressions)} impr</span>
+                    <span className="text-[10px] font-mono text-[var(--brand-text-faint)]">{formatNumber(q.impressions)} impr</span>
                   </div>
                 </div>
               ))
@@ -168,9 +168,9 @@ export default function SearchTab({ page, hasTrend }: { page: any; hasTrend?: bo
         <CollapseGroup title="Striking Distance Keywords">
           <div className="flex flex-wrap gap-1.5">
             {strikingKw.map((kw: any, i: number) => (
-              <span key={i} className="px-2 py-1 rounded border border-[var(--brand-border-3)]] bg-[var(--brand-surface-0)]] text-[10px] text-[var(--brand-text-mid)]] font-mono">
+              <span key={i} className="px-2 py-1 rounded border border-[var(--brand-border-3)] bg-[var(--brand-surface-0)] text-[10px] text-[var(--brand-text-mid)] font-mono">
                 {typeof kw === 'string' ? kw : kw.keyword || kw.query}
-                {kw.position && <span className="text-[var(--brand-text-faint)]] ml-1">#{formatNumber(kw.position, { maximumFractionDigits: 0 })}</span>}
+                {kw.position && <span className="text-[var(--brand-text-faint)] ml-1">#{formatNumber(kw.position, { maximumFractionDigits: 0 })}</span>}
               </span>
             ))}
           </div>
@@ -182,11 +182,11 @@ export default function SearchTab({ page, hasTrend }: { page: any; hasTrend?: bo
         <CollapseGroup title="Cannibalization Siblings">
           <div className="space-y-1.5">
             {siblings.map((s: any, i: number) => (
-              <div key={i} className="flex items-center justify-between py-2 px-3 rounded-md bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]]">
-                <div className="text-[11px] text-[var(--brand-text-mid)]] truncate max-w-[200px]">{typeof s === 'string' ? s : s.url}</div>
+              <div key={i} className="flex items-center justify-between py-2 px-3 rounded-md bg-[var(--brand-surface-0)] border border-[var(--brand-surface-2)]">
+                <div className="text-[11px] text-[var(--brand-text-mid)] truncate max-w-[200px]">{typeof s === 'string' ? s : s.url}</div>
                 <div className="flex items-center gap-3">
                   {s.position && <span className="text-[10px] font-mono text-[var(--brand-text-strong)]">#{formatNumber(s.position, { maximumFractionDigits: 1 })}</span>}
-                  {s.clicks !== undefined && <span className="text-[10px] font-mono text-[var(--brand-text-mid)]]">{formatNumber(s.clicks)} clicks</span>}
+                  {s.clicks !== undefined && <span className="text-[10px] font-mono text-[var(--brand-text-mid)]">{formatNumber(s.clicks)} clicks</span>}
                 </div>
               </div>
             ))}
@@ -200,7 +200,7 @@ export default function SearchTab({ page, hasTrend }: { page: any; hasTrend?: bo
 function SparkRow({ label, values, invert }: { label: string; values: number[]; invert?: boolean }) {
   return (
     <div className="flex items-center gap-3">
-      <span className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest w-[40px] shrink-0">{label}</span>
+      <span className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest w-[40px] shrink-0">{label}</span>
       <div className="flex-1">
         <Sparkline values={values} width={280} height={20} tone={invert ? 'bad' : 'info'} />
       </div>

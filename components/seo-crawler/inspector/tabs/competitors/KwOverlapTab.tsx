@@ -33,20 +33,20 @@ export default function KwOverlapTab({ page }: { page: any; hasTrend?: boolean }
       {/* Shared queries table */}
       <Card title={`Shared queries for topic "${topic || '...'}"`}>
         {sharedKws.length > 0 ? (
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded overflow-hidden">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded overflow-hidden">
             <table className="w-full text-[11px]">
               <thead>
-                <tr className="border-b border-[var(--brand-border-2)]]">
-                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Query</th>
-                  <th className="px-3 py-2 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Us</th>
+                <tr className="border-b border-[var(--brand-border-2)]">
+                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Query</th>
+                  <th className="px-3 py-2 text-center text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Us</th>
                   {competitors.slice(0, 3).map((comp: any, i: number) => (
-                    <th key={i} className="px-3 py-2 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">
+                    <th key={i} className="px-3 py-2 text-center text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">
                       {comp.domain || comp.name || `Comp ${i + 1}`}
                     </th>
                   ))}
-                  <th className="px-3 py-2 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Vol</th>
-                  <th className="px-3 py-2 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Intent</th>
-                  <th className="px-3 py-2 text-center text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Status</th>
+                  <th className="px-3 py-2 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Vol</th>
+                  <th className="px-3 py-2 text-center text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Intent</th>
+                  <th className="px-3 py-2 text-center text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -66,8 +66,8 @@ export default function KwOverlapTab({ page }: { page: any; hasTrend?: boolean }
                   }
 
                   return (
-                    <tr key={i} className="border-b border-[var(--brand-surface-3)]] hover:bg-[var(--brand-surface-2)]]">
-                      <td className="px-3 py-2 text-[var(--brand-text-mid)]] truncate max-w-[200px]">{query}</td>
+                    <tr key={i} className="border-b border-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-2)]">
+                      <td className="px-3 py-2 text-[var(--brand-text-mid)] truncate max-w-[200px]">{query}</td>
                       <td className="px-3 py-2 text-center text-green-400">{ourPos ?? '\u2014'}</td>
                       {competitors.slice(0, 3).map((comp: any, j: number) => {
                         const pos = theirPositions[j] ?? (j === 0 ? theirPos : null);
@@ -75,8 +75,8 @@ export default function KwOverlapTab({ page }: { page: any; hasTrend?: boolean }
                           <td key={j} className="px-3 py-2 text-center text-orange-400">{pos ?? '\u2014'}</td>
                         );
                       })}
-                      <td className="px-3 py-2 text-right text-[var(--brand-text-mid)]]">{vol ? formatNumber(vol) : '\u2014'}</td>
-                      <td className="px-3 py-2 text-center text-[var(--brand-text-faint)]]">{intent || '\u2014'}</td>
+                      <td className="px-3 py-2 text-right text-[var(--brand-text-mid)]">{vol ? formatNumber(vol) : '\u2014'}</td>
+                      <td className="px-3 py-2 text-center text-[var(--brand-text-faint)]">{intent || '\u2014'}</td>
                       <td className="px-3 py-2 text-center">
                         <StatusBadge status={status.type} label={status.label} />
                       </td>
@@ -87,7 +87,7 @@ export default function KwOverlapTab({ page }: { page: any; hasTrend?: boolean }
             </table>
           </div>
         ) : (
-          <div className="text-[12px] text-[var(--brand-text-faint)]] py-3">No shared queries found.</div>
+          <div className="text-[12px] text-[var(--brand-text-faint)] py-3">No shared queries found.</div>
         )}
       </Card>
 

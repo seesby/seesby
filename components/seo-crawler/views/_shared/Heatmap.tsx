@@ -27,11 +27,11 @@ export function Heatmap({
       <div className="grid" style={{ gridTemplateColumns: colTemplate, gap }}>
         <div />
         {cols.map(c => (
-          <div key={c} className="text-[9px] text-[var(--brand-text-faint)]] text-center truncate" style={fullWidth ? {} : { width: cellSize } }>{c}</div>
+          <div key={c} className="text-[9px] text-[var(--brand-text-faint)] text-center truncate" style={fullWidth ? {} : { width: cellSize } }>{c}</div>
         ))}
         {rows.map(r => (
           <React.Fragment key={r}>
-            <div className="text-[10px] text-[var(--brand-text-mid)]] pr-2 truncate" style={{ height: cellSize, lineHeight: `${cellSize}px` }}>{r}</div>
+            <div className="text-[10px] text-[var(--brand-text-mid)] pr-2 truncate" style={{ height: cellSize, lineHeight: `${cellSize}px` }}>{r}</div>
             {cols.map(c => {
               const v = getValue(r, c);
               const t = Math.max(0, Math.min(1, v / top));

@@ -8,7 +8,7 @@ import { useCommerceFunnel } from '../selectors/useCommerceFunnel.tsx';
 import { useSeoCrawler } from '@/contexts/SeoCrawlerContext';
 import { useExportRegistration } from '../../_hooks/useExportRegistration';
 
-const CARD = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3 min-h-0';
+const CARD = 'rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3 min-h-0';
 
 export default function CommerceProductsView() {
   const { rows, columns, feedSegments } = useProducts();
@@ -32,14 +32,14 @@ export default function CommerceProductsView() {
 
         {feedSegments.length > 0 && (
           <div className={`${CARD} mx-3 mb-3`}>
-            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">Feed health</div>
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-2">Feed health</div>
             <DistributionStrip title="Status" segments={feedSegments} />
           </div>
         )}
 
         {steps.length > 0 && counts.some((c: number) => c > 0) && (
           <div className={`${CARD} mx-3 mb-3`}>
-            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">Checkout funnel</div>
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-2">Checkout funnel</div>
             <Funnel
               steps={steps.map((s, i) => ({ label: s, value: counts[i] ?? 0 }))}
               accent="#10b981"

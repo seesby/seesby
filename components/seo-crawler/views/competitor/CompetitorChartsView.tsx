@@ -61,10 +61,10 @@ function ChartCard({
   className?: string;
 }) {
   return (
-    <div className={`rounded-xl border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-4 ${className}`}>
+    <div className={`rounded-xl border border-[var(--brand-surface-3)] bg-[var(--brand-surface-1)] p-4 ${className}`}>
       <div className="mb-3">
-        <div className="text-[11px] font-semibold text-[var(--brand-text-mid)]]">{title}</div>
-        {subtitle && <div className="mt-0.5 text-[9px] text-[var(--brand-text-faint)]]">{subtitle}</div>}
+        <div className="text-[11px] font-semibold text-[var(--brand-text-mid)]">{title}</div>
+        {subtitle && <div className="mt-0.5 text-[9px] text-[var(--brand-text-faint)]">{subtitle}</div>}
       </div>
       {children}
     </div>
@@ -94,7 +94,7 @@ function GaugeMeter({ value, label }: { value: number; label: string; maxLabel?:
           <span className="font-mono text-[14px] font-black text-[var(--brand-text-strong)]">{clampedValue}</span>
         </div>
       </div>
-      <div className="mt-1 max-w-[80px] truncate text-[9px] text-[var(--brand-text-faint)]]">{label}</div>
+      <div className="mt-1 max-w-[80px] truncate text-[9px] text-[var(--brand-text-faint)]">{label}</div>
     </div>
   );
 }
@@ -102,12 +102,12 @@ function GaugeMeter({ value, label }: { value: number; label: string; maxLabel?:
 function ChartTooltip({ active, payload, label }: any) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-lg border border-[var(--brand-surface-4)]] bg-[var(--brand-surface-2)]] px-3 py-2 shadow-xl">
+    <div className="rounded-lg border border-[var(--brand-surface-4)] bg-[var(--brand-surface-2)] px-3 py-2 shadow-xl">
       {label && <div className="mb-1 text-[10px] font-bold text-[var(--brand-text-strong)]">{label}</div>}
       {payload.map((p: any, i: number) => (
         <div key={i} className="flex items-center gap-2 text-[10px]">
           <span className="h-2 w-2 rounded-full" style={{ backgroundColor: p.color || p.fill }} />
-          <span className="text-[var(--brand-text-mid)]]">{p.name || p.dataKey}</span>
+          <span className="text-[var(--brand-text-mid)]">{p.name || p.dataKey}</span>
           <span className="ml-auto font-mono text-[var(--brand-text-strong)]">
             {typeof p.value === 'number' ? p.value.toLocaleString() : p.value}
           </span>
@@ -281,7 +281,7 @@ export default function CompetitorChartsView() {
 
   if (allProfiles.length === 0) {
     return (
-      <div className="flex h-full items-center justify-center bg-[var(--brand-surface-0)]] p-8">
+      <div className="flex h-full items-center justify-center bg-[var(--brand-surface-0)] p-8">
         <div className={EMPTY_STATE_BOX}>
           <p className={EMPTY_STATE_TEXT}>No competitor data yet. Add competitors and run a crawl.</p>
         </div>
@@ -296,12 +296,12 @@ export default function CompetitorChartsView() {
   }));
 
   return (
-    <div className="custom-scrollbar h-full overflow-y-auto bg-[var(--brand-surface-0)]] p-5 space-y-5">
+    <div className="custom-scrollbar h-full overflow-y-auto bg-[var(--brand-surface-0)] p-5 space-y-5">
       <div className="mb-5 flex flex-wrap items-center gap-4">
         {profileLegend.map((p) => (
           <div key={p.domain} className="flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: p.color }} />
-            <span className={`text-[10px] font-bold ${p.isOwn ? 'text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-mid)]]'}`}>
+            <span className={`text-[10px] font-bold ${p.isOwn ? 'text-[var(--brand-text-strong)]' : 'text-[var(--brand-text-mid)]'}`}>
               {p.domain} {p.isOwn && <span className={YOU_BADGE}>YOU</span>}
             </span>
           </div>
@@ -412,7 +412,7 @@ export default function CompetitorChartsView() {
 
             <ChartCard title="Share of Voice" subtitle="Keyword universe split by site">
               {sovData.length === 0 ? (
-                <div className="flex h-[220px] items-center justify-center text-[11px] text-[var(--brand-text-faint)]]">No keyword data</div>
+                <div className="flex h-[220px] items-center justify-center text-[11px] text-[var(--brand-text-faint)]">No keyword data</div>
               ) : (
                 <ResponsiveContainer width="100%" height={220}>
                   <PieChart>
@@ -473,9 +473,9 @@ export default function CompetitorChartsView() {
                       if (!active || !payload?.[0]?.payload) return null;
                       const d = payload[0].payload;
                       return (
-                        <div className="rounded-lg border border-[var(--brand-surface-4)]] bg-[var(--brand-surface-2)]] px-3 py-2 shadow-xl">
+                        <div className="rounded-lg border border-[var(--brand-surface-4)] bg-[var(--brand-surface-2)] px-3 py-2 shadow-xl">
                           <div className="text-[10px] font-bold text-[var(--brand-text-strong)]">{d.domain}</div>
-                          <div className="mt-1 space-y-0.5 text-[9px] text-[var(--brand-text-mid)]]">
+                          <div className="mt-1 space-y-0.5 text-[9px] text-[var(--brand-text-mid)]">
                             <div>
                               Pages: <span className="font-mono text-[var(--brand-text-strong)]">{d.pages.toLocaleString()}</span>
                             </div>
@@ -531,9 +531,9 @@ export default function CompetitorChartsView() {
                       if (!active || !payload?.[0]?.payload) return null;
                       const d = payload[0].payload;
                       return (
-                        <div className="rounded-lg border border-[var(--brand-surface-4)]] bg-[var(--brand-surface-2)]] px-3 py-2 shadow-xl">
+                        <div className="rounded-lg border border-[var(--brand-surface-4)] bg-[var(--brand-surface-2)] px-3 py-2 shadow-xl">
                           <div className="text-[10px] font-bold text-[var(--brand-text-strong)]">{d.domain}</div>
-                          <div className="mt-1 space-y-0.5 text-[9px] text-[var(--brand-text-mid)]]">
+                          <div className="mt-1 space-y-0.5 text-[9px] text-[var(--brand-text-mid)]">
                             <div>
                               Referring Domains:{' '}
                               <span className="font-mono text-[var(--brand-text-strong)]">{d.referringDomains.toLocaleString()}</span>
@@ -612,8 +612,8 @@ export default function CompetitorChartsView() {
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-[var(--brand-surface-3)]]">
-                      <th className="px-3 py-2 text-left text-[9px] font-bold uppercase tracking-widest text-[var(--brand-text-faint)]]">Technology</th>
+                    <tr className="border-b border-[var(--brand-surface-3)]">
+                      <th className="px-3 py-2 text-left text-[9px] font-bold uppercase tracking-widest text-[var(--brand-text-faint)]">Technology</th>
                       {allProfiles.map((p, i) => (
                         <th
                           key={p.domain}
@@ -627,14 +627,14 @@ export default function CompetitorChartsView() {
                   </thead>
                   <tbody>
                     {techStackData.map((row) => (
-                      <tr key={row.tech} className="border-b border-[var(--brand-surface-2)]] transition-colors hover:bg-[var(--brand-surface-3)]/[0.01]">
-                        <td className="px-3 py-1.5 text-[10px] text-[var(--brand-text-mid)]]">{row.tech}</td>
+                      <tr key={row.tech} className="border-b border-[var(--brand-surface-2)] transition-colors hover:bg-[var(--brand-surface-3)]/[0.01]">
+                        <td className="px-3 py-1.5 text-[10px] text-[var(--brand-text-mid)]">{row.tech}</td>
                         {allProfiles.map((p) => (
                           <td key={p.domain} className="px-3 py-1.5 text-center">
                             {row[p.domain] ? (
                               <span className="text-[11px] text-emerald-400">✓</span>
                             ) : (
-                              <span className="text-[11px] text-[var(--brand-surface-4)]]">—</span>
+                              <span className="text-[11px] text-[var(--brand-surface-4)]">—</span>
                             )}
                           </td>
                         ))}

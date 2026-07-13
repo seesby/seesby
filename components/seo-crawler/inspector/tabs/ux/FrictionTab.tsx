@@ -40,7 +40,7 @@ export default function FrictionTab({ page, hasTrend }: { page: any; hasTrend?: 
       {/* Trend */}
       {hasTrend && (
         <Card title="Friction Trend">
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
             <Sparkline values={page?.frictionScoreTrend || []} tone="warn" />
           </div>
         </Card>
@@ -62,18 +62,18 @@ export default function FrictionTab({ page, hasTrend }: { page: any; hasTrend?: 
             {breakdown.map((item) => {
               const pct = (item.count / total) * 100;
               return (
-                <div key={item.type} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2">
+                <div key={item.type} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-3 py-2">
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-[12px] text-[var(--brand-text-mid)]]">{item.type}</span>
-                    <span className="text-[11px] text-[var(--brand-text-mid)]]">{formatNumber(item.count)} ({pct.toFixed(1)}%)</span>
+                    <span className="text-[12px] text-[var(--brand-text-mid)]">{item.type}</span>
+                    <span className="text-[11px] text-[var(--brand-text-mid)]">{formatNumber(item.count)} ({pct.toFixed(1)}%)</span>
                   </div>
-                  <div className="w-full bg-[var(--brand-surface-3)]] rounded h-2">
+                  <div className="w-full bg-[var(--brand-surface-3)] rounded h-2">
                     <div
                       className={`rounded h-2 transition-all ${item.severity === 'fail' ? 'bg-red-500' : 'bg-orange-500'}`}
                       style={{ width: `${pct}%` }}
                     />
                   </div>
-                  <div className="text-[10px] text-[var(--brand-text-faint)]] mt-1">{item.desc}</div>
+                  <div className="text-[10px] text-[var(--brand-text-faint)] mt-1">{item.desc}</div>
                 </div>
               );
             })}
@@ -86,13 +86,13 @@ export default function FrictionTab({ page, hasTrend }: { page: any; hasTrend?: 
         <Card title="Friction by Element">
           <div className="space-y-2">
             {frictionByElement.slice(0, 10).map((el: any, i: number) => (
-              <div key={i} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2 flex items-center justify-between">
+              <div key={i} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-3 py-2 flex items-center justify-between">
                 <div className="flex-1 min-w-0">
-                  <span className="text-[12px] text-[var(--brand-text-mid)]] block truncate">{el.element || el.selector || el.label}</span>
-                  {el.text && <span className="text-[10px] text-[var(--brand-text-faint)]] block truncate">{el.text}</span>}
+                  <span className="text-[12px] text-[var(--brand-text-mid)] block truncate">{el.element || el.selector || el.label}</span>
+                  {el.text && <span className="text-[10px] text-[var(--brand-text-faint)] block truncate">{el.text}</span>}
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
-                  <span className="text-[11px] text-[var(--brand-text-mid)]]">{formatNumber(el.count || el.clicks || 0)}</span>
+                  <span className="text-[11px] text-[var(--brand-text-mid)]">{formatNumber(el.count || el.clicks || 0)}</span>
                   <StatusBadge
                     status={(el.severity || el.frictionLevel) === 'high' ? 'fail' : (el.severity || el.frictionLevel) === 'medium' ? 'warn' : 'info'}
                     label={el.type || el.signal || 'click'}
@@ -109,10 +109,10 @@ export default function FrictionTab({ page, hasTrend }: { page: any; hasTrend?: 
         <Card title="Worst Pages">
           <div className="space-y-2">
             {worstPages.slice(0, 8).map((p: any, i: number) => (
-              <div key={i} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2 flex items-center justify-between">
+              <div key={i} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-3 py-2 flex items-center justify-between">
                 <div className="flex-1 min-w-0">
-                  <span className="text-[12px] text-[var(--brand-text-mid)]] block truncate">{p.title || p.url}</span>
-                  {p.url && <span className="text-[10px] text-[var(--brand-text-faint)]] block truncate font-mono">{p.url}</span>}
+                  <span className="text-[12px] text-[var(--brand-text-mid)] block truncate">{p.title || p.url}</span>
+                  {p.url && <span className="text-[10px] text-[var(--brand-text-faint)] block truncate font-mono">{p.url}</span>}
                 </div>
                 <StatusBadge status="fail" label={`Score: ${Math.round(p.frictionScore || p.score || 0)}`} />
               </div>

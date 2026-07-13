@@ -32,7 +32,7 @@ export default function FormsTab({ page, hasTrend }: { page: any; hasTrend?: boo
       {/* Trend */}
       {hasTrend && (
         <Card title="Submit Rate Trend">
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded p-3">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded p-3">
             <Sparkline values={page?.formSubmitRateTrend || []} tone="good" />
           </div>
         </Card>
@@ -55,10 +55,10 @@ export default function FormsTab({ page, hasTrend }: { page: any; hasTrend?: boo
           {worstFields.length > 0 ? (
             <div className="space-y-2">
               {worstFields.slice(0, 8).map((field: any, i: number) => (
-                <div key={i} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded px-3 py-2 flex items-center justify-between">
+                <div key={i} className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded px-3 py-2 flex items-center justify-between">
                   <div className="flex-1 min-w-0">
-                    <span className="text-[12px] text-[var(--brand-text-mid)]] block truncate">{field.name || field.label || field}</span>
-                    {field.formName && <span className="text-[10px] text-[var(--brand-text-faint)]] block truncate">{field.formName}</span>}
+                    <span className="text-[12px] text-[var(--brand-text-mid)] block truncate">{field.name || field.label || field}</span>
+                    {field.formName && <span className="text-[10px] text-[var(--brand-text-faint)] block truncate">{field.formName}</span>}
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     {field.errorRate !== undefined && (
@@ -72,7 +72,7 @@ export default function FormsTab({ page, hasTrend }: { page: any; hasTrend?: boo
               ))}
             </div>
           ) : (
-            <div className="text-[12px] text-[var(--brand-text-faint)]]">No field-level data available.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]">No field-level data available.</div>
           )}
         </Card>
       </div>
@@ -80,21 +80,21 @@ export default function FormsTab({ page, hasTrend }: { page: any; hasTrend?: boo
       {/* Validation Errors */}
       {validationErrors.length > 0 && (
         <Card title="Validation Errors">
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded overflow-hidden">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded overflow-hidden">
             <table className="w-full text-[11px]">
               <thead>
-                <tr className="border-b border-[var(--brand-border-2)]]">
-                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Field</th>
-                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Errors</th>
-                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Type</th>
+                <tr className="border-b border-[var(--brand-border-2)]">
+                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Field</th>
+                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Errors</th>
+                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Type</th>
                 </tr>
               </thead>
               <tbody>
                 {validationErrors.slice(0, 15).map((err: any, i: number) => (
-                  <tr key={i} className="border-b border-[var(--brand-surface-3)]] hover:bg-[var(--brand-surface-2)]]">
-                    <td className="px-3 py-2 text-[var(--brand-text-mid)]]">{err.field || err.name || '\u2014'}</td>
+                  <tr key={i} className="border-b border-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-2)]">
+                    <td className="px-3 py-2 text-[var(--brand-text-mid)]">{err.field || err.name || '\u2014'}</td>
                     <td className="px-3 py-2 text-red-400">{err.count || err.errors || '\u2014'}</td>
-                    <td className="px-3 py-2 text-[var(--brand-text-mid)]]">{err.type || err.rule || '\u2014'}</td>
+                    <td className="px-3 py-2 text-[var(--brand-text-mid)]">{err.type || err.rule || '\u2014'}</td>
                   </tr>
                 ))}
               </tbody>
@@ -106,22 +106,22 @@ export default function FormsTab({ page, hasTrend }: { page: any; hasTrend?: boo
       {/* Forms by Page */}
       {formsByPage.length > 0 && (
         <Card title="Forms by Page">
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)]] rounded overflow-hidden">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded overflow-hidden">
             <table className="w-full text-[11px]">
               <thead>
-                <tr className="border-b border-[var(--brand-border-2)]]">
-                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Page</th>
-                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Starts</th>
-                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Completes</th>
-                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Rate</th>
+                <tr className="border-b border-[var(--brand-border-2)]">
+                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Page</th>
+                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Starts</th>
+                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Completes</th>
+                  <th className="px-3 py-2 text-left text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Rate</th>
                 </tr>
               </thead>
               <tbody>
                 {formsByPage.slice(0, 10).map((fp: any, i: number) => (
-                  <tr key={i} className="border-b border-[var(--brand-surface-3)]] hover:bg-[var(--brand-surface-2)]]">
-                    <td className="px-3 py-2 text-[var(--brand-text-mid)]] truncate max-w-[200px]" title={fp.url || fp.title}>{fp.title || fp.url || '\u2014'}</td>
-                    <td className="px-3 py-2 text-[var(--brand-text-mid)]]">{formatNumber(fp.starts)}</td>
-                    <td className="px-3 py-2 text-[var(--brand-text-mid)]]">{formatNumber(fp.completes)}</td>
+                  <tr key={i} className="border-b border-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-2)]">
+                    <td className="px-3 py-2 text-[var(--brand-text-mid)] truncate max-w-[200px]" title={fp.url || fp.title}>{fp.title || fp.url || '\u2014'}</td>
+                    <td className="px-3 py-2 text-[var(--brand-text-mid)]">{formatNumber(fp.starts)}</td>
+                    <td className="px-3 py-2 text-[var(--brand-text-mid)]">{formatNumber(fp.completes)}</td>
                     <td className="px-3 py-2">
                       <StatusBadge
                         status={Number(fp.submitRate) >= 0.7 ? 'pass' : Number(fp.submitRate) >= 0.4 ? 'warn' : 'fail'}

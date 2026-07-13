@@ -175,7 +175,7 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* 2. Primary Traffic Chart */}
-                <div className="lg:col-span-2 bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 shadow-2xl h-[450px] flex flex-col relative overflow-hidden group">
+                <div className="lg:col-span-2 bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6 shadow-2xl h-[450px] flex flex-col relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-brand-amber/5 blur-[100px] rounded-full pointer-events-none"></div>
                     
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 z-10">
@@ -239,7 +239,7 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                 </div>
 
                 {/* 3. AI Insights / Copilot Panel */}
-                <div className="lg:col-span-1 bg-gradient-to-br from-[var(--brand-surface-2)]] to-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] shadow-2xl flex flex-col h-[450px] relative overflow-hidden group">
+                <div className="lg:col-span-1 bg-gradient-to-br from-[var(--brand-surface-2)] to-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] shadow-2xl flex flex-col h-[450px] relative overflow-hidden group">
                     <div className="p-6 border-b border-[var(--brand-border-1)] flex justify-between items-center shrink-0">
                         <div className="flex items-center gap-3">
                             <div className="bg-brand-purple p-2 rounded-lg shadow-lg shadow-brand-purple/20">
@@ -278,7 +278,7 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                     </div>
 
                     {/* Chat Input */}
-                    <div className="p-4 border-t border-[var(--brand-border-1)] bg-[var(--brand-surface-0)]] shrink-0">
+                    <div className="p-4 border-t border-[var(--brand-border-1)] bg-[var(--brand-surface-0)] shrink-0">
                         <div className="relative">
                             <input
                                 type="text"
@@ -297,7 +297,7 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
 
             {/* 4. Secondary Row: Rankings & Competitors */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-12">
-                <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[400px] flex flex-col">
+                <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[400px] flex flex-col">
                     <div className="flex justify-between items-center mb-6">
                         <div className="flex items-center gap-2">
                             <h3 className="font-bold text-white">Top Performing Pages</h3>
@@ -353,7 +353,7 @@ export const DashboardOverview = ({ openPanel, topMovers, competitorData, showHe
                     </div>
                 </div>
 
-                <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[400px] flex flex-col">
+                <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[400px] flex flex-col">
                     <div className="flex justify-between items-center mb-6">
                         <div className="flex items-center gap-2">
                             <h3 className="font-bold text-white">Market Positioning</h3>

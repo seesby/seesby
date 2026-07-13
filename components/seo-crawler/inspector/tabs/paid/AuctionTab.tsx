@@ -28,14 +28,14 @@ export default function AuctionTab({ page, hasTrend }: { page: any; hasTrend?: b
           <div className="overflow-x-auto">
             <table className="w-full text-[10px]">
               <thead>
-                <tr className="border-b border-[var(--brand-border-2)]]">
-                  <th className="px-2 py-1.5 text-left text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Competitor</th>
-                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Overlap</th>
-                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Above pos</th>
-                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Top of page</th>
-                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Abs top</th>
-                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">Outrank us</th>
-                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)]] uppercase tracking-widest font-bold">IS</th>
+                <tr className="border-b border-[var(--brand-border-2)]">
+                  <th className="px-2 py-1.5 text-left text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Competitor</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Overlap</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Above pos</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Top of page</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Abs top</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">Outrank us</th>
+                  <th className="px-2 py-1.5 text-right text-[var(--brand-text-faint)] uppercase tracking-widest font-bold">IS</th>
                 </tr>
               </thead>
               <tbody>
@@ -48,25 +48,25 @@ export default function AuctionTab({ page, hasTrend }: { page: any; hasTrend?: b
                   const outrankUs = typeof cp === 'object' ? (cp.outrankUs || 0) : 0;
                   const is = typeof cp === 'object' ? (cp.impressionShare || cp.is || 0) : 0;
                   return (
-                    <tr key={i} className="border-b border-[var(--brand-surface-3)]] hover:bg-[var(--brand-surface-2)]]">
-                      <td className="px-2 py-1.5 text-[var(--brand-text-mid)]] truncate max-w-[150px]">{domain}</td>
+                    <tr key={i} className="border-b border-[var(--brand-surface-3)] hover:bg-[var(--brand-surface-2)]">
+                      <td className="px-2 py-1.5 text-[var(--brand-text-mid)] truncate max-w-[150px]">{domain}</td>
                       <td className="px-2 py-1.5 text-right">
                         <div className="flex items-center justify-end gap-1">
-                          <div className="w-12 bg-[var(--brand-surface-3)]] rounded h-1.5">
+                          <div className="w-12 bg-[var(--brand-surface-3)] rounded h-1.5">
                             <div className="bg-blue-500 rounded h-1.5" style={{ width: `${Math.min(overlap * 100, 100)}%` }} />
                           </div>
-                          <span className="text-[var(--brand-text-mid)]]">{formatPercent(overlap)}</span>
+                          <span className="text-[var(--brand-text-mid)]">{formatPercent(overlap)}</span>
                         </div>
                       </td>
                       <td className="px-2 py-1.5 text-right">
-                        <span className={abovePos > 0 ? 'text-[#ef4444]' : abovePos < 0 ? 'text-green-400' : 'text-[var(--brand-text-mid)]]'}>
+                        <span className={abovePos > 0 ? 'text-[#ef4444]' : abovePos < 0 ? 'text-green-400' : 'text-[var(--brand-text-mid)]'}>
                           {abovePos > 0 ? '+' : ''}{abovePos}%
                         </span>
                       </td>
-                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]]">{formatPercent(topOfPage)}</td>
-                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]]">{formatPercent(absTop)}</td>
-                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]]">{formatPercent(outrankUs)}</td>
-                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]]">{formatPercent(is)}</td>
+                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]">{formatPercent(topOfPage)}</td>
+                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]">{formatPercent(absTop)}</td>
+                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]">{formatPercent(outrankUs)}</td>
+                      <td className="px-2 py-1.5 text-right text-[var(--brand-text-mid)]">{formatPercent(is)}</td>
                     </tr>
                   );
                 })}
@@ -75,7 +75,7 @@ export default function AuctionTab({ page, hasTrend }: { page: any; hasTrend?: b
           </div>
         </Card>
       ) : (
-        <div className="text-center py-12 text-[12px] text-[var(--brand-text-faint)]]">
+        <div className="text-center py-12 text-[12px] text-[var(--brand-text-faint)]">
           No competitor data available.
         </div>
       )}
@@ -85,10 +85,10 @@ export default function AuctionTab({ page, hasTrend }: { page: any; hasTrend?: b
         <div className="space-y-3">
           <div>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] text-[var(--brand-text-faint)]]">Total lost</span>
-              <span className="text-[10px] text-[var(--brand-text-mid)]] font-bold">{formatPercent(1 - impressionShare)}</span>
+              <span className="text-[10px] text-[var(--brand-text-faint)]">Total lost</span>
+              <span className="text-[10px] text-[var(--brand-text-mid)] font-bold">{formatPercent(1 - impressionShare)}</span>
             </div>
-            <div className="w-full bg-[var(--brand-surface-3)]] rounded h-2">
+            <div className="w-full bg-[var(--brand-surface-3)] rounded h-2">
               <div className="bg-[#ef4444] rounded h-2" style={{ width: `${(1 - impressionShare) * 100}%` }} />
             </div>
           </div>
@@ -102,12 +102,12 @@ export default function AuctionTab({ page, hasTrend }: { page: any; hasTrend?: b
       {hasTrend && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
           <Card title="Share of voice trend">
-            <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]] rounded p-3">
+            <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-surface-2)] rounded p-3">
               <Sparkline values={page?.sovTrend || page?.shareOfVoiceTrend || []} tone="info" />
             </div>
           </Card>
           <Card title="Above-position trend">
-            <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-2)]] rounded p-3">
+            <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-surface-2)] rounded p-3">
               <Sparkline values={page?.abovePosTrend || []} tone="info" />
             </div>
           </Card>
@@ -119,19 +119,19 @@ export default function AuctionTab({ page, hasTrend }: { page: any; hasTrend?: b
 
 function LossBar({ label, value, suggestion }: { label: string; value: number; suggestion?: string }) {
   const pct = Math.min(Math.max(Number(value) || 0, 0), 1) * 100;
-  const color = pct > 20 ? 'bg-[#ef4444]' : pct > 10 ? 'bg-[#f59e0b]' : 'bg-[var(--brand-border-2)]]';
+  const color = pct > 20 ? 'bg-[#ef4444]' : pct > 10 ? 'bg-[#f59e0b]' : 'bg-[var(--brand-border-2)]';
 
   return (
     <div>
       <div className="flex items-center justify-between mb-0.5">
-        <span className="text-[10px] text-[var(--brand-text-faint)]]">{label}</span>
-        <span className="text-[10px] text-[var(--brand-text-mid)]]">{formatPercent(value)}</span>
+        <span className="text-[10px] text-[var(--brand-text-faint)]">{label}</span>
+        <span className="text-[10px] text-[var(--brand-text-mid)]">{formatPercent(value)}</span>
       </div>
-      <div className="w-full bg-[var(--brand-surface-3)]] rounded h-1.5">
+      <div className="w-full bg-[var(--brand-surface-3)] rounded h-1.5">
         <div className={`${color} rounded h-1.5 transition-all`} style={{ width: `${pct}%` }} />
       </div>
       {suggestion && pct > 10 && (
-        <div className="text-[9px] text-[var(--brand-text-faint)]] mt-0.5">{suggestion}</div>
+        <div className="text-[9px] text-[var(--brand-text-faint)] mt-0.5">{suggestion}</div>
       )}
     </div>
   );

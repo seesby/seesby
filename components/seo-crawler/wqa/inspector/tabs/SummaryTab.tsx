@@ -69,10 +69,10 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
   return (
     <div className="space-y-3">
       {/* Hero strip */}
-      <div className="flex items-center gap-3 p-2.5 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)]] to-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]">
+      <div className="flex items-center gap-3 p-2.5 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)] to-[var(--brand-surface-0)] border border-[var(--brand-surface-3)]">
         <div className="flex-1 min-w-0">
           <div className="text-[13px] text-[var(--brand-text-strong)] font-semibold truncate">{title || 'Untitled'}</div>
-          <div className="text-[11px] text-[var(--brand-text-faint)]] font-mono truncate mt-0.5">{page?.url}</div>
+          <div className="text-[11px] text-[var(--brand-text-faint)] font-mono truncate mt-0.5">{page?.url}</div>
         </div>
         {healthScore > 0 && (
           <div className="shrink-0 flex items-center gap-2">
@@ -106,14 +106,14 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
       {/* 2-column grid */}
       <div className="grid grid-cols-2 gap-3">
         {/* Identity */}
-        <div className="bg-[var(--brand-surface-1)]] border border-[var(--brand-surface-3)]] rounded-lg p-3">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)]] mb-2.5">Identity</div>
-          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
-            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">Title</div>
+        <div className="bg-[var(--brand-surface-1)] border border-[var(--brand-surface-3)] rounded-lg p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--brand-border-2)] mb-2.5">Identity</div>
+          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]">
+            <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-wider mb-0.5">Title</div>
             <div className="text-[11px] text-[var(--brand-text-strong)] leading-snug break-words">{title || '\u2014'}</div>
           </div>
-          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
-            <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-wider mb-0.5">H1</div>
+          <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]">
+            <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-wider mb-0.5">H1</div>
             <div className="text-[11px] text-[var(--brand-text-strong)] leading-snug break-words">{h1 || '\u2014'}</div>
           </div>
           <div className="space-y-0">
@@ -151,8 +151,8 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
               { label: 'Words', value: formatNumber(words) },
               { label: 'In-links', value: formatNumber(inlinks) },
             ].map((row) => (
-              <div key={row.label} className="flex items-center justify-between py-1 border-b border-[var(--brand-surface-2)]] last:border-b-0">
-                <span className="text-[10px] text-[var(--brand-text-faint)]]">{row.label}</span>
+              <div key={row.label} className="flex items-center justify-between py-1 border-b border-[var(--brand-surface-2)] last:border-b-0">
+                <span className="text-[10px] text-[var(--brand-text-faint)]">{row.label}</span>
                 <div className="flex items-center gap-2">
                   <span className="text-[11px] text-[var(--brand-text-strong)] font-mono">{row.value}</span>
                   {row.delta !== null && row.delta !== undefined && <DeltaChip value={row.delta} />}
@@ -176,10 +176,10 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
                 { key: 'Review', present: hasReview },
               ].map(s => (
                 <div key={s.key} className={`flex items-center justify-between px-3 py-2 rounded-md text-[11px] ${
-                  s.present ? 'bg-[#22c55e]/5 border border-[#22c55e]/20' : 'bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]'
+                  s.present ? 'bg-[#22c55e]/5 border border-[#22c55e]/20' : 'bg-[var(--brand-surface-0)] border border-[var(--brand-surface-3)]'
                 }`}>
-                  <span className="text-[var(--brand-text-mid)]]">{s.key}</span>
-                  <span className={`text-[10px] font-medium ${s.present ? 'text-[#22c55e]' : 'text-[var(--brand-text-faint)]]'}`}>
+                  <span className="text-[var(--brand-text-mid)]">{s.key}</span>
+                  <span className={`text-[10px] font-medium ${s.present ? 'text-[#22c55e]' : 'text-[var(--brand-text-faint)]'}`}>
                     {s.present ? '\u2713' : '\u2717'}
                   </span>
                 </div>
@@ -188,40 +188,40 @@ export default function SummaryTab({ page, hasTrend }: { page: any; hasTrend?: b
           </Card>
 
           <Card title="Decision">
-            <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
-              <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest mb-1">Recommendation</div>
+            <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]">
+              <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest mb-1">Recommendation</div>
               <div className="text-[13px] font-bold text-[var(--brand-text-strong)]">{recType}</div>
             </div>
             {topAction && (
               <>
-                <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
-                  <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest mb-1">Why</div>
-                  <div className="text-[10px] text-[var(--brand-text-mid)]] leading-relaxed">{topAction.description || topAction.reason || '\u2014'}</div>
+                <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]">
+                  <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest mb-1">Why</div>
+                  <div className="text-[10px] text-[var(--brand-text-mid)] leading-relaxed">{topAction.description || topAction.reason || '\u2014'}</div>
                 </div>
                 {topAction.targetKeyword && (
-                  <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]]">
-                    <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest mb-1">Target</div>
-                    <div className="text-[10px] text-[var(--brand-text-mid)]]">Keyword: &ldquo;{topAction.targetKeyword}&rdquo;</div>
-                    {topAction.targetWords && <div className="text-[10px] text-[var(--brand-text-mid)]]">Length: {formatNumber(topAction.targetWords)}w</div>}
+                  <div className="mb-2 pb-2 border-b border-[var(--brand-surface-2)]">
+                    <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest mb-1">Target</div>
+                    <div className="text-[10px] text-[var(--brand-text-mid)]">Keyword: &ldquo;{topAction.targetKeyword}&rdquo;</div>
+                    {topAction.targetWords && <div className="text-[10px] text-[var(--brand-text-mid)]">Length: {formatNumber(topAction.targetWords)}w</div>}
                   </div>
                 )}
                 <div className="mb-2">
-                  <div className="text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest mb-1">Forecast</div>
-                  <div className="text-[10px] text-[var(--brand-text-mid)]]">
+                  <div className="text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest mb-1">Forecast</div>
+                  <div className="text-[10px] text-[var(--brand-text-mid)]">
                     Q: {healthScore} &rarr; {healthScore + Math.round(Number(topAction.estimatedImpact || 0) / 10)}
                     {topAction.estimatedImpact ? <span className="text-[#22c55e]"> +{topAction.estimatedImpact}</span> : ''}
                   </div>
                 </div>
               </>
             )}
-            <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[var(--brand-surface-2)]]">
-              <button className="px-2 py-1 text-[9px] font-medium uppercase tracking-widest bg-[var(--brand-surface-3)]] border border-[var(--brand-border-3)]] rounded text-[var(--brand-text-strong)] hover:bg-[var(--brand-border-2)]] transition-colors">
+            <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[var(--brand-surface-2)]">
+              <button className="px-2 py-1 text-[9px] font-medium uppercase tracking-widest bg-[var(--brand-surface-3)] border border-[var(--brand-border-3)] rounded text-[var(--brand-text-strong)] hover:bg-[var(--brand-border-2)] transition-colors">
                 Approve
               </button>
-              <button className="px-2 py-1 text-[9px] font-medium uppercase tracking-widest bg-[var(--brand-surface-0)]] border border-[var(--brand-border-3)]] rounded text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)]] transition-colors">
+              <button className="px-2 py-1 text-[9px] font-medium uppercase tracking-widest bg-[var(--brand-surface-0)] border border-[var(--brand-border-3)] rounded text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)] transition-colors">
                 Edit
               </button>
-              <button className="px-2 py-1 text-[9px] font-medium uppercase tracking-widest bg-[var(--brand-surface-0)]] border border-[var(--brand-border-3)]] rounded text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)]] transition-colors">
+              <button className="px-2 py-1 text-[9px] font-medium uppercase tracking-widest bg-[var(--brand-surface-0)] border border-[var(--brand-border-3)] rounded text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)] transition-colors">
                 Dismiss
               </button>
             </div>

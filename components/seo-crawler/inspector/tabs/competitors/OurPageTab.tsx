@@ -61,10 +61,10 @@ export default function OurPageTab({ page }: { page: any; hasTrend?: boolean }) 
   return (
     <div className="space-y-3">
       {/* Hero strip */}
-      <div className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)]] to-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]">
+      <div className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-[var(--brand-surface-1)] to-[var(--brand-surface-0)] border border-[var(--brand-surface-3)]">
         <div className="flex-1 min-w-0">
           <div className="text-[13px] text-[var(--brand-text-strong)] font-semibold truncate">Our Page</div>
-          {url && <div className="text-[11px] text-[var(--brand-text-faint)]] font-mono truncate mt-0.5">{url}</div>}
+          {url && <div className="text-[11px] text-[var(--brand-text-faint)] font-mono truncate mt-0.5">{url}</div>}
         </div>
         <div className="shrink-0">
           <div className="relative w-10 h-10">
@@ -116,12 +116,12 @@ export default function OurPageTab({ page }: { page: any; hasTrend?: boolean }) 
               {upgrades.map((upgrade, i) => (
                 <div key={i} className="flex items-start gap-2 py-1">
                   <span className="text-green-400 text-[11px] shrink-0">+</span>
-                  <span className="text-[11px] text-[var(--brand-text-mid)]] leading-snug">{upgrade}</span>
+                  <span className="text-[11px] text-[var(--brand-text-mid)] leading-snug">{upgrade}</span>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-[12px] text-[var(--brand-text-faint)]]">Page is well-optimized.</div>
+            <div className="text-[12px] text-[var(--brand-text-faint)]">Page is well-optimized.</div>
           )}
         </Card>
       </div>
@@ -136,11 +136,11 @@ export default function OurPageTab({ page }: { page: any; hasTrend?: boolean }) 
               const altClicks = alt.clicks ?? null;
               const altReason = alt.reason || alt.note || '';
               return (
-                <div key={i} className="py-2 border-b border-[var(--brand-surface-2)]] last:border-b-0">
+                <div key={i} className="py-2 border-b border-[var(--brand-surface-2)] last:border-b-0">
                   <div className="flex items-center gap-2">
                     {altUrl && <TruncatedUrl url={altUrl} />}
                     {altQ !== null && <StatusBadge status={altQ >= 80 ? 'pass' : altQ >= 50 ? 'warn' : 'fail'} label={`Q ${altQ}`} />}
-                    {altClicks !== null && <span className="text-[10px] text-[var(--brand-text-faint)]]">{formatNumber(altClicks)} clicks</span>}
+                    {altClicks !== null && <span className="text-[10px] text-[var(--brand-text-faint)]">{formatNumber(altClicks)} clicks</span>}
                   </div>
                   {altReason && <div className="text-[10px] text-green-400 mt-0.5">{altReason}</div>}
                 </div>

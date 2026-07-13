@@ -32,9 +32,9 @@ export function WqaSearch() {
 		<div className="flex flex-col gap-3 p-3">
 			{/* Sources */}
 			<div className="flex items-center gap-2 px-1">
-				<span className="text-[11px] text-[var(--brand-text-faint)]] font-medium uppercase tracking-wider">Sources</span>
+				<span className="text-[11px] text-[var(--brand-text-faint)] font-medium uppercase tracking-wider">Sources</span>
 				{sources.length === 0
-					? <span className="text-[11px] text-[var(--brand-text-faint)]]">none connected</span>
+					? <span className="text-[11px] text-[var(--brand-text-faint)]">none connected</span>
 					: sources.map(s => <SourceTag key={s.id} id={s.id} state={s.state} />)
 				}
 			</div>
@@ -59,7 +59,7 @@ export function WqaSearch() {
 
 			{/* Keyword buckets */}
 			<Card padded={false} title="Keyword buckets">
-				<div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+				<div className="flex flex-col border-t border-[var(--brand-surface-3)]">
 					<RowItem label="Ranking" value={String(buckets.ranking)} />
 					<RowItem label="Top 3" value={String(buckets.top3)} />
 					<RowItem label="Top 10" value={String(buckets.top10)} />
@@ -72,7 +72,7 @@ export function WqaSearch() {
 			{/* CTR vs benchmark */}
 			{ctr.length > 0 && (
 				<Card padded={false} title="CTR vs benchmark">
-					<div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+					<div className="flex flex-col border-t border-[var(--brand-surface-3)]">
 						{ctr.map(r => (
 							<RowItem
 								key={r.pos}
@@ -88,7 +88,7 @@ export function WqaSearch() {
 			{/* Movers — only if multiple sessions */}
 			{hasTrend && (movers.up.length > 0 || movers.down.length > 0) && (
 				<Card padded={false} title="Movers (28d)">
-					<div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+					<div className="flex flex-col border-t border-[var(--brand-surface-3)]">
 						{movers.up.map(m => (
 							<RowItem key={`u-${m.id}`} label={m.label}
 								value={`▲ +${m.delta}`} className="text-[#22c55e]" onClick={() => drillToPage?.(m.id)} />
@@ -104,7 +104,7 @@ export function WqaSearch() {
 			{/* Lost pages — only if multiple sessions */}
 			{hasTrend && lost.length > 0 && (
 				<Card padded={false} title="Lost (top 50)">
-					<div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+					<div className="flex flex-col border-t border-[var(--brand-surface-3)]">
 						{lost.map(p => (
 							<RowItem key={p.id} label={p.label} onClick={() => drillToPage?.(p.id)} />
 						))}
@@ -121,8 +121,8 @@ function KpiSpark({ label, value, series, delta, suffix, invertTone }: {
 	return (
 		<div className="flex items-center justify-between gap-3">
 			<div className="flex flex-col">
-				<span className="text-[10px] font-semibold uppercase tracking-widest text-[var(--brand-text-faint)]]">{label}</span>
-				<span className="mt-0.5 text-[17px] font-semibold text-[var(--brand-text-strong)]] tabular-nums">{value}</span>
+				<span className="text-[10px] font-semibold uppercase tracking-widest text-[var(--brand-text-faint)]">{label}</span>
+				<span className="mt-0.5 text-[17px] font-semibold text-[var(--brand-text-strong)] tabular-nums">{value}</span>
 			</div>
 			<div className="flex items-center gap-3">
 				{series.length > 0 && (

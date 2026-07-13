@@ -10,10 +10,10 @@ export function SchemaCoverageBlock({ title = 'Schema coverage', coveragePct = 0
 }) {
   const safeTypes = types || []
   return (
-    <div className="rounded-md border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3">
+    <div className="rounded-md border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3">
       <div className="flex items-center justify-between mb-2">
         <div className="text-[11px] uppercase tracking-wider text-neutral-500">{title}</div>
-        <div className="text-[10px] font-mono text-[var(--brand-text-mid)]]">
+        <div className="text-[10px] font-mono text-[var(--brand-text-mid)]">
           {coveragePct.toFixed(0)}% cov · {errors} err · {warnings} warn
         </div>
       </div>
@@ -30,7 +30,7 @@ export function SchemaCoverageBlock({ title = 'Schema coverage', coveragePct = 0
           ))}
         </div>
       ) : (
-        <div className="text-[11px] text-[var(--brand-text-faint)]] italic">No schema types detected</div>
+        <div className="text-[11px] text-[var(--brand-text-faint)] italic">No schema types detected</div>
       )}
     </div>
   )

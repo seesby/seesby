@@ -55,5 +55,5 @@ export function MapCanvas({
     return () => { els.forEach(e => e.remove()); };
   }, [markers]);
 
-  return <div ref={ref} className="w-full rounded border border-[var(--brand-surface-3)]] overflow-hidden" style={ { height } } />;
+  return <div ref={ref} className="w-full rounded border border-[var(--brand-surface-3)] overflow-hidden" style={ { height } } />;
 }

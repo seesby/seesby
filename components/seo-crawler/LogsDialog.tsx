@@ -144,14 +144,14 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
 
     /* ─── Render ─── */
     return (
-        <div className="fixed inset-0 z-[100] flex flex-col bg-[var(--brand-surface-0)]]" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+        <div className="fixed inset-0 z-[100] flex flex-col bg-[var(--brand-surface-0)]" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
 
             {/* ━━ Top Bar ━━ */}
-            <header className="shrink-0 border-b border-[var(--brand-surface-3)]]" style={{ background: 'linear-gradient(180deg, bg-[var(--brand-surface-1)] 0%, #0b0b0f 100%)' }}>
+            <header className="shrink-0 border-b border-[var(--brand-surface-3)]" style={{ background: 'linear-gradient(180deg, bg-[var(--brand-surface-1)] 0%, #0b0b0f 100%)' }}>
                 <div className="flex items-center justify-between px-6 py-4">
                     <div className="flex items-center gap-4">
                         <button onClick={onClose}
-                            className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-surface-4)]] transition-all">
+                            className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-surface-4)] transition-all">
                             <ArrowLeft size={16} />
                         </button>
                         <div>
@@ -164,7 +164,7 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
                                     </span>
                                 )}
                             </h1>
-                            <p className="text-[12px] text-[var(--brand-text-faint)]] mt-0.5">
+                            <p className="text-[12px] text-[var(--brand-text-faint)] mt-0.5">
                                 {counts.total === 0 ? 'No activity recorded yet' : `${counts.total} events recorded`}
                                 {isCrawling && elapsedTime ? ` · Running ${elapsedTime}` : ''}
                             </p>
@@ -172,7 +172,7 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
                     </div>
                     <div className="flex items-center gap-2">
                         <button onClick={handleExport} disabled={filtered.length === 0}
-                            className="flex items-center gap-1.5 rounded-xl border border-[var(--brand-border-2)]] bg-[var(--brand-surface-2)]] px-3.5 py-2 text-[11px] font-semibold text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-surface-4)]] transition-all disabled:opacity-30 disabled:pointer-events-none">
+                            className="flex items-center gap-1.5 rounded-xl border border-[var(--brand-border-2)] bg-[var(--brand-surface-2)] px-3.5 py-2 text-[11px] font-semibold text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-surface-4)] transition-all disabled:opacity-30 disabled:pointer-events-none">
                             <Download size={13} /> Export
                         </button>
                         <button onClick={handleClear} disabled={typedLogs.length === 0}
@@ -180,7 +180,7 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
                             <Trash2 size={13} /> Clear
                         </button>
                         <button onClick={onClose}
-                            className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-surface-4)]] transition-all ml-1">
+                            className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-surface-4)] transition-all ml-1">
                             <X size={16} />
                         </button>
                     </div>
@@ -211,36 +211,36 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
             </header>
 
             {/* ━━ Toolbar ━━ */}
-            <div className="shrink-0 flex items-center gap-3 px-6 py-3 border-b border-[var(--brand-surface-3)]] bg-[#0a0a0e]">
+            <div className="shrink-0 flex items-center gap-3 px-6 py-3 border-b border-[var(--brand-surface-3)] bg-[#0a0a0e]">
                 <div className="relative flex-1 max-w-md">
-                    <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--brand-border-2)]]" />
+                    <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--brand-border-2)]" />
                     <input type="text" placeholder="Search events, URLs, messages..."
                         value={logSearch} onChange={e => setLogSearch(e.target.value)}
-                        className="w-full rounded-xl border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-2)]] pl-9 pr-4 py-2 text-[13px] text-[var(--brand-text-strong)] placeholder:text-[var(--brand-border-2)]] focus:border-[var(--brand-surface-4)]] focus:outline-none focus:ring-1 focus:ring-blue-500/20 transition-all" />
+                        className="w-full rounded-xl border border-[var(--brand-surface-3)] bg-[var(--brand-surface-2)] pl-9 pr-4 py-2 text-[13px] text-[var(--brand-text-strong)] placeholder:text-[var(--brand-border-2)] focus:border-[var(--brand-surface-4)] focus:outline-none focus:ring-1 focus:ring-blue-500/20 transition-all" />
                 </div>
 
                 <button onClick={() => setShowFilters(f => !f)}
                     className={`flex items-center gap-1.5 rounded-xl border px-3.5 py-2 text-[11px] font-semibold transition-all ${
                         sourceFilter !== 'all'
                             ? 'border-blue-500/30 bg-blue-500/8 text-blue-400'
-                            : 'border-[var(--brand-border-2)]] bg-[var(--brand-surface-2)]] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-surface-4)]]'
+                            : 'border-[var(--brand-border-2)] bg-[var(--brand-surface-2)] text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-surface-4)]'
                     }`}>
                     <Filter size={13} />
                     Source
                     {sourceFilter !== 'all' && <span className="ml-1 text-[10px] opacity-70">· {SOURCE_META[sourceFilter]?.label}</span>}
                 </button>
 
-                <div className="ml-auto text-[11px] text-[var(--brand-text-faint)]] tabular-nums">
+                <div className="ml-auto text-[11px] text-[var(--brand-text-faint)] tabular-nums">
                     {filtered.length}{filtered.length !== counts.total ? ` of ${counts.total}` : ''} events
                 </div>
             </div>
 
             {/* ━━ Source Filter Drawer ━━ */}
             {showFilters && (
-                <div className="shrink-0 flex flex-wrap gap-2 px-6 py-3 border-b border-[var(--brand-surface-3)]] bg-[#0c0c10]">
+                <div className="shrink-0 flex flex-wrap gap-2 px-6 py-3 border-b border-[var(--brand-surface-3)] bg-[#0c0c10]">
                     <button onClick={() => { setSourceFilter('all'); setShowFilters(false); }}
                         className={`rounded-full px-3.5 py-1.5 text-[11px] font-semibold border transition-all ${
-                            sourceFilter === 'all' ? 'bg-[var(--brand-surface-3)] text-black border-[var(--brand-border-2)]' : 'border-[var(--brand-border-2)]] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)]]'
+                            sourceFilter === 'all' ? 'bg-[var(--brand-surface-3)] text-black border-[var(--brand-border-2)]' : 'border-[var(--brand-border-2)] text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)]'
                         }`}>
                         All Sources
                     </button>
@@ -250,7 +250,7 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
                         return (
                             <button key={key} onClick={() => { setSourceFilter(key as SourceFilter); setShowFilters(false); }}
                                 className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[11px] font-semibold border transition-all ${
-                                    active ? 'border-[var(--brand-border-3)] bg-[var(--brand-surface-4)] text-[var(--brand-text-strong)]' : 'border-[var(--brand-border-2)]] text-[var(--brand-text-mid)]] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)]]'
+                                    active ? 'border-[var(--brand-border-3)] bg-[var(--brand-surface-4)] text-[var(--brand-text-strong)]' : 'border-[var(--brand-border-2)] text-[var(--brand-text-mid)] hover:text-[var(--brand-text-strong)] hover:border-[var(--brand-border-2)]'
                                 }`}>
                                 <span style={{ color: meta.color }}>{meta.icon}</span>
                                 {meta.label}
@@ -265,11 +265,11 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
             <div ref={feedRef} onScroll={handleScroll} className="flex-1 overflow-y-auto px-6 py-4" style={{ scrollbarWidth: 'thin', scrollbarColor: 'border-[var(--brand-border-2)] transparent' }}>
                 {filtered.length === 0 ? (
                     <div className="flex flex-col items-center justify-center h-full text-center py-20">
-                        <div className="w-16 h-16 rounded-2xl bg-[var(--brand-surface-2)]] border border-[var(--brand-surface-3)]] flex items-center justify-center mb-4">
-                            <Clock size={24} className="text-[var(--brand-surface-4)]]" />
+                        <div className="w-16 h-16 rounded-2xl bg-[var(--brand-surface-2)] border border-[var(--brand-surface-3)] flex items-center justify-center mb-4">
+                            <Clock size={24} className="text-[var(--brand-surface-4)]" />
                         </div>
-                        <p className="text-[15px] font-semibold text-[var(--brand-text-faint)]]">No activity yet</p>
-                        <p className="text-[12px] text-[var(--brand-border-2)]] mt-1 max-w-xs">
+                        <p className="text-[15px] font-semibold text-[var(--brand-text-faint)]">No activity yet</p>
+                        <p className="text-[12px] text-[var(--brand-border-2)] mt-1 max-w-xs">
                             {counts.total > 0 ? 'No events match your current filters. Try adjusting them.' : 'Start a scan to see live activity appear here.'}
                         </p>
                     </div>
@@ -278,9 +278,9 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
                         <div key={dateLabel} className="mb-6 last:mb-0">
                             {/* Date header */}
                             <div className="flex items-center gap-3 mb-3 sticky top-0 z-10 py-1" style={{ background: 'linear-gradient(180deg, bg-[var(--brand-surface-0)] 60%, transparent)' }}>
-                                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--brand-border-2)]]">{dateLabel}</span>
+                                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--brand-border-2)]">{dateLabel}</span>
                                 <div className="flex-1 h-px bg-[#161619]" />
-                                <span className="text-[10px] text-[var(--brand-surface-4)]] tabular-nums">{entries.length} events</span>
+                                <span className="text-[10px] text-[var(--brand-surface-4)] tabular-nums">{entries.length} events</span>
                             </div>
 
                             <div className="space-y-1">
@@ -304,7 +304,7 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
                                         >
                                             <div className="flex items-start gap-3 px-4 py-2.5">
                                                 {/* Timestamp */}
-                                                <span className="shrink-0 text-[11px] tabular-nums text-[var(--brand-border-2)]] pt-0.5 w-[62px]">
+                                                <span className="shrink-0 text-[11px] tabular-nums text-[var(--brand-border-2)] pt-0.5 w-[62px]">
                                                     {formatTime(log.time)}
                                                 </span>
 
@@ -312,7 +312,7 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
                                                 <span className={`shrink-0 w-2 h-2 rounded-full mt-1.5 ${typeMeta.dot}`} />
 
                                                 {/* Source badge */}
-                                                <span className="shrink-0 flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-semibold border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-2)]]"
+                                                <span className="shrink-0 flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-semibold border border-[var(--brand-surface-3)] bg-[var(--brand-surface-2)]"
                                                     style={{ color: srcMeta.color }}>
                                                     {srcMeta.icon}
                                                     <span className="hidden sm:inline">{srcMeta.label}</span>
@@ -322,13 +322,13 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
                                                 <div className="flex-1 min-w-0">
                                                     <p className="text-[13px] leading-relaxed text-[#c8c8cf] break-words">{log.msg}</p>
                                                     {log.url && !isExpanded && (
-                                                        <span className="text-[11px] text-[var(--brand-border-2)]] truncate block mt-0.5 max-w-md">{log.url.replace(/^https?:\/\//, '')}</span>
+                                                        <span className="text-[11px] text-[var(--brand-border-2)] truncate block mt-0.5 max-w-md">{log.url.replace(/^https?:\/\//, '')}</span>
                                                     )}
                                                 </div>
 
                                                 {/* Expand indicator */}
                                                 {(log.url || log.detail) && (
-                                                    <span className="shrink-0 text-[var(--brand-surface-4)]] group-hover:text-[var(--brand-text-faint)]] transition-colors mt-0.5">
+                                                    <span className="shrink-0 text-[var(--brand-surface-4)] group-hover:text-[var(--brand-text-faint)] transition-colors mt-0.5">
                                                         {isExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
                                                     </span>
                                                 )}
@@ -339,7 +339,7 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
                                                 <div className="px-4 pb-3 pt-0 ml-[82px] space-y-2">
                                                     {log.url && (
                                                         <div className="flex items-center gap-2">
-                                                            <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--brand-text-faint)]]">URL</span>
+                                                            <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--brand-text-faint)]">URL</span>
                                                             <a href={log.url} target="_blank" rel="noopener noreferrer"
                                                                 className="text-[12px] text-blue-400/80 hover:text-blue-300 truncate max-w-lg flex items-center gap-1">
                                                                 {log.url} <ExternalLink size={10} />
@@ -348,18 +348,18 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
                                                     )}
                                                     {log.detail && (
                                                         <div>
-                                                            <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--brand-text-faint)]]">Detail</span>
-                                                            <p className="text-[12px] text-[var(--brand-text-mid)]] mt-0.5">{log.detail}</p>
+                                                            <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--brand-text-faint)]">Detail</span>
+                                                            <p className="text-[12px] text-[var(--brand-text-mid)] mt-0.5">{log.detail}</p>
                                                         </div>
                                                     )}
                                                     {log.sessionId && (
                                                         <div className="flex items-center gap-2">
-                                                            <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--brand-text-faint)]]">Session</span>
-                                                            <span className="text-[11px] text-[var(--brand-text-faint)]] font-mono">{log.sessionId.slice(0, 12)}…</span>
+                                                            <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--brand-text-faint)]">Session</span>
+                                                            <span className="text-[11px] text-[var(--brand-text-faint)] font-mono">{log.sessionId.slice(0, 12)}…</span>
                                                         </div>
                                                     )}
                                                     <button onClick={e => { e.stopPropagation(); handleCopy(log, globalIdx); }}
-                                                        className="flex items-center gap-1 text-[10px] font-semibold text-[var(--brand-text-faint)]] hover:text-[var(--brand-text-strong)] transition-colors mt-1">
+                                                        className="flex items-center gap-1 text-[10px] font-semibold text-[var(--brand-text-faint)] hover:text-[var(--brand-text-strong)] transition-colors mt-1">
                                                         {copiedIdx === globalIdx ? <><Check size={11} className="text-emerald-400" /> Copied</> : <><Copy size={11} /> Copy entry</>}
                                                     </button>
                                                 </div>
@@ -378,7 +378,7 @@ export default function LogsDialog({ onClose }: LogsPageProps) {
             {!autoScroll && filtered.length > 0 && (
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
                     <button onClick={() => { setAutoScroll(true); feedEndRef.current?.scrollIntoView({ behavior: 'smooth' }); }}
-                        className="flex items-center gap-2 rounded-full bg-[#18181e] border border-[#2a2a30] px-4 py-2 text-[11px] font-semibold text-[var(--brand-text-strong)] shadow-xl hover:bg-[var(--brand-border-2)]] transition-all">
+                        className="flex items-center gap-2 rounded-full bg-[#18181e] border border-[#2a2a30] px-4 py-2 text-[11px] font-semibold text-[var(--brand-text-strong)] shadow-xl hover:bg-[var(--brand-border-2)] transition-all">
                         <ChevronDown size={13} /> Jump to latest
                     </button>
                 </div>

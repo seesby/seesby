@@ -37,8 +37,8 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
 
     return (
         <div className="fixed inset-0 z-[10000] bg-black/80 flex items-center justify-center p-4">
-            <div className="max-w-md w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] rounded-xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-200">
-                <div className="p-6 border-b border-[var(--brand-border-2)]] flex items-center justify-between">
+            <div className="max-w-md w-full bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-200">
+                <div className="p-6 border-b border-[var(--brand-border-2)] flex items-center justify-between">
                     <h2 className="text-lg font-bold text-[var(--brand-text-strong)]">Share Report</h2>
                     <button onClick={onClose} className="text-gray-500 hover:text-[var(--brand-text-strong)] transition-colors">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,7 +56,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
                                     type="text" 
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
-                                    className="w-full bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-4)]] rounded-lg px-4 py-2 text-[var(--brand-text-strong)] focus:outline-none focus:border-blue-500"
+                                    className="w-full bg-[var(--brand-surface-0)] border border-[var(--brand-surface-4)] rounded-lg px-4 py-2 text-[var(--brand-text-strong)] focus:outline-none focus:border-blue-500"
                                 />
                             </div>
 
@@ -66,7 +66,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
                                     type="password" 
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-4)]] rounded-lg px-4 py-2 text-[var(--brand-text-strong)] focus:outline-none focus:border-blue-500"
+                                    className="w-full bg-[var(--brand-surface-0)] border border-[var(--brand-surface-4)] rounded-lg px-4 py-2 text-[var(--brand-text-strong)] focus:outline-none focus:border-blue-500"
                                     placeholder="Leave empty for public access"
                                 />
                             </div>
@@ -77,7 +77,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
                                     id="whiteLabel"
                                     checked={whiteLabel}
                                     onChange={(e) => setWhiteLabel(e.target.checked)}
-                                    className="w-4 h-4 bg-[var(--brand-surface-0)]] border-[var(--brand-surface-4)]] rounded"
+                                    className="w-4 h-4 bg-[var(--brand-surface-0)] border-[var(--brand-surface-4)] rounded"
                                 />
                                 <label htmlFor="whiteLabel" className="text-sm text-gray-300 select-none">White-label report (Remove Seesby branding)</label>
                             </div>
@@ -89,7 +89,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
                                         type="text" 
                                         value={companyName}
                                         onChange={(e) => setCompanyName(e.target.value)}
-                                        className="w-full bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-4)]] rounded-lg px-4 py-2 text-[var(--brand-text-strong)] focus:outline-none focus:border-blue-500"
+                                        className="w-full bg-[var(--brand-surface-0)] border border-[var(--brand-surface-4)] rounded-lg px-4 py-2 text-[var(--brand-text-strong)] focus:outline-none focus:border-blue-500"
                                         placeholder="Your Agency Name"
                                     />
                                 </div>
@@ -130,14 +130,14 @@ export const ShareModal: React.FC<ShareModalProps> = ({ projectId, sessionId, on
                                         type="text" 
                                         readOnly
                                         value={shareUrl}
-                                        className="flex-1 bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-4)]] rounded-lg px-4 py-2 text-[var(--brand-text-strong)] text-sm focus:outline-none"
+                                        className="flex-1 bg-[var(--brand-surface-0)] border border-[var(--brand-surface-4)] rounded-lg px-4 py-2 text-[var(--brand-text-strong)] text-sm focus:outline-none"
                                     />
                                     <button 
                                         onClick={() => {
                                             navigator.clipboard.writeText(shareUrl);
                                             alert('Copied to clipboard!');
                                         }}
-                                        className="p-2 bg-[var(--brand-border-2)]] hover:bg-[var(--brand-surface-4)]] rounded-lg text-[var(--brand-text-strong)] transition-colors"
+                                        className="p-2 bg-[var(--brand-border-2)] hover:bg-[var(--brand-surface-4)] rounded-lg text-[var(--brand-text-strong)] transition-colors"
                                         title="Copy Link"
                                     >
                                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

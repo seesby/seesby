@@ -334,7 +334,7 @@ export default function IntegrationsTab() {
               </button>
               <div className="relative">
                 <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-[var(--brand-border-1)]"></div></div>
-                <div className="relative flex justify-center text-[9px] uppercase tracking-widest"><span className="bg-[var(--brand-surface-0)]] px-2 text-[var(--brand-text-strong)]/20">or use API Key</span></div>
+                <div className="relative flex justify-center text-[9px] uppercase tracking-widest"><span className="bg-[var(--brand-surface-0)] px-2 text-[var(--brand-text-strong)]/20">or use API Key</span></div>
               </div>
               <div className="flex gap-2">
                 <input 

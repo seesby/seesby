@@ -30,23 +30,23 @@ export default function ActionCard({
   return (
     <div
       className={`rounded border px-3 py-2.5 ${
-        primary ? 'border-[#F59E0B]/40 bg-[#F59E0B]/5' : (CAT_COLOR[category || ''] || 'border-[var(--brand-border-2)]] bg-[var(--brand-surface-0)]]')
+        primary ? 'border-[#F59E0B]/40 bg-[#F59E0B]/5' : (CAT_COLOR[category || ''] || 'border-[var(--brand-border-2)] bg-[var(--brand-surface-0)]')
       }`}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="text-[13px] text-[var(--brand-text-strong)] font-semibold truncate">{title}</div>
-          {reason && <div className="text-[11px] text-[var(--brand-text-mid)]] mt-0.5">{reason}</div>}
+          {reason && <div className="text-[11px] text-[var(--brand-text-mid)] mt-0.5">{reason}</div>}
           <FactorChips factors={factors} />
         </div>
         <div className="flex flex-col items-end gap-1 shrink-0">
           {priBucket && <StatusBadge status={priTone as any} label={`P-${priBucket}`} />}
-          {effort && <span className="text-[10px] text-[var(--brand-text-faint)]] uppercase tracking-widest">Effort {effort}</span>}
+          {effort && <span className="text-[10px] text-[var(--brand-text-faint)] uppercase tracking-widest">Effort {effort}</span>}
           {Number.isFinite(Number(estimatedImpact)) && Number(estimatedImpact) > 0 && (
             <span className="text-[10px] text-[#8ad]">+{formatNumber(estimatedImpact)} cl/mo</span>
           )}
           {Number.isFinite(Number(confidence)) && (
-            <span className="text-[10px] text-[var(--brand-text-faint)]]">Conf {formatNumber(confidence)}</span>
+            <span className="text-[10px] text-[var(--brand-text-faint)]">Conf {formatNumber(confidence)}</span>
           )}
         </div>
       </div>

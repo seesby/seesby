@@ -49,9 +49,9 @@ export default function SchemaTab({ page }: { page: any; hasTrend?: boolean }) {
             const present = !!getMetric(page, s.field) || !!page?.[s.field];
             return (
               <div key={s.key} className={`flex items-center justify-between px-3 py-2 rounded-md text-[11px] ${
-                present ? 'bg-[#22c55e]/5 border border-[#22c55e]/20' : 'bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]'
+                present ? 'bg-[#22c55e]/5 border border-[#22c55e]/20' : 'bg-[var(--brand-surface-0)] border border-[var(--brand-surface-3)]'
               }`}>
-                <span className="text-[var(--brand-text-mid)]]">{s.key}</span>
+                <span className="text-[var(--brand-text-mid)]">{s.key}</span>
                 <span className={`text-[10px] font-medium ${present ? 'text-[#22c55e]' : 'text-[#F59E0B]'}`}>
                   {present ? '\u2713 Present' : '\u2717 Missing'}
                 </span>
@@ -72,11 +72,11 @@ export default function SchemaTab({ page }: { page: any; hasTrend?: boolean }) {
               const lines = formatted.split('\n');
               const preview = expanded ? lines : lines.slice(0, 8);
               return (
-                <div key={i} className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-lg overflow-hidden">
-                  <pre className="p-2.5 text-[10px] font-mono text-[var(--brand-text-mid)]] whitespace-pre-wrap break-all leading-relaxed">
+                <div key={i} className="bg-[var(--brand-surface-0)] border border-[var(--brand-surface-3)] rounded-lg overflow-hidden">
+                  <pre className="p-2.5 text-[10px] font-mono text-[var(--brand-text-mid)] whitespace-pre-wrap break-all leading-relaxed">
                     {preview.map((line: string, j: number) => (
                       <div key={j} className="flex">
-                        <span className="text-[var(--brand-border-2)]] w-[24px] shrink-0 text-right mr-2 select-none">{j + 1}</span>
+                        <span className="text-[var(--brand-border-2)] w-[24px] shrink-0 text-right mr-2 select-none">{j + 1}</span>
                         <span>{line}</span>
                       </div>
                     ))}
@@ -84,7 +84,7 @@ export default function SchemaTab({ page }: { page: any; hasTrend?: boolean }) {
                   {lines.length > 8 && (
                     <button
                       onClick={() => setExpandedJson(prev => ({ ...prev, [i]: !prev[i] }))}
-                      className="w-full text-[10px] text-[#F59E0B] hover:text-[#F59E0B]/80 py-1.5 border-t border-[var(--brand-surface-3)]] transition-colors"
+                      className="w-full text-[10px] text-[#F59E0B] hover:text-[#F59E0B]/80 py-1.5 border-t border-[var(--brand-surface-3)] transition-colors"
                     >
                       {expanded ? 'Collapse' : `Show all ${lines.length} lines`}
                     </button>
@@ -103,10 +103,10 @@ export default function SchemaTab({ page }: { page: any; hasTrend?: boolean }) {
             const eligible = !!getMetric(page, r.field) || !!page?.[r.field];
             return (
               <div key={r.key} className={`flex items-center justify-between px-3 py-2 rounded-md text-[11px] ${
-                eligible ? 'bg-[#3b82f6]/5 border border-[#3b82f6]/20' : 'bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]]'
+                eligible ? 'bg-[#3b82f6]/5 border border-[#3b82f6]/20' : 'bg-[var(--brand-surface-0)] border border-[var(--brand-surface-3)]'
               }`}>
-                <span className="text-[var(--brand-text-mid)]]">{r.key}</span>
-                <span className={`text-[10px] font-medium ${eligible ? 'text-[#3b82f6]' : 'text-[var(--brand-text-faint)]]'}`}>
+                <span className="text-[var(--brand-text-mid)]">{r.key}</span>
+                <span className={`text-[10px] font-medium ${eligible ? 'text-[#3b82f6]' : 'text-[var(--brand-text-faint)]'}`}>
                   {eligible ? 'Eligible' : 'Not eligible'}
                 </span>
               </div>

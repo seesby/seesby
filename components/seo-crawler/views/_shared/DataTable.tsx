@@ -296,7 +296,7 @@ export function DataTable<T>({
         {/* Sticky header */}
         <div
           className="sticky top-0 z-10"
-          style={{ background: SURFACE.bg0, borderBottom: `1px solid ${SURFACE.br0}` }}
+          style={{ background: SURFACE.bg1, borderBottom: `1px solid ${SURFACE.br0}` }}
         >
           {table.getHeaderGroups().map(hg => (
             <div
@@ -335,7 +335,7 @@ export function DataTable<T>({
                     left: isSticky ? stickyOffset : undefined,
                     zIndex: isSticky ? 15 : undefined,
                     opacity: isDragging ? 0.4 : 1,
-                    background: isDropTarget ? 'rgba(59,130,246,0.08)' : isSticky ? SURFACE.bg0 : 'transparent',
+                    background: isDropTarget ? 'rgba(59,130,246,0.08)' : isSticky ? SURFACE.bg1 : 'transparent',
                     borderRight: isDropTarget ? '2px solid #3b82f6' : undefined,
                   }}
                   draggable={isDraggable}
@@ -453,7 +453,7 @@ export function DataTable<T>({
                       position: isSticky ? 'sticky' as const : undefined,
                       left: isSticky ? stickyOffset : undefined,
                       zIndex: isSticky ? 5 : undefined,
-                      background: isSticky ? SURFACE.bg0 : undefined,
+                      background: isSticky ? SURFACE.bg1 : undefined,
                     }}
                   >
                     {flexRender(c.column.columnDef.cell, c.getContext())}

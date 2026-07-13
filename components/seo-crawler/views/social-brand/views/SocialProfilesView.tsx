@@ -3,7 +3,7 @@ import { useProfiles } from '../selectors/useProfiles.tsx';
 import { fmtCompact, fmtPct } from '../../_shared/formatters';
 import { STATUS } from '../../_shared/tokens';
 
-const CARD = 'rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3 min-h-0';
+const CARD = 'rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3 min-h-0';
 
 export default function SocialProfilesView() {
   const list = useProfiles();
@@ -15,18 +15,18 @@ export default function SocialProfilesView() {
           {list.map((p: any) => (
             <ProfileCard key={`${p.network}|${p.handle}`} profile={p} />
           ))}
-          {!list.length && <div className="col-span-full text-[12px] text-[var(--brand-text-faint)]] p-4 text-center">No social accounts connected.</div>}
+          {!list.length && <div className="col-span-full text-[12px] text-[var(--brand-text-faint)] p-4 text-center">No social accounts connected.</div>}
         </div>
 
         {/* Completeness audit rollup */}
         {list.some((p: any) => (p.completeness ?? 100) < 90) && (
           <div className="mx-3 mb-3">
             <div className={`${CARD}`}>
-              <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-2">Completeness audit</div>
+              <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-2">Completeness audit</div>
               <div className="space-y-1">
                 {list.filter((p: any) => (p.completeness ?? 100) < 90).map((p: any) => (
                   <div key={`${p.network}|${p.handle}`} className="flex items-center gap-2 text-[11px]">
-                    <span className="text-[var(--brand-text-mid)]] w-20">{p.network}</span>
+                    <span className="text-[var(--brand-text-mid)] w-20">{p.network}</span>
                     <span className="text-[#f59e0b]">{p.missingFields?.join(', ') ?? 'incomplete profile'}</span>
                   </div>
                 ))}
@@ -60,8 +60,8 @@ function ProfileCard({ profile: p }: { profile: any }) {
           <div>
             <div className="text-[11px] text-[var(--brand-text-strong)] font-medium">{p.network}</div>
             <div className="flex items-center gap-1">
-              <span className={`w-1.5 h-1.5 rounded-full ${connected ? 'bg-[#22c55e]' : 'bg-[var(--brand-text-faint)]]'}`} />
-              <span className="text-[10px] text-[var(--brand-text-mid)]]">{connected ? 'connected' : 'disconnected'}</span>
+              <span className={`w-1.5 h-1.5 rounded-full ${connected ? 'bg-[#22c55e]' : 'bg-[var(--brand-text-faint)]'}`} />
+              <span className="text-[10px] text-[var(--brand-text-mid)]">{connected ? 'connected' : 'disconnected'}</span>
             </div>
           </div>
         </div>
@@ -73,24 +73,24 @@ function ProfileCard({ profile: p }: { profile: any }) {
       {/* Metrics row */}
       <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px] mb-2">
         <div className="flex justify-between">
-          <span className="text-[var(--brand-text-faint)]]">growth 30d</span>
+          <span className="text-[var(--brand-text-faint)]">growth 30d</span>
           <span style={{ color: growthColor }}>
             {growthRate > 0 ? '▲' : growthRate < 0 ? '▼' : '—'} {fmtPct(Math.abs(growthRate))}
             {growthRate < 0 && ' ⚠'}
           </span>
         </div>
         <div className="flex justify-between">
-          <span className="text-[var(--brand-text-faint)]]">cadence</span>
+          <span className="text-[var(--brand-text-faint)]">cadence</span>
           <span className={cadenceOk ? 'text-[#22c55e]' : 'text-[#f59e0b]'}>
             {p.postsPerWeek ?? 0}/wk {cadenceOk ? '✓' : '⚠'}
           </span>
         </div>
         <div className="flex justify-between">
-          <span className="text-[var(--brand-text-faint)]]">eng</span>
+          <span className="text-[var(--brand-text-faint)]">eng</span>
           <span style={{ color: engColor }}>{fmtPct(engRate)}</span>
         </div>
         <div className="flex justify-between">
-          <span className="text-[var(--brand-text-faint)]]">completeness</span>
+          <span className="text-[var(--brand-text-faint)]">completeness</span>
           <span style={{ color: completenessColor }}>
             {completeness}%
             {completeness < 80 && ' ⚠'}
@@ -110,19 +110,19 @@ function ProfileCard({ profile: p }: { profile: any }) {
             />
           </svg>
         ) : (
-          <div className="h-full bg-[var(--brand-surface-2)]] rounded" />
+          <div className="h-full bg-[var(--brand-surface-2)] rounded" />
         )}
       </div>
 
       {/* Top post */}
       {p.topPost && (
-        <div className="bg-[var(--brand-surface-2)]] rounded p-2 mb-2">
-          <div className="text-[10px] text-[var(--brand-text-mid)]] line-clamp-1">"{p.topPost.text}"</div>
+        <div className="bg-[var(--brand-surface-2)] rounded p-2 mb-2">
+          <div className="text-[10px] text-[var(--brand-text-mid)] line-clamp-1">"{p.topPost.text}"</div>
         </div>
       )}
 
       {/* Footer */}
-      <div className="mt-auto pt-2 border-t border-[var(--brand-surface-3)]] flex items-center justify-between text-[10px]">
+      <div className="mt-auto pt-2 border-t border-[var(--brand-surface-3)] flex items-center justify-between text-[10px]">
         <div className="flex items-center gap-2">
           <span className={p.bioLink ? 'text-[#22c55e]' : 'text-[#f59e0b]'}>
             bio link {p.bioLink ? '✓' : '⚠'}

@@ -26,13 +26,13 @@ export function CompetitorsGaps() {
       <Card>
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Traffic Potential</div>
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Traffic Potential</div>
             <div className="mt-1 text-2xl font-bold tabular-nums text-emerald-400">
               {compactNum(gaps.estimatedTraffic)}
             </div>
           </div>
           <div className="text-right">
-            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Quick Wins</div>
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Quick Wins</div>
             <div className="mt-1 text-2xl font-bold tabular-nums text-blue-400">
               {gaps.quickWins.length}
             </div>
@@ -42,8 +42,8 @@ export function CompetitorsGaps() {
 
       {/* Gap breakdown */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Gap Breakdown</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Gap Breakdown</span>
         </div>
         <div className="px-3 py-3">
           <BarStack segments={[
@@ -56,8 +56,8 @@ export function CompetitorsGaps() {
 
       {/* Priority matrix */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Priority Matrix</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Priority Matrix</span>
         </div>
         <div className="px-3 py-3">
           <div className="grid grid-cols-2 gap-2">
@@ -73,9 +73,9 @@ export function CompetitorsGaps() {
               <div className="text-[9px] uppercase tracking-wider text-amber-400 font-semibold">Hard + High Traffic</div>
               <div className="mt-1 text-lg font-bold tabular-nums text-amber-400">{gaps.priorityMatrix.hardHighTraffic}</div>
             </div>
-            <div className="rounded-md border border-[var(--brand-surface-4)]] bg-[var(--brand-surface-2)]] p-2">
-              <div className="text-[9px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Hard + Low Traffic</div>
-              <div className="mt-1 text-lg font-bold tabular-nums text-[var(--brand-text-mid)]]">{gaps.priorityMatrix.hardLowTraffic}</div>
+            <div className="rounded-md border border-[var(--brand-surface-4)] bg-[var(--brand-surface-2)] p-2">
+              <div className="text-[9px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Hard + Low Traffic</div>
+              <div className="mt-1 text-lg font-bold tabular-nums text-[var(--brand-text-mid)]">{gaps.priorityMatrix.hardLowTraffic}</div>
             </div>
           </div>
         </div>
@@ -83,8 +83,8 @@ export function CompetitorsGaps() {
 
       {/* Quick wins */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Quick Wins</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Quick Wins</span>
         </div>
         <div className="px-3 py-2">
           <TopList items={gaps.quickWins.map((k: any) => ({
@@ -98,8 +98,8 @@ export function CompetitorsGaps() {
 
       {/* Difficulty distribution */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Difficulty</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Difficulty</span>
         </div>
         <div className="px-3 py-3">
           <BarStack segments={[
@@ -112,8 +112,8 @@ export function CompetitorsGaps() {
 
       {/* Top keywords */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Top Gap Keywords</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Top Gap Keywords</span>
         </div>
         <div className="px-3 py-2">
           <TopList items={gaps.topKeywords.map((k: any) => ({
@@ -127,8 +127,8 @@ export function CompetitorsGaps() {
 
       {/* Content topics */}
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] font-semibold">Content Topics</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] font-semibold">Content Topics</span>
         </div>
         <div className="px-3 py-2">
           <TopList items={gaps.topTopics.map((t: any) => ({

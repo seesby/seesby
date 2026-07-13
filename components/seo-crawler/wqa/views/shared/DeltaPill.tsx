@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function DeltaPill({ value, suffix = '%' }: { value?: number | null; suffix?: string }) {
     if (value === null || value === undefined || Number.isNaN(value)) {
-        return <span className="text-[var(--brand-text-faint)]] text-[10px] font-mono">—</span>;
+        return <span className="text-[var(--brand-text-faint)] text-[10px] font-mono">—</span>;
     }
     const n = Number(value);
     const up = n > 0;

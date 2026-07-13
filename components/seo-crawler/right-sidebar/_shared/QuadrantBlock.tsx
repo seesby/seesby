@@ -34,7 +34,7 @@ export function QuadrantBlock({ title, items, onCellClick }: Props) {
   const matrix: Record<string, number> = {}
   for (const it of items) matrix[`${it.impact}::${it.effort}`] = (matrix[`${it.impact}::${it.effort}`] ?? 0) + 1
   return (
-    <div className="rounded-md border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3">
+    <div className="rounded-md border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3">
       <div className="mb-2 flex items-center justify-between">
         <div className="text-[11px] uppercase tracking-wider text-neutral-500">{title}</div>
         <div className="text-[11px] text-neutral-500">impact ↑ · effort →</div>

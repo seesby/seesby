@@ -39,7 +39,7 @@ const SmartScoreCard = ({ score, isSimulating, toggleSimulation }: any) => {
     const progressLength = visibleCircumference * progress;
 
     return (
-        <div className={`lg:col-span-1 bg-[var(--brand-surface-1)]] rounded-3xl border ${isSimulating ? 'border-brand-green/30' : 'border-[var(--brand-border-1)]'} p-0 flex flex-col relative overflow-hidden transition-all duration-500 group shadow-2xl h-full`}>
+        <div className={`lg:col-span-1 bg-[var(--brand-surface-1)] rounded-3xl border ${isSimulating ? 'border-brand-green/30' : 'border-[var(--brand-border-1)]'} p-0 flex flex-col relative overflow-hidden transition-all duration-500 group shadow-2xl h-full`}>
             {/* Background Effects */}
             <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${isSimulating ? 'from-brand-green via-white to-brand-green' : 'from-brand-amber via-orange-500 to-brand-amber'} transition-all duration-1000`}></div>
             <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--brand-surface-3)] blur-[80px] rounded-full pointer-events-none"></div>
@@ -103,7 +103,7 @@ const SmartScoreCard = ({ score, isSimulating, toggleSimulation }: any) => {
             </div>
 
             {/* Bottom: 3 KPIs - Replaces Score Opportunities */}
-            <div className="bg-[var(--brand-surface-0)]] border-t border-[var(--brand-border-2)] p-5 relative z-10 grid grid-cols-3 gap-0">
+            <div className="bg-[var(--brand-surface-0)] border-t border-[var(--brand-border-2)] p-5 relative z-10 grid grid-cols-3 gap-0">
                 <div className="flex flex-col items-center justify-center">
                     <span className={`text-2xl font-bold font-heading ${isSimulating ? 'text-brand-green' : 'text-red-500'}`}>
                         {isSimulating ? '0' : '5'}
@@ -128,7 +128,7 @@ const SmartScoreCard = ({ score, isSimulating, toggleSimulation }: any) => {
 };
 
 const CrawlStatusWidget = () => (
-    <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-5 flex flex-col justify-between h-[160px] relative overflow-hidden">
+    <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-5 flex flex-col justify-between h-[160px] relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-green/20 to-transparent"></div>
 
         <div className="flex justify-between items-start">
@@ -169,7 +169,7 @@ const AuditOverview = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
 
         {/* NEW REVENUE AT RISK CARD - AGENCY TOOL */}
-        <div className="bg-gradient-to-r from-red-900/10 to-[var(--brand-surface-1)]] rounded-3xl border border-red-500/20 p-8 flex flex-col md:flex-row items-center justify-between shadow-[0_0_30px_rgba(239,68,68,0.05)]">
+        <div className="bg-gradient-to-r from-red-900/10 to-[var(--brand-surface-1)] rounded-3xl border border-red-500/20 p-8 flex flex-col md:flex-row items-center justify-between shadow-[0_0_30px_rgba(239,68,68,0.05)]">
             <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                     <div className="p-2 bg-red-500/10 rounded-lg text-red-500">
@@ -227,7 +227,7 @@ const AuditOverview = ({ showHelp }: any) => (
 
         {/* Health History & Severity Stack */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[320px] flex flex-col">
+            <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[320px] flex flex-col">
                 <div className="flex justify-between items-center mb-6">
                     <h3 className="font-bold text-white text-lg">Health Trend History</h3>
                     <div className="flex items-center gap-4">
@@ -260,7 +260,7 @@ const AuditOverview = ({ showHelp }: any) => (
                 </div>
             </div>
 
-            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[320px] flex flex-col">
+            <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[320px] flex flex-col">
                 <h3 className="font-bold text-white text-lg mb-6">Issue Types</h3>
                 <div className="flex-1 w-full min-h-0">
                     <ResponsiveContainer width="100%" height="100%">
@@ -324,12 +324,12 @@ const IssueGroup = ({ title, type, issues, openFix }: any) => {
                     <div
                         key={issue.id}
                         onClick={() => openFix(issue)} // Open slide-over directly
-                        className={`bg-[var(--brand-surface-2)]] border rounded-2xl transition-all duration-300 overflow-hidden group hover:border-[var(--brand-border-3)] relative cursor-pointer border-[var(--brand-border-1)] hover:bg-[var(--brand-surface-3)]`}
+                        className={`bg-[var(--brand-surface-2)] border rounded-2xl transition-all duration-300 overflow-hidden group hover:border-[var(--brand-border-3)] relative cursor-pointer border-[var(--brand-border-1)] hover:bg-[var(--brand-surface-3)]`}
                     >
                         {/* Score Impact Badge (Absolute) - Hide for passed */}
                         {type !== 'passed' && (
                             <div className="absolute top-0 right-0 p-3 z-10 hidden md:block">
-                                <div className="flex items-center gap-1.5 bg-[var(--brand-surface-0)]] border border-[var(--brand-border-2)] rounded-lg px-2 py-1 shadow-xl">
+                                <div className="flex items-center gap-1.5 bg-[var(--brand-surface-0)] border border-[var(--brand-border-2)] rounded-lg px-2 py-1 shadow-xl">
                                     <span className={`text-[10px] font-bold ${type === 'critical' ? 'text-red-400' : 'text-orange-400'}`}>
                                         -{type === 'critical' ? '5' : '2'} Score
                                     </span>
@@ -406,7 +406,7 @@ const AuditAllIssues = ({ openPanel, auditChecks, healthScore }: any) => {
             <PanelErrorBoundary name="Audit Issues List">
                 <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500 min-h-[700px]">
                     {/* NEW: Health Projection Bar (Gamification) */}
-                    <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 flex flex-col md:flex-row items-center gap-6 relative overflow-hidden">
+                    <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6 flex flex-col md:flex-row items-center gap-6 relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-1 h-full bg-brand-green shadow-[0_0_15px_rgba(34,197,94,0.4)]"></div>
                         <div className="flex-1 z-10">
                             <h3 className="text-lg font-bold text-white font-heading">Strategic Impact Projection</h3>
@@ -423,7 +423,7 @@ const AuditAllIssues = ({ openPanel, auditChecks, healthScore }: any) => {
                                 <span className="text-[var(--brand-text-mid)]">Current Health: {healthScore}</span>
                                 <span className="text-brand-green">Optimized: {Math.min(100, healthScore + (criticalIssues.length * 5))}</span>
                             </div>
-                            <div className="h-4 bg-[var(--brand-border-2)]] rounded-full overflow-hidden relative flex shadow-inner">
+                            <div className="h-4 bg-[var(--brand-border-2)] rounded-full overflow-hidden relative flex shadow-inner">
                                 {/* Base Score */}
                                 <div className="h-full bg-brand-amber/80 z-20 transition-all duration-1000" style={{ width: `${healthScore}%` }} title="Current Score"></div>
                                 {/* Potential Gain */}
@@ -439,7 +439,7 @@ const AuditAllIssues = ({ openPanel, auditChecks, healthScore }: any) => {
                     </div>
 
                     {/* Filters Row */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sticky top-0 bg-[var(--brand-surface-0)]]/95 backdrop-blur-xl py-4 z-20 border-b border-[var(--brand-border-1)]">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sticky top-0 bg-[var(--brand-surface-0)]/95 backdrop-blur-xl py-4 z-20 border-b border-[var(--brand-border-1)]">
                         <div className="flex overflow-x-auto gap-2 pb-2 md:pb-0 scrollbar-hide">
                             <FilterButton label="All Issues" count={activeChecks.length} active={filterCategory === 'all'} onClick={() => setFilterCategory('all')} />
                             {categories.filter(c => c !== 'all').map(cat => (
@@ -458,7 +458,7 @@ const AuditAllIssues = ({ openPanel, auditChecks, healthScore }: any) => {
                                 <input
                                     type="text"
                                     placeholder="Search specific error..."
-                                    className="w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-lg pl-9 pr-4 py-2 text-xs text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
+                                    className="w-full bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-lg pl-9 pr-4 py-2 text-xs text-white focus:outline-none focus:border-brand-amber/50 transition-colors"
                                 />
                             </div>
                         </div>
@@ -497,7 +497,7 @@ const AuditAllIssues = ({ openPanel, auditChecks, healthScore }: any) => {
 
                         {/* Empty State / All Clear */}
                         {filteredIssues.length === 0 && (
-                            <div className="p-12 text-center bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] border-dashed">
+                            <div className="p-12 text-center bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] border-dashed">
                                 <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4 text-green-500">
                                     <CheckCircle2 size={32} />
                                 </div>
@@ -526,7 +526,7 @@ const AuditCrawledPages = ({ openPanel }: any) => (
             </div>
         </div>
 
-        <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] overflow-hidden">
+        <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] overflow-hidden">
             <div className="overflow-x-auto">
                 <table className="w-full">
                     <thead className="bg-[var(--brand-surface-3)]/[0.05] text-xs font-bold text-[var(--brand-text-faint)] uppercase tracking-wider">
@@ -577,7 +577,7 @@ const AuditCrawledPages = ({ openPanel }: any) => (
 const AuditLogAnalysis = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">Log File Analysis</h3>
-        <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[400px]">
+        <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6 h-[400px]">
             <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={logAnalysisData}>
                     <defs>
@@ -606,7 +606,7 @@ const AuditArchitecture = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">Site Architecture</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
+            <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Crawl Depth</h4>
                 <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
@@ -620,7 +620,7 @@ const AuditArchitecture = ({ showHelp }: any) => (
                     </ResponsiveContainer>
                 </div>
             </div>
-            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
+            <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Orphaned Pages</h4>
                 <div className="flex items-center justify-center h-[250px] flex-col text-center">
                     <div className="text-5xl font-bold text-white mb-2 font-heading">8</div>
@@ -640,7 +640,7 @@ const AuditPerformance = ({ showHelp }: any) => (
             <TechCard title="FID" metric="14ms" status="Good" desc="First Input Delay" color="green" icon={<MousePointer2 size={18} />} />
             <TechCard title="CLS" metric="0.05" status="Good" desc="Cumulative Layout Shift" color="green" icon={<LayoutDashboard size={18} />} />
         </div>
-        <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
+        <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6">
             <h4 className="text-lg font-bold text-white mb-4">Speed Trends</h4>
             <div className="h-[300px] flex items-center justify-center text-[var(--brand-text-faint)]">
                 Chart Placeholder
@@ -653,7 +653,7 @@ const AuditAIReadiness = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">AI Readiness & Schema</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
+            <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Structured Data Distribution</h4>
                 <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
@@ -669,7 +669,7 @@ const AuditAIReadiness = ({ showHelp }: any) => (
                     </ResponsiveContainer>
                 </div>
             </div>
-            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
+            <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">AI Access Control</h4>
                 <div className="space-y-4">
                     <TechnicalRow label="GPTBot Access" status="secure" msg="Allowed" />
@@ -685,7 +685,7 @@ const AuditIndexation = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">Indexation Status</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
+            <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Status Codes</h4>
                 <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
@@ -702,7 +702,7 @@ const AuditIndexation = ({ showHelp }: any) => (
                     </ResponsiveContainer>
                 </div>
             </div>
-            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
+            <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Canonicalization</h4>
                 <div className="space-y-4">
                     {canonicalData.map((item, i) => (
@@ -721,7 +721,7 @@ const AuditContent = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">Content Audit</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
+            <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Word Count Distribution</h4>
                 <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
@@ -734,7 +734,7 @@ const AuditContent = ({ showHelp }: any) => (
                     </ResponsiveContainer>
                 </div>
             </div>
-            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
+            <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Content Freshness</h4>
                 <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
@@ -755,7 +755,7 @@ const AuditContent = ({ showHelp }: any) => (
 const AuditTechnical = () => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">Technical Specs</h3>
-        <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
+        <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6">
             <h4 className="text-lg font-bold text-white mb-6">Security & Protocols</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
                 <TechnicalRow label="SSL Certificate" status="secure" msg="Valid (Expires in 200 days)" />
@@ -773,7 +773,7 @@ const AuditLinks = ({ showHelp }: any) => (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
         <h3 className="text-xl font-bold font-heading text-white">Link Analysis</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
+            <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Internal Link Equity</h4>
                 <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
@@ -789,7 +789,7 @@ const AuditLinks = ({ showHelp }: any) => (
                     </ResponsiveContainer>
                 </div>
             </div>
-            <div className="bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-6">
+            <div className="bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-6">
                 <h4 className="text-lg font-bold text-white mb-4">Link Opportunities</h4>
                 <div className="space-y-4">
                     <LinkOpportunity source="/blog/seo-strategy" target="/features/analytics" anchor="analytics dashboard" impact="High" />
@@ -941,7 +941,7 @@ export const SiteAuditView = ({ showHelp, openPanel }: { showHelp: (t: string, d
                             <Download size={16} /> Export <ChevronDown size={14} />
                         </button>
                         {isExportOpen && (
-                            <div className="absolute top-full right-0 mt-2 w-48 bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-xl shadow-2xl py-1 z-50 animate-in fade-in zoom-in-95 duration-200">
+                            <div className="absolute top-full right-0 mt-2 w-48 bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-xl shadow-2xl py-1 z-50 animate-in fade-in zoom-in-95 duration-200">
                                 <button className="w-full text-left px-4 py-3 text-sm text-[var(--brand-text-mid)] hover:bg-[var(--brand-surface-3)] hover:text-[var(--brand-text-strong)] flex items-center gap-3">
                                     <FileBarChart size={16} className="text-red-500" /> PDF Report
                                 </button>
@@ -962,7 +962,7 @@ export const SiteAuditView = ({ showHelp, openPanel }: { showHelp: (t: string, d
                 <SmartScoreCard score={healthScore} isSimulating={isSimulating} toggleSimulation={() => setIsSimulating(!isSimulating)} />
 
                 {/* Thematic Score Radar */}
-                <div className="lg:col-span-1 bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-0 overflow-hidden flex flex-col h-full relative group">
+                <div className="lg:col-span-1 bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-0 overflow-hidden flex flex-col h-full relative group">
                     {/* Header / Title Area */}
                     <div className="px-5 py-4 border-b border-[var(--brand-border-1)] bg-[var(--brand-surface-3)]/[0.02] shrink-0">
                         <div className="flex justify-between items-center">
@@ -994,7 +994,7 @@ export const SiteAuditView = ({ showHelp, openPanel }: { showHelp: (t: string, d
                                 </RadarChart>
                             </ResponsiveContainer>
                             {/* Absolute badge for average */}
-                            <div className="absolute top-0 right-0 bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] p-2 rounded-lg shadow-xl hidden sm:block">
+                            <div className="absolute top-0 right-0 bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] p-2 rounded-lg shadow-xl hidden sm:block">
                                 <div className="text-[10px] text-[var(--brand-text-faint)] uppercase font-bold">Industry Avg</div>
                                 <div className="text-xs font-bold text-[var(--brand-text-mid)]">68/100</div>
                             </div>
@@ -1034,7 +1034,7 @@ export const SiteAuditView = ({ showHelp, openPanel }: { showHelp: (t: string, d
                 <div className="lg:col-span-1 flex flex-col gap-6 h-full">
                     <CrawlStatusWidget />
 
-                    <div className="flex-1 bg-[var(--brand-surface-1)]] rounded-3xl border border-[var(--brand-border-1)] p-5 flex flex-col overflow-hidden">
+                    <div className="flex-1 bg-[var(--brand-surface-1)] rounded-3xl border border-[var(--brand-border-1)] p-5 flex flex-col overflow-hidden">
                         <div className="flex justify-between items-center mb-3">
                             <h3 className="font-bold text-white text-sm">Top Priorities</h3>
                             <span className="text-[10px] bg-red-500/10 text-red-500 px-2 py-0.5 rounded font-bold border border-red-500/20 uppercase">Action Req</span>

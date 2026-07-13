@@ -40,13 +40,13 @@ export default function UxFunnelsView() {
   return (
     <div className="flex-1 grid grid-cols-12 gap-0 min-h-0">
       {/* Funnel list */}
-      <div className="col-span-4 border-r border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] flex flex-col min-h-0">
-        <div className="h-9 px-3 flex items-center border-b border-[var(--brand-surface-3)]] shrink-0">
-          <span className="text-[11px] text-[var(--brand-text-faint)]] uppercase tracking-wider">{funnels.length} funnels</span>
+      <div className="col-span-4 border-r border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] flex flex-col min-h-0">
+        <div className="h-9 px-3 flex items-center border-b border-[var(--brand-surface-3)] shrink-0">
+          <span className="text-[11px] text-[var(--brand-text-faint)] uppercase tracking-wider">{funnels.length} funnels</span>
         </div>
         <div className="flex-1 overflow-auto custom-scrollbar">
           {funnels.length === 0 ? (
-            <div className="p-4 text-[12px] text-[var(--brand-text-faint)]]">No funnels configured.</div>
+            <div className="p-4 text-[12px] text-[var(--brand-text-faint)]">No funnels configured.</div>
           ) : (
             funnels.map((x: any) => {
               const sel = x.id === selectedId;
@@ -56,8 +56,8 @@ export default function UxFunnelsView() {
                 <button
                   key={x.id}
                   onClick={() => setSelectedId(x.id)}
-                  className={`w-full text-left px-3 py-2.5 border-b border-[var(--brand-surface-2)]] transition-colors ${
-                    sel ? 'bg-[var(--brand-surface-1)]]' : 'hover:bg-[var(--brand-surface-1)]]'
+                  className={`w-full text-left px-3 py-2.5 border-b border-[var(--brand-surface-2)] transition-colors ${
+                    sel ? 'bg-[var(--brand-surface-1)]' : 'hover:bg-[var(--brand-surface-1)]'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -68,7 +68,7 @@ export default function UxFunnelsView() {
                       {fmtPct(rate)}
                     </span>
                   </div>
-                  <div className="text-[10px] text-[var(--brand-text-faint)]] mt-0.5">
+                  <div className="text-[10px] text-[var(--brand-text-faint)] mt-0.5">
                     {c?.[0] ? `${fmtCompact(c[0])} entries` : '—'} · {x.steps?.length || 0} steps
                   </div>
                 </button>
@@ -97,25 +97,25 @@ export default function UxFunnelsView() {
             </div>
 
             {/* Funnel visualization */}
-            <div className="rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-4">
-              <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-3">{f.name}</div>
+            <div className="rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-1)] p-4">
+              <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-3">{f.name}</div>
               <Funnel steps={funnelSteps} accent="#f43f5e" />
             </div>
 
             {/* Drop-off analysis */}
             {dropoffs.length > 0 && (
-              <div className="rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-4">
-                <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-3">Biggest drop-offs</div>
+              <div className="rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-1)] p-4">
+                <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-3">Biggest drop-offs</div>
                 <div className="space-y-2">
                   {dropoffs.slice(0, 5).map((d: any, i: number) => (
                     <div key={i} className="flex items-center gap-3">
                       <div className="flex-1 min-w-0">
-                        <div className="text-[11px] text-[var(--brand-text-mid)]] truncate">{d.from} → {d.label}</div>
-                        <div className="text-[10px] text-[var(--brand-text-faint)]]">
+                        <div className="text-[11px] text-[var(--brand-text-mid)] truncate">{d.from} → {d.label}</div>
+                        <div className="text-[10px] text-[var(--brand-text-faint)]">
                           {fmtCompact(d.fromCount)} → {fmtCompact(d.toCount)}
                         </div>
                       </div>
-                      <div className="w-16 h-1.5 rounded-full bg-[var(--brand-surface-3)]] overflow-hidden">
+                      <div className="w-16 h-1.5 rounded-full bg-[var(--brand-surface-3)] overflow-hidden">
                         <div
                           className="h-full rounded-full"
                           style={{
@@ -135,8 +135,8 @@ export default function UxFunnelsView() {
 
             {/* Segments */}
             {f.segments && f.segments.length > 0 && (
-              <div className="rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] p-4">
-                <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] mb-3">Segments</div>
+              <div className="rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-1)] p-4">
+                <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] mb-3">Segments</div>
                 <div className="grid grid-cols-2 gap-3">
                   {f.segments.map((s: any) => {
                     const segSteps = (f.steps || []).map((st: any, i: number) => ({
@@ -144,7 +144,7 @@ export default function UxFunnelsView() {
                       value: s.counts?.[i] ?? 0,
                     }));
                     return (
-                      <div key={s.name} className="rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] p-3">
+                      <div key={s.name} className="rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] p-3">
                         <div className="text-[11px] text-[var(--brand-text-strong)] mb-2">{s.name}</div>
                         <Funnel steps={segSteps} accent="#f43f5e" />
                       </div>
@@ -155,7 +155,7 @@ export default function UxFunnelsView() {
             )}
           </div>
         ) : (
-          <div className="flex-1 grid place-items-center text-[12px] text-[var(--brand-text-faint)]]">
+          <div className="flex-1 grid place-items-center text-[12px] text-[var(--brand-text-faint)]">
             Select a funnel to see details.
           </div>
         )}
@@ -167,8 +167,8 @@ export default function UxFunnelsView() {
 function MetricCard({ label, value, tone }: { label: string; value: string; tone?: string }) {
   const toneClass = tone === 'good' ? 'text-[#22c55e]' : tone === 'warn' ? 'text-[#f59e0b]' : tone === 'bad' ? 'text-[#ef4444]' : 'text-[var(--brand-text-strong)]';
   return (
-    <div className="rounded border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-1)]] px-3 py-2">
-      <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]]">{label}</div>
+    <div className="rounded border border-[var(--brand-surface-3)] bg-[var(--brand-surface-1)] px-3 py-2">
+      <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]">{label}</div>
       <div className={`text-[16px] font-mono font-semibold tabular-nums ${toneClass}`}>{value}</div>
     </div>
   );

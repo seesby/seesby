@@ -31,18 +31,18 @@ export default function StorageTab({ config, setConfig }: TabProps) {
   return (
     <div className="space-y-6">
       <SettingsSection title="Local Browser Storage" description="Current usage of IndexedDB and LocalStorage.">
-        <div className="p-4 bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)]] rounded-lg space-y-3">
+        <div className="p-4 bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-lg space-y-3">
           <div className="flex justify-between items-center text-[12px]">
-            <span className="text-[var(--brand-text-mid)]] flex items-center gap-2"><HardDrive size={14} /> Capacity</span>
+            <span className="text-[var(--brand-text-mid)] flex items-center gap-2"><HardDrive size={14} /> Capacity</span>
             <span className="text-[var(--brand-text-strong)] font-bold">{storageStats.used}MB / {storageStats.limit}MB</span>
           </div>
-          <div className="w-full h-2 bg-[var(--brand-border-2)]] rounded-full overflow-hidden">
+          <div className="w-full h-2 bg-[var(--brand-border-2)] rounded-full overflow-hidden">
             <div 
               className={`h-full transition-all duration-500 ${usagePercent > 80 ? 'bg-red-500' : usagePercent > 50 ? 'bg-yellow-500' : 'bg-[#F59E0B]'}`}
               style={{ width: `${usagePercent}%` }}
             />
           </div>
-          <p className="text-[10px] text-[var(--brand-text-faint)]]">Data is stored locally in your browser to ensure privacy and speed.</p>
+          <p className="text-[10px] text-[var(--brand-text-faint)]">Data is stored locally in your browser to ensure privacy and speed.</p>
         </div>
       </SettingsSection>
 
@@ -126,11 +126,11 @@ export default function StorageTab({ config, setConfig }: TabProps) {
             </div>
             <div>
               <h4 className="text-[12px] font-bold text-[var(--brand-text-strong)]">Reset Local Workspace</h4>
-              <p className="text-[10px] text-[var(--brand-text-mid)]]">This will permanently delete all locally stored crawl history and configurations.</p>
+              <p className="text-[10px] text-[var(--brand-text-mid)]">This will permanently delete all locally stored crawl history and configurations.</p>
             </div>
           </div>
           <div className="flex gap-2">
-            <button className="flex-1 px-4 py-2 bg-transparent border border-[var(--brand-surface-4)]] hover:border-[var(--brand-border-2)]] text-[11px] font-bold text-[var(--brand-text-strong)] rounded transition-colors flex items-center justify-center gap-2">
+            <button className="flex-1 px-4 py-2 bg-transparent border border-[var(--brand-surface-4)] hover:border-[var(--brand-border-2)] text-[11px] font-bold text-[var(--brand-text-strong)] rounded transition-colors flex items-center justify-center gap-2">
               <Download size={14} /> Export All Data
             </button>
             <button className="flex-1 px-4 py-2 bg-red-500/10 border border-red-500/30 hover:bg-red-500/20 text-[11px] font-bold text-red-500 rounded transition-colors flex items-center justify-center gap-2">

@@ -44,7 +44,7 @@ export const TONE_CLASSES = {
 	warn:    { dot: 'bg-[#f59e0b]', text: 'text-[#f59e0b]' },
 	bad:     { dot: 'bg-[#ef4444]', text: 'text-[#ef4444]' },
 	info:    { dot: 'bg-[#3b82f6]', text: 'text-[#3b82f6]' },
-	neutral: { dot: 'bg-[var(--brand-border-2)]]',    text: 'text-[#bdbdbd]' },
+	neutral: { dot: 'bg-[var(--brand-border-2)]',    text: 'text-[#bdbdbd]' },
 } as const;
 
 export const MODE_DOT_CLASS: Record<string, string> = {

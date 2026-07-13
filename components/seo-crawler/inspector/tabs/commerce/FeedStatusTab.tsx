@@ -52,14 +52,14 @@ export default function FeedStatusTab({ page, hasTrend }: { page: any; hasTrend?
 
         {/* Parity (feed vs site) */}
         <Card title="Parity (feed vs site)">
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-lg overflow-hidden">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-surface-3)] rounded-lg overflow-hidden">
             <table className="w-full text-[11px]">
               <thead>
-                <tr className="border-b border-[var(--brand-surface-3)]]">
-                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">Field</th>
-                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">Feed</th>
-                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">Site</th>
-                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)]] uppercase tracking-widest font-bold">Match</th>
+                <tr className="border-b border-[var(--brand-surface-3)]">
+                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold">Field</th>
+                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold">Feed</th>
+                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold">Site</th>
+                  <th className="px-3 py-1.5 text-left text-[9px] text-[var(--brand-border-2)] uppercase tracking-widest font-bold">Match</th>
                 </tr>
               </thead>
               <tbody>
@@ -70,10 +70,10 @@ export default function FeedStatusTab({ page, hasTrend }: { page: any; hasTrend?
                   { field: 'gtin', feed: '✓', site: '✓', match: gtinMatch },
                   { field: 'image', feed: 'url A', site: 'url A', match: imageMatch },
                 ].map((row, i) => (
-                  <tr key={i} className="border-b border-[var(--brand-surface-2)]] bg-[var(--brand-surface-0)]] hover:bg-[var(--brand-surface-2)]]">
-                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]]">{row.field}</td>
-                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]] truncate max-w-[100px]">{row.feed}</td>
-                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]] truncate max-w-[100px]">{row.site}</td>
+                  <tr key={i} className="border-b border-[var(--brand-surface-2)] bg-[var(--brand-surface-0)] hover:bg-[var(--brand-surface-2)]">
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)]">{row.field}</td>
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)] truncate max-w-[100px]">{row.feed}</td>
+                    <td className="px-3 py-1.5 text-[var(--brand-text-mid)] truncate max-w-[100px]">{row.site}</td>
                     <td className="px-3 py-1.5">
                       <StatusBadge status={row.match ? 'pass' : 'fail'} label={row.match ? '✓' : '✗'} />
                     </td>
@@ -90,10 +90,10 @@ export default function FeedStatusTab({ page, hasTrend }: { page: any; hasTrend?
         <Card title="Disapprovals">
           {Array.isArray(disapprovals) && disapprovals.length > 0 ? (
             disapprovals.map((d: any, i: number) => (
-              <div key={i} className="text-[11px] text-[var(--brand-text-mid)]] py-1">{typeof d === 'string' ? d : d.message || d.reason}</div>
+              <div key={i} className="text-[11px] text-[var(--brand-text-mid)] py-1">{typeof d === 'string' ? d : d.message || d.reason}</div>
             ))
           ) : (
-            <div className="text-[11px] text-[var(--brand-text-faint)]]">None</div>
+            <div className="text-[11px] text-[var(--brand-text-faint)]">None</div>
           )}
         </Card>
 
@@ -101,7 +101,7 @@ export default function FeedStatusTab({ page, hasTrend }: { page: any; hasTrend?
         <Card title="Other feeds">
           {otherFeeds.map((f: any, i: number) => (
             <div key={i} className="flex items-center justify-between py-1">
-              <span className="text-[11px] text-[var(--brand-text-mid)]]">{f.name}</span>
+              <span className="text-[11px] text-[var(--brand-text-mid)]">{f.name}</span>
               <StatusBadge status={f.status === 'approved' ? 'pass' : f.status === 'pending' ? 'warn' : 'fail'} label={f.status} />
             </div>
           ))}
@@ -120,7 +120,7 @@ export default function FeedStatusTab({ page, hasTrend }: { page: any; hasTrend?
           {warnings.map((w: any, i: number) => (
             <div key={i} className="flex items-start gap-2 py-1">
               <span className="block w-1.5 h-1.5 rounded-full bg-[#f59e0b] mt-0.5 shrink-0" />
-              <span className="text-[11px] text-[var(--brand-text-mid)]]">{typeof w === 'string' ? w : w.message || w.field}</span>
+              <span className="text-[11px] text-[var(--brand-text-mid)]">{typeof w === 'string' ? w : w.message || w.field}</span>
             </div>
           ))}
         </Card>

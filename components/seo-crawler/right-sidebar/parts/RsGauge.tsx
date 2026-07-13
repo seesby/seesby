@@ -33,8 +33,8 @@ export function RsGauge({
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pt-1">
                 <span className="text-[20px] font-bold font-mono tabular-nums text-[var(--brand-text-strong)] leading-none">{Math.round(v)}</span>
-                {label && <span className="text-[9px] uppercase tracking-widest text-[var(--brand-text-faint)]] mt-1">{label}</span>}
-                {sub && <span className="text-[10px] text-[var(--brand-border-2)]] mt-0.5">{sub}</span>}
+                {label && <span className="text-[9px] uppercase tracking-widest text-[var(--brand-text-faint)] mt-1">{label}</span>}
+                {sub && <span className="text-[10px] text-[var(--brand-border-2)] mt-0.5">{sub}</span>}
             </div>
         </div>
     )

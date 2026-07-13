@@ -52,7 +52,7 @@ export function PaidLandingPages() {
       {/* Best LPs by conversion rate */}
       {s.lps.best.length > 0 && (
         <Card title="Top performers" padded={false}>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.lps.best.map((lp, i) => (
               <RowItem
                 key={i}
@@ -68,7 +68,7 @@ export function PaidLandingPages() {
       {/* Worst LPs by conversion rate */}
       {s.lps.worst.length > 0 && (
         <Card title="Lowest performers" padded={false}>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.lps.worst.map((lp, i) => (
               <RowItem
                 key={i}
@@ -84,7 +84,7 @@ export function PaidLandingPages() {
       {/* LP issues breakdown */}
       {lpReasons.length > 0 && (
         <Card title="Issues" padded={false}>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {lpReasons.map((r, i) => (
               <RowItem
                 key={i}

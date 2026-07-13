@@ -53,7 +53,7 @@ export function LinksInternal() {
 
       {/* Orphan pages */}
       <Card title="Orphan pages" padded={false}>
-        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
           {s.orphanPages.length > 0 ? (
             s.orphanPages.slice(0, 5).map((p: any) => (
               <RowItem
@@ -65,14 +65,14 @@ export function LinksInternal() {
               />
             ))
           ) : (
-            <div className="px-2 py-3 text-[11px] text-[var(--brand-text-faint)]] italic">No orphan pages</div>
+            <div className="px-2 py-3 text-[11px] text-[var(--brand-text-faint)] italic">No orphan pages</div>
           )}
         </div>
       </Card>
 
       {/* Most linked pages */}
       <Card title="Most linked pages" padded={false}>
-        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
           {s.mostLinked.slice(0, 5).map((p: any) => (
             <RowItem
               key={p.url}
@@ -88,7 +88,7 @@ export function LinksInternal() {
       {/* Hub pages */}
       {s.internal.hubPages.length > 0 && (
         <Card title="Hub pages" padded={false}>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.internal.hubPages.slice(0, 5).map((p: any) => (
               <RowItem
                 key={p.url}

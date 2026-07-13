@@ -87,11 +87,11 @@ export default function HtmlTab({ page }: { page: any; hasTrend?: boolean }) {
       {/* Raw HTML */}
       {rawHtml && (
         <CollapseGroup title="Raw HTML source" defaultOpen={false}>
-          <div className="bg-[var(--brand-surface-0)]] border border-[var(--brand-surface-3)]] rounded-lg overflow-hidden max-h-[360px] overflow-y-auto custom-scrollbar">
-            <pre className="p-3 text-[11px] font-mono leading-relaxed text-[var(--brand-text-faint)]] whitespace-pre-wrap break-all">
+          <div className="bg-[var(--brand-surface-0)] border border-[var(--brand-surface-3)] rounded-lg overflow-hidden max-h-[360px] overflow-y-auto custom-scrollbar">
+            <pre className="p-3 text-[11px] font-mono leading-relaxed text-[var(--brand-text-faint)] whitespace-pre-wrap break-all">
               {previewLines.map((line: string, i: number) => (
                 <div key={i} className="flex">
-                  <span className="text-[var(--brand-border-2)]] w-[32px] shrink-0 text-right mr-3 select-none">{i + 1}</span>
+                  <span className="text-[var(--brand-border-2)] w-[32px] shrink-0 text-right mr-3 select-none">{i + 1}</span>
                   <span className="min-w-0" dangerouslySetInnerHTML={{ __html: colorizeHtml(line) }} />
                 </div>
               ))}

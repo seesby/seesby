@@ -83,7 +83,7 @@ const GoogleIntegrationCard = ({ project }: { project: any }) => {
     };
 
     return (
-        <div className="bg-[var(--brand-surface-2)]] rounded-xl border border-[var(--brand-border-1)] p-4 flex flex-col gap-4 group hover:border-[var(--brand-border-3)] transition-all">
+        <div className="bg-[var(--brand-surface-2)] rounded-xl border border-[var(--brand-border-1)] p-4 flex flex-col gap-4 group hover:border-[var(--brand-border-3)] transition-all">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-[var(--brand-surface-3)] rounded-lg flex items-center justify-center text-[var(--brand-text-mid)]">
@@ -108,7 +108,7 @@ const GoogleIntegrationCard = ({ project }: { project: any }) => {
                 )}
             </div>
             {status !== 'connected' && status !== 'loading' && (
-                <div className="bg-[var(--brand-surface-1)]] p-3 rounded-lg border border-[var(--brand-border-1)]">
+                <div className="bg-[var(--brand-surface-1)] p-3 rounded-lg border border-[var(--brand-border-1)]">
                     <label className="text-[10px] text-[var(--brand-text-mid)] block mb-1">GSC Property URL (Exact Match)</label>
                     <input
                         type="text"
@@ -153,11 +153,11 @@ const BillingSection = () => {
             'text-[var(--brand-text-mid)] bg-[var(--brand-surface-3)] border-[var(--brand-border-2)]';
 
     return (
-        <div className="bg-[var(--brand-surface-1)]] rounded-2xl border border-[var(--brand-border-1)] p-6">
+        <div className="bg-[var(--brand-surface-1)] rounded-2xl border border-[var(--brand-border-1)] p-6">
             <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
                 <CreditCard size={18} className="text-brand-amber" /> Billing & Subscription
             </h3>
-            <div className="flex items-center justify-between p-4 bg-[var(--brand-surface-2)]] rounded-xl border border-[var(--brand-border-1)]">
+            <div className="flex items-center justify-between p-4 bg-[var(--brand-surface-2)] rounded-xl border border-[var(--brand-border-1)]">
                 <div>
                     <span className="text-sm font-bold text-white block mb-1">Current Plan</span>
                     <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded border ${statusColor}`}>
@@ -253,7 +253,7 @@ export const ProjectSettingsView = () => {
                 <div className="lg:col-span-2 space-y-6">
 
                     {/* General Config */}
-                    <div className="bg-[var(--brand-surface-1)]] rounded-2xl border border-[var(--brand-border-1)] p-6">
+                    <div className="bg-[var(--brand-surface-1)] rounded-2xl border border-[var(--brand-border-1)] p-6">
                         <h3 className="text-lg font-bold text-white mb-6">General Configuration</h3>
                         <div className="space-y-4">
                             <div>
@@ -262,7 +262,7 @@ export const ProjectSettingsView = () => {
                                     type="text"
                                     value={name}
                                     onChange={e => setName(e.target.value)}
-                                    className="w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none"
+                                    className="w-full bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none"
                                 />
                             </div>
                             <div>
@@ -271,23 +271,23 @@ export const ProjectSettingsView = () => {
                                     type="text"
                                     value={url}
                                     onChange={e => setUrl(e.target.value)}
-                                    className="w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none"
+                                    className="w-full bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none"
                                 />
                             </div>
                             <div>
                                 <label className="block text-xs font-bold text-[var(--brand-text-faint)] uppercase mb-2">Sitemap URL</label>
-                                <input type="text" defaultValue={`${url}/sitemap.xml`} className="w-full bg-[var(--brand-surface-2)]] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none" disabled />
+                                <input type="text" defaultValue={`${url}/sitemap.xml`} className="w-full bg-[var(--brand-surface-2)] border border-[var(--brand-border-2)] rounded-lg p-3 text-sm text-white focus:border-brand-amber/50 focus:outline-none" disabled />
                             </div>
                         </div>
                     </div>
 
                     {/* Integrations (Moved from Main Nav) */}
-                    <div className="bg-[var(--brand-surface-1)]] rounded-2xl border border-[var(--brand-border-1)] p-6">
+                    <div className="bg-[var(--brand-surface-1)] rounded-2xl border border-[var(--brand-border-1)] p-6">
                         <h3 className="text-lg font-bold text-white mb-6">Integrations & Connections</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <GoogleIntegrationCard project={activeProject} />
                             {['Google Analytics 4', 'WordPress', 'Slack'].map((tool, i) => (
-                                <div key={i} className="bg-[var(--brand-surface-2)]] rounded-xl border border-[var(--brand-border-1)] p-4 flex items-center justify-between group hover:border-[var(--brand-border-3)] transition-all">
+                                <div key={i} className="bg-[var(--brand-surface-2)] rounded-xl border border-[var(--brand-border-1)] p-4 flex items-center justify-between group hover:border-[var(--brand-border-3)] transition-all">
                                     <div className="flex items-center gap-3">
                                         <div className="w-10 h-10 bg-[var(--brand-surface-3)] rounded-lg flex items-center justify-center text-[var(--brand-text-mid)]">
                                             <Plug size={18} />
@@ -311,7 +311,7 @@ export const ProjectSettingsView = () => {
                 </div>
 
                 <div className="lg:col-span-1 space-y-6">
-                    <div className="bg-[var(--brand-surface-1)]] rounded-2xl border border-[var(--brand-border-1)] p-6">
+                    <div className="bg-[var(--brand-surface-1)] rounded-2xl border border-[var(--brand-border-1)] p-6">
                         <h3 className="text-lg font-bold text-white mb-4">Crawler Settings</h3>
                         <div className="space-y-4">
                             <div className="flex justify-between items-center p-3 bg-[var(--brand-surface-3)] rounded-lg">

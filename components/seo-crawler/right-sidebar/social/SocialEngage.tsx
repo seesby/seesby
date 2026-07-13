@@ -57,9 +57,9 @@ export function SocialEngage() {
               { label: 'Shares', value: s.engagement.signals.shares },
               { label: 'Saves', value: s.engagement.signals.saves },
             ].map(sig => (
-              <div key={sig.label} className="flex flex-col items-center p-2 rounded bg-[var(--brand-surface-0)]]">
+              <div key={sig.label} className="flex flex-col items-center p-2 rounded bg-[var(--brand-surface-0)]">
                 <span className="text-[14px] font-bold font-mono text-[var(--brand-text-strong)]">{compactNum(sig.value)}</span>
-                <span className="text-[9px] text-[var(--brand-text-mid)]] uppercase">{sig.label}</span>
+                <span className="text-[9px] text-[var(--brand-text-mid)] uppercase">{sig.label}</span>
               </div>
             ))}
           </div>
@@ -67,15 +67,15 @@ export function SocialEngage() {
       </Card>
 
       <Card padded={false}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-          <span className="text-[11px] text-[var(--brand-text-mid)]]">By channel</span>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+          <span className="text-[11px] text-[var(--brand-text-mid)]">By channel</span>
         </div>
-        <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+        <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
           {s.engagement.byChannelEngagement.map(ch => (
-            <div key={ch.channel} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
+            <div key={ch.channel} className="flex items-center justify-between px-3 py-2 border-b border-[var(--brand-surface-3)] last:border-b-0">
               <div className="flex items-center gap-2">
                 <span className="text-[11px] text-[var(--brand-text-strong)]">{ch.channel}</span>
-                <span className="text-[10px] text-[var(--brand-text-faint)]]">{ch.posts} posts</span>
+                <span className="text-[10px] text-[var(--brand-text-faint)]">{ch.posts} posts</span>
               </div>
               <span className="text-[11px] font-mono text-[var(--brand-text-strong)]">{fmtPct(ch.rate * 100, 1)}</span>
             </div>
@@ -96,18 +96,18 @@ export function SocialEngage() {
 
       {s.engagement.topPosts.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Top performing</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Top performing</span>
           </div>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.engagement.topPosts.slice(0, 4).map(p => (
-              <div key={p.id} className="px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
+              <div key={p.id} className="px-3 py-2 border-b border-[var(--brand-surface-3)] last:border-b-0">
                 <div className="text-[11px] text-[var(--brand-text-strong)] leading-snug line-clamp-2">{p.text}</div>
                 <div className="flex items-center gap-3 mt-1">
-                  <span className="text-[10px] text-[var(--brand-text-faint)]]">{p.channel}</span>
-                  <span className="text-[10px] text-[var(--brand-text-faint)]]">{p.relTime}</span>
-                  <span className="text-[10px] font-mono text-[var(--brand-text-mid)]]">{compactNum(p.engagement)}</span>
-                  <span className="text-[10px] font-mono text-[var(--brand-text-faint)]]">{compactNum(p.reach)} reach</span>
+                  <span className="text-[10px] text-[var(--brand-text-faint)]">{p.channel}</span>
+                  <span className="text-[10px] text-[var(--brand-text-faint)]">{p.relTime}</span>
+                  <span className="text-[10px] font-mono text-[var(--brand-text-mid)]">{compactNum(p.engagement)}</span>
+                  <span className="text-[10px] font-mono text-[var(--brand-text-faint)]">{compactNum(p.reach)} reach</span>
                 </div>
               </div>
             ))}
@@ -117,17 +117,17 @@ export function SocialEngage() {
 
       {s.hasPrior && s.engagement.worstPosts.length > 0 && (
         <Card padded={false}>
-          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <span className="text-[11px] text-[var(--brand-text-mid)]]">Needs improvement</span>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <span className="text-[11px] text-[var(--brand-text-mid)]">Needs improvement</span>
           </div>
-          <div className="flex flex-col border-t border-[var(--brand-surface-3)]]">
+          <div className="flex flex-col border-t border-[var(--brand-surface-3)]">
             {s.engagement.worstPosts.map(p => (
-              <div key={p.id} className="px-3 py-2 border-b border-[var(--brand-surface-3)]] last:border-b-0">
+              <div key={p.id} className="px-3 py-2 border-b border-[var(--brand-surface-3)] last:border-b-0">
                 <div className="text-[11px] text-[var(--brand-text-strong)] leading-snug line-clamp-2">{p.text}</div>
                 <div className="flex items-center gap-3 mt-1">
-                  <span className="text-[10px] text-[var(--brand-text-faint)]]">{p.channel}</span>
-                  <span className="text-[10px] font-mono text-[var(--brand-text-mid)]]">{p.engagement} eng</span>
-                  <span className="text-[10px] font-mono text-[var(--brand-text-faint)]]">{compactNum(p.reach)} reach</span>
+                  <span className="text-[10px] text-[var(--brand-text-faint)]">{p.channel}</span>
+                  <span className="text-[10px] font-mono text-[var(--brand-text-mid)]">{p.engagement} eng</span>
+                  <span className="text-[10px] font-mono text-[var(--brand-text-faint)]">{compactNum(p.reach)} reach</span>
                 </div>
               </div>
             ))}

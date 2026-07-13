@@ -5,7 +5,7 @@ import { ForceGraph } from '../../_shared/ForceGraph';
 import { fmtNum } from '../../_shared/formatters';
 import { STATUS } from '../../_shared/tokens';
 
-const BORDER = 'border border-[var(--brand-surface-3)]] bg-[var(--brand-surface-0)]] rounded';
+const BORDER = 'border border-[var(--brand-surface-3)] bg-[var(--brand-surface-0)] rounded';
 
 type EntityRow = {
   id: string;
@@ -72,13 +72,13 @@ export default function AiEntitiesView() {
     <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
       {/* Entity graph */}
       <div className={`m-3 mb-0 ${BORDER} overflow-hidden`}>
-        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]] flex items-center justify-between">
-          <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]]">Entity graph</div>
+        <div className="px-3 py-2 border-b border-[var(--brand-surface-3)] flex items-center justify-between">
+          <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]">Entity graph</div>
           <div className="flex items-center gap-2">
             {Object.entries(typeColors).map(([type, color]) => (
               <div key={type} className="flex items-center gap-1">
                 <div className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />
-                <span className="text-[9px] text-[var(--brand-text-faint)]] capitalize">{type}</span>
+                <span className="text-[9px] text-[var(--brand-text-faint)] capitalize">{type}</span>
               </div>
             ))}
           </div>
@@ -89,7 +89,7 @@ export default function AiEntitiesView() {
             links={links as any}
           />
           {nodes.length === 0 && (
-            <div className="absolute inset-0 grid place-items-center text-[12px] text-[var(--brand-text-faint)]]">
+            <div className="absolute inset-0 grid place-items-center text-[12px] text-[var(--brand-text-faint)]">
               No entities found in pages
             </div>
           )}
@@ -100,14 +100,14 @@ export default function AiEntitiesView() {
       <div className="flex-1 flex min-h-0 overflow-hidden m-3 gap-3">
         {/* Table */}
         <div className={`flex-1 flex flex-col min-w-0 ${BORDER} overflow-hidden`}>
-          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]]">
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]">
               Entities site-wide ({entityRows.length})
             </div>
           </div>
           <div className="flex-1 overflow-auto custom-scrollbar">
             {/* Header */}
-            <div className="flex items-center h-8 px-3 text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]] border-b border-[var(--brand-surface-3)]] sticky top-0 bg-[var(--brand-surface-0)]]">
+            <div className="flex items-center h-8 px-3 text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)] border-b border-[var(--brand-surface-3)] sticky top-0 bg-[var(--brand-surface-0)]">
               <div className="w-[160px]">Entity</div>
               <div className="w-[80px]">Pages</div>
               <div className="w-[120px]">Schema</div>
@@ -119,8 +119,8 @@ export default function AiEntitiesView() {
               <div
                 key={e.id}
                 onClick={() => setSelectedEntity(e.id === selectedEntity ? null : e.id)}
-                className={`flex items-center h-8 px-3 text-[11px] border-b border-[var(--brand-surface-1)]] cursor-pointer transition-colors ${
-                  selectedEntity === e.id ? 'bg-[var(--brand-surface-1)]]' : 'hover:bg-[var(--brand-surface-1)]]'
+                className={`flex items-center h-8 px-3 text-[11px] border-b border-[var(--brand-surface-1)] cursor-pointer transition-colors ${
+                  selectedEntity === e.id ? 'bg-[var(--brand-surface-1)]' : 'hover:bg-[var(--brand-surface-1)]'
                 }`}
               >
                 <div className="w-[160px] flex items-center gap-2 min-w-0">
@@ -130,40 +130,40 @@ export default function AiEntitiesView() {
                   />
                   <span className="truncate text-[var(--brand-text-strong)]">{e.name}</span>
                 </div>
-                <div className="w-[80px] text-[var(--brand-text-mid)]]">{fmtNum(e.pageCount)}</div>
+                <div className="w-[80px] text-[var(--brand-text-mid)]">{fmtNum(e.pageCount)}</div>
                 <div className="w-[120px]">
                   {e.schemaBacked ? (
                     <span className="text-[10px] text-[#22c55e]">✓ {e.type}</span>
                   ) : (
-                    <span className="text-[10px] text-[var(--brand-text-faint)]]">—</span>
+                    <span className="text-[10px] text-[var(--brand-text-faint)]">—</span>
                   )}
                 </div>
                 <div className="w-[100px]">
                   {e.sameAsPresent ? (
                     <span className="text-[10px] text-[#22c55e]">✓</span>
                   ) : (
-                    <span className="text-[10px] text-[var(--brand-text-faint)]]">—</span>
+                    <span className="text-[10px] text-[var(--brand-text-faint)]">—</span>
                   )}
                 </div>
                 <div className="flex-1">
                   {e.wikipedia ? (
                     <span className="text-[10px] text-[#22c55e]">✓</span>
                   ) : (
-                    <span className="text-[10px] text-[var(--brand-text-faint)]]">—</span>
+                    <span className="text-[10px] text-[var(--brand-text-faint)]">—</span>
                   )}
                 </div>
               </div>
             ))}
             {entityRows.length === 0 && (
-              <div className="p-4 text-[12px] text-[var(--brand-text-faint)]] text-center">No entities found</div>
+              <div className="p-4 text-[12px] text-[var(--brand-text-faint)] text-center">No entities found</div>
             )}
           </div>
         </div>
 
         {/* Missing anchors */}
         <div className={`w-[280px] flex flex-col ${BORDER} overflow-hidden`}>
-          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]]">
-            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]]">Missing anchors for LLM extraction</div>
+          <div className="px-3 py-2 border-b border-[var(--brand-surface-3)]">
+            <div className="text-[10px] uppercase tracking-wider text-[var(--brand-text-faint)]">Missing anchors for LLM extraction</div>
           </div>
           <div className="flex-1 overflow-auto custom-scrollbar p-3">
             {missingAnchors.length === 0 ? (
@@ -173,7 +173,7 @@ export default function AiEntitiesView() {
                 {missingAnchors.map((anchor, i) => (
                   <div key={i} className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#f59e0b] mt-1.5 shrink-0" />
-                    <span className="text-[11px] text-[var(--brand-text-mid)]]">{anchor}</span>
+                    <span className="text-[11px] text-[var(--brand-text-mid)]">{anchor}</span>
                   </div>
                 ))}
               </div>
