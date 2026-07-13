@@ -1,27 +1,27 @@
 export const SIDEBAR_TOKENS = {
-	// Surfaces
-	base:        'bg-[var(--brand-surface-0)]',  // --bg-main
-	surface:     'bg-[var(--brand-surface-0)]',  // Match main background exactly
-	surfaceAlt:  'bg-[var(--brand-surface-2)]',  // --card-bg / match subheader
-	card:        'bg-[var(--brand-surface-2)]',
-	cardAlt:     '#141417',
+	// Surfaces (raw CSS values for inline style use)
+	base:        'var(--brand-surface-0)',
+	surface:     'var(--brand-surface-0)',
+	surfaceAlt:  'var(--brand-surface-2)',
+	card:        'var(--brand-surface-2)',
+	cardAlt:     'var(--brand-surface-3)',
 
 	// Borders
-	border:      'border-[var(--brand-border-2)]',  // Match subheader border
-	borderAlt:   'border-[var(--brand-border-2)]',
+	border:      'var(--brand-border-2)',
+	borderAlt:   'var(--brand-border-2)',
 
 	// Text
-	text:        'bg-[var(--brand-surface-4)]',
-	textDim:     '#A0A0A5',  // --text-secondary
-	textMuted:   'text-[var(--brand-text-faint)]',
-	textSubtle:  'border-[var(--brand-border-2)]',
+	text:        'var(--brand-text-strong)',
+	textDim:     'var(--brand-text-mid)',
+	textMuted:   'var(--brand-text-faint)',
+	textSubtle:  'var(--brand-border-2)',
 
-	// Accents
-	accent:      '#F59E0B',  // --brand-amber
-	good:        '#22c55e',
-	warn:        '#f59e0b',
-	bad:         '#ef4444',
-	info:        '#3b82f6',
+	// Accents (honey-led, warm)
+	accent:      '#F59E0B',
+	good:        '#34D27B',
+	warn:        '#F59E0B',
+	bad:         '#F4655E',
+	info:        '#B45309',  // warm amber-brown (no cold blue)
 } as const;
 
 export const SIDEBAR_LAYOUT = {
@@ -40,11 +40,11 @@ export const SIDEBAR_LAYOUT = {
 } as const;
 
 export const TONE_CLASSES = {
-	good:    { dot: 'bg-[#22c55e]', text: 'text-[#22c55e]' },
+	good:    { dot: 'bg-[#34D27B]', text: 'text-[#34D27B]' },
 	warn:    { dot: 'bg-[#f59e0b]', text: 'text-[#f59e0b]' },
-	bad:     { dot: 'bg-[#ef4444]', text: 'text-[#ef4444]' },
-	info:    { dot: 'bg-[#3b82f6]', text: 'text-[#3b82f6]' },
-	neutral: { dot: 'bg-[var(--brand-border-2)]',    text: 'text-[#bdbdbd]' },
+	bad:     { dot: 'bg-[#F4655E]', text: 'text-[#F4655E]' },
+	info:    { dot: 'bg-[#B45309]', text: 'text-[#B45309]' },
+	neutral: { dot: 'bg-[var(--brand-border-2)]', text: 'text-[var(--brand-text-faint)]' },
 } as const;
 
 export const MODE_DOT_CLASS: Record<string, string> = {

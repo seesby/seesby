@@ -3,144 +3,147 @@
 @tailwind utilities;
 
 :root {
-  /* Default Dark Mode */
-  --brand-amber: #F59E0B;
+  /* Default Dark Mode — warm "honeycomb" neutrals (amber/bark biased, not cold slate) */
+  --brand-amber: #F59E0B;           /* honey — logo body */
   --brand-amber-glow: rgba(245, 158, 11, 0.22);
-  --bg-main: #0B0B0A;
+  --bg-main: #0C0907;               /* warm near-black */
 
   /* ── Seesby brand surface system (single source of truth) ── */
   --brand-amber-hover: #FBBF24;
-  --brand-amber-deep: #D97706;
+  --brand-amber-deep: #D97706;      /* amber-deep — logo stripes */
   --brand-amber-soft: rgba(245, 158, 11, 0.10);
   --brand-amber-soft-2: rgba(245, 158, 11, 0.16);
   --brand-amber-border: rgba(245, 158, 11, 0.30);
   --brand-amber-border-soft: rgba(245, 158, 11, 0.20);
+  --brand-honey-tint: #FEF3C7;      /* wing tint */
 
-  --brand-bg: #0B0B0A;
-  --brand-card: #141412;
-  --brand-sidebar: #0E0E0C;
+  --brand-bg: #0C0907;
+  --brand-card: #15110B;            /* warm raised card */
+  --brand-sidebar: #100C08;         /* warm recessed */
 
-  --brand-surface-0: #0A0A0A;
-  --brand-surface-1: #0C0C0C;
-  --brand-surface-2: #111111;
-  --brand-surface-3: #161616;
-  --brand-surface-4: #1A1A1A;
+  --brand-surface-0: #0E0B08;       /* deepest canvas (warm black) */
+  --brand-surface-1: #14100A;
+  --brand-surface-2: #1A140D;
+  --brand-surface-3: #221A10;
+  --brand-surface-4: #2B2114;       /* top elevation */
 
-  --brand-border-1: #161616;
-  --brand-border-2: #222222;
-  --brand-border-3: #2A2A2A;
+  --brand-border-1: #221A10;
+  --brand-border-2: #2E2416;
+  --brand-border-3: #3C2F1C;        /* strong divider (bark-tinted) */
 
-  --brand-text-strong: #FFFFFF;
-  --brand-text-mid: #AAAAAA;
-  --brand-text-faint: #666666;
-  --brand-text-muted: #444444;
-  --brand-text-dim: #333333;
+  --brand-text-strong: #FBF6EC;     /* warm white */
+  --brand-text-mid: #BBA98A;        /* warm sand */
+  --brand-text-faint: #7E7160;      /* warm stone */
+  --brand-text-muted: #574E40;
+  --brand-text-dim: #3C352A;
 
-  /* Status — amber-led, neutral (no blue/purple) */
-  --brand-success: #22C55E;
-  --brand-success-soft: rgba(34, 197, 94, 0.10);
-  --brand-danger: #EF4444;
-  --brand-danger-soft: rgba(239, 68, 68, 0.10);
-  --brand-danger-border: rgba(239, 68, 68, 0.20);
+  /* Status — amber-led, warm-neutral (no cold blue/purple) */
+  --brand-success: #34D27B;         /* warmed green */
+  --brand-success-soft: rgba(52, 210, 123, 0.10);
+  --brand-danger: #F4655E;          /* warmed red */
+  --brand-danger-soft: rgba(244, 101, 94, 0.10);
+  --brand-danger-border: rgba(244, 101, 94, 0.20);
   --brand-warn: #F59E0B;
-  --brand-status-neutral: #71717A;
-  --brand-status-neutral-soft: rgba(113, 113, 122, 0.12);
-  --panel-bg: rgba(18, 18, 20, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.06);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --card-bg: #111114;
-  --auth-panel: rgba(11, 12, 15, 0.72);
-  --auth-panel-border: rgba(255, 255, 255, 0.08);
-  --auth-input-bg: rgba(255, 255, 255, 0.04);
-  --auth-input-bg-focus: rgba(255, 255, 255, 0.07);
-  --text-primary: #FFFFFF;
-  --text-secondary: #A0A0A5;
-  --text-main: #A0A0A5;
-  --text-heading: #FFFFFF;
+  --brand-status-neutral: #8A7B63;  /* warm neutral */
+  --brand-status-neutral-soft: rgba(138, 123, 99, 0.14);
+  --panel-bg: rgba(20, 16, 11, 0.82);
+  --glass-border: rgba(245, 158, 11, 0.08);
+  --border-subtle: rgba(245, 158, 11, 0.10);
+  --card-bg: #15110B;
+  --auth-panel: rgba(12, 9, 7, 0.78);
+  --auth-panel-border: rgba(245, 158, 11, 0.10);
+  --auth-input-bg: rgba(245, 158, 11, 0.05);
+  --auth-input-bg-focus: rgba(245, 158, 11, 0.09);
+  --text-primary: #FBF6EC;
+  --text-secondary: #BBA98A;
+  --text-main: #BBA98A;
+  --text-heading: #FBF6EC;
 }
 
 [data-theme="light"] {
-  /* Warm cream + amber light theme */
-  --bg-main: #FAF7F0;
-  --panel-bg: #F3EEE3;
-  --card-bg: #FFFFFF;
-  --auth-panel: rgba(255, 255, 255, 0.90);
-  --auth-panel-border: rgba(28, 25, 23, 0.12);
-  --auth-input-bg: rgba(28, 25, 23, 0.04);
-  --auth-input-bg-focus: rgba(28, 25, 23, 0.07);
-  --glass-border: rgba(28, 25, 23, 0.08);
-  --border-subtle: rgba(28, 25, 23, 0.06);
-  --text-primary: #1C1917;
-  --text-secondary: #6B635B;
+  /* Honey-cream + amber light theme (warm, brand-coherent) */
+  --bg-main: #FBF6EC;
+  --panel-bg: #F4ECDD;
+  --card-bg: #FFFDF8;
+  --auth-panel: rgba(255, 253, 248, 0.92);
+  --auth-panel-border: rgba(146, 64, 14, 0.14);
+  --auth-input-bg: rgba(146, 64, 14, 0.05);
+  --auth-input-bg-focus: rgba(146, 64, 14, 0.08);
+  --glass-border: rgba(146, 64, 14, 0.10);
+  --border-subtle: rgba(146, 64, 14, 0.08);
+  --text-primary: #241C12;
+  --text-secondary: #6B5E49;
   --text-main: var(--text-secondary);
   --text-heading: var(--text-primary);
   --brand-amber: #D97706;
   --brand-amber-glow: rgba(217, 119, 6, 0.14);
 
-  /* Brand surface scale -> warm light */
-  --brand-bg: #FAF7F0;
-  --brand-card: #FFFFFF;
-  --brand-sidebar: #F3EEE3;
-  --brand-surface-0: #FBF8F2;
-  --brand-surface-1: #F3EEE3;
-  --brand-surface-2: #EDE6D8;
-  --brand-surface-3: #E4DBCB;
-  --brand-surface-4: #D9CFBC;
-  --brand-border-1: #E4DBCB;
-  --brand-border-2: #D9CFBC;
-  --brand-border-3: #C9BDA6;
-  --brand-text-strong: #1C1917;
-  --brand-text-mid: #6B635B;
-  --brand-text-faint: #9A9085;
-  --brand-text-muted: #B6AC9C;
+  /* Brand surface scale -> honey-cream light */
+  --brand-bg: #FBF6EC;
+  --brand-card: #FFFDF8;
+  --brand-sidebar: #F4ECDD;
+  --brand-surface-0: #FDFAF3;
+  --brand-surface-1: #F4ECDD;
+  --brand-surface-2: #EDE2CD;
+  --brand-surface-3: #E4D7BC;
+  --brand-surface-4: #DBCCA8;
+  --brand-border-1: #E4D7BC;
+  --brand-border-2: #D9C8A4;
+  --brand-border-3: #C9B488;
+  --brand-text-strong: #241C12;
+  --brand-text-mid: #6B5E49;
+  --brand-text-faint: #9A8C72;
+  --brand-text-muted: #B6A98C;
+  --brand-honey-tint: #FEF3C7;
   --brand-amber-soft: rgba(217, 119, 6, 0.10);
   --brand-amber-soft-2: rgba(217, 119, 6, 0.16);
   --brand-amber-border: rgba(217, 119, 6, 0.28);
   --brand-amber-border-soft: rgba(217, 119, 6, 0.18);
-  --brand-success-soft: rgba(34, 197, 94, 0.12);
-  --brand-danger-soft: rgba(239, 68, 68, 0.10);
-  --brand-status-neutral-soft: rgba(113, 113, 122, 0.12);
+  --brand-success-soft: rgba(52, 210, 123, 0.14);
+  --brand-danger-soft: rgba(244, 101, 94, 0.12);
+  --brand-status-neutral-soft: rgba(138, 123, 99, 0.14);
 }
 
 @media (prefers-color-scheme: light) {
   [data-theme="system"] {
-    --bg-main: #FAF7F0;
-    --panel-bg: #F3EEE3;
-    --card-bg: #FFFFFF;
-    --auth-panel: rgba(255, 255, 255, 0.90);
-    --auth-panel-border: rgba(28, 25, 23, 0.12);
-    --auth-input-bg: rgba(28, 25, 23, 0.04);
-    --auth-input-bg-focus: rgba(28, 25, 23, 0.07);
-    --glass-border: rgba(28, 25, 23, 0.08);
-    --border-subtle: rgba(28, 25, 23, 0.06);
-    --text-primary: #1C1917;
-    --text-secondary: #6B635B;
+    --bg-main: #FBF6EC;
+    --panel-bg: #F4ECDD;
+    --card-bg: #FFFDF8;
+    --auth-panel: rgba(255, 253, 248, 0.92);
+    --auth-panel-border: rgba(146, 64, 14, 0.14);
+    --auth-input-bg: rgba(146, 64, 14, 0.05);
+    --auth-input-bg-focus: rgba(146, 64, 14, 0.08);
+    --glass-border: rgba(146, 64, 14, 0.10);
+    --border-subtle: rgba(146, 64, 14, 0.08);
+    --text-primary: #241C12;
+    --text-secondary: #6B5E49;
     --text-main: var(--text-secondary);
     --text-heading: var(--text-primary);
     --brand-amber: #D97706;
     --brand-amber-glow: rgba(217, 119, 6, 0.14);
-    --brand-bg: #FAF7F0;
-    --brand-card: #FFFFFF;
-    --brand-sidebar: #F3EEE3;
-    --brand-surface-0: #FBF8F2;
-    --brand-surface-1: #F3EEE3;
-    --brand-surface-2: #EDE6D8;
-    --brand-surface-3: #E4DBCB;
-    --brand-surface-4: #D9CFBC;
-    --brand-border-1: #E4DBCB;
-    --brand-border-2: #D9CFBC;
-    --brand-border-3: #C9BDA6;
-    --brand-text-strong: #1C1917;
-    --brand-text-mid: #6B635B;
-    --brand-text-faint: #9A9085;
-    --brand-text-muted: #B6AC9C;
+    --brand-bg: #FBF6EC;
+    --brand-card: #FFFDF8;
+    --brand-sidebar: #F4ECDD;
+    --brand-surface-0: #FDFAF3;
+    --brand-surface-1: #F4ECDD;
+    --brand-surface-2: #EDE2CD;
+    --brand-surface-3: #E4D7BC;
+    --brand-surface-4: #DBCCA8;
+    --brand-border-1: #E4D7BC;
+    --brand-border-2: #D9C8A4;
+    --brand-border-3: #C9B488;
+    --brand-text-strong: #241C12;
+    --brand-text-mid: #6B5E49;
+    --brand-text-faint: #9A8C72;
+    --brand-text-muted: #B6A98C;
+    --brand-honey-tint: #FEF3C7;
     --brand-amber-soft: rgba(217, 119, 6, 0.10);
     --brand-amber-soft-2: rgba(217, 119, 6, 0.16);
     --brand-amber-border: rgba(217, 119, 6, 0.28);
     --brand-amber-border-soft: rgba(217, 119, 6, 0.18);
-    --brand-success-soft: rgba(34, 197, 94, 0.12);
-    --brand-danger-soft: rgba(239, 68, 68, 0.10);
-    --brand-status-neutral-soft: rgba(113, 113, 122, 0.12);
+    --brand-success-soft: rgba(52, 210, 123, 0.14);
+    --brand-danger-soft: rgba(244, 101, 94, 0.12);
+    --brand-status-neutral-soft: rgba(138, 123, 99, 0.14);
   }
 }
 

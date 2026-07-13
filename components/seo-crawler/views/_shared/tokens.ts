@@ -3,12 +3,12 @@ import type { Mode } from '@seesby/types';
 export { MODE_ACCENT } from '@seesby/types';
 
 export const STATUS = {
-  good:     '#22c55e',
+  good:     '#34D27B',
   warn:     '#f59e0b',
-  bad:      '#ef4444',
-  info:     '#3b82f6',
-  neutral:  'text-[var(--brand-text-faint)]',
-  muted:    '#3f3f46',
+  bad:      '#F4655E',
+  info:     '#B45309',
+  neutral:  'var(--brand-text-faint)',
+  muted:    '#574E40',
 };
 
 /** Categorical chart palette — amber-led, neutral, no blue/purple accents. */
